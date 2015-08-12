@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: proposal.aux
+The style file: plain.bst
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "website:tablog"
+Warning--I didn't find a database entry for "logic-classes"
+Warning--empty journal in ait1999warren
+Warning--can't use both volume and number fields in hanus1995curry
+Warning--empty booktitle in meijer2004static
+Warning--empty school in seres2001algebra
+Warning--empty journal in seres2000optimisation
+You've used 146 entries,
+            2118 wiz_defined-function locations,
+            1077 strings with 18319 characters,
+and the built_in function-call counts, 35806 in all, are:
+= -- 3374
+> -- 1234
+< -- 29
++ -- 537
+- -- 364
+* -- 1731
+:= -- 5706
+add.period$ -- 392
+call.type$ -- 146
+change.case$ -- 610
+chr.to.int$ -- 0
+cite$ -- 151
+duplicate$ -- 1409
+empty$ -- 3546
+format.name$ -- 364
+if$ -- 7803
+int.to.chr$ -- 0
+int.to.str$ -- 146
+missing$ -- 45
+newline$ -- 670
+num.names$ -- 296
+pop$ -- 1167
+preamble$ -- 1
+purify$ -- 473
+quote$ -- 0
+skip$ -- 1279
+stack$ -- 0
+substring$ -- 1505
+swap$ -- 319
+text.length$ -- 29
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 572
+warning$ -- 5
+while$ -- 366
+width$ -- 149
+write$ -- 1388
+(There were 7 warnings)

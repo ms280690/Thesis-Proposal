@@ -1,0 +1,14 @@
+\documentclass[proposal.tex]{subfiles} 
+
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------
+\section{Work Completed}\label{sect:workCompleted}
+%----------------------------------------------------------------------------
+This section has not been included in the proposal as I guess no work has been done.
+
+
+
+\end{document}

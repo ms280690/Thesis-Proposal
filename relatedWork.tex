@@ -1,0 +1,126 @@
+\documentclass[proposal.tex]{subfiles}
+
+
+ 
+\begin{document}
+
+
+% ---------------------------------------------------------------------------
+\section{Related Work}\label{sect:relatedWork}
+% ---------------------------------------------------------------------------
+
+\paragraph{}
+ There are some technicalities which are indirectly related to the problem but do not bare a point of contact. The underpinnings of the languages throw some more light on the how different languages work to solve a problem. Different programming paradigms incorporate different operational mechanisms. For example, \progLang{Prolog} programs execute on the Warren Abstract Machine \cite{ait1999warren} which has three different storage usages; a global stack for compound terms, for environment frames and choice points and lastly the trail to record which variables bindings ought to be undone on backtracking.        
+
+\par Constraint programming \cite{website:constraintprogwiki} is closely related to the declarative programming paradigm in the sense that the relations between variables is specified in the form of constraints. For example, consider a program to solve a simultaneous equation, now adding on to that restricting the range of the values that the variables can possible take, thus adding constraints to the possible solutions. Related to the same are Constraint Handling Rules \cite{website:chrwiki}, which are extensions to a language, simply speaking adding constraints to a language like \progLang{Prolog}.  
+
+\par Lastly some details on the working of functional logic programming languages, residuation and narrowing \cite{hanus1995curry,webiste:wikicurry}. Residuation involves delaying of functions calls until they are deterministic, that is, deterministic reduction of functions with partial data. This principle is used in languages like \progLang{Escher} \cite{lloyd1999programming:escher}, \progLang{Life} \cite{website:life}, \progLang{NUE-Prolog} 
+\cite{website:nue-prolog} and \progLang{Oz} \cite{website:oz-mozart}. Narrowing on the other hand is a mixture of reduction in functional languages and unification in logic languages. In narrowing, a variable is bound a value within the specified constraints and try to find a solution, values are generated while searching rather than just for testing. The languages based on this approach are \progLang{ALF} \cite{website:alf}, \progLang{Babel} \cite{website:babel}, \progLang{LPG} \cite{bert1987lpg} and \progLang{Curry} \cite{website:curry}.   
+
+
+
+\begin{comment}
+\subsection{Related terms}
+\begin{enumerate}
+	\item Prolog in Haskell
+	\item Embedding One language into another language
+	\item Constraint Programming
+	\item Constraint Handling Rules
+	\item Concatenative Programming
+	\item Functional Logic Programming Languages
+	\item Residuation
+	\item Narrowing
+	\item Warren Abstract Machine
+\end{enumerate}
+
+
+\subsection{Prolog Libraries in Haskell}
+\begin{enumerate}
+	\item Nano Prolog, \cite{nanoprolog-lib}
+	This is basically a very small interpreter for Prolog. Feed in a prolog file and, the clauses are read and an REPL asks for a goal. 
+	No good list support
+	No practical Prolog features
+	No Monads
+	Nothing special here, right now
+		
+	
+	\item Prolog, \cite{prolog-lib}
+	The best attempt at embedding Prolog in Haskell, it comes equipped with a quasi qouter, parser, monads and cuts. Does not recognize all forms of lists that Prolog supports. No fail, assert, setOf, bagOf among others.   
+		
+	
+	\item cspm-To-Prolog
+	\item prolog-graph and prolog-graph-lib
+	\item hswip
+	\item Embedding Prolog in Haskell, JM Spivey, 
+				\url{\\*http://spivey.oriel.ox.ac.uk/mike/silvija/seres\_haskell99.pdf}
+	\item Type Logic Variables, K Classen, 
+				\url{\\*http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.37.2565\&rep=rep1\&type=pdf}
+	\item Takashi's Workplace, \cite{website:takashi-workplace},
+	This is an unofficial implementation at embedding Prolog in Haskell, the reasoned behind it being that the only existing implementation was for Hugs 98 and is very complicated. The selling point of this implementation is simplicity. The implementation features no Monads or any other things from 
+	\cite{claessen2000typed}. What it basically does is provide an REPL to add facts to the knowledge base, they are entered as strings and stored in some form of internal data structures. A query is requested which will do a depth first search, recursively finding substitutions for unifying the goal and the clauses from the knowledge base.         
+				
+The Prolog implemented is not full though, it is "Pure Prolog", no cuts, no fail, and other stuff. Moreover the REPL cannot do 
+all the stuff that a swi prolog can do, for example you cannot declare variables and/or assignment statements and so on. Also 
+you cannot right a "program file" as such, the REPL is all one gets to do stuff like adding clauses or querying etc.
+
+So you cannot write a program, you cannot do much with the REPL, its not a full blown Prolog. 
+  				
+				
+\end{enumerate}
+
+\subsection{Logic Libraries in Haskell}
+\begin{enumerate}
+	\item logict
+	\item logic-classes
+	\item proplogic
+	\item cflp
+	\item logic grows on trees
+\end{enumerate}	
+
+\subsection{Unification Libraries in Haskell}
+\begin{enumerate}
+	\item unification-fd
+	\item cmu	
+\end{enumerate}
+
+\subsection{Concatenative Programming Libraries in Haskell}
+\begin{enumerate}
+	\item peg
+\end{enumerate}
+
+\subsection{Constraint Programming and Constraint Handling Rules}
+\begin{enumerate}
+	\item monadiccp
+	\item monadicccp-gecode
+	\item csp
+	\item liquid fix point
+\end{enumerate}
+
+
+\subsection{Functional Logic Programming Language}
+\begin{enumerate}
+	\item The intergration of functions into Logic Programming : From Theory to Practice,
+				\\* \url{http://www.informatik.uni-kiel.de/~mh/publications/papers/JLP94.html}
+	\item Functional Logic Programming : From theory to curry,
+				\\* \url{http://www.informatik.uni-kiel.de/~mh/papers/GanzingerFestschrift.pdf}
+	\item Functional Logic Programming,
+				\\* \url{http://dl.acm.org/citation.cfm?doid=1721654.1721675}
+	\item A Higher Order Rewriting Logic for FLP,
+				 \url{http://books.google.ca/books?hl=en\&lr=\&id=TSJDeaVpJyMC\&oi=fnd\&pg=PA153\&dq=functional+logic+programming\&ots=Ikp3Y-kZRV\&sig=j7XQq-Hi-utdeNG54ZFkE1BeBNw\#v=onepage\&q=functional%20logic%20programming&f=false}
+	\item Toy a multiparadigm declarative system
+	\item A unified computation model for functional and logic programming 
+	\item Semantics and Types in Functional Logic Programming 
+	\item Polymorphic Types in FLP
+	\item A general Computation Scheme for Constraint Logic Programming
+\end{enumerate}
+
+\begin{enumerate}
+	\item Lambda Prolog
+	\item Mercury
+	\item Curry
+	\item Escher
+\end{enumerate}
+\end{comment}
+
+\end{document}
+

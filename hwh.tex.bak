@@ -1,0 +1,14 @@
+\documentclass[proposal.tex]{subfiles} 
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+\section{Haskell or Why Haskell ?}\label{sect:hwh}
+% ---------------------------------------------------------------------------
+
+Haskell / Why Haskell ?
+\begin{enumerate}
+\item Hello
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,64 @@
+
+\documentclass[proposal.tex]{subfiles} 
+
+
+\begin{document}
+
+%-----------------------------------------------------------------------------
+\section{Embedding a Programming Language into another Programming Language}\label{sect:eplipl}
+%-----------------------------------------------------------------------------
+Embedding a language into another language has been carried out a number of times with a variety of languages. Attempts have been made to build Domain Specific Languages from the host languages \cite{hudak1996building}, Foriegn Function Interfaces \cite{barzilay2004foreign} 
+
+As discussed in the 
+
+\subsection{Theory}
+\begin{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------
+\item Papers
+\begin{enumerate}
+\item Embedding an interpreted language using higher-order functions, \cite{ramsey2003embedding}
+\item Building domain-specific embedded languages, \cite{hudak1996building}
+\item Embedded interpreters, \cite{benton2005embedded}
+\item Cayenne -- a Language With Dependent Types, \cite{Augustsson98cayenne--}
+\item Foreign interface for PLT Scheme, \cite{barzilay2004foreign}
+\item Dot-Scheme: A PLT Scheme FFI for the .NET framework, \cite{pinto2003dot}
+\item Application-specific foreign-interface generation, \cite{reppy2006application}
+\item Embedding S in other languages and environments, \cite{lang2001embedding}
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------
+\item Books
+\begin{enumerate}
+\item ?????????
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------
+\item Articles / Blogs / Discussions
+\begin{enumerate}
+\item Embedding one language into another, \cite{website:lambda-the-ultimate-2}
+\item Application-specific foreign-interface generation, \cite{website:lambda-the-ultimate-3}
+\item Linguistic Abstraction, \cite{audklangembedd}
+\item LISP, Unification and Embedded Languages, \cite{ummlisp}
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------
+\item Websites
+\begin{enumerate}
+\item Embedding SWI-Prolog in other applications, \cite{swipembedd}
+\end{enumerate}
+%------------------------------------------------------------------------------------------------------------------------------------
+\end{enumerate}
+
+\subsection{Implementations}
+\begin{enumerate}
+\item Lots of them I guess
+\end{enumerate}
+
+\subsection{Important People}
+\begin{enumerate}
+\item ????
+\end{enumerate}
+
+\subsection{Miscellaneous / Possibly Related Content}
+\begin{enumerate}
+\item ????
+\end{enumerate}
+
+\end{document}

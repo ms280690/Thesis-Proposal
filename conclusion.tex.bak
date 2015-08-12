@@ -1,0 +1,10 @@
+\documentclass[proposal.tex]{subfiles} 
+
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+\section{Conclusion}\label{sect:conclusion}
+% ---------------------------------------------------------------------------
+
+\end{document}

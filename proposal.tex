@@ -1,0 +1,336 @@
+%
+% proposal.tex
+%
+% Dissertation Proposal Template.
+% School of Computing
+% Clemson University
+%
+\documentclass[12pt]{ClemsonProposal}
+
+% This is nice for source code listings
+% \usepackage{listings}
+\usepackage{comment}
+\usepackage{subfiles}
+
+\usepackage{color}
+\usepackage[htt]{hyphenat}
+\usepackage{hyperref}      
+\usepackage{listing}
+\usepackage{graphicx}
+\usepackage{minted}
+
+\usepackage{xr}
+\externaldocument{background}
+\externaldocument{conclusion}
+\externaldocument{embedding}
+\externaldocument{eplipl}
+\externaldocument{introduction}
+\externaldocument{miscrelcon}
+\externaldocument{multiparadigm}
+\externaldocument{prologin} 
+\externaldocument{prologinhaskell}
+\externaldocument{proposedwork}
+\externaldocument{pwp}
+\externaldocument{quasiquotation}
+\externaldocument{relatedtermskeywords}
+\externaldocument{relatedWork}
+\externaldocument{ummcpp}
+\externaldocument{workCompleted}
+
+%\newcommand{\chapterReference}[1]{\textcolor{blue} {\nameref{#1} } }
+\newcommand{\progLang}[1]{\textsc{#1}}
+\newcommand{\chapterReference}[2]{\textcolor{blue}{\underline{\hyperref[#1]{#2}}}}
+
+%\textcolor{blue}{\underline{\hyperref[sect:embedding]{Chapter 5}}}
+
+
+% This is needed to include figures
+% \usepackage{graphicx}
+
+% Use any additional packages you might need
+
+
+%
+% Give values to the variables used in this document
+%
+\title{Embedding Programming Languages: \\* \textsc{Prolog} in \textsc{Haskell}}
+\department{MCPS}
+\documenttype{Master's Thesis}
+\major{Computer Science}
+\proposalday{\the \day}
+\proposalmonth{\the \month}
+\proposalyear{\the \year}
+\author{Mehul Chandrakant Solanki \\230108015 \texttt{solanki@unbc.ca}}
+\committeechair{Dr. David Casperson}
+\committeememberone{Dr. Alex Aravind}
+\committeemembertwo{Dr. Mark Shegelski}
+%\committeememberthree{Member3 Name}
+
+% Just in case you have more then 3 committee members
+% \committeememberfour{Member4 Name}
+% \committeememberfive{Member5 Name}
+% \committeemembersix{Member6 Name}
+
+
+%
+% PDF Setup -- You should not need to change this
+%
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={black},
+    filecolor={black},
+    urlcolor={black},
+    pdftitle={\thetitle},
+    pdfauthor={\theauthor},
+    pdfsubject={\thedocumenttype},
+    pdfkeywords={University of Northern British Columbia, \theauthor, \thedocumenttype},
+    pdfstartpage={1}
+}
+
+
+%
+% User-specified command definitions/redefinitions
+%
+%\newcommand{\cplusplus}{{\rm C\raise.5ex\hbox{\small ++}}}
+
+%\lstloadlanguages{Haskell}
+
+%\lstnewenvironment{code}
+%    {\lstset{}%
+%      {\csname lst@SetFirstLabel\endcsname}
+ %   {\csname lst@SaveFirstLabel\endcsname}
+ %   \lstset{
+  %    basicstyle=\small\ttfamily,
+   %   flexiblecolumns=false,
+    %  basewidth={0.5em,0.45em},
+     % literate={+}{{$+$}}1 {/}{{$/$}}1 {*}{{$*$}}1 {=}{{$=$}}1
+      %         {>}{{$>$}}1 {<}{{$<$}}1 {\\}{{$\lambda$}}1
+       %        {\\\\}{{\char`\\\char`\\}}1
+        %       {->}{{$\rightarrow$}}2 {>=}{{$\geq$}}2 {<-}{{$\leftarrow$}}2
+         %      {<=}{{$\leq$}}2 {=>}{{$\Rightarrow$}}2 
+          %     {\ .}{{$\circ$}}2 {\ .\ }{{$\circ$}}2
+           %    {>>}{{>>}}2 {>>=}{{>>=}}2
+            %   {|}{{$\mid$}}1               
+%    }}
+
+\newcommand{\haskellscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.hs}
+\end{itemize}
+}
+
+\setlength{\headheight}{35pt}
+\begin{document}
+%   ==========================================================================
+%   Begin front matter (pages are numbered with roman numerals)
+%   ==========================================================================
+    \begin{frontmatter}
+        \maketitle
+		\tableofcontents
+        \newpage
+		\listoffigures
+		\newpage
+		\listoftables
+		\newpage
+        % Generate the abstract
+        \input{abstract.tex}
+	\end{frontmatter}
+
+
+
+%   ==========================================================================
+%   Begin main matter (pages are numbered with arabic numerals)
+%   ==========================================================================
+    \doublespacing     % Text should be double spaced
+    \pagestyle{fancy}  % Turn the nice header on for the rest of the document
+
+    %
+    % I use a file for every section.  Each of these corresponds to a file
+    % with the specified name ending in '.tex' (e.g., introduction.tex).
+    %
+ 
+   \nocite{claessen2000typed,
+   chin2003type,
+   hinze1998prological,
+   spivey2000functional,
+   erwig2004escape,
+   spivey1999embedding,
+   seres1999algebra,
+   seres2001algebra,
+   seres2000optimisation,
+   seres2001higher,
+   spivey1999algebra,
+   hoare1998unifying,
+   gibbons2013unifying,
+   friedman05reasoned,
+   krishnamurthi2007programming,
+   website:lambda-the-ultimate,
+   website:lambda-the-ultimate-2,
+   website:lambda-the-ultimate-3,
+   website:takashi-workplace,
+   website:mini-prolog-hugs98,
+   website:logic-programming-haskell,
+   website:stackoverflow,
+   website:haskell-choice,
+   website:prolog-steam,
+   website:prolog-death,
+   website:prolog-killer,
+   somogyi1995logic,
+   nanoprolog-lib,
+   prolog-lib,
+   cspm-To-Prolog-lib,
+   prolog-graph-lib,
+   prolog-graph-lib-lib,
+   hswip-lib,
+   logict-lib,
+   logict2-lib,
+   logic-classes-lib,proplogic-lib,
+   cflp-lib,
+   logic-grows-on-trees-lib,
+   unification-fd-lib,
+   cmu-lib,
+   peg-lib,
+   monadiccp-lib,
+   monadiccp-gecode-lib,
+   csp-lib,
+   liquid-fix-point-lib,
+   ramsey2003embedding,
+   hudak1996building,
+   benton2005embedded,
+   Augustsson98cayenne--,
+   barzilay2004foreign,
+   pinto2003dot,
+   reppy2006application,
+   ait1999warren,
+   castorc++,
+   gnuprolog,
+   jlog,
+   jscriptlog,
+   lang2001embedding,
+   audklangembedd,
+   swipembedd,
+   quintusprolog,
+   yieldprolog,
+   komorowski1982qlog,
+   robinson1982loglisp,
+   robinson1980loglisp,
+   ummlisp,
+   racklog}
+   
+   
+   
+   \nocite{DBLP:conf/utp/2006,
+   DBLP:conf/utp/2008,
+   DBLP:conf/utp/2010,
+   DBLP:conf/utp/2012,
+   wikiquasi,
+   haskellquasi,
+   hughes1989functional,
+   spivey1995introduction,
+   Krishnamurthi:2008:TPL:1480828.1480846,
+   wadler1992comprehending,
+   website:logicprogexamplehaskell,
+   wikiprolog,
+   website:scala,
+   website:virgil,
+   website:closwiki,
+   website:mercury,
+   website:curry,
+   lloyd1999programming:escher,
+   website:alf,
+   website:babel,
+   moreno1992logic,
+   moreno1988babel,
+   website:ciao,
+   website:life,
+   bert1987lpg,
+   website:nue-prolog,
+   website:oz-mozart,
+   website:oz-mozart,
+   website:toy,
+   website:lambda-prolog,
+   website:visual-prolog,
+   website:tablog,
+   website:haskellwiki}
+    
+	\subfile{introduction}
+	\clearpage	
+	
+	\subfile{background}
+	\clearpage	
+	
+	\subfile{proposedWork}
+	\clearpage
+					
+	\subfile{embedding}
+	\clearpage
+			
+	\subfile{multiparadigm}
+	\clearpage	
+  	
+  	\subfile{relatedWork}
+	\clearpage
+	
+	\subfile{eplipl}	
+	\clearpage
+		
+	\subfile{prologin}
+	\clearpage
+			
+	\subfile{prologinhaskell}
+	\clearpage
+		
+	\subfile{ummcpp}
+	\clearpage
+			
+	\subfile{flpl}	
+	\clearpage
+		
+	\subfile{quasiquotation}
+	\clearpage
+		
+	\subfile{relatedtermskeywords}
+	\clearpage
+		
+	\subfile{hwh}
+	\clearpage
+		
+	\subfile{pwp}
+	\clearpage
+		
+	\subfile{miscrelcon}
+	\clearpage
+  	
+  	\subfile{proto1}
+  	\clearpage
+  	
+  	\subfile{proto2.1}
+  	\clearpage
+  	
+  	\subfile{proto2.2}
+  	\clearpage
+  	
+  	\subfile{proto3}
+  	\clearpage
+  	
+  	\subfile{proto4}
+  	\clearpage
+  	
+  	\subfile{workCompleted}
+	\clearpage	
+	
+	\subfile{results}
+	\clearpage
+			
+  	\subfile{conclusion}
+	\clearpage
+
+
+%   ==========================================================================
+%   Wrap up the document with the Bibliography (looks for the specified .bib)
+%   ==========================================================================
+   	
+
+	\makebibliography{bibliography}
+\end{document}

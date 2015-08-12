@@ -1,0 +1,17 @@
+\documentclass[proposal.tex]{subfiles} 
+
+
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+\section{Prolog or Why Prolog ?}\label{sect:pwp}
+% ---------------------------------------------------------------------------
+
+
+Prolog / Why Prolog ?
+\begin{enumerate}
+\item Hello
+\end{enumerate}
+
+\end{document}

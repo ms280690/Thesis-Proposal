@@ -1,0 +1,78 @@
+\BOOKMARK [1][-]{section*.4}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 2
+\BOOKMARK [2][-]{subsection.1.1}{Beginnings}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.2}{Thesis Statement}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.3}{Problem Statement}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.4}{Proposal Organization}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Background}{}% 7
+\BOOKMARK [1][-]{section.3}{Proposed Work}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Current Work}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Contributions}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Embedding a Programming Language into another Programming Language }{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{The Informal Content from Blogs, Articles and Internet Discussions}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Related Books}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.3}{Related Papers}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.4}{Related Libraries in Haskell}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Multi Paradigm Languages \(Functional Logic Languages\)}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{The Informal Content from Blogs, Articles and Internet Discussions}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Literature and Publications}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.3}{Some Multi Paradigm Languages}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.4}{Functional Logic Programming Languages}{section.5}% 20
+\BOOKMARK [1][-]{section.6}{Related Work}{}% 21
+\BOOKMARK [1][-]{section.7}{Embedding a Programming Language into another Programming Language}{}% 22
+\BOOKMARK [2][-]{subsection.7.1}{Theory}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.2}{Implementations}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.3}{Important People}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.4}{Miscellaneous / Possibly Related Content}{section.7}% 26
+\BOOKMARK [1][-]{section.8}{Prolog in \137\137\137\137 }{}% 27
+\BOOKMARK [2][-]{subsection.8.1}{Theory}{section.8}% 28
+\BOOKMARK [2][-]{subsection.8.2}{Implementations}{section.8}% 29
+\BOOKMARK [2][-]{subsection.8.3}{Important People}{section.8}% 30
+\BOOKMARK [2][-]{subsection.8.4}{Miscellaneous / Possibly Related Content}{section.8}% 31
+\BOOKMARK [1][-]{section.9}{Prolog in Haskell}{}% 32
+\BOOKMARK [2][-]{subsection.9.1}{Theory}{section.9}% 33
+\BOOKMARK [2][-]{subsection.9.2}{Implementations}{section.9}% 34
+\BOOKMARK [2][-]{subsection.9.3}{Important People}{section.9}% 35
+\BOOKMARK [2][-]{subsection.9.4}{Miscellaneous / Possibly Related Content}{section.9}% 36
+\BOOKMARK [1][-]{section.10}{Unifying or Marrying or Merging or Combining Programming Paradigms or Theories}{}% 37
+\BOOKMARK [2][-]{subsection.10.1}{Theory}{section.10}% 38
+\BOOKMARK [2][-]{subsection.10.2}{Implementations}{section.10}% 39
+\BOOKMARK [2][-]{subsection.10.3}{Miscellaneous / Possibly Related Content}{section.10}% 40
+\BOOKMARK [1][-]{section.11}{Functional Logic Programming Languages}{}% 41
+\BOOKMARK [2][-]{subsection.11.1}{Theory}{section.11}% 42
+\BOOKMARK [2][-]{subsection.11.2}{Implementations}{section.11}% 43
+\BOOKMARK [2][-]{subsection.11.3}{Miscellaneous / Possibly Related Content}{section.11}% 44
+\BOOKMARK [1][-]{section.12}{Quasiquotation}{}% 45
+\BOOKMARK [2][-]{subsection.12.1}{Theory}{section.12}% 46
+\BOOKMARK [2][-]{subsection.12.2}{Implementations}{section.12}% 47
+\BOOKMARK [2][-]{subsection.12.3}{Miscellaneous / Possibly Related Content}{section.12}% 48
+\BOOKMARK [1][-]{section.13}{Related Terms or Keywords}{}% 49
+\BOOKMARK [1][-]{section.14}{Haskell or Why Haskell ?}{}% 50
+\BOOKMARK [1][-]{section.15}{Prolog or Why Prolog ?}{}% 51
+\BOOKMARK [1][-]{section.16}{Miscellaneous or Possibly Related Content}{}% 52
+\BOOKMARK [1][-]{section.17}{Prototype 1}{}% 53
+\BOOKMARK [2][-]{subsection.17.1}{Creating a data type}{section.17}% 54
+\BOOKMARK [2][-]{subsection.17.2}{Working with the language}{section.17}% 55
+\BOOKMARK [2][-]{subsection.17.3}{Black box}{section.17}% 56
+\BOOKMARK [1][-]{section.18}{Prototype 2.1}{}% 57
+\BOOKMARK [1][-]{section.19}{Prototype 2.2}{}% 58
+\BOOKMARK [1][-]{section.20}{Prototype 3}{}% 59
+\BOOKMARK [1][-]{section.21}{Prototype 4}{}% 60
+\BOOKMARK [1][-]{section.22}{Work Completed}{}% 61
+\BOOKMARK [2][-]{subsection.22.1}{What we are doing}{section.22}% 62
+\BOOKMARK [2][-]{subsection.22.2}{Unifiable Data Structures}{section.22}% 63
+\BOOKMARK [2][-]{subsection.22.3}{Why fix is necessary?}{section.22}% 64
+\BOOKMARK [2][-]{subsection.22.4}{Dr. Casperson's Explanation}{section.22}% 65
+\BOOKMARK [1][-]{section.23}{Results}{}% 66
+\BOOKMARK [2][-]{subsection.23.1}{Types}{section.23}% 67
+\BOOKMARK [2][-]{subsection.23.2}{Lazy Evaluation}{section.23}% 68
+\BOOKMARK [2][-]{subsection.23.3}{Opening up the Language}{section.23}% 69
+\BOOKMARK [2][-]{subsection.23.4}{Quasi Quotation}{section.23}% 70
+\BOOKMARK [2][-]{subsection.23.5}{Template Haskell}{section.23}% 71
+\BOOKMARK [2][-]{subsection.23.6}{Higher Order Functions}{section.23}% 72
+\BOOKMARK [2][-]{subsection.23.7}{I/O}{section.23}% 73
+\BOOKMARK [2][-]{subsection.23.8}{Mutability}{section.23}% 74
+\BOOKMARK [2][-]{subsection.23.9}{Unification}{section.23}% 75
+\BOOKMARK [2][-]{subsection.23.10}{Monads}{section.23}% 76
+\BOOKMARK [1][-]{section.24}{Conclusion / Expected Outcomes}{}% 77
+\BOOKMARK [1][-]{section*.26}{Bibliography}{}% 78

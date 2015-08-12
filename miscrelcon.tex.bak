@@ -1,0 +1,15 @@
+\documentclass[proposal.tex]{subfiles} 
+
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+\section{Miscellaneous or Possibly Related Content}\label{sect:miscrelcon}
+% ---------------------------------------------------------------------------
+
+Miscellaneous / Possibly Related Content
+\begin{enumerate}
+\item ???
+\end{enumerate}
+
+\end{document}
