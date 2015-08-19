@@ -46,33 +46,34 @@
 \BOOKMARK [2][-]{subsection.12.1}{Theory}{section.12}% 46
 \BOOKMARK [2][-]{subsection.12.2}{Implementations}{section.12}% 47
 \BOOKMARK [2][-]{subsection.12.3}{Miscellaneous / Possibly Related Content}{section.12}% 48
-\BOOKMARK [1][-]{section.13}{Related Terms or Keywords}{}% 49
-\BOOKMARK [1][-]{section.14}{Haskell or Why Haskell ?}{}% 50
-\BOOKMARK [1][-]{section.15}{Prolog or Why Prolog ?}{}% 51
-\BOOKMARK [1][-]{section.16}{Miscellaneous or Possibly Related Content}{}% 52
-\BOOKMARK [1][-]{section.17}{Prototype 1}{}% 53
-\BOOKMARK [2][-]{subsection.17.1}{Creating a data type}{section.17}% 54
-\BOOKMARK [2][-]{subsection.17.2}{Working with the language}{section.17}% 55
-\BOOKMARK [2][-]{subsection.17.3}{Black box}{section.17}% 56
-\BOOKMARK [1][-]{section.18}{Prototype 2.1}{}% 57
-\BOOKMARK [1][-]{section.19}{Prototype 2.2}{}% 58
-\BOOKMARK [1][-]{section.20}{Prototype 3}{}% 59
-\BOOKMARK [1][-]{section.21}{Prototype 4}{}% 60
-\BOOKMARK [1][-]{section.22}{Work Completed}{}% 61
-\BOOKMARK [2][-]{subsection.22.1}{What we are doing}{section.22}% 62
-\BOOKMARK [2][-]{subsection.22.2}{Unifiable Data Structures}{section.22}% 63
-\BOOKMARK [2][-]{subsection.22.3}{Why fix is necessary?}{section.22}% 64
-\BOOKMARK [2][-]{subsection.22.4}{Dr. Casperson's Explanation}{section.22}% 65
-\BOOKMARK [1][-]{section.23}{Results}{}% 66
-\BOOKMARK [2][-]{subsection.23.1}{Types}{section.23}% 67
-\BOOKMARK [2][-]{subsection.23.2}{Lazy Evaluation}{section.23}% 68
-\BOOKMARK [2][-]{subsection.23.3}{Opening up the Language}{section.23}% 69
-\BOOKMARK [2][-]{subsection.23.4}{Quasi Quotation}{section.23}% 70
-\BOOKMARK [2][-]{subsection.23.5}{Template Haskell}{section.23}% 71
-\BOOKMARK [2][-]{subsection.23.6}{Higher Order Functions}{section.23}% 72
-\BOOKMARK [2][-]{subsection.23.7}{I/O}{section.23}% 73
-\BOOKMARK [2][-]{subsection.23.8}{Mutability}{section.23}% 74
-\BOOKMARK [2][-]{subsection.23.9}{Unification}{section.23}% 75
-\BOOKMARK [2][-]{subsection.23.10}{Monads}{section.23}% 76
-\BOOKMARK [1][-]{section.24}{Conclusion / Expected Outcomes}{}% 77
-\BOOKMARK [1][-]{section*.26}{Bibliography}{}% 78
+\BOOKMARK [1][-]{section.13}{Meta Syntactic Variables}{}% 49
+\BOOKMARK [1][-]{section.14}{Related Terms or Keywords}{}% 50
+\BOOKMARK [1][-]{section.15}{Haskell or Why Haskell ?}{}% 51
+\BOOKMARK [1][-]{section.16}{Prolog or Why Prolog ?}{}% 52
+\BOOKMARK [1][-]{section.17}{Miscellaneous or Possibly Related Content}{}% 53
+\BOOKMARK [1][-]{section.18}{Prototype 1}{}% 54
+\BOOKMARK [2][-]{subsection.18.1}{Creating a data type}{section.18}% 55
+\BOOKMARK [2][-]{subsection.18.2}{Working with the language}{section.18}% 56
+\BOOKMARK [2][-]{subsection.18.3}{Black box}{section.18}% 57
+\BOOKMARK [1][-]{section.19}{Prototype 2.1}{}% 58
+\BOOKMARK [1][-]{section.20}{Prototype 2.2}{}% 59
+\BOOKMARK [1][-]{section.21}{Prototype 3}{}% 60
+\BOOKMARK [1][-]{section.22}{Prototype 4}{}% 61
+\BOOKMARK [1][-]{section.23}{Work Completed}{}% 62
+\BOOKMARK [2][-]{subsection.23.1}{What we are doing}{section.23}% 63
+\BOOKMARK [2][-]{subsection.23.2}{Unifiable Data Structures}{section.23}% 64
+\BOOKMARK [2][-]{subsection.23.3}{Why fix is necessary?}{section.23}% 65
+\BOOKMARK [2][-]{subsection.23.4}{Dr. Casperson's Explanation}{section.23}% 66
+\BOOKMARK [1][-]{section.24}{Results}{}% 67
+\BOOKMARK [2][-]{subsection.24.1}{Types}{section.24}% 68
+\BOOKMARK [2][-]{subsection.24.2}{Lazy Evaluation}{section.24}% 69
+\BOOKMARK [2][-]{subsection.24.3}{Opening up the Language}{section.24}% 70
+\BOOKMARK [2][-]{subsection.24.4}{Quasi Quotation}{section.24}% 71
+\BOOKMARK [2][-]{subsection.24.5}{Template Haskell}{section.24}% 72
+\BOOKMARK [2][-]{subsection.24.6}{Higher Order Functions}{section.24}% 73
+\BOOKMARK [2][-]{subsection.24.7}{I/O}{section.24}% 74
+\BOOKMARK [2][-]{subsection.24.8}{Mutability}{section.24}% 75
+\BOOKMARK [2][-]{subsection.24.9}{Unification}{section.24}% 76
+\BOOKMARK [2][-]{subsection.24.10}{Monads}{section.24}% 77
+\BOOKMARK [1][-]{section.25}{Conclusion / Expected Outcomes}{}% 78
+\BOOKMARK [1][-]{section*.26}{Bibliography}{}% 79

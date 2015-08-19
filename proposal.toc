@@ -61,39 +61,40 @@
 \contentsline {subsection}{\numberline {12.1}Theory}{36}{subsection.12.1}
 \contentsline {subsection}{\numberline {12.2}Implementations}{36}{subsection.12.2}
 \contentsline {subsection}{\numberline {12.3}Miscellaneous / Possibly Related Content}{36}{subsection.12.3}
-\contentsline {section}{\numberline {13}Related Terms or Keywords}{37}{section.13}
-\contentsline {section}{\numberline {14}Haskell or Why Haskell ?}{38}{section.14}
-\contentsline {section}{\numberline {15}Prolog or Why Prolog ?}{42}{section.15}
-\contentsline {section}{\numberline {16}Miscellaneous or Possibly Related Content}{45}{section.16}
-\contentsline {section}{\numberline {17}Prototype 1}{46}{section.17}
-\contentsline {subsection}{\numberline {17.1}Creating a data type}{46}{subsection.17.1}
-\contentsline {paragraph}{Transitional paragraph}{47}{section*.20}
-\contentsline {subsection}{\numberline {17.2}Working with the language}{49}{subsection.17.2}
-\contentsline {subsection}{\numberline {17.3}Black box}{51}{subsection.17.3}
-\contentsline {section}{\numberline {18}Prototype 2.1}{52}{section.18}
-\contentsline {section}{\numberline {19}Prototype 2.2}{53}{section.19}
-\contentsline {section}{\numberline {20}Prototype 3}{54}{section.20}
-\contentsline {section}{\numberline {21}Prototype 4}{55}{section.21}
-\contentsline {section}{\numberline {22}Work Completed}{56}{section.22}
-\contentsline {subsection}{\numberline {22.1}What we are doing}{56}{subsection.22.1}
-\contentsline {subsection}{\numberline {22.2}Unifiable Data Structures}{56}{subsection.22.2}
-\contentsline {subsection}{\numberline {22.3}Why \texttt {fix} is necessary?}{57}{subsection.22.3}
-\contentsline {subsection}{\numberline {22.4}Dr. Casperson's Explanation}{58}{subsection.22.4}
-\contentsline {section}{\numberline {23}Results}{59}{section.23}
-\contentsline {subsection}{\numberline {23.1}Types}{59}{subsection.23.1}
-\contentsline {paragraph}{}{59}{section*.21}
-\contentsline {subsection}{\numberline {23.2}Lazy Evaluation}{60}{subsection.23.2}
-\contentsline {subsection}{\numberline {23.3}Opening up the Language}{60}{subsection.23.3}
-\contentsline {subparagraph}{Flattening}{60}{section*.22}
-\contentsline {subparagraph}{Fixing}{60}{section*.23}
-\contentsline {subparagraph}{MetaSyntactic Variables}{60}{section*.24}
-\contentsline {subsection}{\numberline {23.4}Quasi Quotation}{60}{subsection.23.4}
-\contentsline {subsection}{\numberline {23.5}Template Haskell}{60}{subsection.23.5}
-\contentsline {subsection}{\numberline {23.6}Higher Order Functions}{60}{subsection.23.6}
-\contentsline {subsection}{\numberline {23.7}I/O}{61}{subsection.23.7}
-\contentsline {subsection}{\numberline {23.8}Mutability}{61}{subsection.23.8}
-\contentsline {subsection}{\numberline {23.9}Unification}{61}{subsection.23.9}
-\contentsline {subsection}{\numberline {23.10}Monads}{61}{subsection.23.10}
-\contentsline {section}{\numberline {24}Conclusion / Expected Outcomes}{62}{section.24}
-\contentsline {paragraph}{}{62}{section*.25}
-\contentsline {section}{Bibliography}{63}{section*.26}
+\contentsline {section}{\numberline {13}Meta Syntactic Variables}{37}{section.13}
+\contentsline {section}{\numberline {14}Related Terms or Keywords}{38}{section.14}
+\contentsline {section}{\numberline {15}Haskell or Why Haskell ?}{39}{section.15}
+\contentsline {section}{\numberline {16}Prolog or Why Prolog ?}{43}{section.16}
+\contentsline {section}{\numberline {17}Miscellaneous or Possibly Related Content}{46}{section.17}
+\contentsline {section}{\numberline {18}Prototype 1}{47}{section.18}
+\contentsline {subsection}{\numberline {18.1}Creating a data type}{47}{subsection.18.1}
+\contentsline {paragraph}{Transitional paragraph}{48}{section*.20}
+\contentsline {subsection}{\numberline {18.2}Working with the language}{50}{subsection.18.2}
+\contentsline {subsection}{\numberline {18.3}Black box}{52}{subsection.18.3}
+\contentsline {section}{\numberline {19}Prototype 2.1}{53}{section.19}
+\contentsline {section}{\numberline {20}Prototype 2.2}{54}{section.20}
+\contentsline {section}{\numberline {21}Prototype 3}{55}{section.21}
+\contentsline {section}{\numberline {22}Prototype 4}{56}{section.22}
+\contentsline {section}{\numberline {23}Work Completed}{57}{section.23}
+\contentsline {subsection}{\numberline {23.1}What we are doing}{57}{subsection.23.1}
+\contentsline {subsection}{\numberline {23.2}Unifiable Data Structures}{57}{subsection.23.2}
+\contentsline {subsection}{\numberline {23.3}Why \texttt {fix} is necessary?}{58}{subsection.23.3}
+\contentsline {subsection}{\numberline {23.4}Dr. Casperson's Explanation}{59}{subsection.23.4}
+\contentsline {section}{\numberline {24}Results}{60}{section.24}
+\contentsline {subsection}{\numberline {24.1}Types}{60}{subsection.24.1}
+\contentsline {paragraph}{}{60}{section*.21}
+\contentsline {subsection}{\numberline {24.2}Lazy Evaluation}{61}{subsection.24.2}
+\contentsline {subsection}{\numberline {24.3}Opening up the Language}{61}{subsection.24.3}
+\contentsline {subparagraph}{Flattening}{61}{section*.22}
+\contentsline {subparagraph}{Fixing}{61}{section*.23}
+\contentsline {subparagraph}{MetaSyntactic Variables}{61}{section*.24}
+\contentsline {subsection}{\numberline {24.4}Quasi Quotation}{61}{subsection.24.4}
+\contentsline {subsection}{\numberline {24.5}Template Haskell}{61}{subsection.24.5}
+\contentsline {subsection}{\numberline {24.6}Higher Order Functions}{61}{subsection.24.6}
+\contentsline {subsection}{\numberline {24.7}I/O}{62}{subsection.24.7}
+\contentsline {subsection}{\numberline {24.8}Mutability}{62}{subsection.24.8}
+\contentsline {subsection}{\numberline {24.9}Unification}{62}{subsection.24.9}
+\contentsline {subsection}{\numberline {24.10}Monads}{62}{subsection.24.10}
+\contentsline {section}{\numberline {25}Conclusion / Expected Outcomes}{63}{section.25}
+\contentsline {paragraph}{}{63}{section*.25}
+\contentsline {section}{Bibliography}{64}{section*.26}
