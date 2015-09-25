@@ -36,7 +36,7 @@ For dynamic typing
 \end{enumerate}
 
 \paragraph{Transitional paragraph}
-This prototype 
+This prototype .......
 
 
 To start with, replicating the single type "term" in \progLang{Prolog} one must consider the distinct constructs it can be associated to 
@@ -44,14 +44,11 @@ such as  complex structures (for example, predicated clauses etc.), don't cares,
 
 \begin{minted}[linenos]{haskell}	
 --david-0.2.0.2
-
 data VariableName = VariableName Int String
       deriving (Eq, Data, Typeable, Ord)
-
 data Atom         = Atom      !String
                   | Operator  !String
       deriving (Eq, Ord, Data, Typeable)
-      
 data Term = Struct Atom [Term]
           | Var VariableName
           | Wildcard
@@ -61,20 +58,15 @@ data Term = Struct Atom [Term]
           | Flat [FlatItem]
           | Cut Int
       deriving (Eq, Data, Typeable)
-
 data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
             | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
       deriving (Data, Typeable)
-
 type Program = [Sentence]
-
 type Body    = [Goal]
-
 data Sentence = Query   Body
               | Command Body
               | C Clause
       deriving (Data, Typeable)
-
 \end{minted}
 
 Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped 
@@ -91,10 +83,8 @@ One of the issues with the above is that it is not possible to distinguish the s
 
 \begin{minted}[linenos]{haskell}
 type Atom         = String
-
 data VariableName = VariableName Int String
       deriving (Eq, Data, Typeable, Ord)
-
 data Term = Struct Atom [Term]
           | Var VariableName
           | Wildcard -- Don't cares 
@@ -124,17 +114,14 @@ Creating instances,
 \begin{minted}[linenos]{haskell}
 instance Functor (FlatTerm) where
 	fmap = T.fmapDefault
-
 instance Foldable (FlatTerm) where
  	foldMap = T.foldMapDefault
-
 instance Traversable (FlatTerm) where
   	traverse f (Struct atom x)	=	Struct atom <$> 
   				sequenceA (Prelude.map f x)
   	traverse _ (Var v)	=	pure (Var v)
   	traverse _ Wildcard	=	pure (Wildcard)
   	traverse _ (Cut i)	= 	pure (Cut i)
-
 instance Unifiable (FlatTerm) where
 	zipMatch (Struct al ls) (Struct ar rs) = 
 		if (al == ar) && (length ls == length rs) 
@@ -146,14 +133,12 @@ instance Unifiable (FlatTerm) where
 	zipMatch (Cut i1) (Cut i2) = if (i1 == i2) 
 		then Just (Cut i1) 
 		else Nothing
-
 instance Applicative (FlatTerm) where
 	pure x = Struct "" [x] 
 	_ <*> Wildcard	= 	Wildcard
 	_ <*> (Cut i) 	= 	Cut i
 	_ <*> (Var v)	=	(Var v)
 	(Struct a fs) <*> (Struct b xs) = Struct (a ++ b) [f x | f <- fs, x <- xs] 
- 
 \end{minted}
 
 After flattening do fixing,
@@ -161,7 +146,6 @@ After flattening do fixing,
 
 Opening up the language somehow so as to accommodate your own variables .
 
- 
 
 
 

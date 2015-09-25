@@ -36,11 +36,8 @@ In our case consider the following example,
 
 \begin{minted}{haskell}
 -- The Prolog Syntax
-
 type Atom = String
-
 data VariableName = VariableName Int String  deriving (Show,Eq,Ord)
-
 data FlatTerm a = 
 		 Struct Atom [a]
 	|	Var VariableName

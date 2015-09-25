@@ -254,6 +254,11 @@ JLogic.
 \newblock Jscriptlog - prolog in javascript, September 2012.
 \newblock \url{http://jlogic.sourceforge.net/index.html}.
 
+\bibitem{website:paulspontifications}
+Paul Johnson.
+\newblock Why haskell is good for embedded domain specific languages, January
+  2008.
+
 \bibitem{website:mini-prolog-hugs98}
 Mark~P Jones.
 \newblock Mini-prolog for hugs 98, June 1996.
@@ -548,6 +553,10 @@ Jan Tikovsky.
 Carnegie~Mellon University.
 \newblock Algebraic logic functional programming language, February 1995.
 
+\bibitem{website:controlflowdalhousie}
+Dalhousie University.
+\newblock Control flow, January 2012.
+
 \bibitem{website:life}
 Simon~Fraiser University.
 \newblock Life programming language, March 1998.
@@ -593,6 +602,10 @@ Haskell Website.
 Haskell Website.
 \newblock Quasiquotation in haskell, January 2014.
 \newblock \url{http://www.haskell.org/haskellwiki/Quasiquotation}.
+
+\bibitem{website:monadascomputation}
+Haskell Wiki.
+\newblock Monads as computation, December 2011.
 
 \bibitem{website:foldablenadtraversable}
 Haskell Wiki.
@@ -682,6 +695,14 @@ Wikipedia.
 \bibitem{website:wikimultiparadigm}
 Wikipedia.
 \newblock Programming paradigm, March 2014.
+
+\bibitem{website:controlflowwiki}
+Wikipedia.
+\newblock Control flow, August 2015.
+
+\bibitem{website:declarativeprogrammingwiki}
+Wikipedia.
+\newblock Declarative programming, September 2015.
 
 \bibitem{DBLP:conf/utp/2012}
 Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi, editors.

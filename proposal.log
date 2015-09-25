@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.23)  17 AUG 2015 17:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.23)  25 SEP 2015 14:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -324,50 +324,80 @@ runsystem(which pygmentize && touch proposal.aex)...executed.
 
 runsystem(rm proposal.aex)...executed.
 
- (/usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen119
+\lightrulewidth=\dimen120
+\cmidrulewidth=\dimen121
+\belowrulesep=\dimen122
+\belowbottomsep=\dimen123
+\aboverulesep=\dimen124
+\abovetopsep=\dimen125
+\cmidrulesep=\dimen126
+\cmidrulekern=\dimen127
+\defaultaddspace=\dimen128
+\@cmidla=\count112
+\@cmidlb=\count113
+\@aboverulesep=\dimen129
+\@belowrulesep=\dimen130
+\@thisruleclass=\count114
+\@lastruleclass=\count115
+\@thisrulewidth=\dimen131
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 1994/05/28 v5.02 eXternal References (DPC)
 )
-Package xr Info: IMPORTING LABELS FROM background.aux on input line 23.
-Package xr Info: IMPORTING LABELS FROM conclusion.aux on input line 24.
-Package xr Info: IMPORTING LABELS FROM embedding.aux on input line 25.
-Package xr Info: IMPORTING LABELS FROM eplipl.aux on input line 26.
-Package xr Info: IMPORTING LABELS FROM introduction.aux on input line 27.
-Package xr Info: IMPORTING LABELS FROM miscrelcon.aux on input line 28.
-Package xr Info: IMPORTING LABELS FROM multiparadigm.aux on input line 29.
-Package xr Info: IMPORTING LABELS FROM prologin.aux on input line 30.
-Package xr Info: IMPORTING LABELS FROM prologinhaskell.aux on input line 31.
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count116
+)
+\etb@tempcnta=\count117
+)
+Package xr Info: IMPORTING LABELS FROM background.aux on input line 25.
+Package xr Info: IMPORTING LABELS FROM conclusion.aux on input line 26.
+Package xr Info: IMPORTING LABELS FROM embedding.aux on input line 27.
+Package xr Info: IMPORTING LABELS FROM eplipl.aux on input line 28.
+Package xr Info: IMPORTING LABELS FROM introduction.aux on input line 29.
+Package xr Info: IMPORTING LABELS FROM miscrelcon.aux on input line 30.
+Package xr Info: IMPORTING LABELS FROM multiparadigm.aux on input line 31.
+Package xr Info: IMPORTING LABELS FROM prologin.aux on input line 32.
+Package xr Info: IMPORTING LABELS FROM prologinhaskell.aux on input line 33.
 
 
 Package xr Warning: 
 No file proposedwork.aux
 LABELS NOT IMPORTED.
- on input line 32.
+ on input line 34.
 
-Package xr Info: IMPORTING LABELS FROM pwp.aux on input line 33.
-Package xr Info: IMPORTING LABELS FROM quasiquotation.aux on input line 34.
+Package xr Info: IMPORTING LABELS FROM pwp.aux on input line 35.
+Package xr Info: IMPORTING LABELS FROM quasiquotation.aux on input line 36.
 
 Package xr Warning: 
 No file metasyntacticvariables.aux
 LABELS NOT IMPORTED.
- on input line 35.
+ on input line 37.
 
 Package xr Info: IMPORTING LABELS FROM relatedtermskeywords.aux on input line 3
-6.
-Package xr Info: IMPORTING LABELS FROM relatedWork.aux on input line 37.
-Package xr Info: IMPORTING LABELS FROM ummcpp.aux on input line 38.
-Package xr Info: IMPORTING LABELS FROM workCompleted.aux on input line 39.
-Package hyperref Info: Option `colorlinks' set `true' on input line 90.
+8.
+Package xr Info: IMPORTING LABELS FROM relatedWork.aux on input line 39.
+Package xr Info: IMPORTING LABELS FROM ummcpp.aux on input line 40.
+Package xr Info: IMPORTING LABELS FROM workCompleted.aux on input line 41.
+Package hyperref Info: Option `colorlinks' set `true' on input line 93.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 90.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 90.
+(hyperref)                removing `\\' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 90.
+(hyperref)                removing `\\' on input line 93.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 93.
 
 (./proposal.aux
 
@@ -418,20 +448,20 @@ LaTeX Warning: Label `sect:conclusion' multiply defined.
 )
 \openout1 = `proposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -468,18 +498,18 @@ LaTeX Font Info:    ... okay on input line 125.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring ON on input line 125.
+Package hyperref Info: Link coloring ON on input line 128.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count112
+\c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 125.
-LaTeX Info: Redefining \pageref on input line 125.
-LaTeX Info: Redefining \nameref on input line 125.
+LaTeX Info: Redefining \ref on input line 128.
+LaTeX Info: Redefining \pageref on input line 128.
+LaTeX Info: Redefining \nameref on input line 128.
 
 (./proposal.out) (./proposal.out)
 \@outlinefile=\write6
@@ -488,97 +518,97 @@ LaTeX Info: Redefining \nameref on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
-\scratchdimen=\dimen119
+\scratchcounter=\count119
+\scratchdimen=\dimen132
 \scratchbox=\box31
-\nofMPsegments=\count114
-\nofMParguments=\count115
+\nofMPsegments=\count120
+\nofMParguments=\count121
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count116
-\MPscratchDim=\dimen120
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen133
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
 \everyMPtoPDFconversion=\toks22
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 125.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 128.
 
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/b/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/b/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/sl' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/sc' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sc' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/sc' tried instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/n' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 125.
+(Font)              using `OT1/pcr/m/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/it' undefined
-(Font)              using `OT1/pcr/sb/n' instead on input line 125.
+(Font)              using `OT1/pcr/sb/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/sl' undefined
-(Font)              using `OT1/pcr/sb/n' instead on input line 125.
+(Font)              using `OT1/pcr/sb/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/sc' undefined
-(Font)              using `OT1/pcr/sb/n' instead on input line 125.
+(Font)              using `OT1/pcr/sb/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/n' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 125.
+(Font)              using `OT1/pcr/m/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/it' undefined
-(Font)              using `OT1/pcr/c/n' instead on input line 125.
+(Font)              using `OT1/pcr/c/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/sl' undefined
-(Font)              using `OT1/pcr/c/n' instead on input line 125.
+(Font)              using `OT1/pcr/c/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/sc' undefined
-(Font)              using `OT1/pcr/c/n' instead on input line 125.
+(Font)              using `OT1/pcr/c/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/n' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 125.
+(Font)              using `OT1/pcr/m/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/it' undefined
-(Font)              using `OT1/pcr/l/n' instead on input line 125.
+(Font)              using `OT1/pcr/l/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/sl' undefined
-(Font)              using `OT1/pcr/l/n' instead on input line 125.
+(Font)              using `OT1/pcr/l/n' instead on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/sc' undefined
-(Font)              using `OT1/pcr/l/n' instead on input line 125.
+(Font)              using `OT1/pcr/l/n' instead on input line 128.
 
 LaTeX Font Info:    Font shape `OT1/pcr/m/ui' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/it' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/m/it' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/ui' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 128.
 LaTeX Font Info:    Font shape `OT1/pcr/b/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 125.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 128.
 
 LaTeX Font Warning: Font shape `OT1/pcr/m/In' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 125.
+(Font)              using `OT1/pcr/m/n' instead on input line 128.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -633,7 +663,7 @@ o-gram-ming Paradigms
 
  [5] (./abstract.tex [6])
 
-LaTeX Warning: Citation `website:tablog' undefined on input line 256.
+LaTeX Warning: Citation `website:tablog' undefined on input line 259.
 
 (./introduction.tex
 Missing character: There is no ï in font cmr12!
@@ -662,12 +692,37 @@ Underfull \vbox (badness 1406) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-[9]) [10] (./proposedWork.tex [11
+\openout4 = `proposal.pyg'.
+
+runsystem(pygmentize -l prolog -f latex -F tokenmerge            -P linenos -P 
+"verboptions= " -o proposal.out.pyg proposal.pyg)...executed.
+
+
+(./proposal.out.pyg)
+runsystem(rm proposal.out.pyg)...executed.
+
+runsystem(rm proposal.pyg)...executed.
+
+\openout4 = `proposal.pyg'.
+
+runsystem(pygmentize -l haskell -f latex -F tokenmerge            -P linenos -P
+ "verboptions= " -o proposal.out.pyg proposal.pyg)...executed.
+
+ (./proposal.out.pyg
+Missing character: There is no â in font pcrr7t!
+Missing character: There is no ˆ in font pcrr7t!
+Missing character: There is no ƒ in font pcrr7t!
+)
+runsystem(rm proposal.out.pyg)...executed.
+
+runsystem(rm proposal.pyg)...executed.
+
+ [9]) [10] (./proposedWork.tex
+[11
 
 ]) [12] (./embedding.tex [13
 
-] [14] [15]
-[16]
+] [14] [15] [16]
 Overfull \hbox (10.75827pt too wide) in paragraph at lines 479--480
 []\OT1/cmr/m/n/12 Another im-por-tant as-pect of \OT1/cmr/m/sc/12 Pro-log \OT1/
 cmr/m/n/12 is back-track-ing. To sim-u-late it in \OT1/cmr/m/sc/12 Haskell\OT1/
@@ -718,20 +773,35 @@ LaTeX Warning: Citation `logic-classes' on page 31 undefined on input line 110.
 ]) [35] (./quasiquotation.tex)
 [36
 
-] (./metasyntacticvariables.tex) [37
+] (./metasyntacticvariables.tex
+Overfull \hbox (16.1493pt too wide) in paragraph at lines 7--9
+\OT1/cmr/m/n/12 Some sources for the topic [][]$\OT1/pcr/l/n/12 https : / / en 
+. wikipedia . org / wiki / Metasyntactic _
+ []
+
+
+Overfull \hbox (23.70462pt too wide) in paragraph at lines 10--11
+[][][]$\OT1/pcr/l/n/12 http : / / www . catb . org / jargon / html / M / metasy
+ntactic-[]variable . html$[][] 
+ []
+
+
+Overfull \hbox (30.90462pt too wide) in paragraph at lines 12--13
+[][][]$\OT1/pcr/l/n/12 http : / / whatis . techtarget . com / definition / meta
+syntactic-[]variable$[][] 
+ []
+
+) [37
 
 ] (./relatedtermskeywords.tex) [38
 
+] (./hwh.tex [39
+
 ]
-(./hwh.tex
-Overfull \hbox (20.05583pt too wide) in paragraph at lines 60--61
-[]\OT1/cmr/m/n/12 http://paulspontifications.blogspot.ca/2008/01/why-haskell-is
--good-for-embedded-
- []
+Underfull \vbox (badness 3068) has occurred while \output is active []
 
-[39
-
-] [40] [41]) [42] (./pwp.tex
+ [40]
+[41]) [42] (./pwp.tex
 Overfull \hbox (12.81007pt too wide) in paragraph at lines 17--18
 []\OT1/cmr/m/n/12 http://eliminatingwork.blogspot.ca/2010/02/why-prolog-is-by-f
 ar-best-most.html 
@@ -773,7 +843,7 @@ runsystem(pygmentize -l haskell -f latex -F tokenmerge            -P linenos -P
  "verboptions= " -o proposal.out.pyg proposal.pyg)...executed.
 
 
-(./proposal.out.pyg [48])
+(./proposal.out.pyg)
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
@@ -793,7 +863,7 @@ runsystem(rm proposal.pyg)...executed.
 runsystem(pygmentize -l haskell -f latex -F tokenmerge             -P "verbopti
 ons= " -o proposal.out.pyg proposal.pyg)...executed.
 
- (./proposal.out.pyg)
+ (./proposal.out.pyg [48])
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
@@ -804,7 +874,7 @@ runsystem(pygmentize -l haskell -f latex -F tokenmerge            -P linenos -P
  "verboptions= " -o proposal.out.pyg proposal.pyg)...executed.
 
 
-(./proposal.out.pyg [49])
+(./proposal.out.pyg)
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
@@ -845,26 +915,22 @@ runsystem(rm proposal.pyg)...executed.
 runsystem(pygmentize -l haskell -f latex -F tokenmerge            -P linenos -P
  "verboptions= " -o proposal.out.pyg proposal.pyg)...executed.
 
- (./proposal.out.pyg [50]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [51])
+ (./proposal.out.pyg [49])
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
 
-)
-[52] (./proto2.1.tex) [53
-
-] (./proto2.2.tex) [54
-
-] (./proto3.tex) [55
+) [50] (./proto2.1.tex) [51
 
 ]
-(./proto4.tex) [56
+(./proto2.2.tex) [52
 
-] (./workCompleted.tex
-<FunctorHierarchy.png, id=1228, 560.0925pt x 326.21875pt>
+] (./proto3.tex) [53
+
+] (./proto4.tex) [54
+
+]
+(./workCompleted.tex <FunctorHierarchy.png, id=1234, 560.0925pt x 326.21875pt>
 File: FunctorHierarchy.png Graphic file (type png)
 
 <use FunctorHierarchy.png>
@@ -875,7 +941,7 @@ LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <14.4> not available
 
 Underfull \vbox (badness 2443) has occurred while \output is active []
 
- [57
+ [55
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
@@ -926,7 +992,6 @@ runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
 
- [58]
 \openout4 = `proposal.pyg'.
 
 runsystem(pygmentize -l haskell -f latex -F tokenmerge             -P "verbopti
@@ -942,7 +1007,7 @@ runsystem(rm proposal.pyg)...executed.
 runsystem(pygmentize -l haskell -f latex -F tokenmerge             -P "verbopti
 ons= " -o proposal.out.pyg proposal.pyg)...executed.
 
- (./proposal.out.pyg)
+ (./proposal.out.pyg [56])
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
@@ -978,16 +1043,14 @@ runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
 
-) [59]
+) [57]
 (./results.tex
 \openout4 = `proposal.pyg'.
 
 runsystem(pygmentize -l haskell -f latex -F tokenmerge             -P "verbopti
 ons= " -o proposal.out.pyg proposal.pyg)...executed.
 
- (./proposal.out.pyg [60
-
-])
+ (./proposal.out.pyg)
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
@@ -1002,13 +1065,16 @@ runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
 
+ [58
+
+]
 \openout4 = `proposal.pyg'.
 
 runsystem(pygmentize -l prolog -f latex -F tokenmerge             -P "verboptio
 ns= " -o proposal.out.pyg proposal.pyg)...executed.
 
 
-(./proposal.out.pyg [61])
+(./proposal.out.pyg)
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
@@ -1018,13 +1084,16 @@ runsystem(rm proposal.pyg)...executed.
 runsystem(pygmentize -l haskell -f latex -F tokenmerge             -P "verbopti
 ons= " -o proposal.out.pyg proposal.pyg)...executed.
 
- (./proposal.out.pyg)
+ (./proposal.out.pyg
+Underfull \vbox (badness 2310) has occurred while \output is active []
+
+ [59])
 runsystem(rm proposal.out.pyg)...executed.
 
 runsystem(rm proposal.pyg)...executed.
 
-) [62] (./conclusion.tex)
-[63
+)
+[60] (./conclusion.tex) [61
 
 ] (./proposal.bbl
 Missing character: There is no â in font cmr12!
@@ -1032,7 +1101,7 @@ Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ­ in font cmr12!
- [64
+ [62
 
 ]
 Underfull \hbox (badness 3746) in paragraph at lines 136--139
@@ -1040,7 +1109,7 @@ Underfull \hbox (badness 3746) in paragraph at lines 136--139
 . org / pldoc / man ? section =
  []
 
-[65]
+[63]
 Underfull \hbox (badness 1264) in paragraph at lines 187--190
 []\OT1/cmr/m/n/12 GNU.  Gnu pro-log for java, Au-gust 2010.  [][]$\OT1/pcr/l/n/
 12 http : / / www . gnu . org /
@@ -1052,85 +1121,85 @@ Underfull \hbox (badness 1616) in paragraph at lines 248--251
 pcr/l/n/12 http : / / jlogic .
  []
 
-[66]
-Underfull \hbox (badness 10000) in paragraph at lines 289--292
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 294--297
 []\OT1/cmr/m/n/12 The Pro-gram-ming Lan-guages We-blog Lambda The Ul-ti-mate.
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 289--292
+Underfull \hbox (badness 2012) in paragraph at lines 294--297
 \OT1/cmr/m/n/12 Application-specific foreign-interface gen-er-a-tion, Oc-to-ber
  2006.  [][]$\OT1/pcr/l/n/12 http :
  []
 
-[67]
+[65]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¸ in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--370
+Underfull \hbox (badness 10000) in paragraph at lines 370--375
 []\OT1/cmr/m/n/12 Kurt Nr-mark De-part-ment of Com-puter Sci-ence Aal-borg Uni-
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--370
+Underfull \hbox (badness 10000) in paragraph at lines 370--375
 \OT1/cmr/m/n/12 ver-sity Den-mark.  Lin-guis-tic ab-strac-tion, July 2013.  [][
 ]$\OT1/pcr/l/n/12 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--370
+Underfull \hbox (badness 10000) in paragraph at lines 370--375
 \OT1/pcr/l/n/12 / / people . cs . aau . dk / []normark / prog3-[]03 / html / no
 tes /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--370
+Underfull \hbox (badness 10000) in paragraph at lines 370--375
 \OT1/pcr/l/n/12 languages _ themes-[]intro-[]sec . html # languages _ intro-[]s
 ec _
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 392--395
+Underfull \hbox (badness 1242) in paragraph at lines 397--400
 []\OT1/cmr/m/n/12 Yield Pro-log.  Yield pro-log, Oc-to-ber 2011.  [][]$\OT1/pcr
 /l/n/12 http : / / yieldprolog .
  []
 
-[68]
+[66]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
- [69]
-Underfull \hbox (badness 10000) in paragraph at lines 516--520
+ [67]
+Underfull \hbox (badness 10000) in paragraph at lines 521--525
 []\OT1/cmr/m/n/12 Stackoverflow.  Haskell vs. pro-log com-par-i-son, De-cem-ber
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 516--520
+Underfull \hbox (badness 10000) in paragraph at lines 521--525
 \OT1/cmr/m/n/12 2009.  [][]$\OT1/pcr/l/n/12 http : / / stackoverflow . com / qu
 estions / 1932770 /
  []
 
 
-Underfull \hbox (badness 4467) in paragraph at lines 537--541
+Underfull \hbox (badness 4467) in paragraph at lines 542--546
 []\OT1/cmr/m/n/12 Wren Thorn-ton.  The unification-fd pack-age, July 2012.  [][
 ]$\OT1/pcr/l/n/12 http :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--541
+Underfull \hbox (badness 10000) in paragraph at lines 542--546
 \OT1/pcr/l/n/12 / / hackage . haskellhttp : / / yieldprolog . sourceforge . net
  /
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 569--572
+Underfull \hbox (badness 2088) in paragraph at lines 578--581
 []\OT1/cmr/m/n/12 Andre Vel-lino.  Pro-log's death, Au-gust 2010.  [][]$\OT1/pc
 r/l/n/12 http : / / synthese .
  []
 
-[70] [71]
+[68] [69]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ‰ in font cmr12!
 Missing character: There is no Ã in font cmr12!
@@ -1138,12 +1207,12 @@ Missing character: There is no © in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no © in font cmr12!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 340.
- [72]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 340.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 343.
+ [70]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 343.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 340.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 340.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 343.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 343.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 5055C74BABA1384A3DF0721412543695;5364.
 
@@ -1156,16 +1225,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 340.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 343.
  ) 
 Here is how much of TeX's memory you used:
- 8214 strings out of 494985
- 120063 string characters out of 6180356
- 215017 words of memory out of 5000000
- 10686 multiletter control sequences out of 15000+600000
+ 8634 strings out of 494985
+ 125298 string characters out of 6180356
+ 223535 words of memory out of 5000000
+ 11087 multiletter control sequences out of 15000+600000
  12213 words of font info for 45 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 36i,12n,45p,2172b,648s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,45p,2172b,681s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dis
@@ -1176,10 +1245,10 @@ amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on proposal.pdf (79 pages, 422576 bytes).
+Output written on proposal.pdf (77 pages, 423241 bytes).
 PDF statistics:
- 1537 PDF objects out of 1728 (max. 8388607)
- 1429 compressed objects within 15 object streams
- 490 named destinations out of 1000 (max. 500000)
+ 1543 PDF objects out of 1728 (max. 8388607)
+ 1437 compressed objects within 15 object streams
+ 493 named destinations out of 1000 (max. 500000)
  638 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.23)  22 SEP 2015 14:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.23)  24 SEP 2015 12:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**background.tex
-(./background.tex
+**hwh.tex
+(./hwh.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 4 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls
@@ -315,87 +315,111 @@ Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
 )
-runsystem(uname -s > "background.w18")...executed.
+runsystem(uname -s > "hwh.w18")...executed.
 
-
-(./background.w18)
-runsystem(rm -- "background.w18")...executed.
+ (./hwh.w18)
+runsystem(rm -- "hwh.w18")...executed.
 
 )
 \minted@bgbox=\box29
 \minted@code=\write5
 \@float@every@listing=\toks20
 )
-runsystem(which pygmentize && touch background.aex)...executed.
+runsystem(which pygmentize && touch hwh.aex)...executed.
 
-runsystem(rm background.aex)...executed.
+runsystem(rm hwh.aex)...executed.
 
- (/usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen119
+\lightrulewidth=\dimen120
+\cmidrulewidth=\dimen121
+\belowrulesep=\dimen122
+\belowbottomsep=\dimen123
+\aboverulesep=\dimen124
+\abovetopsep=\dimen125
+\cmidrulesep=\dimen126
+\cmidrulekern=\dimen127
+\defaultaddspace=\dimen128
+\@cmidla=\count112
+\@cmidlb=\count113
+\@aboverulesep=\dimen129
+\@belowrulesep=\dimen130
+\@thisruleclass=\count114
+\@lastruleclass=\count115
+\@thisrulewidth=\dimen131
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xr.sty
 Package: xr 1994/05/28 v5.02 eXternal References (DPC)
 )
-Package xr Info: IMPORTING LABELS FROM background.aux on input line 23.
-Package xr Info: IMPORTING LABELS FROM conclusion.aux on input line 24.
-Package xr Info: IMPORTING LABELS FROM embedding.aux on input line 25.
-Package xr Info: IMPORTING LABELS FROM eplipl.aux on input line 26.
-Package xr Info: IMPORTING LABELS FROM introduction.aux on input line 27.
-Package xr Info: IMPORTING LABELS FROM miscrelcon.aux on input line 28.
-Package xr Info: IMPORTING LABELS FROM multiparadigm.aux on input line 29.
-Package xr Info: IMPORTING LABELS FROM prologin.aux on input line 30.
-Package xr Info: IMPORTING LABELS FROM prologinhaskell.aux on input line 31.
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count116
+)
+\etb@tempcnta=\count117
+)
+Package xr Info: IMPORTING LABELS FROM background.aux on input line 25.
+Package xr Info: IMPORTING LABELS FROM conclusion.aux on input line 26.
+Package xr Info: IMPORTING LABELS FROM embedding.aux on input line 27.
+Package xr Info: IMPORTING LABELS FROM eplipl.aux on input line 28.
+Package xr Info: IMPORTING LABELS FROM introduction.aux on input line 29.
+Package xr Info: IMPORTING LABELS FROM miscrelcon.aux on input line 30.
+Package xr Info: IMPORTING LABELS FROM multiparadigm.aux on input line 31.
+Package xr Info: IMPORTING LABELS FROM prologin.aux on input line 32.
+Package xr Info: IMPORTING LABELS FROM prologinhaskell.aux on input line 33.
 
 
 Package xr Warning: 
 No file proposedwork.aux
 LABELS NOT IMPORTED.
- on input line 32.
+ on input line 34.
 
-Package xr Info: IMPORTING LABELS FROM pwp.aux on input line 33.
-Package xr Info: IMPORTING LABELS FROM quasiquotation.aux on input line 34.
+Package xr Info: IMPORTING LABELS FROM pwp.aux on input line 35.
+Package xr Info: IMPORTING LABELS FROM quasiquotation.aux on input line 36.
 
 Package xr Warning: 
 No file metasyntacticvariables.aux
 LABELS NOT IMPORTED.
- on input line 35.
+ on input line 37.
 
 Package xr Info: IMPORTING LABELS FROM relatedtermskeywords.aux on input line 3
-6.
-Package xr Info: IMPORTING LABELS FROM relatedWork.aux on input line 37.
-Package xr Info: IMPORTING LABELS FROM ummcpp.aux on input line 38.
-Package xr Info: IMPORTING LABELS FROM workCompleted.aux on input line 39.
-Package hyperref Info: Option `colorlinks' set `true' on input line 90.
+8.
+Package xr Info: IMPORTING LABELS FROM relatedWork.aux on input line 39.
+Package xr Info: IMPORTING LABELS FROM ummcpp.aux on input line 40.
+Package xr Info: IMPORTING LABELS FROM workCompleted.aux on input line 41.
+Package hyperref Info: Option `colorlinks' set `true' on input line 93.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 90.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 90.
+(hyperref)                removing `\\' on input line 93.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 90.
+(hyperref)                removing `\\' on input line 93.
 
-)) (./background.aux
 
-LaTeX Warning: Label `sect:background' multiply defined.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 93.
 
-)
-\openout1 = `background.aux'.
+)) (./hwh.aux)
+\openout1 = `hwh.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -432,116 +456,116 @@ LaTeX Font Info:    ... okay on input line 7.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring ON on input line 7.
+Package hyperref Info: Link coloring ON on input line 3.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count112
+\c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 7.
-LaTeX Info: Redefining \pageref on input line 7.
-LaTeX Info: Redefining \nameref on input line 7.
+LaTeX Info: Redefining \ref on input line 3.
+LaTeX Info: Redefining \pageref on input line 3.
+LaTeX Info: Redefining \nameref on input line 3.
 
-(./background.out) (./background.out)
+(./hwh.out) (./hwh.out)
 \@outlinefile=\write6
-\openout6 = `background.out'.
+\openout6 = `hwh.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
-\scratchdimen=\dimen119
+\scratchcounter=\count119
+\scratchdimen=\dimen132
 \scratchbox=\box31
-\nofMPsegments=\count114
-\nofMParguments=\count115
+\nofMPsegments=\count120
+\nofMParguments=\count121
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count116
-\MPscratchDim=\dimen120
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen133
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
 \everyMPtoPDFconversion=\toks22
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 7.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 3.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/b/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/b/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/sl' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/sc' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sc' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/sc' tried instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/n' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 7.
+(Font)              using `OT1/pcr/m/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/it' undefined
-(Font)              using `OT1/pcr/sb/n' instead on input line 7.
+(Font)              using `OT1/pcr/sb/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/sl' undefined
-(Font)              using `OT1/pcr/sb/n' instead on input line 7.
+(Font)              using `OT1/pcr/sb/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/sb/sc' undefined
-(Font)              using `OT1/pcr/sb/n' instead on input line 7.
+(Font)              using `OT1/pcr/sb/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/n' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 7.
+(Font)              using `OT1/pcr/m/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/it' undefined
-(Font)              using `OT1/pcr/c/n' instead on input line 7.
+(Font)              using `OT1/pcr/c/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/sl' undefined
-(Font)              using `OT1/pcr/c/n' instead on input line 7.
+(Font)              using `OT1/pcr/c/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/c/sc' undefined
-(Font)              using `OT1/pcr/c/n' instead on input line 7.
+(Font)              using `OT1/pcr/c/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/n' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 7.
+(Font)              using `OT1/pcr/m/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/it' undefined
-(Font)              using `OT1/pcr/l/n' instead on input line 7.
+(Font)              using `OT1/pcr/l/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/sl' undefined
-(Font)              using `OT1/pcr/l/n' instead on input line 7.
+(Font)              using `OT1/pcr/l/n' instead on input line 3.
 
 
 LaTeX Font Warning: Font shape `OT1/pcr/l/sc' undefined
-(Font)              using `OT1/pcr/l/n' instead on input line 7.
+(Font)              using `OT1/pcr/l/n' instead on input line 3.
 
 LaTeX Font Info:    Font shape `OT1/pcr/m/ui' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/it' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/m/it' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/ui' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/it' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/pcr/b/it' in size <12> not available
-(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 7.
+(Font)              Font shape `OT1/pcr/b/sl' tried instead on input line 3.
 
 LaTeX Font Warning: Font shape `OT1/pcr/m/In' undefined
-(Font)              using `OT1/pcr/m/n' instead on input line 7.
+(Font)              using `OT1/pcr/m/n' instead on input line 3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -558,188 +582,37 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-runsystem(pygmentize -S default -f latex > background.pyg)...executed.
+runsystem(pygmentize -S default -f latex > hwh.pyg)...executed.
 
 
-(./background.pyg)
+(./hwh.pyg)
 
-LaTeX Warning: Citation `Krishnamurthi:2008:TPL:1480828.1480846' on page 1 unde
-fined on input line 16.
-
-
-LaTeX Warning: Citation `hughes1989functional' on page 1 undefined on input lin
-e 24.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 27.
-
-LaTeX Warning: Citation `website:lambdacalculuswiki' on page 1 undefined on inp
-ut line 28.
+LaTeX Warning: Citation `website:haskellwiki' on page 1 undefined on input line
+ 22.
 
 
-LaTeX Warning: Citation `rojas2004tutorial' on page 1 undefined on input line 3
-0.
-
-
-LaTeX Warning: Citation `website:hdmtypesystemwiki' on page 1 undefined on inpu
-t line 35.
-
-
-LaTeX Warning: Citation `website:hdmtypesystem' on page 1 undefined on input li
-ne 37.
-
-
-LaTeX Warning: Citation `spivey1995introduction' on page 1 undefined on input l
-ine 41.
-
-
-LaTeX Warning: Citation `wikiprolog' on page 1 undefined on input line 49.
-
-
-LaTeX Warning: Citation `website:langpop' on page 1 undefined on input line 52.
+LaTeX Warning: Citation `website:langpop' on page 1 undefined on input line 22.
 
 
 
-LaTeX Warning: Citation `wadler1992comprehending' on page 1 undefined on input 
-line 53.
+LaTeX Warning: Citation `website:haskellinindustry' on page 1 undefined on inpu
+t line 23.
 
 
-LaTeX Warning: Citation `website:monadshaskellorg' on page 1 undefined on input
- line 54.
+LaTeX Warning: Citation `website:paulspontifications' on page 1 undefined on in
+put line 56.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `swipembedd' on page 2 undefined on input line 66.
-
-
-LaTeX Warning: Citation `racklog' on page 2 undefined on input line 67.
-
-
-LaTeX Warning: Citation `komorowski1982qlog' on page 2 undefined on input line 
-68.
-
-
-LaTeX Warning: Citation `robinson1982loglisp' on page 2 undefined on input line
- 68.
-
-
-LaTeX Warning: Citation `robinson1980loglisp' on page 2 undefined on input line
- 68.
-
-
-LaTeX Warning: Citation `wikiprolog' on page 2 undefined on input line 68.
-
-
-LaTeX Warning: Citation `jlog' on page 2 undefined on input line 68.
-
-
-LaTeX Warning: Citation `jscriptlog' on page 2 undefined on input line 69.
-
-
-LaTeX Warning: Citation `yieldprolog' on page 2 undefined on input line 69.
-
-
-LaTeX Warning: Citation `DBLP:conf/utp/2006' on page 2 undefined on input line 
-75.
-
-
-LaTeX Warning: Citation `DBLP:conf/utp/2008' on page 2 undefined on input line 
-75.
-
-
-LaTeX Warning: Citation `DBLP:conf/utp/2010' on page 2 undefined on input line 
-75.
-
-
-LaTeX Warning: Citation `DBLP:conf/utp/2012' on page 2 undefined on input line 
-75.
-
-
-LaTeX Warning: Citation `hoare1998unifying' on page 2 undefined on input line 7
-5.
-
-
-LaTeX Warning: Citation `gibbons2013unifying' on page 2 undefined on input line
- 75.
-
-
-LaTeX Warning: Citation `website:ffiwiki' on page 2 undefined on input line 79.
-
-
-
-LaTeX Warning: Citation `website:commonlisp' on page 2 undefined on input line 
-83.
-
-
-LaTeX Warning: Citation `website:clrwiki' on page 2 undefined on input line 88.
-
-
-
-LaTeX Warning: Citation `website:cliwiki' on page 2 undefined on input line 89.
-
-
-
-LaTeX Warning: Citation `website:metaprogwiki' on page 2 undefined on input lin
-e 91.
-
-
-LaTeX Warning: Citation `website:templatehaskell' on page 2 undefined on input 
-line 94.
-
-
-LaTeX Warning: Citation `mainland2007s' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `haskellquasi' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `wikiquasi' on page 2 undefined on input line 98.
-
-
-Overfull \hbox (14.2217pt too wide) in paragraph at lines 98--104
-\OT1/cmr/m/sc/12 Haskell \OT1/cmr/m/n/12 ex-pres-sions and pat-terns to be con-
-structed us-ing do-main spe-cific, programmer-
- []
-
-[2]
-\openout4 = `background.pyg'.
-
-runsystem(pygmentize -l prolog -f latex -F tokenmerge            -P linenos -P 
-"verboptions= " -o background.out.pyg background.pyg)...executed.
-
- (./background.out.pyg)
-runsystem(rm background.out.pyg)...executed.
-
-runsystem(rm background.pyg)...executed.
-
-\openout4 = `background.pyg'.
-
-runsystem(pygmentize -l haskell -f latex -F tokenmerge            -P linenos -P
- "verboptions= " -o background.out.pyg background.pyg)...executed.
-
- (./background.out.pyg)
-runsystem(rm background.out.pyg)...executed.
-
-runsystem(rm background.pyg)...executed.
-
-
-
-LaTeX Warning: Citation `website:scala' on page 3 undefined on input line 124.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
- (./background.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
-Package rerunfilecheck Info: File `background.out' has not changed.
-(rerunfilecheck)             Checksum: F5F67FEE407440D78C5E04A0779ABFEC;45.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
+ [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
+ (./hwh.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
+Package rerunfilecheck Info: File `hwh.out' has not changed.
+(rerunfilecheck)             Checksum: 0F489F9DEA224F33663106F690064EB8;59.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -747,30 +620,22 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 7391 strings out of 494985
- 108714 string characters out of 6180356
- 202901 words of memory out of 5000000
- 10466 multiletter control sequences out of 15000+600000
- 9925 words of font info for 36 fonts, out of 8000000 for 9000
+ 7734 strings out of 494985
+ 112446 string characters out of 6180356
+ 210893 words of memory out of 5000000
+ 10810 multiletter control sequences out of 15000+600000
+ 6542 words of font info for 25 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 44i,7n,47p,391b,322s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/u
-crb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on background.pdf (3 pages, 91986 bytes).
+ 44i,5n,47p,1069b,415s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on hwh.pdf (3 pages, 46827 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
+ 43 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  8 named destinations out of 1000 (max. 500000)
  9 words of extra memory for PDF output out of 10000 (max. 10000000)
 

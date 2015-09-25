@@ -10,45 +10,45 @@ Warning--can't use both volume and number fields in hanus1995curry
 Warning--empty booktitle in meijer2004static
 Warning--empty school in seres2001algebra
 Warning--empty journal in seres2000optimisation
-You've used 146 entries,
+You've used 151 entries,
             2118 wiz_defined-function locations,
-            1077 strings with 18319 characters,
-and the built_in function-call counts, 35806 in all, are:
-= -- 3374
-> -- 1234
+            1088 strings with 18603 characters,
+and the built_in function-call counts, 36801 in all, are:
+= -- 3459
+> -- 1269
 < -- 29
-+ -- 537
-- -- 364
-* -- 1731
-:= -- 5706
-add.period$ -- 392
-call.type$ -- 146
-change.case$ -- 610
++ -- 552
+- -- 374
+* -- 1771
+:= -- 5866
+add.period$ -- 402
+call.type$ -- 151
+change.case$ -- 630
 chr.to.int$ -- 0
-cite$ -- 151
-duplicate$ -- 1409
-empty$ -- 3546
-format.name$ -- 364
-if$ -- 7803
+cite$ -- 156
+duplicate$ -- 1444
+empty$ -- 3656
+format.name$ -- 374
+if$ -- 8018
 int.to.chr$ -- 0
-int.to.str$ -- 146
+int.to.str$ -- 151
 missing$ -- 45
-newline$ -- 670
-num.names$ -- 296
-pop$ -- 1167
+newline$ -- 690
+num.names$ -- 306
+pop$ -- 1212
 preamble$ -- 1
-purify$ -- 473
+purify$ -- 488
 quote$ -- 0
-skip$ -- 1279
+skip$ -- 1319
 stack$ -- 0
-substring$ -- 1505
-swap$ -- 319
+substring$ -- 1530
+swap$ -- 324
 text.length$ -- 29
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 572
+type$ -- 592
 warning$ -- 5
-while$ -- 366
-width$ -- 149
-write$ -- 1388
+while$ -- 376
+width$ -- 154
+write$ -- 1428
 (There were 7 warnings)

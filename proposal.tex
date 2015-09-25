@@ -18,8 +18,10 @@
 \usepackage{listing}
 \usepackage{graphicx}
 \usepackage{minted}
-
+\usepackage{booktabs}
 \usepackage{xr}
+\usepackage{etoolbox}
+
 \externaldocument{background}
 \externaldocument{conclusion}
 \externaldocument{embedding}
@@ -50,6 +52,7 @@
 
 % Use any additional packages you might need
 
+\AtBeginEnvironment{minted}{\singlespacing}
 
 %
 % Give values to the variables used in this document
