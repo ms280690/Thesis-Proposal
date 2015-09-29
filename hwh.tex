@@ -30,7 +30,8 @@ declarative style consists of defining components of programs i.e. computations 
 flow\cite{website:declarativeprogrammingwiki}.     
 
 This is where \progLang{Haskell} shines by providing something called a \textit{monad}. Functional Programming Languages define 
-computations which then need to be ordered in some way to form a combination. \cite{website:monadascomputation}    
+computations which then need to be ordered in some way to form a combination\cite{website:monadascomputation}. A monad gives a 
+universe       
 
 \begin{comment}
 Each language has a flow of control, a model how programs are executed. Many languages for example \progLang{Java} have a top-down 
@@ -50,7 +51,13 @@ side effects are handled. \cite{website:paulspontifications}
 Why Haskell is Good for Embedded Domain Specific Languages
 Domain Specific Languages (DSLs) are attracting some attention these days. They have always been around, of course: Emacs Lisp is a DSL, as are the various dialects of Visual Basic embedded in MS Office applications. And of course Unix hands know YACC (now Bison) and Lex (now Flex).
 
-However creating a full-blown language is a lot of work: you have to write a parser, code generator / interpreter and possibly a debugger, not to mention all the routine stuff that every language needs like variables, control structures and arithmetic types. An embedded DSL (eDSL) is basically a short cut if you can't afford to do that. Instead you write the domain-specific bits as a library in some more general purpose "host" language. The uncharitable might say that "eDSL" is just another name for "library module", and its true there is no formal dividing line. But in a well designed eDSL anything you might say in domain terms can be directly translated into code, and a domain expert (i.e. a non-programmer) can read the code and understand what it means in domain terms. With a bit of practice they can even write some code in it.
+However creating a full-blown language is a lot of work: you have to write a parser, code generator / interpreter and possibly a debugger, 
+not to mention all the routine stuff that every language needs like variables, control structures and arithmetic types. An embedded DSL 
+(eDSL) is basically a short cut if you can't afford to do that. Instead you write the domain-specific bits as a library in some more 
+general purpose "host" language. The uncharitable might say that "eDSL" is just another name for "library module", and its true there is no 
+formal dividing line. But in a well designed eDSL anything you might say in domain terms can be directly translated into code, and a domain 
+expert (i.e. a non-programmer) can read the code and understand what it means in domain terms. With a bit of practice they can even write 
+some code in it.
 
 This paper describes an eDSL for financial contracts built in Eiffel which worked exactly that way. It doesn't talk about "domain specific language" because the term hadn't been invented back then, but the software engineers defined classes for different types of contracts that the financial analysts could plug together to create pricing models. Its interesting to compare it with this paper about doing the same thing in Haskell.
 
