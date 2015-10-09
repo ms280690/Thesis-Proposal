@@ -1,0 +1,146 @@
+%%  This file is really -*-LaTeX-*-
+%%          Project:  ms280690/Thesis-Proposal
+%%             File:  toDo.tex
+%%       Created by:  David Casperson
+%%          Created:  Sun Oct  4 11:34:28 2015
+%%
+%%      Description:  Work to do.
+
+\begin{scope}
+%\nolinenumbers
+% ---------------------------------------------------------------------------
+\section{Editing to do}\label{sect:to-do}
+% ---------------------------------------------------------------------------
+
+\textit{\color{red} This Chapter needs to be removed from the final
+  work.}
+
+\begin{enumerate}
+\item [\textbf{Either}]
+\item Rename ``\Verb!proposal.*!'' to ``\Verb!thesis-solanki.*!''.
+\item Switch the thesis style to UNBC thesis style.  (Not urgent, if
+  this breaks other tools, we can do this last, but it would be nice to
+  have a sense of what the thesis is going to look like.)
+\item
+  Check the rules for spacing in the bibliography to ensure that we have
+  them right.
+  
+\item [\textbf{Mehul}]
+
+\item
+  \textcolor{red}{Rewrite (Section) Chapter 3.2}\,.
+  You are now in a position to state what your contributions are.
+  In some sense everything else flows around this.
+
+\item
+  Fix the reference at the bottom of page~2:\\
+  \Verb!citewikipro- log,somogyi1995logic,website:prolog1000db.!
+\item
+  Write enough of Chapters \ref{proto1}--\ref{proto4} that we can decide
+  what material is needed in Chapters~ \ref{sect:quasiquotation},
+  \ref{sect:metasyntacticvariables},
+  and~\ref{sect:relatedtermskeywords}.
+\item
+  {}[\TeX{}nical]
+  Remove the \Verb!\paragraph{}!s from the running text.  \LaTeX{}
+  ends a paragraph every time that it encounters two end-of-lines
+  with only whitespace between them.  \Verb!\par! does the same thing.
+
+  The \Verb!\paragraph! command is in the same family as \Verb!chapter!,
+  \Verb!\section!, and so on.  For its correct use, see later in this
+  file.
+
+  If you don't like the shape of the paragraphs that you get without
+  \Verb!paragraph!, use something like
+  \begin{Verbatim}
+\setlength{\parindent}{3em}
+\setlength{\parskip}{2\baselineskip}
+  \end{Verbatim}
+  to adjust either the initial paragraph indent, or the inter-paragraph
+  space.
+
+\item
+  Rewrite (Section) Chapter 3 in formal English.
+
+\item
+  Bump the sectioning levels up by one.  That is, what is currently a
+  section should become a chapter, what is currently a subsection should
+  become a section, and so on.  It may not make sense to do this until
+  you have switch to \Verb!thesis.sty!\,.
+
+\item
+  ``re-curses'' means to swear again (\textit{p} 9).
+\item
+  I am not sure that I agree with the use of ``reflective'' on
+  \textit{p}~8 (\textit{l}~25).  Reflection often means run-time
+  introspection (for instance the Java \Verb!.getClass()! method).
+  
+\item [\textbf{David}]
+\item Review Chapter 1
+\item Review Chapter 2
+\item Review Chapter 3
+\item Review Chapter 4
+\item Review Chapter 5
+\item Review Chapter 6
+\item Review Chapter 7
+\item Review Chapter 8
+\item Review Chapter 18
+
+\end{enumerate}
+
+\subsection{Editing suggestions from David}\label{sec:edit-sugg-david}
+
+\paragraph{Thoughts on 1.1}
+
+We need to firmly fix in mind who the target audience is.  Some
+possibilities
+\begin{enumerate}
+\item Undergraduate Physics students
+\item Undergraduate Computer Science students
+\item
+  Future graduate students of Casperson who have just begun their
+  thesis work.
+\item
+  Simon Peyton-Jones.
+\end{enumerate}
+If we assume (3), then the material in the first paragraph and part of
+the second are unnecessary.
+
+\paragraph{Thoughts on 1.3}
+
+I am unsure that I can summarize this subsection in two sentences.  I
+don't know what the problem statement is at the end of it.
+
+\paragraph{Thoughts on 1.4}
+
+Rename to ``Thesis Organization''.
+
+\paragraph{Thoughts on Chapter 2}
+
+Here are some potential keywords from Chapter 2:
+\begin{inparaitem}
+\item Hindley-Milner type systems
+\item Horn clauses
+\item \(\lambda\)-calculi
+\item \textsc{Haskell}
+\item \textsc{Scala}
+\item declarative programming languages
+\item foreign function interfaces
+\item functional programming
+\item implementing Prolog in other languages
+\item language embedding
+\item language families
+\item language paradigms
+\item logic programming
+\item meta-programming
+\item monads
+\item paradigm integration
+\item quasi-quotation
+\item the typed \(\lambda\)-calculus
+\item the untyped \(\lambda\)-calculus
+\end{inparaitem}.
+
+What is the overall message?
+
+
+\end{scope}

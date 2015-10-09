@@ -22,6 +22,12 @@
 \usepackage{xr}
 \usepackage{etoolbox}
 
+%\usepackage[pagewise]{lineno}
+\usepackage{fancyvrb}
+\usepackage{paralist}
+\newenvironment{scope}{}{}
+
+
 \externaldocument{background}
 \externaldocument{conclusion}
 \externaldocument{embedding}
@@ -141,7 +147,7 @@
         \input{abstract.tex}
 	\end{frontmatter}
 
-
+%\linenumbers
 
 %   ==========================================================================
 %   Begin main matter (pages are numbered with arabic numerals)
@@ -331,6 +337,9 @@
 	\clearpage
 			
   	\subfile{conclusion}
+	\clearpage
+
+  	\input{toDo}
 	\clearpage
 
 
