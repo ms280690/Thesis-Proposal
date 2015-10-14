@@ -108,7 +108,7 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \end{minted}    
 \end{figure}
 going through the code, the first rule says that and empty list appended with any list results in the list itself. The second predicate matches the head of the 
-first and the resulting lists and then re-curses on the tails. The same in \progLang{Haskell},
+first and the resulting lists and then recurs on the tails. The same in \progLang{Haskell},
 
 \begin{minted}[linenos]{haskell}
 append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
