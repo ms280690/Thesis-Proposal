@@ -12,7 +12,23 @@ typed which lets through untyped programs. This prototype throws light on the pr
 a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
 benefits.       
 \end{comment}
-This chapter discusses 
+This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in 
+\progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
+
+\subsection{What we do in this Prototype}
+This prototype throws light on the process of tackling the issues involved in creating 
+a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
+benefits. 
+
+
+We have a \progLang{Prolog} like language in \progLang{Haskell} defined via \textit{data}.
+
+The language defined is recursive in nature. 
+
+We convert it into a non recursive data type.
+
+
+  
 
 
 \subsection{Creating a data type}
@@ -39,14 +55,15 @@ For dynamic typing
 \end{enumerate}
 
 \paragraph{Transitional paragraph}
-This prototype .......
+An ideal case would would be something that is ........ dont know what to write
 
 
 To start with, replicating the single type "term" in \progLang{Prolog} one must consider the distinct constructs it can be associated to 
-such as  complex structures (for example, predicated clauses etc.), don't cares, cuts, variables and so on.
+such as complex structures (for example predicates, clauses etc.), don't cares, cuts, variables and so on.
+
+Consider the language below,
 
 \begin{minted}[linenos]{haskell}	
---david-0.2.0.2
 data VariableName = VariableName Int String
       deriving (Eq, Data, Typeable, Ord)
 data Atom         = Atom      !String
@@ -94,6 +111,8 @@ data Term = Struct Atom [Term]
           | Cut Int
       deriving (Eq, Data, Typeable)
 \end{minted}
+
+Also one cannot create Quantifiers plus logic 
 
 To split a data type into two levels, a single recursive data type is replaced by two related data types. Consider the following,
 \begin{minted}[linenos]{haskell}
