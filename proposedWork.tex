@@ -8,12 +8,22 @@
 %-----------------------------------------------------------------------------
 \subsection{Current Work}
 \paragraph{}
-There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell} , a few shortcomings are very clear,
+There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell} which are discussed below along with the 
+shortcomings.
 
 \begin{enumerate}
-\item Only two embeddings exist, one of them is old and made for \texttt{\bfseries{hugs}} a functional programming system based on the \progLang{
-Haskell 98} specification. It is complex and also lacks a lot of \progLang{Prolog} like features including \textit{cuts, fails, assert} among others. The second 
-one is based off the first one to make it simple but it loses the variable search strategy support which allows the programmer to choose the manner in which a solution is produced. 
+\item Very few embedded implementations exist which offer a perspective into the job at hand. One of the earliest implementations 
+\cite{website:mini-prolog-hugs98} is for an older specification of \progLang{Haskell} called \progLang{Haskell 98} 
+\texttt{\bfseries{hugs}}. It is more of a proof of concept providing a mechanism to include variable search strategies in order to produce 
+a result. Another implementation \cite{website:takashi-workplace} based of it simplifies the notation to a list format. Nonetheless, both 
+implementations lack simplicity and support for basic \progLang{Prolog} features such as \textit{cuts, fails, assert} among others.   
+
+\begin{comment}
+\item Only two embeddings exist, one of them is old and made for \texttt{\bfseries{hugs}} a functional programming system based on the 
+\progLang{Haskell 98} specification. It is complex and also lacks a lot of \progLang{Prolog} like features including \textit{cuts, fails, 
+assert} among others. The second one is based off the first one to make it simple but it loses the variable search strategy support which 
+allows the programmer to choose the manner in which a solution is produced. 
+\end{comment}
 
 \item The papers that try to take the above further are also few in number and do not have any implementations with the proposed 
 concepts. Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
@@ -37,14 +47,45 @@ extension to replicate the features as an add on.
 
 \subsection{Contributions}
 \paragraph{}
-Taking into consideration above, there is quite some room for improvement and additions. Moving onto what this thesis shall explore, first thing's first a 
-complete, fully functional library which comes close to a \progLang{Prolog} like language and has practical abilities to carry out real-world tasks. They 
-include predicates like \textit{cut, assert, fail, setOf, bagOf} among others. This would form the first stage of the implementation. Secondly, exploring 
-aspects such as\textit{assert} and database capabilities. A third question to address is the accommodation of input and output, specifically dealing with 
-the \textit{IO Monad} in \progLang{Haskell} with \progLang{Prolog} \textit{IO}. Moreover, \progLang{Prolog} is an untyped language which allows lists 
-with elements of different types to be created. Something like this is not by default in \progLang{Haskell}. Hence syntactic support for the same is the next 
-question to address. Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally. Lastly, how would 
+Taking into consideration above, there is quite some room for improvement and additions. Moving onto what this thesis shall explore, first 
+thing's first a complete, fully functional library which comes close to a \progLang{Prolog} like language and has practical abilities to 
+carry out real-world tasks. They include predicates like \textit{cut, assert, fail, setOf, bagOf} among others. This would form the first 
+stage of the implementation. Secondly, exploring aspects such as \textit{assert} and database capabilities. A third question to address is 
+the accommodation of input and output, specifically dealing with the \textit{IO Monad} in \progLang{Haskell} with \progLang{Prolog} 
+\textit{IO}. Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be created. 
+Something like this is not by default in \progLang{Haskell}. Hence syntactic support for the same is the next question to address. 
+Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally. Lastly, how would 
 characteristics of hybrid languages fit into and play a role in an embedded setting.  
+
+\subsection{Thesis Contributions}
+
+\begin{enumerate}
+\item Prototype 1 does 
+flattening language
+opening up the language (binding monad)
+adding custom variables
+monadic unification (stuff happens in a bubble)
+rec type $\rightarrow$ non rec type $\rightarrow$ fix non rec type isomorphically == rec type
+
+
+
+
+\item Prototype 2 does
+extends current prolog-0.2.0.1
+this is to show that we can plug out approach into existing implementation and things work
+
+\item Prototype 3 does
+variable search strategy
+what ever method you do for searching at the point of unification you can do it with our approach
+
+\item Prototype 4 does
+how can io be squeezed into this model where whenever the resolver encounters an io operation it generates a thunk (sort of unsolved 
+statement) which when executed would result in a side effect but till that point every thing is pure
+
+\end{enumerate}
+
+
+
 
 %\texttt{\bfseries{write a paragraph}}
 \begin{comment}

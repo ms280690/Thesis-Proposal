@@ -5,11 +5,85 @@
 
 \section{Prototype 1}{\label{proto1}}
 
+\subsection{About this chapter}
+This chapter throws light on what \progLang{Prolog} does to resolve a given query via \textit{unification} and this can be replicated in
+the host language along with the challenges.  
+
+This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in 
+\progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
+
+\subsection{How Prolog works ?}
+Looking at how \progLang{Prolog} works \cite{webiste:learnprolognow}.
+
+Most \progLang{Prolog} distributions have three types of terms:
+\begin{enumerate}
+\item Constants.
+
+\item Variables.
+
+\item Complex terms.
+\end{enumerate}
+
+Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting terms are equal.
+
+The possibilities could be,
+\begin{enumerate}
+\item If term1 and term2 are constants, then term1 and term2 unify if and only if they are the same atom, or the same number.
+
+\item If term1 is a variable and term2 is any type of term, then term1 and term2 unify, and term1 is instantiated to term2 . Similarly, if 
+term2 is a variable and term1 is any type of term, then term1 and term2 unify, and term2 is instantiated to term1 . (So if they are both 
+variables, they’re both instantiated to each other, and we say that they share values.)
+
+\item If term1 and term2 are complex terms, then they unify if and only if:
+
+\begin{enumerate}
+\item They have the same functor and arity, and
+
+\item all their corresponding arguments unify, and
+
+\item the variable instantiations are compatible.
+\end{enumerate}
+
+\item Two terms unify if and only if it follows from the previous three clauses that they unify.
+\end{enumerate} 
+
+For example,
+
+\begin{minted}[linenos]{prolog}
+append([],L,L). 
+append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
+\end{minted}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale = 0.5]{PrologAppendWorking.png}
+\caption{Trace for append \cite{webiste:learnprolognowappend}}
+\label{fig:Trace for append}
+\end{figure}  
+
+\begin{comment}
 This chapter looks into solving the issue of conflicting type systems of the languages in question. \progLang{Haskell} is a strong 
 statically typed language requiring type signature for programming constructs at compile time while \progLang{Prolog} is strong dynamically 
 typed which lets through untyped programs. This prototype throws light on the process of tackling the issues involved in creating 
 a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
 benefits.       
+\end{comment}
+
+\subsection{What we do in this Prototype}
+This prototype throws light on the process of tackling the issues involved in creating 
+a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
+benefits. 
+
+
+We have a \progLang{Prolog} like language in \progLang{Haskell} defined via \textit{data}.
+
+The language defined is recursive in nature. 
+
+We convert it into a non recursive data type.
+
+
+  
 
 
 \subsection{Creating a data type}
@@ -36,14 +110,15 @@ For dynamic typing
 \end{enumerate}
 
 \paragraph{Transitional paragraph}
-This prototype .......
+An ideal case would would be something that is ........ dont know what to write
 
 
 To start with, replicating the single type "term" in \progLang{Prolog} one must consider the distinct constructs it can be associated to 
-such as  complex structures (for example, predicated clauses etc.), don't cares, cuts, variables and so on.
+such as complex structures (for example predicates, clauses etc.), don't cares, cuts, variables and so on.
+
+Consider the language below,
 
 \begin{minted}[linenos]{haskell}	
---david-0.2.0.2
 data VariableName = VariableName Int String
       deriving (Eq, Data, Typeable, Ord)
 data Atom         = Atom      !String
@@ -91,6 +166,8 @@ data Term = Struct Atom [Term]
           | Cut Int
       deriving (Eq, Data, Typeable)
 \end{minted}
+
+Also one cannot create Quantifiers plus logic 
 
 To split a data type into two levels, a single recursive data type is replaced by two related data types. Consider the following,
 \begin{minted}[linenos]{haskell}
@@ -144,7 +221,9 @@ instance Applicative (FlatTerm) where
 After flattening do fixing,
  
 
-Opening up the language somehow so as to accommodate your own variables .
+Opening up the language somehow so as to accommodate your own variables.
+
+
 
 
 
@@ -152,5 +231,5 @@ Opening up the language somehow so as to accommodate your own variables .
 
 \subsection{Black box}
 
-
+hello
 \end{document}

@@ -8,8 +8,8 @@
 \section{Work Completed}\label{sect:workCompleted}
 %----------------------------------------------------------------------------
 \subsection{What we are doing}
-A partial implementation of the logic programming language \progLang{Prolog} is provided by the library \texttt{prolog-0.2.0.1}. One of the objectives is to 
-implement monadic unification using the library \cite{unification-fd-lib}. 
+A partial implementation of the logic programming language \progLang{Prolog} is provided by the library \texttt{prolog-0.2.0.1}. One of the 
+objectives is to implement monadic unification using the library \cite{unification-fd-lib}. 
 
 
 \subsection{Unifiable Data Structures}
@@ -25,7 +25,7 @@ For a data type to be Unifiable, it must have instances of Functor, Foldable and
 
 The Functor class provides the \texttt{fmap} function which applies a particular operation to each element in the given data structure. The Foldable class \textit{folds} the data structure by recursively applying the operation to each element and 
 
-\subsection{Why \texttt{fix} is necessary?}
+\subsection{Why \texttt{Fix} is necessary?}
 Since \progLang{Haskell} is a lazy language it can work with infinite data structures. \textit{Type Synonyms} in \progLang{Haskell} cannot be self 
 referential.
 
@@ -82,6 +82,8 @@ A sample \texttt{FlatTerm} would be similar to \texttt{Tree}.
 The \texttt{FlatTree} is recursive but does not reference itself. But it too can be infinitely deep and hence writing a function to work on the structure
 is not possible.  
 
+\subsection{The other fix}
+
 The \texttt{fix} function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the 
 following scenario,
 
@@ -97,6 +99,13 @@ f s : f (f (f (... )))
 A fixed point of a function f is a value a such that f a == a. This is where the name of fix comes from: it finds the least-defined fixed point of a function.
 
 
+
+\subsection{The Fix we use}
+Fix-point type allows to define generic recursion schemes \cite{data-fix-lib}.
+
+\begin{minted}{haskell}[linenos]
+ Fix f = f (Fix f)
+\end{minted}
 
 
 
