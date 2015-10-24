@@ -85,6 +85,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Section Formatting                                          -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Spacing and Page Layout                                     -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,34 +123,53 @@
 
 
 %% The following modified from Kranz
-\oddsidemargin = .5in
+\setlength{\oddsidemargin }{0.5in}
+\setlength{\textwidth     }{6in}
+\setlength{\headheight    }{0in}
+\setlength{\headsep       }{0in}
+\setlength{\topmargin     }{0in}
+\setlength{\textheight    }{9in}
+\setlength{\floatsep      }{0.29in}
+\setlength{\textfloatsep  }{1\floatsep}
+\setlength{\intextsep     }{1\floatsep}
 
-\textwidth = 6in
+% Almost everything is double spaced.
+%
+\newcommand{\spacing}{1.8}
+
+% Footnotes are to be single spaced.
+%
+\newcommand{\unbcfootnote}[1]{%
+	\renewcommand{\baselinestretch}{1.0}%
+	\normalsize
+	\footnote{#1}%
+	\renewcommand{\baselinestretch}{\spacing}%
+	\normalsize
+}
+
+% Lengthy quotes must also be single spaced.
+% We provide a parameter for the citation label too.
+%
+\newenvironment{unbcquote}{%
+	\renewcommand{\baselinestretch}{1.0}%
+	\normalsize
+	\par\vspace{1.5mm}%
+	\begin{quote}\slshape
+        }{%
+	\end{quote}%
+	\renewcommand{\baselinestretch}{\spacing}%
+	\normalsize
+}
 
 
 
-\headheight = 0in
-
-\headsep = 0in
-
-\topmargin = 0in
-
-\textheight = 9in
-
-
-
-\floatsep = .29in
-
-\textfloatsep = \floatsep
-
-\intextsep = \floatsep
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% --  Unincorporated Grot                                         -- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % To have the references sorted in the order they are cited,
-
 % (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
-
 %
 
 \bibliographystyle{amsplain}
@@ -162,59 +182,12 @@
 
 
 
-% Almost everything is double spaced.
-
-%
-
-\newcommand{\spacing}{1.8}
 
 
 
-% Footnotes are to be single spaced.
-
-%
-
-\newcommand{\unbcfootnote}[1]{%
-
-	\renewcommand{\baselinestretch}{1.0}%
-
-	\normalsize
-
-	\footnote{#1}%
-
-	\renewcommand{\baselinestretch}{\spacing}%
-
-	\normalsize
-
-}
 
 
 
-% Lengthy quotes must also be single spaced.
-
-% We provide a parameter for the citation label too.
-
-%
-
-\newenvironment{unbcquote}[1][]{%
-
-	\renewcommand{\baselinestretch}{1.0}%
-
-	\normalsize
-
-	\def\unbccite{#1}
-
-	\vspace{1.5mm}
-
-	\begin{quote}\sl``}{''\unbccite
-
-	\end{quote}
-
-	\renewcommand{\baselinestretch}{\spacing}%
-
-	\normalsize
-
-}
 
 
 
