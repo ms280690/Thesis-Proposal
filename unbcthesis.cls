@@ -81,10 +81,11 @@
 
 
 
-% For other fonts, see http://www.tug.org/fonts/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Section Formatting                                          -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Spacing and Page Layout                                     -- %%
@@ -161,7 +162,39 @@
 	\normalsize
 }
 
+% Command for creating the thesis table of contents page
+% in accordance with the requirements of the UNBC Office 
+% of Graduate Programs.
+%
 
+\newcommand{\unbctableofcontents}{
+  \renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}
+  \addcontentsline{toc}{chapter}{Table of Contents}
+  \tableofcontents
+}
+
+% Command for creating the thesis list of tables page
+% in accordance with the requirements of the UNBC Office 
+% of Graduate Programs.
+%
+
+\newcommand{\unbclistoftables}{
+  \renewcommand{\listtablename}{\center{\small LIST OF TABLES}}%
+  \addcontentsline{toc}{chapter}{List of Tables}%
+  \listoftables
+}
+
+
+% Command for creating the thesis list of figures page
+% in accordance with the requirements of the UNBC Office 
+% of Graduate Programs.
+%
+
+\newcommand{\unbclistoffigures}{
+  \renewcommand{\listfigurename}{\center{\small LIST OF FIGURES}}%
+  \addcontentsline{toc}{chapter}{List of Figures}%
+  \listoffigures
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Unincorporated Grot                                         -- %%
@@ -174,176 +207,49 @@
 
 \bibliographystyle{amsplain}
 
-
-
-\setcounter{secnumdepth}{3}
-
-\setcounter{tocdepth}{3}
-
-
-
-
-
-
-
-
-
-
-
-
-% Command for creating the thesis table of contents page
-
-% in accordance with the requirements of the UNBC Office 
-
-% of Graduate Programs.
-
-%
-
-\newcommand{\unbctableofcontents}{
-
-%\spacing{1.0}
-\renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}
-
-
-
-\addcontentsline{toc}{chapter}{Table of Contents}
-
-\tableofcontents
-
-}
-
-
-
-% Command for creating the thesis list of tables page
-
-% in accordance with the requirements of the UNBC Office 
-
-% of Graduate Programs.
-
-%
-
-\newcommand{\unbclistoftables}{
-
-\renewcommand{\listtablename}{\center{\small LIST OF TABLES}}
-
-\addcontentsline{toc}{chapter}{List of Tables}
-
-\listoftables
-
-}
-
-
-
-% Command for creating the thesis list of figures page
-
-% in accordance with the requirements of the UNBC Office 
-
-% of Graduate Programs.
-
-%
-
-\newcommand{\unbclistoffigures}{
-
-\renewcommand{\listfigurename}{\center{\small LIST OF FIGURES}}
-
-
-
-\addcontentsline{toc}{chapter}{List of Figures}
-
-\listoffigures
-
-}
-
-
-
 % Command for creating the thesis title page in accordance with the
-
 % requirements of the UNBC Office of Graduate Programs.
-
 %
-
 \newcommand{\unbcthesistitle}[7]{%
+  %% Parameters
+  %  #1 The title
+  %  #2 The author
+  %  #3 Credential, e.g., Master of Science
+  %  #4 Degree area, e.g., Computer Science
+  %  #5 Month of publication  (e.g., March)
+  %  #6 Year  of publication  (e.g., 2015)
+  %  #7 Previous degrees, e.g., 
+  %  - B.Sc., University of Northern British Columbia, 2013
+  \thispagestyle{empty}%
+  \begin{center}%
+    \renewcommand{\baselinestretch}{1.0}%
+    \vspace{1pc}%
+    \textbf{#1}
+    \renewcommand{\baselinestretch}{\spacing}%
+    \vspace{2pc}
+    by \\
+    \vspace{2pc}
+    \textbf{#2} \\
+    \vspace{1pc}
+    #7 \\
+    \vspace{11pc}
 
-\thispagestyle{empty}
+    THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
+    THE REQUIREMENTS FOR THE DEGREE OF \\
+    {\upcase {#3}} \\
+    IN \\
+    {\upcase {#4}} \\
 
-\begin{center}
+    \vspace{11pc}
 
+    UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\
+    \vspace{1pc}
+    #5 #6 \\
+    \vspace{2pc}
 
-
-\vspace{1pc}
-
-
-
-\renewcommand{\baselinestretch}{1.0}%
-
-\textbf{#1}
-
-\renewcommand{\baselinestretch}{\spacing}%
-
-
-
-\vspace{2pc}
-
-
-
-by \\
-
-
-
-\vspace{2pc}
-
-
-
-\textbf{#2} \\
-
-
-
-\vspace{1pc}
-
-#7 \\
-
-\vspace{11pc}
-
-
-
-THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
-
-THE REQUIREMENTS FOR THE DEGREE OF \\
-
-#3 \\
-
-IN \\
-
-#4 \\
-
-
-
-\vspace{11pc}
-
-
-
-UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\
-
-\vspace{1pc}
-
-#5 #6 \\
-
-
-
-\vspace{2pc}
-
-
-
-\copyright\ #2, #6 
-
-
-
+    \copyright\ #2, #6 
+  \end{center}
 \vspace{\fill}
-
-
-
-\end{center}
-
 }
 
 
