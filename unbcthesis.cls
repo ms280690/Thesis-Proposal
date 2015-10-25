@@ -242,7 +242,7 @@
 \vspace{\fill}
 }
 
-
+%   ------------------------------------------------------------   %
 
 % Command for creating the thesis copyright page in accordance with the
 % requirements of the UNBC Office of Graduate Programs.
@@ -322,6 +322,196 @@
     \vspace{\fill}
 }
 
+%   ------------------------------------------------------------   %
+
+% The \unbcfig command is used to insert a new 
+% pdf, png, or jpg figure into our document.  
+% Usage is:
+
+%
+%	\unbcfig[args]{filename}{caption}
+%
+
+% where:
+%	- the optional 'args' argument is passed to the
+%	  embedded \includegraphics command, this can be used
+%	  to scale the figure or rotate it.
+
+%	- 'filename' is the name of the graphics file in the 'figures'
+%	  directory that is to be inserted (note that 'filename'
+%         should include the  extension).
+%	- 'filename' also serves as the label for the figure.
+%	  with the text 'fig:' prepended.
+%
+
+% Sample Usage:
+
+% 	\unbcfig[scale=0.5,angle=90]{barchart.png}{Population over time}
+
+% inserts the graphic file 'figures/barchart.png' reduced in size by 50%
+% rotated 90 degrees and with the caption "Popuation over Time."
+% We can refer to that figure as Figure~\ref{fig:barchart} in the text.
+%
+
+\newcommand{\unbcfig}[3][scale=1.0]{%
+	\begin{figure}[!htbp]%
+		\centering
+		\vspace{2mm}%
+		\includegraphics[#1]{figures/#2}%
+		\caption{#3}%
+		\label{fig:#2}%
+	\end{figure}
+}
+
+%   ------------------------------------------------------------   %
+
+% \unbclfig command inserts a figure in landscape mode.  The
+% entire page is rotated to accommodate the figure.  The arguments
+% are the same as for \unbcfig, above
+%
+
+\newcommand{\unbclfig}[3][scale=1.0]{%
+	\begin{sidewaysfigure}[!htbp]
+		\centering
+		\vspace{2mm}%
+		\includegraphics[#1]{figures/#2}%
+		\caption{#3}%
+		\label{fig:#2}%
+	\end{sidewaysfigure}
+}
+
+%   ------------------------------------------------------------   %
+
+% The 'unbctxtfig' environment is used to insert 'textual' figures
+% into our document, such as brief source code snippets.  Usage is:
+%
+
+%	\begin{unbctxtfig}[spacing]{label}{caption}{width}
+%	  text for 'figure'
+%	\end{unbctxtfig}
+%
+% where:
+%	- 'spacing' is a number representing the baselinestretch
+%	  (line-spacing) to use for the text figure.  Default is
+%          single-spacing.
+
+%	- 'label' is the label to be used for referencing.
+%	   The figure can be referenced as Figure~\ref{fig:label}.
+
+%	- 'caption' is the caption to display below the figure.
+
+%	- 'width' is the width of the minipage in which the text figure
+%	  is formatted.
+
+%
+
+% Sample usage:
+% \begin{unbctxtfig}[1.0]{code}{Hello World}{0.5\textwidth}
+%   Some text
+% \end{unbctxtfig}
+%
+
+\newenvironment{unbctxtfig}[4][\spacing]{%
+	\begin{figure}[!htbp]
+		\centering
+		\def\unbccaption{#3}%
+		\def\unbclabel{#2}%
+		\renewcommand{\baselinestretch}{#1}%
+		\normalsize%
+		\begin{minipage}{#4}
+		\hrule \hrule
+		\bigskip
+}{%
+
+		\hrule \hrule
+		\end{minipage}%
+
+		\renewcommand{\baselinestretch}{\spacing}%
+		\normalsize
+		\caption{\unbccaption}%
+		\label{fig:\unbclabel}%
+	\end{figure}
+}
+
+%   ------------------------------------------------------------   %
+
+% The 'unbctab' environment is used to insert a new table into our document.
+% Usage is:
+
+%
+%	\begin{unbctab}{table_format}{label}{caption}
+%            table contents
+%       \end{unbctab}
+%
+
+% where:
+%	- 'label' is the label used to reference the Table.
+%	   We can refer to the table as Table~\ref{tab:label} in
+%          the text.
+
+%	- 'caption' is the caption placed above the Table.
+%
+%
+
+\newenvironment{unbctab}[3]{%
+	\begin{table}[!htbp]%
+		\centering
+		\caption{#3}%
+		\label{tab:#2}%
+		\vspace{2mm}%
+		\begin{tabular}{#1}%
+
+}{%
+
+		\end{tabular}
+	\end{table}
+}
+
+%   ------------------------------------------------------------   %
+
+% The 'unbcltab' environment is like unbctab, but displays the table
+% in landscape mode on its own page.  See unbctab environment for usage.
+%
+
+\newenvironment{unbcltab}[3]{%
+	\begin{sidewaystable}
+		\centering
+		\caption{#3}%
+		\label{tab:#2}%
+		\vspace{2mm}%
+		\begin{tabular}{#1}%
+
+}{%
+		\end{tabular}%
+	\end{sidewaystable}%
+}
+
+%   ------------------------------------------------------------   %
+
+% The \unbceqn environment is used to add an equation to the thesis.
+% Usage is:
+%
+%	\begin{unbceqn}{label}
+%            equation body
+%	\end{unbceqn}
+
+%
+% where:
+%	- 'label' is the label used to reference the Equation.
+%	   We can refer to the equation as Table~\ref{eqn:label} in
+%          the text.
+%
+
+\newenvironment{unbceqn}[1]{%
+	\begin{equation}%
+		\label{eqn:#1}
+}{%
+	\end{equation}
+}
+
+%   ------------------------------------------------------------   %
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Unincorporated Grot                                         -- %%
@@ -333,313 +523,3 @@
 %
 
 \bibliographystyle{amsplain}
-
-
-
-
-
-
-% The \unbcfig command is used to insert a new 
-
-% pdf, png, or jpg figure into our document.  
-
-% Usage is:
-
-%
-
-%	\unbcfig[args]{filename}{caption}
-
-%
-
-% where:
-
-%	- the optional 'args' argument is passed to the
-
-%	  embedded \includegraphics command, this can be used
-
-%	  to scale the figure or rotate it.
-
-%	- 'filename' is the name of the graphics file in the 'figures'
-
-%	  directory that is to be inserted (note that 'filename'
-
-%   should include the  extension).
-
-%	- 'filename' also serves as the label for the figure.
-
-%	  with the text 'fig:' prepended.
-
-%
-
-% Sample Usage:
-
-% 	\unbcfig[scale=0.5,angle=90]{barchart.png}{Population over time}
-
-
-
-% inserts the graphic file 'figures/barchart.png' reduced in size by 50%
-
-% rotated 90 degrees and with the caption "Popuation over Time."
-
-% We can refer to that figure as Figure~\ref{fig:barchart} in the text.
-
-%
-
-\newcommand{\unbcfig}[3][scale=1.0]{%
-
-	\begin{figure}[!htbp]
-
-		\centering
-
-		\vspace{2mm}
-
-		\includegraphics[#1]{figures/#2}
-
-		\caption{#3}
-
-		\label{fig:#2}
-
-	\end{figure}
-
-}
-
-
-
-% \unbclfig command inserts a figure in landscape mode.  The
-
-% entire page is rotated to accommodate the figure.  The arguments
-
-% are the same as for \unbcfig, above
-
-%
-
-\newcommand{\unbclfig}[3][scale=1.0]{%
-
-	\begin{sidewaysfigure}[!htbp]
-
-		\centering
-
-		\vspace{2mm}
-
-		\includegraphics[#1]{figures/#2}
-
-		\caption{#3}
-
-		\label{fig:#2}
-
-	\end{sidewaysfigure}
-
-}
-
-
-
-% The 'unbctxtfig' environment is used to insert 'textual' figures
-
-% into our document, such as brief source code snippets.  Usage is:
-
-%
-
-%	\begin{unbctxtfig}[spacing]{label}{caption}{width}
-
-%	  text for 'figure'
-
-%	\end{unbctxtfig}
-
-%
-
-% where:
-
-%	- 'spacing' is a number representing the baselinestretch
-
-%	  (line-spacing) to use for the text figure.  Default is
-
-%          single-spacing.
-
-%	- 'label' is the label to be used for referencing.
-
-%	   The figure can be referenced as Figure~\ref{fig:label}.
-
-%	- 'caption' is the caption to display below the figure.
-
-%	- 'width' is the width of the minipage in which the text figure
-
-%	  is formatted.
-
-%
-
-% Sample usage:
-
-% \begin{unbctxtfig}[1.0]{code}{Hello World}{0.5\textwidth}
-
-%   Some text
-
-% \end{unbctxtfig}
-
-%
-
-\newenvironment{unbctxtfig}[4][\spacing]{%
-
-	\begin{figure}[!htbp]
-
-		\centering
-
-		\def\unbccaption{#3}%
-
-		\def\unbclabel{#2}%
-
-		\renewcommand{\baselinestretch}{#1}%
-
-		\normalsize%
-
-		\begin{minipage}{#4}
-
-		\hrule \hrule
-
-		\bigskip
-
-}{%
-
-		\hrule \hrule
-
-		\end{minipage}
-
-		\renewcommand{\baselinestretch}{\spacing}%
-
-		\normalsize%
-
-		\caption{\unbccaption}
-
-		\label{fig:\unbclabel}
-
-	\end{figure}
-
-}
-
-
-
-% The 'unbctab' environment is used to insert a new table into our document.
-
-% Usage is:
-
-%
-
-%	\begin{unbctab}{table_format}{label}{caption}
-
-%        table contents
-
-%       \end{unbctab}
-
-%
-
-% where:
-
-%	- 'label' is the label used to reference the Table.
-
-%	   We can refer to the table as Table~\ref{tab:label} in
-
-%          the text.
-
-%	- 'caption' is the caption placed above the Table.
-
-%
-
-%
-
-\newenvironment{unbctab}[3]{%
-
-	\begin{table}[!htbp]
-
-		\centering
-
-		\caption{#3}
-
-		\label{tab:#2}
-
-		\vspace{2mm}
-
-		\begin{tabular}{#1}
-
-}{%
-
-		\end{tabular}
-
-	\end{table}
-
-}
-
-
-
-% The 'unbcltab' environment is like unbctab, but displays the table
-
-% in landscape mode on its own page.  See unbctab environment for usage.
-
-%
-
-\newenvironment{unbcltab}[3]{%
-
-	\begin{sidewaystable}
-
-		\centering
-
-		\caption{#3}
-
-		\label{tab:#2}
-
-		\vspace{2mm}
-
-		\begin{tabular}{#1}
-
-}{%
-
-		\end{tabular}
-
-	\end{sidewaystable}
-
-}
-
-
-
-% The \unbceqn environment is used to add an equation to the thesis.
-
-% Usage is:
-
-%
-
-%	\begin{unbceqn}{label}
-
-%         equation body
-
-%	\end{unbceqn}
-
-%
-
-% where:
-
-%	- 'label' is the label used to reference the Equation.
-
-%	   We can refer to the equation as Table~\ref{eqn:label} in
-
-%          the text.
-
-%
-
-\newenvironment{unbceqn}[1]{%
-
-	\begin{equation}
-
-		\label{eqn:#1}
-
-}{
-
-	\end{equation}
-
-}
-
-
-
-%
-
-% For theorems and corollaries.
-
-%
-
