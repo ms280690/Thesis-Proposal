@@ -39,14 +39,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{unbcthesis}[2015/10/24 UNBC Thesis Style]
 %                          %Y/%m/%d
-\newenvironment{scope}{}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Packages                                                    -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePckage{graphicx}
-\RequirePckage{calc}
+\RequirePackage{graphicx}
+\RequirePackage{calc}
 
 
 %%==========================================================%%
@@ -77,6 +76,10 @@
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClassWithOptions{report}
+%% packages dependent on class and options
+\RequirePackage[doublespacing]{setspace}
+\RequirePackage[plainpages=false,
+  pdfpagelabels]{hyperref}  % Get nice PDF links
 
 
 
@@ -86,6 +89,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+
+%+ from ClemsonProposal.cls
+\newenvironment{frontmatter}
+  {\pagestyle{plain}\pagenumbering{roman}}
+  {\cleardoublepage\pagenumbering{arabic}}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Spacing and Page Layout                                     -- %%
@@ -136,30 +146,25 @@
 
 % Almost everything is double spaced.
 %
-\newcommand{\spacing}{1.8}
 
 % Footnotes are to be single spaced.
 %
 \newcommand{\unbcfootnote}[1]{%
-	\renewcommand{\baselinestretch}{1.0}%
-	\normalsize
+	\begin{singlespace}
 	\footnote{#1}%
-	\renewcommand{\baselinestretch}{\spacing}%
-	\normalsize
+        \end{singlespace}
 }
 
 % Lengthy quotes must also be single spaced.
 % We provide a parameter for the citation label too.
 %
 \newenvironment{unbcquote}{%
-	\renewcommand{\baselinestretch}{1.0}%
-	\normalsize
+	\begin{singlespace}
 	\par\vspace{1.5mm}%
 	\begin{quote}\slshape
         }{%
 	\end{quote}%
-	\renewcommand{\baselinestretch}{\spacing}%
-	\normalsize
+        \end{singlespace}
 }
 
 % Command for creating the thesis table of contents page
@@ -196,6 +201,47 @@
   \listoffigures
 }
 
+% The following commands are stolen from the ClemsonProposal.cls
+\gdef\UNBCthesis@Month          {}
+\gdef\UNBCthesis@Year           {}
+\gdef\UNBCthesis@Major          {}
+\gdef\UNBCthesis@Degree         {}
+\gdef\UNBCthesis@MemberI        {}
+\gdef\UNBCthesis@MemberII       {}
+\gdef\UNBCthesis@MemberIII      {}
+\gdef\UNBCthesis@MemberIV       {}
+\gdef\UNBCthesis@MemberV        {}
+\gdef\UNBCthesis@MemberVI       {}
+\gdef\UNBCthesis@Author         {}
+\gdef\UNBCthesis@Title          {}
+
+\newcommand{\setMonth}    [1]{\ifx\empty#1\else \gdef\UNBCthesis@Month    {#1}\fi}
+\newcommand{\setYear}     [1]{\ifx\empty#1\else \gdef\UNBCthesis@Year     {#1}\fi}
+\newcommand{\setMajor}    [1]{\ifx\empty#1\else \gdef\UNBCthesis@Major    {#1}\fi}
+\newcommand{\setDegree}   [1]{\ifx\empty#1\else \gdef\UNBCthesis@Degree   {#1}\fi}
+\newcommand{\setMemberI}  [1]{\ifx\empty#1\else \gdef\UNBCthesis@MemberI  {#1}\fi}
+\newcommand{\setMemberII} [1]{\ifx\empty#1\else \gdef\UNBCthesis@MemberII {#1}\fi}
+\newcommand{\setMemberIII}[1]{\ifx\empty#1\else \gdef\UNBCthesis@MemberIII{#1}\fi}
+\newcommand{\setMemberIV} [1]{\ifx\empty#1\else \gdef\UNBCthesis@MemberIV {#1}\fi}
+\newcommand{\setMemberV}  [1]{\ifx\empty#1\else \gdef\UNBCthesis@MemberV  {#1}\fi}
+\newcommand{\setMemberVI} [1]{\ifx\empty#1\else \gdef\UNBCthesis@MemberVI {#1}\fi}
+\newcommand{\setAuthor}   [1]{\ifx\empty#1\else \gdef\UNBCthesis@Author   {#1}\fi}
+\newcommand{\setTitle}    [1]{\ifx\empty#1\else \gdef\UNBCthesis@Title    {#1}\fi}
+
+
+\newcommand{\theMonth}    {\UNBCthesis@Month    }
+\newcommand{\theYear}     {\UNBCthesis@Year     }
+\newcommand{\theMajor}    {\UNBCthesis@Major    }
+\newcommand{\theDegree}   {\UNBCthesis@Degree   }
+\newcommand{\theMemberI}  {\UNBCthesis@MemberI  }
+\newcommand{\theMemberII} {\UNBCthesis@MemberII }
+\newcommand{\theMemberIII}{\UNBCthesis@MemberIII}
+\newcommand{\theMemberIV} {\UNBCthesis@MemberIV }
+\newcommand{\theMemberV}  {\UNBCthesis@MemberV  }
+\newcommand{\theMemberVI} {\UNBCthesis@MemberVI }
+\newcommand{\theAuthor}   {\UNBCthesis@Author   }
+\newcommand{\theTitle}    {\UNBCthesis@Title    }
+
 
 % Command for creating the thesis title page in accordance with the
 % requirements of the UNBC Office of Graduate Programs.
@@ -212,10 +258,10 @@
   %  - B.Sc., University of Northern British Columbia, 2013
   \thispagestyle{empty}%
   \begin{center}%
-    \renewcommand{\baselinestretch}{1.0}%
+    \begin{singlespace}
     \vspace{1pc}%
     \textbf{#1}
-    \renewcommand{\baselinestretch}{\spacing}%
+    \end{singlespace}
     \vspace{2pc}
     by \\
     \vspace{2pc}
@@ -226,9 +272,9 @@
 
     THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
     THE REQUIREMENTS FOR THE DEGREE OF \\
-    {\upcase {#3}} \\
+    \MakeUppercase {#3} \\
     IN \\
-    {\upcase {#4}} \\
+    \MakeUppercase {#4} \\
 
     \vspace{11pc}
 
@@ -240,6 +286,18 @@
     \copyright\ #2, #6 
   \end{center}
 \vspace{\fill}
+}
+
+%   ------------------------------------------------------------   %
+
+% Command for producing a bibliography in UNBC approved style
+
+\newcommand\unbcbibliography[1]{
+    \begin{singlespacing}
+    \phantomsection
+    \addcontentsline{toc}{section}{Bibliography}
+    \bibliography{#1}
+    \end{singlespacing}
 }
 
 %   ------------------------------------------------------------   %
@@ -411,13 +469,12 @@
 % \end{unbctxtfig}
 %
 
-\newenvironment{unbctxtfig}[4][\spacing]{%
+\newenvironment{unbctxtfig}[4][1.0]{%
 	\begin{figure}[!htbp]
 		\centering
 		\def\unbccaption{#3}%
 		\def\unbclabel{#2}%
-		\renewcommand{\baselinestretch}{#1}%
-		\normalsize%
+		\begin{spacing}{#1}
 		\begin{minipage}{#4}
 		\hrule \hrule
 		\bigskip
@@ -425,9 +482,7 @@
 
 		\hrule \hrule
 		\end{minipage}%
-
-		\renewcommand{\baselinestretch}{\spacing}%
-		\normalsize
+                \end{spacing}
 		\caption{\unbccaption}%
 		\label{fig:\unbclabel}%
 	\end{figure}
@@ -522,4 +577,5 @@
 % (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
 %
 
+\newenvironment{scope}{}{}
 \bibliographystyle{amsplain}
