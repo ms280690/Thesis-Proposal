@@ -196,16 +196,6 @@
   \listoffigures
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% --  Unincorporated Grot                                         -- %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% To have the references sorted in the order they are cited,
-% (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
-%
-
-\bibliographystyle{amsplain}
 
 % Command for creating the thesis title page in accordance with the
 % requirements of the UNBC Office of Graduate Programs.
@@ -255,122 +245,97 @@
 
 
 % Command for creating the thesis copyright page in accordance with the
-
 % requirements of the UNBC Office of Graduate Programs.
-
 %
-
-% Usage
-
+% Usage:
 %
-
 % Fill in the title, author, month, and year.
 
 % \unbcthesiscopyright
-
 %	{Digital Filtering Using a Neural Network}
+%       {Allan Edward Kranz}
+%       {10 May 2010}
+%
+\newcommand{\unbcthesiscopyright}[3]{
+    \newlength{\txtwdtha}%
+    \newlength{\txtwdthb}%
+    \newlength{\txtwdthc}%
+    \newlength{\txtwdthd}%
+    \newlength{\txtwdthe}%
+    \settowidth{\txtwdtha}{#1}%
+    \settowidth{\txtwdthb}{#2}%
+    \settowidth{\txtwdthc}{#3}%
+    \settowidth{\txtwdthd}{#3}%
+    \settowidth{\txtwdthe}{#3}%
 
-% {Allan Edward Kranz}
 
-% {10 May 2010}
 
+    \thispagestyle{empty}%
+    \newpage
+    \begin{center}
+      \textbf{UNIVERSITY OF NORTHERN BRITISH COLUMBIA PARTIAL \\ 
+        COPYRIGHT LICENCE}
+    \end{center}
+
+    
+    I hereby grant the University of Northern British Columbia Library
+    the right to lend my project/thesis/dissertation to users of the
+    library or to other libraries.
+    Furthermore, I grant the University of Northern British Columbia
+    Library the right to make single copies only of my
+    project/thesis/dissertation for users of the library or in response
+    to a request from other libraries, on their behalf or for one of
+    their users.
+    Permission for extensive copying of this project/thesis/dissertation
+    for scholarly purposes may be granted by me or by a member of the
+    university designated by me.
+    It is understood that copying or publication of this
+    thesis/dissertation for financial gain shall not be allowed without
+    my written permission.
+
+    \vspace{3pc}
+
+    \noindent 
+    Title of Project/Thesis/Dissertation:
+    \rule[-0.1cm]{\linewidth-\txtwdthd}{0.01cm}\\
+
+    \noindent
+    \rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm}
+    #1
+    \rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm} \\
+
+    \noindent
+    \rule[-0.1cm]{\linewidth}{0.01cm} \\
+
+    \vspace{1pc}
+
+    \noindent Author 	
+    \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthb)*\real{0.5}}{0.01cm}
+    #2
+    \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthb)*\real{0.5}}{0.01cm}
+
+    \rule[-0.1cm]{(\linewidth-\txtwdthe)*\real{0.3}}{0.01cm}
+    \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm}
+    #3
+    \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm}\\
+    \hspace*{25mm}Printed Name \hspace*{25mm}Signature \hspace*{25mm}Date 
+    \vspace{\fill}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% --  Unincorporated Grot                                         -- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% To have the references sorted in the order they are cited,
+% (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
 %
 
-\newcommand{\unbcthesiscopyright}[3]{
+\bibliographystyle{amsplain}
 
 
 
-\newlength{\txtwdtha}
-
-\settowidth{\txtwdtha}{#1}
-
-
-
-\newlength{\txtwdthb}
-
-\settowidth{\txtwdthb}{#2}
-
-
-
-\newlength{\txtwdthc}
-
-\settowidth{\txtwdthc}{#3}
-
-
-
-\newlength{\txtwdthd}
-
-\settowidth{\txtwdthd}{#3}
-
-
-
-\newlength{\txtwdthe}
-
-\settowidth{\txtwdthe}{#3}
-
-
-
-\thispagestyle{empty}
-
-\newpage
-
-\begin{center}
-
-
-
-\textbf{UNIVERSITY OF NORTHERN BRITISH COLUMBIA PARTIAL \\ 
-
-COPYRIGHT LICENCE}
-
-
-
-\end{center}
-
-
-
-I hereby grant the University of Northern British Columbia Library the right to lend my project/thesis/dissertation to users of the library or to other libraries. Furthermore, I grant the University of Northern British Columbia Library the right to make single copies only of my project/thesis/dissertation for users of the library or in response to a request from other libraries, on their behalf or for one of their users. Permission for extensive copying of this project/thesis/dissertation for scholarly purposes may be granted by me or by a member of the university designated by me. It is understood that copying or publication of this thesis/dissertation for financial gain shall not be allowed without my written permission.\\
-
-
-
-\vspace{3pc}
-
-
-
-\noindent 
-
-Title of Project/Thesis/Dissertation: \rule[-0.1cm]{\linewidth-\txtwdthd}{0.01cm}\\
-
-\noindent
-
-\rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm} #1 \rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm} \\
-
-\noindent
-
-\rule[-0.1cm]{\linewidth}{0.01cm} \\
-
-
-
-\vspace{1pc}
-
-
-
-\noindent
-
-Author 	
-
-\rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthb)*\real{0.5}}{0.01cm} #2 			 \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthb)*\real{0.5}}{0.01cm}
-
-\rule[-0.1cm]{(\linewidth-\txtwdthe)*\real{0.3}}{0.01cm}
-
-\rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm} #3 			 \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm}\\
-
-\hspace*{25mm}Printed Name \hspace*{25mm}Signature \hspace*{25mm}Date 
-
-
-
-\vspace{\fill}
-
-}
 
 
 
