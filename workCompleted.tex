@@ -103,7 +103,7 @@ A fixed point of a function f is a value a such that f a == a. This is where the
 \section{The Fix we use}
 Fix-point type allows to define generic recursion schemes \cite{data-fix-lib}.
 
-\begin{minted}{haskell}[linenos]
+\begin{minted}[linenos]{haskell}
  Fix f = f (Fix f)
 \end{minted}
 
