@@ -1,18 +1,19 @@
+
 \documentclass[proposal.tex]{subfiles} 
 
 
 \begin{document}
 
-\section{Prototype 1}{\label{proto1}}
+\chapter{Prototype 1}{\label{proto1}}
 
-\subsection{About this chapter}
+\section{About this chapter}
 This chapter throws light on what \progLang{Prolog} does to resolve a given query via \textit{unification} and this can be replicated in
 the host language along with the challenges.  
 
 This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in 
 \progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
 
-\subsection{How Prolog works ?}
+\section{How Prolog works ?}
 Looking at how \progLang{Prolog} works \cite{webiste:learnprolognow}.
 
 Most \progLang{Prolog} distributions have three types of terms:
@@ -93,7 +94,7 @@ a data type to replicate the target language type system while conforming to the
 benefits.       
 \end{comment}
 
-\subsection{What we do in this Prototype}
+\section{What we do in this Prototype}
 This prototype throws light on the process of tackling the issues involved in creating 
 a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
 benefits. 
@@ -109,7 +110,7 @@ We convert it into a non recursive data type.
   
 
 
-\subsection{Creating a data type}
+\section{Creating a data type}
 
 A type system consists of a set of rules to define a "type" to different constructs in a programming language such as variables, functions 
 and so on. A static type system requires types to be attached to the programming constructs before hand which results in finding errors at 
@@ -209,7 +210,7 @@ and a generic fuinction like,
 \mint{haskell}|map :: (a -> b) -> FlatTerm a -> FlatTerm b|
 
 
-\subsection{Working with the language}
+\section{Working with the language}
 Creating instances,
 \begin{minted}[linenos]{haskell}
 instance Functor (FlatTerm) where
@@ -252,7 +253,7 @@ Opening up the language somehow so as to accommodate your own variables.
 
 
 
-\subsection{Black box}
+\section{Black box}
 
 hello
 \end{document}
