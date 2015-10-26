@@ -173,9 +173,11 @@
 %
 
 \newcommand{\unbctableofcontents}{
-  \renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}
-  \addcontentsline{toc}{chapter}{Table of Contents}
+  \renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}%
+  \addcontentsline{toc}{chapter}{Table of Contents}%
+  \begin{singlespacing}
   \tableofcontents
+  \end{singlespacing}
 }
 
 % Command for creating the thesis list of tables page
@@ -270,12 +272,14 @@
     #7 \\
     \vspace{11pc}
 
+    \begin{singlespace}
     THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
     THE REQUIREMENTS FOR THE DEGREE OF \\
     \MakeUppercase {#3} \\
     IN \\
     \MakeUppercase {#4} \\
-
+    \end{singlespace}
+    
     \vspace{11pc}
 
     UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\
@@ -287,6 +291,18 @@
   \end{center}
 \vspace{\fill}
 }
+
+%   ------------------------------------------------------------   %
+
+\newenvironment{unbcabstract}{
+    \begin{center}
+        \Large{\textbf{Abstract}}
+        \vspace{.1in}
+    \end{center}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Abstract}
+}{\par\newpage}
+
 
 %   ------------------------------------------------------------   %
 
