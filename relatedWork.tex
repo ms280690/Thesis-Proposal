@@ -6,10 +6,10 @@
 
 
 % ---------------------------------------------------------------------------
-\section{Related Work}\label{sect:relatedWork}
+\chapter{Related Work}\label{chap:relatedWork}
 % ---------------------------------------------------------------------------
 
-\paragraph{}
+
  There are some technicalities which are indirectly related to the problem but do not bare a point of contact. The underpinnings of the languages throw some more light on the how different languages work to solve a problem. Different programming paradigms incorporate different operational mechanisms. For example, \progLang{Prolog} programs execute on the Warren Abstract Machine \cite{ait1999warren} which has three different storage usages; a global stack for compound terms, for environment frames and choice points and lastly the trail to record which variables bindings ought to be undone on backtracking.        
 
 \par Constraint programming \cite{website:constraintprogwiki} is closely related to the declarative programming paradigm in the sense that the relations between variables is specified in the form of constraints. For example, consider a program to solve a simultaneous equation, now adding on to that restricting the range of the values that the variables can possible take, thus adding constraints to the possible solutions. Related to the same are Constraint Handling Rules \cite{website:chrwiki}, which are extensions to a language, simply speaking adding constraints to a language like \progLang{Prolog}.  
@@ -20,7 +20,7 @@
 
 
 \begin{comment}
-\subsection{Related terms}
+\section{Related terms}
 \begin{enumerate}
 	\item Prolog in Haskell
 	\item Embedding One language into another language
@@ -34,7 +34,7 @@
 \end{enumerate}
 
 
-\subsection{Prolog Libraries in Haskell}
+\section{Prolog Libraries in Haskell}
 \begin{enumerate}
 	\item Nano Prolog, \cite{nanoprolog-lib}
 	This is basically a very small interpreter for Prolog. Feed in a prolog file and, the clauses are read and an REPL asks for a goal. 
@@ -68,7 +68,7 @@ So you cannot write a program, you cannot do much with the REPL, its not a full 
 				
 \end{enumerate}
 
-\subsection{Logic Libraries in Haskell}
+\section{Logic Libraries in Haskell}
 \begin{enumerate}
 	\item logict
 	\item logic-classes
@@ -77,18 +77,18 @@ So you cannot write a program, you cannot do much with the REPL, its not a full 
 	\item logic grows on trees
 \end{enumerate}	
 
-\subsection{Unification Libraries in Haskell}
+\section{Unification Libraries in Haskell}
 \begin{enumerate}
 	\item unification-fd
 	\item cmu	
 \end{enumerate}
 
-\subsection{Concatenative Programming Libraries in Haskell}
+\section{Concatenative Programming Libraries in Haskell}
 \begin{enumerate}
 	\item peg
 \end{enumerate}
 
-\subsection{Constraint Programming and Constraint Handling Rules}
+\section{Constraint Programming and Constraint Handling Rules}
 \begin{enumerate}
 	\item monadiccp
 	\item monadicccp-gecode
@@ -97,7 +97,7 @@ So you cannot write a program, you cannot do much with the REPL, its not a full 
 \end{enumerate}
 
 
-\subsection{Functional Logic Programming Language}
+\section{Functional Logic Programming Language}
 \begin{enumerate}
 	\item The intergration of functions into Logic Programming : From Theory to Practice,
 				\\* \url{http://www.informatik.uni-kiel.de/~mh/publications/papers/JLP94.html}

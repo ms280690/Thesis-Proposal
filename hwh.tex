@@ -1,9 +1,9 @@
-\documentclass[proposal.tex]{subfiles} 
+\documentclass[thesis-solanki.tex]{subfiles}
 
 \begin{document}
 
 % ---------------------------------------------------------------------------
-\section{Haskell or Why Haskell ?}\label{sect:hwh}
+\chapter{Haskell or Why Haskell ?}\label{chap:hwh}
 % ---------------------------------------------------------------------------
 
 In this chapter we discuss the properties of \progLang{Haskell} 
@@ -14,12 +14,10 @@ domain specific languages(EDSLs).
 \begin{enumerate}
 
 \item \progLang{Haskell} as a functional programming language
-\paragraph{}
 Haskell is an advanced purely-functional programming language. In particular, it is a polymorphically statically typed, lazy, purely 
 functional language \cite{website:haskellwiki}. It is one of the popular functional programming languages \cite{website:langpop}. 
 \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}. 
 
-\paragraph{}
 Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP. Opting for embedding provides a "shortcut" to create a 
 language which may be designed to provide specific functionality. Designing a language from scratch would require writing a parser, code 
 generator / interpreter and possibly a debugger, not to mention all the routine stuff that every language needs like variables, control 
@@ -27,7 +25,6 @@ structures and arithmetic types. All of the aforementioned are provided by the h
 the same can be found here \cite{jones2001composing, meyer2008eiffel} which talk about introducing combinator libraries for custom 
 functionality.
 
-\paragraph{}
 The flip side of the coin is that the host language enforces certain aspects and properties of the eDSL and hence might not be exact to 
 specification, all required constructs cannot be implemented due to constraints, programs could be difficult to debug since it happens at
 the host level and so on.
@@ -43,20 +40,17 @@ is recursion \cite{website:controlflowdalhousie}. For example, \progLang{Java} h
 declarative style consists of defining components of programs i.e. computations not a control 
 flow\cite{website:declarativeprogrammingwiki}.     
 
-\paragraph{} 
 This is where \progLang{Haskell} shines by providing something called a \textit{monad}. Functional Programming Languages 
 define computations which then need to be ordered in some way to form a combination\cite{website:monadascomputation}. A monad gives a 
 bubble within the language to allow modification of control flow without affecting the rest of the universe. This is especially 
 useful while handling side effects. 
 
-\paragraph{}
 A related topic would be of persistence languages, architectures and data structures. Persistent programming is concerned with creating and 
 manipulating data in a manner that is independent of its lifetime \cite{morrison1990persistent}. A persistent data structure supports 
 access to multiple versions which may arise after modifications \cite{driscoll1986making, website:persistentdatastructuresmit}. A structure 
 is partially persistent if all versions can be accessed but only the current can be modified and fully persistent if all of them can be 
 modified.       
 
-\paragraph{}
 Coming back to control flow; for example, implementing backtracking in an imperative language would mean undoing side effects which even 
 \progLang{Prolog} is not able to do since the asserts and retracts cannot be undone. In \progLang{Haskell}, a monad defines a model for 
 control flow and how side effects would propagate through a computation from step to step or modification to modification. And

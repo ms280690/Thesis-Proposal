@@ -1,13 +1,13 @@
 
-\documentclass[proposal.tex]{subfiles} 
+\documentclass[thesis-solanki.tex]{subfiles}
 
 \begin{document}
-\section{Results}\label{sect:results}
+\chapter{Results}\label{sect:results}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-\subsection{Types}
+\section{Types}
 
-\paragraph{}
+
 One of the major differences between \progLang{Prolog} and \progLang{Haskell} is how each language handles types. \progLang{Prolog} is an 
 untyped language meaning any operation can be performed on the data irrespective of its type. \progLang{Haskell} on the other hand is 
 strongly typed i.e. each operation requires a signature stating what types of data it can work with. Moreover, the \progLang{Haskell} type 
@@ -60,7 +60,7 @@ a(X, !, b).
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Lazy Evaluation}
+\section{Lazy Evaluation}
 
 
 
@@ -70,7 +70,7 @@ a(X, !, b).
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Opening up the Language}
+\section{Opening up the Language}
 
 \subparagraph{Flattening}
 
@@ -85,7 +85,7 @@ a(X, !, b).
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Quasi Quotation}
+\section{Quasi Quotation}
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
@@ -95,13 +95,13 @@ a(X, !, b).
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Template Haskell}
+\section{Template Haskell}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Higher Order Functions}
+\section{Higher Order Functions}
 
 \begin{minted}{prolog}
 % Mehul Solanki.
@@ -129,7 +129,7 @@ true
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-\subsection{I/O}
+\section{I/O}
 
 \begin{minted}{haskell}
 data Result = Ordinary ____________ --No I/O required
@@ -143,7 +143,7 @@ data Result = Ordinary ____________ --No I/O required
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Mutability}
+\section{Mutability}
 
 
 
@@ -151,13 +151,13 @@ data Result = Ordinary ____________ --No I/O required
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
-\subsection{Unification}
+\section{Unification}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\subsection{Monads}
+\section{Monads}
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %

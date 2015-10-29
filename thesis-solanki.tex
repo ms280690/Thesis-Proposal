@@ -5,7 +5,7 @@
 % School of Computing
 % Clemson University
 %
-\documentclass[12pt]{ClemsonProposal}
+\documentclass[12pt]{unbcthesis}
 
 % This is nice for source code listings
 % \usepackage{listings}
@@ -25,7 +25,6 @@
 \usepackage[pagewise]{lineno}
 \usepackage{fancyvrb}
 \usepackage{paralist}
-\newenvironment{scope}{}{}
 
 
 \externaldocument{background}
@@ -63,23 +62,26 @@
 %
 % Give values to the variables used in this document
 %
-\title{Embedding Programming Languages: \\* \textsc{Prolog} in \textsc{Haskell}}
-\department{MCPS}
-\documenttype{Master's Thesis}
-\major{Computer Science}
-\proposalday{\the \day}
-\proposalmonth{\the \month}
-\proposalyear{\the \year}
-\author{Mehul Chandrakant Solanki \\230108015 \texttt{solanki@unbc.ca}}
-\committeechair{Dr. David Casperson}
-\committeememberone{Dr. Alex Aravind}
-\committeemembertwo{Dr. Mark Shegelski}
-%\committeememberthree{Member3 Name}
-
-% Just in case you have more then 3 committee members
-% \committeememberfour{Member4 Name}
-% \committeememberfive{Member5 Name}
-% \committeemembersix{Member6 Name}
+\setTitle{Embedding Programming Languages: \textsc{Prolog} in \textsc{Haskell}}
+\setMajor{Computer Science}
+\edef\calMonth{\ifcase \the \month\or
+  January   \or
+  February  \or
+  March     \or
+  April     \or
+  May       \or
+  June      \or
+  July      \or
+  August    \or
+  September \or
+  October   \or
+  November  \or
+  December  \fi
+}
+\setMonth{\calMonth}
+\setYear{\the \year}
+\setAuthor{Mehul Chandrakant Solanki}
+\setDegree{Master of Science}
 
 
 %
@@ -91,10 +93,9 @@
     citecolor={black},
     filecolor={black},
     urlcolor={black},
-    pdftitle={\thetitle},
-    pdfauthor={\theauthor},
-    pdfsubject={\thedocumenttype},
-    pdfkeywords={University of Northern British Columbia, \theauthor, \thedocumenttype},
+    pdftitle={\theTitle},
+    pdfauthor={\theAuthor},
+    pdfkeywords={University of Northern British Columbia, \theAuthor},
     pdfstartpage={1}
 }
 
@@ -130,22 +131,25 @@
 \end{itemize}
 }
 
-\setlength{\headheight}{35pt}
 \begin{document}
 %   ==========================================================================
 %   Begin front matter (pages are numbered with roman numerals)
 %   ==========================================================================
     \begin{frontmatter}
-        \maketitle
-		\tableofcontents
-        \newpage
-		\listoffigures
-		\newpage
-		\listoftables
-		\newpage
-        % Generate the abstract
-        \input{abstract.tex}
-	\end{frontmatter}
+      \unbcthesistitle{\theTitle
+      }{\theAuthor}{\theDegree}{\theMajor}{\theMonth}{\theYear}{%
+      %% Supply your credentials 
+      \textit{\color{red} Mehul's previous degree information}}
+      
+      \input{abstract.tex}%
+      \unbctableofcontents
+      \newpage
+      \listoftables
+      \newpage
+      \listoffigures
+      \newpage
+      % Generate the abstract
+    \end{frontmatter}
 
 \linenumbers
 
@@ -153,13 +157,12 @@
 %   Begin main matter (pages are numbered with arabic numerals)
 %   ==========================================================================
     \doublespacing     % Text should be double spaced
-    \pagestyle{fancy}  % Turn the nice header on for the rest of the document
-
+ 
     %
     % I use a file for every section.  Each of these corresponds to a file
     % with the specified name ending in '.tex' (e.g., introduction.tex).
     %
- 
+   
    \nocite{claessen2000typed,
    chin2003type,
    hinze1998prological,
@@ -348,5 +351,5 @@
 %   ==========================================================================
    	
 
-	\makebibliography{bibliography}
+	\unbcbibliography{bibliography}
 \end{document}

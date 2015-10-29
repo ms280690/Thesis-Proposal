@@ -1,22 +1,22 @@
-\documentclass[proposal.tex]{subfiles} 
+\documentclass[thesis-solanki.tex]{subfiles}
 
 
 
 \begin{document}
 
 %----------------------------------------------------------------------------
-\section{Work Completed}\label{sect:workCompleted}
+\chapter{Work Completed}\label{chap:workCompleted}
 %----------------------------------------------------------------------------
-\subsection{What we are doing}
+\section{What we are doing}
 A partial implementation of the logic programming language \progLang{Prolog} is provided by the library \texttt{prolog-0.2.0.1}. One of the 
 objectives is to implement monadic unification using the library \cite{unification-fd-lib}. 
 
 
-\subsection{Unifiable Data Structures}
+\section{Unifiable Data Structures}
 For a data type to be Unifiable, it must have instances of Functor, Foldable and Traversable. The interaction between different classes is depicted in figure 
 \ref{fig:Functor Hierarchy}.
 
-\begin{figure}[h]
+\begin{figure}[th]
 \centering
 \includegraphics[scale = 0.7]{FunctorHierarchy.png}
 \caption{Functor Hierarchy \cite{website:foldablenadtraversable}}
@@ -25,7 +25,7 @@ For a data type to be Unifiable, it must have instances of Functor, Foldable and
 
 The Functor class provides the \texttt{fmap} function which applies a particular operation to each element in the given data structure. The Foldable class \textit{folds} the data structure by recursively applying the operation to each element and 
 
-\subsection{Why \texttt{Fix} is necessary?}
+\section{Why \texttt{Fix} is necessary?}
 Since \progLang{Haskell} is a lazy language it can work with infinite data structures. \textit{Type Synonyms} in \progLang{Haskell} cannot be self 
 referential.
 
@@ -56,7 +56,7 @@ Enter the \texttt{Fix} same as the function as a data type. The above would be s
 resulting in the \progLang{Prolog} Data Type
 \mint{haskell}|data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)|
 
-\subsection{Dr. Casperson's Explanation}
+\section{Dr. Casperson's Explanation}
 
 A recursive data type in \progLang{Haskell} is where one value of some type contains values of that type, which in turn contain more values of the same type 
 and so on. Consider the following example.
@@ -82,7 +82,7 @@ A sample \texttt{FlatTerm} would be similar to \texttt{Tree}.
 The \texttt{FlatTree} is recursive but does not reference itself. But it too can be infinitely deep and hence writing a function to work on the structure
 is not possible.  
 
-\subsection{The other fix}
+\section{The other fix}
 
 The \texttt{fix} function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the 
 following scenario,
@@ -100,10 +100,10 @@ A fixed point of a function f is a value a such that f a == a. This is where the
 
 
 
-\subsection{The Fix we use}
+\section{The Fix we use}
 Fix-point type allows to define generic recursion schemes \cite{data-fix-lib}.
 
-\begin{minted}{haskell}[linenos]
+\begin{minted}[linenos]{haskell}
  Fix f = f (Fix f)
 \end{minted}
 
