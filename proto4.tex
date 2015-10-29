@@ -6,6 +6,25 @@
 \section{Prototype 4}{\label{proto4}}
 
 
+Our aim to embedd IO into the DSL
 
+So something like a "data" declaration for IO operations
+
+\begin{minted}[linenos]{haskell}
+data IOAction a = 
+-- A container for a value of type a.
+                  Return a 
+-- A container holding a String to be printed to stdout, followed by another IOAction a.
+                | Put String (IOAction a) 
+-- A container holding a function from String -> IOAction a, which can be applied to whatever String is read from stdin.
+                | Get (String -> IOAction a)
+\end{minted}
+
+So when the program is getting interpreted the interpreter encounters an IO operation which then gets "interpreted" to the above and it 
+continues normally.
+
+The interpreted program is still pure since the IO actions have not been executed 
+
+if the running is done inside a monad then the IO still is pure.
 
 \end{document}
