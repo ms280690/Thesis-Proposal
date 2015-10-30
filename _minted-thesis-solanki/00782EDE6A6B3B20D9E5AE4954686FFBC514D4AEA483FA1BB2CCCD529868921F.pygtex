@@ -1,0 +1,40 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{FTS} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{FS} \PYG{k+kt}{Atom} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o}{|} \PYG{k+kt}{FV} \PYG{k+kt}{VariableName} \PYG{o}{|} \PYG{k+kt}{FW} \PYG{o}{|} \PYG{k+kt}{FC} \PYG{k+kt}{Int}
+                          \PYG{k+kr}{deriving} \PYG{p}{(}\PYG{k+kt}{Show}\PYG{p}{,} \PYG{k+kt}{Eq}\PYG{p}{,} \PYG{k+kt}{Typeable}\PYG{p}{,} \PYG{k+kt}{Ord}\PYG{p}{)}
+
+\PYG{k+kr}{newtype} \PYG{k+kt}{Prolog} \PYG{o+ow}{=} \PYG{k+kt}{P} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{deriving} \PYG{p}{(}\PYG{k+kt}{Eq}\PYG{p}{,} \PYG{k+kt}{Show}\PYG{p}{,} \PYG{k+kt}{Ord}\PYG{p}{,} \PYG{k+kt}{Typeable}\PYG{p}{)}
+
+\PYG{n+nf}{unP} \PYG{o+ow}{::} \PYG{k+kt}{Prolog} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS}
+\PYG{n+nf}{unP} \PYG{p}{(}\PYG{k+kt}{P} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{where}
+  \PYG{n}{fmap}              \PYG{o+ow}{=} \PYG{k+kt}{T}\PYG{o}{.}\PYG{n}{fmapDefault}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Foldable} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{where}
+  \PYG{n}{foldMap}             \PYG{o+ow}{=} \PYG{k+kt}{T}\PYG{o}{.}\PYG{n}{foldMapDefault}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Traversable} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{traverse} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{atom} \PYG{n}{xs}\PYG{p}{)}      \PYG{o+ow}{=}   \PYG{k+kt}{FS} \PYG{n}{atom} \PYG{o}{\PYGZlt{}\PYGZdl{}\PYGZgt{}}
+    \PYG{n}{sequenceA} \PYG{p}{(}\PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{f} \PYG{n}{xs}\PYG{p}{)}
+    \PYG{n}{traverse} \PYG{k+kr}{\PYGZus{}} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}          \PYG{o+ow}{=}   \PYG{n}{pure} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}
+    \PYG{n}{traverse} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{FW}         \PYG{o+ow}{=}   \PYG{n}{pure} \PYG{p}{(}\PYG{k+kt}{FW}\PYG{p}{)}
+    \PYG{n}{traverse} \PYG{k+kr}{\PYGZus{}} \PYG{p}{(}\PYG{k+kt}{FC} \PYG{n}{i}\PYG{p}{)}          \PYG{o+ow}{=}   \PYG{n}{pure} \PYG{p}{(}\PYG{k+kt}{FC} \PYG{n}{i}\PYG{p}{)}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Unifiable} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{where}
+  \PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{al} \PYG{n}{ls}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{ar} \PYG{n}{rs}\PYG{p}{)} \PYG{o+ow}{=}
+    \PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{al} \PYG{o}{==} \PYG{n}{ar}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{length} \PYG{n}{ls} \PYG{o}{==} \PYG{n}{length} \PYG{n}{rs}\PYG{p}{)}
+      \PYG{k+kr}{then} \PYG{k+kt}{FS} \PYG{n}{al} \PYG{o}{\PYGZlt{}\PYGZdl{}\PYGZgt{}} \PYG{n}{pairWith} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{l} \PYG{n}{r} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Right} \PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{))} \PYG{n}{ls} \PYG{n}{rs}
+      \PYG{k+kr}{else} \PYG{k+kt}{Nothing}
+  \PYG{n}{zipMatch} \PYG{k+kt}{FW} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{k+kt}{FW}
+  \PYG{n}{zipMatch} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{FW} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{k+kt}{FW}
+  \PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{FC} \PYG{n}{i1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{FC} \PYG{n}{i2}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{i1} \PYG{o}{==} \PYG{n}{i2}\PYG{p}{)}
+    \PYG{k+kr}{then} \PYG{k+kt}{Just} \PYG{p}{(}\PYG{k+kt}{FC} \PYG{n}{i1}\PYG{p}{)}
+    \PYG{k+kr}{else} \PYG{k+kt}{Nothing}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Applicative} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{where}
+  \PYG{n}{pure} \PYG{n}{x}                  \PYG{o+ow}{=}   \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}\PYGZdq{}} \PYG{p}{[}\PYG{n}{x}\PYG{p}{]}
+  \PYG{k+kr}{\PYGZus{}}         \PYG{o}{\PYGZlt{}*\PYGZgt{}}   \PYG{k+kt}{FW}    \PYG{o+ow}{=}   \PYG{k+kt}{FW}
+  \PYG{k+kr}{\PYGZus{}}       \PYG{o}{\PYGZlt{}*\PYGZgt{}}   \PYG{p}{(}\PYG{k+kt}{FC} \PYG{n}{i}\PYG{p}{)}     \PYG{o+ow}{=}   \PYG{k+kt}{FC} \PYG{n}{i}
+  \PYG{k+kr}{\PYGZus{}}       \PYG{o}{\PYGZlt{}*\PYGZgt{}}   \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}     \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}
+  \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{a} \PYG{n}{fs}\PYG{p}{)} \PYG{o}{\PYGZlt{}*\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{b} \PYG{n}{xs}\PYG{p}{)}   \PYG{o+ow}{=} \PYG{k+kt}{FS} \PYG{p}{(}\PYG{n}{a} \PYG{o}{++} \PYG{n}{b}\PYG{p}{)} \PYG{p}{[}\PYG{n}{f} \PYG{n}{x} \PYG{o}{|} \PYG{n}{f} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{fs}\PYG{p}{,} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{xs}\PYG{p}{]}
+\end{Verbatim}

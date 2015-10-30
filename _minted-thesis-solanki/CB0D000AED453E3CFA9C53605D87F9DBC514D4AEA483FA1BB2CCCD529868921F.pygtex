@@ -1,0 +1,398 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZsh{} LANGUAGE  DeriveDataTypeable,}
+\PYG{c+cm}{              ViewPatterns,}
+\PYG{c+cm}{              ScopedTypeVariables,}
+\PYG{c+cm}{              FlexibleInstances,}
+\PYG{c+cm}{              DefaultSignatures,}
+\PYG{c+cm}{              TypeOperators,}
+\PYG{c+cm}{              FlexibleContexts,}
+\PYG{c+cm}{              TypeFamilies,}
+\PYG{c+cm}{              DataKinds,}
+\PYG{c+cm}{              OverlappingInstances,}
+\PYG{c+cm}{              DataKinds,}
+\PYG{c+cm}{              PolyKinds,}
+\PYG{c+cm}{              TypeOperators,}
+\PYG{c+cm}{              LiberalTypeSynonyms,}
+\PYG{c+cm}{              TemplateHaskell,}
+\PYG{c+cm}{              RankNTypes,}
+\PYG{c+cm}{              AllowAmbiguousTypes,}
+\PYG{c+cm}{              MultiParamTypeClasses,}
+\PYG{c+cm}{              FunctionalDependencies,}
+\PYG{c+cm}{              ConstraintKinds,}
+\PYG{c+cm}{              ExistentialQuantification}
+\PYG{c+cm}{              \PYGZsh{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{k+kr}{module} \PYG{n+nn}{CustomSyntax} \PYG{k+kr}{where}
+
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Generics} \PYG{p}{(}\PYG{k+kt}{Data}\PYG{p}{(}\PYG{o}{..}\PYG{p}{),} \PYG{k+kt}{Typeable}\PYG{p}{(}\PYG{o}{..}\PYG{p}{))}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.List} \PYG{p}{(}\PYG{n+nf}{intercalate}\PYG{p}{)}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Char} \PYG{p}{(}\PYG{n+nf}{isLetter}\PYG{p}{)}
+
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Monad.State.UnificationExtras}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Unification} \PYG{k}{as} \PYG{n}{U}
+
+
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Functor.Fixedpoint} \PYG{k}{as} \PYG{n}{DFF}
+
+
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Unification.IntVar}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Unification.STVar} \PYG{k}{as} \PYG{n}{ST}
+
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Unification.Ranked.IntVar}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Unification.Ranked.STVar}
+
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Unification.Types} \PYG{k}{as} \PYG{n}{UT}
+
+
+
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Traversable} \PYG{k}{as} \PYG{n}{T}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Functor}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Foldable}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Applicative}
+
+
+\PYG{k+kr}{import} \PYG{n+nn}{Data.List.Extras.Pair}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Map} \PYG{k}{as} \PYG{n}{Map}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Set} \PYG{k}{as} \PYG{n}{S}
+
+
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Monad.Error}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Monad.Trans.Except}
+
+
+\PYG{k+kr}{import} \PYG{n+nn}{Prolog}
+
+\PYG{k+kr}{data} \PYG{k+kt}{FTS} \PYG{n}{a} \PYG{o+ow}{=} \PYG{n}{forall} \PYG{n}{a} \PYG{o}{.} \PYG{k+kt}{FV} \PYG{k+kt}{Id} \PYG{o}{|} \PYG{k+kt}{FS} \PYG{k+kt}{Atom} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{k+kr}{deriving} \PYG{p}{(}\PYG{k+kt}{Eq}\PYG{p}{,} \PYG{k+kt}{Show}\PYG{p}{,} \PYG{k+kt}{Ord}\PYG{p}{,} \PYG{k+kt}{Typeable}\PYG{p}{)}
+
+\PYG{k+kr}{newtype} \PYG{k+kt}{Prolog} \PYG{o+ow}{=} \PYG{k+kt}{P} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{k+kt}{FTS}\PYG{p}{)} \PYG{k+kr}{deriving} \PYG{p}{(}\PYG{k+kt}{Eq}\PYG{p}{,} \PYG{k+kt}{Show}\PYG{p}{,} \PYG{k+kt}{Ord}\PYG{p}{,} \PYG{k+kt}{Typeable}\PYG{p}{)}
+
+\PYG{n+nf}{unP} \PYG{o+ow}{::} \PYG{k+kt}{Prolog} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS}
+\PYG{n+nf}{unP} \PYG{p}{(}\PYG{k+kt}{P} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{FTS} \PYG{k+kr}{where}
+	\PYG{n}{fmap} \PYG{o+ow}{=} \PYG{k+kt}{T}\PYG{o}{.}\PYG{n}{fmapDefault}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Foldable} \PYG{k+kt}{FTS} \PYG{k+kr}{where}
+ 	\PYG{n}{foldMap} \PYG{o+ow}{=} \PYG{k+kt}{T}\PYG{o}{.}\PYG{n}{foldMapDefault}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Traversable} \PYG{k+kt}{FTS} \PYG{k+kr}{where}
+	\PYG{n}{traverse} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{atom} \PYG{n}{xs}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{FS} \PYG{n}{atom} \PYG{o}{\PYGZlt{}\PYGZdl{}\PYGZgt{}} \PYG{n}{sequenceA} \PYG{p}{(}\PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{f} \PYG{n}{xs}\PYG{p}{)}
+	\PYG{n}{traverse} \PYG{k+kr}{\PYGZus{}} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)} \PYG{o+ow}{=}	\PYG{n}{pure} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Unifiable} \PYG{k+kt}{FTS} \PYG{k+kr}{where}
+	\PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{al} \PYG{n}{ls}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{ar} \PYG{n}{rs}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{al} \PYG{o}{==} \PYG{n}{ar}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{length} \PYG{n}{ls} \PYG{o}{==} \PYG{n}{length} \PYG{n}{rs}\PYG{p}{)}
+      				\PYG{k+kr}{then} \PYG{k+kt}{FS} \PYG{n}{al} \PYG{o}{\PYGZlt{}\PYGZdl{}\PYGZgt{}} \PYG{n}{pairWith} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{l} \PYG{n}{r} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Right} \PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{))} \PYG{n}{ls} \PYG{n}{rs}
+      				\PYG{k+kr}{else} \PYG{k+kt}{Nothing}
+	\PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v2}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{v1} \PYG{o}{==} \PYG{n}{v2}\PYG{p}{)} \PYG{k+kr}{then} \PYG{k+kt}{Just} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v1}\PYG{p}{)}
+		\PYG{k+kr}{else} \PYG{k+kt}{Nothing}
+	\PYG{n}{zipMatch} \PYG{k+kr}{\PYGZus{}} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Applicative} \PYG{k+kt}{FTS} \PYG{k+kr}{where}
+	\PYG{n}{pure} \PYG{n}{x} \PYG{o+ow}{=} \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}\PYGZdq{}} \PYG{p}{[}\PYG{n}{x}\PYG{p}{]}
+	\PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{a} \PYG{n}{fs}\PYG{p}{)} \PYG{o}{\PYGZlt{}*\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{b} \PYG{n}{xs}\PYG{p}{)}   \PYG{o+ow}{=} \PYG{k+kt}{FS} \PYG{p}{(}\PYG{n}{a} \PYG{o}{++} \PYG{n}{b}\PYG{p}{)} \PYG{p}{[}\PYG{n}{f} \PYG{n}{x} \PYG{o}{|} \PYG{n}{f} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{fs}\PYG{p}{,} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{xs}\PYG{p}{]}
+	\PYG{c+c1}{\PYGZhy{}\PYGZhy{}other cases}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{instance Monad FTS where}
+\PYG{c+cm}{	func =}
+\PYG{c+cm}{instance Variable FTS where}
+\PYG{c+cm}{	func =}
+
+\PYG{c+cm}{instance BindingMonad FTS where}
+\PYG{c+cm}{	func =}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{k+kr}{data} \PYG{k+kt}{VariableName} \PYG{o+ow}{=} \PYG{k+kt}{VariableName} \PYG{k+kt}{Int} \PYG{k+kt}{String}
+
+\PYG{n+nf}{idToVariableName} \PYG{o+ow}{::} \PYG{k+kt}{Id} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{VariableName}
+\PYG{n+nf}{idToVariableName} \PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{VariableName} \PYG{n}{i} \PYG{n}{s}
+
+\PYG{n+nf}{variablenameToId} \PYG{o+ow}{::} \PYG{k+kt}{VariableName} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Id}
+\PYG{n+nf}{variablenameToId} \PYG{p}{(}\PYG{k+kt}{VariableName} \PYG{n}{i} \PYG{n}{s}\PYG{p}{)} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{s}\PYG{p}{)}
+
+\PYG{n+nf}{termFlattener} \PYG{o+ow}{::} \PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS}
+\PYG{n+nf}{termFlattener} \PYG{p}{(}\PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{)}           \PYG{o+ow}{=}   \PYG{k+kt}{DFF}\PYG{o}{.}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{n}{v}
+\PYG{n+nf}{termFlattener} \PYG{p}{(}\PYG{k+kt}{Struct} \PYG{n}{a} \PYG{n}{xs}\PYG{p}{)}     \PYG{o+ow}{=}   \PYG{k+kt}{DFF}\PYG{o}{.}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{n}{a} \PYG{p}{(}\PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{termFlattener} \PYG{n}{xs}\PYG{p}{)}
+
+\PYG{n+nf}{unFlatten} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Term}
+\PYG{n+nf}{unFlatten} \PYG{p}{(}\PYG{k+kt}{DFF}\PYG{o}{.}\PYG{k+kt}{Fix} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{))}      \PYG{o+ow}{=}   \PYG{k+kt}{Var} \PYG{n}{v}
+\PYG{n+nf}{unFlatten} \PYG{p}{(}\PYG{k+kt}{DFF}\PYG{o}{.}\PYG{k+kt}{Fix} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{a} \PYG{n}{xs}\PYG{p}{))}   \PYG{o+ow}{=}   \PYG{k+kt}{Struct} \PYG{n}{a} \PYG{p}{(}\PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{unFlatten} \PYG{n}{xs}\PYG{p}{)}
+
+
+\PYG{n+nf}{variableExtractor} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{k+kt}{FTS}\PYG{p}{]}
+\PYG{n+nf}{variableExtractor} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{x} \PYG{k+kr}{of}
+  \PYG{p}{(}\PYG{k+kt}{FS} \PYG{k+kr}{\PYGZus{}} \PYG{n}{xs}\PYG{p}{)}   \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}  \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{concat} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{variableExtractor} \PYG{n}{xs}
+  \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}     \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}  \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}  \PYGZus{}       \PYGZhy{}\PYGZgt{}  []}
+
+\PYG{n+nf}{variableIdExtractor} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Id}\PYG{p}{]}
+\PYG{n+nf}{variableIdExtractor} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{x} \PYG{k+kr}{of}
+	\PYG{p}{(}\PYG{k+kt}{FS} \PYG{k+kr}{\PYGZus{}} \PYG{n}{xs}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{concat} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{variableIdExtractor} \PYG{n}{xs}
+	\PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{variableNameExtractor :: Fix FTS \PYGZhy{}\PYGZgt{} [VariableName]}
+\PYG{c+cm}{variableNameExtractor (Fix x) = case x of}
+\PYG{c+cm}{  (FS \PYGZus{} xs) \PYGZhy{}\PYGZgt{} Prelude.concat \PYGZdl{} Prelude.map variableNameExtractor xs}
+\PYG{c+cm}{  (FV v)     \PYGZhy{}\PYGZgt{} [v]}
+\PYG{c+cm}{  \PYGZus{}         \PYGZhy{}\PYGZgt{} []}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{n+nf}{variableSet} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{k+kt}{FTS}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{S}\PYG{o}{.}\PYG{k+kt}{Set} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{k+kt}{FTS}\PYG{p}{)}
+\PYG{n+nf}{variableSet} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{S}\PYG{o}{.}\PYG{n}{fromList} \PYG{n}{a}
+
+\PYG{n+nf}{variableNameSet} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Id}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{S}\PYG{o}{.}\PYG{k+kt}{Set} \PYG{p}{(}\PYG{k+kt}{Id}\PYG{p}{)}
+\PYG{n+nf}{variableNameSet} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{S}\PYG{o}{.}\PYG{n}{fromList} \PYG{n}{a}
+
+
+\PYG{n+nf}{varsToDictM} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Ord} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{Unifiable} \PYG{n}{t}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}}
+    \PYG{k+kt}{S}\PYG{o}{.}\PYG{k+kt}{Set} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{Map} \PYG{n}{a} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{n}{t}\PYG{p}{))}
+\PYG{n+nf}{varsToDictM} \PYG{n}{set} \PYG{o+ow}{=} \PYG{n}{foldrM} \PYG{n}{addElt} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{empty} \PYG{n}{set} \PYG{k+kr}{where}
+  \PYG{n}{addElt} \PYG{n}{sv} \PYG{n}{dict} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{n}{iv} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{freeVar}
+    \PYG{n}{return} \PYG{o}{\PYGZdl{}!} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{insert} \PYG{n}{sv} \PYG{n}{iv} \PYG{n}{dict}
+
+
+\PYG{n+nf}{uTermify}
+  \PYG{o+ow}{::} \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))}
+  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UTerm} \PYG{k+kt}{FTS} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))}
+  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UTerm} \PYG{k+kt}{FTS} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))}
+\PYG{n+nf}{uTermify} \PYG{n}{varMap} \PYG{n}{ux} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{ux} \PYG{k+kr}{of}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UVar} \PYG{k+kr}{\PYGZus{}}             \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{ux}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FV} \PYG{n}{v}\PYG{p}{)}       \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{maybe} \PYG{p}{(}\PYG{n+ne}{error} \PYG{l+s}{\PYGZdq{}bad map\PYGZdq{}}\PYG{p}{)} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UVar} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{lookup} \PYG{n}{v} \PYG{n}{varMap}
+ \PYG{c+c1}{\PYGZhy{}\PYGZhy{} UT.UTerm t            \PYGZhy{}\PYGZgt{} UT.UTerm \PYGZdl{}! fmap (uTermify varMap) t}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FS} \PYG{n}{a} \PYG{n}{xs}\PYG{p}{)}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{n}{a} \PYG{o}{\PYGZdl{}!} \PYG{n}{fmap} \PYG{p}{(}\PYG{n}{uTermify} \PYG{n}{varMap}\PYG{p}{)} \PYG{n}{xs}
+
+
+\PYG{n+nf}{translateToUTerm} \PYG{o+ow}{::}
+    \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+\PYG{n+nf}{translateToUTerm} \PYG{n}{e1Term} \PYG{o+ow}{=} \PYG{k+kr}{do}
+  \PYG{k+kr}{let} \PYG{n}{vs} \PYG{o+ow}{=} \PYG{n}{variableNameSet} \PYG{o}{\PYGZdl{}} \PYG{n}{variableIdExtractor} \PYG{n}{e1Term}
+  \PYG{n}{varMap} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{varsToDictM} \PYG{n}{vs}
+  \PYG{k+kr}{let} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{n}{uTermify} \PYG{n}{varMap} \PYG{o}{.} \PYG{n}{unfreeze} \PYG{o}{\PYGZdl{}} \PYG{n}{e1Term}
+  \PYG{n}{return} \PYG{p}{(}\PYG{n}{t2}\PYG{p}{,}\PYG{n}{varMap}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | vTermify recursively converts @UVar x@ into @UTerm (VarA x).}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} This is a subroutine of @ translateFromUTerm @.  The resulting}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} term has no (UVar x) subterms.}
+
+\PYG{n+nf}{vTermify} \PYG{o+ow}{::} \PYG{k+kt}{Map} \PYG{k+kt}{Int} \PYG{k+kt}{Id} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+            \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+            \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))}
+\PYG{n+nf}{vTermify} \PYG{n}{dict} \PYG{n}{t1} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{t1} \PYG{k+kr}{of}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UVar} \PYG{n}{x}  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{maybe} \PYG{p}{(}\PYG{n+ne}{error} \PYG{l+s}{\PYGZdq{}logic\PYGZdq{}}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{o}{.} \PYG{k+kt}{FV}\PYG{p}{)} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{lookup} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{n}{getVarID} \PYG{n}{x}\PYG{p}{)} \PYG{n}{dict}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{n}{r} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+    \PYG{k+kr}{case} \PYG{n}{r} \PYG{k+kr}{of}
+      \PYG{k+kt}{FV} \PYG{n}{iv}   \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{t1}
+      \PYG{k+kr}{\PYGZus{}}       \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{o}{.} \PYG{n}{fmap} \PYG{p}{(}\PYG{n}{vTermify} \PYG{n}{dict}\PYG{p}{)} \PYG{o}{\PYGZdl{}} \PYG{n}{r}
+
+\PYG{n+nf}{translateFromUTerm} \PYG{o+ow}{::}
+    \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+    \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prolog}
+\PYG{n+nf}{translateFromUTerm} \PYG{n}{dict} \PYG{n}{uTerm} \PYG{o+ow}{=}
+  \PYG{k+kt}{P} \PYG{o}{.}  \PYG{n}{maybe} \PYG{p}{(}\PYG{n+ne}{error} \PYG{l+s}{\PYGZdq{}Logic\PYGZdq{}}\PYG{p}{)} \PYG{n}{id} \PYG{o}{.} \PYG{n}{freeze} \PYG{o}{.} \PYG{n}{vTermify} \PYG{n}{varIdDict} \PYG{o}{\PYGZdl{}} \PYG{n}{uTerm} \PYG{k+kr}{where}
+    \PYG{n}{forKV} \PYG{n}{dict} \PYG{n}{initial} \PYG{n}{fn} \PYG{o+ow}{=} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{foldlWithKey\PYGZsq{}} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{a} \PYG{n}{k} \PYG{n}{v} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{fn} \PYG{n}{k} \PYG{n}{v} \PYG{n}{a}\PYG{p}{)} \PYG{n}{initial} \PYG{n}{dict}
+    \PYG{n}{varIdDict} \PYG{o+ow}{=} \PYG{n}{forKV} \PYG{n}{dict} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{empty} \PYG{o}{\PYGZdl{}} \PYG{n+nf}{\PYGZbs{}} \PYG{n}{k} \PYG{n}{v} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{insert} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{n}{getVarID} \PYG{n}{v}\PYG{p}{)} \PYG{n}{k}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | Unify two (E1 a) terms resulting in maybe a dictionary}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} of variable bindings (to terms).}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} NB !!!!}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} The current interface assumes that the variables in t1 and t2 are}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} disjoint.  This is likely a mistake that needs fixing}
+
+\PYG{n+nf}{unifyTerms} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Maybe} \PYG{p}{(}\PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{Prolog}\PYG{p}{))}
+\PYG{n+nf}{unifyTerms} \PYG{n}{t1} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{n}{runSTBinding} \PYG{o}{\PYGZdl{}} \PYG{k+kr}{do}
+  \PYG{n}{answer} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{runExceptT} \PYG{o}{\PYGZdl{}} \PYG{n}{unifyTermsX} \PYG{n}{t1} \PYG{n}{t2}
+  \PYG{n}{return} \PYG{o}{\PYGZdl{}!} \PYG{n}{either} \PYG{p}{(}\PYG{n}{const} \PYG{k+kt}{Nothing}\PYG{p}{)} \PYG{k+kt}{Just} \PYG{n}{answer}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | Unify two (E1 a) terms resulting in maybe a dictionary}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} of variable bindings (to terms).}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} This routine works in the unification monad}
+
+\PYG{n+nf}{unifyTermsX} \PYG{o+ow}{::}
+    \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Fix} \PYG{k+kt}{FTS} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+    \PYG{k+kt}{ExceptT}  \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+        \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+        \PYG{p}{(}\PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{Prolog}\PYG{p}{))}
+\PYG{n+nf}{unifyTermsX} \PYG{n}{t1} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{d1}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t1}
+    \PYG{p}{(}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t2}
+    \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{unify} \PYG{n}{x1} \PYG{n}{x2}
+    \PYG{n}{makeDicts} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{n}{d1}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)}
+
+
+
+\PYG{n+nf}{mapWithKeyM} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Ord} \PYG{n}{k}\PYG{p}{,}\PYG{k+kt}{Applicative} \PYG{n}{m}\PYG{p}{,}\PYG{k+kt}{Monad} \PYG{n}{m}\PYG{p}{)}
+               \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{(}\PYG{n}{k} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Map} \PYG{n}{k} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{p}{(}\PYG{k+kt}{Map} \PYG{n}{k} \PYG{n}{b}\PYG{p}{)}
+\PYG{n+nf}{mapWithKeyM} \PYG{o+ow}{=} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{traverseWithKey}
+
+
+\PYG{n+nf}{makeDict} \PYG{o+ow}{::}
+            \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{Prolog}\PYG{p}{))}
+\PYG{n+nf}{makeDict} \PYG{n}{sVarDict} \PYG{o+ow}{=}
+    \PYG{n}{flip} \PYG{n}{mapWithKeyM} \PYG{n}{sVarDict} \PYG{o}{\PYGZdl{}} \PYG{n+nf}{\PYGZbs{}} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n+nf}{\PYGZbs{}} \PYG{n}{iKey} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{do}
+        \PYG{k+kt}{Just} \PYG{n}{xx} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{n}{lookupVar} \PYG{o}{\PYGZdl{}} \PYG{n}{iKey}
+        \PYG{n}{return} \PYG{o}{\PYGZdl{}!} \PYG{p}{(}\PYG{n}{translateFromUTerm} \PYG{n}{sVarDict}\PYG{p}{)} \PYG{n}{xx}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} | recover the bindings for the variables of the two terms}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} unified from the monad.}
+
+\PYG{n+nf}{makeDicts} \PYG{o+ow}{::}
+    \PYG{p}{(}\PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),} \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+    \PYG{k+kt}{ExceptT}  \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+    \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{Prolog}\PYG{p}{))}
+\PYG{n+nf}{makeDicts} \PYG{p}{(}\PYG{n}{svDict1}\PYG{p}{,} \PYG{n}{svDict2}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{do}
+  \PYG{k+kr}{let} \PYG{n}{svDict3} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{svDict1} \PYG{p}{`}\PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{union}\PYG{p}{`} \PYG{n}{svDict2}\PYG{p}{)}
+  \PYG{k+kr}{let} \PYG{n}{ivs} \PYG{o+ow}{=} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UVar} \PYG{o}{.} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{elems} \PYG{o}{\PYGZdl{}} \PYG{n}{svDict3}
+  \PYG{n}{applyBindingsAll} \PYG{n}{ivs}
+  \PYG{c+c1}{\PYGZhy{}\PYGZhy{} the interface below is dangerous because Map.union is left\PYGZhy{}biased.}
+  \PYG{c+c1}{\PYGZhy{}\PYGZhy{} variables that are duplicated across terms may have different}
+  \PYG{c+c1}{\PYGZhy{}\PYGZhy{} bindings because `translateToUTerm` is run separately on each}
+  \PYG{c+c1}{\PYGZhy{}\PYGZhy{} term.}
+  \PYG{n}{lift} \PYG{o}{.} \PYG{n}{makeDict} \PYG{o}{\PYGZdl{}} \PYG{n}{svDict3}
+
+\PYG{k+kr}{instance} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{Variable} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{Functor} \PYG{n}{t}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Error} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{n}{t} \PYG{n}{v}\PYG{p}{)} \PYG{k+kr}{where} \PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{n+nf}{test1} \PYG{o+ow}{::}
+  \PYG{k+kt}{ErrorT} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+           \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+\PYG{n+nf}{test1} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{k+kr}{let}
+        \PYG{n}{t1a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{))}
+        \PYG{n}{t2a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}y\PYGZdq{}}\PYG{p}{))}
+    \PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{d1}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t1a} \PYG{c+c1}{\PYGZhy{}\PYGZhy{}error}
+    \PYG{p}{(}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t2a}
+    \PYG{n}{x3} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{U}\PYG{o}{.}\PYG{n}{unify} \PYG{n}{x1} \PYG{n}{x2}
+    \PYG{n}{return} \PYG{p}{(}\PYG{n}{x3}\PYG{p}{,} \PYG{n}{d1} \PYG{p}{`}\PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{union}\PYG{p}{`} \PYG{n}{d2}\PYG{p}{)}
+
+
+\PYG{n+nf}{test2} \PYG{o+ow}{::}
+  \PYG{k+kt}{ErrorT} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+           \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+\PYG{n+nf}{test2} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{k+kr}{let}
+        \PYG{n}{t1a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}a\PYGZdq{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{)])}
+        \PYG{n}{t2a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}y\PYGZdq{}}\PYG{p}{))}
+    \PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{d1}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t1a} \PYG{c+c1}{\PYGZhy{}\PYGZhy{}error}
+    \PYG{p}{(}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t2a}
+    \PYG{n}{x3} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{U}\PYG{o}{.}\PYG{n}{unify} \PYG{n}{x1} \PYG{n}{x2}
+    \PYG{n}{return} \PYG{p}{(}\PYG{n}{x3}\PYG{p}{,} \PYG{n}{d1} \PYG{p}{`}\PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{union}\PYG{p}{`} \PYG{n}{d2}\PYG{p}{)}
+
+
+\PYG{n+nf}{test3} \PYG{o+ow}{::}
+  \PYG{k+kt}{ErrorT} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+           \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+\PYG{n+nf}{test3} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{k+kr}{let}
+        \PYG{n}{t1a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}a\PYGZdq{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{)])}
+        \PYG{n}{t2a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{))}
+    \PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{d1}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t1a} \PYG{c+c1}{\PYGZhy{}\PYGZhy{}error}
+    \PYG{p}{(}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t2a}
+    \PYG{n}{x3} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{U}\PYG{o}{.}\PYG{n}{unify} \PYG{n}{x1} \PYG{n}{x2}
+    \PYG{n}{return} \PYG{p}{(}\PYG{n}{x3}\PYG{p}{,} \PYG{n}{d1} \PYG{p}{`}\PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{union}\PYG{p}{`} \PYG{n}{d2}\PYG{p}{)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{goTest test3}
+\PYG{c+cm}{\PYGZdq{}ok:    STVar \PYGZhy{}9223372036854775807}
+\PYG{c+cm}{[(VariableName 0 \PYGZbs{}\PYGZdq{}x\PYGZbs{}\PYGZdq{},STVar \PYGZhy{}9223372036854775808)]\PYGZdq{}}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{n+nf}{test4} \PYG{o+ow}{::}
+  \PYG{k+kt}{ErrorT} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+           \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+\PYG{n+nf}{test4} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{k+kr}{let}
+        \PYG{n}{t1a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}a\PYGZdq{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{)])}
+        \PYG{n}{t2a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{))}
+    \PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{d1}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t1a} \PYG{c+c1}{\PYGZhy{}\PYGZhy{}error}
+    \PYG{p}{(}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t2a}
+    \PYG{n}{x3} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{U}\PYG{o}{.}\PYG{n}{unifyOccurs} \PYG{n}{x1} \PYG{n}{x2}
+    \PYG{n}{return} \PYG{p}{(}\PYG{n}{x3}\PYG{p}{,} \PYG{n}{d1} \PYG{p}{`}\PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{union}\PYG{p}{`} \PYG{n}{d2}\PYG{p}{)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{goTest test4}
+\PYG{c+cm}{\PYGZdq{}ok:    STVar \PYGZhy{}9223372036854775807}
+\PYG{c+cm}{[(VariableName 0 \PYGZbs{}\PYGZdq{}x\PYGZbs{}\PYGZdq{},STVar \PYGZhy{}9223372036854775808)]\PYGZdq{}}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{n+nf}{test5} \PYG{o+ow}{::}
+  \PYG{k+kt}{ErrorT} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+           \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+\PYG{n+nf}{test5} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{k+kr}{let}
+        \PYG{n}{t1a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}a\PYGZdq{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x\PYGZdq{}}\PYG{p}{)])}
+        \PYG{n}{t2a} \PYG{o+ow}{=} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FS} \PYG{l+s}{\PYGZdq{}b\PYGZdq{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{FV} \PYG{o}{\PYGZdl{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}y\PYGZdq{}}\PYG{p}{)])}
+    \PYG{p}{(}\PYG{n}{x1}\PYG{p}{,}\PYG{n}{d1}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t1a} \PYG{c+c1}{\PYGZhy{}\PYGZhy{}error}
+    \PYG{p}{(}\PYG{n}{x2}\PYG{p}{,}\PYG{n}{d2}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{lift} \PYG{o}{.} \PYG{n}{translateToUTerm} \PYG{o}{\PYGZdl{}} \PYG{n}{t2a}
+    \PYG{n}{x3} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{U}\PYG{o}{.}\PYG{n}{unify} \PYG{n}{x1} \PYG{n}{x2}
+    \PYG{n}{return} \PYG{p}{(}\PYG{n}{x3}\PYG{p}{,} \PYG{n}{d1} \PYG{p}{`}\PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{union}\PYG{p}{`} \PYG{n}{d2}\PYG{p}{)}
+
+\PYG{n+nf}{goTest} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Show} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{(}\PYG{n}{forall} \PYG{n}{s} \PYG{o}{.}
+  \PYG{p}{(}\PYG{k+kt}{ErrorT} \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UFailure} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))}
+           \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}\PYG{p}{)}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{Id} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)))))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{String}
+\PYG{n+nf}{goTest} \PYG{n}{test} \PYG{o+ow}{=} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{n}{runSTBinding} \PYG{o}{\PYGZdl{}} \PYG{k+kr}{do}
+  \PYG{n}{answer} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{runErrorT} \PYG{o}{\PYGZdl{}} \PYG{n}{test}
+  \PYG{n}{return} \PYG{o}{\PYGZdl{}!} \PYG{k+kr}{case} \PYG{n}{answer} \PYG{k+kr}{of}
+    \PYG{p}{(}\PYG{k+kt}{Left} \PYG{n}{x}\PYG{p}{)}  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{l+s}{\PYGZdq{}error: \PYGZdq{}} \PYG{o}{++} \PYG{n}{show} \PYG{n}{x}
+    \PYG{p}{(}\PYG{k+kt}{Right} \PYG{n}{y}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{l+s}{\PYGZdq{}ok:    \PYGZdq{}} \PYG{o}{++} \PYG{n}{show} \PYG{n}{y}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}GLUE\PYGZhy{}CODE\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{monadicUnify :: Term \PYGZhy{}\PYGZgt{} Term \PYGZhy{}\PYGZgt{} ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))}
+\PYG{c+cm}{           (ST.STBinding s)}
+\PYG{c+cm}{            (UT.UTerm (FTS) (ST.STVar s (FTS)),}
+\PYG{c+cm}{             Map Id (ST.STVar s (FTS)))}
+\PYG{c+cm}{monadicUnify t1 t2 = do}
+\PYG{c+cm}{	let}
+\PYG{c+cm}{		t1f = termFlattener t1}
+\PYG{c+cm}{		t2f = termFlattener t2}
+\PYG{c+cm}{	(x1,d1) \PYGZlt{}\PYGZhy{} lift . translateToUTerm \PYGZdl{} t1f}
+\PYG{c+cm}{	(x2,d2) \PYGZlt{}\PYGZhy{} lift . translateToUTerm \PYGZdl{} t2f}
+\PYG{c+cm}{	x3 \PYGZlt{}\PYGZhy{} U.unify x1 x2}
+\PYG{c+cm}{	return (x3, d1 `Map.union` d2)}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} type Subst = Id \PYGZhy{}\PYGZgt{} Term}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Convert result from monadicUnify to [Subst]}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{goMonadicTest :: (Show b) =\PYGZgt{} (forall s .}
+\PYG{c+cm}{  (ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))}
+\PYG{c+cm}{           (ST.STBinding s)}
+\PYG{c+cm}{            (UT.UTerm (FTS) (ST.STVar s (FTS)),}
+\PYG{c+cm}{             Map Id (ST.STVar s (FTS))))) \PYGZhy{}\PYGZgt{} [Subst]}
+\PYG{c+cm}{goMonadicTest test = ST.runSTBinding \PYGZdl{} do}
+\PYG{c+cm}{  answer \PYGZlt{}\PYGZhy{} runErrorT \PYGZdl{} test}
+\PYG{c+cm}{  return \PYGZdl{}! case answer of}
+\PYG{c+cm}{    (Left x)  \PYGZhy{}\PYGZgt{} [nullSubst]}
+\PYG{c+cm}{    (Right y) \PYGZhy{}\PYGZgt{} convertToSubst y}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}(Id, STVar s FTS)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}convertToSubst :: Map Id (ST.STVar s FTS) \PYGZhy{}\PYGZgt{} [(Id, ST.STVar s FTS)]}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{convertToSubst m = convertToSubst1 Map.toAscList m}
+
+\PYG{c+cm}{convertToSubst1 (id, ST.STVar \PYGZus{} fts):xs = (id, (unFlatten fts)) : convertToSubst1 xs}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+\end{Verbatim}

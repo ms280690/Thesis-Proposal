@@ -1,0 +1,45 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{unify}\PYG{p}{,} \PYG{n}{unify\PYGZus{}with\PYGZus{}occurs\PYGZus{}check} \PYG{o+ow}{::} \PYG{k+kt}{MonadPlus} \PYG{n}{m} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Term}
+\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{k+kt}{Unifier}
+
+\PYG{n+nf}{unify} \PYG{o+ow}{=} \PYG{n}{fix} \PYG{n}{unify\PYGZsq{}}
+
+\PYG{n+nf}{unify\PYGZus{}with\PYGZus{}occurs\PYGZus{}check} \PYG{o+ow}{=}
+   \PYG{n}{fix} \PYG{o}{\PYGZdl{}} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{self} \PYG{n}{t1} \PYG{n}{t2} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{t1} \PYG{p}{`}\PYG{n}{occursIn}\PYG{p}{`} \PYG{n}{t2} \PYG{o}{||} \PYG{n}{t2} \PYG{p}{`}\PYG{n}{occursIn}\PYG{p}{`} \PYG{n}{t1}\PYG{p}{)}
+                           \PYG{k+kr}{then} \PYG{n}{fail} \PYG{l+s}{\PYGZdq{}occurs check\PYGZdq{}}
+                           \PYG{k+kr}{else} \PYG{n}{unify\PYGZsq{}} \PYG{n}{self} \PYG{n}{t1} \PYG{n}{t2}
+ \PYG{k+kr}{where}
+   \PYG{n}{occursIn} \PYG{n}{t} \PYG{o+ow}{=} \PYG{n}{everything} \PYG{p}{(}\PYG{o}{||}\PYG{p}{)} \PYG{p}{(}\PYG{n}{mkQ} \PYG{k+kt}{False} \PYG{p}{(}\PYG{o}{==}\PYG{n}{t}\PYG{p}{))}
+
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{o+ow}{::} \PYG{k+kt}{MonadPlus} \PYG{n}{m} \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{k+kt}{Unifier}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+\PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{p}{[(}\PYG{k+kt}{VariableName}\PYG{p}{,} \PYG{k+kt}{Term}\PYG{p}{)]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} If either of the terms are don\PYGZsq{}t cares then no unifiers exist}
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{Wildcard} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{=} \PYG{n}{return} \PYG{k+kt}{[]}
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{k+kr}{\PYGZus{}} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{Wildcard} \PYG{o+ow}{=} \PYG{n}{return} \PYG{k+kt}{[]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} If one is a variable then equate the term to its value which}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} forms the unifier}
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{k+kr}{\PYGZus{}} \PYG{p}{(}\PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{)} \PYG{n}{t}  \PYG{o+ow}{=} \PYG{n}{return} \PYG{p}{[(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)]}
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{k+kr}{\PYGZus{}} \PYG{n}{t} \PYG{p}{(}\PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{)}  \PYG{o+ow}{=} \PYG{n}{return} \PYG{p}{[(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{t}\PYG{p}{)]}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Match the names and the length of their parameter list and}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} then match the elements of list one by one.}
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{n}{self} \PYG{p}{(}\PYG{k+kt}{Struct} \PYG{n}{a1} \PYG{n}{ts1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Struct} \PYG{n}{a2} \PYG{n}{ts2}\PYG{p}{)}
+            \PYG{o}{|} \PYG{n}{a1} \PYG{o}{==} \PYG{n}{a2} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{same} \PYG{n}{length} \PYG{n}{ts1} \PYG{n}{ts2} \PYG{o+ow}{=}
+            \PYG{n}{unifyList} \PYG{n}{self} \PYG{p}{(}\PYG{n}{zip} \PYG{n}{ts1} \PYG{n}{ts2}\PYG{p}{)}
+
+\PYG{n+nf}{unify\PYGZsq{}} \PYG{k+kr}{\PYGZus{}} \PYG{k+kr}{\PYGZus{}} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{=} \PYG{n}{mzero}
+
+\PYG{n+nf}{same} \PYG{o+ow}{::} \PYG{k+kt}{Eq} \PYG{n}{b} \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{same} \PYG{n}{f} \PYG{n}{x} \PYG{n}{y} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{x} \PYG{o}{==} \PYG{n}{f} \PYG{n}{y}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Match the elements of each of the tuples in the list.}
+\PYG{n+nf}{unifyList} \PYG{o+ow}{::} \PYG{k+kt}{Monad} \PYG{n}{m} \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{k+kt}{Unifier}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+\PYG{p}{[(}\PYG{k+kt}{Term}\PYG{p}{,} \PYG{k+kt}{Term}\PYG{p}{)]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{k+kt}{Unifier}
+\PYG{n+nf}{unifyList} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{[]} \PYG{o+ow}{=} \PYG{n}{return} \PYG{k+kt}{[]}
+\PYG{n+nf}{unifyList} \PYG{n}{unify} \PYG{p}{((}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)}\PYG{k+kt}{:}\PYG{n}{xys}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{do}
+   \PYG{n}{u}  \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{unify} \PYG{n}{x} \PYG{n}{y}
+   \PYG{n}{u\PYGZsq{}} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{unifyList} \PYG{n}{unify} \PYG{p}{(}\PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{p}{(}\PYG{n}{both} \PYG{p}{(}\PYG{n}{apply} \PYG{n}{u}\PYG{p}{))} \PYG{n}{xys}\PYG{p}{)}
+   \PYG{n}{return} \PYG{p}{(}\PYG{n}{u}\PYG{o}{++}\PYG{n}{u\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

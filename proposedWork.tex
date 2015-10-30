@@ -57,6 +57,29 @@ Something like this is not by default in \progLang{Haskell}. Hence syntactic sup
 Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally. Lastly, how would 
 characteristics of hybrid languages fit into and play a role in an embedded setting.  
 
+
+Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to \textit{open up} the language i.e. to
+include meta syntactic variables, adding custom quantifiers and logic. (\chapterReference{proto1}{Prototype 1}) provides a 
+methodology to convert a language whose recursive abstract syntax is represented by a tree into a non-recursive version whose 
+fixed point is isomorphically equivalent to the original type. The resulting language is capable of .........  
+
+To test it out we adopt the closed \progLang{Prolog} like language defined in \cite{prolog-lib} and open it up. And for 
+the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm implementation encapsulated into a 
+monad. 
+
+(\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a query and a knowledge base. 
+The mechanism for the same is adopted from \cite{prolog-lib}. The embedded language is modified as per the procedure in 
+(\chapterReference{proto1}{Prototype 1}) and the monadic unification part is plugged into the existing architecture to demonstrate that it 
+is independent of the other components. Lastly the result is converted into the original language via a translate function.
+
+(\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the query resolver with variable search strategies. Unification 
+is. 
+
+(\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract syntax of a DSL.  
+
+
+
+
 \section{Thesis Contributions}
 
 \begin{enumerate}
@@ -112,6 +135,9 @@ Transformation of Logic Programs)
 \item Anything else ???????????????
 \end{enumerate}
 \end{comment}
+
+
+
 
 
 

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{Prolog} \PYG{o+ow}{=} \PYG{k+kt}{P} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm}\PYG{p}{)} \PYG{k+kr}{deriving} \PYG{p}{(}\PYG{k+kt}{Show}\PYG{p}{,}\PYG{k+kt}{Eq}\PYG{p}{,}\PYG{k+kt}{Ord}\PYG{p}{)}
+\end{Verbatim}
