@@ -43,8 +43,8 @@
   \PYG{n}{return} \PYG{n}{ld4}
 
 
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{}unify :: Term \PYGZhy{}\PYGZgt{} Term \PYGZhy{}\PYGZgt{} [Subst]}
-\PYG{n+nf}{unify} \PYG{n}{t1} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{n}{substConvertor} \PYG{p}{(}\PYG{n}{goUnify} \PYG{p}{(}\PYG{n}{monadicUnification} \PYG{n}{t1} \PYG{n}{t2}\PYG{p}{))}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}unify :: Term \PYGZhy{}\PYGZgt{} Term \PYGZhy{}\PYGZgt{} [st]}
+\PYG{n+nf}{unify} \PYG{n}{t1} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{n}{stConvertor} \PYG{p}{(}\PYG{n}{goUnify} \PYG{p}{(}\PYG{n}{monadicUnification} \PYG{n}{t1} \PYG{n}{t2}\PYG{p}{))}
 
 
 \PYG{n+nf}{varX} \PYG{o+ow}{::} \PYG{k+kt}{Term}
@@ -54,6 +54,6 @@
 \PYG{n+nf}{varY} \PYG{o+ow}{=} \PYG{k+kt}{Var} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}y\PYGZdq{}}\PYG{p}{)}
 
 
-\PYG{n+nf}{substConvertor} \PYG{o+ow}{::} \PYG{p}{[(}\PYG{k+kt}{Id}\PYG{p}{,} \PYG{k+kt}{Prolog}\PYG{p}{)]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
-\PYG{n+nf}{substConvertor} \PYG{n}{xs} \PYG{o+ow}{=} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{p}{(}\PYG{n}{varId}\PYG{p}{,} \PYG{n}{p}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{o}{\PYGZhy{}\PYGZgt{}\PYGZhy{}}\PYG{p}{)} \PYG{n}{varId} \PYG{p}{(}\PYG{n}{unFlatten} \PYG{o}{\PYGZdl{}} \PYG{n}{unP} \PYG{o}{\PYGZdl{}} \PYG{n}{p}\PYG{p}{))} \PYG{n}{xs}
+\PYG{n+nf}{stConvertor} \PYG{o+ow}{::} \PYG{p}{[(}\PYG{k+kt}{Id}\PYG{p}{,} \PYG{k+kt}{Prolog}\PYG{p}{)]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
+\PYG{n+nf}{stConvertor} \PYG{n}{xs} \PYG{o+ow}{=} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{p}{(}\PYG{n}{varId}\PYG{p}{,} \PYG{n}{p}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{o}{\PYGZhy{}\PYGZgt{}\PYGZhy{}}\PYG{p}{)} \PYG{n}{varId} \PYG{p}{(}\PYG{n}{unFlatten} \PYG{o}{\PYGZdl{}} \PYG{n}{unP} \PYG{o}{\PYGZdl{}} \PYG{n}{p}\PYG{p}{))} \PYG{n}{xs}
 \end{Verbatim}

@@ -5,11 +5,11 @@
 
 \chapter{Prototype 2.1}{\label{proto2.1}}
 
-\subsection{About this chapter}
+\section{About this chapter}
 This chapter attempts to infuse the generic methodology from \ref{proto1} in a current \progLang{Prolog} implementation \cite{prolog-lib}
 and make the unification "monadic".
 
-\subsection{How prolog-0.2.0.1 works}
+\section{How prolog-0.2.0.1 works}
 
 The original syntax used by the library,
 
@@ -51,8 +51,7 @@ There are a few other components such as the REPL, Parser.
 
 
 
-
-\subsection{What we do in this prototype?}
+\section{What we do in this prototype?}
 In the first prototype we just did unification of two terms not query resolution.
 
 We do complete \progLang{Prolog} query resolution like stuff.
@@ -60,7 +59,7 @@ We do complete \progLang{Prolog} query resolution like stuff.
 \ref{proto1} provides a generic procedure / methodology to convert a language into monadic unifiable form 
 
 
-\subsection{Current implementation (prolog-0.2.0.1)}
+\section{Current implementation (prolog-0.2.0.1)}
 The current unification uses basic pattern matching to unfiy the terms 
 
 
@@ -111,7 +110,7 @@ unifyList unify ((x,y):xys) = do
 \end{minted} 
 
 
-\subsection{Modifications}
+\section{Modifications}
 
 The first modification is to the language is to make it compatible with the library whcih provides this nice generic mechanism a perform 
 unification in a mondic manner.
@@ -214,7 +213,7 @@ f1 dict = do
 
 
 
-\subsection{Results}
+\section{Results}
 
 It works,
 

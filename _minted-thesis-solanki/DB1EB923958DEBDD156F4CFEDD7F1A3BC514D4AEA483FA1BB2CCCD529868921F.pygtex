@@ -175,8 +175,8 @@
 
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} | vTermify recursively converts @UVar x@ into @UTerm (VarA x).}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} This is a subroutine of @ translateFromUTerm @.  The resulting}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} term has no (UVar x) subterms.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} This is a routine of @ translateFromUTerm @.  The resulting}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} term has no (UVar x) terms.}
 
 \PYG{n+nf}{vTermify} \PYG{o+ow}{::} \PYG{k+kt}{Map} \PYG{k+kt}{Int} \PYG{k+kt}{Id} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
             \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FTS}\PYG{p}{))} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
@@ -372,27 +372,27 @@
 
 \PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
 
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} type Subst = Id \PYGZhy{}\PYGZgt{} Term}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} type st = Id \PYGZhy{}\PYGZgt{} Term}
 
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Convert result from monadicUnify to [Subst]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Convert result from monadicUnify to [st]}
 \PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
 \PYG{c+cm}{goMonadicTest :: (Show b) =\PYGZgt{} (forall s .}
 \PYG{c+cm}{  (ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))}
 \PYG{c+cm}{           (ST.STBinding s)}
 \PYG{c+cm}{            (UT.UTerm (FTS) (ST.STVar s (FTS)),}
-\PYG{c+cm}{             Map Id (ST.STVar s (FTS))))) \PYGZhy{}\PYGZgt{} [Subst]}
+\PYG{c+cm}{             Map Id (ST.STVar s (FTS))))) \PYGZhy{}\PYGZgt{} [st]}
 \PYG{c+cm}{goMonadicTest test = ST.runSTBinding \PYGZdl{} do}
 \PYG{c+cm}{  answer \PYGZlt{}\PYGZhy{} runErrorT \PYGZdl{} test}
 \PYG{c+cm}{  return \PYGZdl{}! case answer of}
-\PYG{c+cm}{    (Left x)  \PYGZhy{}\PYGZgt{} [nullSubst]}
-\PYG{c+cm}{    (Right y) \PYGZhy{}\PYGZgt{} convertToSubst y}
+\PYG{c+cm}{    (Left x)  \PYGZhy{}\PYGZgt{} [nullst]}
+\PYG{c+cm}{    (Right y) \PYGZhy{}\PYGZgt{} convertTost y}
 \PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{}(Id, STVar s FTS)}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{}convertToSubst :: Map Id (ST.STVar s FTS) \PYGZhy{}\PYGZgt{} [(Id, ST.STVar s FTS)]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}convertTost :: Map Id (ST.STVar s FTS) \PYGZhy{}\PYGZgt{} [(Id, ST.STVar s FTS)]}
 \PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
-\PYG{c+cm}{convertToSubst m = convertToSubst1 Map.toAscList m}
+\PYG{c+cm}{convertTost m = convertTost1 Map.toAscList m}
 
-\PYG{c+cm}{convertToSubst1 (id, ST.STVar \PYGZus{} fts):xs = (id, (unFlatten fts)) : convertToSubst1 xs}
+\PYG{c+cm}{convertTost1 (id, ST.STVar \PYGZus{} fts):xs = (id, (unFlatten fts)) : convertTost1 xs}
 \PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
 \end{Verbatim}
