@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{ExprF} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{n}{eval} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n}{i}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Const} \PYG{n}{i}
+    \PYG{n}{fmap} \PYG{n}{eval} \PYG{p}{(}\PYG{n}{left} \PYG{p}{`}\PYG{k+kt}{Add}\PYG{p}{`} \PYG{n}{right}\PYG{p}{)} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{eval} \PYG{n}{left}\PYG{p}{)} \PYG{p}{`}\PYG{k+kt}{Add}\PYG{p}{`} \PYG{p}{(}\PYG{n}{eval} \PYG{n}{right}\PYG{p}{)}
+    \PYG{n}{fmap} \PYG{n}{eval} \PYG{p}{(}\PYG{n}{left} \PYG{p}{`}\PYG{k+kt}{Mul}\PYG{p}{`} \PYG{n}{right}\PYG{p}{)} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{eval} \PYG{n}{left}\PYG{p}{)} \PYG{p}{`}\PYG{k+kt}{Mul}\PYG{p}{`} \PYG{p}{(}\PYG{n}{eval} \PYG{n}{right}\PYG{p}{)}
+\end{Verbatim}

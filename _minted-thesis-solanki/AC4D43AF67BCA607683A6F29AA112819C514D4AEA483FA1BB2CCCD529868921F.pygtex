@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{alg} \PYG{o+ow}{::} \PYG{k+kt}{ExprF} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{alg} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n}{i}\PYG{p}{)}   \PYG{o+ow}{=} \PYG{n}{i}
+\PYG{n+nf}{alg} \PYG{p}{(}\PYG{n}{x} \PYG{p}{`}\PYG{k+kt}{Add}\PYG{p}{`} \PYG{n}{y}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x} \PYG{o}{+} \PYG{n}{y}
+\PYG{n+nf}{alg} \PYG{p}{(}\PYG{n}{x} \PYG{p}{`}\PYG{k+kt}{Mul}\PYG{p}{`} \PYG{n}{y}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x} \PYG{o}{*} \PYG{n}{y}
+\end{Verbatim}
