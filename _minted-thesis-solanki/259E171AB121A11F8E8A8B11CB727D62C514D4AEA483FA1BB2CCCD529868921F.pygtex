@@ -1,0 +1,86 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Traversable}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Monad}
+\PYG{k+kr}{import} \PYG{n+nn}{Data.Functor}
+\PYG{k+kr}{import} \PYG{n+nn}{Control.Applicative}
+\PYG{k+kr}{import} \PYG{n+nn}{System.IO}
+
+\PYG{k+kr}{data} \PYG{k+kt}{PrologResult}
+   \PYG{o+ow}{=} \PYG{k+kt}{NoResult}
+   \PYG{o}{|} \PYG{k+kt}{Cons} \PYG{k+kt}{OneBinding} \PYG{k+kt}{PrologResult}
+   \PYG{o}{|} \PYG{k+kt}{IOIn} \PYG{p}{(}\PYG{k+kt}{IO} \PYG{k+kt}{String}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{PrologResult}\PYG{p}{)}
+   \PYG{o}{|} \PYG{k+kt}{IOOut} \PYG{p}{(}\PYG{k+kt}{IO} \PYG{n+nb}{()}\PYG{p}{)} \PYG{k+kt}{PrologResult}
+
+
+
+\PYG{k+kr}{data} \PYG{k+kt}{OneBinding} \PYG{o+ow}{=} \PYG{k+kt}{Pair} \PYG{k+kt}{VariableName} \PYG{k+kt}{VariableName}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}data MiniLang a = MyData a | Empty | Input}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}runInIO :: PrologResult \PYGZhy{}\PYGZgt{} IO [OneBinding]}
+
+
+\PYG{k+kr}{data} \PYG{k+kt}{PrologIO} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Input} \PYG{p}{(}\PYG{k+kt}{IO} \PYG{n}{a}\PYG{p}{)} \PYG{o}{|} \PYG{k+kt}{Output} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IO} \PYG{n+nb}{()}\PYG{p}{)} \PYG{o}{|} \PYG{k+kt}{PrologData} \PYG{n}{a} \PYG{o}{|} \PYG{k+kt}{Empty}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}				deriving (Show, Eq, Ord)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{instance Functor (PrologIO) where}
+\PYG{c+cm}{	fmap f Empty 					= Empty}
+\PYG{c+cm}{	fmap f (Input (IO a)) 			= Input (IO (f a))}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}	fmap f (Output (a \PYGZhy{}\PYGZgt{} IO ()))	= Output (a \PYGZhy{}\PYGZgt{} IO ())}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}	fmap f (PrologData a)			= PrologData (f a)}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Monad} \PYG{k+kt}{PrologIO} \PYG{k+kr}{where}
+	 	\PYG{n}{return} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{PrologData} \PYG{n}{a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}	 	(Input i) \PYGZgt{}\PYGZgt{}= (Output o) = i \PYGZgt{}\PYGZgt{}= (\PYGZbs{}a \PYGZhy{}\PYGZgt{} (o a))}
+
+\PYG{k+kr}{instance} \PYG{p}{(}\PYG{k+kt}{Show} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Show} \PYG{p}{(}\PYG{k+kt}{PrologIO} \PYG{n}{a}\PYG{p}{)} \PYG{k+kr}{where}
+	\PYG{n}{show} \PYG{p}{(}\PYG{k+kt}{Empty}\PYG{p}{)} 		\PYG{o+ow}{=} \PYG{n}{show} \PYG{l+s}{\PYGZdq{}No result\PYGZdq{}}
+	\PYG{n}{show} \PYG{p}{(}\PYG{k+kt}{PrologData} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{show} \PYG{n}{a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}	show (Input f)		= show (f ++ \PYGZdq{}\PYGZdq{})}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}	show (Output )}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (\PYGZgt{}\PYGZgt{}=) Action sequencer and combiner :\PYGZhy{} read \PYGZhy{}\PYGZgt{} write \PYGZhy{}\PYGZgt{} read \PYGZhy{}\PYGZgt{} write \PYGZhy{}\PYGZgt{} ........}
+\PYG{n+nf}{seqio} \PYG{o+ow}{::} \PYG{k+kt}{PrologIO} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{PrologIO} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{PrologIO} \PYG{n}{b}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      (First action   (Take and perform}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      which generates  next action)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      value a)}
+\PYG{n+nf}{seqio} \PYG{p}{(}\PYG{k+kt}{PrologData} \PYG{n}{a}\PYG{p}{)} 	\PYG{n}{f} 	\PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}seqio (Output o) 		f 	= \PYGZbs{}a \PYGZhy{}\PYGZgt{} o a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}seqio (Input i)    		f 	= \PYGZbs{}s \PYGZhy{}\PYGZgt{} (seqio (i s) f) \PYGZhy{}\PYGZhy{}				Get (\PYGZbs{}s \PYGZhy{}\PYGZgt{} seqio (g s) f)}
+
+
+
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{instance Applicative PrologIO where}
+\PYG{c+cm}{	func =}
+
+\PYG{c+cm}{instance Traversable PrologIO where}
+\PYG{c+cm}{	traverse f Empty 					= Empty}
+\PYG{c+cm}{	traverse f (Input (IO a)) 			= Input (IO (f a))}
+\PYG{c+cm}{	traverse f (Output (a \PYGZhy{}\PYGZgt{} IO ()))	= Output ((a) \PYGZhy{}\PYGZgt{} IO ())}
+\PYG{c+cm}{	traverse f (PrologData a)			= PrologData (f a)}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+
+\PYG{n+nf}{concate} \PYG{o+ow}{::} \PYG{k+kt}{PrologIO} \PYG{n}{t} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{PrologIO} \PYG{n}{t} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IO} \PYG{n+nb}{()}
+\PYG{n+nf}{concate} \PYG{p}{(}\PYG{k+kt}{Input} \PYG{n}{f1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Output} \PYG{n}{f2}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{do}
+	\PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{f1}
+	\PYG{n}{f2} \PYG{n}{x}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{concate (Input getLine) (Output putStrLn)}
+\PYG{c+cm}{Loading package list\PYGZhy{}extras\PYGZhy{}0.4.1.4 ... linking ... done.}
+\PYG{c+cm}{Loading package syb\PYGZhy{}0.5.1 ... linking ... done.}
+\PYG{c+cm}{Loading package array\PYGZhy{}0.5.0.0 ... linking ... done.}
+\PYG{c+cm}{Loading package deepseq\PYGZhy{}1.3.0.2 ... linking ... done.}
+\PYG{c+cm}{Loading package containers\PYGZhy{}0.5.5.1 ... linking ... done.}
+\PYG{c+cm}{Loading package transformers\PYGZhy{}0.4.3.0 ... linking ... done.}
+\PYG{c+cm}{Loading package mtl\PYGZhy{}2.2.1 ... linking ... done.}
+\PYG{c+cm}{Loading package logict\PYGZhy{}0.6.0.2 ... linking ... done.}
+\PYG{c+cm}{Loading package unification\PYGZhy{}fd\PYGZhy{}0.10.0.1 ... linking ... done.}
+\PYG{c+cm}{1}
+\PYG{c+cm}{1}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+\end{Verbatim}

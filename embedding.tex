@@ -115,8 +115,13 @@ other. The next subsection covers the literature based on the above with improve
  
 \begin{comment}
 \par A series of papers \cite{spivey1999embedding, seres1999algebra, seres2001higher, spivey1999algebra, seres2001algebra} covers the 
-topic in a sufficiently thorough manner. The attempt throws light on the subject of Embedding Prolog in Haskell from all aspects. Moreover, it is one of the first formal attempts at Embedding Prolog in Haskell. It takes quite some leads from implementations of Prolog in other languages like Scheme and Lisp and also some Multi Paradigm Declarative Languages. But the difference here being that Lisp is strict while Haskell is lazy which leads to a natural backtracking behaviour. The basic idea being that each Prolog Predicate is translated to a Haskell Function which will work on lists and produce a Stream of results lazily. The aim was never to develop a Hybrid Functional Logic Programming Language but to put forth a set of general rules for embedding. Moreover the initial model is for a more Pure Declarative Prolog rather than the Practical one. The extension is very minimalistic with only four new constructs or functions, Conjunction, Disjunction, Unification and the Existential Quantifier. A general 
-technique has also been described for converting a Prolog Predicate to a Haskell 
+topic in a sufficiently thorough manner. The attempt throws light on the subject of embedding \progLang{Prolog} in \progLang{Haskell} from all aspects. Moreover, it is one of the first 
+formal attempts to do so. It takes quite some leads from implementations of \progLang{Prolog} in other languages like \progLang{Scheme} and \progLang{Lisp} and also some Multi Paradigm 
+Declarative Languages. But the difference here being that Lisp is strict while \progLang{Haskell} is lazy which leads to a natural backtracking behaviour. The basic idea being that each 
+\progLang{Prolog} Predicate is translated to a Haskell Function which will work on lists and produce a Stream of results lazily. The aim was never to develop a Hybrid Functional Logic 
+Programming Language but to put forth a set of general rules for embedding. Moreover the initial model is for a more Pure Declarative Prolog rather than the Practical one. The extension is
+very minimalistic with only four new constructs or functions, Conjunction, Disjunction, Unification and the Existential Quantifier. A general 
+technique has also been described for converting a \progLang{Prolog} Predicate to a \progLang{Haskell} 
 Function. The Prolog terms are still untyped and the search is carried out in a Breadth First manner but there is no support for 
 Higher Order Functions in the first revision and a implementation does not exist. 
 
@@ -124,7 +129,7 @@ Higher Order Functions in the first revision and a implementation does not exist
 \textit{cut} operators. Pushing it further, data types to work with Depth First Search and also a more General Strategy to 
 interchange mechanisms. Covering up some downfalls, a more compositional approach like the one in functional programming 
 languages is proposed to incorporate higher order functions (higher order predicates). Synthesis and Transformation techniques 
-for Functional Programs have been \textit{logicalized} and applied to Prolog Programs.                              
+for Functional Programs have been \textit{logicalized} and applied to \progLang{Prolog} Programs.                              
 \end{comment}
 
 The work presented in the series \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}. Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog} in other languages like \progLang{Scheme} and \progLang{Lisp}. Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi paradigm declarative language. \progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results lazily depicting depth first search with support for different strategies and practical operators such as \textit{cut} and \textit{fail} with higher order functions. The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.

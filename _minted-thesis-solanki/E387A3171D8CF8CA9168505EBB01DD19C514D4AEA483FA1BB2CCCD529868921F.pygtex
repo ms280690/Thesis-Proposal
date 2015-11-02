@@ -1,0 +1,221 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} http://chris\PYGZhy{}taylor.github.io/blog/2013/02/09/io\PYGZhy{}is\PYGZhy{}not\PYGZhy{}a\PYGZhy{}side\PYGZhy{}effect/}
+
+\PYG{k+kr}{data} \PYG{k+kt}{IOAction} \PYG{n}{a} \PYG{o+ow}{=}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} A container for a value of type a.}
+                  \PYG{k+kt}{Return} \PYG{n}{a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} A container holding a String to be printed to stdout, followed by another IOAction a.}
+                \PYG{o}{|} \PYG{k+kt}{Put} \PYG{k+kt}{String} \PYG{p}{(}\PYG{k+kt}{IOAction} \PYG{n}{a}\PYG{p}{)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} A container holding a function from String \PYGZhy{}\PYGZgt{} IOAction a, which can be applied to whatever String is read from stdin.}
+                \PYG{o}{|} \PYG{k+kt}{Get} \PYG{p}{(}\PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n}{a}\PYG{p}{)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{Return 1}
+
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (Return ())}
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (}
+\PYG{c+cm}{  Return ()}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (Return 1)}
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (}
+\PYG{c+cm}{  Return 1}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (get)}
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (}
+\PYG{c+cm}{  Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{    Return \PYGZdq{}\PYGZdl{}0\PYGZdq{}}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{Get put}
+\PYG{c+cm}{Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{  Put \PYGZdq{}\PYGZdl{}0\PYGZdq{} (}
+\PYG{c+cm}{    Return ()}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Read and return}
+\PYG{n+nf}{get} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{k+kt}{String}
+\PYG{n+nf}{get}   \PYG{o+ow}{=} \PYG{k+kt}{Get} \PYG{k+kt}{Return}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{  Return \PYGZdq{}\PYGZdl{}0\PYGZdq{}}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Print and return.}
+\PYG{n+nf}{put} \PYG{o+ow}{::} \PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n+nb}{()}
+\PYG{n+nf}{put} \PYG{n}{s} \PYG{o+ow}{=} \PYG{k+kt}{Put} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n+nb}{()}\PYG{p}{)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{put \PYGZdq{}hello\PYGZdq{}}
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (}
+\PYG{c+cm}{  Return ()}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} (\PYGZgt{}\PYGZgt{}=) Action sequencer and combiner :\PYGZhy{} read \PYGZhy{}\PYGZgt{} write \PYGZhy{}\PYGZgt{} read \PYGZhy{}\PYGZgt{} write \PYGZhy{}\PYGZgt{} ........}
+\PYG{n+nf}{seqio} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n}{b}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      (First action   (Take and perform}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      which generates  next action)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}      value a)}
+\PYG{n+nf}{seqio} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n}{a}\PYG{p}{)} \PYG{n}{f} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{a}
+\PYG{n+nf}{seqio} \PYG{p}{(}\PYG{k+kt}{Put} \PYG{n}{s} \PYG{n}{io}\PYG{p}{)} \PYG{n}{f} \PYG{o+ow}{=} \PYG{k+kt}{Put} \PYG{n}{s} \PYG{p}{(}\PYG{n}{seqio} \PYG{n}{io} \PYG{n}{f}\PYG{p}{)}
+\PYG{n+nf}{seqio} \PYG{p}{(}\PYG{k+kt}{Get} \PYG{n}{g}\PYG{p}{)}    \PYG{n}{f} \PYG{o+ow}{=} \PYG{k+kt}{Get} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{seqio} \PYG{p}{(}\PYG{n}{g} \PYG{n}{s}\PYG{p}{)} \PYG{n}{f}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}Take input and print.}
+\PYG{n+nf}{echo} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{n+nb}{()}
+\PYG{n+nf}{echo} \PYG{o+ow}{=} \PYG{n}{get} \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n}{put}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{  Put \PYGZdq{}\PYGZdl{}0\PYGZdq{} (}
+\PYG{c+cm}{    Return ()}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{n+nf}{hello} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{n+nb}{()}
+\PYG{n+nf}{hello} \PYG{o+ow}{=} \PYG{n}{put} \PYG{l+s}{\PYGZdq{}What is your name?\PYGZdq{}}      \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{k+kr}{\PYGZus{}}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{get}                           \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{name} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{put} \PYG{l+s}{\PYGZdq{}What is your age?\PYGZdq{}}       \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{k+kr}{\PYGZus{}}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{get}                           \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{age}  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{put} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}Hello \PYGZdq{}} \PYG{o}{++} \PYG{n}{name} \PYG{o}{++} \PYG{l+s}{\PYGZdq{}!\PYGZdq{}}\PYG{p}{)} \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{k+kr}{\PYGZus{}}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{put} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}You are \PYGZdq{}} \PYG{o}{++} \PYG{n}{age} \PYG{o}{++} \PYG{l+s}{\PYGZdq{} years old\PYGZdq{}}\PYG{p}{)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{Put \PYGZdq{}What is your name?\PYGZdq{} (}
+\PYG{c+cm}{  Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{    Put \PYGZdq{}What is your age?\PYGZdq{} (}
+\PYG{c+cm}{      Get (\PYGZdl{}1 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{        Put \PYGZdq{}Hello \PYGZdl{}0!\PYGZdq{} (}
+\PYG{c+cm}{          Put \PYGZdq{}You are \PYGZdl{}1 years old\PYGZdq{} (}
+\PYG{c+cm}{            Return ()}
+\PYG{c+cm}{          )}
+\PYG{c+cm}{        )}
+\PYG{c+cm}{      )}
+\PYG{c+cm}{    )}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{run hello}
+\PYG{c+cm}{What is your name?}
+\PYG{c+cm}{Mehul}
+\PYG{c+cm}{What is your age?}
+\PYG{c+cm}{25}
+\PYG{c+cm}{Hello Mehul!}
+\PYG{c+cm}{You are 25 years old}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} hello in \PYGZdq{}do\PYGZdq{} block since IOAction is a Monad}
+\PYG{n+nf}{hello2} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{n+nb}{()}
+\PYG{n+nf}{hello2} \PYG{o+ow}{=} \PYG{k+kr}{do} \PYG{n}{put} \PYG{l+s}{\PYGZdq{}What is your name?\PYGZdq{}}
+            \PYG{n}{name} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{get}
+            \PYG{n}{put} \PYG{l+s}{\PYGZdq{}What is your age?\PYGZdq{}}
+            \PYG{n}{age} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{get}
+            \PYG{n}{put} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}Hello, \PYGZdq{}} \PYG{o}{++} \PYG{n}{name} \PYG{o}{++} \PYG{l+s}{\PYGZdq{}!\PYGZdq{}}\PYG{p}{)}
+            \PYG{n}{put} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}You are \PYGZdq{}} \PYG{o}{++} \PYG{n}{age} \PYG{o}{++} \PYG{l+s}{\PYGZdq{} years old!\PYGZdq{}}\PYG{p}{)}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{Put \PYGZdq{}What is your name?\PYGZdq{} (}
+\PYG{c+cm}{  Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{    Put \PYGZdq{}What is your age?\PYGZdq{} (}
+\PYG{c+cm}{      Get (\PYGZdl{}1 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{        Put \PYGZdq{}Hello, \PYGZdl{}0!\PYGZdq{} (}
+\PYG{c+cm}{          Put \PYGZdq{}You are \PYGZdl{}1 years old!\PYGZdq{} (}
+\PYG{c+cm}{            Return ()}
+\PYG{c+cm}{          )}
+\PYG{c+cm}{        )}
+\PYG{c+cm}{      )}
+\PYG{c+cm}{    )}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{run hello2}
+\PYG{c+cm}{What is your name?}
+\PYG{c+cm}{Mehul}
+\PYG{c+cm}{What is your age?}
+\PYG{c+cm}{25}
+\PYG{c+cm}{Hello, Mehul!}
+\PYG{c+cm}{You are 25 years old!}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} where the effects happen.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZdq{}Real\PYGZdq{} IO functions like return, putStrLn, getLine.}
+\PYG{n+nf}{run} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IO} \PYG{n}{a}
+\PYG{n+nf}{run} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{return} \PYG{n}{a}
+\PYG{n+nf}{run} \PYG{p}{(}\PYG{k+kt}{Put} \PYG{n}{s} \PYG{n}{io}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{putStrLn} \PYG{n}{s} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{run} \PYG{n}{io}
+\PYG{n+nf}{run} \PYG{p}{(}\PYG{k+kt}{Get} \PYG{n}{f}\PYG{p}{)}    \PYG{o+ow}{=} \PYG{n}{getLine} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{run} \PYG{o}{.} \PYG{n}{f}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{run (Return 1)}
+\PYG{c+cm}{1}
+
+\PYG{c+cm}{run (Put \PYGZdq{}hello\PYGZdq{} get)}
+\PYG{c+cm}{hello}
+\PYG{c+cm}{1}
+\PYG{c+cm}{\PYGZdq{}1\PYGZdq{}}
+
+\PYG{c+cm}{run (Get put)}
+\PYG{c+cm}{1}
+\PYG{c+cm}{1}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Glue code that makes everything play nice \PYGZhy{}\PYGZhy{}}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Monad} \PYG{k+kt}{IOAction} \PYG{k+kr}{where}
+    \PYG{n}{return} \PYG{o+ow}{=} \PYG{k+kt}{Return}
+    \PYG{p}{(}\PYG{o}{\PYGZgt{}\PYGZgt{}=}\PYG{p}{)}  \PYG{o+ow}{=} \PYG{n}{seqio}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Show} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Show} \PYG{p}{(}\PYG{k+kt}{IOAction} \PYG{n}{a}\PYG{p}{)} \PYG{k+kr}{where}
+  \PYG{n}{show} \PYG{n}{io} \PYG{o+ow}{=} \PYG{n}{go} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{n}{io}
+    \PYG{k+kr}{where}
+      \PYG{n}{go} \PYG{n}{m} \PYG{n}{n} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{ind} \PYG{n}{m} \PYG{l+s}{\PYGZdq{}Return \PYGZdq{}} \PYG{o}{++} \PYG{n}{show} \PYG{n}{a}
+      \PYG{n}{go} \PYG{n}{m} \PYG{n}{n} \PYG{p}{(}\PYG{k+kt}{Put} \PYG{n}{s} \PYG{n}{io}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{ind} \PYG{n}{m} \PYG{l+s}{\PYGZdq{}Put \PYGZdq{}} \PYG{o}{++} \PYG{n}{show} \PYG{n}{s} \PYG{o}{++} \PYG{l+s}{\PYGZdq{} (}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}} \PYG{o}{++} \PYG{n}{go} \PYG{p}{(}\PYG{n}{m}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{n} \PYG{n}{io} \PYG{o}{++} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}} \PYG{o}{++} \PYG{n}{ind} \PYG{n}{m} \PYG{l+s}{\PYGZdq{})\PYGZdq{}}
+      \PYG{n}{go} \PYG{n}{m} \PYG{n}{n} \PYG{p}{(}\PYG{k+kt}{Get} \PYG{n}{g}\PYG{p}{)}    \PYG{o+ow}{=} \PYG{k+kr}{let} \PYG{n}{i} \PYG{o+ow}{=} \PYG{l+s}{\PYGZdq{}\PYGZdl{}\PYGZdq{}} \PYG{o}{++} \PYG{n}{show} \PYG{n}{n}
+                          \PYG{k+kr}{in} \PYG{n}{ind} \PYG{n}{m} \PYG{l+s}{\PYGZdq{}Get (\PYGZdq{}} \PYG{o}{++} \PYG{n}{i} \PYG{o}{++} \PYG{l+s}{\PYGZdq{} \PYGZhy{}\PYGZgt{} }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}} \PYG{o}{++} \PYG{n}{go} \PYG{p}{(}\PYG{n}{m}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{n}{g} \PYG{n}{i}\PYG{p}{)} \PYG{o}{++} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}} \PYG{o}{++} \PYG{n}{ind} \PYG{n}{m} \PYG{l+s}{\PYGZdq{})\PYGZdq{}}
+
+      \PYG{n}{ind} \PYG{n}{m} \PYG{n}{s} \PYG{o+ow}{=} \PYG{n}{replicate} \PYG{n}{m} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}} \PYG{o}{++} \PYG{n}{s}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} IOAction is also a Functor \PYGZhy{}\PYGZhy{}}
+
+\PYG{n+nf}{mapio} \PYG{o+ow}{::} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n}{b}
+\PYG{n+nf}{mapio} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Return} \PYG{p}{(}\PYG{n}{f} \PYG{n}{a}\PYG{p}{)}
+\PYG{n+nf}{mapio} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Put} \PYG{n}{s} \PYG{n}{io}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Put} \PYG{n}{s} \PYG{p}{(}\PYG{n}{mapio} \PYG{n}{f} \PYG{n}{io}\PYG{p}{)}
+\PYG{n+nf}{mapio} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Get} \PYG{n}{g}\PYG{p}{)}    \PYG{o+ow}{=} \PYG{k+kt}{Get} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{mapio} \PYG{n}{f} \PYG{p}{(}\PYG{n}{g} \PYG{n}{s}\PYG{p}{))}
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+cm}{mapio (+1) (Return 1)}
+\PYG{c+cm}{Return 2}
+
+\PYG{c+cm}{mapio (id) (Put \PYGZdq{}hello\PYGZdq{} get)}
+\PYG{c+cm}{Put \PYGZdq{}hello\PYGZdq{} (}
+\PYG{c+cm}{  Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{    Return \PYGZdq{}\PYGZdl{}0\PYGZdq{}}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{mapio (id) (Get put)}
+\PYG{c+cm}{Get (\PYGZdl{}0 \PYGZhy{}\PYGZgt{}}
+\PYG{c+cm}{  Put \PYGZdq{}\PYGZdl{}0\PYGZdq{} (}
+\PYG{c+cm}{    Return ()}
+\PYG{c+cm}{  )}
+\PYG{c+cm}{)}
+
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{IOAction} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{o+ow}{=} \PYG{n}{mapio}
+\end{Verbatim}
