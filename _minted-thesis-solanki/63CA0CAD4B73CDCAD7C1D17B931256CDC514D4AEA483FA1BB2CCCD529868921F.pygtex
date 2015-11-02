@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{data} \PYG{k+kt}{IOAction} \PYG{n}{a} \PYG{o+ow}{=}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} A container for a value of type a.}
-                  \PYG{k+kt}{Return} \PYG{n}{a}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} A container holding a String to be printed to stdout, followed by another IOAction a.}
-                \PYG{o}{|} \PYG{k+kt}{Put} \PYG{k+kt}{String} \PYG{p}{(}\PYG{k+kt}{IOAction} \PYG{n}{a}\PYG{p}{)}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} A container holding a function from String \PYGZhy{}\PYGZgt{} IOAction a, which can be applied to whatever String is read from stdin.}
-                \PYG{o}{|} \PYG{k+kt}{Get} \PYG{p}{(}\PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IOAction} \PYG{n}{a}\PYG{p}{)}
-\end{Verbatim}

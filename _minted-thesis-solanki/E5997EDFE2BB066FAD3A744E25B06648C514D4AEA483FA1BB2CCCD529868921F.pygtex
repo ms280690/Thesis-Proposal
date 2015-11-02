@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Prolog IO}
+
+\PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{FREE MONADS}
+\PYG{c+cm}{In general, a structure is called free when it is left\PYGZhy{}adjoint to a forgetful functor.}
+\PYG{c+cm}{In this specific instance, the Term data type is a higher\PYGZhy{}order functor that maps}
+\PYG{c+cm}{a functor f to the monad Term f ; this is illustrated by the above two instance}
+\PYG{c+cm}{definitions. This Term functor is left\PYGZhy{}adjoint to the forgetful functor from monads}
+\PYG{c+cm}{to their underlying functors.}
+\PYG{c+cm}{\PYGZhy{}\PYGZhy{}\PYGZcb{}}
+
+\PYG{k+kr}{data} \PYG{k+kt}{Term} \PYG{n}{f} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Pure} \PYG{n}{a}
+			  \PYG{o}{|} \PYG{k+kt}{Impure} \PYG{p}{(}\PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Term} \PYG{n}{f} \PYG{n}{a}\PYG{p}{))}
+
+\PYG{n+nf}{main} 							\PYG{o+ow}{=} \PYG{n}{undefined}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{n}{f} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Functor} \PYG{p}{(}\PYG{k+kt}{Term} \PYG{n}{f}\PYG{p}{)} \PYG{k+kr}{where}
+	\PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Pure} \PYG{n}{x} \PYG{p}{)} 			\PYG{o+ow}{=} \PYG{k+kt}{Pure} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x} \PYG{p}{)}
+	\PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Impure} \PYG{n}{t}\PYG{p}{)} 			\PYG{o+ow}{=} \PYG{k+kt}{Impure} \PYG{p}{(}\PYG{n}{fmap} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{p}{)} \PYG{n}{t}\PYG{p}{)}
+
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{n}{f} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Monad} \PYG{p}{(}\PYG{k+kt}{Term} \PYG{n}{f}\PYG{p}{)} \PYG{k+kr}{where}
+	\PYG{n}{return} \PYG{n}{x} 					\PYG{o+ow}{=} \PYG{k+kt}{Pure} \PYG{n}{x}
+	\PYG{p}{(}\PYG{k+kt}{Pure} \PYG{n}{x} \PYG{p}{)} 	\PYG{o}{\PYGZgt{}\PYGZgt{}=} 	\PYG{n}{f} 		\PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{x}
+	\PYG{p}{(}\PYG{k+kt}{Impure} \PYG{n}{t}\PYG{p}{)} 	\PYG{o}{\PYGZgt{}\PYGZgt{}=} 	\PYG{n}{f} 		\PYG{o+ow}{=} \PYG{k+kt}{Impure} \PYG{p}{(}\PYG{n}{fmap} \PYG{p}{(}\PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{f} \PYG{p}{)} \PYG{n}{t}\PYG{p}{)}
+\end{Verbatim}

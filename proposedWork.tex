@@ -4,7 +4,7 @@
 \begin{document}
 
 %-----------------------------------------------------------------------------
-\chapter{Proposed Work}\label{chap:proposedWork}
+\chapter{Accomplished Work}\label{chap:proposedWork}
 %-----------------------------------------------------------------------------
 \section{Current Work}
 
@@ -28,7 +28,7 @@ allows the programmer to choose the manner in which a solution is produced.
 \item The papers that try to take the above further are also few in number and do not have any implementations with the proposed 
 concepts. Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
 
-\item Libraries, a few exist, most are old and are not currently maintained or updated. Many provide only a shell through which one has to do all the work, 
+\item In the case of libraries, a few exist, most are old and are not currently maintained or updated. Many provide only a shell through which one has to do all the work, 
 which is synonymous with the embeddings mentioned above. Some are far more feature rich than others that is with some practical \progLang{Prolog} 
 concepts, but are not complete.
 
@@ -58,25 +58,27 @@ Furthermore, experimenting with how programs expressed with same declarative mea
 characteristics of hybrid languages fit into and play a role in an embedded setting.  
 
 
-Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to \textit{open up} the language i.e. to
+\section{Improved Contributions}
+\begin{enumerate}
+\item Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to \textit{open up} the language i.e. to
 include meta syntactic variables, adding custom quantifiers and logic. (\chapterReference{proto1}{Prototype 1}) provides a 
 methodology to convert a language whose recursive abstract syntax is represented by a tree into a non-recursive version whose 
-fixed point is isomorphically equivalent to the original type. The resulting language is capable of .........  
+fixed point is isomorphically equivalent to the original type. One of the outcomes is a polymorphically typed embedded language within \progLang{Haskell}  
 
 To test it out we adopt the closed \progLang{Prolog} like language defined in \cite{prolog-lib} and open it up. And for 
 the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm implementation encapsulated into a 
 monad. 
 
-(\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a query and a knowledge base. 
+\item (\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a query and a knowledge base. 
 The mechanism for the same is adopted from \cite{prolog-lib}. The embedded language is modified as per the procedure in 
 (\chapterReference{proto1}{Prototype 1}) and the monadic unification part is plugged into the existing architecture to demonstrate that it 
 is independent of the other components. Lastly the result is converted into the original language via a translate function.
 
-(\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the query resolver with variable search strategies. Unification 
-is. 
+\item (\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query resolver with multiple search strategies. 
 
-(\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract syntax of a DSL.  
-
+\item (\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract syntax of a DSL which when interpreted would produce output consisting of 
+a pure set of instructions irrespective of the nature of the construct. The effects are only produced only when the actions are executed.    
+\end{enumerate}
 
 
 
