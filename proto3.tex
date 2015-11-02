@@ -1,4 +1,4 @@
-\documentclass[thesis-solanki.tex]{subfiles}
+\documentclass[thesis-solanki.tex]{files}
 
 
 \begin{document}
@@ -19,22 +19,22 @@ and our approach is independent of that, and this prototype is a proof of concep
 variable search strategy
 
 
-\subsection{Unification}
+\section{Unification}
 The first, "unification," regards how terms are matched and variables assigned to make terms match. \cite{website:prologunification}
 
 
 
-\subsection{Resolution}
+\section{Resolution}
 this where the complete procedure takes place after the query is passed along with the knowledge 
 
-the resolver searches to create and a list of sub goals and then tries to achieve each one.
+the resolver searches to create and a list of  goals and then tries to achieve each one.
 
 \cite{website:prologresolution}
 
 
-\subsection{Search strategies}
+\section{Search strategies}
 The base implementation used for this prototype  is \cite{website:mini-prolog-hugs98} and below are the search strategies 
-\subsection{Stack Engine}
+\section{Stack Engine}
 \begin{minted}[linenos]{haskell}
 -- Stack based Prolog inference engine
 -- Mark P. Jones November 1990, modified for Gofer 20th July 1991,
@@ -46,7 +46,7 @@ The base implementation used for this prototype  is \cite{website:mini-prolog-hu
 module StackEngine( version, prove ) where
 
 import Prolog
-import Subst
+import st
 import Interact
 
 version = "stack based"
@@ -54,18 +54,18 @@ version = "stack based"
 --- Calculation of solutions:
 
 -- the stack based engine maintains a stack of triples (s,goal,alts)
--- corresponding to backtrack points, where s is the substitution at that
+-- corresponding to backtrack points, where s is the stitution at that
 -- point, goal is the outstanding goal and alts is a list of possible ways
 -- of extending the current proof to find a solution.  Each member of alts
--- is a pair (tp,u) where tp is a new subgoal that must be proved and u is
--- a unifying substitution that must be combined with the substitution s.
+-- is a pair (tp,u) where tp is a new goal that must be proved and u is
+-- a unifying stitution that must be combined with the stitution s.
 --
 -- the list of relevant clauses at each step in the execution is produced
 -- by attempting to unify the head of the current goal with a suitably
 -- renamed clause from the database.
 
-type Stack = [ (Subst, [Term], [Alt]) ]
-type Alt   = ([Term], Subst)
+type Stack = [ (st, [Term], [Alt]) ]
+type Alt   = ([Term], st)
 
 alts       :: Database -> Int -> Term -> [Alt]
 alts db n g = [ (tp,u) | (tm:-tp) <- renClauses db n g, u <- unify g tm ]
@@ -73,20 +73,20 @@ alts db n g = [ (tp,u) | (tm:-tp) <- renClauses db n g, u <- unify g tm ]
 -- The use of a stack enables backtracking to be described explicitly,
 -- in the following `state-based' definition of prove:
 
-prove      :: Database -> [Term] -> [Subst]
-prove db gl = solve 1 nullSubst gl []
+prove      :: Database -> [Term] -> [st]
+prove db gl = solve 1 nullst gl []
  where
-   solve :: Int -> Subst -> [Term] -> Stack -> [Subst]
+   solve :: Int -> st -> [Term] -> Stack -> [st]
    solve n s []     ow          = s : backtrack n ow
    solve n s (g:gs) ow
                     | g==theCut = solve n s gs (cut ow)
                     | otherwise = choose n s gs (alts db n (app s g)) ow
 
-   choose :: Int -> Subst -> [Term] -> [Alt] -> Stack -> [Subst]
+   choose :: Int -> st -> [Term] -> [Alt] -> Stack -> [st]
    choose n s gs []          ow = backtrack n ow
    choose n s gs ((tp,u):rs) ow = solve (n+1) (u@@s) (tp++gs) ((s,gs,rs):ow)
 
-   backtrack                   :: Int -> Stack -> [Subst]
+   backtrack                   :: Int -> Stack -> [st]
    backtrack n []               = []
    backtrack n ((s,gs,rs):ow)   = choose (n-1) s gs rs ow
 
@@ -103,7 +103,7 @@ cut ss                = []
 \end{minted}
 
 
-\subsubsection{Pure Engine}
+\section{Pure Engine}
 \begin{minted}[linenos]{haskell}
 -- The Pure Prolog inference engine (using explicit prooftrees)
 -- Mark P. Jones November 1990, modified for Gofer 20th July 1991,
@@ -115,7 +115,7 @@ cut ss                = []
 module PureEngine( version, prove ) where
 
 import Prolog
-import Subst
+import st
 import Interact
 import Data.List(nub)
 
@@ -125,37 +125,37 @@ version = "tree based"
 
 -- Each node in a prooftree corresponds to:
 -- either: a solution to the current goal, represented by Done s, where s
---         is the required substitution
--- or:     a choice between a number of subtrees ts, each corresponding to a
---         proof of a subgoal of the current goal, represented by Choice ts.
+--         is the required stitution
+-- or:     a choice between a number of trees ts, each corresponding to a
+--         proof of a goal of the current goal, represented by Choice ts.
 --         The proof tree corresponding to an unsolvable goal is Choice [] 
 
-data Prooftree = Done Subst  |  Choice [Prooftree]
+data Prooftree = Done st  |  Choice [Prooftree]
 
 -- prooftree uses the rules of Prolog to construct a suitable proof tree for
 --           a specified goal
-prooftree   :: Database -> Int -> Subst -> [Term] -> Prooftree
+prooftree   :: Database -> Int -> st -> [Term] -> Prooftree
 prooftree db = pt
- where pt           :: Int -> Subst -> [Term] -> Prooftree
+ where pt           :: Int -> st -> [Term] -> Prooftree
        pt n s []     = Done s 													-- Rule 1
        pt n s (g:gs) = Choice [ pt (n+1) (u@@s) (map (app u) (tp++gs))
                               | (tm:-tp)<-renClauses db n g, u<-unify g tm ]	-- Rule 2
 {--
-pt 1 nullSubst [] = Done (nullSubst)
+pt 1 nullst [] = Done (nullst)
 
 pt n s (g:gs)
 
 renClauses :- Rename variables in a clause, the parameters are the database, an int (X_1 will become X_2 if 2 is passed) and a goal term 
 			(head of list) resulting in a clause.
 
-unify :- take the head of the list and and match with head of clause from renClauses to get a list of substitutions.
+unify :- take the head of the list and and match with head of clause from renClauses to get a list of stitutions.
 
-app :- function for applying (Subst) to (Terms)
+app :- function for applying (st) to (Terms)
 the new list is formed by replacing the cluase head with its body and applying the unifier to get a new list of terms
 
 so the new parameters for pt are
 
-(n+1) (the old substitution + the new one from unify) (the list formed after applying the unifier to the (body of head goal + rest of the list)) 
+(n+1) (the old stitution + the new one from unify) (the list formed after applying the unifier to the (body of head goal + rest of the list)) 
 
 
 Working of a small example
@@ -167,7 +167,7 @@ hello(world).
 hello:-world.
 hello(X_1).
 
-The other parameters are 1 nullSubst(as mentioned in the prove function).
+The other parameters are 1 nullst(as mentioned in the prove function).
 
 For the list of goals, [(Struct "hello" []), (Struct "hello" [(Struct "world" [])]), (Struct "hello" [Var (0, "X")])]
 
@@ -196,19 +196,19 @@ tp ==> "[] , [] , [world] , [] , "
 
 -- DFS Function
 -- search performs a depth-first search of a proof tree, producing the list
--- of solution substitutions as they are encountered.
-search              :: Prooftree -> [Subst] 
+-- of solution stitutions as they are encountered.
+search              :: Prooftree -> [st] 
 search (Done s)      = [s]
 search (Choice pts)  = [ s | pt <- pts, s <- search pt ]
 
 
-prove    :: Database -> [Term] -> [Subst]
-prove db  = search . prooftree db 1 nullSubst
+prove    :: Database -> [Term] -> [st]
+prove db  = search . prooftree db 1 nullst
 
 --- End of PureEngine.hs
 \end{minted}
 
-\subsubsection{Andorra Engine}
+\section{Andorra Engine}
 \begin{minted}[linenos]{haskell}
 {-
 By Donald A. Smith, December 22, 1994, based on Mark Jones' PureEngine.
@@ -233,14 +233,14 @@ other clauses.  For example: ?- append(A,B,[1,2,3]),B=[].
 module AndorraEngine( version, prove ) where
 
 import Prolog
-import Subst
+import st
 import Interact
 
 version = "Andorra Principle Interpreter (select deterministic goals first)"
 
-solve   :: Database -> Int -> Subst -> [Term] -> [Subst]
+solve   :: Database -> Int -> st -> [Term] -> [st]
 solve db = slv where
-   slv           :: Int -> Subst -> [Term] -> [Subst]
+   slv           :: Int -> st -> [Term] -> [st]
    slv n s [] = [s]
    slv n s goals =
     let allResolvents = resolve_selecting_each_goal goals db n in
@@ -248,21 +248,21 @@ solve db = slv where
           concat [slv (n+1) (u@@s) (map (app u) (tp++gs)) | (u,tp) <- gres]
 
 resolve_selecting_each_goal::
-    [Term] -> Database -> Int -> [([Term],[(Subst,[Term])])]
+    [Term] -> Database -> Int -> [([Term],[(st,[Term])])]
 --  For each pair in the list that we return, the first element of the
 --  pair is the list of unresolved goals; the second element is the list
 --  of resolvents of the selected goal, where a resolvent is a pair
---  consisting of a substitution and a list of new goals.
+--  consisting of a stitution and a list of new goals.
 resolve_selecting_each_goal goals db n = [(gs, gResolvents) |
       (g,gs) <- delete goals, let gResolvents = resolve db g n]
 
 -- The unselected goals from above are not passed in.
-resolve :: Database -> Term -> Int -> [(Subst,[Term])]
+resolve :: Database -> Term -> Int -> [(st,[Term])]
 resolve db g n = [(u,tp) | (tm:-tp)<-renClauses db n g, u<-unify g tm]
 -- u is not yet applied to tp, since it is possible that g won't be selected.
 -- Note that unify could be nondeterministic.
 
-findMostDeterministic:: [([Term],[(Subst,[Term])])] -> ([Term],[(Subst,[Term])])
+findMostDeterministic:: [([Term],[(st,[Term])])] -> ([Term],[(st,[Term])])
 findMostDeterministic  allResolvents = minF comp allResolvents where
    comp:: (a,[b]) -> (a,[b]) -> Bool
    comp (_,gs1) (_,gs2) = (length gs1) < (length gs2)
@@ -283,8 +283,8 @@ minF f (h:t) = m h t where
      m sofar [] = sofar
      m sofar (h:t) = if (f h sofar) then m h t else m sofar t
 
-prove    :: Database -> [Term] -> [Subst]
-prove db  = solve db 1 nullSubst
+prove    :: Database -> [Term] -> [st]
+prove db  = solve db 1 nullst
 
 {- An optimized, incremental version of the above interpreter would use
   a data representation in which for each goal in "goals" we carry around
@@ -312,7 +312,7 @@ prove db  = solve db 1 nullSubst
 -}
 \end{minted}
 
-\subsection{Current Unification}
+\section{Current Unification}
 \begin{minted}[linenos]{haskell}
 {-# LANGUAGE  DeriveDataTypeable,
               ViewPatterns,
@@ -337,14 +337,14 @@ prove db  = solve db 1 nullSubst
               UndecidableInstances 
               #-}
 
--- Substitutions and Unification of Prolog Terms
+-- stitutions and Unification of Prolog Terms
 -- Mark P. Jones November 1990, modified for Gofer 20th July 1991,
 -- and for Hugs 1.3 June 1996.
 --
 -- Suitable for use with Hugs 98.
 --
 
-module Subst where
+module st where
 
 import Prolog
 import CustomSyntax
@@ -378,55 +378,55 @@ import Control.Monad.Trans.State as Trans
 infixr 3 @@
 infix  4 ->-
 
---- Substitutions:
+--- stitutions:
 
-type Subst = Id -> Term
+type st = Id -> Term
 
-newtype SubstP = SubstP { unSubstP :: Subst }
+newtype stP = stP { unstP :: st }
 
--- instance Show SubstP where
+-- instance Show stP where
 --  show (i) = show $ Var i
--- substitutions are represented by functions mapping identifiers to terms.
+-- stitutions are represented by functions mapping identifiers to terms.
 --
--- app s     extends the substitution s to a function mapping terms to terms
+-- app s     extends the stitution s to a function mapping terms to terms
 {--
-Looks like an apply function that applies a substitution function tho the variables in a term.
+Looks like an apply function that applies a stitution function tho the variables in a term.
 --}
 
 
--- nullSubst is the empty substitution which maps every identifier to the same identifier (as a term).
+-- nullst is the empty stitution which maps every identifier to the same identifier (as a term).
 
 
 
--- i ->- t   is the substitution which maps the identifier i to the term t, but otherwise behaves like nullSubst.
+-- i ->- t   is the stitution which maps the identifier i to the term t, but otherwise behaves like nullst.
 
 
--- s1@@ s2  is the composition of substitutions s1 and s2
---           N.B.  app is a monoid homomorphism from (Subst,nullSubst,(@@))
+-- s1@@ s2  is the composition of stitutions s1 and s2
+--           N.B.  app is a monoid homomorphism from (st,nullst,(@@))
 --           to (Term -> Term, id, (.)) in the sense that:
 --                  app (s1 @@ s2) = app s1 . app s2
---                 s @@ nullSubst = s = nullSubst @@ s
+--                 s @@ nullst = s = nullst @@ s
 
-app                     :: Subst -> Term -> Term
+app                     :: st -> Term -> Term
 app s (Var i)            = s i
 app s (Struct a ts)      = Struct a (Prelude.map (app s) ts)
 {--
-app (substFunction) (Struct "hello" [Var (0, "Var")])
+app (stFunction) (Struct "hello" [Var (0, "Var")])
 hello(Var_2) :: Term
 
 --}
 
 
-nullSubst               :: Subst
-nullSubst i              = Var i
+nullst               :: st
+nullst i              = Var i
 {--
-nullSubst (0, "Var")
+nullst (0, "Var")
 Var :: Term
 --}
 
 
 --
-(->-)                   :: Id -> Term -> Subst
+(->-)                   :: Id -> Term -> st
 (i ->- t) j | j==i       = t
             | otherwise  = Var j
 {--
@@ -435,13 +435,13 @@ Var :: Term
 --}
 
 
--- Function composition for applying two substitution functions.
-(@@)                    :: Subst -> Subst -> Subst
+-- Function composition for applying two stitution functions.
+(@@)                    :: st -> st -> st
 s1 @@ s2                 = app s1 . s2
 \end{minted}
 
 
-\subsection{Syntax Modification}
+\section{Syntax Modification}
 \begin{minted}[linenos]{haskell}
 {-# LANGUAGE  DeriveDataTypeable, 
               ViewPatterns, 
@@ -619,8 +619,8 @@ translateToUTerm e1Term = do
 
 
 -- | vTermify recursively converts @UVar x@ into @UTerm (VarA x).
--- This is a subroutine of @ translateFromUTerm @.  The resulting
--- term has no (UVar x) subterms.
+-- This is a routine of @ translateFromUTerm @.  The resulting
+-- term has no (UVar x) terms.
 
 vTermify :: Map Int Id ->
             UT.UTerm (FTS) (ST.STVar s (FTS)) ->
@@ -816,32 +816,32 @@ monadicUnify t1 t2 = do
 
 --}
 
--- type Subst = Id -> Term
+-- type st = Id -> Term
 
--- Convert result from monadicUnify to [Subst]
+-- Convert result from monadicUnify to [st]
 {--
 goMonadicTest :: (Show b) => (forall s . 
   (ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
            (ST.STBinding s)
             (UT.UTerm (FTS) (ST.STVar s (FTS)),
-             Map Id (ST.STVar s (FTS))))) -> [Subst]
+             Map Id (ST.STVar s (FTS))))) -> [st]
 goMonadicTest test = ST.runSTBinding $ do
   answer <- runErrorT $ test
   return $! case answer of
-    (Left x)  -> [nullSubst]
-    (Right y) -> convertToSubst y
+    (Left x)  -> [nullst]
+    (Right y) -> convertTost y
 --}
 
 --(Id, STVar s FTS)
---convertToSubst :: Map Id (ST.STVar s FTS) -> [(Id, ST.STVar s FTS)]
+--convertTost :: Map Id (ST.STVar s FTS) -> [(Id, ST.STVar s FTS)]
 {--
-convertToSubst m = convertToSubst1 Map.toAscList m
+convertTost m = convertTost1 Map.toAscList m
 
-convertToSubst1 (id, ST.STVar _ fts):xs = (id, (unFlatten fts)) : convertToSubst1 xs
+convertTost1 (id, ST.STVar _ fts):xs = (id, (unFlatten fts)) : convertTost1 xs
 --}
 \end{minted}
 
-\subsection{Monadic Unification}
+\section{Monadic Unification}
 \begin{minted}[linenos]{haskell}
 monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s)) => (forall s. (Term -> Term -> ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
            (ST.STBinding s) (UT.UTerm (FTS) (ST.STVar s (FTS)),
@@ -887,8 +887,8 @@ f1 dict = do
   return ld4
 
 
---unify :: Term -> Term -> [Subst]
-unify t1 t2 = substConvertor (goUnify (monadicUnification t1 t2))
+--unify :: Term -> Term -> [st]
+unify t1 t2 = stConvertor (goUnify (monadicUnification t1 t2))
 
 
 varX :: Term
@@ -898,8 +898,8 @@ varY :: Term
 varY = Var (1,"y")
 
 
-substConvertor :: [(Id, Prolog)] -> [Subst]
-substConvertor xs = Prelude.map (\(varId, p) -> (->-) varId (unFlatten $ unP $ p)) xs 
+stConvertor :: [(Id, Prolog)] -> [st]
+stConvertor xs = Prelude.map (\(varId, p) -> (->-) varId (unFlatten $ unP $ p)) xs 
 \end{minted}
 
 \end{document}
