@@ -9,7 +9,7 @@
 \PYG{k+kr}{module} \PYG{n+nn}{PureEngine}\PYG{p}{(} \PYG{n}{version}\PYG{p}{,} \PYG{n}{prove} \PYG{p}{)} \PYG{k+kr}{where}
 
 \PYG{k+kr}{import} \PYG{n+nn}{Prolog}
-\PYG{k+kr}{import} \PYG{n+nn}{Subst}
+\PYG{k+kr}{import} \PYG{n+nn}{st}
 \PYG{k+kr}{import} \PYG{n+nn}{Interact}
 \PYG{k+kr}{import} \PYG{n+nn}{Data.List}\PYG{p}{(}\PYG{n}{nub}\PYG{p}{)}
 
@@ -19,37 +19,37 @@
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} Each node in a prooftree corresponds to:}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} either: a solution to the current goal, represented by Done s, where s}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{}         is the required substitution}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} or:     a choice between a number of subtrees ts, each corresponding to a}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{}         proof of a subgoal of the current goal, represented by Choice ts.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}         is the required stitution}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} or:     a choice between a number of trees ts, each corresponding to a}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{}         proof of a goal of the current goal, represented by Choice ts.}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{}         The proof tree corresponding to an unsolvable goal is Choice []}
 
-\PYG{k+kr}{data} \PYG{k+kt}{Prooftree} \PYG{o+ow}{=} \PYG{k+kt}{Done} \PYG{k+kt}{Subst}  \PYG{o}{|}  \PYG{k+kt}{Choice} \PYG{p}{[}\PYG{k+kt}{Prooftree}\PYG{p}{]}
+\PYG{k+kr}{data} \PYG{k+kt}{Prooftree} \PYG{o+ow}{=} \PYG{k+kt}{Done} \PYG{n}{st}  \PYG{o}{|}  \PYG{k+kt}{Choice} \PYG{p}{[}\PYG{k+kt}{Prooftree}\PYG{p}{]}
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} prooftree uses the rules of Prolog to construct a suitable proof tree for}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{}           a specified goal}
-\PYG{n+nf}{prooftree}   \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Subst} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prooftree}
+\PYG{n+nf}{prooftree}   \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{st} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prooftree}
 \PYG{n+nf}{prooftree} \PYG{n}{db} \PYG{o+ow}{=} \PYG{n}{pt}
- \PYG{k+kr}{where} \PYG{n}{pt}           \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Subst} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prooftree}
+ \PYG{k+kr}{where} \PYG{n}{pt}           \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{st} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prooftree}
        \PYG{n}{pt} \PYG{n}{n} \PYG{n}{s} \PYG{k+kt}{[]}     \PYG{o+ow}{=} \PYG{k+kt}{Done} \PYG{n}{s} 													\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Rule 1}
        \PYG{n}{pt} \PYG{n}{n} \PYG{n}{s} \PYG{p}{(}\PYG{n}{g}\PYG{k+kt}{:}\PYG{n}{gs}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Choice} \PYG{p}{[} \PYG{n}{pt} \PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{n}{u}\PYG{o}{@@}\PYG{n}{s}\PYG{p}{)} \PYG{p}{(}\PYG{n}{map} \PYG{p}{(}\PYG{n}{app} \PYG{n}{u}\PYG{p}{)} \PYG{p}{(}\PYG{n}{tp}\PYG{o}{++}\PYG{n}{gs}\PYG{p}{))}
                               \PYG{o}{|} \PYG{p}{(}\PYG{n}{tm}\PYG{k+kt}{:\PYGZhy{}}\PYG{n}{tp}\PYG{p}{)}\PYG{o+ow}{\PYGZlt{}\PYGZhy{}}\PYG{n}{renClauses} \PYG{n}{db} \PYG{n}{n} \PYG{n}{g}\PYG{p}{,} \PYG{n}{u}\PYG{o+ow}{\PYGZlt{}\PYGZhy{}}\PYG{n}{unify} \PYG{n}{g} \PYG{n}{tm} \PYG{p}{]}	\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Rule 2}
 \PYG{c+cm}{\PYGZob{}\PYGZhy{}\PYGZhy{}}
-\PYG{c+cm}{pt 1 nullSubst [] = Done (nullSubst)}
+\PYG{c+cm}{pt 1 nullst [] = Done (nullst)}
 
 \PYG{c+cm}{pt n s (g:gs)}
 
 \PYG{c+cm}{renClauses :\PYGZhy{} Rename variables in a clause, the parameters are the database, an int (X\PYGZus{}1 will become X\PYGZus{}2 if 2 is passed) and a goal term}
 \PYG{c+cm}{			(head of list) resulting in a clause.}
 
-\PYG{c+cm}{unify :\PYGZhy{} take the head of the list and and match with head of clause from renClauses to get a list of substitutions.}
+\PYG{c+cm}{unify :\PYGZhy{} take the head of the list and and match with head of clause from renClauses to get a list of stitutions.}
 
-\PYG{c+cm}{app :\PYGZhy{} function for applying (Subst) to (Terms)}
+\PYG{c+cm}{app :\PYGZhy{} function for applying (st) to (Terms)}
 \PYG{c+cm}{the new list is formed by replacing the cluase head with its body and applying the unifier to get a new list of terms}
 
 \PYG{c+cm}{so the new parameters for pt are}
 
-\PYG{c+cm}{(n+1) (the old substitution + the new one from unify) (the list formed after applying the unifier to the (body of head goal + rest of the list))}
+\PYG{c+cm}{(n+1) (the old stitution + the new one from unify) (the list formed after applying the unifier to the (body of head goal + rest of the list))}
 
 
 \PYG{c+cm}{Working of a small example}
@@ -61,7 +61,7 @@
 \PYG{c+cm}{hello:\PYGZhy{}world.}
 \PYG{c+cm}{hello(X\PYGZus{}1).}
 
-\PYG{c+cm}{The other parameters are 1 nullSubst(as mentioned in the prove function).}
+\PYG{c+cm}{The other parameters are 1 nullst(as mentioned in the prove function).}
 
 \PYG{c+cm}{For the list of goals, [(Struct \PYGZdq{}hello\PYGZdq{} []), (Struct \PYGZdq{}hello\PYGZdq{} [(Struct \PYGZdq{}world\PYGZdq{} [])]), (Struct \PYGZdq{}hello\PYGZdq{} [Var (0, \PYGZdq{}X\PYGZdq{})])]}
 
@@ -90,14 +90,14 @@
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} DFS Function}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} search performs a depth\PYGZhy{}first search of a proof tree, producing the list}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} of solution substitutions as they are encountered.}
-\PYG{n+nf}{search}              \PYG{o+ow}{::} \PYG{k+kt}{Prooftree} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} of solution stitutions as they are encountered.}
+\PYG{n+nf}{search}              \PYG{o+ow}{::} \PYG{k+kt}{Prooftree} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
 \PYG{n+nf}{search} \PYG{p}{(}\PYG{k+kt}{Done} \PYG{n}{s}\PYG{p}{)}      \PYG{o+ow}{=} \PYG{p}{[}\PYG{n}{s}\PYG{p}{]}
 \PYG{n+nf}{search} \PYG{p}{(}\PYG{k+kt}{Choice} \PYG{n}{pts}\PYG{p}{)}  \PYG{o+ow}{=} \PYG{p}{[} \PYG{n}{s} \PYG{o}{|} \PYG{n}{pt} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{pts}\PYG{p}{,} \PYG{n}{s} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{search} \PYG{n}{pt} \PYG{p}{]}
 
 
-\PYG{n+nf}{prove}    \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
-\PYG{n+nf}{prove} \PYG{n}{db}  \PYG{o+ow}{=} \PYG{n}{search} \PYG{o}{.} \PYG{n}{prooftree} \PYG{n}{db} \PYG{l+m+mi}{1} \PYG{n}{nullSubst}
+\PYG{n+nf}{prove}    \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
+\PYG{n+nf}{prove} \PYG{n}{db}  \PYG{o+ow}{=} \PYG{n}{search} \PYG{o}{.} \PYG{n}{prooftree} \PYG{n}{db} \PYG{l+m+mi}{1} \PYG{n}{nullst}
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} End of PureEngine.hs}
 \end{Verbatim}

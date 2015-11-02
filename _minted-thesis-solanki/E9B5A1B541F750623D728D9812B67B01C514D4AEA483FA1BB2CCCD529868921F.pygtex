@@ -9,7 +9,7 @@
 \PYG{k+kr}{module} \PYG{n+nn}{StackEngine}\PYG{p}{(} \PYG{n}{version}\PYG{p}{,} \PYG{n}{prove} \PYG{p}{)} \PYG{k+kr}{where}
 
 \PYG{k+kr}{import} \PYG{n+nn}{Prolog}
-\PYG{k+kr}{import} \PYG{n+nn}{Subst}
+\PYG{k+kr}{import} \PYG{n+nn}{st}
 \PYG{k+kr}{import} \PYG{n+nn}{Interact}
 
 \PYG{n+nf}{version} \PYG{o+ow}{=} \PYG{l+s}{\PYGZdq{}stack based\PYGZdq{}}
@@ -17,18 +17,18 @@
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{}\PYGZhy{} Calculation of solutions:}
 
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} the stack based engine maintains a stack of triples (s,goal,alts)}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} corresponding to backtrack points, where s is the substitution at that}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} corresponding to backtrack points, where s is the stitution at that}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} point, goal is the outstanding goal and alts is a list of possible ways}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} of extending the current proof to find a solution.  Each member of alts}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} is a pair (tp,u) where tp is a new subgoal that must be proved and u is}
-\PYG{c+c1}{\PYGZhy{}\PYGZhy{} a unifying substitution that must be combined with the substitution s.}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} is a pair (tp,u) where tp is a new goal that must be proved and u is}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} a unifying stitution that must be combined with the stitution s.}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{}}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} the list of relevant clauses at each step in the execution is produced}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} by attempting to unify the head of the current goal with a suitably}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} renamed clause from the database.}
 
-\PYG{k+kr}{type} \PYG{k+kt}{Stack} \PYG{o+ow}{=} \PYG{p}{[} \PYG{p}{(}\PYG{k+kt}{Subst}\PYG{p}{,} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{],} \PYG{p}{[}\PYG{k+kt}{Alt}\PYG{p}{])} \PYG{p}{]}
-\PYG{k+kr}{type} \PYG{k+kt}{Alt}   \PYG{o+ow}{=} \PYG{p}{([}\PYG{k+kt}{Term}\PYG{p}{],} \PYG{k+kt}{Subst}\PYG{p}{)}
+\PYG{k+kr}{type} \PYG{k+kt}{Stack} \PYG{o+ow}{=} \PYG{p}{[} \PYG{p}{(}\PYG{n}{st}\PYG{p}{,} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{],} \PYG{p}{[}\PYG{k+kt}{Alt}\PYG{p}{])} \PYG{p}{]}
+\PYG{k+kr}{type} \PYG{k+kt}{Alt}   \PYG{o+ow}{=} \PYG{p}{([}\PYG{k+kt}{Term}\PYG{p}{],} \PYG{n}{st}\PYG{p}{)}
 
 \PYG{n+nf}{alts}       \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Term} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Alt}\PYG{p}{]}
 \PYG{n+nf}{alts} \PYG{n}{db} \PYG{n}{n} \PYG{n}{g} \PYG{o+ow}{=} \PYG{p}{[} \PYG{p}{(}\PYG{n}{tp}\PYG{p}{,}\PYG{n}{u}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{n}{tm}\PYG{k+kt}{:\PYGZhy{}}\PYG{n}{tp}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{renClauses} \PYG{n}{db} \PYG{n}{n} \PYG{n}{g}\PYG{p}{,} \PYG{n}{u} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{unify} \PYG{n}{g} \PYG{n}{tm} \PYG{p}{]}
@@ -36,20 +36,20 @@
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} The use of a stack enables backtracking to be described explicitly,}
 \PYG{c+c1}{\PYGZhy{}\PYGZhy{} in the following `state\PYGZhy{}based\PYGZsq{} definition of prove:}
 
-\PYG{n+nf}{prove}      \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
-\PYG{n+nf}{prove} \PYG{n}{db} \PYG{n}{gl} \PYG{o+ow}{=} \PYG{n}{solve} \PYG{l+m+mi}{1} \PYG{n}{nullSubst} \PYG{n}{gl} \PYG{k+kt}{[]}
+\PYG{n+nf}{prove}      \PYG{o+ow}{::} \PYG{k+kt}{Database} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
+\PYG{n+nf}{prove} \PYG{n}{db} \PYG{n}{gl} \PYG{o+ow}{=} \PYG{n}{solve} \PYG{l+m+mi}{1} \PYG{n}{nullst} \PYG{n}{gl} \PYG{k+kt}{[]}
  \PYG{k+kr}{where}
-   \PYG{n}{solve} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Subst} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stack} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
+   \PYG{n}{solve} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{st} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stack} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
    \PYG{n}{solve} \PYG{n}{n} \PYG{n}{s} \PYG{k+kt}{[]}     \PYG{n}{ow}          \PYG{o+ow}{=} \PYG{n}{s} \PYG{k+kt}{:} \PYG{n}{backtrack} \PYG{n}{n} \PYG{n}{ow}
    \PYG{n}{solve} \PYG{n}{n} \PYG{n}{s} \PYG{p}{(}\PYG{n}{g}\PYG{k+kt}{:}\PYG{n}{gs}\PYG{p}{)} \PYG{n}{ow}
                     \PYG{o}{|} \PYG{n}{g}\PYG{o}{==}\PYG{n}{theCut} \PYG{o+ow}{=} \PYG{n}{solve} \PYG{n}{n} \PYG{n}{s} \PYG{n}{gs} \PYG{p}{(}\PYG{n}{cut} \PYG{n}{ow}\PYG{p}{)}
                     \PYG{o}{|} \PYG{n}{otherwise} \PYG{o+ow}{=} \PYG{n}{choose} \PYG{n}{n} \PYG{n}{s} \PYG{n}{gs} \PYG{p}{(}\PYG{n}{alts} \PYG{n}{db} \PYG{n}{n} \PYG{p}{(}\PYG{n}{app} \PYG{n}{s} \PYG{n}{g}\PYG{p}{))} \PYG{n}{ow}
 
-   \PYG{n}{choose} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Subst} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Alt}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stack} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
+   \PYG{n}{choose} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{st} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Term}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Alt}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stack} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
    \PYG{n}{choose} \PYG{n}{n} \PYG{n}{s} \PYG{n}{gs} \PYG{k+kt}{[]}          \PYG{n}{ow} \PYG{o+ow}{=} \PYG{n}{backtrack} \PYG{n}{n} \PYG{n}{ow}
    \PYG{n}{choose} \PYG{n}{n} \PYG{n}{s} \PYG{n}{gs} \PYG{p}{((}\PYG{n}{tp}\PYG{p}{,}\PYG{n}{u}\PYG{p}{)}\PYG{k+kt}{:}\PYG{n}{rs}\PYG{p}{)} \PYG{n}{ow} \PYG{o+ow}{=} \PYG{n}{solve} \PYG{p}{(}\PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{(}\PYG{n}{u}\PYG{o}{@@}\PYG{n}{s}\PYG{p}{)} \PYG{p}{(}\PYG{n}{tp}\PYG{o}{++}\PYG{n}{gs}\PYG{p}{)} \PYG{p}{((}\PYG{n}{s}\PYG{p}{,}\PYG{n}{gs}\PYG{p}{,}\PYG{n}{rs}\PYG{p}{)}\PYG{k+kt}{:}\PYG{n}{ow}\PYG{p}{)}
 
-   \PYG{n}{backtrack}                   \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stack} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Subst}\PYG{p}{]}
+   \PYG{n}{backtrack}                   \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stack} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{st}\PYG{p}{]}
    \PYG{n}{backtrack} \PYG{n}{n} \PYG{k+kt}{[]}               \PYG{o+ow}{=} \PYG{k+kt}{[]}
    \PYG{n}{backtrack} \PYG{n}{n} \PYG{p}{((}\PYG{n}{s}\PYG{p}{,}\PYG{n}{gs}\PYG{p}{,}\PYG{n}{rs}\PYG{p}{)}\PYG{k+kt}{:}\PYG{n}{ow}\PYG{p}{)}   \PYG{o+ow}{=} \PYG{n}{choose} \PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{s} \PYG{n}{gs} \PYG{n}{rs} \PYG{n}{ow}
 
