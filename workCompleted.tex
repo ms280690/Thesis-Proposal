@@ -322,16 +322,51 @@ data Term 			= Struct Atom [Term]
       
 \end{minted}
 
-\item Or something that can be plugged into the language which provides the functionality.
+This would then trigger a ripple effect thorughout the architecture because accomodations need to be made for the new functionality.
 
-\item Multiple modifications
+\item The other option would be to \textit{functorize} language like we did by adding a type variablewhich can be used to plug something that provides the functionality into the language.
+Consider the following example,
 
-\item Outer things can be changed like just of x of y of term, but term will always be term. 
+\begin{minted}[linenos]{haskell}
+data Box f = Abox | T f (Box f) deriving (.........)
+\end{minted}
 
-\item $\exists$ quantifier stuff       
+then something like,
+\begin{minted}[linenos]{haskell}
+T (Struct 'atom' [Abox, T (Cut 0)])
+\end{minted}
+   
+is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom functionality.  
 
 \end{enumerate}  
 
+
+\item If we have a grammar that support an expressions like,
+
+
+\begin{math}
+x \cdot y + x \cdot z
+\end{math} 
+
+Once the language is 'functorized' one can add quantifiers and logic to the language to do something like,
+
+
+\begin{math}
+\forall x \forall y \forall z \qquad x \cdot y + x \cdot z \newline
+\hfill   = x \cdot (y + z)	
+\end{math}
+
+\item Multiple modifications
+
+\item As is with the original language it can be wrapped with multiple other data structures,
+
+\begin{minted}[linenos]{haskell}
+Just (Strcut ......) -- A Maybe Term
+[Cut 0]				-- A List of Terms
+\end{minted} 
+and so on. But the core expression can only be of type \textit{Term}. 
+
+Whereas a \textit{FlatTerm} exspression can not only have an outer wrapper but also its type is 'open'.   
 
 
 

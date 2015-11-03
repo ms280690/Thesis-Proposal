@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{Int} \PYG{o+ow}{::} \PYG{o}{*}
+\PYG{k+kt}{Maybe} \PYG{o+ow}{::} \PYG{o}{*} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{o}{*}
+\PYG{k+kt}{Maybe} \PYG{k+kt}{Bool} \PYG{o+ow}{::} \PYG{o}{*}
+\PYG{n+nf}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a} \PYG{o+ow}{::} \PYG{o}{*}
+\PYG{k+kt}{[]} \PYG{o+ow}{::} \PYG{o}{*} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{o}{*}
+\PYG{p}{(}\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{p}{)} \PYG{o+ow}{::} \PYG{o}{*} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{o}{*} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{o}{*}
+\end{Verbatim}
