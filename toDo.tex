@@ -21,7 +21,15 @@
 \item Remove first \P{} from intro.
 \item Thesis statement is close to being an abstract.
 
+\item [\textbf{Either}]
+\item
+  We need a convention for what words to capitalize in chapter and
+  section titles.
+
 \item [\textbf{Mehul}]
+
+\item
+  Chapter 13.5 needs fleshing out.
 
 \item
   \textcolor{red}{Rewrite (Section) Chapter 3.2}\,.
@@ -85,6 +93,97 @@
 \end{enumerate}
 
 \section{Editing suggestions from David}\label{sec:edit-sugg-david}
+
+\paragraph{Thoughts on Chapter~\ref{proto2.1}}\mbox{}
+
+\begin{itemize}
+\item
+  Do not use naked \Verb!\ref!s:
+  ``\textit{the generic methodology from \ref{proto1}}''
+  should be
+  ``\textsl{the generic methodology from \textbf{\upshape
+      Chapter}~\ref{proto1}}''.
+\item
+  You should say more about \cite{prolog-lib}, either here or in an
+  earlier section and reference that discussion here.  For instance, it
+  isn't clear that \Verb!prolog-0.2.0.1! comes from~ \cite{prolog-lib}.
+\item
+  See my comments below.
+  I suspect that longer listings should be separate figures.
+\item
+  Line~7 on p~55 is not a complete sentence.
+\item
+  I suspect that \S~\ref{proto2.1}.2 should start with a sentence like 
+  \begin{quote}\color[rgb]{0.3,0,0.6}\small\singlespacing
+    The \Verb!prolog-0.2.0.1! (\cite{prolog-lib}) was written by Indira
+    Ghandi and consists of 718 \progLang{Haskell} files.
+    It implements data base assertions and cuts but lacks any IO
+    facilities\dots
+  \end{quote}
+  and then go on to discuss the syntax.
+\end{itemize}
+
+\paragraph{Thoughts on Chapter~\ref{proto1}}
+
+\begin{figure}
+\begin{minted}[linenos,frame=lines]{haskell}	
+data VariableName = VariableName Int String
+      deriving (Eq, Data, Typeable, Ord)
+data Atom         = Atom      !String
+                  | Operator  !String
+      deriving (Eq, Ord, Data, Typeable)
+data Term = Struct Atom [Term]
+          | Var VariableName
+          | Wildcard
+          | PString   !String
+          | PInteger  !Integer
+          | PFloat    !Double
+          | Flat [FlatItem]
+          | Cut Int
+      deriving (Eq, Data, Typeable)
+data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
+            | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
+      deriving (Data, Typeable)
+type Program = [Sentence]
+type Body    = [Goal]
+data Sentence = Query   Body
+              | Command Body
+              | C Clause
+      deriving (Data, Typeable)
+\end{minted}
+  \vspace*{-1.0\baselineskip}
+  \caption{A sample Minted figure}
+  \label{fig:sample}
+\end{figure}
+I am looking at what are currently lines 145--\textit{on} in
+\Verb!proto1.tex!, and I am not sure whether 
+\begin{compactenum}
+\item
+  the text should be loose---as you have it, or floated to a figure, as shown
+  in Figure~\ref{fig:sample}.
+\item
+  I am also not sure whether I like the inlined code, or whether I would
+  prefer to have it \Verb!\inputminted! from a \progLang{Haskell} file.
+  I suppose that this depends on your work-flow.  Thoughts?
+\end{compactenum}
+
+I am not sure what conventions you are following with respect to code in
+text.
+At some point you have \Verb!FlatTerm! in italics (\'a la
+\textit{FlatTerm}); at other points you have it typeset in straight
+double quotes ("FlatTerm") and I don't know what the different
+typesetting implies.
+
+Just above Section~\ref{proto1}.5 you mention a generic function
+\Verb[formatcom=\color{blue}]!map!,
+which for \progLang{Standard ML} and \progLang{Haskell} readers likely
+means the function with signature
+\Verb!(a -> b) -> ([a] -> [b])!\,.
+Why not 
+\Verb[formatcom=\color{blue}]!fmap!?
+
+I am not sure what the point of the \P{} before Section~\ref{proto1}.5
+is. 
 
 \paragraph{Thoughts on 1.1}
 
