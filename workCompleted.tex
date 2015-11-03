@@ -99,11 +99,8 @@ f s : f (f (f (... )))
 A fixed point of a function f is a value a such that f a == a. This is where the name of fix comes from: it finds the least-defined fixed 
 point of a function.
 
-
-
 \section{The Fix we use}
 Fix-point type allows to define generic recursion schemes \cite{data-fix-lib}.
-
 \cite{website:understandingalgebrasfpcomplete}
 \begin{description}
 \item[What is Algebra]
@@ -145,7 +142,7 @@ ExprF would not change anything -- a fix point does not move under ExprF. It's l
 In \progLang{Haskell}, we can express the fix point of a type constructor f as a type:
 
 \begin{minted}[linenos]{haskell}
- Fix f = f (Fix f)
+newtype Fix f = f (Fix f)
 \end{minted}
 With that, we can redefine Expr as a fixed point of ExprF:
 \begin{minted}[linenos]{haskell}
@@ -171,7 +168,7 @@ We write a function from,
 
 
 
-
+\begin{comment}
 \item[what and how to evaluate expressions]
 Evaluation is a recipe for extracting a single value from an expression. 
 \begin{minted}[linenos]{haskell}
@@ -188,29 +185,7 @@ alg (Const i)   = i
 alg (x `Add` y) = x + y
 alg (x `Mul` y) = x * y
 \end{minted}
-
-
-
-
-\item[F-Algebras]
-
-We are now ready to define F-algebras in the most general terms. First I'll use the language of category theory and then quickly translate it to \progLang{Haskell}.
-
-An F-algebra consists of:
-\begin{enumerate}
-\item an endofunctor F in a category C,
-\item an object A in that category, and
-\item a morphism from F(A) to A.
-\end{enumerate}
-    
-An F-algebra in \progLang{Haskell} is defined by a functor f, a carrier type a, and a function from (f a) to a. (The underlying category is Hask.)
-
-Right about now the definition with which I started this post should start making sense:
-
-\mint{haskell}|type Algebra f a = f a -> a|
-
-For a given functor f and a carrier type a the algebra is defined by specifying just one function. Often this function itself is called the algebra, hence my use of the name alg in previous examples.
-
+\end{comment}
 
 \end{description}
 
@@ -258,6 +233,11 @@ More stuff that I did not understand well can be found here,
 \cite{website:understandingalgebrasfpcomplete}
 \end{comment}
 
+\clearpage
+
+\section{Flattening Explanation using Box Analogy}
+
+This section will describe what it means to \textbf{"open up or extend a language"}. 
 
 
 
