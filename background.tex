@@ -100,21 +100,22 @@ complex data type. To accommodate the same it has to represented using \progLang
 tedious task. So having the option of using specific syntax reduces the programmer from this burden and this is where a quasi-quoter comes into the 
 picture. Template \progLang{Haskell} provides the facilities mentioned above. For example, consider the following code in \progLang{Prolog} to append 
 two lists,
-\begin{figure}[h]
-\begin{minted}[linenos]{prolog}
-append([], X, X).
-append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
-\end{minted}    
-\end{figure}
+%\begin{figure}[h]
+%\begin{minted}[linenos]{prolog}
+%append([], X, X).
+%append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
+%\end{minted}    
+%\end{figure}
 going through the code, the first rule says that and empty list appended with any list results in the list itself. The second predicate matches the head of the 
 first and the resulting lists and then recurs on the tails. The same in \progLang{Haskell},
 
-\begin{minted}[linenos]{haskell}
-append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
-	(∃ X, Xs, Ys -> Ps = [X|Xs] & 
-		Rs = [X|Ys] & 
-			append(Xs, Qs, Ys))
-\end{minted}  
+%\begin{minted}[linenos]{haskell}
+%append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
+%	(∃ X, Xs, Ys -> Ps = [X|Xs] & 
+%		Rs = [X|Ys] & 
+%			append(Xs, Qs, Ys))
+%\end{minted}  
+\inputminted[linenos]{haskell}{append.pl}
 
 \par Consider the Object Functional Programming Language, \progLang{Scala} \cite{website:scala}, it is purely functional but with objects 
 and classes. With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}. There have been quite a few 
