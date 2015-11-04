@@ -11,9 +11,18 @@ and make the unification "monadic".
 
 \section{How prolog-0.2.0.1 works}
 
-The original syntax used by the library,
+As described in the previous chapter about extending languages to incorporate functionality, this prototype applies the procedure to the
+eDSL in \cite{prolog-lib}. 
+
+The original abstract syntax used by the library,
 
 \begin{minted}[linenos]{haskell}
+
+data VariableName = VariableName Int String
+      deriving (Eq, Data, Typeable, Ord)
+
+type Atom         = String
+
 data Term = Struct Atom [Term]
           | Var VariableName
           | Wildcard -- Don't cares 
@@ -24,17 +33,31 @@ data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
             | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
       deriving (Data, Typeable)
 
-rhs :: Clause -> [Term] -> [Goal]      
-rhs (Clause   _ rhs) = const rhs
-rhs (ClauseFn _ fn ) = fn
-
-data VariableName = VariableName Int String
-      deriving (Eq, Data, Typeable, Ord)
-
-type Atom         = String
 type Goal         = Term
 type Program      = [Clause]
 \end{minted} 
+
+From the above we will focus on the \textit{Term} since the others just add wrappers around expressions which can be created by it. 
+
+The implementation consists of components that one would find in a Language Processing System \ref{fig:A language-processing system},
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale = 0.7]{Language_Processing_System.png}
+\caption{A language-processing system \cite{Aho:1986:CPT:6448}}
+\label{fig:A language-processing system}
+\end{figure}  
+
+specifically speaking, parts of a compiler \ref{fig:Phases of Compiler},
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale = 0.7]{Phases_of_compiler.jpg}
+\caption{Phases of Compiler \cite{Aho:1986:CPT:6448}}
+\label{fig:Phases of Compiler}
+\end{figure}  
+
+
 
 The above language suffers from most of the problems discussed in the previous chapter.
 
