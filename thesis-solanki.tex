@@ -22,6 +22,7 @@
 \usepackage{xr}
 \usepackage{etoolbox}
 \usepackage{amssymb}
+\usepackage{tcolorbox}
 
 \usepackage[pagewise]{lineno}
 
@@ -62,7 +63,8 @@
 % Use any additional packages you might need
 
 \AtBeginEnvironment{minted}{\singlespacing}
-
+%\BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
+%\AfterEndEnvironment{minted}{\end{tcolorbox}}%
 %
 % Give values to the variables used in this document
 %
