@@ -27,7 +27,20 @@ queryResolver searcStrategy query knowledgeBase
 
 \item Multi type variable Language
 
+\item Pure + IO Combined Language
 
+\begin{minted}[linenos]{haskell}
+data LangWithIO typevariableforpureexpressions typevariableforioexpressions
+	= PureConstructor_1 ....
+	| PureConstructor_2 ....
+	| IOContrcutor_1 .....
+	| IOContructor_2 ...
+	| ContructorWithBoth_1 .....
+	| ContructorWithBoth_2 .....
+	deriving(........)
+\end{minted}
+
+\item 
 
 \end{enumerate}
 

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{Prelude}\PYG{o}{\PYGZgt{}} \PYG{n}{x} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{getLine}
+\PYG{k+kt}{Hello}
+\PYG{k+kt}{Prelude}\PYG{o}{\PYGZgt{}} \PYG{n}{x}
+\PYG{l+s}{\PYGZdq{}Hello\PYGZdq{}}
+\end{Verbatim}

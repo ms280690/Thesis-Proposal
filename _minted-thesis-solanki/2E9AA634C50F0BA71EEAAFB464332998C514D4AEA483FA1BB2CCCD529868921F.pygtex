@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{run} \PYG{o+ow}{::} \PYG{k+kt}{IOAction} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IO} \PYG{n}{a}
+\PYG{n+nf}{run} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{return} \PYG{n}{a}
+\PYG{n+nf}{run} \PYG{p}{(}\PYG{k+kt}{Put} \PYG{n}{s} \PYG{n}{io}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{putStrLn} \PYG{n}{s} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{run} \PYG{n}{io}
+\PYG{n+nf}{run} \PYG{p}{(}\PYG{k+kt}{Get} \PYG{n}{g}\PYG{p}{)}    \PYG{o+ow}{=} \PYG{n}{getLine} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{run} \PYG{p}{(}\PYG{n}{g} \PYG{n}{s}\PYG{p}{)}
+\end{Verbatim}
