@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{hello} \PYG{o+ow}{=} \PYG{n}{put} \PYG{l+s}{\PYGZdq{}What is your name?\PYGZdq{}}      \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{k+kr}{\PYGZus{}}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{get}                           \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{name} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{put} \PYG{l+s}{\PYGZdq{}What is your age?\PYGZdq{}}       \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{k+kr}{\PYGZus{}}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{get}                           \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{age}  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{put} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}Hello \PYGZdq{}} \PYG{o}{++} \PYG{n}{name} \PYG{o}{++} \PYG{l+s}{\PYGZdq{}!\PYGZdq{}}\PYG{p}{)} \PYG{p}{`}\PYG{n}{seqio}\PYG{p}{`} \PYG{n+nf}{\PYGZbs{}}\PYG{k+kr}{\PYGZus{}}    \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{put} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}You are \PYGZdq{}} \PYG{o}{++} \PYG{n}{age} \PYG{o}{++} \PYG{l+s}{\PYGZdq{} years old\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

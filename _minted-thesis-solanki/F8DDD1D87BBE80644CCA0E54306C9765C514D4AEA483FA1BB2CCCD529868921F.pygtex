@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{put} \PYG{n}{s} \PYG{o+ow}{=} \PYG{k+kt}{Put} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{Return} \PYG{n+nb}{()}\PYG{p}{)}
+\end{Verbatim}

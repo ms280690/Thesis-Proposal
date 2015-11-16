@@ -6,6 +6,9 @@
 \chapter{Prototype 3}{\label{proto3}}
 
 
+\section{What is this chapter about}
+
+-----------------------------------------------------------------------------
 
 When two terms are to be unified we can use \ref{proto1} ,
 
@@ -30,6 +33,10 @@ this where the complete procedure takes place after the query is passed along wi
 the resolver searches to create and a list of  goals and then tries to achieve each one.
 
 \cite{website:prologresolution}
+
+\cite{website:resolutionlogicwiki}
+
+
 
 
 \section{Search strategies}
@@ -901,5 +908,9 @@ varY = Var (1,"y")
 stConvertor :: [(Id, Prolog)] -> [st]
 stConvertor xs = Prelude.map (\(varId, p) -> (->-) varId (unFlatten $ unP $ p)) xs 
 \end{minted}
+
+
+\section{Chapter Recap}
+
 
 \end{document}

@@ -6,9 +6,156 @@
 \chapter{Prototype 4}{\label{proto4}}
 
 
+\section{What is this chapter about}
+
+-----------------------------------------------------------------------------
+
 Our aim to embedd IO into the DSL
 
 So something like a "data" declaration for IO operations
+
+\section{I/O is pure}
+
+\cite{website:ioispurechristaylor}
+
+A common question amongst people learning Haskell is whether I/O is pure or not. Haskell advertises itself as a purely functional 
+programming language, but I/O looks like it’s inherently impure - for example, the function getLine, which gets a line from stdin, returns 
+a different result depending on what the user types:
+
+\begin{minted}[linenos]{haskell}
+Prelude> x <- getLine
+Hello
+Prelude> x
+"Hello"
+\end{minted}
+
+How can this possibly be pure?
+
+In this post I want to explain exactly why I/O in Haskell is pure. I’ll do it by building up data structures that represent blocks of code. 
+These data structures can later be executed, and they cause effects to occur - but until that point we’ll always work with pure functions, 
+never with effects.
+
+Let’s look at a simplified form of I/O, where we only care about reading from stdin, writing to stdout and returning a value. We can model 
+this with the IOAction data type.
+
+That is, an IOAction is one of the following three things:
+\begin{enumerate}
+\item A container for a value of type a,
+
+\item A container holding a String to be printed to stdout, followed by another IOAction a, or
+
+\item A container holding a function from String -> IOAction a, which can be applied to whatever String is read from stdin.
+\end{enumerate}
+
+Notice that the only terminal constructor is Return – that means that any IOAction must be a combination of Get and Put constructors, 
+finally ending in a Return.
+
+Some simple actions include the one that prints to stdout before returning ():
+
+\mint{haskell}|put s = Put s (Return ())|
+
+and the action that reads from stdin and returns the string unchanged:
+
+\mint{haskell}|get = Get (\s -> Return s)|
+
+To build up a language for doing I/O we need to be able to combine and sequence actions. We want the ability to perform an IOAction a 
+followed by an IOAction b, and return some result.
+
+In fact, we could have the second IOAction depend on the return value of the first one - that is, we need a sequencing combinator of the 
+following type:
+
+\mint{haskell}|seqio :: IOAction a -> (a -> IOAction b) -> IOAction b|
+
+We want to take the IOAction a supplied in the first argument, get its return value (which is of type a) and feed that to the function in 
+the second argument, getting an IOAction b out, which can be sequenced with the first IOAction a.
+
+That’s a bit of a mouthful, but writing this combinator isn’t too hard. When we reach the final Return, we apply the function f to get a 
+new action. For the other constructors, we keep the form of the action the same, and just thread seqio through the seqio constructor.
+
+Using seqio we can define the action that gets input from stdin and immediately prints it to the screen:
+
+%\mint{haskell}|echo = get $\backslash$ seqio $\backslash$ put|
+
+or even more complicated actions:
+\begin{minted}[linenos]{haskell}
+hello = put "What is your name?"      `seqio` \_    ->
+        get                           `seqio` \name ->
+        put "What is your age?"       `seqio` \_    ->
+        get                           `seqio` \age  ->
+        put ("Hello " ++ name ++ "!") `seqio` \_    ->
+        put ("You are " ++ age ++ " years old")
+\end{minted}
+Although this looks like imperative code (admittedly with pretty unpleasant syntax), it’s really a value of type IOAction (). In Haskell, 
+code can be data and data can be code.
+
+In the gist I’ve defined a function to convert an IOAction to a String, which allows them to be printed, so you can load the file into GHCi 
+and verify that hello is in fact just data:
+
+\begin{minted}[linenos]{haskell}
+*Main> print hello
+Put "What is your name?" (
+  Get ($0 -> 
+    Put "What is your age?" (
+      Get ($1 -> 
+        Put "Hello $0!" (
+          Put "You are $1 years old" (
+            Return ()
+          )
+        )
+      )
+    )
+  )
+)
+\end{minted}
+It will surprise no one to learn that IOAction is a monad. In fact we’ve already defined the necessary bind operation in seqio, so getting 
+the Monad instance is trivial:
+\begin{minted}[linenos]{haskell}
+instance Monad IOAction where
+    return = Return
+    (>>=)  = seqio
+\end{minted}
+
+The main benefit of doing this is that we can now sequence actions using Haskell’s do notation, which desugars into calls to (>>=), and 
+hence to seqio. Our earlier hello example can now be written as:
+
+\begin{minted}[linenos]{haskell}
+hello2 = do put "What is your name?"
+            name <- get
+            put "What is your age?"
+            age <- get
+            put ("Hello, " ++ name ++ "!")
+            put ("You are " ++ age ++ " years old!")
+\end{minted}
+Remember though, that this is still just defining a value of type IOAction () - no code is executed, and no effects occur! So far, this post is 100 \% pure.
+
+To see the effects, we need to define a function that takes an IOAction a and converts it into a value of type IO a, which can then be executed by the interpreter or the runtime system. It’s easy to write such a function just by turning it into the approprate calls to putStrLn and getLine.
+
+\begin{minted}[linenos]{haskell}
+run :: IOAction a -> IO a
+run (Return a) = return a
+run (Put s io) = putStrLn s >> run io
+run (Get g)    = getLine >>= \s -> run (g s)
+\end{minted}
+
+You can now load up GHCi and apply run to any action – a value of type IO a will be returned, and then immediately executed by the 
+interpreter:
+
+\begin{minted}[linenos]{haskell}
+*Main> run hello
+What is your name?
+Chris
+What is your age?
+29
+Hello Chris!
+You are 29 years old
+
+\end{minted}
+Is there any practical use to this?
+
+Yes - an IOAction is a mini-language for doing I/O. In this mini language you are restricted to only reading from stdin and writing to stdout - there is no accessing files, spawning threads or network I/O.
+
+In effect we have a “safe” domain-specific language. If a user of your program or library supplies a value of type IOAction a, you know that you are free to convert it to an IO a using run and execute it, and it will never do anything except reading from stdin and writing to stdout (not that those things aren’t potentially dangerous in themselves, but…)
+
 
 \begin{minted}[linenos]{haskell}
 -- http://chris-taylor.github.io/blog/2013/02/09/io-is-not-a-side-effect/
@@ -235,13 +382,7 @@ instance Functor IOAction where
 
 \end{minted}
 
-So when the program is getting interpreted the interpreter encounters an IO operation which then gets "interpreted" to the above and it 
-continues normally.
-
-The interpreted program is still pure since the IO actions have not been executed 
-
-if the running is done inside a monad then the IO still is pure.
-
+\section{Dr. Casperson Pure IO}
 \begin{minted}[linenos]{haskell}
 -- Prolog IO
 
@@ -269,6 +410,15 @@ instance Functor f => Monad (Term f) where
 	(Impure t) 	>>= 	f 		= Impure (fmap (>>= f ) t)
 
 \end{minted}
+
+\section{Mehul Pure IO}
+
+So when the program is getting interpreted the interpreter encounters an IO operation which then gets "interpreted" to the above and it 
+continues normally.
+
+The interpreted program is still pure since the IO actions have not been executed 
+
+if the running is done inside a monad then the IO still is pure.
 
 
 \begin{minted}[linenos]{haskell}
@@ -358,5 +508,9 @@ Loading package unification-fd-0.10.0.1 ... linking ... done.
 --}
 
 \end{minted}
+
+
+\section{Chapter Recap}
+
 
 \end{document}

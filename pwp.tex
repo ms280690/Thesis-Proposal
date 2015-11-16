@@ -9,6 +9,11 @@
 % ---------------------------------------------------------------------------
 %Prolog / Why Prolog ?
 
+
+\section{What is this chapter about}
+
+-----------------------------------------------------------------------------
+
 This chapter discusses the properties of the target language \progLang{Prolog} and the feature set that will be translated to the host 
 language to extend its capabilities.
 
@@ -26,17 +31,138 @@ implementations \cite{website:comparisonofprologimplementationswiki} for differe
 
 \begin{enumerate}
 
+
 \item Existing Implementations
 
-As a starting point a few publications and implementations helped in exploring the topic 
+As a starting point a few publications and implementations helped in exploring the topic. The shortcomings were clearly visible to work and
+improve upon giving a starting point.
 
 \item Simple Syntax
+\cite{wikiprolog}
+
+Prolog is dynamically typed. It has a single data type, the term, which has several subtypes: atoms, numbers, variables and compound terms.
+
+An atom is a general-purpose name with no inherent meaning. It is composed of a sequence of characters that is parsed by the Prolog reader 
+as a single unit.
+
+Numbers can be floats or integers. Many Prolog implementations also provide unbounded integers and rational numbers.
+
+Variables are denoted by a string consisting of letters, numbers and underscore characters, and beginning with an upper-case letter or 
+underscore. Variables closely resemble variables in logic in that they are placeholders for arbitrary terms. A variable can become 
+instantiated (bound to equal a specific term) via unification.
+
+A compound term is composed of an atom called a "functor" and a number of "arguments", which are again terms. Compound terms are ordinarily 
+written as a functor followed by a comma-separated list of argument terms, which is contained in parentheses. The number of arguments is 
+called the term's arity. An atom can be regarded as a compound term with arity zero.
+
+Prolog programs describe relations, defined by means of clauses. Pure Prolog is restricted to Horn clauses, a Turing-complete subset of 
+first-order predicate logic. There are two types of clauses: Facts and rules.
+
+
+
+\cite{website:prologintroumiami}
+In Prolog all data objects are called terms
+Atomic terms
+
+Come in two forms, atoms and integers.
+Atoms (this is a misnomer as in logic predicates are called atoms and atoms are called constants. However, we'll stick to the Prolog convention.)
+Strings of alphanumerics and \_, starting with a lower case alphabetic.
+Strings enclosed in 'single quotes'
+Integers are numeric
+Example
+\begin{minted}[linenos]{prolog}
+geoff
+'the cat and the rat'
+'ABCD'
+123
+\end{minted}
+     
+Function terms
+
+Functions have the form <functor>(<term>{,<term>})
+Functor starts with a lower case alphabetic.
+Example
+\begin{minted}[linenos]{prolog}
+prerequisite_to(adv_ai)
+grade_attained_in(prerequisite_to(adv_ai),pass)
+\end{minted}
+     
+The number of arguments is the arity of the function. When referring to a functor, it is written with its arity in the format <functor>/<arity>. This is also true for atoms, whose arity is 0.
+Note that this is a recursive definition.
+The view of functions as trees
+Operators
+Some functors are used in infix notation, e.g. 5+4
+Operators do not cause the associated function to be carried out.
+Variables
+
+Uppercase or \_ for start of variables
+Example
+\begin{minted}[linenos]{prolog}
+Who
+What
+_special
+_
+\end{minted}
+     
+Variables in Prolog are rather different to those in most other languages. Further discussion and use is deferred until later.
+
+
+
 
 \item Simple Semantics
 
+Under a declarative reading, the order of rules, and of goals within rules, is irrelevant since logical disjunction and conjunction are 
+commutative. Procedurally, however, it is often important to take into account Prolog's execution strategy, either for efficiency reasons, 
+or due to the semantics of impure built-in predicates for which the order of evaluation matters. Also, as Prolog interpreters try to unify 
+clauses in the order they're provided, failing to give a correct ordering can lead to infinite recursion.
+
+
+In this subsection the operational semantics of CHR in Prolog are presented informally. They do not differ essentially from other CHR systems.
+When a constraint is called, it is considered an active constraint and the system will try to apply the rules to it. Rules are tried and executed sequentially in the order they are written.
+
+\cite{website:swiprologsyntaxandsemantics}
+
+A rule is conceptually tried for an active constraint in the following way. The active constraint is matched with a constraint in the head of the rule. If more constraints appear in the head, they are looked for among the suspended constraints, which are called passive constraints in this context. If the necessary passive constraints can be found and all match with the head of the rule and the guard of the rule succeeds, then the rule is committed and the body of the rule executed. If not all the necessary passive constraints can be found, or the matching or the guard fails, then the body is not executed and the process of trying and executing simply continues with the following rules. If for a rule there are multiple constraints in the head, the active constraint will try the rule sequentially multiple times, each time trying to match with another constraint.
+
+This process ends either when the active constraint disappears, i.e. it is removed by some rule, or after the last rule has been processed. In the latter case the active constraint becomes suspended.
+
+A suspended constraint is eligible as a passive constraint for an active constraint. The other way it may interact again with the rules is when a variable appearing in the constraint becomes bound to either a non-variable or another variable involved in one or more constraints. In that case the constraint is triggered, i.e. it becomes an active constraint and all the rules are tried.
+\begin{enumerate}
+
+\item Rule Types There are three different kinds of rules, each with its specific semantics:
+\begin{enumerate}
+
+\item simplification
+The simplification rule removes the constraints in its head and calls its body.
+
+\item propagation
+The propagation rule calls its body exactly once for the constraints in its head.
+
+\item simpagation
+The simpagation rule removes the constraints in its head after the \ and then calls its body. It is an optimization of simplification rules 
+of the form: [constraints\_1, constraints\_2 $<=>$ constraints\_1, body ] Namely, in the simpagation form: [ constraints\_1 
+$\backslash$constraints\_2 $<=>$ body ] The constraints\_1 constraints are not called in the body.
+
+\end{enumerate}
+
+
+\item Rule Names Naming a rule is optional and has no semantic meaning. It only functions as documentation for the programmer.
+
+\item Pragmas The semantics of the pragmas are:
+
+\item passive(Identifier)
+The constraint in the head of a rule Identifier can only match a passive constraint in that rule. 
+
+\end{enumerate}
+
 \item Universal Horn Clauses
 
+
 \item Unification
+
+\item Definite Clause Grammar
+
+
 \end{enumerate}
 
 \begin{comment}
@@ -114,5 +240,9 @@ prolog_rules :- write("Prolog is by far the best, most productive, easiest progr
 \end{comment}
 
 \end{enumerate}
+
+
+\section{Chapter Recap}
+
 
 \end{document}

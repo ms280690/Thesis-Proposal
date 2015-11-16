@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{Struct} \PYG{l+s}{\PYGZdq{}hello\PYGZdq{}} \PYG{p}{[}\PYG{k+kt}{Struct} \PYG{l+s}{\PYGZdq{}a\PYGZdq{}} \PYG{k+kt}{[]}\PYG{p}{]} 	\PYG{c+c1}{\PYGZhy{}\PYGZhy{} hello(a).}
+\PYG{k+kt}{Var} \PYG{p}{(}\PYG{k+kt}{VariableName} \PYG{l+m+mi}{125} \PYG{l+s}{\PYGZdq{}X\PYGZdq{}}\PYG{p}{)}	\PYG{c+c1}{\PYGZhy{}\PYGZhy{} X = 125.}
+\PYG{k+kt}{Wildcard}	\PYG{c+c1}{\PYGZhy{}\PYGZhy{} \PYGZus{}.}
+\PYG{k+kt}{Cut} \PYG{l+m+mi}{0}	\PYG{c+c1}{\PYGZhy{}\PYGZhy{} !.}
+\end{Verbatim}

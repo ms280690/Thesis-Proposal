@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+  <head>
+    <title>thesis_ouline_workflowy.opml</title>
+    <expansionState>0,3,4,8,21,22,36,37,42,49,51,57,61,67,68,70,72,75,79,84,89,90,98,99,107,108,115,120,125,127,131,132,138,140,141,147,149,152,155,159,162,172,174,181,186,197,201,204,210,219,221,224,230,231,234,245</expansionState>
+  </head>
+  <body>
+    <outline text="1. Abstract">
+      <outline text="a. Original Proposal Abstract"/>
+      <outline text="b. Shortened to 150 words"/>
+    </outline>
+    <outline text="2. Chapter 1 - Introduction">
+      <outline text="a. Beginnings">
+        <outline text="i. Programming Languages and their selection"/>
+        <outline text="ii. Declarative programming , Haskell, Prolog and what thesis does"/>
+      </outline>
+      <outline text="b. Thesis Statement - close to being an abstract"/>
+      <outline text="c. Problem Statement">
+        <outline text="i. Current state of development of, shifting between programming languages"/>
+        <outline text="ii. Prolog adoption, shortcomings, features"/>
+        <outline text="iii. Question about what to do"/>
+        <outline text="iv. What to do"/>
+        <outline text="v. Generic Programming language"/>
+        <outline text="vi. Specific Programming language"/>
+        <outline text="vii. DSL vs GPL"/>
+        <outline text="viii. Our solution"/>
+        <outline text="ix. Our solution w.r.t to Prolog and Haskell"/>
+        <outline text="x. Chapter 4 description literature survey for embedding"/>
+        <outline text="xi. Chapter 5 description literature survey for multi paradigm"/>
+      </outline>
+      <outline text="d. Thesis Organization"/>
+    </outline>
+    <outline text="3. Chapter 2 - Background">
+      <outline text="a. Categorization, classification of languages">
+        <outline text="b. Same category but diff paradigm"/>
+        <outline text="c. Functional Programming"/>
+        <outline text="d. Logic Programming"/>
+        <outline text="e. Prolog description"/>
+        <outline text="f. Haskell description"/>
+        <outline text="g. Contrasting nature"/>
+        <outline text="h. Prolog in X"/>
+        <outline text="i. Shallow embedding"/>
+        <outline text="j. Foreign Function Interface"/>
+        <outline text="k. Meta Programming"/>
+        <outline text="l. Quasi quotation with example"/>
+        <outline text="m. Scala"/>
+        <outline text="n. How to do lang_1 in lang_2"/>
+      </outline>
+    </outline>
+    <outline text="4. Chapter 3 - Accomplished work">
+      <outline text="a. Current Work">
+        <outline text="i. Papers, implementation, libraries and their shortcomings for embedding approach"/>
+        <outline text="ii. Hybrid languages"/>
+        <outline text="iii. Comparison of approaches"/>
+      </outline>
+      <outline text="b. Contributions  for proposal"/>
+      <outline text="c. Improved Contributions">
+        <outline text="i. Proto 1"/>
+        <outline text="ii. Proto 2"/>
+        <outline text="iii. Proto 3"/>
+        <outline text="iv. Proto 4"/>
+      </outline>
+      <outline text="d. Thesis Contributions - raw prototype contributions"/>
+      <outline text="e. Work done in terms if points"/>
+    </outline>
+    <outline text="5. Chapter 4 - Embedding a Prog Lang in another Prog Lang">
+      <outline text="a. Some intro"/>
+      <outline text="b. Informal Content">
+        <outline text="i. Some intro"/>
+        <outline text="ii. Prolog embedded implementations in other languages"/>
+        <outline text="iii. Hugs 98 Prolog features and short comings"/>
+        <outline text="iv. Existence, survival of Prolog"/>
+      </outline>
+      <outline text="c. Related books"/>
+      <outline text="d. Related Papers">
+        <outline text="i. Some intro"/>
+        <outline text="ii. Mike Spivey and Sivija Seres series"/>
+        <outline text="iii. Typed logic variables in haskell and prological features in functional setting"/>
+      </outline>
+      <outline text="e. Prolog libraries">
+        <outline text="i. Prolog implementations"/>
+        <outline text="ii. Logic capability libraries"/>
+        <outline text="iii. Unification libraries"/>
+        <outline text="iv. Backtracking libraries"/>
+      </outline>
+      <outline text="f. From Old Chap 7"/>
+    </outline>
+    <outline text="6. Chapter 5 - Multi paradigm Languages">
+      <outline text="a. Some intro with Scala">
+        <outline text="b. Classification and meaning of Multi paradigm langauges"/>
+        <outline text="c. Informal Content">
+          <outline text="i. Multi paradigm languages definition and details"/>
+          <outline text="ii. Functional Logic Programming Languages">
+            <outline text="1) Intro"/>
+            <outline text="2) Major resource"/>
+          </outline>
+        </outline>
+        <outline text="d. Literature and Publications">
+          <outline text="i. Multi paradigm, book by C.A.R. Hoare about unifying theory for paradigms"/>
+          <outline text="ii. Functional Logic Programming Languages, curry narrowing, free variables, non deterministic choice operator"/>
+        </outline>
+        <outline text="e. Some Multi Paradigm Languages"/>
+        <outline text="f. Functional Logic Programming Languages">
+          <outline text="i. Stuff other than curry"/>
+          <outline text="ii. Reasoned Schemer"/>
+          <outline text="iii. Curry"/>
+        </outline>
+      </outline>
+      <outline text="From Old Chap 9"/>
+    </outline>
+    <outline text="7. Chapter 6 - Related Concepts">
+      <outline text="a. Warren Abstraction Machine"/>
+      <outline text="b. Constraint Programming"/>
+      <outline text="c. Residuation and Narrowing"/>
+      <outline text="d. F- Algebra"/>
+    </outline>
+    <outline text="8. Chapter 7 - Prolog in Other Languages">
+      <outline text="a. Theory">
+        <outline text="i. Papers"/>
+        <outline text="ii. Books"/>
+        <outline text="iii. Articles / Blogs / Dicsussions"/>
+        <outline text="iv. Websites"/>
+      </outline>
+      <outline text="b. Implementations"/>
+      <outline text="c. Important People"/>
+      <outline text="d. Miscellaneous"/>
+    </outline>
+    <outline text="9. Chapter 8 - Prolog in Haskell">
+      <outline text="a. Theory">
+        <outline text="i. Papers"/>
+        <outline text="ii. Books"/>
+        <outline text="iii. Articles / Blogs / Dicsussions"/>
+        <outline text="iv. Websites"/>
+      </outline>
+      <outline text="b. Implementations"/>
+      <outline text="c. Important People"/>
+      <outline text="d. Miscellaneous"/>
+    </outline>
+    <outline text="10. Chapter 9 - Quasiquotation">
+      <outline text="a. Theory">
+        <outline text="i. Papers"/>
+        <outline text="ii. Books"/>
+        <outline text="iii. Articles / Blogs / Dicsussions"/>
+        <outline text="iv. Websites"/>
+      </outline>
+      <outline text="b. Implementations"/>
+      <outline text="c. Miscellaneous"/>
+      <outline text="d. What is Quasi quotaion">
+        <outline text="i. Definition from [53]"/>
+        <outline text="ii. Definition from [31]"/>
+        <outline text="iii. Definition from [153]"/>
+      </outline>
+      <outline text="e. Quasiquotation in Haskell"/>
+    </outline>
+    <outline text="11. Chapter 10 - Metasyntactic Variables">
+      <outline text="a. Definition from [168]"/>
+      <outline text="b. Definition from [16]"/>
+      <outline text="c. Definition from [59]"/>
+      <outline text="d. Definition from [15]"/>
+    </outline>
+    <outline text="12. Chapter 11 - Haskell or Why Haskell ?">
+      <outline text="a. Why a functional Language ? - EMPTY"/>
+      <outline text="b. Haskell">
+        <outline text="i. as a functional programming language"/>
+        <outline text="ii. EDSL advantages"/>
+        <outline text="iii. EDSL dis advantages"/>
+      </outline>
+      <outline text="c. Haskell as a tool for embedding languages">
+        <outline text="i. Monads">
+          <outline text="1) Control flow and its modification intro"/>
+          <outline text="2) As Control structures"/>
+          <outline text="3) Persistance"/>
+          <outline text="4) Backtracking within monad"/>
+        </outline>
+        <outline text="ii. Lazy evaluation"/>
+      </outline>
+    </outline>
+    <outline text="13. Chapter 12 - Prolog or Why Prolog ?">
+      <outline text="a. Why a logic language ? "/>
+      <outline text="b. Prolog as a logic language">
+        <outline text="i. Why embed prolog ? ">
+          <outline text="1)  Existing implementations"/>
+          <outline text="2) Simple Syntax"/>
+          <outline text="3) Simple Syntax"/>
+          <outline text="4) Universal Horn Clauses"/>
+          <outline text="5) Unification"/>
+        </outline>
+      </outline>
+    </outline>
+    <outline text="14. Chapter 13 - Prototype 1">
+      <outline text="a. About this chapter"/>
+      <outline text="b. How Prolog Works">
+        <outline text="i. Terms in Prolog"/>
+        <outline text="ii. Unification"/>
+      </outline>
+      <outline text="c. What we do in this prototype?">
+        <outline text="i. Creating data type"/>
+        <outline text="ii. Unification Monadically"/>
+      </outline>
+      <outline text="d. Creating data type">
+        <outline text="i. Static vs dynamic typing"/>
+        <outline text="ii. Original recursive language issues"/>
+        <outline text="iii. Intro and flattened data type"/>
+      </outline>
+      <outline text="e. Working with the language">
+        <outline text="i. Intances"/>
+      </outline>
+      <outline text="f. Blackbox EMPTY"/>
+      <outline text="g. Something about unification-fd and Monadic Unification">
+        <outline text="i. What library provides?"/>
+        <outline text="ii. Unifiable Stuff"/>
+        <outline text="iii. Uterm stuff"/>
+        <outline text="iv. STVar stuff"/>
+        <outline text="v. IntVar stuff"/>
+        <outline text="vi. Binding Monad stuff"/>
+        <outline text="vii. U.unify stuff"/>
+        <outline text="viii. U.unifyOccurs stuff"/>
+        <outline text="ix. Translation stuff"/>
+      </outline>
+    </outline>
+    <outline text="15. Chapter 14 - Prototype 2">
+      <outline text="a. About this chapter"/>
+      <outline text="b. How prolog-0.2.0.1 works ?">
+        <outline text="i. Original Abstract Syntax"/>
+        <outline text="ii. Components and Shortcomings of language"/>
+        <outline text="iii. A language processing system"/>
+        <outline text="iv. Phases of Compiler"/>
+      </outline>
+      <outline text="c. What we do in this Prototype"/>
+      <outline text="d. Current implementation of Unification"/>
+      <outline text="e. Modifications">
+        <outline text="i. Flatten, Fix, Unifiable"/>
+        <outline text="ii. Translation back and forth"/>
+        <outline text="iii. Monadic Unification"/>
+      </outline>
+      <outline text="f. Results EMPTY"/>
+    </outline>
+    <outline text="16. CHAPTER 15 - Prototype 3">
+      <outline text="a. Some stuff about query resolution"/>
+      <outline text="b. Unification"/>
+      <outline text="c. Resolution"/>
+      <outline text="d. Search Strategies"/>
+      <outline text="e. Stack Engine"/>
+      <outline text="f. Pure Engine"/>
+      <outline text="g. Andorra Engine"/>
+      <outline text="h. Current Unification"/>
+      <outline text="i. Syntax Modification"/>
+      <outline text="j. Monadic Unification"/>
+    </outline>
+    <outline text="17. Chapter 16 - Prototype 4">
+      <outline text="a. IO is Pure"/>
+      <outline text="b. Dr. Casperson Pure IO"/>
+      <outline text="c. Mehul Pure IO"/>
+    </outline>
+    <outline text="18. Chapter 17 - Work Completed">
+      <outline text="a. What are we doing"/>
+      <outline text="b. Unifiable Data Structures"/>
+      <outline text="c. Why is Fix necessary">
+        <outline text="i. Type synonyms cannot be self referncial"/>
+        <outline text="ii. Functor Hierarchy"/>
+        <outline text="iii. FlatTerm and Problem with it infinitly deep"/>
+      </outline>
+      <outline text="d. Dr. Casperson's Explanation"/>
+      <outline text="e. The other fix (function), fixed point explanation"/>
+      <outline text="f. The Fix we use">
+        <outline text="1) Algebra"/>
+        <outline text="2) Algebra Uses"/>
+        <outline text="3) Uncovering Primitives from recursive types (Flat)"/>
+        <outline text="4) Nested Structures"/>
+        <outline text="5) Deep Expressions"/>
+        <outline text="6) Better way (fixed point)"/>
+        <outline text="7) Doing better way in Haskell (Fix)"/>
+        <outline text="8) Other benefits (Easy function signatures)"/>
+      </outline>
+      <outline text="g. Opening up or Extending Language Explanation using Box analogy">
+        <outline text="i. Base lang"/>
+        <outline text="ii. Flatten">
+          <outline text="1) Type"/>
+          <outline text="2) Kind"/>
+        </outline>
+        <outline text="iii. Feature addition">
+          <outline text="1) Manual"/>
+          <outline text="2) Functorize with Box"/>
+        </outline>
+        <outline text="iv. Quantifiers"/>
+        <outline text="v. Multiple Modifications"/>
+        <outline text="vi. Inner and Outer wrappers"/>
+      </outline>
+    </outline>
+    <outline text="22. Chapter 18 - Results">
+      <outline text="a. Types">
+        <outline text="i. Prolog vs Haskell"/>
+        <outline text="ii. Lazy Eval"/>
+        <outline text="iii. Opening up">
+          <outline text="1) Flatten"/>
+          <outline text="2) Fix"/>
+          <outline text="3) Meta Syntactic Variables"/>
+        </outline>
+        <outline text="iv. Quasi quotation"/>
+        <outline text="v. Template Haskell"/>
+        <outline text="vi. Higher order funcitons in Prolog"/>
+        <outline text="vii. IO"/>
+        <outline text="viii. Mutability"/>
+        <outline text="ix. Unification"/>
+        <outline text="x. Monads"/>
+      </outline>
+    </outline>
+    <outline text="23. Chapter 19 - Future Scope">
+      <outline text="a. Quasi quoter"/>
+      <outline text="b. Dynamic Search Strategy"/>
+      <outline text="c. Database Ops"/>
+      <outline text="d. Multi type variable language"/>
+      <outline text="e. Pure + IO Combined Language"/>
+    </outline>
+    <outline text="Conclusion"/>
+  </body>
+</opml>
