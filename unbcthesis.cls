@@ -45,6 +45,7 @@
 %% --  Packages                                                    -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{graphicx}
+\RequirePackage{endnotes}
 \RequirePackage{calc}
 
 
@@ -83,7 +84,6 @@
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Section Formatting                                          -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +95,33 @@
   {\pagestyle{plain}\pagenumbering{roman}}
   {\cleardoublepage\pagenumbering{arabic}}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% --  End note miscellanious                                      -- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\elabel#1{\@bsphack
+  \protected@write\@auxout{}%
+         {\string\newlabel{#1}{{\theendnote}{\thepage}}}%
+         \@esphack}
+\def\eref#1{%
+    \@ifundefined{r@#1}{\def\next{\def\theendnote{{??}}}}%
+              {\xdef\next{%
+               \expandafter\noexpand\csname c@endnote\endcsname%
+              \expandafter\expandafter\expandafter\@firstoftwo\csname
+                r@#1\endcsname\relax}}%
+  \begingroup
+  \next \xdef\@theenmark{\theendnote}%
+  \endgroup\@endnotemark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% --  Formatting                                                  -- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\enoteformat{%
+    \setlength{\parindent}{0em}%
+    \leavevmode\noindent
+    \llap{\hb@xt@1.5em{\@makeenmark\hss}}}
+\def\@endanenote{\string\par\string\endgroup}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,7 +338,7 @@
 \newcommand\unbcbibliography[1]{
     \begin{singlespacing}
     \phantomsection
-    \addcontentsline{toc}{section}{Bibliography}
+    \addcontentsline{toc}{chapter}{Bibliography}
     \bibliography{#1}
     \end{singlespacing}
 }

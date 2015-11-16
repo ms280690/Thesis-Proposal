@@ -52,6 +52,14 @@
 \externaldocument{workCompleted}
 
 %\newcommand{\chapterReference}[1]{\textcolor{blue} {\nameref{#1} } }
+\renewcommand\makeenmark{\hbox{\color{red}$^\theenmark$}}
+\newsavebox\xXx
+\newcommand{\xxx}[1]{\savebox\xXx{#1}#1\kern-1.0\wd\xXx\textcolor{red}{\rule[0.7ex]{\wd\xXx}{1pt}}%
+  \kern-1.0\wd\xXx\textcolor{red}{\rule[0.25ex]{\wd\xXx}{1pt}}%
+}
+\newcommand{\replace}[2]{\xxx{#1}\,{\color{blue}#2}}
+\let\yyy\replace
+
 \newcommand{\progLang}[1]{\textsc{#1}}
 \newcommand{\chapterReference}[2]{\textcolor{blue}{\underline{\hyperref[#1]{#2}}}}
 
@@ -354,6 +362,17 @@
 
   \input{toDo}
 	\clearpage
+\addcontentsline{toc}{section}{\numberline\thesection{End Notes}}
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
 
 
 %   ==========================================================================
