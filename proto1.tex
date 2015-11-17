@@ -9,14 +9,100 @@
 
 
 \section{About this chapter}
+\begin{comment}
+
 This chapter throws light on what \progLang{Prolog} does to resolve a given query via \textit{unification} and this can be replicated in
 the host language along with the challenges.  
 
 This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in 
 \progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
+\end{comment}
+
+This chapter demonstrates a "fairly generic" procedure of creating an open embedded domain specific language in \progLang{Haskell} along 
+with \textit{monadic unification}. As a proof of concept, the implementation consists of creating a \progLang{Prolog} like open language
+whose unification procedure is carried out in a monad. 
+
+
+\section{Components}
+There are four main components that we work with to develop a working implementation of embedded \progLang{Prolog} using the concepts 
+mentioned above. 
+
+\begin{enumerate}
+\item \progLang{Prolog} 
+
+The language itself has a number of sub components, the ones relevant to this thesis are,
+\begin{enumerate}
+\item Language, the syntax, semantics.
+
+\item Database, or the knowledge base where the rules are stored.
+
+\item Unification
+
+\item The search strategy which is used to list and accomplish goals.
+
+\item And finally the query resolver which combines the unification and search strategy to return a result.
+\end{enumerate} 
+
+\item prolog-0.2.0.1 \cite{prolog-lib}
+
+One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting point for the 
+implementation providing certain components to exercise our approach. The main components of this library are adopted from 
+\progLang{Prolog} and modified,
+
+\begin{enumerate}
+\item Language, adopted from \progLang{Prolog} but trimmed down.
+
+\item Database
+
+\item Unifier
+
+\item REPL
+
+\item Interpreter which consists of a parsing mechanism and resembles the query resolver.  
+\end{enumerate} 
+
+\item unification-fd \cite{unification-fd-lib}
+
+This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable 
+generic unification algorithm implementation. 
+
+The relevant components are,
+\begin{enumerate}
+\item Unifiable Class
+
+\item UTerm data type
+
+\item Variables, STVar, IntVar
+
+\item Binding Monad
+
+\item Unification (unify and unifyOccurs)
+\end{enumerate}
+
+\item Prototype 1
+
+This implementation applies to practice the procedure to create an open language to accommodate types, custom variables, quantifiers and 
+logic and recovering primitives while preserving the structure of a language commonly defined by a recursive abstract syntax tree. The 
+resulting language is then adapted to apply a \progLang{Prolog} like unification.
+
+The implementation consists of the following components,
+\begin{enumerate}
+\item An open language
+
+\item Compatibility with the unification library \cite{unification-fd-lib}
+
+\item Variable Bindings
+
+\item Monadic Unification
+
+\end{enumerate}
+\end{enumerate}  
+
+Each of the components are discussed in the following sections.
+
 
 \section{How Prolog works ?}
-Looking at how \progLang{Prolog} works \cite{webiste:learnprolognow}.
+To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
 
 Most \progLang{Prolog} distributions have three types of terms:
 \begin{enumerate}
@@ -71,6 +157,10 @@ yes
 \item Two terms unify if and only if it follows from the previous three clauses that they unify.
 \end{enumerate} 
 
+Unification is just a part of the process were the language attempts to find a solution for the given query using the rules provided in the 
+knowledge base. The other part is actually reaching a point where two terms need to be unified i.e searching. Together they form the query 
+resolver in \progLang{Prolog}.
+
 \newpage
 
 For example, consider the append function 
@@ -96,6 +186,8 @@ a data type to replicate the target language type system while conforming to the
 benefits.       
 \end{comment}
 
+In this prototype we explore the unification aspect only.
+
 \section{What we do in this Prototype}
 This prototype throws light on the process of tackling the issues involved in creating 
 a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
@@ -111,10 +203,12 @@ We convert it into a non recursive data type.
 
 Basically we do Unification monadically.
 
-  
-
 
 \section{Creating a data type}
+
+To start we need to define a abstract syntax for the \progLang{Prolog} like language. But there is a conflict between the type systems as 
+we shall discuss.
+
 
 A type system consists of a set of rules to define a "type" to different constructs in a programming language such as variables, functions 
 and so on. A static type system requires types to be attached to the programming constructs before hand which results in finding errors at 
@@ -137,14 +231,11 @@ For dynamic typing
 \item Re-usability  
 \end{enumerate}
 
-\paragraph{Transitional paragraph}
-An ideal case would would be something that is ........ dont know what to write
+Since \progLang{Haskell} is statically type we would need to define a "typed" language which would have a number of constructs representing 
+different terms in \progLang{Prolog} such as complex structures (for example predicates, clauses etc.), don't cares, cuts, variables and so 
+on.
 
-
-To start with, replicating the single type "term" in \progLang{Prolog} one must consider the distinct constructs it can be associated to 
-such as complex structures (for example predicates, clauses etc.), don't cares, cuts, variables and so on.
-
-Consider the language below,
+Consider the language below which has been adopted from \cite{prolog-lib},
 
 \begin{minted}[linenos]{haskell}	
 data VariableName = VariableName Int String
@@ -155,10 +246,6 @@ data Atom         = Atom      !String
 data Term = Struct Atom [Term]
           | Var VariableName
           | Wildcard
-          | PString   !String
-          | PInteger  !Integer
-          | PFloat    !Double
-          | Flat [FlatItem]
           | Cut Int
       deriving (Eq, Data, Typeable)
 data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
@@ -178,12 +265,17 @@ Even though \textit{Term} has a number of constructors the resulting construct h
 append :: [Term] -> [Term] -> [Term]
 \end{minted} 
 
+\begin{comment}
 The above data type is recursive as seen in the constructor,
 \mint{haskell}|Struct Atom [Term]|
+\end{comment}
 
-One of the issues with the above is that it is not possible to distinguish the structure of the data from the data type itself 
-\cite{sheard2004two}. Consider the following, a reduced version of the above data type,
+The above is a classic example of a recursive grammar to define the abstract syntax of a language. One of the issues with the above is that 
+it is not possible to distinguish the structure of the data from the data type itself \cite{sheard2004two}. Moreover, the primitives of the
+language are not accessible as the language can have expressions of only one type i.e. "Term". The solution to would be to add a type 
+constructor  
 
+\begin{comment}
 \begin{minted}[linenos]{haskell}
 type Atom         = String
 data VariableName = VariableName Int String
@@ -194,10 +286,10 @@ data Term = Struct Atom [Term]
           | Cut Int
       deriving (Eq, Data, Typeable)
 \end{minted}
-
 Also one cannot create Quantifiers plus logic 
+\end{comment}
 
-To split a data type into two levels, a single recursive data type is replaced by two related data types. Consider the following,
+split the data type into two levels, a single recursive data type is replaced by two related data types. Consider the following,
 \begin{minted}[linenos]{haskell}
 data FlatTerm a = 
 		 Struct Atom [a]
@@ -207,14 +299,127 @@ data FlatTerm a =
 \end{minted}
 
 One result of the approach is that the non-recursive type \textit{FlatTerm} is modular and generic as the structure "FlatTerm" is separate 
-from it's type which is "a". Simply speaking we can have something like 
+from it's type which is "a". 
+The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in 
+\progLang{Haskell}. 
+
+In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is 
+essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of 
+any (monomorphic) data type for example \cite{website:kindhaskellwiki},
+
+\begin{minted}[linenos]{haskell}
+Int :: *
+Maybe :: * -> *
+Maybe Bool :: *
+a -> a :: *
+[] :: * -> *
+(->) :: * -> * -> *
+\end{minted}  
+
+Simply speaking we can have something like 
 \mint{haskell}|FlatTerm Bool|
 
 and a generic fuinction like,
 \mint{haskell}|map :: (a -> b) -> FlatTerm a -> FlatTerm b|
 
 
+Although one problem remains, how does one represent infinitely nested / deep expressions of the above language, for example something of
+the form,
+
+\mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
+
+and how to represent it generically to perform operations on it since,
+\begin{minted}[linenos]{haskell}
+(FlatTerm a) != (FlatTerm (FlatTerm a))
+\end{minted}
+
+because with our original grammar all the expression that could be defined would be represented by a single entity "Term" no matter how 
+infinitely deep they were.
+
+The approach to tackling this problem is to find the "fixed-point". After infinitely many iterations we should get to a fix point where
+further iterations make no difference. It means that applying one more ExprF would not change anything – a fix point does not move under 
+FlatTerm. 
+
+\progLang{Haskell} provides it in two forms,
+\begin{enumerate}
+
+\item The fix function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
+
+\mint{haskell}|fix :: (a -> a) -> a|
+
+The above function results in an infinite application stream,
+\mint{haskell}|f s : f (f (f (... )))|
+
+A fixed point of a function f is a value a such that f a == a. This is where the name of fix comes from: it finds the least-defined fixed 
+point of a function.
+
+\item And in type constructor form,
+
+\mint{haskell}|newtype Fix f = f (Fix f)| 
+
+which we apply to our abstract syntax.
+
+\end{enumerate}
+
+
+The resulting language is of the form,
+\begin{minted}[linenos]{haskell}
+data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)
+\end{minted}
+
+simply speaking all the expressions resulting from \textit{FlatTerm} can be represented  by the type signature \textit{Fix FlatTerm}. 
+
+A sample function working with such expressions would be of the form,
+\mint{haskell}|func :: Fix FlatTerm -> Fix FlatTerm|
+
+
+Generically speaking, the language can be expanded for additional functionality without changing or modifying the base structure. Consider
+the scenario where the language needs to accommodate additional type of terms,
+
+\begin{enumerate}
+\item Manually modifying the structure of the language,
+\begin{minted}[linenos]{haskell}
+type Atom         	= String
+
+data VariableName 	= VariableName Int String
+      deriving (Eq, Data, Typeable, Ord)
+
+data Term 			= Struct Atom [Term]
+          			| Var VariableName
+          			| Wildcard  
+          			| Cut Int
+          			| New_Constructor_1 .........
+          			| New_Constructor_2 .........
+      deriving (Eq, Data, Typeable)
+      
+\end{minted}
+
+This would then trigger a ripple effect thorughout the architecture because accomodations need to be made for the new functionality.
+
+\item The other option would be to \textit{functorize} language like we did by adding a type variable which can be used to plug something that provides the functionality into the language.
+Consider the following example,
+
+\begin{minted}[linenos]{haskell}
+data Box f = Abox | T f (Box f) deriving (.........)
+\end{minted}
+
+then something like,
+\begin{minted}[linenos]{haskell}
+T (Struct 'atom' [Abox, T (Cut 0)])
+\end{minted}
+\end{enumerate}
+is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom 
+functionality.
+ 
+
+
 \section{Working with the language}
+
+Our language now opened up and ready for expansion, still needs to conform to the requirements of the \cite{unification-fd-lib} so that the
+generic unification algorithm upon customization works with it.
+
+
+
 Creating instances,
 \begin{minted}[linenos]{haskell}
 instance Functor (FlatTerm) where
@@ -419,6 +624,7 @@ f1 dict = do
   \caption{A sample Minted figure}
   \label{fig:sample}
 \end{figure}
+
 \end{enumerate}
 
 
