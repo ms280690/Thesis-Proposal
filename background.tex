@@ -14,40 +14,64 @@
 
 -----------------------------------------------------------------------------
 
-Programming Languages fall into different categories also known as "paradigms". They exhibit different 
-characteristics according to the paradigm they fall into. It has been argued 
-\cite{Krishnamurthi:2008:TPL:1480828.1480846} that rather than classifying a language into a particular paradigm, it 
-is more accurate that a language exhibits a set of characteristics from a number of paradigms. Either way, the 
-broader the scope of a language the more the expressibility or use it has.  
+Programming Languages fall into different categories also known as
+"paradigms".\endnote{% There are two problems in this sentence:
+  \begin{itemize}
+  \item
+    Why is ``Languages'' capitalized?
+  \item
+    Use \Verb!``!
+    and \Verb!''!
+    to quote material in \LaTeX{} source, not \Verb!"!\,.
+  \end{itemize}
+} They exhibit different characteristics according to the paradigm they
+fall into.
+It has been argued \cite{Krishnamurthi:2008:TPL:1480828.1480846} that
+rather than classifying a language into a particular paradigm, it is
+more accurate that a language exhibits a set of characteristics from a
+number of paradigms.
+Either way, the broader the scope of a language the more the
+expressibility or use it has.
 
-\par Programming Languages that fall into the same family, in our case declarative programming languages, can 
-be of different paradigms and can have very contrasting, conflicting characteristics and behaviours. The two most 
-important ones in the family of declarative languages are the Functional and Logical style of programming.
+Programming Languages that fall into the same family, in our case
+declarative programming languages, can be of different paradigms and can
+have very contrasting, conflicting characteristics and behaviours.
+The two most important ones in the family of declarative languages are
+the Functional and Logical style of programming.
 
-\par Functional Programming, \cite{hughes1989functional} gets its name as the fundamental concept is to apply 
-mathematical functions to arguments to get results. A program itself consists of functions and functions only which 
-when applied to arguments produce results without changing the state that is values on variables and so on. Higher 
-order functions allow functions to be passed as arguments to other functions. The roots lie in $\lambda$-calculus 
-\cite{website:lambdacalculuswiki}, a formal system in mathematical logic and computer science for expressing 
-computation based on function abstraction and application using variable binding and substitution.  It can be 
-thought as the smallest programming language \cite{rojas2004tutorial}, a single rule and a single function 
-definition scheme. In particular there are typed and untyped $\lambda$ calculi. In the untyped $\lambda$ calculus 
-functions have no predetermined type whereas typed lambda calculus puts restriction on what sort(type) of data 
-can a function work with. \progLang{Scheme} is based on the untyped variant while \progLang{ML} and 
-\progLang{ Haskell} are based on typed $\lambda$ calculus. Most typed $\lambda$ calculus langauges are based 
-on Hindley-Milner or Damas-Milner or Damas- Hindley-Milner \cite{website:hdmtypesystemwiki} type system. 
-The ability of the type system to give the most general type of a program without any help (annotation).  The 
-algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check the 
-body of the function for operations that impose type constraints and go on mapping the types of each of the 
-variables, lastly unifying all of the constraints giving the type of the result. 
+Functional Programming, \cite{hughes1989functional} gets its name as the fundamental concept is to apply
+mathematical functions to arguments to get results.
+A program itself consists of functions and functions only which when applied to arguments produce results without
+changing the state that is values on variables and so on.
+Higher order functions allow functions to be passed as arguments to other functions.
+The roots lie in $\lambda$-calculus \cite{website:lambdacalculuswiki}, a formal system in mathematical logic and
+computer science for expressing computation based on function abstraction and application using variable binding
+and substitution.
+It can be thought as the smallest programming language \cite{rojas2004tutorial}, a single rule and a single
+function definition scheme.
+In particular there are typed and untyped $\lambda$ calculi.
+In the untyped $\lambda$ calculus functions have no predetermined type whereas typed lambda calculus puts
+restriction on what sort(type) of data can a function work with.
+\progLang{Scheme} is based on the untyped variant while \progLang{ML} and \progLang{ Haskell} are based on typed
+$\lambda$ calculus.
+Most typed $\lambda$ calculus langauges are based on Hindley-Milner or Damas-Milner or Damas- Hindley-Milner
+\cite{website:hdmtypesystemwiki} type system.
+The ability of the type system to give the most general type of a program without any help (annotation).
+The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
+the body of the function for operations that impose type constraints and go on mapping the types of each of the
+variables, lastly unifying all of the constraints giving the type of the result.
 
-\par Logical Programming, \cite{spivey1995introduction} on the other hand is based on formal logic. A program is a 
-set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old ones. This is done 
-until the one which gives the solution is not derived.  
+Logical Programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
+A program is a set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old
+ones.
+This is done until the one which gives the solution is not derived.
 
-\par The languages to be worked with being \progLang{Haskell} and \progLang{Prolog} respectively. Some 
-differences include things like, \progLang{ Haskell} uses Pattern Matching while \progLang{Prolog} uses 
-Unification, \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic and so on.  
+The languages to be worked with being \progLang{Haskell} and \progLang{Prolog} respectively.\eref{not-a-sentence}
+Some differences include things like, \progLang{ Haskell} uses Pattern Matching while \progLang{Prolog} uses
+Unification, \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic and so
+on.\endnote{%
+  This \P{} needs rewriting.
+}
 
 \par \progLang{Prolog} \cite{wikiprolog} being one of the most dominant Logic Programming Languages has 
 spawned a number of distributions and is present from academia to industry.  

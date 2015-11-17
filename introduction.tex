@@ -119,29 +119,46 @@ Here the choice is \progLang{Haskell}; as both the languages are declarative the
 help to blend the two.
 
 Generally speaking, programming languages with a wide scope over problem domains do not provide bespoke support for
-accomplishing even mundane tasks.
+accomplishing \xxx{even} mundane tasks.
 Approaching towards the solution can be complicated and tiresome, but the programming language in question acts as the
-master key.
+master key.\endnote{%
+  The idea of this sentence is good, but the wording needs improvement.
+}%
 
-\par Flipping the coin to the other side we see, the more specific the language is to the problem domain the easier it is to solve the 
-problem. The simple reason being that, the problem need not be moulded according to the capability  of the language. For example a problem 
-with a naturally recursive 
-solution cannot take advantage of tail recursion in many imperative languages. Many problems require the system to be mutation free, but 
-have to deal with uncontrolled side-effects and so on.  
+Flipping the coin to the other side\yyy{}{,} we see\xxx{,} the more specific the language is to the problem domain\yyy{}{,} the easier it
+is to solve the problem.
+The simple reason being that, the problem need not be moulded according to the capability  of the
+language.\endnote{%
+  This preceding phrase is not a sentence.
+}\elabel{not-a-sentence}
+For example\yyy{}{,} a problem with a naturally recursive solution cannot take advantage of tail recursion in many
+imperative languages.
+Many problems require the system to be mutation free, but have to deal with uncontrolled side-effects and so
+on.\endnote{%
+  This example isn't as clear to me as the one in the last sentence.
+}\textsuperscript{,}\endnote{%
+  Use ``must'' in place of ``have to'' where you can.
+}%
 
-\par Putting all of the above together, Domain Specific Languages are pretty good in doing what they are designed to do, but nothing else, resulting in 
-choosing a different language every time. On the other hand, a general purpose language can be used for solving a wide variety of problems but many a 
-times, the programmer ends up writing some code dictated by the language rather than the problem.  
+Putting all of the above together, Domain Specific Languages are pretty good in doing what they are designed to do,
+but nothing else, resulting in choosing a different language every time.
+On the other hand, a general purpose language can be used for solving a wide variety of problems but \yyy{many a times,}{often}
+the programmer ends up writing some code dictated by the language rather than the problem.
 
-\par The solution, a programming language with a split personality, in our case, sometimes functional, sometimes logical and sometimes both. 
+\par The solution, a programming language with a split personality, in our case, sometimes functional, sometimes logical and sometimes both.\eref{not-a-sentence} 
 Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics. The ideal situation is a language with a rich 
 feature set and the ability to mould itself according to the problem. A language with ability to take the appropriate skill set and present it to the 
-programmer, which will reduce the hassle of jumping between languages or forcibly trying to solve a problem according to a paradigm.  
+programmer, which will reduce the hassle of jumping between languages or forcibly trying to solve a problem according to a paradigm.\eref{not-a-sentence}
 
 \par The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be pushed to 
-dawn the avatar of \progLang{Prolog} ? is the million dollar question. 
+dawn the avatar of \progLang{Prolog}\xxx{ }?
+\yyy{}{This} is the million dollar question.\endnote{%
+  ``To dawn the avatar''?  This is poetic.  Did you mean ``to don''?
+}
 
-The above will result in a set of characteristics which are from both the declarative paradigms. 
+The above\endnote{%
+  Say what ``the above'' is.  
+} will result in a set of characteristics which are from both the declarative paradigms. 
 %----------------------------------------------------------------------------------------------------------------------   
    
 %The issue being discussed here is that often when a problem is to solved using a given language, it has to be moulded %according to the capability the 
@@ -150,10 +167,12 @@ This can be achieved in two ways,
 \begin{description}
 \item [Embedding (\chapterReference{chap:embedding}{Chapter 4}):]
 
-\par This approach involves, translating a complete language into the host language as an extension such as a library and/ or module . The result is very 
-shallow as all the positives as well as the negatives are brought into the host language. The negatives mentioned being, that languages from different 
-paradigms usually have conflicting characteristics and result in inconsistent properties of the resulting embedding. Examples and further discussion on 
-the same is provided in the chapters to come.  
+  This approach involves\xxx{,} translating a complete language into the host language as an extension such as a
+  library \xxx{and/} or module\xxx{ }.
+  The result is very shallow as all the positives as well as the negatives are brought into the host language.
+  The negatives mentioned being, that languages from different paradigms usually have conflicting characteristics
+  and result in inconsistent properties of the resulting embedding.
+  Examples and further discussion on the same is provided in the chapters to come.
 
 \item [Paradigm Integration (\chapterReference{chap:multiparadigm}{Chapter 5}):]
 
@@ -179,16 +198,22 @@ the two languages into one tight package with the best of both and maybe even th
 %----------------------------------------------------------------------------
 \section{Thesis Organization}
 
-The next chapter, \chapterReference{chap:proposedWork}{Chapter 2} provides details about the short comings of the previous works and the road to a 
-better future. \chapterReference{chap:background}{Chapter 3}, the background talks about the programming paradigms and languages in general and 
-the ones in question. Then we look at the question from different angles namely, \chapterReference{chap:embedding}{Chapter 4},  Embedding a 
-Programming Language into another Programming Language and  \chapterReference{chap:embedding}{Chapter 5}, Multi Paradigm Languages (
-Functional Logic Languages). Some of the indirectly related content \chapterReference{chap:relatedWork}{Chapter 6} and finishing off with the 
-\chapterReference{chap:conclusion}{Chapter 7}, the expected outcomes.     
+The next chapter, \chapterReference{chap:proposedWork}{Chapter 2} provides details about the short comings of the
+previous works and the road to a better future.\endnote{%
+  ``Shortcomings'' is one word.
+  ``the road to a better future'' is poetic, but too vague.
+}
+\chapterReference{chap:background}{Chapter 3}, the background talks about the programming paradigms and languages
+in general and the ones in question.
+Then we look at the question from different angles namely, \chapterReference{chap:embedding}{Chapter 4},  Embedding
+a Programming Language into another Programming Language and  \chapterReference{chap:embedding}{Chapter 5}, Multi
+Paradigm Languages (Functional Logic Languages).
+Some of the indirectly related content \chapterReference{chap:relatedWork}{Chapter 6} and finishing off with the
+\chapterReference{chap:conclusion}{Chapter 7}, the expected outcomes.
 
 %\section{The Plan}	
 
-\section{Chapter Recap}
+\section{Chapter Recap\protect\yyy{}{itulation}}
 
 
 \end{document}
