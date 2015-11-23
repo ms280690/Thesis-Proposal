@@ -454,11 +454,11 @@ Below \ref{fig:Functor Hierarchy} shows the relation between the different class
 \label{fig:Functor Hierarchy}
 \end{figure}  
 
-The Functor and Foldable instances providing functions for applying map-reduce to the data structure. The primary issue is that at the end 
+The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce to the data structure. The primary issue is that at the end 
 of the operation the structure if the data type is lost which would not help our cause since the result of a query must be a list of 
 substitutions which are essential pairs of language variable with language values(language constructs). 
 
-Enter, Traversable, it allows reduce whilst preserving the shape of the structure. Lastly, the Applicative instance is an intermediate 
+Enter, \Verb[formatcom=\bf]!Traversable!, it allows reduce whilst preserving the shape of the structure. Lastly, the Applicative instance is an intermediate 
 between a functor and a monad. 
 
 We create the necessary instances as follows,
@@ -505,7 +505,7 @@ instance Unifiable (FlatTerm) where
 
 \end{minted}
 
-Logic Variables
+\paragraph{Logic Variables}
 
 The library ships with two implementations of logic variables. The IntVar implementation uses Int as the names of variables, and uses an 
 IntMap to keep track of the environment. The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables, 
