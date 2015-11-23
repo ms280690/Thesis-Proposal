@@ -10,35 +10,6 @@ here.
 
 \par\endgroup
 \@doanenote {2}
-macro:->This
-argument
-for
-the
-need
-for
-robust,
-multi-purpose
-languages
-seems
-weak.
-Can
-we
-either
-drop
-it,
-or
-extend
-it
-somewhat?
-
-\par\endgroup
-\@doanenote {3}
-macro:->Rewrite
-this
-sentence.
-
-\par\endgroup
-\@doanenote {4}
 macro:->What
 style
 guide
@@ -48,9 +19,13 @@ using
 to
 determine
 capitalization?
+none
+at
+the
+moment
 
 \par\endgroup
-\@doanenote {5}
+\@doanenote {3}
 macro:->Say
 more
 here?
@@ -73,7 +48,7 @@ is
 going.
 
 \par\endgroup
-\@doanenote {6}
+\@doanenote {4}
 macro:->Reference?
 How
 did
@@ -83,9 +58,13 @@ up
 with
 this
 estimate?
+\par
+https://en.wikipedia.org/wiki/Timeline\_of\_programming\_languages
+\par
+http://www.thesoftwareguild.com/history-of-programming-languages/
 
 \par\endgroup
-\@doanenote {7}
+\@doanenote {5}
 macro:->What
 is
 the
@@ -125,7 +104,7 @@ do
 that.
 
 \par\endgroup
-\@doanenote {8}
+\@doanenote {6}
 macro:->this
 looks
 like
@@ -134,10 +113,13 @@ has
 been
 cut
 and
-paste
+paste,
+not
+so
+sure
 
 \par\endgroup
-\@doanenote {9}
+\@doanenote {7}
 macro:->The
 idea
 of
@@ -152,7 +134,7 @@ needs
 improvement.
 
 \par\endgroup
-\@doanenote {10}
+\@doanenote {8}
 macro:->This
 preceding
 phrase
@@ -162,7 +144,7 @@ a
 sentence.
 
 \par\endgroup
-\@doanenote {11}
+\@doanenote {9}
 macro:->This
 example
 isn't
@@ -179,7 +161,7 @@ last
 sentence.
 
 \par\endgroup
-\@doanenote {12}
+\@doanenote {10}
 macro:->Use
 ``must''
 in
@@ -192,7 +174,7 @@ you
 can.
 
 \par\endgroup
-\@doanenote {13}
+\@doanenote {11}
 macro:->``To
 dawn
 the
@@ -207,7 +189,7 @@ mean
 don''?
 
 \par\endgroup
-\@doanenote {14}
+\@doanenote {12}
 macro:->Say
 what
 ``the
@@ -215,7 +197,7 @@ above''
 is.
 
 \par\endgroup
-\@doanenote {15}
+\@doanenote {13}
 macro:->``Shortcomings''
 is
 one
@@ -233,7 +215,7 @@ too
 vague.
 
 \par\endgroup
-\@doanenote {16}
+\@doanenote {14}
 macro:->\begin
 {itemize}
 \item
@@ -262,7 +244,7 @@ not
 {itemize}
 
 \par\endgroup
-\@doanenote {17}
+\@doanenote {15}
 macro:->This
 \P
 {}
