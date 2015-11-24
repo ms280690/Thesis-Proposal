@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{variableExtractor} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm}\PYG{p}{]}
+\PYG{n+nf}{variableExtractor} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{x} \PYG{k+kr}{of}
+	\PYG{p}{(}\PYG{k+kt}{Struct} \PYG{k+kr}{\PYGZus{}} \PYG{n}{xs}\PYG{p}{)} 	\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}	\PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{concat} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{variableExtractor} \PYG{n}{xs}
+	\PYG{p}{(}\PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{)}			\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}	\PYG{p}{[}\PYG{k+kt}{Fix} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{]}
+	\PYG{k+kr}{\PYGZus{}}				\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}	\PYG{k+kt}{[]}
+
+\PYG{n+nf}{variableNameExtractor} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{k+kt}{VariableName}\PYG{p}{]}
+\PYG{n+nf}{variableNameExtractor} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{x} \PYG{k+kr}{of}
+	\PYG{p}{(}\PYG{k+kt}{Struct} \PYG{k+kr}{\PYGZus{}} \PYG{n}{xs}\PYG{p}{)}	\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{concat} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Prelude}\PYG{o}{.}\PYG{n}{map} \PYG{n}{variableNameExtractor} \PYG{n}{xs}
+	\PYG{p}{(}\PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{)}			\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{v}\PYG{p}{]}
+	\PYG{k+kr}{\PYGZus{}} 				\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{[]}
+
+\PYG{n+nf}{variableSet} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{S}\PYG{o}{.}\PYG{k+kt}{Set} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm}\PYG{p}{)}
+\PYG{n+nf}{variableSet} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{S}\PYG{o}{.}\PYG{n}{fromList} \PYG{n}{a}
+
+\PYG{n+nf}{variableNameSet} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{VariableName}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{S}\PYG{o}{.}\PYG{k+kt}{Set} \PYG{p}{(}\PYG{k+kt}{VariableName}\PYG{p}{)}
+\PYG{n+nf}{variableNameSet} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{S}\PYG{o}{.}\PYG{n}{fromList} \PYG{n}{a}
+
+\PYG{n+nf}{varsToDictM} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Ord} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{Unifiable} \PYG{n}{t}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}}
+    \PYG{k+kt}{S}\PYG{o}{.}\PYG{k+kt}{Set} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{Map} \PYG{n}{a} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{n}{t}\PYG{p}{))}
+\PYG{n+nf}{varsToDictM} \PYG{n}{set} \PYG{o+ow}{=} \PYG{n}{foldrM} \PYG{n}{addElt} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{empty} \PYG{n}{set} \PYG{k+kr}{where}
+  \PYG{n}{addElt} \PYG{n}{sv} \PYG{n}{dict} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{n}{iv} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{freeVar}
+    \PYG{n}{return} \PYG{o}{\PYGZdl{}!} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{insert} \PYG{n}{sv} \PYG{n}{iv} \PYG{n}{dict}
+\end{Verbatim}

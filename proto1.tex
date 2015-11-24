@@ -485,9 +485,12 @@ instance Applicative (FlatTerm) where
 \end{minted}
 
 The above lay the foundation to work with the library. Coming back to the library, the language must have the Unifiable instance. This works
-in tandom with the UTerm. The UTerm data type captures the recursive structure of logic terms i.e, given some functor t which describes the 
-constructors of our logic terms, and some type v which describes our logic variables, the type UTerm t v is the type of logic terms: trees 
-with multiple layers of t structure and leaves of type v. The Unifiable class gives one step of the unification process. Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then we can use the library's operators to perform the recursive unification, subsumption, etc
+in tandom with the UTerm data type. The UTerm data type captures the recursive structure of logic terms i.e, given some functor t which 
+describes the constructors of our logic terms, and some type v which describes our logic variables, the type UTerm t v is the type of logic 
+terms: trees with multiple layers of t structure and leaves of type v. The Unifiable class gives one step of the unification process. Just 
+as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate the recursive ADT, so too we 
+only need to specify one level of the unification (i.e., zipMatch) and then we can use the library's operators to perform the recursive 
+unification, subsumption, etc
 
 \begin{minted}[linenos]{haskell}
 
@@ -505,8 +508,24 @@ instance Unifiable (FlatTerm) where
 
 \end{minted}
 
+<<<<<<< HEAD
 \paragraph{Logic Variables}
+=======
+Unification involves side effects of binding logic variables to terms. To allow and keep track of these effects we use the Binding Monad 
+which provides facilities to generate fresh logic variables and perform look ups on dictionaries. By default two logic variable 
+implementations exist,
+>>>>>>> Added unification part to proto 1, removed unnecessary chapters prologin, prologinhaskell
 
+\begin{enumerate}
+\item The IntVar implementation uses Int as the names of variables, and uses an 
+IntMap to keep track of the environment. 
+
+\item The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables, 
+rather than keeping an explicit environment around. 
+
+\end{enumerate}     
+
+\begin{comment}
 The library ships with two implementations of logic variables. The IntVar implementation uses Int as the names of variables, and uses an 
 IntMap to keep track of the environment. The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables, 
 rather than keeping an explicit environment around. This implementation uses STVars.
@@ -517,17 +536,20 @@ able to generate fresh logic variables, to bind logic variables, and to lookup w
 the necessary instances for both IntVar and STVar.
 
 You can provide your own implementations of Variable and BindingMonad.
+\end{comment}
 
+\textbf{Some stuff about Meta syntactic variables can be put in here}
 
+This implementation uses STVars but a custom implementation can be used inside the BindingMonad.
 For our language expressions to be unifiable we must deal with the variables in the expressions being compared. For that we extract the 
 variables and then convert them into a dictionary consisting of a free variable for each language variable.
 
 \begin{minted}[linenos]{haskell}
 variableExtractor :: Fix FlatTerm -> [Fix FlatTerm]
 variableExtractor (Fix x) = case x of
-	(Struct _ xs) 	->	Prelude.concat $ Prelude.map variableExtractor xs
-	(Var v)			->	[Fix $ Var v]
-	_				->	[] 
+	(Struct _ xs) ->	Prelude.concat $ Prelude.map variableExtractor xs
+	(Var v)		->	[Fix $ Var v]
+	_			->	[] 
 
 variableNameExtractor :: Fix FlatTerm -> [VariableName]
 variableNameExtractor (Fix x) = case x of
@@ -549,8 +571,10 @@ varsToDictM set = foldrM addElt Map.empty set where
     return $! Map.insert sv iv dict
 \end{minted}
 
+A language to STVar dictionary is only one part of the unification procedure, the terms themselves should be made compatible for the in 
+built unify procedure to perform look ups for the variables in them. The dictionary along with the fixed point version flattened of the term
 
-The next step would wrap the language terms into a UTerm,
+
 \begin{minted}[linenos]{haskell}
 uTermify 
   :: Map VariableName (ST.STVar s (FlatTerm)) 
@@ -597,9 +621,8 @@ translateFromUTerm dict uTerm =
     varIdDict = forKV dict Map.empty $ \ k v -> Map.insert (UT.getVarID v) k
 \end{minted}
 
-Unification 
 
-Starting from scratch each of the two language expressions needs to be functorized and then translated to UTerms 
+The variable dictionaries and UTermified language expressions are unified in the binding monad. 
 
 \begin{minted}[linenos]{haskell}
 monadicUnification :: (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s)) => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm) -> 
@@ -615,6 +638,10 @@ monadicUnification t1 t2 = do
   x3 <- U.unify x1 x2
   --get state from somehwere, state -> dict
   return $! (x3, d1 `Map.union` d2)
+\end{minted}
+
+
+\begin{minted}[linenos]{haskell}
 
 goUnify ::
   (forall s. (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
@@ -631,7 +658,12 @@ goUnify test = ST.runSTBinding $ do
   case answer of
     (Left _)            -> return []
     (Right (_, dict))   -> f1 dict
+\end{minted}
 
+
+The final reconversion to return a list of substitutions
+
+\begin{minted}[linenos]{haskell}
 
 f1 ::
   (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))

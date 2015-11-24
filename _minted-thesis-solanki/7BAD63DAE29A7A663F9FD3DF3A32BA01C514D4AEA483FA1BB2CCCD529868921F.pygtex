@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{uTermify}
+  \PYG{o+ow}{::} \PYG{k+kt}{Map} \PYG{k+kt}{VariableName} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{))}
+  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UTerm} \PYG{k+kt}{FlatTerm} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{))}
+  \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UTerm} \PYG{k+kt}{FlatTerm} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{))}
+\PYG{n+nf}{uTermify} \PYG{n}{varMap} \PYG{n}{ux} \PYG{o+ow}{=} \PYG{k+kr}{case} \PYG{n}{ux} \PYG{k+kr}{of}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UVar} \PYG{k+kr}{\PYGZus{}}          		\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{ux}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{Var} \PYG{n}{v}\PYG{p}{)}  		\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{maybe} \PYG{p}{(}\PYG{n+ne}{error} \PYG{l+s}{\PYGZdq{}bad map\PYGZdq{}}\PYG{p}{)} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UVar} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Map}\PYG{o}{.}\PYG{n}{lookup} \PYG{n}{v} \PYG{n}{varMap}
+ \PYG{c+c1}{\PYGZhy{}\PYGZhy{} UT.UTerm t         		\PYGZhy{}\PYGZgt{} UT.UTerm \PYGZdl{}! fmap (uTermify varMap)}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{Struct} \PYG{n}{a} \PYG{n}{xs}\PYG{p}{)}	\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{o}{\PYGZdl{}} \PYG{k+kt}{Struct} \PYG{n}{a} \PYG{o}{\PYGZdl{}!} \PYG{n}{fmap} \PYG{p}{(}\PYG{n}{uTermify} \PYG{n}{varMap}\PYG{p}{)} \PYG{n}{xs}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{Wildcard}\PYG{p}{)}		\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{k+kt}{Wildcard}
+  \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{Cut} \PYG{n}{i}\PYG{p}{)}			\PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{Cut} \PYG{n}{i}\PYG{p}{)}
+
+\PYG{n+nf}{translateToUTerm} \PYG{o+ow}{::}
+    \PYG{k+kt}{Fix} \PYG{k+kt}{FlatTerm} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STBinding} \PYG{n}{s}
+            \PYG{p}{(}\PYG{k+kt}{UT}\PYG{o}{.}\PYG{k+kt}{UTerm} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{)),}
+             \PYG{k+kt}{Map} \PYG{k+kt}{VariableName} \PYG{p}{(}\PYG{k+kt}{ST}\PYG{o}{.}\PYG{k+kt}{STVar} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{)))}
+\PYG{n+nf}{translateToUTerm} \PYG{n}{e1Term} \PYG{o+ow}{=} \PYG{k+kr}{do}
+  \PYG{k+kr}{let} \PYG{n}{vs} \PYG{o+ow}{=} \PYG{n}{variableNameSet} \PYG{o}{\PYGZdl{}} \PYG{n}{variableNameExtractor} \PYG{n}{e1Term}
+  \PYG{n}{varMap} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{varsToDictM} \PYG{n}{vs}
+  \PYG{k+kr}{let} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{n}{uTermify} \PYG{n}{varMap} \PYG{o}{.} \PYG{n}{unfreeze} \PYG{o}{\PYGZdl{}} \PYG{n}{e1Term}
+  \PYG{n}{return} \PYG{p}{(}\PYG{n}{t2}\PYG{p}{,}\PYG{n}{varMap}\PYG{p}{)}
+\end{Verbatim}

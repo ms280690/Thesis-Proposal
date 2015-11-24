@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Unifiable} \PYG{p}{(}\PYG{k+kt}{FlatTerm}\PYG{p}{)} \PYG{k+kr}{where}
+	\PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{Struct} \PYG{n}{al} \PYG{n}{ls}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Struct} \PYG{n}{ar} \PYG{n}{rs}\PYG{p}{)} \PYG{o+ow}{=}
+		\PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{al} \PYG{o}{==} \PYG{n}{ar}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{length} \PYG{n}{ls} \PYG{o}{==} \PYG{n}{length} \PYG{n}{rs}\PYG{p}{)}
+			\PYG{k+kr}{then} \PYG{k+kt}{Struct} \PYG{n}{al} \PYG{o}{\PYGZlt{}\PYGZdl{}\PYGZgt{}}
+				\PYG{n}{pairWith} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{l} \PYG{n}{r} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Right} \PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{))} \PYG{n}{ls} \PYG{n}{rs}
+			\PYG{k+kr}{else} \PYG{k+kt}{Nothing}
+	\PYG{n}{zipMatch} \PYG{k+kt}{Wildcard} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{k+kt}{Wildcard}
+	\PYG{n}{zipMatch} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{Wildcard} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{k+kt}{Wildcard}
+	\PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{Cut} \PYG{n}{i1}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Cut} \PYG{n}{i2}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{p}{(}\PYG{n}{i1} \PYG{o}{==} \PYG{n}{i2}\PYG{p}{)}
+		\PYG{k+kr}{then} \PYG{k+kt}{Just} \PYG{p}{(}\PYG{k+kt}{Cut} \PYG{n}{i1}\PYG{p}{)}
+		\PYG{k+kr}{else} \PYG{k+kt}{Nothing}
+\end{Verbatim}
