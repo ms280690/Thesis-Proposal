@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kt}{ExprF} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Const} \PYG{k+kt}{Int}
-        \PYG{o}{|} \PYG{k+kt}{Add} \PYG{n}{a} \PYG{n}{a}
-        \PYG{o}{|} \PYG{k+kt}{Mul} \PYG{n}{a} \PYG{n}{a}
-\end{Verbatim}

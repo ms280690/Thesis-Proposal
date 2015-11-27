@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{instance} \PYG{k+kt}{Unifiable} \PYG{k+kt}{T} \PYG{k+kr}{where}
-    \PYG{n}{zipMatch} \PYG{p}{(}\PYG{k+kt}{T} \PYG{n}{m} \PYG{n}{ls}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{T} \PYG{n}{n} \PYG{n}{rs}\PYG{p}{)}
-        \PYG{o}{|} \PYG{n}{m} \PYG{o}{/=} \PYG{n}{n}    \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
-        \PYG{o}{|} \PYG{n}{otherwise} \PYG{o+ow}{=}
-            \PYG{k+kt}{T} \PYG{n}{n} \PYG{o}{\PYGZlt{}\PYGZdl{}\PYGZgt{}} \PYG{n}{pairWith} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{l} \PYG{n}{r} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Right}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{))} \PYG{n}{ls} \PYG{n}{rs}
-\end{Verbatim}

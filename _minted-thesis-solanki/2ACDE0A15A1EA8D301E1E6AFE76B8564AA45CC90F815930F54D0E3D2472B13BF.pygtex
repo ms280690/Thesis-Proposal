@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{prerequisite\PYGZus{}to}\PYG{p}{(}\PYG{l+s+sAtom}{adv\PYGZus{}ai}\PYG{p}{)}
-\PYG{n+nf}{grade\PYGZus{}attained\PYGZus{}in}\PYG{p}{(}\PYG{n+nf}{prerequisite\PYGZus{}to}\PYG{p}{(}\PYG{l+s+sAtom}{adv\PYGZus{}ai}\PYG{p}{),}\PYG{l+s+sAtom}{pass}\PYG{p}{)}
-\end{Verbatim}
