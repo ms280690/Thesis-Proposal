@@ -1,6 +1,7 @@
 
 \documentclass[thesis-solanki.tex]{subfiles}
 
+\providecommand\codeLibrary[1]{\texttt{\bfseres #1}}
 
 \begin{document}
 
@@ -18,7 +19,12 @@ This chapter discusses the aspects of opening a language while preserving the or
 \progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
 \end{comment}
 
-This chapter demonstrates a "fairly generic" procedure of creating an open embedded domain specific language in \progLang{Haskell} along 
+This chapter demonstrates a "fairly generic"\endnote{%
+  Use ``quote likes shown'', not "quotes like this".
+
+  Really try to avoid hedging your bets with scare-quotes.
+}
+procedure of creating an open embedded domain specific language in \progLang{Haskell} along 
 with \textit{monadic unification}. As a proof of concept, the implementation consists of creating a \progLang{Prolog} like open language
 whose unification procedure is carried out in a monad. 
 
@@ -30,7 +36,12 @@ mentioned above.
 \begin{enumerate}
 \item \progLang{Prolog} 
 
-The language itself has a number of sub components, the ones relevant to this thesis are,
+The language itself has a number of sub components,\endnote{%
+  This is known as a comma splice.  You have a sentence before, and a
+  sentence after the comma.  Either use a semicolon, or write two
+  sentences.  
+}
+the ones relevant to this thesis are,
 \begin{enumerate}
 \item Language, the syntax, semantics.
 
@@ -38,7 +49,10 @@ The language itself has a number of sub components, the ones relevant to this th
 
 \item Unification
 
-\item The search strategy which is used to list and accomplish goals.
+\item The search strategy which is used to list and accomplish goals.\endnote{%
+  What does ``accomplish goals'' mean here?  Is this what
+  is called \Verb!getClauses! in \codeLibrary{prolog-0.2.1}\,?
+}
 
 \item And finally the query resolver which combines the unification and search strategy to return a result.
 \end{enumerate} 
@@ -857,5 +871,17 @@ f1 dict = do
 
 \section{Chapter Recap}
 
+\if\jobname={thesis-solanki}\else
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
+\fi
 
 \end{document}
