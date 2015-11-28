@@ -1,7 +1,9 @@
 
 \documentclass[thesis-solanki.tex]{subfiles}
 
-\providecommand\codeLibrary[1]{\texttt{\bfseres #1}}
+\providecommand\codeLibrary[1]{\texttt{\bfseries #1}}
+\providecommand\metaSyntacticVariable[1]{\textsl{\ttfamily #1}}
+\providecommand\mSV{\metaSyntacticVariable}
 
 \begin{document}
 
@@ -57,7 +59,7 @@ the ones relevant to this thesis are,
 \item And finally the query resolver which combines the unification and search strategy to return a result.
 \end{enumerate} 
 
-\item prolog-0.2.0.1 \cite{prolog-lib}
+\item \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}
 
 One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting point for the 
 implementation providing certain components to exercise our approach. The main components of this library are adopted from 
@@ -70,34 +72,42 @@ implementation providing certain components to exercise our approach. The main c
 
 \item Unifier
 
-\item REPL
+\item REPL\endnote{%
+  Do not expect readers to know what a \textsf{REPL} is.
+}
 
 \item Interpreter which consists of a parsing mechanism and resembles the query resolver.  
 \end{enumerate} 
 
-\item unification-fd \cite{unification-fd-lib}
+\item \codeLibrary{unification-fd} \cite{unification-fd-lib}
 
 This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable 
 generic unification algorithm implementation. 
 
 The relevant components are,
 \begin{enumerate}
-\item Unifiable Class
+\item Unifiable Class\endnote{%
+  replace with ``the \Verb!Unifiable! class.
+}
 
-\item UTerm data type
+\item the \Verb!UTerm! data type
 
-\item Variables, STVar, IntVar
+\item Variables\endnote{%
+  what does this reference?
+},
+  \Verb!STVar!, \Verb!IntVar!
 
-\item Binding Monad
+\item the \Verb!Binding! monad
 
-\item Unification (unify and unifyOccurs)
+\item Unification (\Verb!unify! and \Verb!unifyOccurs!)
 \end{enumerate}
 
 \item Prototype 1
 
-This implementation applies to practice the procedure to create an open language to accommodate types, custom variables, quantifiers and 
-logic and recovering primitives while preserving the structure of a language commonly defined by a recursive abstract syntax tree. The 
-resulting language is then adapted to apply a \progLang{Prolog} like unification.
+  This implementation applies to practice the procedure to create an open language to accommodate types,
+  custom variables, quantifiers and logic and recovering primitives while preserving the structure of a
+  language commonly defined by a recursive abstract syntax tree.
+  The resulting language is then adapted to apply a \progLang{Prolog} like unification.
 
 The implementation consists of the following components,
 \begin{enumerate}
@@ -105,7 +115,9 @@ The implementation consists of the following components,
 
 \item Compatibility with the unification library \cite{unification-fd-lib}
 
-\item Variable Bindings
+\item Variable Bindings\endnote{%
+  What are your conventions for when you use capitals, and when not?
+}
 
 \item Monadic Unification
 
@@ -116,7 +128,15 @@ Each of the components are discussed in the following sections.
 
 
 \section{How Prolog works ?}
+
+\textcolor{red}{Drop the ``?'' in the section title}
+
 To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
+
+\textcolor{red}{There's a sentence or more missing here. The sentence above leads up to expect a very
+  high-level view.  Below, we are in the middle of discussing a syntax feature called terms.
+  Below I would simplify, and just write ``\progLang{Prolog} has three types of terms:''.
+} 
 
 Most \progLang{Prolog} distributions have three types of terms:
 \begin{enumerate}
@@ -131,14 +151,15 @@ Two terms can be unified if they are the same or the variables can be assigned t
 
 The possibilities could be,
 \begin{enumerate}
-\item If term1 and term2 are constants, then term1 and term2 unify if and only if they are the same atom, or the same number.
+\item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
+  are the same atom, or the same number. 
 \begin{minted}[linenos]{prolog}
 ?-  =(mia,mia).
 yes
 \end{minted}
 
-\item If term1 is a variable and term2 is any type of term, then term1 and term2 unify, and term1 is instantiated to term2 . Similarly, if 
-term2 is a variable and term1 is any type of term, then term1 and term2 unify, and term2 is instantiated to term1 . (So if they are both 
+\item If \mSV{term1} is a variable and \mSV{term2} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2} . Similarly, if 
+\mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
 variables, they’re both instantiated to each other, and we say that they share values.)
 \begin{minted}[linenos]{prolog}
 ?-  mia  =  X.
@@ -151,7 +172,7 @@ yes
 yes
 \end{minted}
 
-\item If term1 and term2 are complex terms, then they unify if and only if:
+\item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
 
 \begin{enumerate}
 \item They have the same functor and arity, and
@@ -229,6 +250,8 @@ and so on. A static type system requires types to be attached to the programming
 compile time and thus increase the reliability of the program. The other end is the dynamic type system which passes through code which 
 would not have worked in former environment, it comes of as less rigid.
 
+\textcolor{red}{Why do we need the following two paragraphs?}
+
 The advantages of static typing \cite{meijer2004static}
 \begin{enumerate}
 \item Earlier detection of errors
@@ -245,49 +268,59 @@ For dynamic typing
 \item Re-usability  
 \end{enumerate}
 
-Since \progLang{Haskell} is statically type we would need to define a "typed" language which would have a number of constructs representing 
-different terms in \progLang{Prolog} such as complex structures (for example predicates, clauses etc.), don't cares, cuts, variables and so 
-on.
+Since \progLang{Haskell} is statically type we would need to define a "typed" language which would have a
+number of constructs representing different terms in \progLang{Prolog} such as complex structures (for example
+predicates, clauses etc.), don't cares, cuts, variables and so on.\endnote{%
+  Drop the ``would''s here.  We \textit{do} need to define a \progLang{Prolog} type.
+}
 
-Consider the language below which has been adopted from \cite{prolog-lib},
+Consider the language \yyy{below}{in Figure~\ref{tab:closed-terms}} which has been adopted from
+\cite{prolog-lib}\yyy{,}{.}
 
+\begin{figure}
 \begin{minted}[linenos]{haskell}	
-data VariableName = VariableName Int String
-      deriving (Eq, Data, Typeable, Ord)
-data Atom         = Atom      !String
-                  | Operator  !String
-      deriving (Eq, Ord, Data, Typeable)
-data Term = Struct Atom [Term]
-          | Var VariableName
-          | Wildcard
-          | Cut Int
-      deriving (Eq, Data, Typeable)
-data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
-            | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
-      deriving (Data, Typeable)
-type Program = [Sentence]
-type Body    = [Goal]
-data Sentence = Query   Body
-              | Command Body
-              | C Clause
-      deriving (Data, Typeable)
+  data VariableName = VariableName Int String
+  deriving (Eq, Data, Typeable, Ord)
+  data Atom         = Atom      !String
+  | Operator  !String
+  deriving (Eq, Ord, Data, Typeable)
+  data Term = Struct Atom [Term]
+  | Var VariableName
+  | Wildcard
+  | Cut Int
+  deriving (Eq, Data, Typeable)
+  data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
+  | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
+  deriving (Data, Typeable)
+  type Program = [Sentence]
+  type Body    = [Goal]
+  data Sentence = Query   Body
+  | Command Body
+  | C Clause
+  deriving (Data, Typeable)
 \end{minted}
+  \caption{A class recursive grammar}
+  \label{tab:closed-terms}
+\end{figure}
 
 Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped 
-/ singly typed,
+/ singly typed,\par
 \begin{minted}{haskell}
 append :: [Term] -> [Term] -> [Term]
 \end{minted} 
 
 \begin{comment}
-The above data type is recursive as seen in the constructor,
+The \xxx{above} data type \yyy{}{Figure~\ref{tab:closed-terms}} is recursive as seen in the constructor,
 \mint{haskell}|Struct Atom [Term]|
 \end{comment}
 
-The above is a classic example of a recursive grammar to define the abstract syntax of a language. One of the issues with the above is that 
-it is not possible to distinguish the structure of the data from the data type itself \cite{sheard2004two}. Moreover, the primitives of the
-language are not accessible as the language can have expressions of only one type i.e. "Term". The solution to would be to add a type 
-constructor  
+\yyy{The above}{Figure~\ref{tab:closed-terms}} is a classic example of a recursive grammar to define the
+abstract syntax of a language.
+One of the issues with the above is that it is not possible to distinguish the structure of the data from the
+data type itself \cite{sheard2004two}.
+Moreover, the primitives of the language are not accessible as the language can have expressions of only one
+type i.e.
+"Term".
 
 \begin{comment}
 \begin{minted}[linenos]{haskell}
@@ -303,7 +336,9 @@ data Term = Struct Atom [Term]
 Also one cannot create Quantifiers plus logic 
 \end{comment}
 
-split the data type into two levels, a single recursive data type is replaced by two related data types. Consider the following,
+The solution to would be to add a type constructor split the data type into two levels, a single recursive
+data type is replaced by two related data types.
+Consider the following,\par
 \begin{minted}[linenos]{haskell}
 data FlatTerm a = 
 		 Struct Atom [a]
@@ -312,8 +347,15 @@ data FlatTerm a =
 	|	Cut Int deriving (Show, Eq, Ord)
 \end{minted}
 
-One result of the approach is that the non-recursive type \textit{FlatTerm} is modular and generic as the structure "FlatTerm" is separate 
-from it's type which is "a". 
+One result of the approach is that the non-recursive type \textit{FlatTerm} is modular and generic as the structure "FlatTerm"\endnote{%
+  You have `\textit{FlatTerm}' and `"FlatTerm"'.  Why not \texttt{FlatTerm} or better yet
+  \Verb!\code{FlatTerm}!, where \Verb!\code! is a macro you define.
+}
+is separate 
+from it's\endnote{%
+  Do you understand why ``it's'' should be ``its'' here?
+}
+type which is "a". 
 The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in 
 \progLang{Haskell}. 
 
@@ -333,9 +375,11 @@ a -> a :: *
 Simply speaking we can have something like 
 \mint{haskell}|FlatTerm Bool|
 
-and a generic fuinction like,
+and a generic fu\xxx{i}nction like,
 \mint{haskell}|map :: (a -> b) -> FlatTerm a -> FlatTerm b|
-
+\textcolor{green}{%
+  Why is this {\color{blue}\Verb|map|} rather than {\color{blue}\Verb|fmap|}\,?
+}
 
 Although one problem remains, how does one represent infinitely nested / deep expressions of the above language, for example something of
 the form,
@@ -350,11 +394,13 @@ and how to represent it generically to perform operations on it since,
 because with our original grammar all the expression that could be defined would be represented by a single entity "Term" no matter how 
 infinitely deep they were.
 
-The approach to tackling this problem is to find the "fixed-point". After infinitely many iterations we should get to a fix point where
+The approach to tackling this problem is to find the "fixed-point". After infinitely many iterations we should get to a \xxx{fix}{fixed} point where
 further iterations make no difference. It means that applying one more ExprF would not change anything – a fix point does not move under 
 FlatTerm. 
 
-\progLang{Haskell} provides it in two forms,
+\progLang{Haskell} provides it in two forms,\endnote{%
+  Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?
+}
 \begin{enumerate}
 
 \item The fix function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
