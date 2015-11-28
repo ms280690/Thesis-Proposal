@@ -26,3 +26,5 @@
 *.tex.bak
 /.DS_Store
 /_minted-*/
+/thesis-solanki.pdf
+/proto1.pdf
