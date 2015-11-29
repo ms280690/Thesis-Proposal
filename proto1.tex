@@ -347,9 +347,11 @@ data FlatTerm a =
 	|	Cut Int deriving (Show, Eq, Ord)
 \end{minted}
 
-One result of the approach is that the non-recursive type \textit{FlatTerm} is modular and generic as the structure "FlatTerm"\endnote{%
+One result of the approach is that the non-recursive type
+\textit{FlatTerm} is modular and generic as the structure
+"FlatTerm"\endnote{%
   You have `\textit{FlatTerm}' and `"FlatTerm"'.  Why not \texttt{FlatTerm} or better yet
-  \Verb!\code{FlatTerm}!, where \Verb!\code! is a macro you define.
+  \texttt{\csname @backslashcar\endcsname code\{FlatTerm\}}, where \texttt{\csname @backslashcar\endcsname code} is a macro you define.
 }
 is separate 
 from it's\endnote{%
