@@ -15,9 +15,9 @@
 \begin{comment}
 
 This chapter throws light on what \progLang{Prolog} does to resolve a given query via \textit{unification} and this can be replicated in
-the host language along with the challenges.  
+the host language along with the challenges.
 
-This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in 
+This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in
 \progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
 \end{comment}
 
@@ -26,22 +26,22 @@ This chapter demonstrates a "fairly generic"\endnote{%
 
   Really try to avoid hedging your bets with scare-quotes.
 }
-procedure of creating an open embedded domain specific language in \progLang{Haskell} along 
+procedure of creating an open embedded domain specific language in \progLang{Haskell} along
 with \textit{monadic unification}. As a proof of concept, the implementation consists of creating a \progLang{Prolog} like open language
-whose unification procedure is carried out in a monad. 
+whose unification procedure is carried out in a monad.
 
 
 \section{Components}
-There are four main components that we work with to develop a working implementation of embedded \progLang{Prolog} using the concepts 
-mentioned above. 
+There are four main components that we work with to develop a working implementation of embedded \progLang{Prolog} using the concepts
+mentioned above.
 
 \begin{enumerate}
-\item \progLang{Prolog} 
+\item \progLang{Prolog}
 
 The language itself has a number of sub components,\endnote{%
   This is known as a comma splice.  You have a sentence before, and a
   sentence after the comma.  Either use a semicolon, or write two
-  sentences.  
+  sentences.
 }
 the ones relevant to this thesis are,
 \begin{enumerate}
@@ -57,12 +57,12 @@ the ones relevant to this thesis are,
 }
 
 \item And finally the query resolver which combines the unification and search strategy to return a result.
-\end{enumerate} 
+\end{enumerate}
 
 \item \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}
 
-One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting point for the 
-implementation providing certain components to exercise our approach. The main components of this library are adopted from 
+One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting point for the
+implementation providing certain components to exercise our approach. The main components of this library are adopted from
 \progLang{Prolog} and modified,
 
 \begin{enumerate}
@@ -76,13 +76,13 @@ implementation providing certain components to exercise our approach. The main c
   Do not expect readers to know what a \textsf{REPL} is.
 }
 
-\item Interpreter which consists of a parsing mechanism and resembles the query resolver.  
-\end{enumerate} 
+\item Interpreter which consists of a parsing mechanism and resembles the query resolver.
+\end{enumerate}
 
 \item \codeLibrary{unification-fd} \cite{unification-fd-lib}
 
-This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable 
-generic unification algorithm implementation. 
+This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable
+generic unification algorithm implementation.
 
 The relevant components are,
 \begin{enumerate}
@@ -122,7 +122,7 @@ The implementation consists of the following components,
 \item Monadic Unification
 
 \end{enumerate}
-\end{enumerate}  
+\end{enumerate}
 
 Each of the components are discussed in the following sections.
 
@@ -136,7 +136,7 @@ To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprol
 \textcolor{red}{There's a sentence or more missing here. The sentence above leads up to expect a very
   high-level view.  Below, we are in the middle of discussing a syntax feature called terms.
   Below I would simplify, and just write ``\progLang{Prolog} has three types of terms:''.
-} 
+}
 
 Most \progLang{Prolog} distributions have three types of terms:
 \begin{enumerate}
@@ -152,23 +152,23 @@ Two terms can be unified if they are the same or the variables can be assigned t
 The possibilities could be,
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
-  are the same atom, or the same number. 
+  are the same atom, or the same number.
 \begin{minted}[linenos]{prolog}
 ?-  =(mia,mia).
 yes
 \end{minted}
 
-\item If \mSV{term1} is a variable and \mSV{term2} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2} . Similarly, if 
-\mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
+\item If \mSV{term1} is a variable and \mSV{term2} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2} . Similarly, if
+\mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both
 variables, they’re both instantiated to each other, and we say that they share values.)
 \begin{minted}[linenos]{prolog}
 ?-  mia  =  X.
-X  =  mia 
+X  =  mia
 yes
 \end{minted}
 
 \begin{minted}[linenos]{prolog}
-?-  X  =  Y. 
+?-  X  =  Y.
 yes
 \end{minted}
 
@@ -183,25 +183,25 @@ yes
 \end{enumerate}
 \begin{minted}[linenos]{prolog}
 ?-  k(s(g),Y)  =  k(X,t(k)).
-X  =  s(g) 
-Y  =  t(k) 
+X  =  s(g)
+Y  =  t(k)
 yes
 \end{minted}
 
 
 \item Two terms unify if and only if it follows from the previous three clauses that they unify.
-\end{enumerate} 
+\end{enumerate}
 
-Unification is just a part of the process were the language attempts to find a solution for the given query using the rules provided in the 
-knowledge base. The other part is actually reaching a point where two terms need to be unified i.e searching. Together they form the query 
+Unification is just a part of the process were the language attempts to find a solution for the given query using the rules provided in the
+knowledge base. The other part is actually reaching a point where two terms need to be unified i.e searching. Together they form the query
 resolver in \progLang{Prolog}.
 
 \newpage
 
-For example, consider the append function 
+For example, consider the append function
 
 \begin{minted}[linenos]{prolog}
-append([],L,L). 
+append([],L,L).
 append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \end{minted}
 
@@ -211,27 +211,27 @@ append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \includegraphics[scale = 0.5]{PrologAppendWorking.png}
 \caption{Trace for append \cite{webiste:learnprolognowappend}}
 \label{fig:Trace for append}
-\end{figure}  
+\end{figure}
 
 \begin{comment}
-This chapter looks into solving the issue of conflicting type systems of the languages in question. \progLang{Haskell} is a strong 
-statically typed language requiring type signature for programming constructs at compile time while \progLang{Prolog} is strong dynamically 
-typed which lets through untyped programs. This prototype throws light on the process of tackling the issues involved in creating 
-a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
-benefits.       
+This chapter looks into solving the issue of conflicting type systems of the languages in question. \progLang{Haskell} is a strong
+statically typed language requiring type signature for programming constructs at compile time while \progLang{Prolog} is strong dynamically
+typed which lets through untyped programs. This prototype throws light on the process of tackling the issues involved in creating
+a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the
+benefits.
 \end{comment}
 
 In this prototype we explore the unification aspect only.
 
 \section{What we do in this Prototype}
-This prototype throws light on the process of tackling the issues involved in creating 
-a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the 
-benefits. 
+This prototype throws light on the process of tackling the issues involved in creating
+a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the
+benefits.
 
 
 We have a \progLang{Prolog} like language in \progLang{Haskell} defined via \textit{data}.
 
-The language defined is recursive in nature. 
+The language defined is recursive in nature.
 
 We convert it into a non recursive data type.
 
@@ -241,13 +241,13 @@ Basically we do Unification monadically.
 
 \section{Creating a data type}
 
-To start we need to define a abstract syntax for the \progLang{Prolog} like language. But there is a conflict between the type systems as 
+To start we need to define a abstract syntax for the \progLang{Prolog} like language. But there is a conflict between the type systems as
 we shall discuss.
 
 
-A type system consists of a set of rules to define a "type" to different constructs in a programming language such as variables, functions 
-and so on. A static type system requires types to be attached to the programming constructs before hand which results in finding errors at 
-compile time and thus increase the reliability of the program. The other end is the dynamic type system which passes through code which 
+A type system consists of a set of rules to define a "type" to different constructs in a programming language such as variables, functions
+and so on. A static type system requires types to be attached to the programming constructs before hand which results in finding errors at
+compile time and thus increase the reliability of the program. The other end is the dynamic type system which passes through code which
 would not have worked in former environment, it comes of as less rigid.
 
 \textcolor{red}{Why do we need the following two paragraphs?}
@@ -258,14 +258,14 @@ The advantages of static typing \cite{meijer2004static}
 \item Better documentation in terms of type signatures
 \item More opportunities for compiler optimizations
 \item Increased run-time efficiency
-\item Better developer tools 
-\end{enumerate}          
+\item Better developer tools
+\end{enumerate}
 
 For dynamic typing
 \begin{enumerate}
 \item Less rigid
-\item Ideal for prototyping / unknown / changing requirements or unpredictable behaviour 
-\item Re-usability  
+\item Ideal for prototyping / unknown / changing requirements or unpredictable behaviour
+\item Re-usability
 \end{enumerate}
 
 Since \progLang{Haskell} is statically type we would need to define a "typed" language which would have a
@@ -278,7 +278,7 @@ Consider the language \yyy{below}{in Figure~\ref{tab:closed-terms}} which has be
 \cite{prolog-lib}\yyy{,}{.}
 
 \begin{figure}
-\begin{minted}[linenos]{haskell}   
+\begin{minted}[linenos]{haskell}
   data VariableName = VariableName Int String
   deriving (Eq, Data, Typeable, Ord)
   data Atom         = Atom      !String
@@ -303,11 +303,11 @@ Consider the language \yyy{below}{in Figure~\ref{tab:closed-terms}} which has be
   \label{tab:closed-terms}
 \end{figure}
 
-Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped 
+Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped
 / singly typed,\par
 \begin{minted}{haskell}
 append :: [Term] -> [Term] -> [Term]
-\end{minted} 
+\end{minted}
 
 \begin{comment}
 The \xxx{above} data type \yyy{}{Figure~\ref{tab:closed-terms}} is recursive as seen in the constructor,
@@ -329,11 +329,11 @@ data VariableName = VariableName Int String
       deriving (Eq, Data, Typeable, Ord)
 data Term = Struct Atom [Term]
           | Var VariableName
-          | Wildcard -- Don't cares 
+          | Wildcard -- Don't cares
           | Cut Int
       deriving (Eq, Data, Typeable)
 \end{minted}
-Also one cannot create Quantifiers plus logic 
+Also one cannot create Quantifiers plus logic
 \end{comment}
 
 The solution to would be to add a type constructor split the data type into two levels, a single recursive
@@ -356,16 +356,19 @@ One result of the approach is that the non-recursive type
   You have `\textit{FlatTerm}' and `"FlatTerm"'.  Why not \texttt{FlatTerm} or better yet
   \texttt{\csname @backslashcar\endcsname code\{FlatTerm\}}, where \texttt{\csname @backslashcar\endcsname code} is a macro you define.
 }
-is separate 
+is separate
 from it's\endnote{%
   Do you understand why ``it's'' should be ``its'' here?
 }
-type which is "a". 
-The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in 
-\progLang{Haskell}. 
+type which is "a".
+The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
+\progLang{Haskell}.\endnote{%
+  Why do we explain \textit{kinds}?
+  Is this in preparation for \texttt{\bfseries Functor}?
+}
 
-In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is 
-essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of 
+In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is
+essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of
 any (monomorphic) data type for example \cite{website:kindhaskellwiki},
 
 \begin{minted}[linenos]{haskell}
@@ -375,9 +378,9 @@ Maybe Bool :: *
 a -> a :: *
 [] :: * -> *
 (->) :: * -> * -> *
-\end{minted}  
+\end{minted}
 
-Simply speaking we can have something like 
+Simply speaking we can have something like
 \mint{haskell}|FlatTerm Bool|
 
 and a generic fu\xxx{i}nction like,
@@ -395,13 +398,14 @@ and how to represent it generically to perform operations on it since,
 \begin{minted}[linenos]{haskell}
 (FlatTerm a) != (FlatTerm (FlatTerm a))
 \end{minted}
-
-because with our original grammar all the expression that could be defined would be represented by a single entity "Term" no matter how 
+%
+because with our original grammar all the expression that could be defined would be represented by a single entity "Term" no matter how
 infinitely deep they were.
 
-The approach to tackling this problem is to find the "fixed-point". After infinitely many iterations we should get to a \xxx{fix}{fixed} point where
-further iterations make no difference. It means that applying one more ExprF would not change anything – a fix point does not move under 
-FlatTerm. 
+The approach to tackling this problem is to find the "fixed-point".
+After infinitely many iterations we should get to a \yyy{fix}{fixed} point where further iterations make no
+difference.
+It means that applying one more ExprF would not change anything – a fix point does not move under FlatTerm.
 
 \progLang{Haskell} provides it in two forms,\endnote{%
   Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?
@@ -415,12 +419,12 @@ FlatTerm.
 The above function results in an infinite application stream,
 \mint{haskell}|f s : f (f (f (... )))|
 
-A fixed point of a function f is a value a such that f a == a. This is where the name of fix comes from: it finds the least-defined fixed 
+A fixed point of a function f is a value a such that f a == a. This is where the name of fix comes from: it finds the least-defined fixed
 point of a function.
 
 \item And in type constructor form,
 
-\mint{haskell}|newtype Fix f = f (Fix f)| 
+\mint{haskell}|newtype Fix f = f (Fix f)|
 
 which we apply to our abstract syntax.
 
@@ -431,8 +435,8 @@ The resulting language is of the form,
 \begin{minted}[linenos]{haskell}
 data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)
 \end{minted}
-
-simply speaking all the expressions resulting from \textit{FlatTerm} can be represented  by the type signature \textit{Fix FlatTerm}. 
+%
+simply speaking all the expressions resulting from \textit{FlatTerm} can be represented  by the type signature \textit{Fix FlatTerm}.
 
 A sample function working with such expressions would be of the form,
 \mint{haskell}|func :: Fix FlatTerm -> Fix FlatTerm|
@@ -452,7 +456,7 @@ the scenario where the language needs to accommodate additional type of terms,
 
       data Term  = Struct Atom [Term]
                  | Var VariableName
-                 | Wildcard  
+                 | Wildcard
                  | Cut Int
                  | New_Constructor_1 .........
                  | New_Constructor_2 .........
@@ -476,17 +480,16 @@ then something like,
 T (Struct 'atom' [Abox, T (Cut 0)])
 \end{minted}
 \end{enumerate}
-is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom 
+is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom
 functionality.
- 
 
 
 \section{Working with the language / Making language compatible with unification-fd}
 
-Our language now opened up and is ready for expansion but it still needs to conform to the requirements of the \cite{unification-fd-lib} 
+Our language now opened up and is ready for expansion but it still needs to conform to the requirements of the \cite{unification-fd-lib}
 library so that the generic unification algorithm upon customization works with it.
 
-The library provides functionality for first-order structural unification over general structure types along with mutable variable 
+The library provides functionality for first-order structural unification over general structure types along with mutable variable
 bindings.
 
 In this section we discuss
@@ -498,14 +501,14 @@ In this section we discuss
 \item Mutable variables.
 
 \item Variable Bindings.
- 
+
 \item Monadic Unification.
 
-\item Replicating \progLang{Prolog} unification in \progLang{Haskell} 
+\item Replicating \progLang{Prolog} unification in \progLang{Haskell}
 \end{enumerate}
 
 Classes in \progLang{Haskell} are like containers with certain properties which can be thought of as functions. When a data type creates an
-instance of a class the function(s) can be applied to each element / primitive in the data type.    
+instance of a class the function(s) can be applied to each element / primitive in the data type.
 
 
 The data here is the \progLang{Prolog} abstract syntax and the containers are \textit{Functor, Foldable, Traversable, Applicative} 
@@ -520,37 +523,39 @@ Below \ref{fig:Functor Hierarchy} shows the relation between the different class
 \includegraphics[scale = 0.7]{FunctorHierarchy.png}
 \caption{Functor Hierarchy \cite{website:foldablenadtraversable}}
 \label{fig:Functor Hierarchy}
-\end{figure}  
+\end{figure}
 
-The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce to the data structure. The primary issue is that at the end 
-of the operation the structure if the data type is lost which would not help our cause since the result of a query must be a list of 
-substitutions which are essential pairs of language variable with language values(language constructs). 
+The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce to the data structure. The primary issue is that at the end
+of the operation the structure if the data type is lost which would not help our cause since the result of a query must be a list of
+substitutions which are essential pairs of language variable with language values(language constructs).
 
-Enter, \Verb[formatcom=\bf]!Traversable!, it allows reduce whilst preserving the shape of the structure. Lastly, the Applicative instance is an intermediate 
-between a functor and a monad. 
+Enter, \Verb[formatcom=\bf]!Traversable!, %}{
+it allows reduce whilst preserving the shape of the structure. Lastly, the Applicative instance is an intermediate
+between a functor and a monad.
 
 We create the necessary instances as follows,
 \begin{minted}[linenos]{haskell}
-instance Functor (FlatTerm) where
-   fmap = T.fmapDefault
-
-instance Foldable (FlatTerm) where
-    foldMap = T.foldMapDefault
-
-instance Traversable (FlatTerm) where
-     traverse f (Struct atom x)   =   Struct atom <$> 
-              sequenceA (Prelude.map f x)
-     traverse _ (Var v)   =   pure (Var v)
-     traverse _ Wildcard   =   pure (Wildcard)
-     traverse _ (Cut i)   =    pure (Cut i)
-
-instance Applicative (FlatTerm) where
-   pure x = Struct "" [x] 
-   _ <*> Wildcard   =    Wildcard
-   _ <*> (Cut i)    =    Cut i
-   _ <*> (Var v)   =   (Var v)
-   (Struct a fs) <*> (Struct b xs) = Struct (a ++ b) [f x | f <- fs, x <- xs] 
 \end{minted}
+    instance Functor (FlatTerm) where
+      fmap = T.fmapDefault
+
+    instance Foldable (FlatTerm) where
+      foldMap = T.foldMapDefault
+
+    instance Traversable (FlatTerm) where
+       traverse f (Struct atom x)   =   Struct atom <$>
+          sequenceA (Prelude.map f x)
+       traverse _ (Var v)   =   pure (Var v)
+       traverse _ Wildcard  =   pure (Wildcard)
+       traverse _ (Cut i)   =    pure (Cut i)
+
+    instance Applicative (FlatTerm) where
+       pure x = Struct "" [x]
+       _ <*> Wildcard  =   Wildcard
+       _ <*> (Cut i)   =   Cut i
+       _ <*> (Var v)   =   (Var v)
+       (Struct a fs) <*> (Struct b xs)
+                       = Struct (a ++ b) [f x | f <- fs, x <- xs]
 
 The above lay the foundation to work with the library.
 Coming back to the library, the language must have the Unifiable instance.
@@ -571,39 +576,38 @@ instance Unifiable (FlatTerm) where
          then Struct al <$> 
             pairWith (\l r -> Right (l,r)) ls rs        
          else Nothing
-   zipMatch Wildcard _ = Just Wildcard
-   zipMatch _ Wildcard = Just Wildcard
-   zipMatch (Cut i1) (Cut i2) = if (i1 == i2) 
-      then Just (Cut i1) 
-      else Nothing
-
 \end{minted}
+       zipMatch Wildcard _ = Just Wildcard
+       zipMatch _ Wildcard = Just Wildcard
+       zipMatch (Cut i1) (Cut i2) = if (i1 == i2)
+         then Just (Cut i1)
+         else Nothing
 
 \paragraph{Logic Variables}
-Unification involves side effects of binding logic variables to terms. To allow and keep track of these effects we use the Binding Monad 
-which provides facilities to generate fresh logic variables and perform look ups on dictionaries. By default two logic variable 
+Unification involves side effects of binding logic variables to terms. To allow and keep track of these effects we use the Binding Monad
+which provides facilities to generate fresh logic variables and perform look ups on dictionaries. By default two logic variable
 implementations exist,\endnote{%
   In this immediate region, I (dgc) removed text inserted by a failed push or pull merge.
   Check to see that it is correct, or reverse commit \texttt{aaaaa\dots}.
 }
 
 \begin{enumerate}
-\item The IntVar implementation uses Int as the names of variables, and uses an 
-IntMap to keep track of the environment. 
+\item The IntVar implementation uses Int as the names of variables, and uses an
+IntMap to keep track of the environment.
 
-\item The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables, 
-rather than keeping an explicit environment around. 
+\item The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables,
+rather than keeping an explicit environment around.
 
-\end{enumerate}     
+\end{enumerate}
 
 \begin{comment}
-The library ships with two implementations of logic variables. The IntVar implementation uses Int as the names of variables, and uses an 
-IntMap to keep track of the environment. The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables, 
+The library ships with two implementations of logic variables. The IntVar implementation uses Int as the names of variables, and uses an
+IntMap to keep track of the environment. The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables,
 rather than keeping an explicit environment around. This implementation uses STVars.
 
-Performing unification has the side effect of binding logic variables to terms. Thus, we'll want to use a monad in order to keep track of 
-these effects. The BindingMonad type class provides the definition of what we need from our ambient monad. In particular, we need to be 
-able to generate fresh logic variables, to bind logic variables, and to lookup what our logic variables are bound to. The library provides 
+Performing unification has the side effect of binding logic variables to terms. Thus, we'll want to use a monad in order to keep track of
+these effects. The BindingMonad type class provides the definition of what we need from our ambient monad. In particular, we need to be
+able to generate fresh logic variables, to bind logic variables, and to lookup what our logic variables are bound to. The library provides
 the necessary instances for both IntVar and STVar.
 
 You can provide your own implementations of Variable and BindingMonad.
@@ -612,7 +616,7 @@ You can provide your own implementations of Variable and BindingMonad.
 \textbf{Some stuff about Meta syntactic variables can be put in here}
 
 This implementation uses STVars but a custom implementation can be used inside the BindingMonad.
-For our language expressions to be unifiable we must deal with the variables in the expressions being compared. For that we extract the 
+For our language expressions to be unifiable we must deal with the variables in the expressions being compared. For that we extract the
 variables and then convert them into a dictionary consisting of a free variable for each language variable.
 
 \begin{minted}[linenos]{haskell}
@@ -620,13 +624,13 @@ variableExtractor :: Fix FlatTerm -> [Fix FlatTerm]
 variableExtractor (Fix x) = case x of
    (Struct _ xs) ->   Prelude.concat $ Prelude.map variableExtractor xs
    (Var v)      ->   [Fix $ Var v]
-   _         ->   [] 
+   _         ->   []
 
 variableNameExtractor :: Fix FlatTerm -> [VariableName]
 variableNameExtractor (Fix x) = case x of
    (Struct _ xs)   -> Prelude.concat $ Prelude.map variableNameExtractor xs
    (Var v)         -> [v]
-   _             -> []   
+   _             -> []
 
 variableSet :: [Fix FlatTerm] -> S.Set (Fix FlatTerm)
 variableSet a = S.fromList a
@@ -642,20 +646,20 @@ varsToDictM set = foldrM addElt Map.empty set where
     return $! Map.insert sv iv dict
 \end{minted}
 
-A language to STVar dictionary is only one part of the unification procedure, the terms themselves should be made compatible for the in 
+A language to STVar dictionary is only one part of the unification procedure, the terms themselves should be made compatible for the in
 built unify procedure to perform look ups for the variables in them. The dictionary along with the fixed point version flattened of the term
 
 
 \begin{minted}[linenos]{haskell}
-uTermify 
-  :: Map VariableName (ST.STVar s (FlatTerm)) 
-  -> UTerm FlatTerm (ST.STVar s (FlatTerm)) 
+uTermify
+  :: Map VariableName (ST.STVar s (FlatTerm))
+  -> UTerm FlatTerm (ST.STVar s (FlatTerm))
   -> UTerm FlatTerm (ST.STVar s (FlatTerm))
 uTermify varMap ux = case ux of
   UT.UVar _                -> ux
   UT.UTerm (Var v)        -> maybe (error "bad map") UT.UVar $ Map.lookup v varMap
- -- UT.UTerm t               -> UT.UTerm $! fmap (uTermify varMap) 
-  UT.UTerm (Struct a xs)   -> UT.UTerm $ Struct a $! fmap (uTermify varMap) xs     
+ -- UT.UTerm t               -> UT.UTerm $! fmap (uTermify varMap)
+  UT.UTerm (Struct a xs)   -> UT.UTerm $ Struct a $! fmap (uTermify varMap) xs
   UT.UTerm (Wildcard)      -> UT.UTerm Wildcard
   UT.UTerm (Cut i)         -> UT.UTerm (Cut i)
 
@@ -683,7 +687,7 @@ vTermify dict t1 = case t1 of
       Var iv   -> t1
       _         -> UT.UTerm . fmap (vTermify dict) $ r
 
-translateFromUTerm :: 
+translateFromUTerm ::
     Map VariableName (ST.STVar s (FlatTerm)) ->
     UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) -> Prolog
 translateFromUTerm dict uTerm =
@@ -693,10 +697,10 @@ translateFromUTerm dict uTerm =
 \end{minted}
 
 
-The variable dictionaries and UTermified language expressions are unified in the binding monad. 
+The variable dictionaries and UTermified language expressions are unified in the binding monad.
 
 \begin{minted}[linenos]{haskell}
-monadicUnification :: (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s)) => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm) -> 
+monadicUnification :: (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s)) => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm) ->
   ErrorT (UT.UFailure (FlatTerm) (ST.STVar s (FlatTerm)))
            (ST.STBinding s) (UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)),
             Map VariableName (ST.STVar s (FlatTerm)))))
@@ -770,12 +774,12 @@ Tutorial 2 \cite{website:unification-fd-lib-tutorial2}
 \begin{enumerate}
 \item What library provides ?
 
-This module provides first-order structural unification over general structure types. It also provides the standard suite of functions 
+This module provides first-order structural unification over general structure types. It also provides the standard suite of functions
 accompanying unification (applying bindings, getting free variables, etc.).
 
-The implementation makes use of numerous optimization techniques. First, we use path compression everywhere (for weighted path compression 
-see Control.Unification.Ranked). Second, we replace the occurs-check with visited-sets. Third, we use a technique for aggressive 
-opportunistic observable sharing; that is, we track as much sharing as possible in the bindings (without introducing new variables), so 
+The implementation makes use of numerous optimization techniques. First, we use path compression everywhere (for weighted path compression
+see Control.Unification.Ranked). Second, we replace the occurs-check with visited-sets. Third, we use a technique for aggressive
+opportunistic observable sharing; that is, we track as much sharing as possible in the bindings (without introducing new variables), so
 that we can compare bound variables directly and therefore eliminate redundant unifications.
 
 
@@ -792,12 +796,12 @@ The Unifiable class gives one step of the unification process. Just as we only n
 
 The zipMatch function takes two arguments of type t a. The abstract t will be our concrete T type. The abstract a is polymorphic, which ensures that we can't mess around with more than one level of the term at once. If we abandon that guarantee, then you can think of it as if a is UTerm T v. Thus,t a means T (UTerm T v); and T (UTerm T v) is essentially the type UTerm T v with the added guarantee that the values aren't in fact variables. Thus, the arguments to zipMatch are non-variable terms.
 
-The zipMatch method has the rather complicated return type: Maybe (t (Either a (a,a))). Let's unpack this a bit by thinking about how 
-unification works. When we try to unify two terms, first we look at their head constructors. If the constructors are different, then the 
-terms aren't unifiable, so we return Nothing to indicate that unification has failed. Otherwise, the constructors match, so we have to 
-recursively unify their subterms. Since the T structures of the two terms match, we can return Just t0 where t0 has the same T structure as 
-both input terms. Where we still have to recursively unify subterms, we fill t0 with Right(l,r) values where l is a subterm of the left 
-argument to zipMatch and r is the corresponding subterm of the right argument. Thus, zipMatch is a generalized zipping function for 
+The zipMatch method has the rather complicated return type: Maybe (t (Either a (a,a))). Let's unpack this a bit by thinking about how
+unification works. When we try to unify two terms, first we look at their head constructors. If the constructors are different, then the
+terms aren't unifiable, so we return Nothing to indicate that unification has failed. Otherwise, the constructors match, so we have to
+recursively unify their subterms. Since the T structures of the two terms match, we can return Just t0 where t0 has the same T structure as
+both input terms. Where we still have to recursively unify subterms, we fill t0 with Right(l,r) values where l is a subterm of the left
+argument to zipMatch and r is the corresponding subterm of the right argument. Thus, zipMatch is a generalized zipping function for
 combining the shared structure and pairing up substructures. And now, the implementation:
 
 \begin{minted}[linenos]{haskell}
@@ -808,20 +812,20 @@ instance Unifiable T where
         | otherwise =
             T n <$> pairWith (\l r -> Right(l,r)) ls rs
 \end{minted}
-Where list-extras:Data.List.Extras.Pair.pairWith is a version of zip which returns Nothing if the lists have different lengths. So, if the 
-names m and n match, and if the two arguments have the same number of subterms, then we pair those subterms off in order; otherwise, either 
+Where list-extras:Data.List.Extras.Pair.pairWith is a version of zip which returns Nothing if the lists have different lengths. So, if the
+names m and n match, and if the two arguments have the same number of subterms, then we pair those subterms off in order; otherwise, either
 the names or the lengths don't match, so we return Nothing.
 
 
 \item UTerm stuff
 
-The type of terms generated by structures t over variables v. The structure type should implement Unifiable and the variable type should 
+The type of terms generated by structures t over variables v. The structure type should implement Unifiable and the variable type should
 implement Variable.
 
 The Show instance doesn't show the constructors, in order to improve legibility for large terms.
 
-All the category theoretic instances (Functor, Foldable, Traversable,...) are provided because they are often useful; however, beware that 
-since the implementations must be pure, they cannot read variables bound in the current context and therefore can create incoherent 
+All the category theoretic instances (Functor, Foldable, Traversable,...) are provided because they are often useful; however, beware that
+since the implementations must be pure, they cannot read variables bound in the current context and therefore can create incoherent
 results. Therefore, you should apply the current bindings before using any of the functions provided by those classes.
 
 
@@ -834,17 +838,17 @@ This module defines an implementation of unification variables using the ST mona
 \item IntVar stuff
 
 
-This module defines a state monad for functional pointers represented by integers as keys into an IntMap. This technique was independently 
-discovered by Dijkstra et al. This module extends the approach by using a state monad transformer, which can be made into a backtracking 
+This module defines a state monad for functional pointers represented by integers as keys into an IntMap. This technique was independently
+discovered by Dijkstra et al. This module extends the approach by using a state monad transformer, which can be made into a backtracking
 state monad by setting the underlying monad to some MonadLogic (part of the logict library, described by Kiselyov et al.).
 
-Atze Dijkstra, Arie Middelkoop, S. Doaitse Swierstra (2008) Efficient Functional Unification and Substitution, Technical Report 
+Atze Dijkstra, Arie Middelkoop, S. Doaitse Swierstra (2008) Efficient Functional Unification and Substitution, Technical Report
 UU-CS-2008-027, Utrecht University.
 
-Oleg Kiselyov, Chung-chieh Shan, Daniel P. Friedman, and Amr Sabry (2005) Backtracking, Interleaving, and Terminating Monad Transformers, 
+Oleg Kiselyov, Chung-chieh Shan, Daniel P. Friedman, and Amr Sabry (2005) Backtracking, Interleaving, and Terminating Monad Transformers,
 ICFP
 
-A "mutable" unification variable implemented by an integer. This provides an entirely pure alternative to truly mutable alternatives (like 
+A "mutable" unification variable implemented by an integer. This provides an entirely pure alternative to truly mutable alternatives (like
 STVar), which can make backtracking easier.
 
 N.B., because this implementation is pure, we can use it for both ranked and unranked monads.
@@ -853,19 +857,19 @@ N.B., because this implementation is pure, we can use it for both ranked and unr
 
 A monad for handling STVar bindings.
 
-Run the ST ranked binding monad. N.B., because STVar are rank-2 quantified, this guarantees that the return value has no such references. 
+Run the ST ranked binding monad. N.B., because STVar are rank-2 quantified, this guarantees that the return value has no such references.
 However, in order to remove the references from terms, you'll need to explicitly apply the bindings and ground the term.
 
 \item U.unify stuff
 
-Unify two terms, or throw an error with an explanation of why unification failed. Since bindings are stored in the monad, the two input 
-terms and the output term are all equivalent if unification succeeds. However, the returned value makes use of aggressive opportunistic 
+Unify two terms, or throw an error with an explanation of why unification failed. Since bindings are stored in the monad, the two input
+terms and the output term are all equivalent if unification succeeds. However, the returned value makes use of aggressive opportunistic
 observable sharing, so it will be more efficient to use it in future calculations than either argument.
 
 \item U.unifyOccurs
 
-A variant of unify which uses occursIn instead of visited-sets. This should only be used when eager throwing of occursFailure errors is 
-absolutely essential (or for testing the correctness of unify). Performing the occurs-check is expensive. Not only is it slow, it's 
+A variant of unify which uses occursIn instead of visited-sets. This should only be used when eager throwing of occursFailure errors is
+absolutely essential (or for testing the correctness of unify). Performing the occurs-check is expensive. Not only is it slow, it's
 asymptotically slow since it can cause the same subterm to be traversed multiple times.
 
 \clearpage
@@ -874,7 +878,7 @@ asymptotically slow since it can cause the same subterm to be traversed multiple
 
 \begin{figure}
 \begin{minted}[linenos,frame=single]{haskell}
-monadicUnification :: (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s)) => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm) -> 
+monadicUnification :: (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s)) => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm) ->
   ErrorT (UT.UFailure (FlatTerm) (ST.STVar s (FlatTerm)))
            (ST.STBinding s) (UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)),
             Map VariableName (ST.STVar s (FlatTerm)))))
