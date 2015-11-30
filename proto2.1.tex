@@ -15,7 +15,7 @@ As described in the previous chapter about extending languages to incorporate fu
 eDSL in \cite{prolog-lib}. 
 
 The original abstract syntax used by the library,
-
+\begin{figure}
 \begin{minted}[linenos]{haskell}
 
 data VariableName = VariableName Int String
@@ -36,8 +36,13 @@ data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
 type Goal         = Term
 type Program      = [Clause]
 \end{minted} 
+\caption{Current Language Implementation}
+\label{tab:currlangimpl}
+\end{figure}
 
-From the above we will focus on the \textit{Term} since the others just add wrappers around expressions which can be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct \progLang{Prolog} "terms" which are of a "single type".   
+From the Figure~\ref{tab:currlangimpl} we will focus on the \textit{Term} since the others just add wrappers around expressions which can 
+be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct 
+\progLang{Prolog} "terms" which are of a "single type".   
 
 
 The implementation consists of components that one would find in a Language Processing System \ref{fig:A language-processing system},
@@ -89,6 +94,25 @@ We do complete \progLang{Prolog} query resolution like stuff.
 
 
 \section{Current implementation (prolog-0.2.0.1)}
+
+Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent definition described in 
+Figure~\ref{tab:flatgrp0201}
+\begin{figure}][h]
+\begin{minted}[linenos]{haskell}
+data FTS a = FS Atom [a] | FV VariableName | FW | FC Int 
+                          deriving (Show, Eq, Typeable, Ord)
+
+newtype Prolog = P (Fix FTS) deriving (Eq, Show, Ord, Typeable) 
+
+unP :: Prolog -> Fix FTS
+unP (P x) = x 
+\end{minted}
+\caption{Flattened (non-recursive) grammar}
+\label{tab:flatgrp0201}
+\end{figure}
+
+
+
 The current unification uses basic pattern matching to unify the terms 
 
 
