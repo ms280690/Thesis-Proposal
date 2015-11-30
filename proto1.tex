@@ -282,24 +282,24 @@ Consider the language \yyy{below}{in Figure~\ref{tab:closed-terms}} which has be
   data VariableName = VariableName Int String
   deriving (Eq, Data, Typeable, Ord)
   data Atom         = Atom      !String
-  | Operator  !String
+                    | Operator  !String
   deriving (Eq, Ord, Data, Typeable)
   data Term = Struct Atom [Term]
-  | Var VariableName
-  | Wildcard
-  | Cut Int
+            | Var VariableName
+            | Wildcard
+            | Cut Int
   deriving (Eq, Data, Typeable)
   data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
-  | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
+              | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
   deriving (Data, Typeable)
   type Program = [Sentence]
   type Body    = [Goal]
   data Sentence = Query   Body
-  | Command Body
-  | C Clause
+                | Command Body
+                | C Clause
   deriving (Data, Typeable)
 \end{minted}
-  \caption{A class recursive grammar}
+  \caption{A classic recursive grammar}
   \label{tab:closed-terms}
 \end{figure}
 
@@ -346,6 +346,9 @@ Consider the following,\par
                     | Cut Int
                deriving (Show, Eq, Ord)
   \end{minted}
+  \caption{A flattened (non-recursive) grammar}
+  \label{tab:non-recurse}
+\end{figure}
 
 One result of the approach is that the non-recursive type
 \textit{FlatTerm} is modular and generic as the structure
@@ -439,22 +442,25 @@ Generically speaking, the language can be expanded for additional functionality 
 the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
-\item Manually modifying the structure of the language,
-\begin{minted}[linenos]{haskell}
-type Atom            = String
+\item Manually modifying the structure of the language, \yyy{}{as shown in Figure~\ref{tab:man-enhan-gram}.}
+  \begin{figure}
+    \begin{minted}[linenos,gobble=5]{haskell}
+      type Atom            = String
 
-data VariableName    = VariableName Int String
+      data VariableName    = VariableName Int String
       deriving (Eq, Data, Typeable, Ord)
 
-data Term          = Struct Atom [Term]
-                   | Var VariableName
-                   | Wildcard  
-                   | Cut Int
-                   | New_Constructor_1 .........
-                   | New_Constructor_2 .........
-      deriving (Eq, Data, Typeable)
-      
-\end{minted}
+      data Term  = Struct Atom [Term]
+                 | Var VariableName
+                 | Wildcard  
+                 | Cut Int
+                 | New_Constructor_1 .........
+                 | New_Constructor_2 .........
+        deriving (Eq, Data, Typeable)
+    \end{minted}
+    \caption{A manually enhanced recursive grammar}
+    \label{tab:man-enhan-gram}
+  \end{figure}
 
 This would then trigger a ripple effect thorughout the architecture because accomodations need to be made for the new functionality.
 
