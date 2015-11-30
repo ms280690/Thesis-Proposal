@@ -594,32 +594,41 @@ as \yyy{follows,}{shown in Figure~\ref{tab:flat-term-class-inst}.}
        _ <*> (Var v)   =   (Var v)
        (Struct a fs) <*> (Struct b xs)
                        = Struct (a ++ b) [f x | f <- fs, x <- xs]
+  \end{minted}
+  \caption{FlatTerm class instances}
+  \label{tab:flat-term-class-inst}
+\end{figure}
 
 The above lay the foundation to work with the library.
-Coming back to the library, the language must have the Unifiable instance.
-This works in tandom with the UTerm data type.
-The UTerm data type captures the recursive structure of logic terms i.e, given some functor t which describes the
-constructors of our logic terms, and some type v which describes our logic variables, the type UTerm t v is the
-type of logic terms: trees with multiple layers of t structure and leaves of type v.
-The Unifiable class gives one step of the unification process.
-Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate
-the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then we can use
-the library's operators to perform the recursive unification, subsumption, etc
-
-\begin{minted}[linenos]{haskell}
-
-instance Unifiable (FlatTerm) where
-   zipMatch (Struct al ls) (Struct ar rs) = 
-      if (al == ar) && (length ls == length rs) 
-         then Struct al <$> 
-            pairWith (\l r -> Right (l,r)) ls rs        
+Coming back to the library, the language must have the \Verb!Unifiable! instance.
+This works in \yyy{tandom}{tandem} with the \Verb!UTerm! data type.
+The \Verb!UTerm! data type captures the recursive structure of logic terms i.e, given some functor \(t\) which describes the
+constructors of our logic terms, and some type \(v\) which describes our logic variables, the type
+\Verb!UTerm! \(t\) \(v\) is the
+type of logic terms: trees with multiple layers of \(t\) structure and leaves of type \(v\).
+The \Verb!Unifiable! class gives one step of the unification process.
+Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \Verb!UTerm! to generate
+the recursive ADT, so too we only need to specify one level of the unification (i.e., \Verb!zipMatch!) and then we can use
+the library's operators to perform the recursive unification, subsumption.
+This is shown in Figure~\ref{tab:zipMatch}.
+\begin{figure}
+  \begin{minted}[linenos]{haskell}
+    instance Unifiable (FlatTerm) where
+       zipMatch (Struct al ls) (Struct ar rs) =
+         if (al == ar) && (length ls == length rs)
+         then Struct al <$>
+           pairWith (\l r -> Right (l,r)) ls rs
          else Nothing
-\end{minted}
        zipMatch Wildcard _ = Just Wildcard
        zipMatch _ Wildcard = Just Wildcard
        zipMatch (Cut i1) (Cut i2) = if (i1 == i2)
          then Just (Cut i1)
          else Nothing
+  \end{minted}
+  \vspace*{-0.5\baselineskip}
+  \caption{FlatTerm instance of zipMatch}
+  \label{tab:zipMatch}
+\end{figure}
 
 \paragraph{Logic Variables}
 Unification involves side effects of binding logic variables to terms. To allow and keep track of these effects we use the Binding Monad
