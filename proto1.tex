@@ -552,13 +552,16 @@ instance Applicative (FlatTerm) where
    (Struct a fs) <*> (Struct b xs) = Struct (a ++ b) [f x | f <- fs, x <- xs] 
 \end{minted}
 
-The above lay the foundation to work with the library. Coming back to the library, the language must have the Unifiable instance. This works
-in tandom with the UTerm data type. The UTerm data type captures the recursive structure of logic terms i.e, given some functor t which 
-describes the constructors of our logic terms, and some type v which describes our logic variables, the type UTerm t v is the type of logic 
-terms: trees with multiple layers of t structure and leaves of type v. The Unifiable class gives one step of the unification process. Just 
-as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate the recursive ADT, so too we 
-only need to specify one level of the unification (i.e., zipMatch) and then we can use the library's operators to perform the recursive 
-unification, subsumption, etc
+The above lay the foundation to work with the library.
+Coming back to the library, the language must have the Unifiable instance.
+This works in tandom with the UTerm data type.
+The UTerm data type captures the recursive structure of logic terms i.e, given some functor t which describes the
+constructors of our logic terms, and some type v which describes our logic variables, the type UTerm t v is the
+type of logic terms: trees with multiple layers of t structure and leaves of type v.
+The Unifiable class gives one step of the unification process.
+Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate
+the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then we can use
+the library's operators to perform the recursive unification, subsumption, etc
 
 \begin{minted}[linenos]{haskell}
 
