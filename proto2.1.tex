@@ -95,11 +95,7 @@ We do complete \progLang{Prolog} query resolution like stuff.
 \clearpage
 \section{Current implementation (prolog-0.2.0.1)}
 
-<<<<<<< HEAD
 Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent grammar described in 
-=======
-Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent definition described in
->>>>>>> david
 Figure~\ref{tab:flatgrp0201}
 
 \begin{figure}[h]
@@ -116,16 +112,8 @@ unP (P x) = x
 \label{tab:flatgrp0201}
 \end{figure}
 
-<<<<<<< HEAD
 The current unification uses basic pattern matching to unify the terms 
 \begin{figure}[h]
-=======
-
-
-The current unification uses basic pattern matching to unify the terms
-
-
->>>>>>> david
 \begin{minted}[linenos]{haskell}
 unify, unify_with_occurs_check :: MonadPlus m => Term -> Term
 -> m Unifier
@@ -170,14 +158,10 @@ unifyList unify ((x,y):xys) = do
    u  <- unify x y
    u' <- unifyList unify (Prelude.map (both (apply u)) xys)
    return (u++u')
-<<<<<<< HEAD
 \end{minted} 
 \caption{prolog-0.2.0.1 Unification}
 \label{tab:prlg0201unif}
 \end{figure}
-=======
-
->>>>>>> david
 
 \clearpage
 \section{Modifications}
