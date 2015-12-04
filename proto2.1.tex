@@ -15,7 +15,7 @@ As described in the previous chapter about extending languages to incorporate fu
 eDSL in \cite{prolog-lib}. 
 
 The original abstract syntax used by the library,
-\begin{figure}
+\begin{figure}[h]
 \begin{minted}[linenos]{haskell}
 
 data VariableName = VariableName Int String
@@ -77,14 +77,14 @@ them. Nonetheless, the library has the following major components,
 
 \item Unifier.
 
-\item REPL. 
+\item Read-Eval-Print Loop(REPL). 
 \end{enumerate}
 
 To prove the modularity of the approach for language modification and monadic unification only the abstract syntax and unifier will be 
 customized.  
  
 
-
+\clearpage
 \section{What we do in this prototype?}
 In the first prototype we just did unification of two terms not query resolution.
 
@@ -92,12 +92,13 @@ We do complete \progLang{Prolog} query resolution like stuff.
 
 \ref{proto1} provides a generic procedure / methodology to convert a language into monadic unifiable form 
 
-
+\clearpage
 \section{Current implementation (prolog-0.2.0.1)}
 
-Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent definition described in 
+Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent grammar described in 
 Figure~\ref{tab:flatgrp0201}
-\begin{figure}][h]
+
+\begin{figure}[h]
 \begin{minted}[linenos]{haskell}
 data FTS a = FS Atom [a] | FV VariableName | FW | FC Int 
                           deriving (Show, Eq, Typeable, Ord)
@@ -111,11 +112,8 @@ unP (P x) = x
 \label{tab:flatgrp0201}
 \end{figure}
 
-
-
 The current unification uses basic pattern matching to unify the terms 
-
-
+\begin{figure}[h]
 \begin{minted}[linenos]{haskell}
 unify, unify_with_occurs_check :: MonadPlus m => Term -> Term 
 -> m Unifier
@@ -161,8 +159,11 @@ unifyList unify ((x,y):xys) = do
    u' <- unifyList unify (Prelude.map (both (apply u)) xys)
    return (u++u')
 \end{minted} 
+\caption{prolog-0.2.0.1 Unification}
+\label{tab:prlg0201unif}
+\end{figure}
 
-
+\clearpage
 \section{Modifications}
 The resulting language is not far from what we did in \ref{proto1} apart from the fact that the \textit{Term} expressions are encapsulated
 to form \textit{Clauses} which in turn form a \textit{Program}. 
