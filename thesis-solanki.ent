@@ -159,6 +159,21 @@ in
 the
 last
 sentence.
+how
+do
+I
+say
+that
+mathematics
+can
+be
+translated
+to
+declarative
+easily
+in
+declarative
+paradigm
 
 \par\endgroup
 \@doanenote {10}
@@ -175,6 +190,25 @@ can.
 
 \par\endgroup
 \@doanenote {11}
+macro:->I
+have
+the
+feeling
+that
+you
+should
+introduce
+the
+concept
+of
+DSLs
+slightly
+higher.
+higher
+???
+
+\par\endgroup
+\@doanenote {12}
 macro:->``To
 dawn
 the
@@ -189,7 +223,7 @@ mean
 don''?
 
 \par\endgroup
-\@doanenote {12}
+\@doanenote {13}
 macro:->Say
 what
 ``the
@@ -197,7 +231,7 @@ above''
 is.
 
 \par\endgroup
-\@doanenote {13}
+\@doanenote {14}
 macro:->``Shortcomings''
 is
 one
@@ -215,7 +249,7 @@ too
 vague.
 
 \par\endgroup
-\@doanenote {14}
+\@doanenote {15}
 macro:->\begin
 {itemize}
 \item
@@ -244,7 +278,146 @@ not
 {itemize}
 
 \par\endgroup
-\@doanenote {15}
+\@doanenote {16}
+macro:->comma
+splice.
+
+\par\endgroup
+\@doanenote {17}
+macro:->Can
+you
+find
+an
+article
+or
+book
+rather
+than
+a
+website
+as
+a
+reference
+here?
+\cite
+{hindley1969principal},
+\cite
+{milner1978theory}
+
+\par\endgroup
+\@doanenote {18}
+macro:->This
+is
+a
+sentence
+fragment.
+I
+think
+that
+you
+mean
+something
+like:
+\textsl
+{The
+Hindley-Milner
+like
+type
+systems
+have
+the
+ability
+to
+give
+a
+most
+general
+type
+of
+a
+program
+without
+any
+annotations.}
+
+\par\endgroup
+\@doanenote {19}
+macro:->What
+is
+the
+relevance
+of
+this
+\P
+{}
+to
+the
+thesis?
+To
+explain
+the
+working,
+not
+directly
+required
+I
+guess
+but
+since
+\progLang
+{Haskell}
+is
+statically
+typed
+
+\par\endgroup
+\@doanenote {20}
+macro:->There
+is
+an
+abrupt
+transition
+here.
+The
+preceding
+\P
+'s
+have
+discussed
+the
+general
+nature
+of
+functional
+and
+logic
+programming.
+You
+need
+to
+tell
+the
+reader
+that
+you
+now
+want
+to
+talk
+about
+integrating
+two
+programming
+languages,
+namely,
+\progLang
+{Prolog}
+and
+\progLang
+{Haskell}.
+
+\par\endgroup
+\@doanenote {21}
 macro:->This
 \P
 {}
@@ -252,7 +425,251 @@ needs
 rewriting.
 
 \par\endgroup
-\@doanenote {16}
+\@doanenote {22}
+macro:->I
+do
+not
+understand
+the
+sentence
+before
+the
+comma.
+
+\par\endgroup
+\@doanenote {23}
+macro:->comma
+splice.
+
+\par\endgroup
+\@doanenote {24}
+macro:->comma
+splice.
+
+\par\endgroup
+\@doanenote {25}
+macro:->Now
+signal
+that
+you
+are
+switching
+directions:
+\textsl
+{Other
+approaches
+provide
+deeper
+integration}.
+
+\par\endgroup
+\@doanenote {26}
+macro:->Do
+you
+want
+to
+give
+the
+\progLang
+{Scala}
+here?
+
+\par\endgroup
+\@doanenote {27}
+macro:->I
+think
+that
+this
+usage
+of
+``reflective''
+needs
+some
+common.
+Usually
+\textit
+{reflective}
+refers
+to
+run-time
+access
+to
+information
+about
+the
+object
+language
+text;
+what
+you
+are
+discussing
+is
+compile-time
+access
+to
+the
+object
+language.
+?????
+
+\par\endgroup
+\@doanenote {28}
+macro:->The
+preceding
+sentence
+needs
+fixing.
+\par
+
+\par\endgroup
+\@doanenote {29}
+macro:->Is
+the
+point
+here
+that
+templating
+helps,
+or
+what?
+it
+is
+just
+one
+of
+the
+many
+ways
+to
+bring
+the
+languages
+together
+
+\par\endgroup
+\@doanenote {30}
+macro:->comma
+splice.
+
+\par\endgroup
+\@doanenote {31}
+macro:->Should
+this
+example
+be
+moved
+up
+to
+where
+you
+are
+discussing
+multi-paradigm
+languages?
+Wrote
+something
+about
+\progLang
+{Scala}
+up
+there.
+
+\par\endgroup
+\@doanenote {32}
+macro:->Sentence
+fragment.
+
+\par\endgroup
+\@doanenote {33}
+macro:->Provide
+citations
+here.
+
+\par\endgroup
+\@doanenote {34}
+macro:->What
+does
+this
+point
+mean?
+
+\par\endgroup
+\@doanenote {35}
+macro:->I
+think
+that
+this
+fits
+in
+with
+the
+discussion
+of
+\progLang
+{Scala}
+in
+the
+previous
+chapter.
+
+\par\endgroup
+\@doanenote {36}
+macro:->This
+is
+a
+good
+bridging
+sentence,
+but
+should
+probably
+end
+the
+last
+section,
+rather
+than
+begin
+this
+one.
+
+\par\endgroup
+\@doanenote {37}
+macro:->Not
+``would
+form''.
+``forms''
+perhaps.
+You
+are
+talking
+about
+what
+\textbf
+{is}
+in
+the
+thesis.
+
+\par\endgroup
+\@doanenote {38}
+macro:->Strike
+this?
+well
+we/
+the
+library
+does
+some
+of
+this
+right
+?
+\par
+
+\par\endgroup
+\@doanenote {39}
 macro:->Use
 ``quote
 likes
@@ -273,7 +690,7 @@ with
 scare-quotes.
 
 \par\endgroup
-\@doanenote {17}
+\@doanenote {40}
 macro:->This
 is
 known
@@ -302,7 +719,7 @@ two
 sentences.
 
 \par\endgroup
-\@doanenote {18}
+\@doanenote {41}
 macro:->What
 does
 ``accomplish
@@ -321,7 +738,7 @@ in
 {prolog-0.2.1}\,?
 
 \par\endgroup
-\@doanenote {19}
+\@doanenote {42}
 macro:->Do
 not
 expect
@@ -335,7 +752,7 @@ a
 is.
 
 \par\endgroup
-\@doanenote {20}
+\@doanenote {43}
 macro:->replace
 with
 ``the
@@ -344,14 +761,14 @@ with
 class.
 
 \par\endgroup
-\@doanenote {21}
+\@doanenote {44}
 macro:->what
 does
 this
 reference?
 
 \par\endgroup
-\@doanenote {22}
+\@doanenote {45}
 macro:->What
 are
 your
@@ -369,7 +786,7 @@ yet
 decided.
 
 \par\endgroup
-\@doanenote {23}
+\@doanenote {46}
 macro:->Drop
 the
 ``would''s
@@ -386,7 +803,7 @@ a
 type.
 
 \par\endgroup
-\@doanenote {24}
+\@doanenote {47}
 macro:->``is
 a
 classic
@@ -414,7 +831,7 @@ language.''
 perhaps?
 
 \par\endgroup
-\@doanenote {25}
+\@doanenote {48}
 macro:->What
 do
 you
@@ -430,7 +847,23 @@ from
 {website:understandingalgebrasfpcomplete}
 
 \par\endgroup
-\@doanenote {26}
+\@doanenote {49}
+macro:->I
+cannot
+follow
+this
+sentence.
+I
+do
+not
+know
+what
+I
+was
+thinking
+
+\par\endgroup
+\@doanenote {50}
 macro:->You
 have
 `\textit
@@ -460,7 +893,7 @@ you
 define.
 
 \par\endgroup
-\@doanenote {27}
+\@doanenote {51}
 macro:->Do
 you
 understand
@@ -473,7 +906,7 @@ here?
 Yes
 
 \par\endgroup
-\@doanenote {28}
+\@doanenote {52}
 macro:->Why
 do
 we
@@ -507,7 +940,7 @@ is
 *
 
 \par\endgroup
-\@doanenote {29}
+\@doanenote {53}
 macro:->Why
 do
 you
@@ -542,7 +975,7 @@ in
 general
 
 \par\endgroup
-\@doanenote {30}
+\@doanenote {54}
 macro:->I
 am
 deeply
@@ -571,7 +1004,7 @@ the
 diagram.
 
 \par\endgroup
-\@doanenote {31}
+\@doanenote {55}
 macro:->In
 this
 immediate

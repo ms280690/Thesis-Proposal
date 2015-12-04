@@ -4,7 +4,7 @@
 \begin{document}
 
 %-----------------------------------------------------------------------------
-\chapter{Accomplished Work}\label{chap:proposedWork}
+\chapter{Current and Proposed Work}\label{chap:proposedWork}
 %-----------------------------------------------------------------------------
 
 \textcolor{blue}{\textsl{I suspect that the title of this chapter needs to change.}}
@@ -19,10 +19,10 @@
 \noindent\rule{\textwidth}{0.5pt}
 
 
-\section{\protect{\yyy{Current Work}{Existing Work by Others}}}
+\section{\protect{Existing Work by Others}}
 
-There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell}\yyy{}{\large,} which are
-discussed below\yyy{}{\large,} along with \yyy{the}{their} shortcomings.
+There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell}{\large,} which are
+discussed below{\large,} along with their shortcomings.
 
 \begin{enumerate}
 \item
@@ -82,20 +82,23 @@ tackling the conflicting nature of different programming paradigms and languages
 compromised language that takes advantages of neither paradigms.
 Mostly the trend is to build a library for extension to replicate the features as an add on.
 
+Taking into consideration above, there is quite some room for improvement and additions.
 \section{Contributions}
 
-Taking into consideration above, there is quite some room for improvement and additions.\endnote{%
+\endnote{%
   This is a good bridging sentence, but should probably end the last section, rather than begin this one.
 }
 Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
 close to a \progLang{Prolog} like language and has practical abilities to carry out real-world tasks.
 They include predicates like \textit{cut, assert, fail, setOf, bagOf} among others.
-This would form\endnote{%
+This form\endnote{%
   Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
 }
 the first stage of the implementation.
 Secondly, exploring aspects such as \textit{assert} and database capabilities.\endnote{%
   Strike this?
+  well we/ the library does some of this right ?
+  
 }
 A third question to address is the accommodation of input and output, specifically dealing with the \textit{IO
   Monad} in \progLang{Haskell} with \progLang{Prolog} \textit{IO}.
@@ -111,12 +114,12 @@ Lastly, how would characteristics of hybrid languages fit into and play a role i
 \begin{enumerate}
 \item
   Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to
-  \textit{open up} the language\yyy{}{\large,} i.e.\yyy{}{\large,}
-  to include meta syntactic variables, \xxx{adding} custom quantifiers and logic.
+  \textit{open up} the language{\large,} i.e{\large,}
+  to include meta syntactic variables, custom quantifiers and logic.
   (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
   syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to
   the original type.
-  One of the outcomes is a \yyy{}{producing a }polymorphically typed embedded language within \progLang{Haskell}\yyy{}{\Large.}
+  One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}{\Large.}
 
   To test it out we adopt the closed \progLang{Prolog} like language defined in \cite{prolog-lib} and open it up.
   And for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
@@ -235,7 +238,7 @@ statement) which when executed would result in a side effect but till that point
 \end{comment}
 
 
-\section{Chapter Recap}
+\section{Chapter Recapitulation}
 
 
 
