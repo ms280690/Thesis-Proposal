@@ -251,7 +251,7 @@ To start we need to define a abstract syntax for the \progLang{Prolog} like lang
 we shall discuss.
 
 
-A type system consists of a set of rules to define a "type" to different constructs in a programming language such as variables, functions
+A type system consists of a set of rules to define a \yyy{"}{``}type\yyy{"}{''} to different constructs in a programming language such as variables, functions
 and so on. A static type system requires types to be attached to the programming constructs before hand which results in finding errors at
 compile time and thus increase the reliability of the program. The other end is the dynamic type system which passes through code which
 would not have worked in former environment, it comes of as less rigid.
@@ -274,7 +274,7 @@ For dynamic typing
 \item Re-usability
 \end{enumerate}
 
-Since \progLang{Haskell} is statically type we would need to define a "typed" language which should have a
+Since \progLang{Haskell} is statically type we would need to define a \yyy{"}{``}typed\yyy{"}{''} language which should have a
 number of constructs representing different terms in \progLang{Prolog} such as complex structures (for example
 predicates, clauses etc.), don't cares, cuts, variables and so on.\endnote{%
   Drop the ``would''s here.  We \textit{do} need to define a \progLang{Prolog} type.
@@ -333,7 +333,7 @@ Moreover, the primitives of the language\endnote{%
 }
 are not accessible as the language can have expressions of only one
 type i.e.
-"Term".
+\yyy{"}{``}Term\yyy{"}{''}.
 
 \begin{comment}
 \begin{minted}[linenos]{haskell}
@@ -381,7 +381,7 @@ from its\endnote{%
   Do you understand why ``it's'' should be ``its'' here?
   Yes
 }
-type which is "a".
+type which is \yyy{"}{``}a\yyy{"}{''}.
 The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
 \progLang{Haskell}.\endnote{%
   Why do we explain \textit{kinds}?
@@ -422,10 +422,10 @@ and how to represent it generically to perform operations on it since,
 (FlatTerm a) != (FlatTerm (FlatTerm a))
 \end{minted}
 %
-because with our original grammar all the expression that could be defined would be represented by a single entity "Term" no matter how
+because with our original grammar all the expression that could be defined would be represented by a single entity \yyy{"}{``}Term\yyy{"}{''} no matter how
 infinitely deep they were.
 
-The approach to tackling this problem is to find the "fixed-point".
+The approach to tackling this problem is to find the \yyy{"}{``}fixed-point\yyy{"}{''}.
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
 It means that applying one more ExprF would not change anything – a fix point does not move under FlatTerm.
@@ -882,7 +882,7 @@ that we can compare bound variables directly and therefore eliminate redundant u
 
 \item Unifiable stuff
 
-The basic class for generating, reading, and writing to bindings stored in a monad. These three functionalities could be split apart, but are combined in order to simplify contexts. Also, because most functions reading bindings will also perform path compression, there's no way to distinguish "true" mutation from mere path compression.
+The basic class for generating, reading, and writing to bindings stored in a monad. These three functionalities could be split apart, but are combined in order to simplify contexts. Also, because most functions reading bindings will also perform path compression, there's no way to distinguish \yyy{"}{``}true\yyy{"}{''} mutation from mere path compression.
 
 The superclass constraints are there to simplify contexts, since we make the same assumptions everywhere we use BindingMonad.
 
@@ -945,7 +945,7 @@ UU-CS-2008-027, Utrecht University.
 Oleg Kiselyov, Chung-chieh Shan, Daniel P. Friedman, and Amr Sabry (2005) Backtracking, Interleaving, and Terminating Monad Transformers,
 ICFP
 
-A "mutable" unification variable implemented by an integer. This provides an entirely pure alternative to truly mutable alternatives (like
+A \yyy{"}{``}mutable\yyy{"}{''} unification variable implemented by an integer. This provides an entirely pure alternative to truly mutable alternatives (like
 STVar), which can make backtracking easier.
 
 N.B., because this implementation is pure, we can use it for both ranked and unranked monads.

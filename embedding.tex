@@ -76,7 +76,7 @@ enables encoding of search problems.
 	\item Haskell vs. Prolog comparison,
 	\\* \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}
 
-	\item Haskell vs Prolog, or "Giving Haskell a choice"
+	\item Haskell vs Prolog, or \yyy{"}{``}Giving Haskell a choice\yyy{"}{''}
 	\\* \url{http://echochamber.me/viewtopic.php?f=11&t=35369}
 
 	\item Killing Prolog and losing its steam,
@@ -248,7 +248,7 @@ The abstract semantics help in reasoning and specification while operational sem
 
 Logical Primitive == Haskell Function
 
-The paper claims that their "Embedding Approach" has the "Full Power" of "Functional Logic Languages", ???????????
+The paper claims that their \yyy{"}{``}Embedding Approach\yyy{"}{''} has the \yyy{"}{``}Full Power\yyy{"}{''} of \yyy{"}{``}Functional Logic Languages\yyy{"}{''}, ???????????
 
 All the same stuff about the embedding is mentioned again,
 
@@ -257,12 +257,12 @@ Stream based approach produces results with definite order and multiplicity, jus
 
 
 BFS:
-The cost of an answer is the number of resolution steps it takes. A matrix of bag of answers is returned, each bag contains the answers with the same costs. So each node in the tree gets pushed one level down, this "root node". The functions are modified to work with "Matrices" instead of "Streams".
+The cost of an answer is the number of resolution steps it takes. A matrix of bag of answers is returned, each bag contains the answers with the same costs. So each node in the tree gets pushed one level down, this \yyy{"}{``}root node\yyy{"}{''}. The functions are modified to work with \yyy{"}{``}Matrices\yyy{"}{''} instead of \yyy{"}{``}Streams\yyy{"}{''}.
 
 The differences and similarities are highlighted which help in reasoning about the their integration.
 
 General Model:
-Working with "Forests" rather than "Streams" / "Matrices". They store the cost of each answer which is equivalent to the depth of the tree and then everything gets pushed one step down just like BFS.
+Working with \yyy{"}{``}Forests\yyy{"}{''} rather than \yyy{"}{``}Streams\yyy{"}{''} / \yyy{"}{``}Matrices\yyy{"}{''}. They store the cost of each answer which is equivalent to the depth of the tree and then everything gets pushed one step down just like BFS.
 
 $\parallel$, \textit{not, false} remain the same,
 \\* true, $\&$, cut need to be modified to work with forests.
@@ -308,7 +308,7 @@ Not related to the topic.
 
 \item Higher Order Transformation of Logic Programs,
 \\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_lopstr00.pdf}
-\\*This paper mainly talks about the "compositional approach" to design algorithms in functional programming languages which can be extended to logical programming languages. The idea is to develop a general technique for developing efficient predicates. The transformational technique is the rules and strategies approach for logical programming from another paper,
+\\*This paper mainly talks about the \yyy{"}{``}compositional approach\yyy{"}{''} to design algorithms in functional programming languages which can be extended to logical programming languages. The idea is to develop a general technique for developing efficient predicates. The transformational technique is the rules and strategies approach for logical programming from another paper,
 \begin{center}
     \begin{tabular}{ | l | l | p{5cm} |}
     \hline
@@ -325,15 +325,15 @@ The above gives a compositional approach to transform logical programs ????
 \\* The Algebra of Functional Programs says that the functions \textit{foldl} and \textit{foldr} give a general transformation strategy, i.e. with higher order functions. This paper takes the above results and tries to apply it to Logic Programming by translating Prolog programs into Haskell programs which helps in "Reasoning" and "Higher Order Predicates can  be implemented as Higher Order Functions". Moreover with Higher Order Functions we do not need Higher Order Unification. With all of the stuff from \cite{spivey1999embedding}, and the proof of uniqueness of fixed points ???? in
 \cite{seres2001algebra} ???.
 
-The paper gives two examples of a program with two variants differing in complexity, but are proved to be "equal".
+The paper gives two examples of a program with two variants differing in complexity, but are proved to be \yyy{"}{``}equal\yyy{"}{''}.
 
-Bird and de Moor provide synthesis and transformation techniques for functional programs which are "logicalized" in the paper.
+Bird and de Moor provide synthesis and transformation techniques for functional programs which are \yyy{"}{``}logicalized\yyy{"}{''} in the paper.
 
-They say the future is to extend and apply the techniques to "constraint programming".
+They say the future is to extend and apply the techniques to \yyy{"}{``}constraint programming\yyy{"}{''}.
 
 and also
 
-"Cross Fertilised" Program Transformation Techniques for both the Declarative Paradigms ???
+\yyy{"}{``}Cross Fertilised\yyy{"}{''} Program Transformation Techniques for both the Declarative Paradigms ???
 
 
 
@@ -343,7 +343,7 @@ Looking at a program declaratively, reveals the Logic while the procedural readi
 
 Logic Programs are semantically composed of $\cap$ and $\vee$.
 
-?????? \textbf{The main advantage of "shallow" embedding of Prolog in a Lazy Functional Programming Language over a "deep" embedding i.e. an interpreter that treats logic programs as syntactic objects} ?????
+?????? \textbf{The main advantage of \yyy{"}{``}shallow\yyy{"}{''} embedding of Prolog in a Lazy Functional Programming Language over a \yyy{"}{``}deep\yyy{"}{''} embedding i.e. an interpreter that treats logic programs as syntactic objects} ?????
 
 Some more same stuff about DFS ............... again, like it can get stuck in a infinite branch of a program.
 
@@ -508,7 +508,7 @@ Type System helps
 \begin{description}
 \item[$\bullet$]Prolog Libraries
 
-To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries. First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or "mini Prolog" as such with not much in it to be able to be uselul, \cite{hswip-lib} is all powerful but is an Foreign Function Interface so it is "Prolog in Haskell" but we need Prolog for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical Prolog. But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or no monadic support and an REPL without the ability to "write a Prolog Program File".
+To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries. First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or \yyy{"}{``}mini Prolog\yyy{"}{''} as such with not much in it to be able to be uselul, \cite{hswip-lib} is all powerful but is an Foreign Function Interface so it is \yyy{"}{``}Prolog in Haskell\yyy{"}{''} but we need Prolog for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical Prolog. But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or no monadic support and an REPL without the ability to \yyy{"}{``}write a Prolog Program File\yyy{"}{''}.
 
 \begin{comment}
 \begin{enumerate}
@@ -644,7 +644,7 @@ data Term = Struct Atom [Term]
       deriving (Eq, Data, Typeable)
 \end{minted}
 
-The above can be described as concrete syntax for the "new" language and can be used to write a program.
+The above can be described as concrete syntax for the \yyy{"}{``}new\yyy{"}{''} language and can be used to write a program.
 
 
 As discussed in the

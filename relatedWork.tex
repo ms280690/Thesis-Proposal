@@ -105,9 +105,9 @@ Often this function itself is called the algebra, hence my use of the name alg i
 	This is an unofficial implementation at embedding Prolog in Haskell, the reasoned behind it being that the only existing implementation was for Hugs 98 and is very complicated. The selling point of this implementation is simplicity. The implementation features no Monads or any other things from
 	\cite{claessen2000typed}. What it basically does is provide an REPL to add facts to the knowledge base, they are entered as strings and stored in some form of internal data structures. A query is requested which will do a depth first search, recursively finding substitutions for unifying the goal and the clauses from the knowledge base.
 
-The Prolog implemented is not full though, it is "Pure Prolog", no cuts, no fail, and other stuff. Moreover the REPL cannot do
+The Prolog implemented is not full though, it is \yyy{"}{``}Pure Prolog\yyy{"}{''}, no cuts, no fail, and other stuff. Moreover the REPL cannot do
 all the stuff that a swi prolog can do, for example you cannot declare variables and/or assignment statements and so on. Also
-you cannot right a "program file" as such, the REPL is all one gets to do stuff like adding clauses or querying etc.
+you cannot right a \yyy{"}{``}program file\yyy{"}{''} as such, the REPL is all one gets to do stuff like adding clauses or querying etc.
 
 So you cannot write a program, you cannot do much with the REPL, its not a full blown Prolog.
 

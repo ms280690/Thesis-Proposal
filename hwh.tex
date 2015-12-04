@@ -30,7 +30,7 @@ provides for embedding domain specific languages(EDSLs).
   \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
 
   Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP.
-  Opting for embedding provides a "shortcut" to create a language which may be designed to provide specific
+  Opting for embedding provides a \yyy{"}{``}shortcut\yyy{"}{''} to create a language which may be designed to provide specific
   functionality.
   Designing a language from scratch would require writing a parser, code generator / interpreter and possibly a
   debugger, not to mention all the routine stuff that every language needs like variables, control structures and
@@ -110,8 +110,8 @@ However creating a full-blown language is a lot of work: you have to write a par
 and possibly a debugger, not to mention all the routine stuff that every language needs like variables, control
 structures and arithmetic types.
 An embedded DSL (eDSL) is basically a short cut if you can't afford to do that.
-Instead you write the domain-specific bits as a library in some more general purpose "host" language.
-The uncharitable might say that "eDSL" is just another name for "library module", and its true there is no formal
+Instead you write the domain-specific bits as a library in some more general purpose \yyy{"}{``}host\yyy{"}{''} language.
+The uncharitable might say that \yyy{"}{``}eDSL\yyy{"}{''} is just another name for \yyy{"}{``}library module\yyy{"}{''}, and its true there is no formal
 dividing line.
 But in a well designed eDSL anything you might say in domain terms can be directly translated into code, and a
 domain expert (i.e.
@@ -119,7 +119,7 @@ a non-programmer) can read the code and understand what it means in domain terms
 With a bit of practice they can even write some code in it.
 
 This paper describes an eDSL for financial contracts built in Eiffel which worked exactly that way.
-It doesn't talk about "domain specific language" because the term hadn't been invented back then, but the software
+It doesn't talk about \yyy{"}{``}domain specific language\yyy{"}{''} because the term hadn't been invented back then, but the software
 engineers defined classes for different types of contracts that the financial analysts could plug together to
 create pricing models.
 Its interesting to compare it with this paper about doing the same thing in Haskell.
@@ -140,7 +140,7 @@ For example, a top-down parser library is effectively an eDSL for parsing.
 Such a library can be written in just about any language.
 But if you want to implement backtracking then its up to the application programmer to make sure that any side
 effects in the abandoned parse are undone, because most host languages do not have backtracking built in (and even
-Prolog doesn't undo "assert" or "retract" when it backtracks).
+Prolog doesn't undo \yyy{"}{``}assert\yyy{"}{''} or \yyy{"}{``}retract\yyy{"}{''} when it backtracks).
 But the Parsec library in Haskell limits side effects to a single user-defined state type, and can therefore
 guarantee to unwind all side effects.
 More generally, a monad defines a model for flow of control and the propagation of side effects from one step to
@@ -166,14 +166,14 @@ you can imagine.
   The type system allows very sophisticated constraints to be placed on the use of eDSL components and their
   relationships with other parts of the language.
   The Parsec library mentioned above is a simple example.
-  All the library functions return something of type "Parser foo", so an action from any other monad (like an IO
+  All the library functions return something of type \yyy{"}{``}Parser foo\yyy{"}{''}, so an action from any other monad (like an IO
   action that prints something out) is prohibited by the type system.
   Hence when the parser backtracks it only has to unwind its internal state, and not the rest of the universe.
 
 
   There are other programming languages that are good for writing eDSLs, of course.
   Lisp and Scheme have callCC and macros, which together can cover a lot of the same ground.
-  Paul Graham's famous "Beating the Averages" paper talks about using lots of macros, and together with his patent
+  Paul Graham's famous \yyy{"}{``}Beating the Averages\yyy{"}{''} paper talks about using lots of macros, and together with his patent
   for continuation-based web serving it is pretty clear that what he and Robert Morris actually created was an eDSL
   for web applications, hosted in Lisp.
 
