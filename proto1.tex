@@ -51,9 +51,9 @@ The ones relevant to this thesis are,
 
 \item Unification
 
-\item \progLang{Prolog} has to satisfy a list of goals while maintaining variable bindings and choice points. For a non empty list of 
-list of goals, it looks through the knowledge base for matching rules and attempts at unifying the terms and repeats until all goals 
-have been satisfied. If more than one option is available, they are recorded as choice points which are later used for 
+\item \progLang{Prolog} has to satisfy a list of goals while maintaining variable bindings and choice points. For a non empty list of
+list of goals, it looks through the knowledge base for matching rules and attempts at unifying the terms and repeats until all goals
+have been satisfied. If more than one option is available, they are recorded as choice points which are later used for
 backtracking and finding other possible solutions.\endnote{%
   What does ``accomplish goals'' mean here?  Is this what
   is called \Verb!getClauses! in \codeLibrary{prolog-0.2.1}\,?
@@ -432,7 +432,7 @@ It means that applying one more ExprF would not change anything – a fix point 
 
 \progLang{Haskell} provides it in two forms,\endnote{%
   Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?
-  
+
   Well not really but since we are talking about fixed point in general
 }
 \begin{enumerate}
@@ -588,7 +588,7 @@ between a functor and a monad.
 
 We create the necessary instances\endnote{%
   I am deeply suspicious of the instance for \texttt{Applicative} given.
-  
+
   I agree, I think I just created one for the purpose of the diagram.
 }
 as shown in Figure~\ref{tab:flat-term-class-inst}.
@@ -733,7 +733,7 @@ The dictionary along with the fixed point version flattened of the term, as show
     UT.UTerm (Var v)        -> maybe (error "bad map") UT.UVar $
                                  Map.lookup v varMap
     -- UT.UTerm t            -> UT.UTerm $! fmap (uTermify varMap)
-    UT.UTerm (Struct a xs)   -> UT.UTerm $ Struct a $! 
+    UT.UTerm (Struct a xs)   -> UT.UTerm $ Struct a $!
                                          fmap (uTermify varMap) xs
     UT.UTerm (Wildcard)      -> UT.UTerm Wildcard
     UT.UTerm (Cut i)         -> UT.UTerm (Cut i)
@@ -752,7 +752,7 @@ The dictionary along with the fixed point version flattened of the term, as show
   \label{tab:to-UTerm}
 \end{figure}
 %
-and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}. 
+and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 %
 \begin{figure}
   \begin{minted}[linenos,gobble=2]{haskell}
@@ -760,7 +760,7 @@ and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
               UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) ->
               UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm))
   vTermify dict t1 = case t1 of
-    UT.UVar x  -> maybe (error "logic") (UT.UTerm . Var) $ 
+    UT.UVar x  -> maybe (error "logic") (UT.UTerm . Var) $
                            Map.lookup (UT.getVarID x) dict
     UT.UTerm r ->
       case r of
@@ -786,7 +786,7 @@ The variable dictionaries and UTermified language expressions are unified in the
 %
 \begin{figure}
 \begin{minted}[linenos]{haskell}
-  monadicUnification :: 
+  monadicUnification ::
   (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
   => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm)
   ->  ErrorT (UT.UFailure (FlatTerm) (ST.STVar s (FlatTerm)))
@@ -829,7 +829,7 @@ goUnify test = ST.runSTBinding $ do
 \end{figure}
 
 
-The final reconversion to return a list of substitutions, 
+The final reconversion to return a list of substitutions,
   called \texttt{f1} in Figure~\ref{tab:unif-driver}, is shown in
   Figure~\ref{tab:vars-extract}.
 \begin{figure}
@@ -844,7 +844,7 @@ The final reconversion to return a list of substitutions,
     ld2 <- Control.Monad.Error.sequence
            [ v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
     let ld3 = [ (k,v) | ((k,_),Just v) <- ld1 `zip` ld2]
-        ld4 = [ (k,v) | (k,v2) <- ld3, 
+        ld4 = [ (k,v) | (k,v2) <- ld3,
                 let v = translateFromUTerm dict v2 ]
     return ld4
   \end{minted}

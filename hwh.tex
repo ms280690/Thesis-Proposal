@@ -12,74 +12,92 @@
 -----------------------------------------------------------------------------
 
 
-In this chapter we discuss the properties of \progLang{Haskell} 
+In this chapter we discuss the properties of \progLang{Haskell}
 
-\par This chapter discusses the properties of the host language \progLang{Haskell} and mainly the feature set it provides for embedding 
-domain specific languages(EDSLs).
+This chapter discusses the properties of the host language \progLang{Haskell} and mainly the feature set it
+provides for embedding domain specific languages(EDSLs).
 
 \begin{enumerate}
 
 \item Why a Functional Language?
 
-\item \progLang{Haskell} as a functional programming language
-Haskell is an advanced purely-functional programming language. In particular, it is a polymorphically statically typed, lazy, purely 
-functional language \cite{website:haskellwiki}. It is one of the popular functional programming languages \cite{website:langpop}. 
-\progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}. 
+\item
+  \progLang{Haskell} as a functional programming language Haskell is an advanced purely-functional programming
+  language.
+  In particular, it is a polymorphically statically typed, lazy, purely functional language
+  \cite{website:haskellwiki}.
+  It is one of the popular functional programming languages \cite{website:langpop}.
+  \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
 
-Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP. Opting for embedding provides a "shortcut" to create a 
-language which may be designed to provide specific functionality. Designing a language from scratch would require writing a parser, code 
-generator / interpreter and possibly a debugger, not to mention all the routine stuff that every language needs like variables, control 
-structures and arithmetic types. All of the aforementioned are provided by the host language; in this case \progLang{Haskell}. Examples for 
-the same can be found here \cite{jones2001composing, meyer2008eiffel} which talk about introducing combinator libraries for custom 
-functionality.
+  Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP.
+  Opting for embedding provides a "shortcut" to create a language which may be designed to provide specific
+  functionality.
+  Designing a language from scratch would require writing a parser, code generator / interpreter and possibly a
+  debugger, not to mention all the routine stuff that every language needs like variables, control structures and
+  arithmetic types.
+  All of the aforementioned are provided by the host language; in this case \progLang{Haskell}.
+  Examples for the same can be found here \cite{jones2001composing, meyer2008eiffel} which talk about introducing
+  combinator libraries for custom functionality.
 
-The flip side of the coin is that the host language enforces certain aspects and properties of the eDSL and hence might not be exact to 
-specification, all required constructs cannot be implemented due to constraints, programs could be difficult to debug since it happens at
-the host level and so on.
+  The flip side of the coin is that the host language enforces certain aspects and properties of the eDSL and hence
+  might not be exact to specification, all required constructs cannot be implemented due to constraints, programs
+  could be difficult to debug since it happens at the host level and so on.
 
 \item Looking at \progLang{Haskell} as a tool for embedding domain specific languages\cite{website:paulspontifications}
 
 \begin{enumerate}
 \item Monads
-\newline  
-Control flow defines the order/ manner of execution of statements in a pro\-gram\cite{website:controlflowwiki}. The specification is set by 
-the programming language. Generally, in the case of imperative languages the control flow is sequential while for a functional language
-is recursion \cite{website:controlflowdalhousie}. For example, \progLang{Java} has a top down sequential execution approach. The 
-declarative style consists of defining components of programs i.e. computations not a control 
-flow\cite{website:declarativeprogrammingwiki}.     
+\newline
+Control flow defines the order/ manner of execution of statements in a pro\-gram\cite{website:controlflowwiki}.
+The specification is set by the programming language.
+Generally, in the case of imperative languages the control flow is sequential while for a functional language is
+recursion \cite{website:controlflowdalhousie}.
+For example, \progLang{Java} has a top down sequential execution approach.
+The declarative style consists of defining components of programs i.e.
+computations not a control flow\cite{website:declarativeprogrammingwiki}.
 
-This is where \progLang{Haskell} shines by providing something called a \textit{monad}. Functional Programming Languages 
-define computations which then need to be ordered in some way to form a combination\cite{website:monadascomputation}. A monad gives a 
-bubble within the language to allow modification of control flow without affecting the rest of the universe. This is especially 
-useful while handling side effects. 
+This is where \progLang{Haskell} shines by providing something called a \textit{monad}.
+Functional Programming Languages define computations which then need to be ordered in some way to form a
+combination\cite{website:monadascomputation}.
+A monad gives a bubble within the language to allow modification of control flow without affecting the rest of the
+universe.
+This is especially useful while handling side effects.
 
-A related topic would be of persistence languages, architectures and data structures. Persistent programming is concerned with creating and 
-manipulating data in a manner that is independent of its lifetime \cite{morrison1990persistent}. A persistent data structure supports 
-access to multiple versions which may arise after modifications \cite{driscoll1986making, website:persistentdatastructuresmit}. A structure 
-is partially persistent if all versions can be accessed but only the current can be modified and fully persistent if all of them can be 
-modified.       
+A related topic would be of persistence languages, architectures and data structures.
+Persistent programming is concerned with creating and manipulating data in a manner that is independent of its
+lifetime \cite{morrison1990persistent}.
+A persistent data structure supports access to multiple versions which may arise after modifications
+\cite{driscoll1986making, website:persistentdatastructuresmit}.
+A structure is partially persistent if all versions can be accessed but only the current can be modified and fully
+persistent if all of them can be modified.
 
-Coming back to control flow; for example, implementing backtracking in an imperative language would mean undoing side effects which even 
-\progLang{Prolog} is not able to do since the asserts and retracts cannot be undone. In \progLang{Haskell}, a monad defines a model for 
-control flow and how side effects would propagate through a computation from step to step or modification to modification. And
-\progLang{Haskell} allows creation of custom monads relieving the burden of dealing with a fixed model of the host language.     
+Coming back to control flow; for example, implementing backtracking in an imperative language would mean undoing
+side effects which even \progLang{Prolog} is not able to do since the asserts and retracts cannot be undone.
+In \progLang{Haskell}, a monad defines a model for control flow and how side effects would propagate through a
+computation from step to step or modification to modification.
+And \progLang{Haskell} allows creation of custom monads relieving the burden of dealing with a fixed model of the
+host language.
 
 \begin{comment}
-Each language has a flow of control, a model how programs are executed. Many languages for example \progLang{Java} have a top-down 
-sequential execution approach. But very few languages allow control flow modelling, for example in a functional language how the 
-propagation of side effects is handled. A monad provides the ability to customize and develop your own model from one step to another, how 
-side effects are handled. \cite{website:paulspontifications}        
+  Each language has a flow of control, a model how programs are executed.
+  Many languages for example \progLang{Java} have a top-down sequential execution approach.
+  But very few languages allow control flow modelling, for example in a functional language how the propagation of
+  side effects is handled.
+  A monad provides the ability to customize and develop your own model from one step to another, how side effects
+  are handled.
+  \cite{website:paulspontifications}
 \end{comment}
 
 \item Lazy Evaluation
 \newline
-Another property of \progLang{Haskell} is laziness or lazy evaluation which means that nothing is evaluated until it is necessary. This 
-results in the ability to define infinite data structures because at execution only a fragment is used 
-\cite{website:haskelllazinesswiki}.      
+Another property of \progLang{Haskell} is laziness or lazy evaluation which means that nothing is evaluated until
+it is necessary.
+This results in the ability to define infinite data structures because at execution only a fragment is used
+\cite{website:haskelllazinesswiki}.
 
 \end{enumerate}
 
- 
+
 
 
 
@@ -88,37 +106,85 @@ results in the ability to define infinite data structures because at execution o
 Why Haskell is Good for Embedded Domain Specific Languages
 Domain Specific Languages (DSLs) are attracting some attention these days. They have always been around, of course: Emacs Lisp is a DSL, as are the various dialects of Visual Basic embedded in MS Office applications. And of course Unix hands know YACC (now Bison) and Lex (now Flex).
 
-However creating a full-blown language is a lot of work: you have to write a parser, code generator / interpreter and possibly a debugger, 
-not to mention all the routine stuff that every language needs like variables, control structures and arithmetic types. An embedded DSL 
-(eDSL) is basically a short cut if you can't afford to do that. Instead you write the domain-specific bits as a library in some more 
-general purpose "host" language. The uncharitable might say that "eDSL" is just another name for "library module", and its true there is no 
-formal dividing line. But in a well designed eDSL anything you might say in domain terms can be directly translated into code, and a domain 
-expert (i.e. a non-programmer) can read the code and understand what it means in domain terms. With a bit of practice they can even write 
-some code in it.
+However creating a full-blown language is a lot of work: you have to write a parser, code generator / interpreter
+and possibly a debugger, not to mention all the routine stuff that every language needs like variables, control
+structures and arithmetic types.
+An embedded DSL (eDSL) is basically a short cut if you can't afford to do that.
+Instead you write the domain-specific bits as a library in some more general purpose "host" language.
+The uncharitable might say that "eDSL" is just another name for "library module", and its true there is no formal
+dividing line.
+But in a well designed eDSL anything you might say in domain terms can be directly translated into code, and a
+domain expert (i.e.
+a non-programmer) can read the code and understand what it means in domain terms.
+With a bit of practice they can even write some code in it.
 
-This paper describes an eDSL for financial contracts built in Eiffel which worked exactly that way. It doesn't talk about "domain specific language" because the term hadn't been invented back then, but the software engineers defined classes for different types of contracts that the financial analysts could plug together to create pricing models. Its interesting to compare it with this paper about doing the same thing in Haskell.
+This paper describes an eDSL for financial contracts built in Eiffel which worked exactly that way.
+It doesn't talk about "domain specific language" because the term hadn't been invented back then, but the software
+engineers defined classes for different types of contracts that the financial analysts could plug together to
+create pricing models.
+Its interesting to compare it with this paper about doing the same thing in Haskell.
 
-But eDSLs have problems. The resulting programs are often hard to debug because a bug in the application logic has to be debugged at the level of the host language; the debugger exposes all the private data structures, making it hard for application programmers to connect what they see on the screen with the program logic. The structure of the host language also shows through, requiring application programmers to avoid using the eDSL functions with certain constructs in the host language.
+But eDSLs have problems.
+The resulting programs are often hard to debug because a bug in the application logic has to be debugged at the
+level of the host language; the debugger exposes all the private data structures, making it hard for application
+programmers to connect what they see on the screen with the program logic.
+The structure of the host language also shows through, requiring application programmers to avoid using the eDSL
+functions with certain constructs in the host language.
 
 This is where Haskell comes in. Haskell has three closely related advantages over other languages:
 
 
-Monads. The biggest way that a host language messes up an eDSL is by imposing a flow of control model. For example, a top-down parser library is effectively an eDSL for parsing. Such a library can be written in just about any language. But if you want to implement backtracking then its up to the application programmer to make sure that any side effects in the abandoned parse are undone, because most host languages do not have backtracking built in (and even Prolog doesn't undo "assert" or "retract" when it backtracks). But the Parsec library in Haskell limits side effects to a single user-defined state type, and can therefore guarantee to unwind all side effects. More generally, a monad defines a model for flow of control and the propagation of side effects from one step to the next. Because Haskell lets you define your own monad, this frees the eDSL developer from the model that all impure languages have built in. The ultimate expression of this power is the Continuation monad, which allows you to define any control structure you can imagine.
+Monads.
+The biggest way that a host language messes up an eDSL is by imposing a flow of control model.
+For example, a top-down parser library is effectively an eDSL for parsing.
+Such a library can be written in just about any language.
+But if you want to implement backtracking then its up to the application programmer to make sure that any side
+effects in the abandoned parse are undone, because most host languages do not have backtracking built in (and even
+Prolog doesn't undo "assert" or "retract" when it backtracks).
+But the Parsec library in Haskell limits side effects to a single user-defined state type, and can therefore
+guarantee to unwind all side effects.
+More generally, a monad defines a model for flow of control and the propagation of side effects from one step to
+the next.
+Because Haskell lets you define your own monad, this frees the eDSL developer from the model that all impure
+languages have built in.
+The ultimate expression of this power is the Continuation monad, which allows you to define any control structure
+you can imagine.
 \end{comment}
 
 
-
-
-
 \begin{comment}
-Laziness. Haskell programmers can define infinite (or merely very large) data structures because at at any given point in the execution only the fragment being processed will actually be held in memory. This also frees up the eDSL developer from having to worry about the space required by the evaluation model. (update: this isn't actually true. As several people have pointed out, while laziness can turn O(n) space into O(1), it can also turn O(1) into O(n). So the developers do have to worry about memory, but lazy evaluation does give them more options for dealing with it.)
+  Laziness.
+  Haskell programmers can define infinite (or merely very large) data structures because at at any given point in
+  the execution only the fragment being processed will actually be held in memory.
+  This also frees up the eDSL developer from having to worry about the space required by the evaluation model.
+  (update: this isn't actually true.
+  As several people have pointed out, while laziness can turn O(n) space into O(1), it can also turn O(1) into
+  O(n).
+  So the developers do have to worry about memory, but lazy evaluation does give them more options for dealing with
+  it.)
 
-The type system allows very sophisticated constraints to be placed on the use of eDSL components and their relationships with other parts of the language. The Parsec library mentioned above is a simple example. All the library functions return something of type "Parser foo", so an action from any other monad (like an IO action that prints something out) is prohibited by the type system. Hence when the parser backtracks it only has to unwind its internal state, and not the rest of the universe.
+  The type system allows very sophisticated constraints to be placed on the use of eDSL components and their
+  relationships with other parts of the language.
+  The Parsec library mentioned above is a simple example.
+  All the library functions return something of type "Parser foo", so an action from any other monad (like an IO
+  action that prints something out) is prohibited by the type system.
+  Hence when the parser backtracks it only has to unwind its internal state, and not the rest of the universe.
 
 
-There are other programming languages that are good for writing eDSLs, of course. Lisp and Scheme have callCC and macros, which together can cover a lot of the same ground. Paul Graham's famous "Beating the Averages" paper talks about using lots of macros, and together with his patent for continuation-based web serving it is pretty clear that what he and Robert Morris actually created was an eDSL for web applications, hosted in Lisp.
+  There are other programming languages that are good for writing eDSLs, of course.
+  Lisp and Scheme have callCC and macros, which together can cover a lot of the same ground.
+  Paul Graham's famous "Beating the Averages" paper talks about using lots of macros, and together with his patent
+  for continuation-based web serving it is pretty clear that what he and Robert Morris actually created was an eDSL
+  for web applications, hosted in Lisp.
 
-But I still think that Haskell has the edge. I'm aware of the Holy War between static and dynamic type systems, but if I you put a Haskell eDSL in front of a domain expert then you only have to explain a compiler type mismatch message that points to the offending line. This is much easier to grasp than some strange behaviour at run time, especially if you have to explain how the evaluation model of your eDSL is mapped down to the host language. Non-programmers are not used to inferring dynamic behaviour from a static description, so anything that helps them out at compile time has to be a Good Thing. And its pretty useful for experienced coders too.
+  But I still think that Haskell has the edge.
+  I'm aware of the Holy War between static and dynamic type systems, but if I you put a Haskell eDSL in front of a
+  domain expert then you only have to explain a compiler type mismatch message that points to the offending line.
+  This is much easier to grasp than some strange behaviour at run time, especially if you have to explain how the
+  evaluation model of your eDSL is mapped down to the host language.
+  Non-programmers are not used to inferring dynamic behaviour from a static description, so anything that helps
+  them out at compile time has to be a Good Thing.
+  And its pretty useful for experienced coders too.
 
 
 

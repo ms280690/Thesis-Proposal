@@ -73,10 +73,10 @@ on.\endnote{%
   This \P{} needs rewriting.
 }
 
-\par \progLang{Prolog} \cite{wikiprolog} being one of the most dominant Logic Programming Languages has 
+\progLang{Prolog} \cite{wikiprolog} being one of the most dominant Logic Programming Languages has 
 spawned a number of distributions and is present from academia to industry.  
 
-\par \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
+\progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
 first language to incorporate Monads \cite{wadler1992comprehending} for safe \textit{IO}. Monads can be 
 described as composable computation descriptions \cite{website:monadshaskellorg} . Each monad consists of a 
 description of what has action has to be executed, how the action has to be run and how to combine such 
@@ -85,24 +85,24 @@ performed outside the language but can be brought together with pure functions i
 separation and maintaining safety with practicality. \progLang{Haskell} computes results lazily and is strongly 
 typed. 
 
-\par The languages taken up are contrasting in nature and bringing them onto the same plate is tricky. The 
+The languages taken up are contrasting in nature and bringing them onto the same plate is tricky. The 
 differences in typing, execution, working among others lead to an altogether mixed bag of properties.
 
-\par The selection of languages is not uncommon and this not only the case with \progLang{Haskell, Prolog} seems 
+The selection of languages is not uncommon and this not only the case with \progLang{Haskell, Prolog} seems 
 to be the all time favourite for "let's implement \progLang{Prolog} in the language X for proving it's power and 
 expressibility". The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
 languages like \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
 \progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on and on.    
 
-\par The technique of embedding is a shallow one, it is as if the embedded language floats over the host. Over time 
+The technique of embedding is a shallow one, it is as if the embedded language floats over the host. Over time 
 there has been an approach that branches out, which is Paradigm Integration. A lot of work has been done on 
 Unifying the Theories of Programming 
 \cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
 gibbons2013unifying}. All sorts of hybrid languages which have characteristics from more than one paradigm are 
 coming into the mainstream.
 
-\par Before moving on, let us take a look at some terms related to the content above. To begin with Foreign 
+Before moving on, let us take a look at some terms related to the content above. To begin with Foreign 
 Function Interfaces (FFI) \cite{website:ffiwiki}, a mechanism by which a program written in one programming 
 language can make use of services written in another. For example, a function written in \progLang{C} can be 
 called within a program written in \progLang{Haskell} and vice versa through the FFI mechanism. Currently the 
@@ -115,14 +115,14 @@ down a common layer for languages to use each others functions. An example for t
 Language Runtime (CLR) \cite{website:clrwiki} which is an implementation of the Common Language 
 Infrastructure (CLI) standard \cite{website:cliwiki}.        
 
-\par Another important concept is meta programming \cite{website:metaprogwiki}, which involves writing computer programs that write or manipulate 
+Another important concept is meta programming \cite{website:metaprogwiki}, which involves writing computer programs that write or manipulate 
 other programs. The language used to write meta programs is known as the meta language while the the language in which the program to be modified is 
 written is the object language. If both of them are the same then the language is said to be reflective. \progLang{Haskell} programs can be modified using 
 Template \progLang{Haskell} \cite{website:templatehaskell} an extension to the language which provides services to jump between the two types of 
 programs. The abstract syntax trees in the form of \progLang{Haskell} data types can be modified at compile time which playing with the code and going 
 back and forth.      
 
-\par A specific tool used in meta programming is quasi quotation \cite{mainland2007s,haskellquasi,wikiquasi}, permits \progLang{Haskell} expressions 
+A specific tool used in meta programming is quasi quotation \cite{mainland2007s,haskellquasi,wikiquasi}, permits \progLang{Haskell} expressions 
 and patterns to be constructed using domain specific, programmer-defined concrete syntax. For example, consider a particular application that requires a 
 complex data type. To accommodate the same it has to represented using \progLang{Haskell} syntax and preforming pattern matching may turn into a 
 tedious task. So having the option of using specific syntax reduces the programmer from this burden and this is where a quasi-quoter comes into the 
@@ -145,7 +145,7 @@ first and the resulting lists and then recurs on the tails. The same in \progLan
 %\end{minted}  
 \inputminted[linenos]{haskell}{append.pl}
 
-\par Consider the Object Functional Programming Language, \progLang{Scala} \cite{website:scala}, it is purely functional but with objects 
+Consider the Object Functional Programming Language, \progLang{Scala} \cite{website:scala}, it is purely functional but with objects 
 and classes. With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}. There have been quite a few 
 attempts to "merge" the two programming languages from different programming paradigms. The attempts fall into two categories as follows,
 
