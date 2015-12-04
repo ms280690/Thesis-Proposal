@@ -10,91 +10,93 @@
 
 \chapter{Embedding a Programming Language into another Programming Language }\label{chap:embedding}
 
-The art of embedding a programming language into another one has been explored a number of times in the form 
-of building libraries or developing Foreign Function Interfaces and so on. This area mainly aims at an environment 
-and setting where two or more languages can work with each other harmoniously with each one able to play a part 
-in solving the problem at hand. This chapter mainly reviews the content related to embedding \progLang{Prolog} in 
-\progLang{Haskell} but also includes information on some other implementations and embedding languages in 
-general.          
+The art of embedding a programming language into another one has been explored a number of times in the form
+of building libraries or developing Foreign Function Interfaces and so on. This area mainly aims at an environment
+and setting where two or more languages can work with each other harmoniously with each one able to play a part
+in solving the problem at hand. This chapter mainly reviews the content related to embedding \progLang{Prolog} in
+\progLang{Haskell} but also includes information on some other implementations and embedding languages in
+general.
 %Embedding a programming language into another, in this we talk about embedding Prolog in Haskell.
 %The following are the sources or related work that can be found,
 
 
 \section{The Informal Content from Blogs, Articles and Internet Discussions}
 
-Before moving on to the formal content such as publications, modules and libraries let's take a look at some of 
-the unofficially published content. This subsection takes a look at the information, thoughts and discussions that 
-are currently taking place from time to time on the internet. A lot of interesting content is generated which has 
-often led to some formal content.   
+Before moving on to the formal content such as publications, modules and libraries let's take a look at some of the
+unofficially published content.
+This subsection takes a look at the information, thoughts and discussions that are currently taking place from time
+to time on the internet.
+A lot of interesting content is generated which has often led to some formal content.
 
-\par A lot has been talked about embedding languages and also the techniques and methods to do so. It might not 
-seem such a hot topic as such but it has always been a part of any programming language to work and integrate 
-their code with other programming languages. One of the top discussions are in, Lambda the Ultimate, The 
-Programming Languages Weblog \cite{website:lambda-the-ultimate},  which lists a number of \progLang{Prolog} 
-implementations in a variety of languages like \progLang{Lisp, Scheme, Scala, Java, Javascript}, 
-\progLang{Racket} \cite{racklog} and so on. Moreover the discussion focusses on a lot of critical points that should 
-be considered in a translation of \progLang{Prolog} to the host language regarding types and modules among 
-others. 
+A lot has been talked about embedding languages and also the techniques and methods to do so.
+It might not seem such a hot topic as such but it has always been a part of any programming language to work and
+integrate their code with other programming languages.
+One of the top discussions are in, Lambda the Ultimate, The Programming Languages Weblog
+\cite{website:lambda-the-ultimate},  which lists a number of \progLang{Prolog} implementations in a variety of
+languages like \progLang{Lisp, Scheme, Scala, Java, Javascript}, \progLang{Racket} \cite{racklog} and so on.
+Moreover the discussion focusses on a lot of critical points that should be considered in a translation of
+\progLang{Prolog} to the host language regarding types and modules among others.
 
-\par One of the implementations discussed redirects us to one of the most earliest implementations of 
-\progLang{Prolog} in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} 
-\cite{website:mini-prolog-hugs98}. Although this implementation takes as reference the working of the 
-\progLang{ Prolog} Engine and other details, it still is an unofficial implementation with almost no documentation, 
-support  or ongoing development. Moreover, it comes with an option of three engines to play with but still lacks 
-complete list support and a lot of practical features that \progLang{Prolog} has and this seems to be a common 
-problem with the only other implementation that exists, \cite{website:takashi-workplace}. 
+One of the implementations discussed redirects us to one of the most earliest implementations of \progLang{Prolog}
+in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} \cite{website:mini-prolog-hugs98}.
+Although this implementation takes as reference the working of the \progLang{ Prolog} Engine and other details, it
+still is an unofficial implementation with almost no documentation, support  or ongoing development.
+Moreover, it comes with an option of three engines to play with but still lacks complete list support and a lot of
+practical features that \progLang{Prolog} has and this seems to be a common problem with the only other
+implementation that exists, \cite{website:takashi-workplace}.
 
-\par Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival 
-\cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in 
-industry is far scarce than the leading languages of other paradigms. The purely declarative nature lacks basic 
-requirements such as support for modules. And then there is the ongoing comparison between the siblings 
-\cite{website:haskell-choice} of the same family, the family of Declarative Languages. Not to forget 
-\progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which enables 
-encoding of search problems.
+Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
+\cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
+is far scarce than the leading languages of other paradigms.
+The purely declarative nature lacks basic requirements such as support for modules.
+And then there is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
+family of Declarative Languages.
+Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
+enables encoding of search problems.
 
 \begin{comment}
 	\begin{enumerate}
 
 	\item Lambda The Ultimate, The Programming Languages Weblog,
 	\\* \url{http://lambda-the-ultimate.org/node/112}
-	
-	\item Takashi's Workplace (Implementation), 
+
+	\item Takashi's Workplace (Implementation),
 	\\* \url{http://propella.blogspot.in/2009/04/prolog-in-haskell.html}
-	
+
 	\item Mini Prolog for Hugs 98 (Implementation), \cite{website:mini-prolog-hugs98}
-	\\*The first attempt at embedding Prolog in Haskell, there is not documentation as such. No paper was published either, it was just another unofficial attempt at replicating Prolog implementations in other languages like Lisp, Scheme etc. Again it is labelled to be a ''Mini Prolog'' and was riginally made for Hugs 1.3 and then updated for Hugs 98. Hugs is not active in development anymore, the last release was for 2006 and mostly everything these days is in GHC/GHCi. The special libraries and other Haskell files are required to run it. So not exactly ''new'' and also  not ''happening'' anymore.       	
-	
-	Thsi implementation is a complex, because it deals with a lot literature and all of how Prolog Engine works,  called Andorra Prolog. 
-	
-	There is nothing such as out traditional list data structure in the form we know it. We cannot use something like [1,2,3] we have to forcible use, (Cons 1 (Cons 2 (Cons 3 nil))).  There are three engines, Lazy Engine(Pure Engine), Andorra Engine and Stack Engine. The Lazy engine can construct and traverse infinite trees because its lazy.  
-	
+	\\*The first attempt at embedding Prolog in Haskell, there is not documentation as such. No paper was published either, it was just another unofficial attempt at replicating Prolog implementations in other languages like Lisp, Scheme etc. Again it is labelled to be a ''Mini Prolog'' and was riginally made for Hugs 1.3 and then updated for Hugs 98. Hugs is not active in development anymore, the last release was for 2006 and mostly everything these days is in GHC/GHCi. The special libraries and other Haskell files are required to run it. So not exactly ''new'' and also  not ''happening'' anymore.
+
+	Thsi implementation is a complex, because it deals with a lot literature and all of how Prolog Engine works,  called Andorra Prolog.
+
+	There is nothing such as out traditional list data structure in the form we know it. We cannot use something like [1,2,3] we have to forcible use, (Cons 1 (Cons 2 (Cons 3 nil))).  There are three engines, Lazy Engine(Pure Engine), Andorra Engine and Stack Engine. The Lazy engine can construct and traverse infinite trees because its lazy.
+
 	\item Logic Programming in Haskell,
 	\\* \url{http://www.haskell.org/haskellwiki/Logic_programming_example}
-	
+
 	\item Haskell vs. Prolog comparison,
 	\\* \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}
-	
-	\item Haskell vs Prolog, or "Giving Haskell a choice"
+
+	\item Haskell vs Prolog, or \yyy{"}{``}Giving Haskell a choice\yyy{"}{''}
 	\\* \url{http://echochamber.me/viewtopic.php?f=11&t=35369}
-	
+
 	\item Killing Prolog and losing its steam,
 	\\* \url{http://vanemden.wordpress.com/2010/08/21/who-killed-prolog/}
 	\\* \url{http://www.kmjn.org/notes/prolog_lost_steam.html}
-	
-	\end{enumerate}	
+
+	\end{enumerate}
 	\end{comment}
-	
+
 \section{Related Books}
 
-As \progLang{Haskell} is relatively new in terms of being popular, its predecessors like \progLang{Scheme} have 
-explored the territory of embedding  quite profoundly \cite{friedman05reasoned}, which aims at adding a few 
-constructs to the language to bring together both styles of Declarative Programming and capture the essence of 
-\progLang{Prolog}. Moreover, \progLang{Haskell} also claims for it to be suitable for basic Logic Programming 
-naturally using the List Monad \cite{website:logicprogexamplehaskell}. A general out look towards implementing 
-\progLang{Prolog} has also been discussed by \cite{krishnamurthi2007programming} to push the ideas forward.            
+As \progLang{Haskell} is relatively new in terms of being popular, its predecessors like \progLang{Scheme} have
+explored the territory of embedding  quite profoundly \cite{friedman05reasoned}, which aims at adding a few
+constructs to the language to bring together both styles of Declarative Programming and capture the essence of
+\progLang{Prolog}. Moreover, \progLang{Haskell} also claims for it to be suitable for basic Logic Programming
+naturally using the List Monad \cite{website:logicprogexamplehaskell}. A general out look towards implementing
+\progLang{Prolog} has also been discussed by \cite{krishnamurthi2007programming} to push the ideas forward.
 
 \begin{comment}
-All the more \textit{Prologish} things exist in Haskell, as mentioned alone it is not the only one if we consider it in the ''Scheme'' \cite{friedman05reasoned} of things and so is replication to other languages \cite{krishnamurthi2007programming}.   
+All the more \textit{Prologish} things exist in Haskell, as mentioned alone it is not the only one if we consider it in the ''Scheme'' \cite{friedman05reasoned} of things and so is replication to other languages \cite{krishnamurthi2007programming}.
 \end{comment}
 
 \begin{comment}
@@ -109,45 +111,71 @@ All the more \textit{Prologish} things exist in Haskell, as mentioned alone it i
 
 \section{Related Papers}
 
-There is quite some literature that can be found and which consist of embedding detailed parts of Prolog features 
-like basic constructs, search strategies and data types. One of the major works is covered by the subsection below 
-consisting of a series of papers from Mike Spivey and Silvija Seres aimed at bring Haskell and Prolog closer to each 
-other. The next subsection covers the literature based on the above with improvements and further additions. 
+There is quite some literature that can be found and which consist of embedding detailed parts of Prolog features
+like basic constructs, search strategies and data types. One of the major works is covered by the subsection below
+consisting of a series of papers from Mike Spivey and Silvija Seres aimed at bring Haskell and Prolog closer to each
+other. The next subsection covers the literature based on the above with improvements and further additions.
 
 \begin{description}
 
 \item[$\bullet$] Papers from Mike Spivey and Silvija Seres
- 
-\begin{comment}
-\par A series of papers \cite{spivey1999embedding, seres1999algebra, seres2001higher, spivey1999algebra, seres2001algebra} covers the 
-topic in a sufficiently thorough manner. The attempt throws light on the subject of embedding \progLang{Prolog} in \progLang{Haskell} from all aspects. Moreover, it is one of the first 
-formal attempts to do so. It takes quite some leads from implementations of \progLang{Prolog} in other languages like \progLang{Scheme} and \progLang{Lisp} and also some Multi Paradigm 
-Declarative Languages. But the difference here being that Lisp is strict while \progLang{Haskell} is lazy which leads to a natural backtracking behaviour. The basic idea being that each 
-\progLang{Prolog} Predicate is translated to a Haskell Function which will work on lists and produce a Stream of results lazily. The aim was never to develop a Hybrid Functional Logic 
-Programming Language but to put forth a set of general rules for embedding. Moreover the initial model is for a more Pure Declarative Prolog rather than the Practical one. The extension is
-very minimalistic with only four new constructs or functions, Conjunction, Disjunction, Unification and the Existential Quantifier. A general 
-technique has also been described for converting a \progLang{Prolog} Predicate to a \progLang{Haskell} 
-Function. The Prolog terms are still untyped and the search is carried out in a Breadth First manner but there is no support for 
-Higher Order Functions in the first revision and a implementation does not exist. 
 
-\par The follow up papers then provide support for Depth First Search and include practical features like \textit{not} and 
-\textit{cut} operators. Pushing it further, data types to work with Depth First Search and also a more General Strategy to 
-interchange mechanisms. Covering up some downfalls, a more compositional approach like the one in functional programming 
-languages is proposed to incorporate higher order functions (higher order predicates). Synthesis and Transformation techniques 
-for Functional Programs have been \textit{logicalized} and applied to \progLang{Prolog} Programs.                              
+\begin{comment}
+  A series of papers \cite{spivey1999embedding, seres1999algebra, seres2001higher, spivey1999algebra,
+    seres2001algebra} covers the topic in a sufficiently thorough manner.
+  The attempt throws light on the subject of embedding \progLang{Prolog} in \progLang{Haskell} from all aspects.
+  Moreover, it is one of the first formal attempts to do so.
+  It takes quite some leads from implementations of \progLang{Prolog} in other languages like \progLang{Scheme} and
+  \progLang{Lisp} and also some Multi Paradigm Declarative Languages.
+  But the difference here being that Lisp is strict while \progLang{Haskell} is lazy which leads to a natural
+  backtracking behaviour.
+  The basic idea being that each \progLang{Prolog} Predicate is translated to a Haskell Function which will work on
+  lists and produce a Stream of results lazily.
+  The aim was never to develop a Hybrid Functional Logic Programming Language but to put forth a set of general
+  rules for embedding.
+  Moreover the initial model is for a more Pure Declarative Prolog rather than the Practical one.
+  The extension is very minimalistic with only four new constructs or functions, Conjunction, Disjunction,
+  Unification and the Existential Quantifier.
+  A general technique has also been described for converting a \progLang{Prolog} Predicate to a \progLang{Haskell}
+  Function.
+  The Prolog terms are still untyped and the search is carried out in a Breadth First manner but there is no
+  support for Higher Order Functions in the first revision and a implementation does not exist.
+
+  The follow up papers then provide support for Depth First Search and include practical features like \textit{not}
+  and \textit{cut} operators.
+  Pushing it further, data types to work with Depth First Search and also a more General Strategy to interchange
+  mechanisms.
+  Covering up some downfalls, a more compositional approach like the one in functional programming languages is
+  proposed to incorporate higher order functions (higher order predicates).
+  Synthesis and Transformation techniques for Functional Programs have been \textit{logicalized} and applied to
+  \progLang{Prolog} Programs.
 \end{comment}
 
-The work presented in the series \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}. Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog} in other languages like \progLang{Scheme} and \progLang{Lisp}. Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi paradigm declarative language. \progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results lazily depicting depth first search with support for different strategies and practical operators such as \textit{cut} and \textit{fail} with higher order functions. The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
- Though no implementation exists, the synthesis and transformation techniques for functional programs have been \textit{logicalised} and applied to \progLang{Prolog} programs. Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the problems at hand so as to accommodate and jump between search strategies.      
+The work presented in the series
+\cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
+encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
+Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
+in other languages like \progLang{Scheme} and \progLang{Lisp}.
+Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed
+scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi paradigm
+declarative language.
+\progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
+lazily depicting depth first search with support for different strategies and practical operators such as
+\textit{cut} and \textit{fail} with higher order functions.
+The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
+Though no implementation exists, the synthesis and transformation techniques for functional programs have been
+\textit{logicalised} and applied to \progLang{Prolog} programs.
+Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
+problems at hand so as to accommodate and jump between search strategies.
 
-\begin{comment}   
+\begin{comment}
 \begin{enumerate}
 
-\item Embedding Prolog in Haskell / Functional Reading of Logic Programs, \cite{spivey1999embedding} 
+\item Embedding Prolog in Haskell / Functional Reading of Logic Programs, \cite{spivey1999embedding}
 \\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres\_haskell99.pdf}
 
 \subparagraph{}
-This is one of the very first attempts to implement Prolog in Haskell, though there have been attempts and / or implementations of Prolog in other languages like Java(GNU Prolog, ISO Prolog as a library), Scheme(Scheme Prolog 1.2, pure Prolog interpreter, late 1980's early 1990's, 1993), Lisp (LogLisp 1982, QLog 1982) among others. There is a Hugs 98 implementation for Prolog(Mini Prolog, 1991-1996) for Hugs 1.3, but there has been no published work.  
+This is one of the very first attempts to implement Prolog in Haskell, though there have been attempts and / or implementations of Prolog in other languages like Java(GNU Prolog, ISO Prolog as a library), Scheme(Scheme Prolog 1.2, pure Prolog interpreter, late 1980's early 1990's, 1993), Lisp (LogLisp 1982, QLog 1982) among others. There is a Hugs 98 implementation for Prolog(Mini Prolog, 1991-1996) for Hugs 1.3, but there has been no published work.
 
 \subparagraph{}
 The references of this paper fall into the following categories,
@@ -177,7 +205,7 @@ The key points from the paper,
 
 \item Functions to support, unification, resolution and search.
 
-\item This is not a FLPL, it more of a functional language with logic capabilities, so there is no Narrowing or Residuation which are the key features of a FLPL.    
+\item This is not a FLPL, it more of a functional language with logic capabilities, so there is no Narrowing or Residuation which are the key features of a FLPL.
 
 \item The principles are general for embedding.
 
@@ -185,12 +213,12 @@ The key points from the paper,
 
 \item Minimalistic extension, only four functions, Disjunction \begin{math} \parallel \end{math}, Conjunction \&, Unify \begin{math}\doteq \end{math}, Existential Quantifier (exists).
 
-\item Converting a logical predicate into a pure Haskell function, bind local variables with explicit quantifiers and combining all clauses into a single equation. 
+\item Converting a logical predicate into a pure Haskell function, bind local variables with explicit quantifiers and combining all clauses into a single equation.
 
-\item Algorithm, 
+\item Algorithm,
 \\*		Input $\rightarrow$ Predicate + Knowledge Base
 \\*		Output $\rightarrow$ Stream of Answers
-\\* 		Done Lazily   
+\\* 		Done Lazily
 
 \item Prolog Terms are untyped.
 
@@ -204,40 +232,40 @@ The key points from the paper,
 
 \item No implementation only Theoretical Model.
 
-\item No higher order functions and nested functions. 
-\end{enumerate}  
-  
+\item No higher order functions and nested functions.
+\end{enumerate}
+
 \item Algebra of Logic Programming, \cite{seres1999algebra}
 \\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_iclp99.pdf}
 
-The previous paper on embedding a logical language in a functional language \cite{spivey1999embedding}, two computation models 
-have been proposed, one which is very Prolog like and uses Depth First Search while the other uses Breath First Search. This 
-paper proposes a General Model, independent of the search strategy and which produces the same results. 
+The previous paper on embedding a logical language in a functional language \cite{spivey1999embedding}, two computation models
+have been proposed, one which is very Prolog like and uses Depth First Search while the other uses Breath First Search. This
+paper proposes a General Model, independent of the search strategy and which produces the same results.
 
-The abstract semantics help in reasoning and specification while operational semantics help with execution of the program. 
+The abstract semantics help in reasoning and specification while operational semantics help with execution of the program.
 
 ??? Herbrand Model ???
 
 Logical Primitive == Haskell Function
 
-The paper claims that their "Embedding Approach" has the "Full Power" of "Functional Logic Languages", ???????????
+The paper claims that their \yyy{"}{``}Embedding Approach\yyy{"}{''} has the \yyy{"}{``}Full Power\yyy{"}{''} of \yyy{"}{``}Functional Logic Languages\yyy{"}{''}, ???????????
 
 All the same stuff about the embedding is mentioned again,
 
-DFS : 
+DFS :
 Stream based approach produces results with definite order and multiplicity, just like Prolog. Though $\&$ and $\parallel$ do not have all the properties, they can be achieved by using Bags / Sets instead of Streams. The cost of then answers does not matter. The \textbf{not} and the \textbf{cut} operator has been included. The cut here is not exactly the \textit{cut} in Prolog??????????
 
 
 BFS:
-The cost of an answer is the number of resolution steps it takes. A matrix of bag of answers is returned, each bag contains the answers with the same costs. So each node in the tree gets pushed one level down, this "root node". The functions are modified to work with "Matrices" instead of "Streams".
+The cost of an answer is the number of resolution steps it takes. A matrix of bag of answers is returned, each bag contains the answers with the same costs. So each node in the tree gets pushed one level down, this \yyy{"}{``}root node\yyy{"}{''}. The functions are modified to work with \yyy{"}{``}Matrices\yyy{"}{''} instead of \yyy{"}{``}Streams\yyy{"}{''}.
 
 The differences and similarities are highlighted which help in reasoning about the their integration.
 
 General Model:
-Working with "Forests" rather than "Streams" / "Matrices". They store the cost of each answer which is equivalent to the depth of the tree and then everything gets pushed one step down just like BFS.
+Working with \yyy{"}{``}Forests\yyy{"}{''} rather than \yyy{"}{``}Streams\yyy{"}{''} / \yyy{"}{``}Matrices\yyy{"}{''}. They store the cost of each answer which is equivalent to the depth of the tree and then everything gets pushed one step down just like BFS.
 
 $\parallel$, \textit{not, false} remain the same,
-\\* true, $\&$, cut need to be modified to work with forests. 
+\\* true, $\&$, cut need to be modified to work with forests.
 
 The Monads for the same are,
 \begin{center}
@@ -248,13 +276,13 @@ The Monads for the same are,
  	Matrix (DFS) & mmap & [[-]] & shuffle \\ \hline
  	Forest (General) & fmap & Leaf - & fgraft \\ \hline
     \end{tabular}
-\end{center}      
+\end{center}
 
 Some other stuff is about Kleisli Composition, $join_{T}$ is replaced by $\star_{T}$ == true (return function).
 
 ??????\textbf{Extended Monad}??????
 \\*(map, return / unit, ???, ???, Kleisli Composition)
-\\* $\textit{T}^{+}$ = ($\textit{map}_{T}$, $\textit{true}_{T}$, $\textit{false}_{T}$, $\parallel_{T}$, $\&_{T}$)      
+\\* $\textit{T}^{+}$ = ($\textit{map}_{T}$, $\textit{true}_{T}$, $\textit{false}_{T}$, $\parallel_{T}$, $\&_{T}$)
 \\* We will have $\textit{Stream}^{+}$, $\textit{Matrix}^{+}$, $\textit{Forest}^{+}$
 
 The above are the Objects of the Category, next the morphisms, specific functions are given which do the following,
@@ -262,11 +290,11 @@ The above are the Objects of the Category, next the morphisms, specific function
 \\* BFS $\rightarrow$ Query $\rightarrow$ Matrix
 \\* General $\rightarrow$ Query $\rightarrow$ Forest
 \\* Forest $\rightarrow$ dfs $\rightarrow$ Stream $\lor$ Forest $\rightarrow$ bfs $\rightarrow$ Matrix
-  
 
 
 
-\item The Algebra of Logic Programming, 
+
+\item The Algebra of Logic Programming,
 \\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_thesis.pdf}
 
 
@@ -280,7 +308,7 @@ Not related to the topic.
 
 \item Higher Order Transformation of Logic Programs,
 \\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_lopstr00.pdf}
-\\*This paper mainly talks about the "compositional approach" to design algorithms in functional programming languages which can be extended to logical programming languages. The idea is to develop a general technique for developing efficient predicates. The transformational technique is the rules and strategies approach for logical programming from another paper,
+\\*This paper mainly talks about the \yyy{"}{``}compositional approach\yyy{"}{''} to design algorithms in functional programming languages which can be extended to logical programming languages. The idea is to develop a general technique for developing efficient predicates. The transformational technique is the rules and strategies approach for logical programming from another paper,
 \begin{center}
     \begin{tabular}{ | l | l | p{5cm} |}
     \hline
@@ -290,36 +318,36 @@ Not related to the topic.
      Delete Clause Definitions & Unnecessary Variable Elimination \\  \hline
      Re-arrange Clause Definitions & Predicate Fusion\\  \hline
     \end{tabular}
-\end{center}  
+\end{center}
 The above gives a compositional approach to transform logical programs ????
 \\*Only generalisation and tupling are required to derive Herbrand Model of the two programs?????
-\\* Standard dfs approach does not give any clear measure of computational complexity. 
-\\* The Algebra of Functional Programs says that the functions \textit{foldl} and \textit{foldr} give a general transformation strategy, i.e. with higher order functions. This paper takes the above results and tries to apply it to Logic Programming by translating Prolog programs into Haskell programs which helps in "Reasoning" and "Higher Order Predicates can  be implemented as Higher Order Functions". Moreover with Higher Order Functions we do not need Higher Order Unification. With all of the stuff from \cite{spivey1999embedding}, and the proof of uniqueness of fixed points ???? in 
-\cite{seres2001algebra} ???. 
+\\* Standard dfs approach does not give any clear measure of computational complexity.
+\\* The Algebra of Functional Programs says that the functions \textit{foldl} and \textit{foldr} give a general transformation strategy, i.e. with higher order functions. This paper takes the above results and tries to apply it to Logic Programming by translating Prolog programs into Haskell programs which helps in \yyy{"}{``}Reasoning\yyy{"}{''} and \yyy{"}{``}Higher Order Predicates can  be implemented as Higher Order Functions\yyy{"}{''}. Moreover with Higher Order Functions we do not need Higher Order Unification. With all of the stuff from \cite{spivey1999embedding}, and the proof of uniqueness of fixed points ???? in
+\cite{seres2001algebra} ???.
 
-The paper gives two examples of a program with two variants differing in complexity, but are proved to be "equal". 
+The paper gives two examples of a program with two variants differing in complexity, but are proved to be \yyy{"}{``}equal\yyy{"}{''}.
 
-Bird and de Moor provide synthesis and transformation techniques for functional programs which are "logicalized" in the paper.
+Bird and de Moor provide synthesis and transformation techniques for functional programs which are \yyy{"}{``}logicalized\yyy{"}{''} in the paper.
 
-They say the future is to extend and apply the techniques to "constraint programming". 
+They say the future is to extend and apply the techniques to \yyy{"}{``}constraint programming\yyy{"}{''}.
 
-and also 
+and also
 
-"Cross Fertilised" Program Transformation Techniques for both the Declarative Paradigms ???  
+\yyy{"}{``}Cross Fertilised\yyy{"}{''} Program Transformation Techniques for both the Declarative Paradigms ???
 
-  
+
 
 \item The Algebra of Searching, \cite{spivey1999algebra}
 \\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_carh99.pdf}
-Looking at a program declaratively, reveals the Logic while the procedural reading provides the Control Information. A Prolog program can be executed using different search strategies, so there should be some logic which takes into account execution / control information.     
+Looking at a program declaratively, reveals the Logic while the procedural reading provides the Control Information. A Prolog program can be executed using different search strategies, so there should be some logic which takes into account execution / control information.
 
-Logic Programs are semantically composed of $\cap$ and $\vee$. 
+Logic Programs are semantically composed of $\cap$ and $\vee$.
 
-?????? \textbf{The main advantage of "shallow" embedding of Prolog in a Lazy Functional Programming Language over a "deep" embedding i.e. an interpreter that treats logic programs as syntactic objects} ?????
+?????? \textbf{The main advantage of \yyy{"}{``}shallow\yyy{"}{''} embedding of Prolog in a Lazy Functional Programming Language over a \yyy{"}{``}deep\yyy{"}{''} embedding i.e. an interpreter that treats logic programs as syntactic objects} ?????
 
 Some more same stuff about DFS ............... again, like it can get stuck in a infinite branch of a program.
 
-Some stuff about search trees,  
+Some stuff about search trees,
 
 \end{enumerate}
 \end{comment}
@@ -328,53 +356,98 @@ Some stuff about search trees,
 
 %\par This section takes a look at the improvements at the attempts mostly based on the work from the previous section. Some work is done by the one of the authors above while the other prominent others in the same field.
 
- Continuing from above, \cite{claessen2000typed} taps into the advantages of the host language to embed a typed functional logic programming language. This results in typed logical predicates and a backtracking monad with support for various data types and search strategies. Though not very efficient nor practical the method aims at a more elegant translation of programs from one language to the other. While other papers 
-\cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding anything new rather doing something new with what is available. Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the solutions are instances. 
-\cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state. The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.            
+ Continuing from above, \cite{claessen2000typed} taps into the advantages of the host language to embed a typed functional logic programming language. This results in typed logical predicates and a backtracking monad with support for various data types and search strategies. Though not very efficient nor practical the method aims at a more elegant translation of programs from one language to the other. While other papers
+\cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding anything new rather doing something new with what is available. Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the solutions are instances.
+\cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state. The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
 
 \begin{comment}
-\par Taking the idea further, an attempt \cite{claessen2000typed} brings the \progLang{Haskell} type system to \progLang{Prolog} resulting in something called typed logic variables. The aim that has been stated is to embed a simple typed functional logic programming language giving \progLang{Haskell} logic programming features. Another important aspect that has been touched upon in the paper is the backtracking ability of  \progLang{Prolog} which has been replicated using a monad.  The implementation does not support practical predicates like cuts or assert or retract and so on leave alone the details, for example if a predicate is half way through and then a new fact is asserted into the database, the question arises is this change taken into account or the old database is used. The main issues tackled here are how to translate \progLang{Prolog} predicates elegantly into \progLang{Haskell} functions, addressed with ground terms and a \textit{Class} which can be used for unification; overloaded according to 
-the terms being unified. The second issue is how to make the implementation more suited to the problem, for example \progLang{Prolog} by default works on depth first search which may not be a fair strategy if the requirement is for visiting all possible options to a certain degree of depth, in which case breadth first search is more suitable. The idea is to make the language modifiable with respect to search strategies. Though issues with efficiency in terms of syntax, the unification algorithm and also the lack of practical features exist. 
+  Taking the idea further, an attempt \cite{claessen2000typed} brings the \progLang{Haskell} type system to
+  \progLang{Prolog} resulting in something called typed logic variables.
+  The aim that has been stated is to embed a simple typed functional logic programming language giving
+  \progLang{Haskell} logic programming features.
+  Another important aspect that has been touched upon in the paper is the backtracking ability of
+  \progLang{Prolog} which has been replicated using a monad.
+  The implementation does not support practical predicates like cuts or assert or retract and so on leave alone the
+  details, for example if a predicate is half way through and then a new fact is asserted into the database, the
+  question arises is this change taken into account or the old database is used.
+  The main issues tackled here are how to translate \progLang{Prolog} predicates elegantly into \progLang{Haskell}
+  functions, addressed with ground terms and a \textit{Class} which can be used for unification; overloaded
+  according to the terms being unified.
+  The second issue is how to make the implementation more suited to the problem, for example \progLang{Prolog} by
+  default works on depth first search which may not be a fair strategy if the requirement is for visiting all
+  possible options to a certain degree of depth, in which case breadth first search is more suitable.
+  The idea is to make the language modifiable with respect to search strategies.
+  Though issues with efficiency in terms of syntax, the unification algorithm and also the lack of practical
+  features exist.
 
-\par While some attempt at doing problems suitable for Prolog in Haskell \cite{erwig2004escape}. The exercise subjects a set of students to solve a puzzle in \progLang{Prolog} and then in \progLang{Haskell} and comparing the results and experiences. It turns out that, after trying things out in \progLang{Prolog}, \progLang{Haskell} seems easier as the general structure of a problem is expressed using a type class and then the procedure to find a solution is an instance. The result being that the \progLang{Haskell} type system helps. 
+  While some attempt at doing problems suitable for Prolog in Haskell \cite{erwig2004escape}.
+  The exercise subjects a set of students to solve a puzzle in \progLang{Prolog} and then in \progLang{Haskell} and
+  comparing the results and experiences.
+  It turns out that, after trying things out in \progLang{Prolog}, \progLang{Haskell} seems easier as the general
+  structure of a problem is expressed using a type class and then the procedure to find a solution is an instance.
+  The result being that the \progLang{Haskell} type system helps.
 
-\par Another attempt \cite{spivey2000functional} looks at playing with data types used to implement Breadth First Search in \progLang{Haskell}. \progLang{Prolog} does a depth first search implicitly, so if it is to be replicated in \progLang{Haskell} it will be forced to do it and hence it is an explicit behaviour. As a lazy language, the host is capable of working with possibly infinite data structures and this where the problem is as depth first search will end up going down one and only one branch. So the other branches will never be explored so as to contribute to the solutions and hence better to do a depth first search to make the procedure more fair by visiting several nodes at the same depth. Rather than using \textit{lists} of \textit{streams}, a better solution is to use \textit{bags} implemented as finite lists which  preserve the properties such as the associativity of join. The idea being that the operators behave like $\vee$ and $\land$ of logic programming in terms of properties. The category 
-is of operators, while the initial object is the search tree and the morphisms being the different search strategies. 
+  Another attempt \cite{spivey2000functional} looks at playing with data types used to implement Breadth First
+  Search in \progLang{Haskell}.
+  \progLang{Prolog} does a depth first search implicitly, so if it is to be replicated in \progLang{Haskell} it
+  will be forced to do it and hence it is an explicit behaviour.
+  As a lazy language, the host is capable of working with possibly infinite data structures and this where the
+  problem is as depth first search will end up going down one and only one branch.
+  So the other branches will never be explored so as to contribute to the solutions and hence better to do a depth
+  first search to make the procedure more fair by visiting several nodes at the same depth.
+  Rather than using \textit{lists} of \textit{streams}, a better solution is to use \textit{bags} implemented as
+  finite lists which  preserve the properties such as the associativity of join.
+  The idea being that the operators behave like $\vee$ and $\land$ of logic programming in terms of properties.
+  The category is of operators, while the initial object is the search tree and the morphisms being the different
+  search strategies.
 
-\par A lot of the investigations above have been based of \cite{hinze1998prological} which tries to replicate \progLang{Prolog}'s control operations in \progLang{Haskell}. But as there are implications of the host language resulting in the loss of data base operations. But having a global state using the \textit{State Monad} does not seem too difficult. \textit{Monads} have usages which are internal; that is structuring programs and external; usages that is extending the language. The monads in this paper add \progLang{Prolog} like capabilities but do not extend the capabilities of \progLang{Haskell} as such. The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function. The aim here is to deal with the axiomatic details of the embedding. There are monads for encapsulation, backtracking, exception handling and input and output along with their respective 
-transformers. Although a set of axioms are provided which show a consistent behaviour but nothing in the lines of completeness exists.                                
+  A lot of the investigations above have been based of \cite{hinze1998prological} which tries to replicate
+  \progLang{Prolog}'s control operations in \progLang{Haskell}.
+  But as there are implications of the host language resulting in the loss of data base operations.
+  But having a global state using the \textit{State Monad} does not seem too difficult.
+  \textit{Monads} have usages which are internal; that is structuring programs and external; usages that is
+  extending the language.
+  The monads in this paper add \progLang{Prolog} like capabilities but do not extend the capabilities of
+  \progLang{Haskell} as such.
+  The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
+  and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
+  The aim here is to deal with the axiomatic details of the embedding.
+  There are monads for encapsulation, backtracking, exception handling and input and output along with their
+  respective transformers.
+  Although a set of axioms are provided which show a consistent behaviour but nothing in the lines of completeness
+  exists.
 \end{comment}
 
 \begin{comment}
 \begin{enumerate}
 
-\item Type Logic Variables, K Classen, 
+\item Type Logic Variables, K Classen,
 \\* \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.37.2565\&rep=rep1\&type=pdf} \cite{claessen2000typed}
 
-The typed variable stuff seems not all that important to me: they prove that they can use Haskellian features (such as classes) to support such an exercise.  I suppose that this has importance if you are you thinking of the marriage of idioms idea.  In practice, you would just use some sufficiently universal type to represent Prolog ground: 
+The typed variable stuff seems not all that important to me: they prove that they can use Haskellian features (such as classes) to support such an exercise.  I suppose that this has importance if you are you thinking of the marriage of idioms idea.  In practice, you would just use some sufficiently universal type to represent Prolog ground:
 data PrologGround = A Atom | C Char | I Integer ...
 
-I don’t understand Data.Data or template Haskell well at all, but they might provide another way to automatically generate a universal data type. 
+I don’t understand Data.Data or template Haskell well at all, but they might provide another way to automatically generate a universal data type.
 
-I’m curious about the backtracking monad they mention (due to Hinze?).  That seems a clever idea, and probably is what allows support for cuts.  I’m not sure.  Do you know exactly who claims to support cuts? 
+I’m curious about the backtracking monad they mention (due to Hinze?).  That seems a clever idea, and probably is what allows support for cuts.  I’m not sure.  Do you know exactly who claims to support cuts?
 
-BTW, fail is easy in a monad that results in lists (or any MonadPlus).  Depending on how you are looking at things fail is either 
-[] or \textunderscore -> [], 
-or something similar. 
+BTW, fail is easy in a monad that results in lists (or any MonadPlus).  Depending on how you are looking at things fail is either
+[] or \textunderscore -> [],
+or something similar.
 
-assert/retract (and other dynamic predicate facilities) seem impossible in their formulation if I have understood correctly. Again, if I have understood correctly, they are directly translating Prolog predicates into corresponding Haskell code and that means that the correspondance between names and predicates cannot be changed at runtime.  I also speculate that this should be easy to work around: wrap every thing in a dictionary that goes from name/arity to predicate code (and wrap the monads in a ReaderT monad).  Not a 100 \% sure that this would work. 
+assert/retract (and other dynamic predicate facilities) seem impossible in their formulation if I have understood correctly. Again, if I have understood correctly, they are directly translating Prolog predicates into corresponding Haskell code and that means that the correspondance between names and predicates cannot be changed at runtime.  I also speculate that this should be easy to work around: wrap every thing in a dictionary that goes from name/arity to predicate code (and wrap the monads in a ReaderT monad).  Not a 100 \% sure that this would work.
 
-There is some discussion in the Prolog literature (or at least documentation) of different possible interpretations of assert/retract.  The kind of hairy question that occurs is what if a predicate retracts a rule in the middle of a computation? Perhaps Haskell embeddings would shed some light on what the correct interpretation ought to be. 
+There is some discussion in the Prolog literature (or at least documentation) of different possible interpretations of assert/retract.  The kind of hairy question that occurs is what if a predicate retracts a rule in the middle of a computation? Perhaps Haskell embeddings would shed some light on what the correct interpretation ought to be.
 
-With the relatively direct of Prolog predicates to their Haskellian counterparts, it seems fairly natural to ask whether the translation preserves asymptotic space/time, in particular, whether the the Haskellian translations of tail-recursive Prolog are tail-recursive.  Laziness may matter a lot here. 
+With the relatively direct of Prolog predicates to their Haskellian counterparts, it seems fairly natural to ask whether the translation preserves asymptotic space/time, in particular, whether the the Haskellian translations of tail-recursive Prolog are tail-recursive.  Laziness may matter a lot here.
 
-Another question: is it easy to translate predicates involving setof/bagof?  If so, does capturing the results lazily give Haskell a possible space-complexity win? 
+Another question: is it easy to translate predicates involving setof/bagof?  If so, does capturing the results lazily give Haskell a possible space-complexity win?
 
-Charles Brown and Jennifer Hyndman’s first student, Rich Little, attempted certain mathematical calculations in Prolog.  Because of the quantifier structure of the formulæ he was computing, he needed to use sets/bags to trap intermediate results, and he ran into problems with space consumption.  It’s conceivable that lazy intermediate results would have avoided the space trap. 
+Charles Brown and Jennifer Hyndman’s first student, Rich Little, attempted certain mathematical calculations in Prolog.  Because of the quantifier structure of the formulæ he was computing, he needed to use sets/bags to trap intermediate results, and he ran into problems with space consumption.  It’s conceivable that lazy intermediate results would have avoided the space trap.
 
-The paper also points out an example where directly translating simple ground terms from Prolog is painful to write manually, but easy to write Haskell code for.  This seems to suggest that there might be utility in having a parser/quasi-quotation tool.  
+The paper also points out an example where directly translating simple ground terms from Prolog is painful to write manually, but easy to write Haskell code for.  This seems to suggest that there might be utility in having a parser/quasi-quotation tool.
 
-\item A Type-Safe Embedding of Constraint Handling Rules into Haskell Wei-Ngan Chin, Martin Sulzmann and Meng Wang 
+\item A Type-Safe Embedding of Constraint Handling Rules into Haskell Wei-Ngan Chin, Martin Sulzmann and Meng Wang
 \cite{chin2003type}
 \\* \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.120.3928&rep=rep1&type=pdf}
 
@@ -394,15 +467,15 @@ This one is definitely relevant, but how closely relevant I donʼt know.  I woul
 This one is likely very relevant.  I would definitely read the whole thing as part of your thesis work.  For the \textunderscore proposal \textunderscore all you need to know is that it exists.  If you want to talk about it in the proposal, you want to say that itʼs relevant because Prolog uses depth-first search, and this is an effort to generalize, perhaps an advantage of embedding Prolog in a context where you have more control over the search strategy, blah blah blah.  YOU DONʼT NEED TO KNOW HOW to implement breadth-first search combinators in order to get approval to work in the area.
 
 
-Lazy evaluation allows us to work with infinitely large data structures. Failure can be replaced by a list of successes but the list can be empty which is like the working of Prolog.   
+Lazy evaluation allows us to work with infinitely large data structures. Failure can be replaced by a list of successes but the list can be empty which is like the working of Prolog.
 
-Depth First Search can lead to a never ending search if there are infinite choices, Prolog does this implicitly, but this is not the case with functional programming. If Prolog has to be replicated in Haskell, Depth First Search would be explicit as the host language does not work that way. 
+Depth First Search can lead to a never ending search if there are infinite choices, Prolog does this implicitly, but this is not the case with functional programming. If Prolog has to be replicated in Haskell, Depth First Search would be explicit as the host language does not work that way.
 
 \item Escape from Zurg: An Exercise in Logic Programming, Martin Erwig, \cite{erwig2004escape}
 \\* \url{http://thelackthereof.org/docs/library/cs/functional/Erwig,%20Martin:%20Escape%20from%20Zurg%20-%20An%20Exercise%20in%20Logic%20Programming.pdf}
 \\* \url{http://web.engr.oregonstate.edu/~erwig/zurg/}
 
-This one basically looks like an advertisement for functional programming. Also it consists of all the good things that lazy evaluation gives you, infinite search trees and also built in backtracking. There is no multi paradigm or embedding here, it is ''look even haskell can do what prolog does'' putting it formally ''Express Search Problems Functionally''. 
+This one basically looks like an advertisement for functional programming. Also it consists of all the good things that lazy evaluation gives you, infinite search trees and also built in backtracking. There is no multi paradigm or embedding here, it is ''look even haskell can do what prolog does'' putting it formally ''Express Search Problems Functionally''.
 
 So they take some search problem for practice in prolog and give it to a few students.
 
@@ -414,13 +487,13 @@ Confusion between terms and predicates.
 
 And this is what gets you, problems with representing intermediate states to check whether or not it is the final solution can lead to infinite loops.
 
-On the other hand, it is a two step procedure 
+On the other hand, it is a two step procedure
 \begin{enumerate}
 	\item Extract general structure and define Type Class (which something like an interface in Java).
 	\item Solution is an instance of the Class.
-\end{enumerate}     
+\end{enumerate}
 
-For example in a problem like a game where the player has to make moves, the Type Class can have to parameters, state and action and the function would be the transition function which changes the state depending on the move. This gives a more general approach to solving search problems 
+For example in a problem like a game where the player has to make moves, the Type Class can have to parameters, state and action and the function would be the transition function which changes the state depending on the move. This gives a more general approach to solving search problems
 
 Lexical conventions matter
 
@@ -428,14 +501,14 @@ Type System helps
 
 \end{enumerate}
 \end{comment}
-\end{description}	
-	
-	
+\end{description}
+
+
 \section{Related Libraries in Haskell}
 \begin{description}
 \item[$\bullet$]Prolog Libraries
 
-To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries. First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or "mini Prolog" as such with not much in it to be able to be uselul, \cite{hswip-lib} is all powerful but is an Foreign Function Interface so it is "Prolog in Haskell" but we need Prolog for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical Prolog. But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or no monadic support and an REPL without the ability to "write a Prolog Program File".  
+To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries. First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or \yyy{"}{``}mini Prolog\yyy{"}{''} as such with not much in it to be able to be uselul, \cite{hswip-lib} is all powerful but is an Foreign Function Interface so it is \yyy{"}{``}Prolog in Haskell\yyy{"}{''} but we need Prolog for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical Prolog. But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or no monadic support and an REPL without the ability to \yyy{"}{``}write a Prolog Program File\yyy{"}{''}.
 
 \begin{comment}
 \begin{enumerate}
@@ -444,18 +517,18 @@ To replicate Prolog like capabilities Haskell seems to be already in the race wi
 	\item cspm-To-Prolog
 	\item prolog-graph and prolog-graph-lib
 	\item hswip,
-	\\* \url{https://groups.google.com/forum/#!topic/haskell-cafe/3vmCuw7NlWE}	
+	\\* \url{https://groups.google.com/forum/#!topic/haskell-cafe/3vmCuw7NlWE}
 \end{enumerate}
 \end{comment}
 
 \item[$\bullet$]Logic Libraries
 
-The next category is about the logical aspects of Prolog, again a handful of libraries do exist and provide a part 
-of the functionality which is related propositional logic and backtracking. \cite{logict-lib} is a 
-continuation-based, backtracking, logic programming monad which sort of depicts Prolog's backtracking 
-behaviour. Prolog is heavily based on formal logic, \cite{proplogic-lib} provides a powerful system for 
-Propositional Logic. Others include small hybrid languages \cite{cflp-lib} and Parallelising Logic Programming 
-and Tree Exploration \cite{logic-grows-on-trees-lib}.          
+The next category is about the logical aspects of Prolog, again a handful of libraries do exist and provide a part
+of the functionality which is related propositional logic and backtracking. \cite{logict-lib} is a
+continuation-based, backtracking, logic programming monad which sort of depicts Prolog's backtracking
+behaviour. Prolog is heavily based on formal logic, \cite{proplogic-lib} provides a powerful system for
+Propositional Logic. Others include small hybrid languages \cite{cflp-lib} and Parallelising Logic Programming
+and Tree Exploration \cite{logic-grows-on-trees-lib}.
 
 \begin{comment}
 \begin{enumerate}
@@ -464,28 +537,28 @@ and Tree Exploration \cite{logic-grows-on-trees-lib}.
 	\item logic-classes this is very unstable and does not install a lot of dependency issues and then reinstalls cause broken packages etc etc
 	\item proplogic powerful system for propositional logic(seems very complicated I do not know whether it is related to Prolog in any way)
 	\item cflp Concatenative Functional Logic Programming
-	\item logic grows on trees == Parallelised Logic Programming / Parallel Tree Exploration 
-\end{enumerate}	
+	\item logic grows on trees == Parallelised Logic Programming / Parallel Tree Exploration
+\end{enumerate}
 \end{comment}
 
 \item[$\bullet$]Unification Libraries
 
-The more specific the feature the lesser the support in Haskell. Moving on to the other distinct feature of Prolog is 
-Unification, two libraries exist \cite{unification-fd-lib}, \cite{cmu-lib} that unify two Prolog Terms and return the resulting 
-substitution. 
+The more specific the feature the lesser the support in Haskell. Moving on to the other distinct feature of Prolog is
+Unification, two libraries exist \cite{unification-fd-lib}, \cite{cmu-lib} that unify two Prolog Terms and return the resulting
+substitution.
 
 \begin{comment}
 \begin{enumerate}
-	\item unification-fd 
-	\item cmu	
+	\item unification-fd
+	\item cmu
 \end{enumerate}
 \end{comment}
 
 \item[$\bullet$]Backtracking
 
-Another important aspect of \progLang{Prolog} is backtracking. To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use monads. Moreover, there is a package for the \progLang{Egison} programming language \cite{egison-lib} which supports non-linear pattern-matching with backtracking. 
+Another important aspect of \progLang{Prolog} is backtracking. To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use monads. Moreover, there is a package for the \progLang{Egison} programming language \cite{egison-lib} which supports non-linear pattern-matching with backtracking.
 
-\begin{comment}   
+\begin{comment}
 
 \begin{enumerate}
 	\item Egison \cite{egison-lib}
@@ -530,9 +603,9 @@ Another important aspect of \progLang{Prolog} is backtracking. To simulate it in
 
 \section{\textbf{From chap 7}}
 
-Embedding a language into another language has been explored with a variety of languages. Attempts have been made to build Domain Specific Languages from the host languages \cite{hudak1996building}, Foriegn Function Interfaces \cite{barzilay2004foreign} 
+Embedding a language into another language has been explored with a variety of languages. Attempts have been made to build Domain Specific Languages from the host languages \cite{hudak1996building}, Foriegn Function Interfaces \cite{barzilay2004foreign}
 
-Creating a programming language from scratch is a tedious task requiring ample amount of programming, not to mention the effort required in 
+Creating a programming language from scratch is a tedious task requiring ample amount of programming, not to mention the effort required in
 designing. A typical procedure would consist of formulating characteristics and properties based on the following points,
 
 \begin{enumerate}
@@ -546,15 +619,18 @@ designing. A typical procedure would consist of formulating characteristics and 
 \item Debuggers
 \end{enumerate}
 
-A lot of the above can be skipped or taken from the base language if an embedding approach is chosen. For an embedded domain specific 
-language the functionality is translated and written as an add on. The result can be thought of as a library. But the  
-difference between an ordinary library and an eDSl is the feature set provided and the degree of embedding 
-\cite{website:eDSLhaskellwiki}. For example, reading a file and parsing its contents to perform certain operations to return 
-\textit{string} results is a shallow form of embedding as the generation of code, results is not native nor are the functions processing 
-them dealing with embedded data types as such. On the other hand, building data structures in the base language which represent the 
-target language expression would be called a deep embedding approach.         
+A lot of the above can be skipped or taken from the base language if an embedding approach is chosen.
+For an embedded domain specific language the functionality is translated and written as an add on.
+The result can be thought of as a library.
+But the difference between an ordinary library and an eDSl is the feature set provided and the degree of embedding
+\cite{website:eDSLhaskellwiki}.
+For example, reading a file and parsing its contents to perform certain operations to return \textit{string}
+results is a shallow form of embedding as the generation of code, results is not native nor are the functions
+processing them dealing with embedded data types as such.
+On the other hand, building data structures in the base language which represent the target language expression
+would be called a deep embedding approach.
 
-\par The snippet of \progLang{Haskell} code below describes \progLang{Prolog} entities,
+The snippet of \progLang{Haskell} code below describes \progLang{Prolog} entities,
 
 \begin{minted}[linenos]{haskell}
 data Term = Struct Atom [Term]
@@ -568,10 +644,10 @@ data Term = Struct Atom [Term]
       deriving (Eq, Data, Typeable)
 \end{minted}
 
-The above can be described as concrete syntax for the "new" language and can be used to write a program.  
+The above can be described as concrete syntax for the \yyy{"}{``}new\yyy{"}{''} language and can be used to write a program.
 
 
-As discussed in the 
+As discussed in the
 
 \section{Theory}
 \begin{enumerate}

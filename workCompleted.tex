@@ -185,7 +185,7 @@ instance Functor ExprF where
     fmap eval (left `Mul` right) = (eval left) `Mul` (eval right)
 \end{minted}
 
-We "map" the "eval" through our ExpF term for example,
+We \yyy{"}{``}map\yyy{"}{''} the \yyy{"}{``}eval\yyy{"}{''} through our ExpF term for example,
 \begin{minted}[linenos]{haskell}
 alg :: ExprF Int -> Int
 alg (Const i)   = i
@@ -244,7 +244,7 @@ More stuff that I did not understand well can be found here,
 
 \section{Opening up or Extending language Explanation using Box Analogy}
 
-This section will describe what it means to \textbf{"open up or extend a language"}. 
+This section will describe what it means to \textbf{\yyy{"}{``}open up or extend a language\yyy{"}{''}}. 
 
 \begin{enumerate}
 \item Let us start with a sample language with a recursive abstract syntax,

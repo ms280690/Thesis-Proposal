@@ -15,21 +15,24 @@ Over the years another approach has branched off from embedding languages, to me
 languages from different paradigms. Let us take an example of the \progLang{Scala} Programming Language \cite{website:scala}, a 
 hybrid Object-Functional Programming Language which takes a leaf from each of the two books. In this thesis, the languages in 
 question are \progLang{Haskell} and \progLang{Prolog}. This section takes a look at the literature on Multi Paradigm Languages, mainly Functional 
-Logic Programming Languages that combine two of the most widespread Declarative Programming Styles.      
+Logic Programming Languages that combine two of the most widespread Declarative Programming Styles.
 
-\par A peak into language classification reveals that it is not always a straight forward task to segregate languages according to their features and/or 
-characteristics. Turns out that there are a number of notions which play a role in deciding where the language belongs. Many a times a language ends up 
-being a part of almost all paradigms due extensive libraries. Simply speaking, a multi-paradigm programming language is a programming language that 
-supports more than one programming paradigm \cite{Krishnamurthi:2008:TPL:1480828.1480846}, more over as Timothy Budd puts it 
-\cite{website:wikimultiparadigm} "The idea of a multi paradigm language is to provide a framework in which programmers can work in a variety of styles, 
-freely intermixing constructs from different paradigms."       
+A peak into language classification reveals that it is not always a straight forward task to segregate languages
+according to their features and/or characteristics.
+Turns out that there are a number of notions which play a role in deciding where the language belongs.
+Many a times a language ends up being a part of almost all paradigms due extensive libraries.
+Simply speaking, a multi-paradigm programming language is a programming language that supports more than one
+programming paradigm \cite{Krishnamurthi:2008:TPL:1480828.1480846}, more over as Timothy Budd puts it
+\cite{website:wikimultiparadigm} \yyy{"}{``}The idea of a multi paradigm language is to provide a framework in which
+programmers can work in a variety of styles, freely intermixing constructs from different paradigms.\yyy{"}{''}
 
 
 
 \begin{comment}
 \subparagraph{}
-In this section we talk about marrying or integrating the paradigms, multi paradigm programming language approach. Here we talk 
-about combining the two most important and widely spread declarative paradigms, Functional and Logical Programming Paradigms. 
+In this section we talk about marrying or integrating the paradigms, multi paradigm programming language approach.
+Here we talk about combining the two most important and widely spread declarative paradigms, Functional and Logical
+Programming Paradigms.
 \end{comment}  
 
 \section{The Informal Content from Blogs, Articles and Internet Discussions}
@@ -37,12 +40,12 @@ about combining the two most important and widely spread declarative paradigms, 
   
 \item[$\bullet$] Multi Paradigm Languages
 
-\par A lot has been talked and discussed on coming to clear grounds about the classification of programming languages. If the conventional ideology is
+A lot has been talked and discussed on coming to clear grounds about the classification of programming languages. If the conventional ideology is
  considered then the scope of each language is pretty much infinite as small extension modules replicate different feature sets which are not naturally 
 native to the language itself. The definitions of multi paradigm languages across the web \cite{website:wikimultiparadigm,website:mdn,website:blogc2}
  converge to roughly the same thing that of providing a framework to work with different styles with a list of languages 
 \cite{website:wikimpllist,website:dmoz} that ticks the boxes. Generally speaking, it does not feel all that hot or popular in programming circles; one 
-reason could be that it is a very broad topic and specifying details can clear the fog.        
+reason could be that it is a very broad topic and specifying details can clear the fog.
 
 \begin{comment}
 \begin{enumerate}
@@ -60,12 +63,17 @@ reason could be that it is a very broad topic and specifying details can clear t
 
 \item[$\bullet$] Functional Logic Programming Languages
 
-\par Continuing from the previous section, narrowing down the search by considering only multi paradigm declarative languages namely, Functional 
-Logical programming languages. By doing so a large amount of information pops up, from articles that give brief description and mentions 
-\cite{website:wikiflpl, website:wikiflpllist} to the implementing techniques \cite{website:imlpementingflpl} which give a brief overview of the aim and 
-also the backdrop of publications. 
+  Continuing from the previous section, narrowing down the search by considering only multi paradigm declarative
+  languages namely, Functional Logical programming languages.
+  By doing so a large amount of information pops up, from articles that give brief description and mentions
+  \cite{website:wikiflpl, website:wikiflpllist} to the implementing techniques \cite{website:imlpementingflpl}
+  which give a brief overview of the aim and also the backdrop of publications.
 
-\par The jackpot however is the fact that there is a dedicated website \cite{website:funclogprog} for the history, research and development, existing languages, the literature, the contacts and everything else that one can think of for functional logic languages. As a matter of fact the holy grail of information is maintained by two of the most important people in the field Michael Hanus \cite{website:mhanus} and Sergio Antoy \cite{website:santoy}.      
+  The jackpot however is the fact that there is a dedicated website \cite{website:funclogprog} for the history,
+  research and development, existing languages, the literature, the contacts and everything else that one can think
+  of for functional logic languages.
+  As a matter of fact the holy grail of information is maintained by two of the most important people in the field
+  Michael Hanus \cite{website:mhanus} and Sergio Antoy \cite{website:santoy}.
 
 \begin{comment}
 \begin{enumerate}
@@ -100,14 +108,43 @@ There are a lot of people working on this but, I found a lot of papers of two of
 \section{Literature and Publications}
 \begin{description}
 \item[$\bullet$] Multi Paradigm Languages
-\par Possibly one of the most important works towards bringing programming styles together is the book by C.A.R. Hoare \cite{hoare1998unifying} which points out that among the large number of programming paradigms and/or theories the unification theory serves as a complementary rather than a replacement to relate the universe. As as always since we are talking about \progLang{Haskell} we have to include monads and unifying theories using monads \cite{gibbons2013unifying}.
+  Possibly one of the most important works towards bringing programming styles together is the book by C.A.R.
+  Hoare \cite{hoare1998unifying} which points out that among the large number of programming paradigms and/or
+  theories the unification theory serves as a complementary rather than a replacement to relate the universe.
+  As as always since we are talking about \progLang{Haskell} we have to include monads and unifying theories using
+  monads \cite{gibbons2013unifying}.
  
 
 \item[$\bullet$] Functional Logic Programming Languages
 
-\par A recent survey \cite{hanus2007multi} throws light on these hybrid languages. 
+A recent survey \cite{hanus2007multi} throws light on these hybrid languages. 
 
-\par One of the most prominent multi paradigm languages in \progLang{Haskell} is \progLang{Curry} \cite{antoy2010functional}. Th syntax is borrowed from the parent language and so are a lot of the features. Taking a recap, a functional programming language works on the notion of mathematical functions while a logic programming language is based on predicate logic. The strong points of \progLang{Curry} are that the features or basis of the language are general and are visible in a number of languages like \cite{website:toy}. The language can play with problems from both worlds. In a problem where there are no unknowns and/or variables the language behaves like a functional language which is pattern matching the rules and execute the respective bodies. In the case of missing information, it behaves like \progLang{Prolog}; a sub-expression \textit{e} is evaluated on the conditions that it should satisfy which constraint the possible values of \textit{e}. This brings us to the first important feature of functional logic languages \textit{narrowing}. The expressions contain \textit{free variables}; simply speaking incomplete information that needs to be \textit{unified} to a value depending on the constraints of the problem. The language introduces only a few new constructs to support non determinism and choice. Firstly, \textit{narrowing} ($\mathtt{=:=}$), which deals with the expressions and unknown values and binds them with appropriate values. The next one is the \textit{choice} operator ($\mathtt{?}$) for non-deterministic operations. Lastly, for unifying variables and values under some conditions, ($\mathtt{\&}$) operator has been provided to add constraints to the equation. Putting it all together, it gives us the feel of a logic language for something that looks very much like \progLang{Haskell}. Unification is like two way pattern matching and with a similar analogy \progLang{Curry} is a \progLang{Haskell} that works both ways and hence variables can be on either sides. Although the language can do a lot but gaps do exist such as the improvement of narrowing techniques.       
+One of the most prominent multi paradigm languages in \progLang{Haskell} is \progLang{Curry}
+\cite{antoy2010functional}.
+Th syntax is borrowed from the parent language and so are a lot of the features.
+Taking a recap, a functional programming language works on the notion of mathematical functions while a logic
+programming language is based on predicate logic.
+The strong points of \progLang{Curry} are that the features or basis of the language are general and are visible in
+a number of languages like \cite{website:toy}.
+The language can play with problems from both worlds.
+In a problem where there are no unknowns and/or variables the language behaves like a functional language which is
+pattern matching the rules and execute the respective bodies.
+In the case of missing information, it behaves like \progLang{Prolog}; a sub-expression \textit{e} is evaluated on
+the conditions that it should satisfy which constraint the possible values of \textit{e}.
+This brings us to the first important feature of functional logic languages \textit{narrowing}.
+The expressions contain \textit{free variables}; simply speaking incomplete information that needs to be
+\textit{unified} to a value depending on the constraints of the problem.
+The language introduces only a few new constructs to support non determinism and choice.
+Firstly, \textit{narrowing} ($\mathtt{=:=}$), which deals with the expressions and unknown values and binds them
+with appropriate values.
+The next one is the \textit{choice} operator ($\mathtt{?}$) for non-deterministic operations.
+Lastly, for unifying variables and values under some conditions, ($\mathtt{\&}$) operator has been provided to add
+constraints to the equation.
+Putting it all together, it gives us the feel of a logic language for something that looks very much like
+\progLang{Haskell}.
+Unification is like two way pattern matching and with a similar analogy \progLang{Curry} is a \progLang{Haskell}
+that works both ways and hence variables can be on either sides.
+Although the language can do a lot but gaps do exist such as the improvement of narrowing techniques.
  
  
 \end{description}

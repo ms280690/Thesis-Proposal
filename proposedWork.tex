@@ -7,83 +7,139 @@
 \chapter{Accomplished Work}\label{chap:proposedWork}
 %-----------------------------------------------------------------------------
 
+\textcolor{blue}{\textsl{I suspect that the title of this chapter needs to change.}}
+
 \section{What is this chapter about}
 
------------------------------------------------------------------------------
+\textcolor{blue}{\textsl{I need this information.
+    I do not know what you are trying to do here.
+}}
+
+%-----------------------------------------------------------------------------
+\noindent\rule{\textwidth}{0.5pt}
 
 
-\section{Current Work}
+\section{\protect{\yyy{Current Work}{Existing Work by Others}}}
 
-There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell} which are discussed below along with the 
-shortcomings.
+There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell}\yyy{}{\large,} which are
+discussed below\yyy{}{\large,} along with \yyy{the}{their} shortcomings.
 
 \begin{enumerate}
-\item Very few embedded implementations exist which offer a perspective into the job at hand. One of the earliest implementations 
-\cite{website:mini-prolog-hugs98} is for an older specification of \progLang{Haskell} called \progLang{Haskell 98} 
-\texttt{\bfseries{hugs}}. It is more of a proof of concept providing a mechanism to include variable search strategies in order to produce 
-a result. Another implementation \cite{website:takashi-workplace} based of it simplifies the notation to a list format. Nonetheless, both 
-implementations lack simplicity and support for basic \progLang{Prolog} features such as \textit{cuts, fails, assert} among others.   
+\item
+  Very few embedded implementations exist which offer a perspective into the job at hand.
+  One of the earliest implementations \cite{website:mini-prolog-hugs98} is for an older specification of
+  \progLang{Haskell} called \progLang{Haskell 98} \texttt{\bfseries{hugs}}.
+  It is more of a proof of concept providing a mechanism to include variable search strategies in order to produce
+  a result.
+  Another implementation \cite{website:takashi-workplace} based of it simplifies the notation to a list format.
+  Nonetheless, both implementations lack simplicity and support for basic \progLang{Prolog} features such as
+  \textit{cuts, fails, assert} among others.
 
 \begin{comment}
-\item Only two embeddings exist, one of them is old and made for \texttt{\bfseries{hugs}} a functional programming system based on the 
-\progLang{Haskell 98} specification. It is complex and also lacks a lot of \progLang{Prolog} like features including \textit{cuts, fails, 
-assert} among others. The second one is based off the first one to make it simple but it loses the variable search strategy support which 
-allows the programmer to choose the manner in which a solution is produced. 
+\item
+  Only two embeddings exist, one of them is old and made for \texttt{\bfseries{hugs}} a functional programming
+  system based on the \progLang{Haskell 98} specification.
+  It is complex and also lacks a lot of \progLang{Prolog} like features including \textit{cuts, fails, assert}
+  among others.
+  The second one is based off the first one to make it simple but it loses the variable search strategy support
+  which allows the programmer to choose the manner in which a solution is produced.
 \end{comment}
 
-\item The papers that try to take the above further are also few in number and do not have any implementations with the proposed 
-concepts. Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
+\item
+  The papers that try to take the above further are also few in number and do not have any implementations with the
+  proposed concepts.\endnote{%
+    Provide citations here.
+}
+  Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
 
-\item In the case of libraries, a few exist, most are old and are not currently maintained or updated. Many provide only a shell through which one has to do all the work, 
-which is synonymous with the embeddings mentioned above. Some are far more feature rich than others that is with some practical \progLang{Prolog} 
-concepts, but are not complete.
+\item
+  In the case of libraries, a few exist, most are old and are not currently maintained or updated.
+  Many provide only a shell through which one has to do all the work, which is synonymous with the embeddings
+  mentioned above.
+  Some are far more feature rich than others that is with some practical \progLang{Prolog} concepts, but are not
+  complete.
 
-\item Moreover, none of the above have full list support that exist in \progLang{Prolog}.
+\item
+  Moreover, none of the above have full list support that exist in \progLang{Prolog}.\endnote{%
+    What does this point mean?
+}
 \end{enumerate}
 
-\par And as far as the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an "add-on". A handful of crossover hybrid 
-languages based on \progLang{Haskell} exist, \progLang{Curry} \cite{website:curry} being the prominent one. Moving away from \progLang{Haskell} 
-and exploring other languages from different paradigms, a respectable number of crossover implementations exist but again most of them have faded out.   
+And as far as the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
+\yyy{"}{``}add-on\yyy{"}{''}.
+A handful of crossover hybrid languages based on \progLang{Haskell} exist, \progLang{Curry} \cite{website:curry}
+being the prominent one.\endnote{%
+  I think that this fits in with the discussion of \progLang{Scala} in the previous chapter.
+}
+Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
+crossover implementations exist but again most of them have faded out.
 
-\par As discussed in the sections above, either an embedding or an integration approach is taken up for programming languages to work together. 
-So, there is either a very shallow approach that does not utilize the constructs available in the host language and results in a mere translation of the 
-characteristics, or the other is a fairly complex process which results in tackling the conflicting nature of different programming paradigms and 
-languages, resulting in a toned-down  compromised language that takes advantages of neither paradigms. Mostly the trend is to build a library for 
-extension to replicate the features as an add on.       
+As discussed in the sections above, either an embedding or an integration approach is taken up for programming
+languages to work together.
+So, there is either a very shallow approach that does not utilize the constructs available in the host language and
+results in a mere translation of the characteristics, or the other is a fairly complex process which results in
+tackling the conflicting nature of different programming paradigms and languages, resulting in a toned-down
+compromised language that takes advantages of neither paradigms.
+Mostly the trend is to build a library for extension to replicate the features as an add on.
 
 \section{Contributions}
 
-Taking into consideration above, there is quite some room for improvement and additions. Moving onto what this thesis shall explore, first 
-thing's first a complete, fully functional library which comes close to a \progLang{Prolog} like language and has practical abilities to 
-carry out real-world tasks. They include predicates like \textit{cut, assert, fail, setOf, bagOf} among others. This would form the first 
-stage of the implementation. Secondly, exploring aspects such as \textit{assert} and database capabilities. A third question to address is 
-the accommodation of input and output, specifically dealing with the \textit{IO Monad} in \progLang{Haskell} with \progLang{Prolog} 
-\textit{IO}. Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be created. 
-Something like this is not by default in \progLang{Haskell}. Hence syntactic support for the same is the next question to address. 
-Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally. Lastly, how would 
-characteristics of hybrid languages fit into and play a role in an embedded setting.  
+Taking into consideration above, there is quite some room for improvement and additions.\endnote{%
+  This is a good bridging sentence, but should probably end the last section, rather than begin this one.
+}
+Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
+close to a \progLang{Prolog} like language and has practical abilities to carry out real-world tasks.
+They include predicates like \textit{cut, assert, fail, setOf, bagOf} among others.
+This would form\endnote{%
+  Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
+}
+the first stage of the implementation.
+Secondly, exploring aspects such as \textit{assert} and database capabilities.\endnote{%
+  Strike this?
+}
+A third question to address is the accommodation of input and output, specifically dealing with the \textit{IO
+  Monad} in \progLang{Haskell} with \progLang{Prolog} \textit{IO}.
+Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be
+created.
+Something like this is not by default in \progLang{Haskell}.
+Hence syntactic support for the same is the next question to address.
+Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally.
+Lastly, how would characteristics of hybrid languages fit into and play a role in an embedded setting.
 
 
 \section{Improved Contributions}
 \begin{enumerate}
-\item Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to \textit{open up} the language i.e. to
-include meta syntactic variables, adding custom quantifiers and logic. (\chapterReference{proto1}{Prototype 1}) provides a 
-methodology to convert a language whose recursive abstract syntax is represented by a tree into a non-recursive version whose 
-fixed point is isomorphically equivalent to the original type. One of the outcomes is a polymorphically typed embedded language within \progLang{Haskell}  
+\item
+  Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to
+  \textit{open up} the language\yyy{}{\large,} i.e.\yyy{}{\large,}
+  to include meta syntactic variables, \xxx{adding} custom quantifiers and logic.
+  (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
+  syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to
+  the original type.
+  One of the outcomes is a \yyy{}{producing a }polymorphically typed embedded language within \progLang{Haskell}\yyy{}{\Large.}
 
-To test it out we adopt the closed \progLang{Prolog} like language defined in \cite{prolog-lib} and open it up. And for 
-the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm implementation encapsulated into a 
-monad. 
+  To test it out we adopt the closed \progLang{Prolog} like language defined in \cite{prolog-lib} and open it up.
+  And for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
+  implementation encapsulated into a monad.
 
-\item (\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a query and a knowledge base. 
-The mechanism for the same is adopted from \cite{prolog-lib}. The embedded language is modified as per the procedure in 
-(\chapterReference{proto1}{Prototype 1}) and the monadic unification part is plugged into the existing architecture to demonstrate that it 
-is independent of the other components. Lastly the result is converted into the original language via a translate function.
+\item
+  (\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a
+  query and a knowledge base.
+  The mechanism for the same is adopted from \cite{prolog-lib}.
+  The embedded language is modified as per the procedure in (\chapterReference{proto1}{Prototype 1}) and the
+  monadic unification part is plugged into the existing architecture to demonstrate that it is independent of the
+  other components.
+  Lastly the result is converted into the original language via a translate function.
 
-\item (\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query resolver with multiple search strategies. 
+\item
+  (\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query
+  resolver with multiple search strategies.
 
-\item (\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract syntax of a DSL which when interpreted would produce output consisting of 
-a pure set of instructions irrespective of the nature of the construct. The effects are only produced only when the actions are executed.    
+\item
+  (\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract
+  syntax of a DSL which when interpreted would produce output consisting of a pure set of instructions irrespective
+  of the nature of the construct.
+  The effects are only produced only when the actions are executed.
 \end{enumerate}
 
 
@@ -91,7 +147,7 @@ a pure set of instructions irrespective of the nature of the construct. The effe
 \section{Thesis Contributions}
 
 \begin{enumerate}
-\item Prototype 1 does 
+\item Prototype 1 does
 flattening language
 opening up the language (binding monad)
 adding custom variables
@@ -102,7 +158,7 @@ You can make an Flatterm int
 
 but you cannot make term int
 
-adding quantifiers 
+adding quantifiers
 
 
 \item Prototype 2 does
@@ -114,7 +170,7 @@ variable search strategy
 what ever method you do for searching at the point of unification you can do it with our approach
 
 \item Prototype 4 does
-how can io be squeezed into this model where whenever the resolver encounters an io operation it generates a thunk (sort of unsolved 
+how can io be squeezed into this model where whenever the resolver encounters an io operation it generates a thunk (sort of unsolved
 statement) which when executed would result in a side effect but till that point every thing is pure
 
 \end{enumerate}
@@ -122,7 +178,7 @@ statement) which when executed would result in a side effect but till that point
 
 \section{What work was done in terms of points}
 \begin{enumerate}
-\item Literature review on eDSL's.  
+\item Literature review on eDSL's.
 
 \item Short survey on multi paradigm declarative languages.
 
@@ -136,33 +192,41 @@ statement) which when executed would result in a side effect but till that point
 
 \item Something to show it was modular and independent of the original grammar.
 
-\item Something to show that the unification part is independent of the search strategy and hence multiple ones can be used, possibly 
-simultaneously to find a solution.
+\item
+  Something to show that the unification part is independent of the search strategy and hence multiple ones can be
+  used, possibly simultaneously to find a solution.
 
-\item Creating a micro language to represent and encapsulate IO operation in an eDSL so that the it remains pure even after interpretation 
-and only produces side effects when the action is actually executed and hence in some way it can be controlled. 
+\item
+  Creating a micro language to represent and encapsulate IO operation in an eDSL so that the it remains pure even
+  after interpretation and only produces side effects when the action is actually executed and hence in some way it
+  can be controlled.
 
 \end{enumerate}
 
 %\texttt{\bfseries{write a paragraph}}
 \begin{comment}
 \begin{enumerate}
-\item Create a \textsc{Prolog} library which comes the closest to a complete \textsc{Prolog} like Language, not only the Declarative concepts but 
-also a lot of Practical concepts like cuts, assert, fail, setOf, bagOf among others.
+\item
+  Create a \textsc{Prolog} library which comes the closest to a complete \textsc{Prolog} like Language, not only
+  the Declarative concepts but also a lot of Practical concepts like cuts, assert, fail, setOf, bagOf among others.
 
-\item Do away with the shell approach. One must be able to write a program just the way one can write a \textsc{Haskell} program and the 
-goal is passed as a parameter to the main function and the result is achieved by running it. 
+\item
+  Do away with the shell approach.
+  One must be able to write a program just the way one can write a \textsc{Haskell} program and the goal is passed
+  as a parameter to the main function and the result is achieved by running it.
 
-\item Moreover, make an attempt to add some features which are related to Functional Logic Programming Languages, like narrowing 
-and residuation among others.      
+\item
+  Moreover, make an attempt to add some features which are related to Functional Logic Programming Languages, like
+  narrowing and residuation among others.
 
 \item Furthermore, adding or adjusting \textsc{Prolog} IO into the \textsc{Haskell} IO Monad.
 
-\item Translating a \textsc{Prolog} program into a \textsc{Haskell} program, for example two programs with same declarative meaning but different 
-computational complexities in \textsc{Prolog} translated into \textsc{Haskell}. (Something similar is there in a paper called Higher Order 
-Transformation of Logic Programs)
+\item
+  Translating a \textsc{Prolog} program into a \textsc{Haskell} program, for example two programs with same
+  declarative meaning but different computational complexities in \textsc{Prolog} translated into \textsc{Haskell}.
+  (Something similar is there in a paper called Higher Order Transformation of Logic Programs)
 
-\item Tackling Translation of Tail Recursion in \textsc{Prolog} Programs. 
+\item Tackling Translation of Tail Recursion in \textsc{Prolog} Programs.
 
 \item Able to recognize and work with all kinds of lists supported by \textsc{Prolog}.
 

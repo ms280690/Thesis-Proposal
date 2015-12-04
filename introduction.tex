@@ -18,9 +18,9 @@ This chapter introduces the scope of the thesis along with the preliminary argum
 
 \section{Beginnings}
 \begin{comment}
-Computers have become a part of everyone's life. From the ones in our pockets to the ones on desks or in our school bags, working or in fact living without 
-them is difficult if not impossible. All the more reason to know how to use one. Simply speaking just using a computer these days is not enough. To be able 
-to utilise their true potential, one must go deeper and communicate with them. This is where the art of programming steps in.     
+Computers have become a part of everyone's life. From the ones in our pockets to the ones on desks or in our school bags, working or in fact living without
+them is difficult if not impossible. All the more reason to know how to use one. Simply speaking just using a computer these days is not enough. To be able
+to utilise their true potential, one must go deeper and communicate with them. This is where the art of programming steps in.
 \end{comment}
 
 Programming has become an integral part of working and interacting with computers and day by day more and more complex
@@ -34,7 +34,7 @@ has never been more urgent.\endnote{%
 }
 \end{comment}
 
-A programming language must not only provide an easy to use environment but also adaptability towards the problem domain. 
+A programming language must not only provide an easy to use environment but also adaptability towards the problem domain.
 \begin{comment}
 The desirability of a programming language depends on a lot of factors such as the ease of use, the features and
 functionalities that it provides, adaptability and what sort of problems \yyy{can it}{it can} solve.
@@ -54,7 +54,7 @@ How does one choose which approach to adopt?
 Perhaps one does not need to choose!
 This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a Purely
 Functional Programming Language and \progLang{Prolog}, a Logical Programming Language so that one is not forced to
-choose. The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and a single 
+choose. The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and a single
 typed system.\endnote{%
   Say more here?
   This seems like a natural place to have more high-level comments on where the thesis is going.
@@ -81,7 +81,7 @@ Today the number of is in the thousands and counting.\endnote{%
 
 https://en.wikipedia.org/wiki/Timeline\_of\_programming\_languages
 
-http://www.thesoftwareguild.com/history-of-programming-languages/ 
+http://www.thesoftwareguild.com/history-of-programming-languages/
 }
 The successors attempt to introduce new concepts and features to simplify the process of coding a solution and assist
 the programmer by lessening the burden of carrying out standard tasks and procedures.
@@ -95,20 +95,20 @@ switch.\endnote{%
   I believe that you want to link this \P{} to the idea that embedded or merged languages are good, but I don't see
   where you do that.
 }
-One other approach would be to replicate target features exhibited by a language in the one that is present one to avoid the hassle of 
+One other approach would be to replicate target features exhibited by a language in the one that is present one to avoid the hassle of
 jumping between the two more commonly known as an embedded or a foreign function interface.
 
 \begin{comment}
-\par \progLang{Prolog} has a similar story. It was born in an era where procedural programming had made everyone notice their presence. Talking about 
-competition, it was against something radical; the \progLang{C} programming language. The languages \progLang{C} has influenced is off the chart and 
-so is the performance. It had paved the way for structured procedural programming and had given birth to the Unix operating system. Though the 
-original version of \progLang{Prolog} has given rise to a large number of different flavours but a few drawbacks remain through the bloodline and as a 
-result it did become the first choice. Some basic requirements such as modules are not provided by all compilers. To make it do real world stuff, a set of 
-practical features are pushed in now and then which results in the loss of the purely declarative charm. The problem is that \progLang{Prolog} is fading 
-away, \cite{website:prolog-steam,website:prolog-death,website:prolog-killer}, not many people use it and most of the times when it is used, the variant 
+\progLang{Prolog} has a similar story. It was born in an era where procedural programming had made everyone notice their presence. Talking about
+competition, it was against something radical; the \progLang{C} programming language. The languages \progLang{C} has influenced is off the chart and
+so is the performance. It had paved the way for structured procedural programming and had given birth to the Unix operating system. Though the
+original version of \progLang{Prolog} has given rise to a large number of different flavours but a few drawbacks remain through the bloodline and as a
+result it did become the first choice. Some basic requirements such as modules are not provided by all compilers. To make it do real world stuff, a set of
+practical features are pushed in now and then which results in the loss of the purely declarative charm. The problem is that \progLang{Prolog} is fading
+away, \cite{website:prolog-steam,website:prolog-death,website:prolog-killer}, not many people use it and most of the times when it is used, the variant
 is usually \textit{practical} \progLang{Prolog} and the area being academia. It is not used for building large programs \cite{wikiprolog,somogyi1995
-logic,website:prolog1000db}. But there are a lot of good things about \progLang{Prolog} that should not die away. Moreover, \progLang{Prolog} is ideal 
-for search problems. 
+logic,website:prolog1000db}. But there are a lot of good things about \progLang{Prolog} that should not die away. Moreover, \progLang{Prolog} is ideal
+for search problems.
 \end{comment}
 
 \progLang{Prolog} is a language that has a hard time being adopted.
@@ -126,7 +126,7 @@ However there are a lot of good things about Prolog: it is ideal for search prob
 strong underlying theory.
 It is a language that should not die away.
 
-So the question is how to have all the good qualities of \textsc{Prolog} without actually using \progLang{Prolog}?  
+So the question is how to have all the good qualities of \textsc{Prolog} without actually using \progLang{Prolog}?
 
 \yyy{Well o}{O}ne idea is to make \progLang{Prolog} an add-on to another language which is widely used and in demand.
 Here the choice is \progLang{Haskell}; as both the languages are declarative they share a common background which can
@@ -138,8 +138,10 @@ Approaching towards the solution can be complicated and tiresome, but the progra
 master key.\endnote{%
   The idea of this sentence is good, but the wording needs improvement.
 }%
-A general purpose language, as the name suggests provides a general set of tools to cover many problem domains. The downside is that such
-environments lack focus and approaching towards the solution can be complicated and tiresome.   
+A general purpose language, as the name suggests\yyy{}{\large ,} provides a general set of tools to cover many
+problem domains.
+The downside is that such environments lack focus and approaching towards the solution can be complicated and
+tiresome.
 
 
 Flipping the coin to the other side, we see, the more specific the language is to the problem domain, the easier it
@@ -157,31 +159,36 @@ on.\endnote{%
   Use ``must'' in place of ``have to'' where you can.
 }%
 
-Putting all of the above together, Domain Specific Languages are pretty good in doing what they are designed to do,
+Putting all of the above together, Domain Specific Languages\endnote{%
+  I have the feeling that you should introduce the concept of DSLs
+  slightly higher.
+}
+are pretty good in doing what they are designed to do,
 but nothing else, resulting in choosing a different language every time.
-On the other hand, a general purpose language can be used for solving a wide variety of problems but \yyy{many a times,}{often}
-the programmer ends up writing some code dictated by the language rather than the problem.
+On the other hand, a general purpose language can be used for solving a wide variety of problems but \yyy{many a
+  times,}{often} the programmer ends up writing some code dictated by the language rather than\yyy{}{ by} the
+problem.
 
-\par The solution, a programming language with a split personality, in our case, sometimes functional, sometimes logical and sometimes 
-both.\eref{not-a-sentence} 
-Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics. The ideal situation is a 
-language with a rich 
-feature set and the ability to mould itself according to the problem. A language with ability to take the appropriate skill set and present 
-it to the 
+The solution, a programming language with a split personality, in our case, sometimes functional, sometimes logical and sometimes
+both.\eref{not-a-sentence}
+Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics. The ideal situation is a
+language with a rich
+feature set and the ability to mould itself according to the problem. A language with ability to take the appropriate skill set and present
+it to the
 programmer, which will reduce the hassle of jumping between languages or forcibly trying to solve a problem according to a paradigm.\eref{not-a-sentence}
 
-\par The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be pushed to 
+The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be pushed to
 dawn the avatar of \progLang{Prolog}\xxx{ }?
 \yyy{}{This} is the million dollar question.\endnote{%
   ``To dawn the avatar''?  This is poetic.  Did you mean ``to don''?
 }
 
 The above\endnote{%
-  Say what ``the above'' is.  
-} will result in a set of characteristics which are from both the declarative paradigms. 
-%----------------------------------------------------------------------------------------------------------------------   
-   
-%The issue being discussed here is that often when a problem is to solved using a given language, it has to be moulded %according to the capability the 
+  Say what ``the above'' is.
+} will result in a set of characteristics which are from both the declarative paradigms.
+%----------------------------------------------------------------------------------------------------------------------
+
+%The issue being discussed here is that often when a problem is to solved using a given language, it has to be moulded %according to the capability the
 %language can provide.
 This can be achieved in two ways,
 \begin{description}
@@ -196,9 +203,11 @@ This can be achieved in two ways,
 
 \item [Paradigm Integration (\chapterReference{chap:multiparadigm}{Chapter 5}):]
 
-\par This approach goes much deeper as it does not involve a direct translation. An attempt is made by taking a particular characteristic of a language 
-and merging it with the characteristic of the host language in order to eliminate conflicts resulting in a multi paradigm language. It is more of weaving 
-the two languages into one tight package with the best of both and maybe even the worst of both.       
+  This approach goes much deeper as it does not involve a direct translation.
+  An attempt is made by taking a particular characteristic of a language and merging it with the characteristic of
+  the host language in order to eliminate conflicts resulting in a multi paradigm language.
+  It is more of weaving the two languages into one tight package with the best of both and maybe even the worst of
+  both.
 \end{description}
 
 
@@ -231,7 +240,7 @@ Paradigm Languages (Functional Logic Languages).
 Some of the indirectly related content \chapterReference{chap:relatedWork}{Chapter 6} and finishing off with the
 \chapterReference{chap:conclusion}{Chapter 7}, the expected outcomes.
 
-%\section{The Plan}	
+%\section{The Plan}
 
 \section{Chapter Recap\protect\yyy{}{itulation}}
 
