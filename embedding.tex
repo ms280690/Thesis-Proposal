@@ -91,9 +91,14 @@ enables encoding of search problems.
 As \progLang{Haskell} is relatively new in terms of being popular, its predecessors like \progLang{Scheme} have
 explored the territory of embedding  quite profoundly \cite{friedman05reasoned}, which aims at adding a few
 constructs to the language to bring together both styles of Declarative Programming and capture the essence of
-\progLang{Prolog}. Moreover, \progLang{Haskell} also claims for it to be suitable for basic Logic Programming
-naturally using the List Monad \cite{website:logicprogexamplehaskell}. A general out look towards implementing
-\progLang{Prolog} has also been discussed by \cite{krishnamurthi2007programming} to push the ideas forward.
+\progLang{Prolog}.
+Moreover, \progLang{Haskell} also claims for it to be suitable for basic Logic Programming naturally using the List
+Monad \cite{website:logicprogexamplehaskell}.
+A general out look towards implementing \progLang{Prolog} has also been discussed by
+\cite{krishnamurthi2007programming} to push the ideas forward.\endnote{%
+  This \P{} needs a lot of work.
+  I do not understand what you say the references say.
+}
 
 \begin{comment}
 All the more \textit{Prologish} things exist in Haskell, as mentioned alone it is not the only one if we consider it in the ''Scheme'' \cite{friedman05reasoned} of things and so is replication to other languages \cite{krishnamurthi2007programming}.
@@ -110,11 +115,19 @@ All the more \textit{Prologish} things exist in Haskell, as mentioned alone it i
 \end{comment}
 
 \section{Related Papers}
+\textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
 
-There is quite some literature that can be found and which consist of embedding detailed parts of Prolog features
-like basic constructs, search strategies and data types. One of the major works is covered by the subsection below
-consisting of a series of papers from Mike Spivey and Silvija Seres aimed at bring Haskell and Prolog closer to each
-other. The next subsection covers the literature based on the above with improvements and further additions.
+There is quite some literature\endnote{%
+  ``quite some literature''?
+  Perhaps ``the literature on \textsf{X} is abundant''?
+}
+that can be found and which consist of embedding detailed parts of Prolog features
+like basic constructs, search strategies and data types.
+One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
+Silvija Seres aimed at bring Haskell and Prolog closer to each other.
+The next subsection covers the literature based on the above with improvements and further additions.\endnote{%
+  Language names in this \P{} are not marked by \texttt{progLang}.
+}
 
 \begin{description}
 
@@ -166,7 +179,14 @@ other. The next subsection covers the literature based on the above with improve
 \begin{description}
 \item[$\bullet$]Prolog Libraries
 
-To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries. First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or \yyy{"}{``}mini Prolog\yyy{"}{''} as such with not much in it to be able to be uselul, \cite{hswip-lib} is all powerful but is an Foreign Function Interface so it is \yyy{"}{``}Prolog in Haskell\yyy{"}{''} but we need Prolog for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical Prolog. But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or no monadic support and an REPL without the ability to \yyy{"}{``}write a Prolog Program File\yyy{"}{''}.
+  To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries.
+  First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or
+  \yyy{"}{``}mini Prolog\yyy{"}{''} as such with not much in it to be able to be uselul, \cite{hswip-lib} is all
+  powerful but is an Foreign Function Interface so it is \yyy{"}{``}Prolog in Haskell\yyy{"}{''} but we need Prolog
+  for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual
+  practical Prolog.
+  But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor
+  or no monadic support and an REPL without the ability to \yyy{"}{``}write a Prolog Program File\yyy{"}{''}.
 
 \begin{comment}
 \begin{enumerate}
