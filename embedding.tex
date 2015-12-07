@@ -137,6 +137,7 @@ enables encoding of search problems.\endnote{%
 	\end{comment}
 
 \section{Related Books}
+\textcolor{blue}{Perhaps the section title should be ``Books related to embedding Programming Languges''.}
 
 As \progLang{Haskell} is relatively new in terms of being popular, its predecessors like \progLang{Scheme} have
 explored the territory of embedding  quite profoundly \cite{friedman05reasoned}, which aims at adding a few
@@ -181,7 +182,10 @@ The next subsection covers the literature based on the above with improvements a
 
 \begin{description}
 
-\item[$\bullet$] Papers from Mike Spivey and Silvija Seres
+\item[$\bullet$\endnote{%
+    Rather than a \texttt{description} environment with \texttt{\$bullet\$s}, use
+    \texttt{itemize}.
+}]  Papers from Mike Spivey and Silvija Seres
 
 
   The work presented in the series
@@ -199,7 +203,12 @@ The next subsection covers the literature based on the above with improvements a
   Though no implementation exists, the synthesis and transformation techniques for functional programs have been
   \textit{logicalised} and applied to \progLang{Prolog} programs.
   Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
-  problems at hand so as to accommodate and jump between search strategies.
+  problems at hand\endnote{%
+    What are ``the problems at hand''?
+}
+  so as to accommodate and jump between search strategies.\endnote{%
+    Remove the double ``so''.
+}
 
 
 \item[$\bullet$] Other works related or based on the above
@@ -213,9 +222,12 @@ The next subsection covers the literature based on the above with improvements a
   Though not very efficient nor practical the method aims at a more elegant translation of programs from one
   language to the other.
   While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
-  anything new rather doing something new with what is available.
+  anything new rather doing something new with what is available.\endnote{%
+    This is a sentence fragment.}
   Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
-  solutions are instances.
+  solutions are instances.\endnote{%
+    I do not understant the preceding sentence.
+  }
   \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
   use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state.
   The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
@@ -227,9 +239,18 @@ The next subsection covers the literature based on the above with improvements a
 
 \section{Related Libraries in Haskell}
 \begin{description}
-\item[$\bullet$]Prolog Libraries
+\item[$\bullet$]Prolog Libraries\endnote{%
+  See the preceding comments about using \texttt{itemize} rather than \texttt{description}.
+  Maybe these should be subsections.
+}
 
-  To replicate Prolog like capabilities Haskell seems to be already in the race with a host of related libraries.
+  To replicate Prolog like\endnote{%
+    ``Prolog like'' should be ``\progLang{Prolog}-like''.
+}
+  capabilities Haskell seems to be already in the race\endnote{%
+    Yet another metaphor whose meaning I do not understand in context.
+  }
+  with a host of related libraries.
   First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or
   \yyy{"}{``}mini Prolog\yyy{"}{''} as such with not much in it to be able to be uselul, \cite{hswip-lib} is all
   powerful but is an Foreign Function Interface so it is \yyy{"}{``}Prolog in Haskell\yyy{"}{''} but we need Prolog
@@ -251,12 +272,21 @@ The next subsection covers the literature based on the above with improvements a
 
 \item[$\bullet$]Logic Libraries
 
-The next category is about the logical aspects of Prolog, again a handful of libraries do exist and provide a part
-of the functionality which is related propositional logic and backtracking. \cite{logict-lib} is a
-continuation-based, backtracking, logic programming monad which sort of depicts Prolog's backtracking
-behaviour. Prolog is heavily based on formal logic, \cite{proplogic-lib} provides a powerful system for
-Propositional Logic. Others include small hybrid languages \cite{cflp-lib} and Parallelising Logic Programming
-and Tree Exploration \cite{logic-grows-on-trees-lib}.
+  The next category is about the logical aspects of Prolog, again a handful of libraries do exist and provide a
+  part of the functionality which is related\endnote{%
+    There seem to be words missing here.
+}
+  propositional logic and backtracking.
+  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which sort of depicts\endnote{%
+    Be more precise than ``sort of depicts''.
+}
+  Prolog's
+  backtracking behaviour.
+  Prolog is heavily based on formal logic, \cite{proplogic-lib} provides a powerful system for Propositional Logic.
+  Others include small hybrid languages \cite{cflp-lib} and Parallelising Logic Programming and Tree Exploration
+  \cite{logic-grows-on-trees-lib}.
+
+  \noindent {\color{blue}\rule{1\textwidth}{1pt} got to here\par \rule{1\textwidth}{1pt}\sloppy\par}
 
 \begin{comment}
 \begin{enumerate}
