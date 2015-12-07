@@ -35,24 +35,74 @@ One of the top discussions are in, Lambda the Ultimate, The Programming Language
 \cite{website:lambda-the-ultimate},  which lists a number of \progLang{Prolog} implementations in a variety of
 languages like \progLang{Lisp, Scheme, Scala, Java, Javascript}, \progLang{Racket} \cite{racklog} and so on.
 Moreover the discussion focusses on a lot of critical points that should be considered in a translation of
-\progLang{Prolog} to the host language regarding types and modules among others.
+\progLang{Prolog} to the host language regarding types and modules among others.\endnote{%
+  This sentence wanders on.
+  Cut at ``regarding'' and then write a second sentence, or reword.
+}
 
-One of the implementations discussed redirects us to one of the most earliest implementations of \progLang{Prolog}
-in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} \cite{website:mini-prolog-hugs98}.
-Although this implementation takes as reference the working of the \progLang{ Prolog} Engine and other details, it
-still is an unofficial implementation with almost no documentation, support  or ongoing development.
-Moreover, it comes with an option of three engines to play with but still lacks complete list support and a lot of
-practical features that \progLang{Prolog} has and this seems to be a common problem with the only other
+One of the implementations discussed redirects us to one of the \xxx{most} earliest implementations of \progLang{Prolog}
+in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} \cite{website:mini-prolog-hugs98}.\endnote{%
+  Reword.
+  I believe that the list of facts that you are trying to combine is:
+  \begin{compactitem}
+  \item
+    One of the implementations discussed on ``Lambda The Ultimate''
+    leads us something.
+  \item
+    \texttt{Mini Prolog} (\cite{website:mini-prolog-hugs98}) is 
+    one of the earliest implementations of \progLang{Prolog} in \progLang{Haskell}.
+  \item
+    \texttt{Mini Prolog} works with
+    \progLang{Hugs 98}, an early dialect of \progLang{Haskell}.
+  \end{compactitem}
+}
+Although this implementation takes as reference the working of the \progLang{ Prolog} Engine\endnote{%
+  What is the \progLang{ Prolog} Engine?
+}
+and other details, it
+still is an unofficial implementation\endnote{%
+  What does ``unofficial'' mean in this context?
+}
+with almost no documentation, support  or ongoing development.
+Moreover, it comes with an option of three engines to play
+with\yyy{}{\large,} but still lacks complete list support\endnote{%
+  What is list support?  What is complete list support?  You have not
+  defined either of these terms.
+}
+and a lot of 
+practical features that \progLang{Prolog} has\endnote{%
+  This sentence seems to be wandering on.  Split it here.
+}
+and this seems to be a common problem with the only other\endnote{%
+  The word ``common'' is fighting with ``only other''.
+}
 implementation that exists, \cite{website:takashi-workplace}.
 
 Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
-is far scarce than the leading languages of other paradigms.
-The purely declarative nature lacks basic requirements such as support for modules.
+is far scarce\endnote{%
+  ``far scarcer''?
+}
+than the leading languages of other paradigms.
+The purely declarative nature lacks basic requirements such as support for modules.\endnote{%
+  Do you mean that basic \progLang{Prolog} implementations lack modules;
+  or that \progLang{Prolog} lacks modules because it is purely
+  declarative; or \dots?
+}
 And then there is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
-family of Declarative Languages.
+family of Declarative Languages.\endnote{%
+  What does this sentence mean?
+  Are you suggesting that one of \progLang{Prolog}'s problems is that it is
+  competing with \progLang{Haskell}?
+  ``And then there is \dots'' is colloquial.
+  You might be able to use it for surprise value, but I would rather you use more academic sounding language like
+  ``There is also\dots''.
+}
 Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
-enables encoding of search problems.
+enables encoding of search problems.\endnote{%
+  I have lost track of the general argument here.
+  What is the unofficially published content saying about \progLang{Prolog} here?
+}
 
 \begin{comment}
 	\begin{enumerate}
