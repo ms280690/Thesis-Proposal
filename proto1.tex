@@ -22,8 +22,6 @@ This chapter discusses the aspects of opening a language while preserving the or
 \end{comment}
 
 This chapter demonstrates a ``fairly generic''\endnote{%
-  Use ``quote likes shown'', not "quotes like this".
-
   Really try to avoid hedging your bets with scare-quotes.
 }
 procedure of creating an open embedded domain specific language in \progLang{Haskell} along
@@ -32,17 +30,21 @@ whose unification procedure is carried out in a monad.
 
 
 \section{Components}
-There are four main components that we work with to develop a working implementation of embedded \progLang{Prolog} using the concepts
-mentioned above.
+There are four main components\endnote{%
+  The list of four components seems to be of different kinds of things.
+  \begin{compactitem}
+  \item Items 2 and 3 are libraries.
+  \item Item 4 is what you are building
+  \end{compactitem}
+  Do you see the circularity of describing the thing you are building as a component of itself?
+}
+that we work with to develop a working implementation of embedded \progLang{Prolog}
+using the concepts mentioned above.
 
 \begin{enumerate}
 \item \progLang{Prolog}
 
-The language itself has a number of sub components.\endnote{%
-  This is known as a comma splice.  You have a sentence before, and a
-  sentence after the comma.  Either use a semicolon, or write two
-  sentences.
-}
+The language itself has a number of sub components.
 The ones relevant to this thesis are,
 \begin{enumerate}
 \item Language, the syntax, semantics.
@@ -51,33 +53,35 @@ The ones relevant to this thesis are,
 
 \item Unification
 
-\item \progLang{Prolog} has to satisfy a list of goals while maintaining variable bindings and choice points. For a non empty list of
-list of goals, it looks through the knowledge base for matching rules and attempts at unifying the terms and repeats until all goals
-have been satisfied. If more than one option is available, they are recorded as choice points which are later used for
-backtracking and finding other possible solutions.\endnote{%
-  What does ``accomplish goals'' mean here?  Is this what
-  is called \Verb!getClauses! in \codeLibrary{prolog-0.2.1}\,?
-}
+\item
+  \progLang{Prolog} has to satisfy a list of goals while maintaining variable bindings and choice points.
+  For a non empty list of list of goals, it looks through the knowledge base for matching rules and attempts at
+  unifying the terms and repeats until all goals have been satisfied.
+  If more than one option is available, they are recorded as choice points which are later used for backtracking
+  and finding other possible solutions.
 
-\item And finally the query resolver which combines the unification and search strategy to return a result.
+\item
+  And finally the query resolver which combines the unification and search strategy to return a result.\endnote{%
+    Avoid starting sentences with ``And''---except where you want to be surprising.
+}
 \end{enumerate}
 
 \item \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}
 
-One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting point for the
-implementation providing certain components to exercise our approach. The main components of this library are adopted from
-\progLang{Prolog} and modified,
+  One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting
+  point for the implementation providing certain components to exercise our approach.
+  The main components of this library are adopted from \progLang{Prolog} and modified\yyy{,}{:}
 
 \begin{enumerate}
-\item Language, adopted from \progLang{Prolog} but trimmed down.
+\item \yyy{}{the} \yyy{L}{l}anguage, adopted from \progLang{Prolog} but trimmed down\yyy{.}{;}
 
-\item Database
+\item \yyy{D}{the d}atabase\yyy{}{;}\endnote{%
+  and so on.
+}
 
 \item Unifier
 
-\item Read-Eval-Print Loop(REPL)\endnote{%
-  Do not expect readers to know what a \textsf{REPL} is.
-}
+\item Read-Eval-Print Loop(REPL)
 
 \item Interpreter which consists of a parsing mechanism and resembles the query resolver.
 \end{enumerate}
@@ -119,8 +123,7 @@ The implementation consists of the following components,
 \item Compatibility with the unification library \cite{unification-fd-lib}
 
 \item Variable Bindings\endnote{%
-  What are your conventions for when you use capitals, and when not?
-  Not yet decided.
+  Decide on a convention for capitals.
 }
 
 \item Monadic Unification
@@ -133,8 +136,6 @@ Each of the components are discussed in the following sections.
 
 \section{How Prolog works}
 
-\textcolor{red}{Drop the ``?'' in the section title}
-
 To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
 
 \textcolor{red}{There's a sentence or more missing here. The sentence above leads up to expect a very
@@ -142,7 +143,11 @@ To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprol
   Below I would simplify, and just write ``\progLang{Prolog} has three types of terms:''.
 }
 
-As any other language we start with the syntax and semantics. We begin with the programming constructs of the language.
+As any other language\endnote{%
+  Clean up the sentence!
+  Do you mean ``As with any other language, we start with the syntax and semantics.''? 
+}
+we start with the syntax and semantics. We begin with the programming constructs of the language.
 
 Most \progLang{Prolog} distributions have three types of terms:
 \begin{enumerate}
@@ -153,9 +158,10 @@ Most \progLang{Prolog} distributions have three types of terms:
 \item Complex terms.
 \end{enumerate}
 
-Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting terms are equal.
+Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
+terms are equal.
 
-The possibilities could be,
+The possibilities \yyy{could be}{are},
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
   are the same atom, or the same number.
@@ -164,8 +170,10 @@ The possibilities could be,
 yes
 \end{minted}
 
-\item If \mSV{term1} is a variable and \mSV{term2} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2} . Similarly, if
-\mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2} unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both
+\item If \mSV{term1} is \yyy{a}{an uninstantiated} variable and \mSV{term2} is any type of term, then \mSV{term1}
+  and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2}\,.
+  Similarly, if \mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2}
+  unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
 variables, they’re both instantiated to each other, and we say that they share values.)
 \begin{minted}[linenos]{prolog}
 ?-  mia  =  X.
