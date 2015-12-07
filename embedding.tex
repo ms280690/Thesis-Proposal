@@ -158,63 +158,6 @@ other. The next subsection covers the literature based on the above with improve
   The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
   and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
 
-\begin{comment}
-  Taking the idea further, an attempt \cite{claessen2000typed} brings the \progLang{Haskell} type system to
-  \progLang{Prolog} resulting in something called typed logic variables.
-  The aim that has been stated is to embed a simple typed functional logic programming language giving
-  \progLang{Haskell} logic programming features.
-  Another important aspect that has been touched upon in the paper is the backtracking ability of
-  \progLang{Prolog} which has been replicated using a monad.
-  The implementation does not support practical predicates like cuts or assert or retract and so on leave alone the
-  details, for example if a predicate is half way through and then a new fact is asserted into the database, the
-  question arises is this change taken into account or the old database is used.
-  The main issues tackled here are how to translate \progLang{Prolog} predicates elegantly into \progLang{Haskell}
-  functions, addressed with ground terms and a \textit{Class} which can be used for unification; overloaded
-  according to the terms being unified.
-  The second issue is how to make the implementation more suited to the problem, for example \progLang{Prolog} by
-  default works on depth first search which may not be a fair strategy if the requirement is for visiting all
-  possible options to a certain degree of depth, in which case breadth first search is more suitable.
-  The idea is to make the language modifiable with respect to search strategies.
-  Though issues with efficiency in terms of syntax, the unification algorithm and also the lack of practical
-  features exist.
-
-  While some attempt at doing problems suitable for Prolog in Haskell \cite{erwig2004escape}.
-  The exercise subjects a set of students to solve a puzzle in \progLang{Prolog} and then in \progLang{Haskell} and
-  comparing the results and experiences.
-  It turns out that, after trying things out in \progLang{Prolog}, \progLang{Haskell} seems easier as the general
-  structure of a problem is expressed using a type class and then the procedure to find a solution is an instance.
-  The result being that the \progLang{Haskell} type system helps.
-
-  Another attempt \cite{spivey2000functional} looks at playing with data types used to implement Breadth First
-  Search in \progLang{Haskell}.
-  \progLang{Prolog} does a depth first search implicitly, so if it is to be replicated in \progLang{Haskell} it
-  will be forced to do it and hence it is an explicit behaviour.
-  As a lazy language, the host is capable of working with possibly infinite data structures and this where the
-  problem is as depth first search will end up going down one and only one branch.
-  So the other branches will never be explored so as to contribute to the solutions and hence better to do a depth
-  first search to make the procedure more fair by visiting several nodes at the same depth.
-  Rather than using \textit{lists} of \textit{streams}, a better solution is to use \textit{bags} implemented as
-  finite lists which  preserve the properties such as the associativity of join.
-  The idea being that the operators behave like $\vee$ and $\land$ of logic programming in terms of properties.
-  The category is of operators, while the initial object is the search tree and the morphisms being the different
-  search strategies.
-
-  A lot of the investigations above have been based of \cite{hinze1998prological} which tries to replicate
-  \progLang{Prolog}'s control operations in \progLang{Haskell}.
-  But as there are implications of the host language resulting in the loss of data base operations.
-  But having a global state using the \textit{State Monad} does not seem too difficult.
-  \textit{Monads} have usages which are internal; that is structuring programs and external; usages that is
-  extending the language.
-  The monads in this paper add \progLang{Prolog} like capabilities but do not extend the capabilities of
-  \progLang{Haskell} as such.
-  The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
-  and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
-  The aim here is to deal with the axiomatic details of the embedding.
-  There are monads for encapsulation, backtracking, exception handling and input and output along with their
-  respective transformers.
-  Although a set of axioms are provided which show a consistent behaviour but nothing in the lines of completeness
-  exists.
-\end{comment}
 
 \begin{comment}
 \begin{enumerate}
