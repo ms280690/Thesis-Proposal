@@ -138,189 +138,23 @@ Though no implementation exists, the synthesis and transformation techniques for
 Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
 problems at hand so as to accommodate and jump between search strategies.
 
-\begin{comment}
-\begin{enumerate}
+  The work presented in the series
+  \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
+  encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
+  Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
+  in other languages like \progLang{Scheme} and \progLang{Lisp}.
+  Although the host language has distinct characteristics such as lazy evaluation and strong type system the
+  proposed scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi
+  paradigm declarative language.
+  \progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
+  lazily depicting depth first search with support for different strategies and practical operators such as
+  \textit{cut} and \textit{fail} with higher order functions.
+  The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
+  Though no implementation exists, the synthesis and transformation techniques for functional programs have been
+  \textit{logicalised} and applied to \progLang{Prolog} programs.
+  Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
+  problems at hand so as to accommodate and jump between search strategies.
 
-\item Embedding Prolog in Haskell / Functional Reading of Logic Programs, \cite{spivey1999embedding}
-\\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres\_haskell99.pdf}
-
-\subparagraph{}
-This is one of the very first attempts to implement Prolog in Haskell, though there have been attempts and / or implementations of Prolog in other languages like Java(GNU Prolog, ISO Prolog as a library), Scheme(Scheme Prolog 1.2, pure Prolog interpreter, late 1980's early 1990's, 1993), Lisp (LogLisp 1982, QLog 1982) among others. There is a Hugs 98 implementation for Prolog(Mini Prolog, 1991-1996) for Hugs 1.3, but there has been no published work.
-
-\subparagraph{}
-The references of this paper fall into the following categories,
-\begin{description}
-\item[$\bullet$] Surveys / Papers / Thesis about merging Functional and Logical Paradigms, 1,2,5,10,14,16.
-
-\item[$\bullet$] Functional Logic Languages / Embeddings, 4,6,8,9,13,17,18.
-
-\item[$\bullet$] Monads and Lazy Evaluation, 12,22,23.
-
-\item[$\bullet$] Follow up / Related Papers, 19,20,21.
-
-\item[$\bullet$] Unclassified, 14,15.
-\end{description}
-
-
-\subparagraph{}
-The key points from the paper,
-\begin{enumerate}
-\item Prolog Predicate $\rightarrow$ Haskell Function.
-
-\item Work on lazy lists, take required input produce solutions and pass it as stream.
-
-\item Logical Operations $\rightarrow$ Haskell Operations implemented using concat and map.
-
-\item No extension, similar to LOGLisp(strict).
-
-\item Functions to support, unification, resolution and search.
-
-\item This is not a FLPL, it more of a functional language with logic capabilities, so there is no Narrowing or Residuation which are the key features of a FLPL.
-
-\item The principles are general for embedding.
-
-\item Only declarative features of Prolog have been implemented, no cut, assert, retract, fail(??).
-
-\item Minimalistic extension, only four functions, Disjunction \begin{math} \parallel \end{math}, Conjunction \&, Unify \begin{math}\doteq \end{math}, Existential Quantifier (exists).
-
-\item Converting a logical predicate into a pure Haskell function, bind local variables with explicit quantifiers and combining all clauses into a single equation.
-
-\item Algorithm,
-\\*		Input $\rightarrow$ Predicate + Knowledge Base
-\\*		Output $\rightarrow$ Stream of Answers
-\\* 		Done Lazily
-
-\item Prolog Terms are untyped.
-
-\item The function definitions are relatively simple and backtracking is naturally simulated as the evaluation is lazy.
-
-\item Support for BFS is included.
-
-\item The paper claims that other implementations or attempts like Babel, Kernel-LEAF, Escher, Curry \textbf{"lack semantic clarity"} (I would have to look into that).
-
-\item The paper also suggests that the level of abstraction is the same as other embeddings like LOGLisp and QLog.
-
-\item No implementation only Theoretical Model.
-
-\item No higher order functions and nested functions.
-\end{enumerate}
-
-\item Algebra of Logic Programming, \cite{seres1999algebra}
-\\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_iclp99.pdf}
-
-The previous paper on embedding a logical language in a functional language \cite{spivey1999embedding}, two computation models
-have been proposed, one which is very Prolog like and uses Depth First Search while the other uses Breath First Search. This
-paper proposes a General Model, independent of the search strategy and which produces the same results.
-
-The abstract semantics help in reasoning and specification while operational semantics help with execution of the program.
-
-??? Herbrand Model ???
-
-Logical Primitive == Haskell Function
-
-The paper claims that their \yyy{"}{``}Embedding Approach\yyy{"}{''} has the \yyy{"}{``}Full Power\yyy{"}{''} of \yyy{"}{``}Functional Logic Languages\yyy{"}{''}, ???????????
-
-All the same stuff about the embedding is mentioned again,
-
-DFS :
-Stream based approach produces results with definite order and multiplicity, just like Prolog. Though $\&$ and $\parallel$ do not have all the properties, they can be achieved by using Bags / Sets instead of Streams. The cost of then answers does not matter. The \textbf{not} and the \textbf{cut} operator has been included. The cut here is not exactly the \textit{cut} in Prolog??????????
-
-
-BFS:
-The cost of an answer is the number of resolution steps it takes. A matrix of bag of answers is returned, each bag contains the answers with the same costs. So each node in the tree gets pushed one level down, this \yyy{"}{``}root node\yyy{"}{''}. The functions are modified to work with \yyy{"}{``}Matrices\yyy{"}{''} instead of \yyy{"}{``}Streams\yyy{"}{''}.
-
-The differences and similarities are highlighted which help in reasoning about the their integration.
-
-General Model:
-Working with \yyy{"}{``}Forests\yyy{"}{''} rather than \yyy{"}{``}Streams\yyy{"}{''} / \yyy{"}{``}Matrices\yyy{"}{''}. They store the cost of each answer which is equivalent to the depth of the tree and then everything gets pushed one step down just like BFS.
-
-$\parallel$, \textit{not, false} remain the same,
-\\* true, $\&$, cut need to be modified to work with forests.
-
-The Monads for the same are,
-\begin{center}
-    \begin{tabular}{ | l | l | l | l | p{5cm} |}
-    \hline
-    Model & Map & Return & Join \\ \hline
- 	Stream (DFS) & map & [-] & concat \\ \hline
- 	Matrix (DFS) & mmap & [[-]] & shuffle \\ \hline
- 	Forest (General) & fmap & Leaf - & fgraft \\ \hline
-    \end{tabular}
-\end{center}
-
-Some other stuff is about Kleisli Composition, $join_{T}$ is replaced by $\star_{T}$ == true (return function).
-
-??????\textbf{Extended Monad}??????
-\\*(map, return / unit, ???, ???, Kleisli Composition)
-\\* $\textit{T}^{+}$ = ($\textit{map}_{T}$, $\textit{true}_{T}$, $\textit{false}_{T}$, $\parallel_{T}$, $\&_{T}$)
-\\* We will have $\textit{Stream}^{+}$, $\textit{Matrix}^{+}$, $\textit{Forest}^{+}$
-
-The above are the Objects of the Category, next the morphisms, specific functions are given which do the following,
-\\* DFS $\rightarrow$ Query $\rightarrow$ Stream
-\\* BFS $\rightarrow$ Query $\rightarrow$ Matrix
-\\* General $\rightarrow$ Query $\rightarrow$ Forest
-\\* Forest $\rightarrow$ dfs $\rightarrow$ Stream $\lor$ Forest $\rightarrow$ bfs $\rightarrow$ Matrix
-
-
-
-
-\item The Algebra of Logic Programming,
-\\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_thesis.pdf}
-
-
-
-
-
-\item Optimisation Problems in Logic Programming : An Algebraic Approach,
-\\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_lpse00.pdf}
-Not related to the topic.
-
-
-\item Higher Order Transformation of Logic Programs,
-\\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_lopstr00.pdf}
-\\*This paper mainly talks about the \yyy{"}{``}compositional approach\yyy{"}{''} to design algorithms in functional programming languages which can be extended to logical programming languages. The idea is to develop a general technique for developing efficient predicates. The transformational technique is the rules and strategies approach for logical programming from another paper,
-\begin{center}
-    \begin{tabular}{ | l | l | p{5cm} |}
-    \hline
-    Rules(Performing Operations) & Strategies(Meta Rules / Sequencing) \\ \hline
-     Unfold Clause Definitions & Goal Tupling\\ \hline
-     Create Clause Definitions & Goal Generalisation\\ \hline
-     Delete Clause Definitions & Unnecessary Variable Elimination \\  \hline
-     Re-arrange Clause Definitions & Predicate Fusion\\  \hline
-    \end{tabular}
-\end{center}
-The above gives a compositional approach to transform logical programs ????
-\\*Only generalisation and tupling are required to derive Herbrand Model of the two programs?????
-\\* Standard dfs approach does not give any clear measure of computational complexity.
-\\* The Algebra of Functional Programs says that the functions \textit{foldl} and \textit{foldr} give a general transformation strategy, i.e. with higher order functions. This paper takes the above results and tries to apply it to Logic Programming by translating Prolog programs into Haskell programs which helps in \yyy{"}{``}Reasoning\yyy{"}{''} and \yyy{"}{``}Higher Order Predicates can  be implemented as Higher Order Functions\yyy{"}{''}. Moreover with Higher Order Functions we do not need Higher Order Unification. With all of the stuff from \cite{spivey1999embedding}, and the proof of uniqueness of fixed points ???? in
-\cite{seres2001algebra} ???.
-
-The paper gives two examples of a program with two variants differing in complexity, but are proved to be \yyy{"}{``}equal\yyy{"}{''}.
-
-Bird and de Moor provide synthesis and transformation techniques for functional programs which are \yyy{"}{``}logicalized\yyy{"}{''} in the paper.
-
-They say the future is to extend and apply the techniques to \yyy{"}{``}constraint programming\yyy{"}{''}.
-
-and also
-
-\yyy{"}{``}Cross Fertilised\yyy{"}{''} Program Transformation Techniques for both the Declarative Paradigms ???
-
-
-
-\item The Algebra of Searching, \cite{spivey1999algebra}
-\\* \url{http://spivey.oriel.ox.ac.uk/mike/silvija/seres_carh99.pdf}
-Looking at a program declaratively, reveals the Logic while the procedural reading provides the Control Information. A Prolog program can be executed using different search strategies, so there should be some logic which takes into account execution / control information.
-
-Logic Programs are semantically composed of $\cap$ and $\vee$.
-
-?????? \textbf{The main advantage of \yyy{"}{``}shallow\yyy{"}{''} embedding of Prolog in a Lazy Functional Programming Language over a \yyy{"}{``}deep\yyy{"}{''} embedding i.e. an interpreter that treats logic programs as syntactic objects} ?????
-
-Some more same stuff about DFS ............... again, like it can get stuck in a infinite branch of a program.
-
-Some stuff about search trees,
-
-\end{enumerate}
-\end{comment}
 
 \item[$\bullet$] Other works related or based on the above
 
