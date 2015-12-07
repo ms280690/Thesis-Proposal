@@ -7,7 +7,7 @@
 
 \section{About this chapter}
 This chapter attempts to infuse the generic methodology from \ref{proto1} in a current \progLang{Prolog} implementation \cite{prolog-lib}
-and make the unification \yyy{"}{``}monadic\yyy{"}{''}.
+and make the unification ``monadic''.
 
 \section{How prolog-0.2.0.1 works}
 
@@ -42,7 +42,7 @@ type Program      = [Clause]
 
 From the Figure~\ref{tab:currlangimpl} we will focus on the \textit{Term} since the others just add wrappers around expressions which can
 be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct
-\progLang{Prolog} \yyy{"}{``}terms\yyy{"}{''} which are of a \yyy{"}{``}single type\yyy{"}{''}.
+\progLang{Prolog} ``terms'' which are of a ``single type''.
 
 
 The implementation consists of components that one would find in a Language Processing System \ref{fig:A language-processing system},
@@ -107,12 +107,63 @@ newtype Prolog = P (Fix FTS) deriving (Eq, Show, Ord, Typeable)
 
 unP :: Prolog -> Fix FTS
 unP (P x) = x
+
+instance Functor (FTS) where
+  fmap              = T.fmapDefault
+
+instance Foldable (FTS) where
+  foldMap             = T.foldMapDefault
+
+instance Traversable (FTS) where
+    traverse f (FS atom xs)      =   FS atom <$> sequenceA (Prelude.map f xs)
+    traverse _ (FV v)          =   pure (FV v)
+    traverse _ FW         =   pure (FW)
+    traverse _ (FC i)          =   pure (FC i)
+
+instance Unifiable (FTS) where
+  zipMatch (FS al ls) (FS ar rs) = 
+    if (al == ar) && (length ls == length rs) 
+      then FS al <$> pairWith (\l r -> Right (l,r)) ls rs     
+      else Nothing
+  zipMatch FW _ = Just FW
+  zipMatch _ FW = Just FW
+  zipMatch (FC i1) (FC i2) = if (i1 == i2) 
+    then Just (FC i1) 
+    else Nothing
+
+instance Applicative (FTS) where
+  pure x                  =   FS "" [x] 
+  _         <*>   FW    =   FW
+  _       <*>   (FC i)     =   FC i
+  _       <*>   (FV v)     = (FV v)
+  (FS a fs) <*> (FS b xs)   = FS (a ++ b) [f x | f <- fs, x <- xs]
+
 \end{minted}
 \caption{Flattened (non-recursive) grammar}
 \label{tab:flatgrp0201}
 \end{figure}
 
-The current unification uses basic pattern matching to unify the terms 
+\clearpage
+
+The current unification uses basic pattern matching to unify the terms. 
+
+The process returns a Unifier,
+\begin{figure}[h]
+\begin{minted}[linenos]{haskell}
+type Unifier      = [Substitution]
+type Substitution = (VariableName, Term)
+\end{minted}
+\caption{prolog-0.2.0.1 Unifier}
+\label{tab:prlg0201unifier}
+\end{figure}
+Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
+unification library \cite{prolog-lib}.
+
+\clearpage
+
+Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}. Each language expression is matched based on its 
+structure.
+  
 \begin{figure}[h]
 \begin{minted}[linenos]{haskell}
 unify, unify_with_occurs_check :: MonadPlus m => Term -> Term
@@ -160,8 +211,11 @@ unifyList unify ((x,y):xys) = do
    return (u++u')
 \end{minted} 
 \caption{prolog-0.2.0.1 Unification}
-\label{tab:prlg0201unif}
+\label{tab:prlg0201unification}
 \end{figure}
+
+The issue with the current appraoch is the rigidity of the procedure. Any language modification will cause a ripple effect across the 
+system. As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation as well.
 
 \clearpage
 \section{Modifications}
@@ -212,6 +266,15 @@ instance Applicative (FTS) where
 \end{minted}
 
 Aditionally helper functions for converting expressions between the two domains and translation to \textit{UTerm}.
+
+To solve the issue of infinitely deep language expressions, we find the fixed point of the expression. The unification function provided by 
+\cite{prolog-lib} is not very \progLang{Prolog} like in nature and certain adjustments need to be made. 
+\begin{enumerate}
+\item Extracting variable and creating dictionaries.
+
+\item Converting to UTerms and back
+\end{enumerate}
+
 \begin{minted}[linenos]{haskell}
 
 termFlattener :: Term -> Fix FTS
