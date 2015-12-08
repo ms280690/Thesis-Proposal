@@ -7,8 +7,6 @@
 %
 \documentclass[12pt]{unbcthesis}
 
-% This is nice for source code listings
-% \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{comment}
 \usepackage{subfiles}
@@ -16,7 +14,6 @@
 \usepackage{color}
 \usepackage[htt]{hyphenat}
 \usepackage{hyperref}      
-\usepackage{listing}
 \usepackage{graphicx}
 \usepackage{minted}
 \usepackage{booktabs}
@@ -24,6 +21,12 @@
 \usepackage{etoolbox}
 \usepackage{amssymb}
 \usepackage{tcolorbox}
+%% added dgc 2015-12-07
+\usepackage{float}
+%% added dgc 2015-12-07
+\floatstyle{ruled}%
+\floatname{code-list}{Listing}%
+\newfloat{code-list}{tp}{lis}[chapter]%
 
 \usepackage{amsthm}
 \usepackage[pagewise,right]{lineno}
@@ -160,9 +163,11 @@
       \input{abstract}%
       \unbctableofcontents
       \newpage
-      \listoftables
+      \unbclistoftables
       \newpage
-      \listoffigures
+      \unbclistoffigures
+      \newpage
+      \unbclistofcode
       \newpage
       % Generate the abstract
     \end{frontmatter}
