@@ -199,7 +199,7 @@ quasi-quoter comes into the picture.
 Template \progLang{Haskell} provides the facilities mentioned above.
 For example, consider the code in Figure~\ref{fig:append-prolog}
 in \progLang{Prolog} to append two lists,
-\begin{figure}[h]
+\begin{code-list}[h]
 \begin{minted}[linenos,frame=lines]{prolog}
 append([], X, X).
 append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
@@ -207,7 +207,7 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \vspace*{-0.8\baselineskip}
 \caption{Code to ``append'' in \protect\progLang{Prolog}.}
 \label{fig:append-prolog}
-\end{figure}
+\end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
 The second predicate matches the head of the first and the resulting lists and then recurs on the tails.
 The same in \progLang{Haskell},\endnote{%

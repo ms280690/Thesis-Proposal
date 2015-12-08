@@ -291,7 +291,7 @@ predicates, clauses etc.), don't cares, cuts, variables and so on.\endnote{%
 Consider the language {in Figure~\ref{tab:closed-terms}} which has been adopted from
 \cite{prolog-lib}.
 
-\begin{figure}
+\begin{code-list}
 \begin{minted}[linenos]{haskell}
   data VariableName = VariableName Int String
   deriving (Eq, Data, Typeable, Ord)
@@ -315,7 +315,7 @@ Consider the language {in Figure~\ref{tab:closed-terms}} which has been adopted 
 \end{minted}
   \caption{A classic recursive grammar}
   \label{tab:closed-terms}
-\end{figure}
+\end{code-list}
 
 Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped
 / singly typed,\par
@@ -366,7 +366,7 @@ data type is replaced by two related data types.
 I do not know what I was thinking
 }
 Consider the code in Figure~\ref{tab:non-recurse}
-\begin{figure}
+\begin{code-list}
   \begin{minted}[gobble=3,linenos]{haskell}
     data FlatTerm a = Struct Atom [a]
                     | Var VariableName
@@ -376,7 +376,7 @@ Consider the code in Figure~\ref{tab:non-recurse}
   \end{minted}
   \caption{A flattened (non-recursive) grammar}
   \label{tab:non-recurse}
-\end{figure}
+\end{code-list}
 
 One result of the approach is that the non-recursive type
 \texttt{FlatTerm} is modular and generic as the structure
@@ -480,7 +480,7 @@ the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
 \item Manually modifying the structure of the language, as shown in Figure~\ref{tab:man-enhan-gram}
-  \begin{figure}
+  \begin{code-list}
     \begin{minted}[linenos,gobble=5]{haskell}
       type Atom            = String
 
@@ -497,7 +497,7 @@ the scenario where the language needs to accommodate additional type of terms,
     \end{minted}
     \caption{A manually enhanced recursive grammar}
     \label{tab:man-enhan-gram}
-  \end{figure}
+  \end{code-list}
 
 This would then trigger a ripple effect throughout the architecture because accommodations need to be made for the new functionality.
 
@@ -526,7 +526,7 @@ functionality.
 Why not continue the example that you started in Figure~\ref{tab:man-enhan-gram}?
 That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
-\begin{figure}[h]
+\begin{code-list}[h]
   \rule{0.98\textwidth}{0.3pt}
   \begin{minted}[linenos,gobble=2]{haskell}
     data Extended f  = New_Constructor_1 ...
@@ -536,7 +536,7 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
   \caption{garfunkle}
   \label{tab:garfunkle}
   \rule{0.98\textwidth}{0.3pt}
-\end{figure}
+\end{code-list}
 
 \noindent\textcolor{blue}{\rule{\0.95\textwidth}{0.25pt}}
 %---------------------------------------------------------------------%%
@@ -600,7 +600,7 @@ We create the necessary instances\endnote{%
   I agree, I think I just created one for the purpose of the diagram.
 }
 as shown in Figure~\ref{tab:flat-term-class-inst}.
-\begin{figure}
+\begin{code-list}
   \begin{minted}[linenos,gobble=4]{haskell}
     instance Functor (FlatTerm) where
       fmap = T.fmapDefault
@@ -625,7 +625,7 @@ as shown in Figure~\ref{tab:flat-term-class-inst}.
   \end{minted}
   \caption{FlatTerm class instances}
   \label{tab:flat-term-class-inst}
-\end{figure}
+\end{code-list}
 
 The above lay the foundation to work with the library.
 Coming back to the library, the language must have the \Verb!Unifiable! instance.
@@ -639,7 +639,7 @@ Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then w
 the recursive ADT, so too we only need to specify one level of the unification (i.e., \Verb!zipMatch!) and then we can use
 the library's operators to perform the recursive unification, subsumption.
 This is shown in Figure~\ref{tab:zipMatch}.
-\begin{figure}
+\begin{code-list}
   \begin{minted}[linenos]{haskell}
     instance Unifiable (FlatTerm) where
        zipMatch (Struct al ls) (Struct ar rs) =
@@ -656,7 +656,7 @@ This is shown in Figure~\ref{tab:zipMatch}.
   \vspace*{-0.5\baselineskip}
   \caption{FlatTerm instance of zipMatch}
   \label{tab:zipMatch}
-\end{figure}
+\end{code-list}
 
 \paragraph{Logic Variables}
 Unification involves side effects of binding logic variables to terms. To allow and keep track of these effects we use the Binding Monad
@@ -695,7 +695,7 @@ For our language expressions to be unifiable we must deal with the variables in 
 variables and then convert them into a dictionary consisting of a free
 variable for each language variable as shown in Figure~\ref{tab:varsToDictM}.
 
-\begin{figure}
+\begin{code-list}
   \begin{minted}[linenos,gobble=2]{haskell}
   variableExtractor :: Fix FlatTerm -> [Fix FlatTerm]
   variableExtractor (Fix x) = case x of
@@ -725,12 +725,12 @@ variable for each language variable as shown in Figure~\ref{tab:varsToDictM}.
   \vspace*{-1.0\baselineskip}
   \caption{Creating a variable dictionary}
   \label{tab:varsToDictM}
-\end{figure}
+\end{code-list}
 A language to STVar dictionary is only one part of the unification procedure, the terms themselves should be made
 compatible for the in built unify procedure to perform look ups for the variables in them.
 The dictionary along with the fixed point version flattened of the term, as shown in Figure~\ref{tab:to-UTerm}.
 %
-\begin{figure}
+\begin{code-list}
   \begin{minted}[linenos,gobble=2]{haskell}
   uTermify
     :: Map VariableName (ST.STVar s (FlatTerm))
@@ -758,11 +758,11 @@ The dictionary along with the fixed point version flattened of the term, as show
   \end{minted}
   \caption{Conversion to UTerm}
   \label{tab:to-UTerm}
-\end{figure}
+\end{code-list}
 %
 and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 %
-\begin{figure}
+\begin{code-list}
   \begin{minted}[linenos,gobble=2]{haskell}
   vTermify :: Map Int VariableName ->
               UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) ->
@@ -787,12 +787,12 @@ and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
   \end{minted}
   \caption{Conversion from UTerm}
   \label{tab:from-UTerm}
-\end{figure}
+\end{code-list}
 
 \clearpage
 The variable dictionaries and UTermified language expressions are unified in the binding monad as shown in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
 %
-\begin{figure}
+\begin{code-list}
 \begin{minted}[linenos]{haskell}
   monadicUnification ::
   (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
@@ -834,13 +834,13 @@ goUnify test = ST.runSTBinding $ do
   \vspace*{-1.0\baselineskip}
   \caption{Driver code}
   \label{tab:unif-driver}
-\end{figure}
+\end{code-list}
 
 
 The final reconversion to return a list of substitutions,
   called \texttt{f1} in Figure~\ref{tab:unif-driver}, is shown in
   Figure~\ref{tab:vars-extract}.
-\begin{figure}
+\begin{code-list}
   \begin{minted}[linenos,gobble=2]{haskell}
   f1 ::
     (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
@@ -859,7 +859,7 @@ The final reconversion to return a list of substitutions,
   \vspace*{-1.0\baselineskip}
   \caption{Variable substitution list extraction}
   \label{tab:vars-extract}
-\end{figure}
+\end{code-list}
 
 \begin{comment}
 
@@ -981,7 +981,7 @@ asymptotically slow since it can cause the same subterm to be traversed multiple
 
 \item Translation stuff
 
-\begin{figure}
+\begin{code-list}
 \begin{minted}[linenos,frame=single]{haskell}
 monadicUnification :: (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s)) => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm) ->
   ErrorT (UT.UFailure (FlatTerm) (ST.STVar s (FlatTerm)))
@@ -1030,7 +1030,7 @@ f1 dict = do
   \vspace*{-1.0\baselineskip}
   \caption{A sample Minted figure}
   \label{fig:sample}
-\end{figure}
+\end{code-list}
 
 \end{enumerate}
 \end{comment}

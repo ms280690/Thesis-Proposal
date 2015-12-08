@@ -199,6 +199,12 @@
 % of Graduate Programs.
 %
 
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.8em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
+\renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.8em}}
+\let\l@table\l@figure
+
 \newcommand{\unbctableofcontents}{
   \renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}%
   \addcontentsline{toc}{chapter}{Table of Contents}%
@@ -215,7 +221,9 @@
 \newcommand{\unbclistoftables}{
   \renewcommand{\listtablename}{\center{\small LIST OF TABLES}}%
   \addcontentsline{toc}{chapter}{List of Tables}%
+  \begin{singlespacing}
   \listoftables
+  \end{singlespacing}
 }
 
 
@@ -227,7 +235,16 @@
 \newcommand{\unbclistoffigures}{
   \renewcommand{\listfigurename}{\center{\small LIST OF FIGURES}}%
   \addcontentsline{toc}{chapter}{List of Figures}%
+  \begin{singlespacing}
   \listoffigures
+  \end{singlespacing}
+}
+
+\newcommand{\unbclistofcode}{
+  \addcontentsline{toc}{chapter}{List of Code Listings}%
+  \begin{singlespacing}
+  \listof{code-list}{\center{\small LIST OF CODE LISTINGS}}
+  \end{singlespacing}
 }
 
 % The following commands are stolen from the ClemsonProposal.cls

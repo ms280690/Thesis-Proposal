@@ -15,7 +15,7 @@ As described in the previous chapter about extending languages to incorporate fu
 eDSL in \cite{prolog-lib}.
 
 The original abstract syntax used by the library,
-\begin{figure}[h]
+\begin{code-list}[h]
 \begin{minted}[linenos]{haskell}
 
 data VariableName = VariableName Int String
@@ -38,7 +38,7 @@ type Program      = [Clause]
 \end{minted}
 \caption{Current Language Implementation}
 \label{tab:currlangimpl}
-\end{figure}
+\end{code-list}
 
 From the Figure~\ref{tab:currlangimpl} we will focus on the \textit{Term} since the others just add wrappers around expressions which can
 be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct
@@ -98,7 +98,7 @@ We do complete \progLang{Prolog} query resolution like stuff.
 Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent grammar described in 
 Figure~\ref{tab:flatgrp0201}
 
-\begin{figure}[h]
+\begin{code-list}[h]
 \begin{minted}[linenos]{haskell}
 data FTS a = FS Atom [a] | FV VariableName | FW | FC Int
                           deriving (Show, Eq, Typeable, Ord)
@@ -141,21 +141,21 @@ instance Applicative (FTS) where
 \end{minted}
 \caption{Flattened (non-recursive) grammar}
 \label{tab:flatgrp0201}
-\end{figure}
+\end{code-list}
 
 \clearpage
 
 The current unification uses basic pattern matching to unify the terms. 
 
 The process returns a Unifier,
-\begin{figure}[h]
+\begin{code-list}[h]
 \begin{minted}[linenos]{haskell}
 type Unifier      = [Substitution]
 type Substitution = (VariableName, Term)
 \end{minted}
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
-\end{figure}
+\end{code-list}
 Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
 unification library \cite{prolog-lib}.
 
@@ -164,7 +164,7 @@ unification library \cite{prolog-lib}.
 Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}. Each language expression is matched based on its 
 structure.
   
-\begin{figure}[h]
+\begin{code-list}[h]
 \begin{minted}[linenos]{haskell}
 unify, unify_with_occurs_check :: MonadPlus m => Term -> Term
 -> m Unifier
@@ -212,7 +212,7 @@ unifyList unify ((x,y):xys) = do
 \end{minted} 
 \caption{prolog-0.2.0.1 Unification}
 \label{tab:prlg0201unification}
-\end{figure}
+\end{code-list}
 
 The issue with the current appraoch is the rigidity of the procedure. Any language modification will cause a ripple effect across the 
 system. As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation as well.
