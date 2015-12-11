@@ -156,6 +156,9 @@ type Substitution = (VariableName, Term)
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
 \end{code-list}
+
+
+
 Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
 unification library \cite{prolog-lib}.
 
@@ -202,7 +205,7 @@ same :: Eq b => (a -> b) -> a -> a -> Bool
 same f x y = f x == f y
 
 -- Match the elements of each of the tuples in the list.
-unifyList :: Monad m => (Term -> Term -> m Unifier) ->
+unifyList :: Monad m => (Term -> Term -> m Unifier) ->-
 [(Term, Term)] -> m Unifier
 unifyList _ [] = return []
 unifyList unify ((x,y):xys) = do

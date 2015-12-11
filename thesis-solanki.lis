@@ -1,0 +1,18 @@
+\contentsline {code-list}{\numberline {2.1}{\ignorespaces Code to ``append'' in \progLang {Prolog}.}}{10}{code-list.2.1}
+\contentsline {code-list}{\numberline {11.1}{\ignorespaces A classic recursive grammar}}{56}{code-list.11.1}
+\contentsline {code-list}{\numberline {11.2}{\ignorespaces A flattened (non-recursive) grammar}}{57}{code-list.11.2}
+\contentsline {code-list}{\numberline {11.3}{\ignorespaces A manually enhanced recursive grammar}}{59}{code-list.11.3}
+\contentsline {code-list}{\numberline {11.4}{\ignorespaces garfunkle}}{60}{code-list.11.4}
+\contentsline {code-list}{\numberline {11.5}{\ignorespaces FlatTerm class instances}}{63}{code-list.11.5}
+\contentsline {code-list}{\numberline {11.6}{\ignorespaces FlatTerm instance of zipMatch}}{64}{code-list.11.6}
+\contentsline {code-list}{\numberline {11.7}{\ignorespaces Creating a variable dictionary}}{65}{code-list.11.7}
+\contentsline {code-list}{\numberline {11.8}{\ignorespaces Conversion to UTerm}}{66}{code-list.11.8}
+\contentsline {code-list}{\numberline {11.9}{\ignorespaces Conversion from UTerm}}{67}{code-list.11.9}
+\contentsline {code-list}{\numberline {11.10}{\ignorespaces Unification code}}{69}{code-list.11.10}
+\contentsline {code-list}{\numberline {11.11}{\ignorespaces Driver code}}{69}{code-list.11.11}
+\contentsline {code-list}{\numberline {11.12}{\ignorespaces Variable substitution list extraction}}{70}{code-list.11.12}
+\contentsline {code-list}{\numberline {12.1}{\ignorespaces Current Language Implementation}}{76}{code-list.12.1}
+\contentsline {code-list}{\numberline {12.2}{\ignorespaces Flattened (non-recursive) grammar}}{80}{code-list.12.2}
+\contentsline {code-list}{\numberline {12.3}{\ignorespaces prolog-0.2.0.1 Unifier}}{81}{code-list.12.3}
+\contentsline {code-list}{\numberline {12.4}{\ignorespaces prolog-0.2.0.1 Unification}}{83}{code-list.12.4}
+\contentsline {code-list}{\numberline {19.1}{\ignorespaces A sample Minted figure}}{144}{code-list.19.1}
