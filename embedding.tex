@@ -283,17 +283,34 @@ $\bullet$\endnote{%
 }
   Prolog's
   backtracking behaviour.
-  Prolog is heavily based on formal logic, \cite{proplogic-lib} provides a powerful system for Propositional Logic.
-  Others include small hybrid languages \cite{cflp-lib} and Parallelising Logic Programming and Tree Exploration
+  Prolog is heavily based on formal logic,\endnote{%
+    comma splice.
+}
+  \cite{proplogic-lib} provides a powerful system for Propositional Logic.
+  Others\endnote{%
+    Other whats?
+}
+  include small hybrid languages \cite{cflp-lib} and
+  \textcolor{blue}{Parallelising Logic Programming and Tree Exploration}\endnote{%
+    Mark this text up somehow: for intance surround with quotation marks if it is the title of a paper, put in
+    italics if it is a book, and so on.
+}
   \cite{logic-grows-on-trees-lib}.
 
 
 %\item[$\bullet$]Unification Libraries
 \subsection{Unification Libraries}
 
-The more specific the feature the lesser the support in Haskell. Moving on to the other distinct feature of Prolog is
-Unification, two libraries exist \cite{unification-fd-lib}, \cite{cmu-lib} that unify two Prolog Terms and return the resulting
-substitution.
+The more specific the feature\yyy{}{\Large,} the lesser the support in Haskell.
+Moving on to the other distinct feature of Prolog is Unification,\endnote{%
+  comma splice
+}\textsuperscript{,}\endnote{%
+  ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
+}
+two libraries exist \cite{unification-fd-lib},
+\cite{cmu-lib} that unify two Prolog Terms and return the resulting substitution.\endnote{%
+  Do you want to make the point here that \cite{unification-fd-lib} is more general than just \progLang{Prolog}? 
+}
 
 \begin{comment}
 \begin{enumerate}
@@ -305,7 +322,10 @@ substitution.
 %\item[$\bullet$]Backtracking
 \subsection{Backtracking}
 
-Another important aspect of \progLang{Prolog} is backtracking. To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use monads. Moreover, there is a package for the \progLang{Egison} programming language \cite{egison-lib} which supports non-linear pattern-matching with backtracking.
+Another important aspect of \progLang{Prolog} is backtracking.
+To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use monads.
+Moreover, there is a package for the \progLang{Egison} programming language \cite{egison-lib} which supports
+non-linear pattern-matching with backtracking.
 
 \begin{comment}
 
@@ -352,10 +372,20 @@ Another important aspect of \progLang{Prolog} is backtracking. To simulate it in
 
 \section{\textbf{From chap 7}}
 
-Embedding a language into another language has been explored with a variety of languages. Attempts have been made to build Domain Specific Languages from the host languages \cite{hudak1996building}, Foriegn Function Interfaces \cite{barzilay2004foreign}
+\textcolor{blue}{\itshape This material needs to be integrated, or minimally, the section title changed.}
 
-Creating a programming language from scratch is a tedious task requiring ample amount of programming, not to mention the effort required in
-designing. A typical procedure would consist of formulating characteristics and properties based on the following points,
+Embedding a language into another language has been explored with a variety of languages.\endnote{%
+  How do these two sentences relate?
+}
+Attempts have been made to build Domain Specific Languages from the host languages \cite{hudak1996building},
+Foriegn Function Interfaces \cite{barzilay2004foreign}
+
+Creating a programming language from scratch is a tedious task requiring ample\endnote{%
+  Ample doesn't fit well here.
+}
+amount of programming, not to
+mention the effort required in designing.
+A typical procedure would consist of formulating characteristics and properties based on the following points,
 
 \begin{enumerate}
 \item Syntax
@@ -368,7 +398,9 @@ designing. A typical procedure would consist of formulating characteristics and 
 \item Debuggers
 \end{enumerate}
 
-A lot of the above can be skipped or taken from the base language if an embedding approach is chosen.
+A lot of the above can be skipped or taken from the base language if an embedding approach is chosen.\endnote{%
+  This \P{} is good.
+}
 For an embedded domain specific language the functionality is translated and written as an add on.
 The result can be thought of as a library.
 But the difference between an ordinary library and an eDSl is the feature set provided and the degree of embedding
@@ -396,9 +428,12 @@ data Term = Struct Atom [Term]
 The above can be described as concrete syntax for the \yyy{"}{``}new\yyy{"}{''} language and can be used to write a program.
 
 
-As discussed in the
+As discussed in the\marginpar{{\color{red}\large *}}\endnote{%
+  Something strange has happened here!.
+}
 
 \section{Theory}
+\textcolor{blue}{Is this still from Chapter 7?}
 \begin{enumerate}
 %------------------------------------------------------------------------------------------------------------------------------------
 \item Papers
@@ -448,6 +483,7 @@ As discussed in the
 \item ????
 \end{enumerate}
 
+  \noindent {\color{blue}\rule{1\textwidth}{1pt} got to here\par \rule{1\textwidth}{1pt}\sloppy\par}
 
 \section{Chapter Recap}
 
