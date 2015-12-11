@@ -670,16 +670,431 @@ right
 
 \par\endgroup
 \@doanenote {39}
-macro:->Use
-``quote
-likes
-shown'',
+macro:->This
+sentence
+wanders
+on.
+Cut
+at
+``regarding''
+and
+then
+write
+a
+second
+sentence,
+or
+reword.
+
+\par\endgroup
+\@doanenote {40}
+macro:->Reword.
+I
+believe
+that
+the
+list
+of
+facts
+that
+you
+are
+trying
+to
+combine
+is:
+\begin
+{compactitem}
+\item
+One
+of
+the
+implementations
+discussed
+on
+``Lambda
+The
+Ultimate''
+leads
+us
+something.
+\item
+\texttt
+{Mini
+Prolog}
+(\cite
+{website:mini-prolog-hugs98})
+is
+one
+of
+the
+earliest
+implementations
+of
+\progLang
+{Prolog}
+in
+\progLang
+{Haskell}.
+\item
+\texttt
+{Mini
+Prolog}
+works
+with
+\progLang
+{Hugs
+98},
+an
+early
+dialect
+of
+\progLang
+{Haskell}.
+\end
+{compactitem}
+
+\par\endgroup
+\@doanenote {41}
+macro:->What
+is
+the
+\progLang
+{
+Prolog}
+Engine?
+
+\par\endgroup
+\@doanenote {42}
+macro:->What
+does
+``unofficial''
+mean
+in
+this
+context?
+
+\par\endgroup
+\@doanenote {43}
+macro:->What
+is
+list
+support?
+What
+is
+complete
+list
+support?
+You
+have
 not
-"quotes
+defined
+either
+of
+these
+terms.
+
+\par\endgroup
+\@doanenote {44}
+macro:->This
+sentence
+seems
+to
+be
+wandering
+on.
+Split
+it
+here.
+
+\par\endgroup
+\@doanenote {45}
+macro:->The
+word
+``common''
+is
+fighting
+with
+``only
+other''.
+
+\par\endgroup
+\@doanenote {46}
+macro:->``far
+scarcer''?
+
+\par\endgroup
+\@doanenote {47}
+macro:->Do
+you
+mean
+that
+basic
+\progLang
+{Prolog}
+implementations
+lack
+modules;
+or
+that
+\progLang
+{Prolog}
+lacks
+modules
+because
+it
+is
+purely
+declarative;
+or
+\dots
+?
+
+\par\endgroup
+\@doanenote {48}
+macro:->What
+does
+this
+sentence
+mean?
+Are
+you
+suggesting
+that
+one
+of
+\progLang
+{Prolog}'s
+problems
+is
+that
+it
+is
+competing
+with
+\progLang
+{Haskell}?
+``And
+then
+there
+is
+\dots
+''
+is
+colloquial.
+You
+might
+be
+able
+to
+use
+it
+for
+surprise
+value,
+but
+I
+would
+rather
+you
+use
+more
+academic
+sounding
+language
 like
-this".
-\par
-Really
+``There
+is
+also\dots
+''.
+
+\par\endgroup
+\@doanenote {49}
+macro:->I
+have
+lost
+track
+of
+the
+general
+argument
+here.
+What
+is
+the
+unofficially
+published
+content
+saying
+about
+\progLang
+{Prolog}
+here?
+
+\par\endgroup
+\@doanenote {50}
+macro:->This
+\P
+{}
+needs
+a
+lot
+of
+work.
+I
+do
+not
+understand
+what
+you
+say
+the
+references
+say.
+
+\par\endgroup
+\@doanenote {51}
+macro:->``quite
+some
+literature''?
+Perhaps
+``the
+literature
+on
+\textsf
+{X}
+is
+abundant''?
+
+\par\endgroup
+\@doanenote {52}
+macro:->Language
+names
+in
+this
+\P
+{}
+are
+not
+marked
+by
+\texttt
+{progLang}.
+
+\par\endgroup
+\@doanenote {53}
+macro:->Rather
+than
+a
+\texttt
+{description}
+environment
+with
+\texttt
+{\$bullet\$s},
+use
+\texttt
+{itemize}.
+
+\par\endgroup
+\@doanenote {54}
+macro:->What
+are
+``the
+problems
+at
+hand''?
+
+\par\endgroup
+\@doanenote {55}
+macro:->Remove
+the
+double
+``so''.
+
+\par\endgroup
+\@doanenote {56}
+macro:->This
+is
+a
+sentence
+fragment.
+\par\endgroup
+\@doanenote {57}
+macro:->I
+do
+not
+understant
+the
+preceding
+sentence.
+
+\par\endgroup
+\@doanenote {58}
+macro:->See
+the
+preceding
+comments
+about
+using
+\texttt
+{itemize}
+rather
+than
+\texttt
+{description}.
+Maybe
+these
+should
+be
+subsections.
+
+\par\endgroup
+\@doanenote {59}
+macro:->``Prolog
+like''
+should
+be
+``\progLang
+{Prolog}-like''.
+
+\par\endgroup
+\@doanenote {60}
+macro:->Yet
+another
+metaphor
+whose
+meaning
+I
+do
+not
+understand
+in
+context.
+
+\par\endgroup
+\@doanenote {61}
+macro:->There
+seem
+to
+be
+words
+missing
+here.
+
+\par\endgroup
+\@doanenote {62}
+macro:->Be
+more
+precise
+than
+``sort
+of
+depicts''.
+
+\par\endgroup
+\@doanenote {63}
+macro:->Really
 try
 to
 avoid
@@ -690,69 +1105,79 @@ with
 scare-quotes.
 
 \par\endgroup
-\@doanenote {40}
-macro:->This
+\@doanenote {64}
+macro:->The
+list
+of
+four
+components
+seems
+to
+be
+of
+different
+kinds
+of
+things.
+\begin
+{compactitem}
+\item
+Items
+2
+and
+3
+are
+libraries.
+\item
+Item
+4
 is
-known
+what
+you
+are
+building
+\end
+{compactitem}
+Do
+you
+see
+the
+circularity
+of
+describing
+the
+thing
+you
+are
+building
 as
 a
-comma
-splice.
-You
-have
-a
-sentence
-before,
-and
-a
-sentence
-after
-the
-comma.
-Either
-use
-a
-semicolon,
-or
-write
-two
-sentences.
+component
+of
+itself?
 
 \par\endgroup
-\@doanenote {41}
-macro:->What
-does
-``accomplish
-goals''
-mean
-here?
-Is
-this
-what
-is
-called
-\Verb
-!getClauses!
-in
-\codeLibrary
-{prolog-0.2.1}\,?
-
-\par\endgroup
-\@doanenote {42}
-macro:->Do
-not
-expect
-readers
+\@doanenote {65}
+macro:->Avoid
+starting
+sentences
+with
+``And''---except
+where
+you
+want
 to
-know
-what
-a
-\textsf
-{REPL}
-is.
+be
+surprising.
 
 \par\endgroup
-\@doanenote {43}
+\@doanenote {66}
+macro:->and
+so
+on.
+
+\par\endgroup
+\@doanenote {67}
 macro:->replace
 with
 ``the
@@ -761,32 +1186,45 @@ with
 class.
 
 \par\endgroup
-\@doanenote {44}
+\@doanenote {68}
 macro:->what
 does
 this
 reference?
 
 \par\endgroup
-\@doanenote {45}
-macro:->What
-are
-your
-conventions
+\@doanenote {69}
+macro:->Decide
+on
+a
+convention
 for
-when
-you
-use
-capitals,
-and
-when
-not?
-Not
-yet
-decided.
+capitals.
 
 \par\endgroup
-\@doanenote {46}
+\@doanenote {70}
+macro:->Clean
+up
+the
+sentence!
+Do
+you
+mean
+``As
+with
+any
+other
+language,
+we
+start
+with
+the
+syntax
+and
+semantics.''?
+
+\par\endgroup
+\@doanenote {71}
 macro:->Drop
 the
 ``would''s
@@ -803,7 +1241,7 @@ a
 type.
 
 \par\endgroup
-\@doanenote {47}
+\@doanenote {72}
 macro:->``is
 a
 classic
@@ -831,7 +1269,7 @@ language.''
 perhaps?
 
 \par\endgroup
-\@doanenote {48}
+\@doanenote {73}
 macro:->What
 do
 you
@@ -847,7 +1285,7 @@ from
 {website:understandingalgebrasfpcomplete}
 
 \par\endgroup
-\@doanenote {49}
+\@doanenote {74}
 macro:->I
 cannot
 follow
@@ -863,7 +1301,7 @@ was
 thinking
 
 \par\endgroup
-\@doanenote {50}
+\@doanenote {75}
 macro:->You
 have
 `\textit
@@ -893,7 +1331,7 @@ you
 define.
 
 \par\endgroup
-\@doanenote {51}
+\@doanenote {76}
 macro:->Do
 you
 understand
@@ -906,7 +1344,7 @@ here?
 Yes
 
 \par\endgroup
-\@doanenote {52}
+\@doanenote {77}
 macro:->Why
 do
 we
@@ -940,7 +1378,7 @@ is
 *
 
 \par\endgroup
-\@doanenote {53}
+\@doanenote {78}
 macro:->Why
 do
 you
@@ -975,7 +1413,7 @@ in
 general
 
 \par\endgroup
-\@doanenote {54}
+\@doanenote {79}
 macro:->I
 am
 deeply
@@ -1004,7 +1442,7 @@ the
 diagram.
 
 \par\endgroup
-\@doanenote {55}
+\@doanenote {80}
 macro:->In
 this
 immediate
