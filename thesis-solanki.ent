@@ -1031,26 +1031,6 @@ sentence.
 
 \par\endgroup
 \@doanenote {58}
-macro:->See
-the
-preceding
-comments
-about
-using
-\texttt
-{itemize}
-rather
-than
-\texttt
-{description}.
-Maybe
-these
-should
-be
-subsections.
-
-\par\endgroup
-\@doanenote {59}
 macro:->``Prolog
 like''
 should
@@ -1059,7 +1039,7 @@ be
 {Prolog}-like''.
 
 \par\endgroup
-\@doanenote {60}
+\@doanenote {59}
 macro:->Yet
 another
 metaphor
@@ -1073,7 +1053,7 @@ in
 context.
 
 \par\endgroup
-\@doanenote {61}
+\@doanenote {60}
 macro:->There
 seem
 to
@@ -1083,7 +1063,7 @@ missing
 here.
 
 \par\endgroup
-\@doanenote {62}
+\@doanenote {61}
 macro:->Be
 more
 precise
@@ -1093,7 +1073,126 @@ of
 depicts''.
 
 \par\endgroup
+\@doanenote {62}
+macro:->comma
+splice.
+
+\par\endgroup
 \@doanenote {63}
+macro:->Other
+whats?
+
+\par\endgroup
+\@doanenote {64}
+macro:->Mark
+this
+text
+up
+somehow:
+for
+intance
+surround
+with
+quotation
+marks
+if
+it
+is
+the
+title
+of
+a
+paper,
+put
+in
+italics
+if
+it
+is
+a
+book,
+and
+so
+on.
+
+\par\endgroup
+\@doanenote {65}
+macro:->comma
+splice
+
+\par\endgroup
+\@doanenote {66}
+macro:->``Moving
+on
+to
+the
+other
+distinct
+feature
+of
+Prolog
+is
+Unification.''?
+Say
+it
+aloud.
+
+\par\endgroup
+\@doanenote {67}
+macro:->Do
+you
+want
+to
+make
+the
+point
+here
+that
+\cite
+{unification-fd-lib}
+is
+more
+general
+than
+just
+\progLang
+{Prolog}?
+
+\par\endgroup
+\@doanenote {68}
+macro:->How
+do
+these
+two
+sentences
+relate?
+
+\par\endgroup
+\@doanenote {69}
+macro:->Ample
+doesn't
+fit
+well
+here.
+
+\par\endgroup
+\@doanenote {70}
+macro:->This
+\P
+{}
+is
+good.
+
+\par\endgroup
+\@doanenote {71}
+macro:->Something
+strange
+has
+happened
+here!.
+
+\par\endgroup
+\@doanenote {72}
 macro:->Really
 try
 to
@@ -1105,7 +1204,7 @@ with
 scare-quotes.
 
 \par\endgroup
-\@doanenote {64}
+\@doanenote {73}
 macro:->The
 list
 of
@@ -1157,7 +1256,7 @@ of
 itself?
 
 \par\endgroup
-\@doanenote {65}
+\@doanenote {74}
 macro:->Avoid
 starting
 sentences
@@ -1171,29 +1270,20 @@ be
 surprising.
 
 \par\endgroup
-\@doanenote {66}
+\@doanenote {75}
 macro:->and
 so
 on.
 
 \par\endgroup
-\@doanenote {67}
-macro:->replace
-with
-``the
-\Verb
-!Unifiable!
-class.
-
-\par\endgroup
-\@doanenote {68}
+\@doanenote {76}
 macro:->what
 does
 this
 reference?
 
 \par\endgroup
-\@doanenote {69}
+\@doanenote {77}
 macro:->Decide
 on
 a
@@ -1202,7 +1292,7 @@ for
 capitals.
 
 \par\endgroup
-\@doanenote {70}
+\@doanenote {78}
 macro:->Clean
 up
 the
@@ -1224,7 +1314,7 @@ and
 semantics.''?
 
 \par\endgroup
-\@doanenote {71}
+\@doanenote {79}
 macro:->Drop
 the
 ``would''s
@@ -1241,7 +1331,7 @@ a
 type.
 
 \par\endgroup
-\@doanenote {72}
+\@doanenote {80}
 macro:->``is
 a
 classic
@@ -1269,7 +1359,7 @@ language.''
 perhaps?
 
 \par\endgroup
-\@doanenote {73}
+\@doanenote {81}
 macro:->What
 do
 you
@@ -1285,7 +1375,7 @@ from
 {website:understandingalgebrasfpcomplete}
 
 \par\endgroup
-\@doanenote {74}
+\@doanenote {82}
 macro:->I
 cannot
 follow
@@ -1301,7 +1391,7 @@ was
 thinking
 
 \par\endgroup
-\@doanenote {75}
+\@doanenote {83}
 macro:->You
 have
 `\textit
@@ -1331,7 +1421,7 @@ you
 define.
 
 \par\endgroup
-\@doanenote {76}
+\@doanenote {84}
 macro:->Do
 you
 understand
@@ -1344,7 +1434,7 @@ here?
 Yes
 
 \par\endgroup
-\@doanenote {77}
+\@doanenote {85}
 macro:->Why
 do
 we
@@ -1378,7 +1468,7 @@ is
 *
 
 \par\endgroup
-\@doanenote {78}
+\@doanenote {86}
 macro:->Why
 do
 you
@@ -1413,7 +1503,7 @@ in
 general
 
 \par\endgroup
-\@doanenote {79}
+\@doanenote {87}
 macro:->I
 am
 deeply
@@ -1442,7 +1532,7 @@ the
 diagram.
 
 \par\endgroup
-\@doanenote {80}
+\@doanenote {88}
 macro:->In
 this
 immediate
