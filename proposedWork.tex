@@ -4,7 +4,7 @@
 \begin{document}
 
 %-----------------------------------------------------------------------------
-\chapter{Current and Proposed Work}\label{chap:proposedWork}
+\chapter{Current and Accomplished Work}\label{chap:proposedWork}
 %-----------------------------------------------------------------------------
 
 \textcolor{blue}{\textsl{I suspect that the title of this chapter needs to change.}}
@@ -14,6 +14,9 @@
 \textcolor{blue}{\textsl{I need this information.
     I do not know what you are trying to do here.
 }}
+
+This chapter discusses the current work in done in embedding programming languages. Specifically speaking embedding \progLang{Prolog} in 
+\progLang{Haskell}. We analyze the current implementations and provide insights into the contributions of this thesis. 
 
 %-----------------------------------------------------------------------------
 \noindent\rule{\textwidth}{0.5pt}
@@ -47,7 +50,7 @@ discussed below{\large,} along with their shortcomings.
 
 \item
   The papers that try to take the above further are also few in number and do not have any implementations with the
-  proposed concepts.\endnote{%
+  proposed concepts \cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional, seres2000optimisation}.\endnote{%
     Provide citations here.
 }
   Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
@@ -60,16 +63,18 @@ discussed below{\large,} along with their shortcomings.
   complete.
 
 \item
-  Moreover, none of the above have full list support that exist in \progLang{Prolog}.\endnote{%
+  Moreover, none of the above have natural list support that exist in \progLang{Prolog}.\endnote{%
     What does this point mean?
+    I would have to think I do not remember.
 }
 \end{enumerate}
 
 And as far as the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
-\yyy{"}{``}add-on\yyy{"}{''}.
+``add-on''.
 A handful of crossover hybrid languages based on \progLang{Haskell} exist, \progLang{Curry} \cite{website:curry}
 being the prominent one.\endnote{%
   I think that this fits in with the discussion of \progLang{Scala} in the previous chapter.
+  added \progLang{Scala} stuff in previous chapter
 }
 Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
 crossover implementations exist but again most of them have faded out.
@@ -83,7 +88,7 @@ compromised language that takes advantages of neither paradigms.
 Mostly the trend is to build a library for extension to replicate the features as an add on.
 
 Taking into consideration above, there is quite some room for improvement and additions.
-\section{Contributions}
+\section{Proposal Contributions}
 
 \endnote{%
   This is a good bridging sentence, but should probably end the last section, rather than begin this one.
@@ -147,7 +152,7 @@ Lastly, how would characteristics of hybrid languages fit into and play a role i
 
 
 
-\section{Thesis Contributions}
+\section{Thesis Improved Contributions}
 
 \begin{enumerate}
 \item Prototype 1 does

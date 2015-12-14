@@ -45,27 +45,29 @@ Oriented Languages.\endnote{%
 \end{comment}
 
 Over the last decade the declarative style of programming has gained popularity.
-The methodologies that have stood out are the Functional and Logical Approaches.\endnote{%
+The methodologies that have stood out are the functional and logical approaches.\endnote{%
   What style guide are you using to determine capitalization? none at the moment
+  but I will change certain capitals to small
 }
-The former is based on Functions and Lambda Calculus, while the latter is based on Horn Clause Logic.
+The former is based on functions and lambda calculus, while the latter is based on horn clause logic.
 Each of them has its own advantages and ﬂaws.
 How does one choose which approach to adopt?
 Perhaps one does not need to choose!
-This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a Purely
-Functional Programming Language and \progLang{Prolog}, a Logical Programming Language so that one is not forced to
+This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a purely
+functional programming language and \progLang{Prolog}, a logical programming language so that one is not forced to
 choose. The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and a single
 typed system.\endnote{%
   Say more here?
   This seems like a natural place to have more high-level comments on where the thesis is going.
-}
+} The thesis aims at leveraging the features of the host language in order to incorporate logic programming features resulting in extending 
+\progLang{Haskell} with capabilities like unification. 
 
 
 
 \section{Thesis Statement}
 
 The thesis aims to provide insights into merging two declarative languages namely, \progLang{Haskell} and
-\progLang{Prolog} by embedding the latter into the former and analysing the result of doing so as they have conflicting
+\progLang{Prolog} by embedding the latter into the former and analyzing the result of doing so as they have conflicting
 characteristics.
 The finished product will be something like a \textit{haskellised} \progLang{Prolog} which has logical programming like
 capabilities.
@@ -76,7 +78,7 @@ capabilities.
 %----------------------------------------------------------------------------
 
 Over the years the development of programming languages has become more and more rapid.
-Today the number of is in the thousands and counting.\endnote{%
+Today the number of is in the thousands and counting \cite{website:timelineproglangwiki, website:historyofproglang}.\endnote{%
   Reference?  How did you come up with this estimate?
 
 https://en.wikipedia.org/wiki/Timeline\_of\_programming\_languages
@@ -95,8 +97,10 @@ switch.\endnote{%
   I believe that you want to link this \P{} to the idea that embedded or merged languages are good, but I don't see
   where you do that.
 }
-One other approach would be to replicate target features exhibited by a language in the one that is present one to avoid the hassle of
-jumping between the two more commonly known as an embedded or a foreign function interface.
+One other approach would be to replicate target features exhibited by a language in the present one to avoid the hassle of
+jumping between the two more commonly known as an embedded or a foreign function interface. A mixture of these ideologies results in a 
+multi-paradigm / merged programming language. We try to encapsulated both the approaches of embedding and merging to develop a hybrid 
+approach.
 
 \begin{comment}
 \progLang{Prolog} has a similar story. It was born in an era where procedural programming had made everyone notice their presence. Talking about
@@ -111,15 +115,18 @@ logic,website:prolog1000db}. But there are a lot of good things about \progLang{
 for search problems.
 \end{comment}
 
+The adoption of \progLang{Prolog} has been difficult since procedural languages were making a mark when it was released.
+
 \progLang{Prolog} is a language that has a hard time being adopted.
 Born in an era where procedural languages were receiving a lot of attention, it suffered\endnote{%
   this looks like it has been cut and paste, not so sure
 } from competing against another
 new kid on the block: \progLang{C}.
-Some of the problems were of its own making.
+
+Some of the problems were due to its own limitations.
 Basic features like modules were not provided by all compilers.
 Practical features for real world problems were added in an ad hoc way resulting in the loss of its purely declarative
-charm.
+nature.
 Some say that \progLang{Prolog} is fading away, \cite{website:prolog-steam,website:prolog-death,website:prolog-killer}.
 It is apparently not used for building large programs \cite{wikiprolog,somogyi1995logic,website:prolog1000db}.
 However there are a lot of good things about Prolog: it is ideal for search problems; it has a simple syntax, and a

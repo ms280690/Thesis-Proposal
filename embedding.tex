@@ -34,13 +34,13 @@ integrate their code with other programming languages.
 One of the top discussions are in, Lambda the Ultimate, The Programming Languages Weblog
 \cite{website:lambda-the-ultimate},  which lists a number of \progLang{Prolog} implementations in a variety of
 languages like \progLang{Lisp, Scheme, Scala, Java, Javascript}, \progLang{Racket} \cite{racklog} and so on.
-Moreover the discussion focusses on a lot of critical points that should be considered in a translation of
-\progLang{Prolog} to the host language regarding types and modules among others.\endnote{%
+Moreover the discussion focuses on a lot of critical points that should be considered in a translation of
+\progLang{Prolog} to the host language in terms of types and modules among others.\endnote{%
   This sentence wanders on.
   Cut at ``regarding'' and then write a second sentence, or reword.
 }
 
-One of the implementations discussed redirects us to one of the \xxx{most} earliest implementations of \progLang{Prolog}
+One of the implementations discussed redirects us to one of the earliest implementations of \progLang{Prolog}
 in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} \cite{website:mini-prolog-hugs98}.\endnote{%
   Reword.
   I believe that the list of facts that you are trying to combine is:
@@ -57,30 +57,31 @@ in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} \cite{website:m
   \end{compactitem}
 }
 Although this implementation takes as reference the working of the \progLang{ Prolog} Engine\endnote{%
-  What is the \progLang{ Prolog} Engine?
+  What is the \progLang{Prolog} Engine?
 }
 and other details, it
-still is an unofficial implementation\endnote{%
+still is an unpublished implementation\endnote{%
   What does ``unofficial'' mean in this context?
 }
 with almost no documentation, support  or ongoing development.
 Moreover, it comes with an option of three engines to play
-with\yyy{}{\large,} but still lacks complete list support\endnote{%
+with{\large,} but still lacks complete list support\endnote{%
   What is list support?  What is complete list support?  You have not
   defined either of these terms.
+  I forgot
 }
 and a lot of 
-practical features that \progLang{Prolog} has\endnote{%
+practical features that \progLang{Prolog} has.\endnote{%
   This sentence seems to be wandering on.  Split it here.
 }
-and this seems to be a common problem with the only other\endnote{%
+This seems to be a common problem with the other\endnote{%
   The word ``common'' is fighting with ``only other''.
 }
 implementation that exists, \cite{website:takashi-workplace}.
 
 Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
-is far scarce\endnote{%
+is far scarcer\endnote{%
   ``far scarcer''?
 }
 than the leading languages of other paradigms.
@@ -89,7 +90,7 @@ The purely declarative nature lacks basic requirements such as support for modul
   or that \progLang{Prolog} lacks modules because it is purely
   declarative; or \dots?
 }
-And then there is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
+The other issue is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
 family of Declarative Languages.\endnote{%
   What does this sentence mean?
   Are you suggesting that one of \progLang{Prolog}'s problems is that it is
@@ -97,11 +98,17 @@ family of Declarative Languages.\endnote{%
   ``And then there is \dots'' is colloquial.
   You might be able to use it for surprise value, but I would rather you use more academic sounding language like
   ``There is also\dots''.
+  
+  Well \progLang{Haskell} has a lot of advantages over \progLang{Prolog} despite being from the same paradigm
+  
+  So a choice has to be made for a declarative language why not \progLang{Haskell} ?
 }
 Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
 enables encoding of search problems.\endnote{%
   I have lost track of the general argument here.
   What is the unofficially published content saying about \progLang{Prolog} here?
+  
+  Attempting to do AI like search stuff in \progLang{Haskell}
 }
 
 \begin{comment}
@@ -168,14 +175,14 @@ All the more \textit{Prologish} things exist in Haskell, as mentioned alone it i
 \section{Related Papers}
 \textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
 
-There is quite some literature\endnote{%
+Abundant literature \endnote{%
   ``quite some literature''?
   Perhaps ``the literature on \textsf{X} is abundant''?
 }
-that can be found and which consist of embedding detailed parts of Prolog features
+can be found which consist of embedding detailed parts of Prolog features
 like basic constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
-Silvija Seres aimed at bring Haskell and Prolog closer to each other.
+Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
 The next subsection covers the literature based on the above with improvements and further additions.\endnote{%
   Language names in this \P{} are not marked by \texttt{progLang}.
 }
@@ -207,7 +214,7 @@ $\bullet$\endnote{%
   problems at hand\endnote{%
     What are ``the problems at hand''?
 }
-  so as to accommodate and jump between search strategies.\endnote{%
+  and accommodate and jump between search strategies.\endnote{%
     Remove the double ``so''.
 }
 
@@ -223,7 +230,7 @@ $\bullet$\endnote{%
   Though not very efficient nor practical the method aims at a more elegant translation of programs from one
   language to the other.
   While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
-  anything new rather doing something new with what is available.\endnote{%
+  anything new rather than doing something new with what is available.\endnote{%
     This is a sentence fragment.}
   Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
   solutions are instances.\endnote{%
@@ -244,7 +251,7 @@ $\bullet$\endnote{%
 %% }
 \subsection{Prolog Libraries}
 
-  To replicate Prolog like\endnote{%
+  To replicate \progLang{Prolog} like\endnote{%
     ``Prolog like'' should be ``\progLang{Prolog}-like''.
 }
   capabilities Haskell seems to be already in the race\endnote{%
@@ -252,12 +259,12 @@ $\bullet$\endnote{%
   }
   with a host of related libraries.
   First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or
-  \yyy{"}{``}mini Prolog\yyy{"}{''} as such with not much in it to be able to be uselul, \cite{hswip-lib} is all
-  powerful but is an Foreign Function Interface so it is \yyy{"}{``}Prolog in Haskell\yyy{"}{''} but we need Prolog
+  ``mini Prolog'' as such with not much in it to be able to be uselul, \cite{hswip-lib} is all
+  powerful but is an foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need Prolog
   for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual
   practical Prolog.
   But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor
-  or no monadic support and an REPL without the ability to \yyy{"}{``}write a Prolog Program File\yyy{"}{''}.
+  or no monadic support and an REPL without the ability to ``write a Prolog Program File''.
 
 \begin{comment}
 \begin{enumerate}
@@ -273,25 +280,25 @@ $\bullet$\endnote{%
 %\item[$\bullet$]Logic Libraries
 \subsection{Logic Libraries}
 
-  The next category is about the logical aspects of Prolog, again a handful of libraries do exist and provide a
-  part of the functionality which is related\endnote{%
+  The next category is about the logical aspects of Prolog; again a handful of libraries do exist and provide a
+  part of the functionality which are related\endnote{%
     There seem to be words missing here.
 }
-  propositional logic and backtracking.
-  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which sort of depicts\endnote{%
+  to propositional logic and backtracking.
+  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which attempts at replicating\endnote{%
     Be more precise than ``sort of depicts''.
 }
-  Prolog's
+  \progLang{Prolog}'s
   backtracking behaviour.
-  Prolog is heavily based on formal logic,\endnote{%
+  Prolog is heavily based on formal logic.\endnote{%
     comma splice.
 }
   \cite{proplogic-lib} provides a powerful system for Propositional Logic.
-  Others\endnote{%
+  Other libraries\endnote{%
     Other whats?
 }
   include small hybrid languages \cite{cflp-lib} and
-  \textcolor{blue}{Parallelising Logic Programming and Tree Exploration}\endnote{%
+  \textcolor{blue}{``Parallelising Logic Programming and Tree Exploration''}\endnote{%
     Mark this text up somehow: for intance surround with quotation marks if it is the title of a paper, put in
     italics if it is a book, and so on.
 }
@@ -301,15 +308,17 @@ $\bullet$\endnote{%
 %\item[$\bullet$]Unification Libraries
 \subsection{Unification Libraries}
 
-The more specific the feature\yyy{}{\Large,} the lesser the support in Haskell.
-Moving on to the other distinct feature of Prolog is Unification,\endnote{%
+The more specific the feature{\Large,} the lesser the support in \progLang{Haskell}.
+Moving on to the other distinct feature of \progLang{Prolog} is unification.\endnote{%
   comma splice
 }\textsuperscript{,}\endnote{%
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
 }
-two libraries exist \cite{unification-fd-lib},
+There are two libraries that exist \cite{unification-fd-lib},
 \cite{cmu-lib} that unify two Prolog Terms and return the resulting substitution.\endnote{%
   Do you want to make the point here that \cite{unification-fd-lib} is more general than just \progLang{Prolog}? 
+
+I do not know since we are just listing stuff out.
 }
 
 \begin{comment}

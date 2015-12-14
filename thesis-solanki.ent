@@ -23,6 +23,14 @@ none
 at
 the
 moment
+but
+I
+will
+change
+certain
+capitals
+to
+small
 
 \par\endgroup
 \@doanenote {3}
@@ -593,6 +601,15 @@ does
 this
 point
 mean?
+I
+would
+have
+to
+think
+I
+do
+not
+remember.
 
 \par\endgroup
 \@doanenote {35}
@@ -612,6 +629,13 @@ in
 the
 previous
 chapter.
+added
+\progLang
+{Scala}
+stuff
+in
+previous
+chapter
 
 \par\endgroup
 \@doanenote {36}
@@ -760,8 +784,7 @@ macro:->What
 is
 the
 \progLang
-{
-Prolog}
+{Prolog}
 Engine?
 
 \par\endgroup
@@ -793,6 +816,8 @@ either
 of
 these
 terms.
+I
+forgot
 
 \par\endgroup
 \@doanenote {44}
@@ -907,6 +932,41 @@ like
 is
 also\dots
 ''.
+\par
+Well
+\progLang
+{Haskell}
+has
+a
+lot
+of
+advantages
+over
+\progLang
+{Prolog}
+despite
+being
+from
+the
+same
+paradigm
+\par
+So
+a
+choice
+has
+to
+be
+made
+for
+a
+declarative
+language
+why
+not
+\progLang
+{Haskell}
+?
 
 \par\endgroup
 \@doanenote {49}
@@ -930,6 +990,17 @@ about
 \progLang
 {Prolog}
 here?
+\par
+Attempting
+to
+do
+AI
+like
+search
+stuff
+in
+\progLang
+{Haskell}
 
 \par\endgroup
 \@doanenote {50}
@@ -1157,6 +1228,18 @@ than
 just
 \progLang
 {Prolog}?
+\par
+I
+do
+not
+know
+since
+we
+are
+just
+listing
+stuff
+out.
 
 \par\endgroup
 \@doanenote {68}
@@ -1312,6 +1395,21 @@ the
 syntax
 and
 semantics.''?
+\par
+When
+we
+talk
+about
+a
+language
+we
+talk
+about
+the
+programming
+constructs
+may
+be?
 
 \par\endgroup
 \@doanenote {79}

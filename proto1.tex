@@ -21,7 +21,7 @@ This chapter discusses the aspects of opening a language while preserving the or
 \progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
 \end{comment}
 
-This chapter demonstrates a ``fairly generic''\endnote{%
+This chapter demonstrates a fairly generic\endnote{%
   Really try to avoid hedging your bets with scare-quotes.
 }
 procedure of creating an open embedded domain specific language in \progLang{Haskell} along
@@ -29,8 +29,8 @@ with \textit{monadic unification}. As a proof of concept, the implementation con
 whose unification procedure is carried out in a monad.
 
 
-\section{Components}
-There are four main components\endnote{%
+\section{Ideas}
+There are four main ideas in this chapter\endnote{%
   The list of four components seems to be of different kinds of things.
   \begin{compactitem}
   \item Items 2 and 3 are libraries.
@@ -61,7 +61,7 @@ The ones relevant to this thesis are,
   and finding other possible solutions.
 
 \item
-  And finally the query resolver which combines the unification and search strategy to return a result.\endnote{%
+  Lastly, the query resolver which combines the unification and search strategy to return a result.\endnote{%
     Avoid starting sentences with ``And''---except where you want to be surprising.
 }
 \end{enumerate}
@@ -73,9 +73,9 @@ The ones relevant to this thesis are,
   The main components of this library are adopted from \progLang{Prolog} and modified\yyy{,}{:}
 
 \begin{enumerate}
-\item \yyy{}{the} \yyy{L}{l}anguage, adopted from \progLang{Prolog} but trimmed down\yyy{.}{;}
+\item the language, adopted from \progLang{Prolog} but trimmed down;
 
-\item \yyy{D}{the d}atabase\yyy{}{;}\endnote{%
+\item the database;\endnote{%
   and so on.
 }
 
@@ -120,11 +120,11 @@ The implementation consists of the following components,
 
 \item Compatibility with the unification library \cite{unification-fd-lib}
 
-\item Variable Bindings\endnote{%
+\item Variable bindings\endnote{%
   Decide on a convention for capitals.
 }
 
-\item Monadic Unification
+\item Monadic unification
 
 \end{enumerate}
 \end{enumerate}
@@ -144,10 +144,12 @@ To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprol
 As any other language\endnote{%
   Clean up the sentence!
   Do you mean ``As with any other language, we start with the syntax and semantics.''? 
+  
+  When we talk about a language we talk about the programming constructs may be?
 }
 we start with the syntax and semantics. We begin with the programming constructs of the language.
 
-Most \progLang{Prolog} distributions have three types of terms:
+\progLang{Prolog} has three types of terms::
 \begin{enumerate}
 \item Constants.
 
@@ -159,20 +161,23 @@ Most \progLang{Prolog} distributions have three types of terms:
 Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
 terms are equal.
 
-The possibilities \yyy{could be}{are},
+The possibilities are,
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
   are the same atom, or the same number.
+\begin{code-list}[h]
 \begin{minted}[linenos]{prolog}
 ?-  =(mia,mia).
 yes
 \end{minted}
+\end{code-list}
 
-\item If \mSV{term1} is \yyy{a}{an uninstantiated} variable and \mSV{term2} is any type of term, then \mSV{term1}
+\item If \mSV{term1} is an uninstantiated variable and \mSV{term2} is any type of term, then \mSV{term1}
   and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2}\,.
   Similarly, if \mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2}
   unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
 variables, they’re both instantiated to each other, and we say that they share values.)
+\begin{code-list}[h]
 \begin{minted}[linenos]{prolog}
 ?-  mia  =  X.
 X  =  mia
@@ -183,6 +188,7 @@ yes
 ?-  X  =  Y.
 yes
 \end{minted}
+\end{code-list}
 
 \item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
 
@@ -193,12 +199,15 @@ yes
 
 \item the variable instantiations are compatible.
 \end{enumerate}
+\begin{code-list}[h]
+
 \begin{minted}[linenos]{prolog}
 ?-  k(s(g),Y)  =  k(X,t(k)).
 X  =  s(g)
 Y  =  t(k)
 yes
 \end{minted}
+\end{code-list}
 
 
 \item Two terms unify if and only if it follows from the previous three clauses that they unify.
@@ -527,6 +536,7 @@ functionality.
 Why not continue the example that you started in Figure~\ref{tab:man-enhan-gram}?
 That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
+
 \begin{code-list}[h]
   \rule{0.98\textwidth}{0.3pt}
   \begin{minted}[linenos,gobble=2]{haskell}
