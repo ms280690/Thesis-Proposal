@@ -113,21 +113,6 @@ that.
 
 \par\endgroup
 \@doanenote {6}
-macro:->this
-looks
-like
-it
-has
-been
-cut
-and
-paste,
-not
-so
-sure
-
-\par\endgroup
-\@doanenote {7}
 macro:->The
 idea
 of
@@ -142,7 +127,7 @@ needs
 improvement.
 
 \par\endgroup
-\@doanenote {8}
+\@doanenote {7}
 macro:->This
 preceding
 phrase
@@ -152,7 +137,7 @@ a
 sentence.
 
 \par\endgroup
-\@doanenote {9}
+\@doanenote {8}
 macro:->This
 example
 isn't
@@ -184,20 +169,7 @@ declarative
 paradigm
 
 \par\endgroup
-\@doanenote {10}
-macro:->Use
-``must''
-in
-place
-of
-``have
-to''
-where
-you
-can.
-
-\par\endgroup
-\@doanenote {11}
+\@doanenote {9}
 macro:->I
 have
 the
@@ -216,7 +188,7 @@ higher
 ???
 
 \par\endgroup
-\@doanenote {12}
+\@doanenote {10}
 macro:->``To
 dawn
 the
@@ -231,7 +203,7 @@ mean
 don''?
 
 \par\endgroup
-\@doanenote {13}
+\@doanenote {11}
 macro:->Say
 what
 ``the
@@ -239,7 +211,7 @@ above''
 is.
 
 \par\endgroup
-\@doanenote {14}
+\@doanenote {12}
 macro:->``Shortcomings''
 is
 one
@@ -257,7 +229,7 @@ too
 vague.
 
 \par\endgroup
-\@doanenote {15}
+\@doanenote {13}
 macro:->\begin
 {itemize}
 \item
@@ -286,12 +258,12 @@ not
 {itemize}
 
 \par\endgroup
-\@doanenote {16}
+\@doanenote {14}
 macro:->comma
 splice.
 
 \par\endgroup
-\@doanenote {17}
+\@doanenote {15}
 macro:->Can
 you
 find
@@ -313,7 +285,7 @@ here?
 {milner1978theory}
 
 \par\endgroup
-\@doanenote {18}
+\@doanenote {16}
 macro:->This
 is
 a
@@ -349,7 +321,7 @@ any
 annotations.}
 
 \par\endgroup
-\@doanenote {19}
+\@doanenote {17}
 macro:->What
 is
 the
@@ -379,7 +351,7 @@ statically
 typed
 
 \par\endgroup
-\@doanenote {20}
+\@doanenote {18}
 macro:->There
 is
 an
@@ -425,7 +397,7 @@ and
 {Haskell}.
 
 \par\endgroup
-\@doanenote {21}
+\@doanenote {19}
 macro:->This
 \P
 {}
@@ -433,7 +405,7 @@ needs
 rewriting.
 
 \par\endgroup
-\@doanenote {22}
+\@doanenote {20}
 macro:->I
 do
 not
@@ -445,17 +417,17 @@ the
 comma.
 
 \par\endgroup
+\@doanenote {21}
+macro:->comma
+splice.
+
+\par\endgroup
+\@doanenote {22}
+macro:->comma
+splice.
+
+\par\endgroup
 \@doanenote {23}
-macro:->comma
-splice.
-
-\par\endgroup
-\@doanenote {24}
-macro:->comma
-splice.
-
-\par\endgroup
-\@doanenote {25}
 macro:->Now
 signal
 that
@@ -471,7 +443,7 @@ deeper
 integration}.
 
 \par\endgroup
-\@doanenote {26}
+\@doanenote {24}
 macro:->Do
 you
 want
@@ -483,7 +455,7 @@ the
 here?
 
 \par\endgroup
-\@doanenote {27}
+\@doanenote {25}
 macro:->I
 think
 that
@@ -522,7 +494,7 @@ language.
 ?????
 
 \par\endgroup
-\@doanenote {28}
+\@doanenote {26}
 macro:->The
 preceding
 sentence
@@ -531,7 +503,7 @@ fixing.
 \par
 
 \par\endgroup
-\@doanenote {29}
+\@doanenote {27}
 macro:->Is
 the
 point
@@ -556,12 +528,12 @@ languages
 together
 
 \par\endgroup
-\@doanenote {30}
+\@doanenote {28}
 macro:->comma
 splice.
 
 \par\endgroup
-\@doanenote {31}
+\@doanenote {29}
 macro:->Should
 this
 example
@@ -584,18 +556,18 @@ up
 there.
 
 \par\endgroup
-\@doanenote {32}
+\@doanenote {30}
 macro:->Sentence
 fragment.
 
 \par\endgroup
-\@doanenote {33}
+\@doanenote {31}
 macro:->Provide
 citations
 here.
 
 \par\endgroup
-\@doanenote {34}
+\@doanenote {32}
 macro:->What
 does
 this
@@ -605,14 +577,16 @@ I
 would
 have
 to
-think
+think\yyy
+{}{\Large
+;}
 I
 do
 not
 remember.
 
 \par\endgroup
-\@doanenote {35}
+\@doanenote {33}
 macro:->I
 think
 that
@@ -638,7 +612,7 @@ previous
 chapter
 
 \par\endgroup
-\@doanenote {36}
+\@doanenote {34}
 macro:->This
 is
 a
@@ -659,7 +633,7 @@ this
 one.
 
 \par\endgroup
-\@doanenote {37}
+\@doanenote {35}
 macro:->Not
 ``would
 form''.
@@ -677,7 +651,7 @@ the
 thesis.
 
 \par\endgroup
-\@doanenote {38}
+\@doanenote {36}
 macro:->Strike
 this?
 well
@@ -693,7 +667,7 @@ right
 \par
 
 \par\endgroup
-\@doanenote {39}
+\@doanenote {37}
 macro:->This
 sentence
 wanders
@@ -711,7 +685,7 @@ or
 reword.
 
 \par\endgroup
-\@doanenote {40}
+\@doanenote {38}
 macro:->Reword.
 I
 believe
@@ -779,7 +753,7 @@ of
 {compactitem}
 
 \par\endgroup
-\@doanenote {41}
+\@doanenote {39}
 macro:->What
 is
 the
@@ -788,7 +762,7 @@ the
 Engine?
 
 \par\endgroup
-\@doanenote {42}
+\@doanenote {40}
 macro:->What
 does
 ``unofficial''
@@ -798,7 +772,7 @@ this
 context?
 
 \par\endgroup
-\@doanenote {43}
+\@doanenote {41}
 macro:->What
 is
 list
@@ -820,7 +794,7 @@ I
 forgot
 
 \par\endgroup
-\@doanenote {44}
+\@doanenote {42}
 macro:->This
 sentence
 seems
@@ -833,7 +807,7 @@ it
 here.
 
 \par\endgroup
-\@doanenote {45}
+\@doanenote {43}
 macro:->The
 word
 ``common''
@@ -844,12 +818,12 @@ with
 other''.
 
 \par\endgroup
-\@doanenote {46}
+\@doanenote {44}
 macro:->``far
 scarcer''?
 
 \par\endgroup
-\@doanenote {47}
+\@doanenote {45}
 macro:->Do
 you
 mean
@@ -876,7 +850,7 @@ or
 ?
 
 \par\endgroup
-\@doanenote {48}
+\@doanenote {46}
 macro:->What
 does
 this
@@ -969,7 +943,7 @@ not
 ?
 
 \par\endgroup
-\@doanenote {49}
+\@doanenote {47}
 macro:->I
 have
 lost
@@ -1003,7 +977,7 @@ in
 {Haskell}
 
 \par\endgroup
-\@doanenote {50}
+\@doanenote {48}
 macro:->This
 \P
 {}
@@ -1024,7 +998,7 @@ references
 say.
 
 \par\endgroup
-\@doanenote {51}
+\@doanenote {49}
 macro:->``quite
 some
 literature''?
@@ -1038,7 +1012,7 @@ is
 abundant''?
 
 \par\endgroup
-\@doanenote {52}
+\@doanenote {50}
 macro:->Language
 names
 in
@@ -1053,7 +1027,7 @@ by
 {progLang}.
 
 \par\endgroup
-\@doanenote {53}
+\@doanenote {51}
 macro:->Rather
 than
 a
@@ -1068,7 +1042,7 @@ use
 {itemize}.
 
 \par\endgroup
-\@doanenote {54}
+\@doanenote {52}
 macro:->What
 are
 ``the
@@ -1077,21 +1051,21 @@ at
 hand''?
 
 \par\endgroup
-\@doanenote {55}
+\@doanenote {53}
 macro:->Remove
 the
 double
 ``so''.
 
 \par\endgroup
-\@doanenote {56}
+\@doanenote {54}
 macro:->This
 is
 a
 sentence
 fragment.
 \par\endgroup
-\@doanenote {57}
+\@doanenote {55}
 macro:->I
 do
 not
@@ -1101,7 +1075,7 @@ preceding
 sentence.
 
 \par\endgroup
-\@doanenote {58}
+\@doanenote {56}
 macro:->``Prolog
 like''
 should
@@ -1110,7 +1084,7 @@ be
 {Prolog}-like''.
 
 \par\endgroup
-\@doanenote {59}
+\@doanenote {57}
 macro:->Yet
 another
 metaphor
@@ -1124,7 +1098,7 @@ in
 context.
 
 \par\endgroup
-\@doanenote {60}
+\@doanenote {58}
 macro:->There
 seem
 to
@@ -1134,7 +1108,7 @@ missing
 here.
 
 \par\endgroup
-\@doanenote {61}
+\@doanenote {59}
 macro:->Be
 more
 precise
@@ -1144,17 +1118,17 @@ of
 depicts''.
 
 \par\endgroup
-\@doanenote {62}
+\@doanenote {60}
 macro:->comma
 splice.
 
 \par\endgroup
-\@doanenote {63}
+\@doanenote {61}
 macro:->Other
 whats?
 
 \par\endgroup
-\@doanenote {64}
+\@doanenote {62}
 macro:->Mark
 this
 text
@@ -1187,12 +1161,12 @@ so
 on.
 
 \par\endgroup
-\@doanenote {65}
+\@doanenote {63}
 macro:->comma
 splice
 
 \par\endgroup
-\@doanenote {66}
+\@doanenote {64}
 macro:->``Moving
 on
 to
@@ -1209,7 +1183,7 @@ it
 aloud.
 
 \par\endgroup
-\@doanenote {67}
+\@doanenote {65}
 macro:->Do
 you
 want
@@ -1242,7 +1216,7 @@ stuff
 out.
 
 \par\endgroup
-\@doanenote {68}
+\@doanenote {66}
 macro:->How
 do
 these
@@ -1251,7 +1225,7 @@ sentences
 relate?
 
 \par\endgroup
-\@doanenote {69}
+\@doanenote {67}
 macro:->Ample
 doesn't
 fit
@@ -1259,7 +1233,7 @@ well
 here.
 
 \par\endgroup
-\@doanenote {70}
+\@doanenote {68}
 macro:->This
 \P
 {}
@@ -1267,7 +1241,7 @@ is
 good.
 
 \par\endgroup
-\@doanenote {71}
+\@doanenote {69}
 macro:->Something
 strange
 has
@@ -1275,7 +1249,20 @@ happened
 here!.
 
 \par\endgroup
-\@doanenote {72}
+\@doanenote {70}
+macro:->Use
+``must''
+in
+place
+of
+``have
+to''
+where
+you
+can.
+
+\par\endgroup
+\@doanenote {71}
 macro:->Really
 try
 to
@@ -1287,7 +1274,7 @@ with
 scare-quotes.
 
 \par\endgroup
-\@doanenote {73}
+\@doanenote {72}
 macro:->The
 list
 of
@@ -1339,7 +1326,7 @@ of
 itself?
 
 \par\endgroup
-\@doanenote {74}
+\@doanenote {73}
 macro:->Avoid
 starting
 sentences
@@ -1353,20 +1340,20 @@ be
 surprising.
 
 \par\endgroup
-\@doanenote {75}
+\@doanenote {74}
 macro:->and
 so
 on.
 
 \par\endgroup
-\@doanenote {76}
+\@doanenote {75}
 macro:->what
 does
 this
 reference?
 
 \par\endgroup
-\@doanenote {77}
+\@doanenote {76}
 macro:->Decide
 on
 a
@@ -1375,7 +1362,7 @@ for
 capitals.
 
 \par\endgroup
-\@doanenote {78}
+\@doanenote {77}
 macro:->Clean
 up
 the
@@ -1412,7 +1399,7 @@ may
 be?
 
 \par\endgroup
-\@doanenote {79}
+\@doanenote {78}
 macro:->Drop
 the
 ``would''s
@@ -1429,7 +1416,7 @@ a
 type.
 
 \par\endgroup
-\@doanenote {80}
+\@doanenote {79}
 macro:->``is
 a
 classic
@@ -1457,7 +1444,7 @@ language.''
 perhaps?
 
 \par\endgroup
-\@doanenote {81}
+\@doanenote {80}
 macro:->What
 do
 you
@@ -1473,7 +1460,7 @@ from
 {website:understandingalgebrasfpcomplete}
 
 \par\endgroup
-\@doanenote {82}
+\@doanenote {81}
 macro:->I
 cannot
 follow
@@ -1489,7 +1476,7 @@ was
 thinking
 
 \par\endgroup
-\@doanenote {83}
+\@doanenote {82}
 macro:->You
 have
 `\textit
@@ -1519,7 +1506,7 @@ you
 define.
 
 \par\endgroup
-\@doanenote {84}
+\@doanenote {83}
 macro:->Do
 you
 understand
@@ -1532,7 +1519,7 @@ here?
 Yes
 
 \par\endgroup
-\@doanenote {85}
+\@doanenote {84}
 macro:->Why
 do
 we
@@ -1566,7 +1553,7 @@ is
 *
 
 \par\endgroup
-\@doanenote {86}
+\@doanenote {85}
 macro:->Why
 do
 you
@@ -1601,7 +1588,7 @@ in
 general
 
 \par\endgroup
-\@doanenote {87}
+\@doanenote {86}
 macro:->I
 am
 deeply
@@ -1630,7 +1617,7 @@ the
 diagram.
 
 \par\endgroup
-\@doanenote {88}
+\@doanenote {87}
 macro:->In
 this
 immediate

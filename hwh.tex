@@ -106,7 +106,7 @@ This results in the ability to define infinite data structures because at execut
 Why Haskell is Good for Embedded Domain Specific Languages
 Domain Specific Languages (DSLs) are attracting some attention these days. They have always been around, of course: Emacs Lisp is a DSL, as are the various dialects of Visual Basic embedded in MS Office applications. And of course Unix hands know YACC (now Bison) and Lex (now Flex).
 
-However creating a full-blown language is a lot of work: you have to write a parser, code generator / interpreter
+However creating a full-blown language is a lot of work: you have to\eref{must-have-to} write a parser, code generator / interpreter
 and possibly a debugger, not to mention all the routine stuff that every language needs like variables, control
 structures and arithmetic types.
 An embedded DSL (eDSL) is basically a short cut if you can't afford to do that.
@@ -160,7 +160,7 @@ you can imagine.
   (update: this isn't actually true.
   As several people have pointed out, while laziness can turn O(n) space into O(1), it can also turn O(1) into
   O(n).
-  So the developers do have to worry about memory, but lazy evaluation does give them more options for dealing with
+  So the developers do have to\eref{must-have-to} worry about memory, but lazy evaluation does give them more options for dealing with
   it.)
 
   The type system allows very sophisticated constraints to be placed on the use of eDSL components and their
