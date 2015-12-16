@@ -204,7 +204,10 @@ which permits
 \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined concrete
 syntax.
 For example, consider a particular application that requires a complex data type.
-To accommodate the same it has to represented using \progLang{Haskell} syntax and preforming pattern matching may
+To accommodate the same it has to represented using \progLang{Haskell} syntax and preforming\endnote{%
+  ``preforming'' or ``performing''?  
+}
+pattern matching may
 turn into a tedious task.
 So having the option of using specific syntax reduces the programmer from this burden and this is where a
 quasi-quoter comes into the picture.
@@ -223,8 +226,9 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
 The second predicate matches the head of the first and the resulting lists and then recurs on the tails.
 The same in \progLang{Haskell},\endnote{%
-  Is the point here that templating helps, or what?
-  it is just one of the many ways to bring the languages together
+  \textcolor{dark-green}{Is the point here that templating helps, or what?}\newline
+  \textcolor{dark-red}{it is just one of the many ways to bring the languages together}\newline
+  \textcolor{dark-green}{Say something in the text.}
 }
 %\begin{minted}[linenos]{haskell}
 %append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
@@ -244,8 +248,23 @@ it is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
   Sentence fragment.
 }
-There have been quite a few attempts to ``merge'' the two programming languages from different programming paradigms.
-The attempts fall into two categories as follows,
+There have been quite a few attempts to ``merge'' the two programming languages from different programming
+paradigms.\endnote{% 
+  Do you mean
+  \begin{quote}
+    There have been quite a few attempts to ``merge'' \xxx{the} two programming languages from different programming
+    paradigms.
+  \end{quote}
+  or
+  \begin{quote}
+    There have been quite a few attempts to ``merge'' \yyy{the}{these} two programming languages\yyy{}{, that are}
+    from different programming paradigms.
+  \end{quote}
+  The word ``the'' confuses me here.
+}
+The attempts fall into two categories as follows,\endnote{%
+  See some other end-note or comment about commas before lists, {\Large And fix throughout}.
+}
 
 \begin{enumerate}
 \item
@@ -257,7 +276,8 @@ The attempts fall into two categories as follows,
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
 
-The approaches listed above are next in line for discussions.  
+\yyy{The approaches listed above are next in line for discussions}{These two approaches---embedding, and paradigm
+  integration---are discussed \dots {\color{dark-green}\footnotesize\sffamily in [specific location]}}.  
 
 
 \section{Chapter Recapitulation}
