@@ -12,14 +12,6 @@
 
 
 \section{About this chapter}
-\begin{comment}
-
-This chapter throws light on what \progLang{Prolog} does to resolve a given query via \textit{unification} and this can be replicated in
-the host language along with the challenges.
-
-This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in
-\progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
-\end{comment}
 
 This chapter demonstrates a fairly generic\endnote{%
   Really try to avoid hedging your bets with scare-quotes.
@@ -900,24 +892,45 @@ that we can compare bound variables directly and therefore eliminate redundant u
 
 \item Unifiable stuff
 
-The basic class for generating, reading, and writing to bindings stored in a monad. These three functionalities could be split apart, but are combined in order to simplify contexts. Also, because most functions reading bindings will also perform path compression, there's no way to distinguish \yyy{"}{``}true\yyy{"}{''} mutation from mere path compression.
+  The basic class for generating, reading, and writing to bindings stored in a monad.
+  These three functionalities could be split apart, but are combined in order to simplify contexts.
+  Also, because most functions reading bindings will also perform path compression, there's no way to distinguish
+  \yyy{"}{``}true\yyy{"}{''} mutation from mere path compression.
 
-The superclass constraints are there to simplify contexts, since we make the same assumptions everywhere we use BindingMonad.
+  The superclass constraints are there to simplify contexts, since we make the same assumptions everywhere we use
+  BindingMonad.
 
 
-In order to use our T data type with the rest of the API, we'll need to give a Unifiable instance for it. Before we do that we'll have to give Functor, Foldable, and Traversable instances. These are straightforward and can be automatically derived with the appropriate language pragmas.
+  In order to use our T data type with the rest of the API, we'll need to give a Unifiable instance for it.
+  Before we do that we'll have to\eref{must-have-to} give Functor, Foldable, and Traversable instances.
+  These are straightforward and can be automatically derived with the appropriate language pragmas.
 
-The Unifiable class gives one step of the unification process. Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then we can use the library's operators to perform the recursive unification, subsumption, etc.
+  The Unifiable class gives one step of the unification process.
+  Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to
+  generate the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then
+  we can use the library's operators to perform the recursive unification, subsumption, etc.
 
-The zipMatch function takes two arguments of type t a. The abstract t will be our concrete T type. The abstract a is polymorphic, which ensures that we can't mess around with more than one level of the term at once. If we abandon that guarantee, then you can think of it as if a is UTerm T v. Thus,t a means T (UTerm T v); and T (UTerm T v) is essentially the type UTerm T v with the added guarantee that the values aren't in fact variables. Thus, the arguments to zipMatch are non-variable terms.
+  The zipMatch function takes two arguments of type t a.
+  The abstract t will be our concrete T type.
+  The abstract a is polymorphic, which ensures that we can't mess around with more than one level of the term at
+  once.
+  If we abandon that guarantee, then you can think of it as if a is UTerm T v.
+  Thus,t a means T (UTerm T v); and T (UTerm T v) is essentially the type UTerm T v with the added guarantee that
+  the values aren't in fact variables.
+  Thus, the arguments to zipMatch are non-variable terms.
 
-The zipMatch method has the rather complicated return type: Maybe (t (Either a (a,a))). Let's unpack this a bit by thinking about how
-unification works. When we try to unify two terms, first we look at their head constructors. If the constructors are different, then the
-terms aren't unifiable, so we return Nothing to indicate that unification has failed. Otherwise, the constructors match, so we have to
-recursively unify their subterms. Since the T structures of the two terms match, we can return Just t0 where t0 has the same T structure as
-both input terms. Where we still have to recursively unify subterms, we fill t0 with Right(l,r) values where l is a subterm of the left
-argument to zipMatch and r is the corresponding subterm of the right argument. Thus, zipMatch is a generalized zipping function for
-combining the shared structure and pairing up substructures. And now, the implementation:
+  The zipMatch method has the rather complicated return type: Maybe (t (Either a (a,a))).
+  Let's unpack this a bit by thinking about how unification works.
+  When we try to unify two terms, first we look at their head constructors.
+  If the constructors are different, then the terms aren't unifiable, so we return Nothing to indicate that
+  unification has failed.
+  Otherwise, the constructors match, so we have to\eref{must-have-to} recursively unify their subterms.
+  Since the T structures of the two terms match, we can return Just t0 where t0 has the same T structure as both
+  input terms.
+  Where we still have to\eref{must-have-to} recursively unify subterms, we fill t0 with Right(l,r) values where l is a subterm of the
+  left argument to zipMatch and r is the corresponding subterm of the right argument.
+  Thus, zipMatch is a generalized zipping function for combining the shared structure and pairing up substructures.
+  And now, the implementation:
 
 \begin{minted}[linenos]{haskell}
 
