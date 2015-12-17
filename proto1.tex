@@ -296,8 +296,12 @@ Consider the language {in \yyy{Figure}{Listing}~\ref{tab:closed-terms}}\yyy{}{\L
   \label{tab:closed-terms}
 \end{code-list}
 
-Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped
-/ singly typed,\par
+Even though \textit{Term} has a number of constructors the resulting construct has a single type.
+Hence, a function would still be untyped / singly typed\endnote{%
+  Are you sure about the type below?  This seems to me to be confusing \progLang{Prolog} lists with
+  \progLang{Haskell} lists.
+}
+\par
 \begin{minted}{haskell}
 append :: [Term] -> [Term] -> [Term]
 \end{minted}
@@ -307,13 +311,10 @@ The \xxx{above} data type \yyy{}{Figure~\ref{tab:closed-terms}} is recursive as 
 \mint{haskell}|Struct Atom [Term]|
 \end{comment}
 
-abstract syntax of a language.\endnote{%
-  ``is a classic example of \yyy{}{using a recursive data type} \xxx{a recursive grammar} to define the
-abstract syntax of a language.'' --- perhaps?
-}
-One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from the
-data type itself \cite{sheard2004two}.
 \yyy{Figure}{Listing}~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
+abstract syntax of a language.
+One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from
+the data type itself \cite{sheard2004two}.
 Moreover, the primitives of the language\endnote{%
   What do you mean by ``primitives of the language''?
   Adopted from \cite{website:understandingalgebrasfpcomplete}
@@ -339,10 +340,6 @@ Also one cannot create Quantifiers plus logic
 The solution \xxx{to} would be to add a type constructor split the data type into two levels, a single recursive
 data type is replaced by two related data types.
 \end{comment}
-\endnote{%
-  I cannot follow this sentence.
-I do not know what I was thinking
-}
 Consider the code in Listing~\ref{tab:non-recurse}
 \begin{code-list}
   \begin{minted}[gobble=3,linenos]{haskell}
@@ -356,19 +353,19 @@ Consider the code in Listing~\ref{tab:non-recurse}
   \label{tab:non-recurse}
 \end{code-list}
 
-One result of the approach is that the non-recursive type
+One result of \yyy{the approach}{coding as in Listing~\ref{tab:non-recurse} rather than as in
+  Listing~\ref{tab:closed-terms} (lines 6--9)}
+  is that the non-recursive type
 \texttt{FlatTerm} is modular and generic as the structure
 "FlatTerm"\endnote{%
   You have `\textit{FlatTerm}' and `"FlatTerm"'.  Why not \texttt{FlatTerm} or better yet
   \texttt{\csname @backslashchar\endcsname code\{FlatTerm\}}, where \texttt{\csname @backslashchar\endcsname code} is a macro you define.
 }
 is separate
-from its\endnote{%
-  Do you understand why ``it's'' should be ``its'' here?
-  Yes
-}
-type which is \yyy{"}{``}a\yyy{"}{''}.
-The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
+from its
+type which is ``\textit{a}''.
+The above language can be of any type \textit{a}.
+A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
 \progLang{Haskell}.\endnote{%
   Why do we explain \textit{kinds}?
   Is this in preparation for \texttt{\bfseries Functor}?
@@ -393,23 +390,22 @@ Simply speaking we can have something like
 
 and a generic function like,
 \mint{haskell}|function :: (a -> b) -> FlatTerm a -> FlatTerm b|
-\textcolor{green}{%
-  Why is this {\color{blue}\Verb|map|} rather than {\color{blue}\Verb|fmap|}\,?
-  I think this is more to say all terms in the language can be (FlatTerm a) and not (FlatTerm (FlatTerm (FlatTerm ....)))
-}
-
-Although one problem remains, how does one represent infinitely nested / deep expressions of the above language, for example something of
-the form,
-
+\begin{comment}
+  I think this is more to say all terms in the language can be (FlatTerm a) and not
+  (FlatTerm (FlatTerm (FlatTerm ....)))
+\end{comment}
+Although one problem remains, how does one represent infinitely nested / deep expressions of the above language,
+for example something of the form,
+\newline
 \mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
-
+\newline
 and how to represent it generically to perform operations on it since,
 \begin{minted}[linenos]{haskell}
 (FlatTerm a) != (FlatTerm (FlatTerm a))
 \end{minted}
 %
-because with our original grammar all the expression that could be defined would be represented by a single entity ``Term'' no matter how
-infinitely deep they were.
+because with our original grammar all the expression that could be defined would be represented by a single entity
+``Term'' no matter how infinitely deep they were.
 
 The approach to tackling this problem is to find the ``fixed-point''.
 After infinitely many iterations we should get to a fixed point where further iterations make no
@@ -417,9 +413,11 @@ difference.
 It means that applying one more FlatTerm would not change anything – a fix point does not move under FlatTerm.
 
 \progLang{Haskell} provides it in two forms,\endnote{%
-  Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?
+  \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
 
-  Well not really but since we are talking about fixed point in general
+  \mehul{Well not really but since we are talking about fixed point in general}
+
+  \david{Get rid of it.  Put in a marker if you want.  If we really need it, we can drag it from the git repository.}
 }
 \begin{enumerate}
 
