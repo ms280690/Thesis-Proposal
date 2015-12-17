@@ -188,58 +188,51 @@ The next subsection covers the literature based on the above with improvements a
 }
 
 
-
-$\bullet$\endnote{%
-    Rather than a \texttt{description} environment with \texttt{\$bullet\$s}, use
-    \texttt{itemize}.
-}
-  \subsection{Papers from Mike Spivey and Silvija Seres}
+\subsection{Papers from Mike Spivey and Silvija Seres}
 
 
-  The work presented in the series
-  \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
-  encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
-  Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
-  in other languages like \progLang{Scheme} and \progLang{Lisp}.
-  Although the host language has distinct characteristics such as lazy evaluation and strong type system the
-  proposed scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi
-  paradigm declarative language.
-  \progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
-  lazily depicting depth first search with support for different strategies and practical operators such as
-  \textit{cut} and \textit{fail} with higher order functions.
-  The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
-  Though no implementation exists, the synthesis and transformation techniques for functional programs have been
-  \textit{logicalised} and applied to \progLang{Prolog} programs.
-  Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
-  problems at hand\endnote{%
-    What are ``the problems at hand''?
-}
-  and accommodate and jump between search strategies.\endnote{%
-    Remove the double ``so''.
-}
+The work presented in the series
+\cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
+encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
+Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
+in other languages like \progLang{Scheme} and \progLang{Lisp}.
+Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed
+scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi paradigm
+declarative language.
+\progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
+lazily depicting depth first search with support for different strategies and practical operators such as
+\textit{cut} and \textit{fail} with higher order functions.
+The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
+Though no implementation exists, the synthesis and transformation techniques for functional programs have been
+\textit{logicalised} and applied to \progLang{Prolog} programs.
+Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
+problems at hand\endnote{% 
+  What are ``the problems at hand''?
+} and accommodate and jump between search strategies.
 
 
-  \subsection{Other works related or based on the above}
+\subsection{Other works related or based on the above}
 
 %\par This section takes a look at the improvements at the attempts mostly based on the work from the previous section. Some work is done by the one of the authors above while the other prominent others in the same field.
 
-  Continuing from above, \cite{claessen2000typed} taps into the advantages of the host language to embed a typed
-  functional logic programming language.
-  This results in typed logical predicates and a backtracking monad with support for various data types and search
-  strategies.
-  Though not very efficient nor practical the method aims at a more elegant translation of programs from one
-  language to the other.
-  While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
-  anything new rather than doing something new with what is available.\endnote{%
-    This is a sentence fragment.}
-  Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
-  solutions are instances.\endnote{%
+Continuing from above, \cite{claessen2000typed} taps into the advantages of the host language to embed a typed
+functional logic programming language.
+This results in typed logical predicates and a backtracking monad with support for various data types and search
+strategies.
+Though not very efficient nor practical the method aims at a more elegant translation of programs from one language
+to the other.
+While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
+anything new rather than doing something new with what is available.\endnote{%
+    This is a sentence fragment.
+  }
+Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
+solutions are instances.\endnote{%
     I do not understant the preceding sentence.
   }
-  \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
-  use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state.
-  The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
-  and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
+\cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
+use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state.
+The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
+and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
 
 
 
