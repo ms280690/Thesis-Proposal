@@ -267,7 +267,7 @@ predicates, clauses etc.), don't cares, cuts, variables and so on.\endnote{%
   Drop the ``would''s here.  We \textit{do} need to define a \progLang{Prolog} type.
 }
 
-Consider the language {in Figure~\ref{tab:closed-terms}} which has been adopted from
+Consider the language {in \yyy{Figure}{Listing}~\ref{tab:closed-terms}}\yyy{}{\Large,} which has been adopted from
 \cite{prolog-lib}.
 
 \begin{code-list}
@@ -307,13 +307,13 @@ The \xxx{above} data type \yyy{}{Figure~\ref{tab:closed-terms}} is recursive as 
 \mint{haskell}|Struct Atom [Term]|
 \end{comment}
 
-Figure~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
 abstract syntax of a language.\endnote{%
   ``is a classic example of \yyy{}{using a recursive data type} \xxx{a recursive grammar} to define the
 abstract syntax of a language.'' --- perhaps?
 }
 One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from the
 data type itself \cite{sheard2004two}.
+\yyy{Figure}{Listing}~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
 Moreover, the primitives of the language\endnote{%
   What do you mean by ``primitives of the language''?
   Adopted from \cite{website:understandingalgebrasfpcomplete}
@@ -343,7 +343,7 @@ data type is replaced by two related data types.
   I cannot follow this sentence.
 I do not know what I was thinking
 }
-Consider the code in Figure~\ref{tab:non-recurse}
+Consider the code in Listing~\ref{tab:non-recurse}
 \begin{code-list}
   \begin{minted}[gobble=3,linenos]{haskell}
     data FlatTerm a = Struct Atom [a]
@@ -457,7 +457,7 @@ Generically speaking, the language can be expanded for additional functionality 
 the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
-\item Manually modifying the structure of the language, as shown in Figure~\ref{tab:man-enhan-gram}
+\item Manually modifying the structure of the language, as shown in \yyy{Figure}{Listing}~\ref{tab:man-enhan-gram}
   \begin{code-list}
     \begin{minted}[linenos,gobble=5]{haskell}
       type Atom            = String
