@@ -122,7 +122,7 @@ The selection of languages is not uncommon and this not only the case with \prog
     I do not understand the sentence before the comma.
 }\textsuperscript{,}\endnote{%
     comma splice.
-}
+}\elabel{comma-splice}
   Prolog} seems 
 to be the all time favourite for \yyy{"}{``}let's implement \progLang{Prolog} in the language X for proving it's power and 
 expressibility\yyy{"}{''}. The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
@@ -224,7 +224,8 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \label{fig:append-prolog}
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
-The second predicate matches the head of the first and the resulting lists and then recurs on the tails.
+The second predicate matches the head of the first and the resulting
+lists and then \yyy{recurs}{\mbox{recurses}} on the tails. 
 The same in \progLang{Haskell},\endnote{%
   \textcolor{dark-green}{Is the point here that templating helps, or what?}\newline
   \textcolor{dark-red}{it is just one of the many ways to bring the languages together}\newline
@@ -238,9 +239,8 @@ The same in \progLang{Haskell},\endnote{%
 %\end{minted}  
 \inputminted[linenos]{haskell}{append.pl}
 
-Consider the Object Functional Programming Language, \progLang{Scala} \cite{website:scala}\endnote{%
-  comma splice.
-}\textsuperscript{,}\endnote{%
+Consider the Object Functional Programming Language, \progLang{Scala}
+\cite{website:scala}\eref{comma-splice}\textsuperscript{,}\endnote{%
   Should this example be moved up to where you are discussing multi-paradigm languages?
   Wrote something about \progLang{Scala} up there.
 }
@@ -278,7 +278,6 @@ The attempts fall into two categories as follows,\endnote{%
 
 \yyy{The approaches listed above are next in line for discussions}{These two approaches---embedding, and paradigm
   integration---are discussed \dots {\color{dark-green}\footnotesize\sffamily in [specific location]}}.  
-
 
 \section{Chapter Recapitulation}
 

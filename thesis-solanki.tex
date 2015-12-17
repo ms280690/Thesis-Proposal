@@ -5,7 +5,7 @@
 % School of Computing
 % Clemson University
 %
-\documentclass[12pt]{unbcthesis}
+\documentclass[12pt,pagewise,right]{unbcthesis}
 
 \usepackage{amsmath}
 \usepackage{comment}
@@ -71,6 +71,11 @@
 \definecolor{dark-red}{rgb}{0.50,0.00,0.00}\relax
 \definecolor{dark-green}{rgb}{0.00,0.50,0.00}\relax
 \definecolor{fuchsia}{rgb}{0.99,0.50,0.99}\relax
+\newcommand*{\mehul}[1]{\textcolor{dark-red}{#1}}
+\newcommand*{\david}[1]{\textcolor{dark-green}{#1}}
+\newcommand\firstOfTwo[2]{#1}
+\newcommand\secondOfTwo[2]{#2}
+\newcommand{\enparen}[1]{\textup{\firstOfTwo()}#1\textup{\secondOfTwo()}}
 
 % This is needed to include figures
 % \usepackage{graphicx}

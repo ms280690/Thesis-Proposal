@@ -9,7 +9,7 @@
 
 \textcolor{blue}{\textsl{I suspect that the title of this chapter needs to change.}}
 
-\section{What is this chapter about}
+\section{What is this chapter about}\label{sec:what-this-chapter:proposedWork}
 
 \textcolor{blue}{\textsl{I need this information.
     I do not know what you are trying to do here.
@@ -29,7 +29,11 @@ discussed below{\large,} along with their shortcomings.
 
 \begin{enumerate}
 \item
-  Very few embedded implementations exist which offer a perspective into the job at hand.
+  Very few embedded implementations exist which offer a perspective into the job at hand.\endnote{%
+    What is ``the job at hand''?
+    What is `` a perspective into the job at hand''?
+    See \textit{p.}~\pageref{sec:list-colloquialisms}.
+}
   One of the earliest implementations \cite{website:mini-prolog-hugs98} is for an older specification of
   \progLang{Haskell} called \progLang{Haskell 98} \texttt{\bfseries{hugs}}.
   It is more of a proof of concept providing a mechanism to include variable search strategies in order to produce
@@ -50,20 +54,25 @@ discussed below{\large,} along with their shortcomings.
 
 \item
   The papers that try to take the above further are also few in number and do not have any implementations with the
-  proposed concepts \cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional, seres2000optimisation}.\endnote{%
-    Provide citations here.
-}
+  proposed concepts \yyy{}{(see }\cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional, seres2000optimisation}\yyy{}{)}.
   Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
 
 \item
-  In the case of libraries, a few exist, most are old and are not currently maintained or updated.
-  Many provide only a shell through which one has to do all the work, which is synonymous with the embeddings
-  mentioned above.
-  Some are far more feature rich than others that is with some practical \progLang{Prolog} concepts, but are not
-  complete.
+  In the case of libraries, a few exist,\eref{comma-splice} most are old and are not currently maintained or updated.
+  Many provide only a shell through which one has to
+  do\eref{must-have-to} all the work, which is synonymous with the
+  embeddings mentioned above.
+  Some are \xxx{far} more feature rich than others\yyy{ that is with
+    some}{; that is, some have} practical \progLang{Prolog} concepts,
+  but are \yyy{}{still} not complete.\endnote{%
+    Did I get your sense?
+}
 
 \item
-  Moreover, none of the above have natural list support that exist in \progLang{Prolog}.\endnote{%
+  Moreover, none of the above have natural list support that exist\endnote{%
+    ``exist'' or ``exists''?
+}
+  in \progLang{Prolog}.\endnote{%
     What does this point mean?
     I would have to think\yyy{}{\Large;} I do not remember.
 }
@@ -77,48 +86,64 @@ being the prominent one.\endnote{%
   added \progLang{Scala} stuff in previous chapter
 }
 Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
-crossover implementations exist but again most of them have faded out.
+crossover implementations exist but again most of them have faded out.\endnote{%
+  \S~\ref{sec:what-this-chapter:proposedWork} says that this chapter is about embedding programming languages.
+  You appear to have wandered off topic.
+}
 
-As discussed in the sections above, either an embedding or an integration approach is taken up for programming
+As discussed in the sections above,\endnote{%
+  Which sections above?  Use {\ttfamily\expandafter\string\csname label\endcsname}
+  and
+  {\ttfamily\expandafter\string\csname ref\endcsname}
+  to say precisely which.
+}
+either an embedding or an integration approach is taken up for programming
 languages to work together.
 So, there is either a very shallow approach that does not utilize the constructs available in the host language and
 results in a mere translation of the characteristics, or the other is a fairly complex process which results in
 tackling the conflicting nature of different programming paradigms and languages, resulting in a toned-down
-compromised language that takes advantages of neither paradigms.
-Mostly the trend is to build a library for extension to replicate the features as an add on.
+compromised language that takes advantages of neither paradigms.\endnote{%
+  I am uncertain as to the tone.
+  Words like ``very'', ``mere'', and so on seem overly argumentative.
+}
+Mostly\yyy{}{\Large,} the trend is to build a library for extension to replicate the features as an add on.\endnote{%
+  What is the point of this \P{} relative to the overall thesis?
+}
 
 Taking into consideration above, there is quite some room for improvement and additions.
 \section{Proposal Contributions}
 
-\endnote{%
-  This is a good bridging sentence, but should probably end the last section, rather than begin this one.
-}
 Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
 close to a \progLang{Prolog} like language and has practical abilities to carry out real-world tasks.
 They include predicates like \textit{cut, assert, fail, setOf, bagOf} among others.
-This form\endnote{%
+This form{\Huge s}\endnote{%
   Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
 }
 the first stage of the implementation.
 Secondly, exploring aspects such as \textit{assert} and database capabilities.\endnote{%
-  Strike this?
-  well we/ the library does some of this right ?
-  
+  \david{Strike this?}\newline
+  \mehul{well we/ the library does some of this right ?}
+}\textsuperscript{,}\endnote{%
+  This is not a complete sentence.
 }
 A third question to address is the accommodation of input and output, specifically dealing with the \textit{IO
   Monad} in \progLang{Haskell} with \progLang{Prolog} \textit{IO}.
 Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be
 created.
 Something like this is not by default in \progLang{Haskell}.
-Hence syntactic support for the same is the next question to address.
-Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally.
-Lastly, how would characteristics of hybrid languages fit into and play a role in an embedded setting.
+Hence syntactic support for the same is the next question to address.\eref{not-a-sentence}
+Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally.\eref{not-a-sentence}
+Lastly, how would characteristics of hybrid languages fit into and play a role in an embedded setting.\eref{not-a-sentence}
 
 
 \section{Improved Contributions}
 \begin{enumerate}
 \item
-  Most languages have a recursive abstract syntax which restricts the eDSL in terms of its capability to
+  Most languages have a recursive abstract syntax which restricts the eDSL\endnote{%
+    Have we defined ``eDSL'' yet?  If not, write
+    ``\textsl{embedded, domain-specific language \enparen{eDSL}}''.
+}
+  in terms of its capability to
   \textit{open up} the language{\large,} i.e{\large,}
   to include meta syntactic variables, custom quantifiers and logic.
   (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
@@ -128,7 +153,9 @@ Lastly, how would characteristics of hybrid languages fit into and play a role i
 
   To test it out we adopt the closed \progLang{Prolog} like language defined in \cite{prolog-lib} and open it up.
   And for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
-  implementation encapsulated into a monad.
+  implementation encapsulated into a monad.\endnote{%
+    See \textit{p.}~\pageref{item:no-and}, item~\ref{item:no-and}.
+}
 
 \item
   (\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a
