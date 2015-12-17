@@ -14,31 +14,22 @@
 
 -----------------------------------------------------------------------------
 
-Programming languages fall into different categories also known as
-``paradigms''.\endnote{% There are two problems in this sentence:
-  \begin{itemize}
-  \item
-    Why is ``Languages'' capitalized?
-  \item
-    Use \Verb!``!
-    and \Verb!''!
-    to quote material in \LaTeX{} source, not \Verb!"!\,.
-  \end{itemize}
-} They exhibit different characteristics according to the paradigm they
-fall into.
+Programming languages fall into different categories also known as ``paradigms''.
+They exhibit different characteristics according to the paradigm they fall into.
 It has been argued \cite{Krishnamurthi:2008:TPL:1480828.1480846} that
-rather than classifying a language into a particular paradigm\endnote{%
-  comma splice.
-}
-Tt is
+rather than classifying a language into a particular paradigm
+\textcolor{fuchsia}{Tt} is
 more accurate that a language exhibits a set of characteristics from a
-number of paradigms.
+number of paradigms.\endnote{%
+  This sentence still needs more crafting.
+}
 Either way, the broader the scope of a language the more the
 expressibility or use it has.
 
 Programming Languages that fall into the same family, in our case declarative programming languages, can be of
-different paradigms and can have very contrasting, conflicting characteristics and behaviours. The two most
-important ones in the family of declarative languages are the Functional and Logical style of programming.
+different paradigms and can have very contrasting, conflicting characteristics and behaviours.
+The two most important ones in the family of declarative languages are the Functional and Logical style of
+programming.
 
 Functional Programming, \cite{hughes1989functional} gets its name as the fundamental concept is to apply
 mathematical functions to arguments to get results.
@@ -60,10 +51,8 @@ Most typed $\lambda$ calculus langauges are based on Hindley-Milner or Damas-Mil
   Can you find an article or book rather than a website as a reference here?
   \cite{hindley1969principal}, \cite{milner1978theory}
 }
-The Hindley-Milner like type systems have the ability to give a most general type of a program without any annotations.\endnote{%
-  This is a sentence fragment.  I think that you mean something like: \textsl{The Hindley-Milner like type systems
-    have the ability to give a most general type of a program without any annotations.}
-}
+The Hindley-Milner like type systems have the ability to give a most general type of a program without any
+annotations. 
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the
 variables, lastly unifying all of the constraints giving the type of the result.\endnote{%
@@ -84,11 +73,15 @@ Endnote\endnote{%
   You need to tell the reader that you now want to talk about integrating two programming languages, namely,
   \progLang{Prolog} and \progLang{Haskell}.
 }
-\textcolor{blue}{\rule{0.40\textwidth}{2pt}}
-In this thesis we aim to merge the two languages together and produce a result which would exhibit hybrid properties. Further on we talk
-about more about the languages in question and approaches . 
-
-\par
+\textcolor{blue}{\rule{0.40\textwidth}{2pt}}\par
+In this thesis we aim to merge the two languages\endnote{%
+  ``the two languages''?
+  As per the remarks above, the reader is not going to remember what two languages we are talking about.
+  Perhaps just dropping ``the'' will fix this.
+}
+together and produce a result which would exhibit hybrid
+properties.
+Further on we talk about more about the languages in question and approaches .
 
 The languages to be worked with being \progLang{Haskell} and \progLang{Prolog} respectively.\eref{not-a-sentence}
 Some differences include things like, \progLang{ Haskell} uses Pattern Matching while \progLang{Prolog} uses
@@ -103,7 +96,8 @@ The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of 
 \item \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic
 \end{enumerate} 
 
-\progLang{Prolog} \cite{wikiprolog} being one of the most dominant Logic Programming Languages has 
+\progLang{Prolog} \cite{wikiprolog}\yyy{}{\Large,} being one of the most dominant Logic Programming
+Languages\yyy{}{\Large,} has  
 spawned a number of distributions and is present from academia to industry.  
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
@@ -115,10 +109,11 @@ performed outside the language but can be brought together with pure functions i
 separation and maintaining safety with practicality. \progLang{Haskell} computes results lazily and is strongly 
 typed. 
 
-The languages taken up are contrasting in nature and bringing them onto the same plate is tricky. The 
-differences in typing, execution, working among others lead to an altogether mixed bag of properties.
+\yyy{The languages taken up}{\progLang{Prolog} and \progLang{Haskell}} are contrasting in nature\yyy{}{\Large,} and
+bringing them onto the same plate is tricky.
+The differences in typing, execution, working among others lead to an altogether mixed bag of properties.
 
-The target language; \progLang{Prolog} is not a uncommon choice. To prove their power, many language have implemented \cite{swipembedd} a 
+The target language; \progLang{Prolog} is not \yyy{a}{an} uncommon choice. To prove their power, many language have implemented \cite{swipembedd} a 
 modified \progLang{Prolog} for example, \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
 \progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on. 
@@ -127,45 +122,58 @@ The selection of languages is not uncommon and this not only the case with \prog
     I do not understand the sentence before the comma.
 }\textsuperscript{,}\endnote{%
     comma splice.
-}
+}\elabel{comma-splice}
   Prolog} seems 
 to be the all time favourite for \yyy{"}{``}let's implement \progLang{Prolog} in the language X for proving it's power and 
 expressibility\yyy{"}{''}. The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
 languages like \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
-\progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on \xxx{and on}.    
+\progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on \xxx{and on}.\endnote{%
+  This \P{} seems to repeat the preceding \P{}.  Merge them.
+}
 
-The technique of embedding is a shallow one.\endnote{%
-  comma splice.
+The technique of embedding is a shallow one.
+It is as if the embedded language floats over the host.
+Other approaches provide deeper integration between the target and the host.
+\yy{Further on}{Here}\endnote{%
+  I am not sure which ``further on'' you are referring to.
+  Is it the rest of this \P{}, or is it Chapter~\ref{chap:multiparadigm}?
 }
-It is as if the embedded language floats over the host.\endnote{%
-  Now signal that you are switching directions:
-  \textsl{Other approaches provide deeper integration}.
-}
-Other approaches provide deeper integration between the target and the host. Further on we look at a few.
+we look at a few.
 Over time there has been an approach that branches out, which is Paradigm Integration.
 A lot of work has been done on Unifying the Theories of Programming
 \cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
   gibbons2013unifying}.
-All sorts of hybrid languages which have characteristics from more than one paradigm are coming into the
-mainstream.\endnote{%
-  Do you want to give the \progLang{Scala} here?
-}
+\yyy{All sorts of hybrid}{Hybrid} languages \yyy{which}{that} have characteristics from more than one paradigm are coming into the
+mainstream.
 One of the more successful attempts is \progLang{Scala}\cite{website:scala}. Simply speaking it is like a \textit{functional} 
-\progLang{Java} providing side-effect free programming environment along with the \progLang{Java} like features.
+\progLang{Java} providing side-effect free programming environment along with \xxx{the}
+\yyy{\progLang{Java} like}{\progLang{Java}-like} features.
 
 Before moving on, let us take a look at some terms related to the content above.
 To begin with Foreign Function Interfaces (FFI) \cite{website:ffiwiki}, a mechanism by which a program written in
-one programming language can make use of services written in another.
+one programming language can make use of services written in another.\eref{not-a-sentence}
 For example, a function written in \progLang{C} can be called within a program written in \progLang{Haskell} and
 vice versa through the FFI mechanism.
 Currently the \progLang{Haskell} foreign function interface works only for one language.
 Another notable example is the Common Foreign Function Interface (CFFI) \cite{website:commonlisp} for
 \progLang{Lisp} which provides fairly complete support for \progLang{C} functions and data.
+\yyy{}{As yet another example,}
 \progLang{Java} provides the Java Native Interface(JNI) for the working with other languages.
-Moreover there are services that provide a common platform for multiple languages to work with each other and run
-their programs.
-They can be termed as multi lingual run times which lay down a common layer for languages to use each others
+Moreover there are services that provide a common platform for multiple languages to work with each other \xxx{and run
+their programs.}
+They can be termed as \yyy{multi lingual run times}{multilingual run-times}\endnote{%
+  I am not sure which of 
+  \begin{compactitem}
+  \item \textit{run times}
+  \item \textit{run-times}
+  \item \textit{runtimes}
+  \end{compactitem}
+  is correct.
+  What do basic O/S texts use?
+  ``Multilingual'' is definitely one word.
+}
+which lay down a common layer for languages to use each others
 functions.
 An example for this is the Microsoft Common Language Runtime (CLR) \cite{website:clrwiki} which is an
 implementation of the Common Language Infrastructure (CLI) standard \cite{website:cliwiki}.
@@ -175,24 +183,31 @@ that write or manipulate other programs.
 The language used to write meta programs is known as the meta language while the the language in which the program
 to be modified is written is the object language.
 If both of them are the same then the language is said to be reflective.\endnote{%
-  I think that this usage of ``reflective'' needs some common.
+  I think that this usage of ``reflective'' needs some \yyy{common}{comment}.
   Usually \textit{reflective} refers to run-time access to information about the object language text;
   what you are discussing is compile-time access to the object language.
   ?????
 }
 \progLang{Haskell} programs can be modified using Template \progLang{Haskell} \cite{website:templatehaskell}, an
 extension to the language which provides services to jump between the two types of programs.
-The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type which can be modified at compile time which allows playing with the code and going back and forth possible.\endnote{%
+The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type which can be
+modified at compile time which allows playing with the code and going back and forth possible.\endnote{%
   The preceding sentence needs fixing.
-
 }
 
-A specific tool used in meta programming is quasi quotation \cite{mainland2007s,haskellquasi,wikiquasi},
+A specific tool used in meta programming is quasi quotation\endnote{%
+  I believe that Wikipedia uses ``quasi-quotation'' rather than ``quasi quotation''.
+  Check to see what is commonly used.
+}
+\cite{mainland2007s,haskellquasi,wikiquasi},
 which permits
 \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined concrete
 syntax.
 For example, consider a particular application that requires a complex data type.
-To accommodate the same it has to represented using \progLang{Haskell} syntax and preforming pattern matching may
+To accommodate the same it has to represented using \progLang{Haskell} syntax and preforming\endnote{%
+  ``preforming'' or ``performing''?  
+}
+pattern matching may
 turn into a tedious task.
 So having the option of using specific syntax reduces the programmer from this burden and this is where a
 quasi-quoter comes into the picture.
@@ -209,10 +224,12 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \label{fig:append-prolog}
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
-The second predicate matches the head of the first and the resulting lists and then recurs on the tails.
+The second predicate matches the head of the first and the resulting
+lists and then \yyy{recurs}{\mbox{recurses}} on the tails. 
 The same in \progLang{Haskell},\endnote{%
-  Is the point here that templating helps, or what?
-  it is just one of the many ways to bring the languages together
+  \textcolor{dark-green}{Is the point here that templating helps, or what?}\newline
+  \textcolor{dark-red}{it is just one of the many ways to bring the languages together}\newline
+  \textcolor{dark-green}{Say something in the text.}
 }
 %\begin{minted}[linenos]{haskell}
 %append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
@@ -222,9 +239,8 @@ The same in \progLang{Haskell},\endnote{%
 %\end{minted}  
 \inputminted[linenos]{haskell}{append.pl}
 
-Consider the Object Functional Programming Language, \progLang{Scala} \cite{website:scala}\endnote{%
-  comma splice.
-}\textsuperscript{,}\endnote{%
+Consider the Object Functional Programming Language, \progLang{Scala}
+\cite{website:scala}\eref{comma-splice}\textsuperscript{,}\endnote{%
   Should this example be moved up to where you are discussing multi-paradigm languages?
   Wrote something about \progLang{Scala} up there.
 }
@@ -232,8 +248,23 @@ it is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
   Sentence fragment.
 }
-There have been quite a few attempts to ``merge'' the two programming languages from different programming paradigms.
-The attempts fall into two categories as follows,
+There have been quite a few attempts to ``merge'' the two programming languages from different programming
+paradigms.\endnote{% 
+  Do you mean
+  \begin{quote}
+    There have been quite a few attempts to ``merge'' \xxx{the} two programming languages from different programming
+    paradigms.
+  \end{quote}
+  or
+  \begin{quote}
+    There have been quite a few attempts to ``merge'' \yyy{the}{these} two programming languages\yyy{}{, that are}
+    from different programming paradigms.
+  \end{quote}
+  The word ``the'' confuses me here.
+}
+The attempts fall into two categories as follows,\endnote{%
+  See some other end-note or comment about commas before lists, {\Large And fix throughout}.
+}
 
 \begin{enumerate}
 \item
@@ -245,8 +276,8 @@ The attempts fall into two categories as follows,
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
 
-The approaches listed above are next in line for discussions.  
-
+\yyy{The approaches listed above are next in line for discussions}{These two approaches---embedding, and paradigm
+  integration---are discussed \dots {\color{dark-green}\footnotesize\sffamily in [specific location]}}.  
 
 \section{Chapter Recapitulation}
 

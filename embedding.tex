@@ -4,11 +4,15 @@
 \begin{document}
 
 
+\chapter{Embedding a Programming Language into another Programming Language }\label{chap:embedding}
+
+
 \section{What is this chapter about}
 
------------------------------------------------------------------------------
+\noindent\rule{0.95\textwidth}{2.8pt}\endnote{%
+  Section heading and dividing line moved into the Chapter.
+}
 
-\chapter{Embedding a Programming Language into another Programming Language }\label{chap:embedding}
 
 The art of embedding a programming language into another one has been explored a number of times in the form
 of building libraries or developing Foreign Function Interfaces and so on. This area mainly aims at an environment
@@ -60,23 +64,17 @@ Although this implementation takes as reference the working of the \progLang{ Pr
   What is the \progLang{Prolog} Engine?
 }
 and other details, it
-still is an unpublished implementation\endnote{%
-  What does ``unofficial'' mean in this context?
-}
+still is an unpublished implementation
 with almost no documentation, support  or ongoing development.
 Moreover, it comes with an option of three engines to play
 with{\large,} but still lacks complete list support\endnote{%
-  What is list support?  What is complete list support?  You have not
-  defined either of these terms.
-  I forgot
+  \david{What is list support?  What is complete list support?  You have not
+  defined either of these terms.}\newline
+  \mehul{I forgot}.
 }
 and a lot of 
-practical features that \progLang{Prolog} has.\endnote{%
-  This sentence seems to be wandering on.  Split it here.
-}
-This seems to be a common problem with the other\endnote{%
-  The word ``common'' is fighting with ``only other''.
-}
+practical features that \progLang{Prolog} has.
+This seems to be a common problem with the other
 implementation that exists, \cite{website:takashi-workplace}.
 
 Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
@@ -92,16 +90,14 @@ The purely declarative nature lacks basic requirements such as support for modul
 }
 The other issue is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
 family of Declarative Languages.\endnote{%
-  What does this sentence mean?
+  \david{What does this sentence mean?
   Are you suggesting that one of \progLang{Prolog}'s problems is that it is
   competing with \progLang{Haskell}?
-  ``And then there is \dots'' is colloquial.
-  You might be able to use it for surprise value, but I would rather you use more academic sounding language like
-  ``There is also\dots''.
-  
+  }
+  \mehul{
   Well \progLang{Haskell} has a lot of advantages over \progLang{Prolog} despite being from the same paradigm
-  
-  So a choice has to be made for a declarative language why not \progLang{Haskell} ?
+  \par
+  So a choice has to be made for a declarative language why not \progLang{Haskell} ?}
 }
 Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
 enables encoding of search problems.\endnote{%
@@ -175,71 +171,62 @@ All the more \textit{Prologish} things exist in Haskell, as mentioned alone it i
 \section{Related Papers}
 \textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
 
-Abundant literature \endnote{%
-  ``quite some literature''?
-  Perhaps ``the literature on \textsf{X} is abundant''?
-}
-can be found which consist of embedding detailed parts of Prolog features
+Abundant literature 
+can be found \yyy{which consist of}{on} embedding detailed parts of Prolog features
 like basic constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
 Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
-The next subsection covers the literature based on the above with improvements and further additions.\endnote{%
-  Language names in this \P{} are not marked by \texttt{progLang}.
+The next subsection covers the literature based on the above\endnote{%
+  I am not sure what ``the above'' refers to here: \cite{spivey1999embedding}?.
 }
+with improvements and further additions.
 
 
-
-$\bullet$\endnote{%
-    Rather than a \texttt{description} environment with \texttt{\$bullet\$s}, use
-    \texttt{itemize}.
-}
-  \subsection{Papers from Mike Spivey and Silvija Seres}
+\subsection{Papers from Mike Spivey and Silvija Seres}
 
 
-  The work presented in the series
-  \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
-  encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
-  Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
-  in other languages like \progLang{Scheme} and \progLang{Lisp}.
-  Although the host language has distinct characteristics such as lazy evaluation and strong type system the
-  proposed scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi
-  paradigm declarative language.
-  \progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
-  lazily depicting depth first search with support for different strategies and practical operators such as
-  \textit{cut} and \textit{fail} with higher order functions.
-  The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
-  Though no implementation exists, the synthesis and transformation techniques for functional programs have been
-  \textit{logicalised} and applied to \progLang{Prolog} programs.
-  Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
-  problems at hand\endnote{%
-    What are ``the problems at hand''?
-}
-  and accommodate and jump between search strategies.\endnote{%
-    Remove the double ``so''.
-}
+The work presented in the series
+\cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
+encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
+Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
+in other languages like \progLang{Scheme} and \progLang{Lisp}.
+Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed
+scheme tends to be general as the aim here is to achieve \progLang{Prolog} like working not a multi paradigm
+declarative language.
+\progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
+lazily depicting depth first search with support for different strategies and practical operators such as
+\textit{cut} and \textit{fail} with higher order functions.
+The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
+Though no implementation exists, the synthesis and transformation techniques for functional programs have been
+\textit{logicalised} and applied to \progLang{Prolog} programs.
+Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
+problems at hand\endnote{% 
+  What are ``the problems at hand''?
+} and accommodate and jump between search strategies.
 
 
-  \subsection{Other works related or based on the above}
+\subsection{Other works related or based on the above}
 
 %\par This section takes a look at the improvements at the attempts mostly based on the work from the previous section. Some work is done by the one of the authors above while the other prominent others in the same field.
 
-  Continuing from above, \cite{claessen2000typed} taps into the advantages of the host language to embed a typed
-  functional logic programming language.
-  This results in typed logical predicates and a backtracking monad with support for various data types and search
-  strategies.
-  Though not very efficient nor practical the method aims at a more elegant translation of programs from one
-  language to the other.
-  While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
-  anything new rather than doing something new with what is available.\endnote{%
-    This is a sentence fragment.}
-  Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
-  solutions are instances.\endnote{%
+Continuing from above, \cite{claessen2000typed} taps into the advantages of the host language to embed a typed
+functional logic programming language.
+This results in typed logical predicates and a backtracking monad with support for various data types and search
+strategies.
+Though not very efficient nor practical the method aims at a more elegant translation of programs from one language
+to the other.
+While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
+anything new rather than doing something new with what is available.\endnote{%
+    This is a sentence fragment.
+  }
+Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
+solutions are instances.\endnote{%
     I do not understant the preceding sentence.
   }
-  \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
-  use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state.
-  The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
-  and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
+\cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
+use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state.
+The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
+and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
 
 
 
@@ -251,20 +238,18 @@ $\bullet$\endnote{%
 %% }
 \subsection{Prolog Libraries}
 
-  To replicate \progLang{Prolog} like\endnote{%
-    ``Prolog like'' should be ``\progLang{Prolog}-like''.
+To replicate \progLang{Prolog}{\Huge -}like
+capabilities Haskell seems to be already in the race\endnote{%
+  Yet another metaphor whose meaning I do not understand in context.
 }
-  capabilities Haskell seems to be already in the race\endnote{%
-    Yet another metaphor whose meaning I do not understand in context.
-  }
-  with a host of related libraries.
-  First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or
-  ``mini Prolog'' as such with not much in it to be able to be uselul, \cite{hswip-lib} is all
-  powerful but is an foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need Prolog
-  for it, \cite{prolog-lib} which is the only implementation that comes the closest to something like an actual
-  practical Prolog.
-  But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor
-  or no monadic support and an REPL without the ability to ``write a Prolog Program File''.
+with a host of related libraries.
+First we begin with the libraries about Prolog itself, a few exist \cite{nanoprolog-lib} being a preliminary or
+``mini Prolog'' as such with not much in it to be able to be uselul, \cite{hswip-lib} is all powerful but is an
+foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need Prolog for it,
+\cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical
+Prolog.
+But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or
+no monadic support and an REPL without the ability to ``write a Prolog Program File''.
 
 \begin{comment}
 \begin{enumerate}
@@ -290,9 +275,7 @@ $\bullet$\endnote{%
 }
   \progLang{Prolog}'s
   backtracking behaviour.
-  Prolog is heavily based on formal logic.\endnote{%
-    comma splice.
-}
+  Prolog is heavily based on formal logic.
   \cite{proplogic-lib} provides a powerful system for Propositional Logic.
   Other libraries\endnote{%
     Other whats?
@@ -310,8 +293,6 @@ $\bullet$\endnote{%
 
 The more specific the feature{\Large,} the lesser the support in \progLang{Haskell}.
 Moving on to the other distinct feature of \progLang{Prolog} is unification.\endnote{%
-  comma splice
-}\textsuperscript{,}\endnote{%
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
 }
 There are two libraries that exist \cite{unification-fd-lib},
@@ -492,9 +473,7 @@ As discussed in the\marginpar{{\color{red}\large *}}\endnote{%
 \item ????
 \end{enumerate}
 
-  \noindent {\color{blue}\rule{1\textwidth}{1pt} got to here\par \rule{1\textwidth}{1pt}\sloppy\par}
-
-\section{Chapter Recap}
+\section{Chapter Recap\protect{\Huge\color{red} itulation}}
 
 
 \end{document}

@@ -118,9 +118,7 @@ for search problems.
 The adoption of \progLang{Prolog} has been difficult since procedural languages were making a mark when it was released.
 
 \progLang{Prolog} is a language that has a hard time being adopted.
-Born in an era where procedural languages were receiving a lot of attention, it suffered\endnote{%
-  this looks like it has been cut and paste, not so sure
-} from competing against another
+Born in an era where procedural languages were receiving a lot of attention, it suffered from competing against another
 new kid on the block: \progLang{C}.
 
 Some of the problems were due to its own limitations.
@@ -162,46 +160,54 @@ Many domains require the system to be mutation free, but must deal with uncontro
 on.\endnote{%
   This example isn't as clear to me as the one in the last sentence.
   how do I say that mathematics can be translated to declarative easily in declarative paradigm 
-}\textsuperscript{,}\endnote{%
-  Use ``must'' in place of ``have to'' where you can.
-}%
+}
 
 Putting all of the above together, Domain Specific Languages\endnote{%
   I have the feeling that you should introduce the concept of DSLs
   slightly higher.
   higher ???
 }
-are pretty good in doing what they are designed to do,
-but nothing else, resulting in choosing a different language every time.
-On the other hand, a general purpose language can be used for solving a wide variety of problems but often the programmer ends up writing 
-some code dictated by the language rather than by the
-problem.
+are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
+every time.
+On the other hand, a general purpose language can be used for solving a wide variety of problems but often the
+programmer ends up writing some code dictated by the language rather than by the problem.
 
-The solution is to develop a programming language with a split personality, in our case, sometimes functional, sometimes logical and sometimes both.\eref{not-a-sentence}
-Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics. The ideal situation is a
-language with a rich
-feature set and the ability to mould itself according to the problem. A language with the ability to take the appropriate skill set and provide them to the programmer, which will reduce the hassle of jumping between languages or forcibly trying to solve a problem according to a paradigm.\eref{not-a-sentence}
+The solution is to develop a programming language with a split personality, in our case, sometimes functional,
+sometimes logical and sometimes both.
+Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics.
+The ideal situation is a language with a rich feature set and the ability to mould itself according to the problem.
+A language with the ability to take the appropriate skill set and provide them to the programmer, which will reduce
+the hassle of jumping between languages or forcibly trying to solve a problem according to a
+paradigm.\eref{not-a-sentence}
 
 The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be pushed to
 don the avatar of \progLang{Prolog}?
-This is the million dollar question.\endnote{%
-  ``To dawn the avatar''?  This is poetic.  Did you mean ``to don''?
-}
+This is the million dollar question.
 
-A \progLang{Haskell} with \progLang{Prolog} like features\endnote{%
-  Say what ``the above'' is.
-} will result in a set of characteristics which are from both the declarative paradigms.
+A \progLang{Haskell} with \progLang{Prolog} like features will result in a set of characteristics which are from
+both the declarative paradigms.
 %----------------------------------------------------------------------------------------------------------------------
 
 %The issue being discussed here is that often when a problem is to solved using a given language, it has to be moulded %according to the capability the
 %language can provide.
-This can be achieved in two ways,
+This can be achieved in two ways\yyy{,}{:}\endnote{%
+  I believe that I have commented on the preceding elsewhere.
+  The punctuation to introduce a list (that is, the end of the phrase immediately preceding the list) should not be
+  ``,'', but more likely a colon, or possibly a period.
+}
 \begin{description}
 \item [Embedding (\chapterReference{chap:embedding}{Chapter 4}):]
 
   This approach involves translating a complete language into the host language as an extension such as a
   library or module.
-  The result is very shallow as all the positives as well as the negatives are brought into the host language.
+  The result is very shallow
+  \begin{comment}
+    \endnote{%
+      Are you defining what ``shallow'' means here?  Or are you arguing that as the result of the embedding being
+      shallow that there are certain advantages and drawbacks?
+    }
+  \end{comment}
+  as all the positives as well as the negatives are brought into the host language.
   The negatives mentioned being, that languages from different paradigms usually have conflicting characteristics
   and result in inconsistent properties of the resulting embedding.
   Examples and further discussion on the same is provided in the chapters to come.

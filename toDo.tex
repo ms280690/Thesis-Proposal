@@ -38,6 +38,11 @@
 \item [\textbf{Mehul}]
 
 \item
+  Remove sentences that begin with ``And''.
+  You may have two in the entire thesis.
+  No more!\label{item:no-and}
+
+\item
   Search for all latin abbreviations (\textit{e.g.,} ``i.e.''), and be
   sure that you have appropriate punctuation before and after.
   If you are unsure of the punctuation to use, try substituting plain
@@ -72,32 +77,20 @@
   what material is needed in Chapters~ \ref{chap:quasiquotation},
   \ref{chap:metasyntacticvariables},
   and~\ref{chap:relatedtermskeywords}.
-\item {}[mainly done]
-  If you don't like the shape of the paragraphs that you get without
-  \Verb!paragraph!, use something like
-  \begin{Verbatim}
-\setlength{\parindent}{3em}
-\setlength{\parskip}{2\baselineskip}
-  \end{Verbatim}
-  to adjust either the initial paragraph indent, or the inter-paragraph
-  space.
 
 \item
   Rewrite (Section) Chapter 3 in formal English.
 
 \item
-  ``re-curses'' means to swear again (\textit{p} 9). \textbf{Changed to recurs}
+  ``re-curses'' means to swear again (\textit{p} 9).
+  \mehul{\textbf{Changed to recurs}.}
+  \david{Should be ``recurses'' without the hyphen.}
 \item
   I am not sure that I agree with the use of ``reflective'' on
   \textit{p}~8 (\textit{l}~25).  Reflection often means run-time
   introspection (for instance the Java \Verb!.getClass()! method).
   In computer science, reflection is the ability of a computer program to examine (see type introspection) and modify its own structure and behavior (specifically the values, meta-data, properties and functions) at runtime.
   
-\item
-  Supply your credentials in the front material (what degrees do you
-  have?).
-  (Search for \Verb!%% Supply your credentials! in \Verb!proposal1.tex!\,.)
-
 \item
   The abstract is too long. UNBC guidelines limit Masters' theses
   abstracts to 150 words.
@@ -133,9 +126,6 @@
   earlier section and reference that discussion here.  For instance, it
   isn't clear that \Verb!prolog-0.2.0.1! comes from~ \cite{prolog-lib}.
 \item
-  See my comments below.
-  I suspect that longer listings should be separate figures.
-\item
   Line~7 on p~55 is not a complete sentence.
 \item
   I suspect that \S~\ref{proto2.1}.2 should start with a sentence like 
@@ -150,42 +140,11 @@
 
 \paragraph{Thoughts on Chapter~\ref{proto1}}
 
-\begin{code-list}
-\begin{minted}[linenos,frame=lines]{haskell}	
-data VariableName = VariableName Int String
-      deriving (Eq, Data, Typeable, Ord)
-data Atom         = Atom      !String
-                  | Operator  !String
-      deriving (Eq, Ord, Data, Typeable)
-data Term = Struct Atom [Term]
-          | Var VariableName
-          | Wildcard
-          | PString   !String
-          | PInteger  !Integer
-          | PFloat    !Double
-          | Flat [FlatItem]
-          | Cut Int
-      deriving (Eq, Data, Typeable)
-data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
-            | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
-      deriving (Data, Typeable)
-type Program = [Sentence]
-type Body    = [Goal]
-data Sentence = Query   Body
-              | Command Body
-              | C Clause
-      deriving (Data, Typeable)
-\end{minted}
-  \vspace*{-1.0\baselineskip}
-  \caption{A sample Minted figure}
-  \label{fig:sample}
-\end{code-list}
 I am looking at what are currently lines 145--\textit{on} in
 \Verb!proto1.tex!, and I am not sure whether 
 \begin{compactenum}
 \item
-  the text should be loose---as you have it, or floated to a figure, as shown
-  in Figure~\ref{fig:sample}.
+  the text should be loose---as you have it, or floated to a figure.
 \item
   I am also not sure whether I like the inlined code, or whether I would
   prefer to have it \Verb!\inputminted! from a \progLang{Haskell} file.
@@ -226,11 +185,6 @@ possibilities
 If we assume (3), then the material in the first paragraph and part of
 the second are unnecessary.
 
-\paragraph{Thoughts on 1.3}
-
-I am unsure that I can summarize this subsection in two sentences.  I
-don't know what the problem statement is at the end of it.
-
 \paragraph{Thoughts on 1.4}
 
 Rename to ``Thesis Organization''.
@@ -262,8 +216,12 @@ Here are some potential keywords from Chapter 2:
 
 What is the overall message?
 
-\paragraph{A List of Colloquialisms}
+\paragraph{A List of Colloquialisms}\label{sec:list-colloquialisms}
 \begin{enumerate}
+\item
+  ``throws light on''
+\item
+  another new kid on the block.
 \item
   ``Recap'' should be ``recapitulation''.
 \item

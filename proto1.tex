@@ -12,32 +12,15 @@
 
 
 \section{About this chapter}
-\begin{comment}
 
-This chapter throws light on what \progLang{Prolog} does to resolve a given query via \textit{unification} and this can be replicated in
-the host language along with the challenges.
-
-This chapter discusses the aspects of opening a language while preserving the original structure of a closed recursive structure in
-\progLang{Haskell}. Also discussed are the issues related to customizing certain aspects such as meta-syntactic variables.
-\end{comment}
-
-This chapter demonstrates a fairly generic\endnote{%
-  Really try to avoid hedging your bets with scare-quotes.
-}
-procedure of creating an open embedded domain specific language in \progLang{Haskell} along
-with \textit{monadic unification}. As a proof of concept, the implementation consists of creating a \progLang{Prolog} like open language
-whose unification procedure is carried out in a monad.
+This chapter demonstrates a fairly generic procedure of creating an open embedded domain specific language in
+\progLang{Haskell} along with \textit{monadic unification}.
+As a proof of concept, the implementation consists of creating a \progLang{Prolog} like open language whose
+unification procedure is carried out in a monad.
 
 
 \section{Ideas}
-There are four main ideas in this chapter\endnote{%
-  The list of four components seems to be of different kinds of things.
-  \begin{compactitem}
-  \item Items 2 and 3 are libraries.
-  \item Item 4 is what you are building
-  \end{compactitem}
-  Do you see the circularity of describing the thing you are building as a component of itself?
-}
+There are four main ideas in this chapter
 that we work with to develop a working implementation of embedded \progLang{Prolog}
 using the concepts mentioned above.
 
@@ -61,9 +44,7 @@ The ones relevant to this thesis are,
   and finding other possible solutions.
 
 \item
-  Lastly, the query resolver which combines the unification and search strategy to return a result.\endnote{%
-    Avoid starting sentences with ``And''---except where you want to be surprising.
-}
+  Lastly, the query resolver which combines the unification and search strategy to return a result.
 \end{enumerate}
 
 \item \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}
@@ -135,21 +116,11 @@ Each of the components are discussed in the following sections.
 \section{How Prolog works}
 
 To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
+%
+As any other language we start with the syntax and semantics.
+We begin with the programming constructs of the language.
 
-\textcolor{red}{There's a sentence or more missing here. The sentence above leads up to expect a very
-  high-level view.  Below, we are in the middle of discussing a syntax feature called terms.
-  Below I would simplify, and just write ``\progLang{Prolog} has three types of terms:''.
-}
-
-As any other language\endnote{%
-  Clean up the sentence!
-  Do you mean ``As with any other language, we start with the syntax and semantics.''? 
-  
-  When we talk about a language we talk about the programming constructs may be?
-}
-we start with the syntax and semantics. We begin with the programming constructs of the language.
-
-\progLang{Prolog} has three types of terms::
+\progLang{Prolog} has three types of terms:
 \begin{enumerate}
 \item Constants.
 
@@ -220,8 +191,6 @@ The other part is actually reaching a point where two terms need to be
 unified i.e searching.
 Together they form the query resolver in \progLang{Prolog}.
 
-\newpage
-
 For example, consider the append function
 
 \begin{minted}[linenos]{prolog}
@@ -230,7 +199,7 @@ append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \end{minted}
 
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[scale = 0.5]{PrologAppendWorking.png}
 \caption{Trace for append \cite{webiste:learnprolognowappend}}
@@ -298,7 +267,7 @@ predicates, clauses etc.), don't cares, cuts, variables and so on.\endnote{%
   Drop the ``would''s here.  We \textit{do} need to define a \progLang{Prolog} type.
 }
 
-Consider the language {in Figure~\ref{tab:closed-terms}} which has been adopted from
+Consider the language {in \yyy{Figure}{Listing}~\ref{tab:closed-terms}}\yyy{}{\Large,} which has been adopted from
 \cite{prolog-lib}.
 
 \begin{code-list}
@@ -327,8 +296,12 @@ Consider the language {in Figure~\ref{tab:closed-terms}} which has been adopted 
   \label{tab:closed-terms}
 \end{code-list}
 
-Even though \textit{Term} has a number of constructors the resulting construct has a single type. Hence, a function would still be untyped
-/ singly typed,\par
+Even though \textit{Term} has a number of constructors the resulting construct has a single type.
+Hence, a function would still be untyped / singly typed\endnote{%
+  Are you sure about the type below?  This seems to me to be confusing \progLang{Prolog} lists with
+  \progLang{Haskell} lists.
+}
+\par
 \begin{minted}{haskell}
 append :: [Term] -> [Term] -> [Term]
 \end{minted}
@@ -338,13 +311,10 @@ The \xxx{above} data type \yyy{}{Figure~\ref{tab:closed-terms}} is recursive as 
 \mint{haskell}|Struct Atom [Term]|
 \end{comment}
 
-Figure~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
-abstract syntax of a language.\endnote{%
-  ``is a classic example of \yyy{}{using a recursive data type} \xxx{a recursive grammar} to define the
-abstract syntax of a language.'' --- perhaps?
-}
-One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from the
-data type itself \cite{sheard2004two}.
+\yyy{Figure}{Listing}~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
+abstract syntax of a language.
+One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from
+the data type itself \cite{sheard2004two}.
 Moreover, the primitives of the language\endnote{%
   What do you mean by ``primitives of the language''?
   Adopted from \cite{website:understandingalgebrasfpcomplete}
@@ -370,11 +340,7 @@ Also one cannot create Quantifiers plus logic
 The solution \xxx{to} would be to add a type constructor split the data type into two levels, a single recursive
 data type is replaced by two related data types.
 \end{comment}
-\endnote{%
-  I cannot follow this sentence.
-I do not know what I was thinking
-}
-Consider the code in Figure~\ref{tab:non-recurse}
+Consider the code in Listing~\ref{tab:non-recurse}
 \begin{code-list}
   \begin{minted}[gobble=3,linenos]{haskell}
     data FlatTerm a = Struct Atom [a]
@@ -387,19 +353,19 @@ Consider the code in Figure~\ref{tab:non-recurse}
   \label{tab:non-recurse}
 \end{code-list}
 
-One result of the approach is that the non-recursive type
+One result of \yyy{the approach}{coding as in Listing~\ref{tab:non-recurse} rather than as in
+  Listing~\ref{tab:closed-terms} (lines 6--9)}
+  is that the non-recursive type
 \texttt{FlatTerm} is modular and generic as the structure
 "FlatTerm"\endnote{%
   You have `\textit{FlatTerm}' and `"FlatTerm"'.  Why not \texttt{FlatTerm} or better yet
   \texttt{\csname @backslashchar\endcsname code\{FlatTerm\}}, where \texttt{\csname @backslashchar\endcsname code} is a macro you define.
 }
 is separate
-from its\endnote{%
-  Do you understand why ``it's'' should be ``its'' here?
-  Yes
-}
-type which is \yyy{"}{``}a\yyy{"}{''}.
-The above language can be of any type \textit{a}. A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
+from its
+type which is ``\textit{a}''.
+The above language can be of any type \textit{a}.
+A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
 \progLang{Haskell}.\endnote{%
   Why do we explain \textit{kinds}?
   Is this in preparation for \texttt{\bfseries Functor}?
@@ -424,23 +390,22 @@ Simply speaking we can have something like
 
 and a generic function like,
 \mint{haskell}|function :: (a -> b) -> FlatTerm a -> FlatTerm b|
-\textcolor{green}{%
-  Why is this {\color{blue}\Verb|map|} rather than {\color{blue}\Verb|fmap|}\,?
-  I think this is more to say all terms in the language can be (FlatTerm a) and not (FlatTerm (FlatTerm (FlatTerm ....)))
-}
-
-Although one problem remains, how does one represent infinitely nested / deep expressions of the above language, for example something of
-the form,
-
+\begin{comment}
+  I think this is more to say all terms in the language can be (FlatTerm a) and not
+  (FlatTerm (FlatTerm (FlatTerm ....)))
+\end{comment}
+Although one problem remains, how does one represent infinitely nested / deep expressions of the above language,
+for example something of the form,
+\newline
 \mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
-
+\newline
 and how to represent it generically to perform operations on it since,
 \begin{minted}[linenos]{haskell}
 (FlatTerm a) != (FlatTerm (FlatTerm a))
 \end{minted}
 %
-because with our original grammar all the expression that could be defined would be represented by a single entity ``Term'' no matter how
-infinitely deep they were.
+because with our original grammar all the expression that could be defined would be represented by a single entity
+``Term'' no matter how infinitely deep they were.
 
 The approach to tackling this problem is to find the ``fixed-point''.
 After infinitely many iterations we should get to a fixed point where further iterations make no
@@ -448,9 +413,11 @@ difference.
 It means that applying one more FlatTerm would not change anything – a fix point does not move under FlatTerm.
 
 \progLang{Haskell} provides it in two forms,\endnote{%
-  Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?
+  \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
 
-  Well not really but since we are talking about fixed point in general
+  \mehul{Well not really but since we are talking about fixed point in general}
+
+  \david{Get rid of it.  Put in a marker if you want.  If we really need it, we can drag it from the git repository.}
 }
 \begin{enumerate}
 
@@ -488,7 +455,7 @@ Generically speaking, the language can be expanded for additional functionality 
 the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
-\item Manually modifying the structure of the language, as shown in Figure~\ref{tab:man-enhan-gram}
+\item Manually modifying the structure of the language, as shown in \yyy{Figure}{Listing}~\ref{tab:man-enhan-gram}
   \begin{code-list}
     \begin{minted}[linenos,gobble=5]{haskell}
       type Atom            = String
@@ -900,24 +867,45 @@ that we can compare bound variables directly and therefore eliminate redundant u
 
 \item Unifiable stuff
 
-The basic class for generating, reading, and writing to bindings stored in a monad. These three functionalities could be split apart, but are combined in order to simplify contexts. Also, because most functions reading bindings will also perform path compression, there's no way to distinguish \yyy{"}{``}true\yyy{"}{''} mutation from mere path compression.
+  The basic class for generating, reading, and writing to bindings stored in a monad.
+  These three functionalities could be split apart, but are combined in order to simplify contexts.
+  Also, because most functions reading bindings will also perform path compression, there's no way to distinguish
+  \yyy{"}{``}true\yyy{"}{''} mutation from mere path compression.
 
-The superclass constraints are there to simplify contexts, since we make the same assumptions everywhere we use BindingMonad.
+  The superclass constraints are there to simplify contexts, since we make the same assumptions everywhere we use
+  BindingMonad.
 
 
-In order to use our T data type with the rest of the API, we'll need to give a Unifiable instance for it. Before we do that we'll have to give Functor, Foldable, and Traversable instances. These are straightforward and can be automatically derived with the appropriate language pragmas.
+  In order to use our T data type with the rest of the API, we'll need to give a Unifiable instance for it.
+  Before we do that we'll have to\eref{must-have-to} give Functor, Foldable, and Traversable instances.
+  These are straightforward and can be automatically derived with the appropriate language pragmas.
 
-The Unifiable class gives one step of the unification process. Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to generate the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then we can use the library's operators to perform the recursive unification, subsumption, etc.
+  The Unifiable class gives one step of the unification process.
+  Just as we only need to specify one level of the ADT (i.e., T) and then we can use the library's UTerm to
+  generate the recursive ADT, so too we only need to specify one level of the unification (i.e., zipMatch) and then
+  we can use the library's operators to perform the recursive unification, subsumption, etc.
 
-The zipMatch function takes two arguments of type t a. The abstract t will be our concrete T type. The abstract a is polymorphic, which ensures that we can't mess around with more than one level of the term at once. If we abandon that guarantee, then you can think of it as if a is UTerm T v. Thus,t a means T (UTerm T v); and T (UTerm T v) is essentially the type UTerm T v with the added guarantee that the values aren't in fact variables. Thus, the arguments to zipMatch are non-variable terms.
+  The zipMatch function takes two arguments of type t a.
+  The abstract t will be our concrete T type.
+  The abstract a is polymorphic, which ensures that we can't mess around with more than one level of the term at
+  once.
+  If we abandon that guarantee, then you can think of it as if a is UTerm T v.
+  Thus,t a means T (UTerm T v); and T (UTerm T v) is essentially the type UTerm T v with the added guarantee that
+  the values aren't in fact variables.
+  Thus, the arguments to zipMatch are non-variable terms.
 
-The zipMatch method has the rather complicated return type: Maybe (t (Either a (a,a))). Let's unpack this a bit by thinking about how
-unification works. When we try to unify two terms, first we look at their head constructors. If the constructors are different, then the
-terms aren't unifiable, so we return Nothing to indicate that unification has failed. Otherwise, the constructors match, so we have to
-recursively unify their subterms. Since the T structures of the two terms match, we can return Just t0 where t0 has the same T structure as
-both input terms. Where we still have to recursively unify subterms, we fill t0 with Right(l,r) values where l is a subterm of the left
-argument to zipMatch and r is the corresponding subterm of the right argument. Thus, zipMatch is a generalized zipping function for
-combining the shared structure and pairing up substructures. And now, the implementation:
+  The zipMatch method has the rather complicated return type: Maybe (t (Either a (a,a))).
+  Let's unpack this a bit by thinking about how unification works.
+  When we try to unify two terms, first we look at their head constructors.
+  If the constructors are different, then the terms aren't unifiable, so we return Nothing to indicate that
+  unification has failed.
+  Otherwise, the constructors match, so we have to\eref{must-have-to} recursively unify their subterms.
+  Since the T structures of the two terms match, we can return Just t0 where t0 has the same T structure as both
+  input terms.
+  Where we still have to\eref{must-have-to} recursively unify subterms, we fill t0 with Right(l,r) values where l is a subterm of the
+  left argument to zipMatch and r is the corresponding subterm of the right argument.
+  Thus, zipMatch is a generalized zipping function for combining the shared structure and pairing up substructures.
+  And now, the implementation:
 
 \begin{minted}[linenos]{haskell}
 
