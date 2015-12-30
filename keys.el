@@ -10,6 +10,16 @@
   nil "\\" "endnote{%" \n _ "\n}" \n)
 
 
+(defvar latex-insert-something-history
+  nil
+  "History for `insert-something' command.")
+
+(define-skeleton insert-something
+  "Insert a braced command around the inter-regions"
+  (read-string "Command? " "\\" latex-insert-something-history)
+  str "{" _ "}" \n)
+
+
 (define-skeleton insert-code-library
   "Insert a codeLibrary item"
   nil "\\" "codeLibrary{" _ "}")
