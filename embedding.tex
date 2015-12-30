@@ -107,38 +107,6 @@ enables encoding of search problems.\endnote{%
   Attempting to do AI like search stuff in \progLang{Haskell}
 }
 
-\begin{comment}
-	\begin{enumerate}
-
-	\item Lambda The Ultimate, The Programming Languages Weblog,
-	\\* \url{http://lambda-the-ultimate.org/node/112}
-
-	\item Takashi's Workplace (Implementation),
-	\\* \url{http://propella.blogspot.in/2009/04/prolog-in-haskell.html}
-
-	\item Mini Prolog for Hugs 98 (Implementation), \cite{website:mini-prolog-hugs98}
-	\\*The first attempt at embedding Prolog in Haskell, there is not documentation as such. No paper was published either, it was just another unofficial attempt at replicating Prolog implementations in other languages like Lisp, Scheme etc. Again it is labelled to be a ''Mini Prolog'' and was riginally made for Hugs 1.3 and then updated for Hugs 98. Hugs is not active in development anymore, the last release was for 2006 and mostly everything these days is in GHC/GHCi. The special libraries and other Haskell files are required to run it. So not exactly ''new'' and also  not ''happening'' anymore.
-
-	Thsi implementation is a complex, because it deals with a lot literature and all of how Prolog Engine works,  called Andorra Prolog.
-
-	There is nothing such as out traditional list data structure in the form we know it. We cannot use something like [1,2,3] we have to forcible use, (Cons 1 (Cons 2 (Cons 3 nil))).  There are three engines, Lazy Engine(Pure Engine), Andorra Engine and Stack Engine. The Lazy engine can construct and traverse infinite trees because its lazy.
-
-	\item Logic Programming in Haskell,
-	\\* \url{http://www.haskell.org/haskellwiki/Logic_programming_example}
-
-	\item Haskell vs. Prolog comparison,
-	\\* \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}
-
-	\item Haskell vs Prolog, or \yyy{"}{``}Giving Haskell a choice\yyy{"}{''}
-	\\* \url{http://echochamber.me/viewtopic.php?f=11&t=35369}
-
-	\item Killing Prolog and losing its steam,
-	\\* \url{http://vanemden.wordpress.com/2010/08/21/who-killed-prolog/}
-	\\* \url{http://www.kmjn.org/notes/prolog_lost_steam.html}
-
-	\end{enumerate}
-	\end{comment}
-
 \section{Related Books}
 \textcolor{blue}{Perhaps the section title should be ``Books related to embedding Programming Languges''.}
 
@@ -153,20 +121,6 @@ A general out look towards implementing \progLang{Prolog} has also been discusse
   This \P{} needs a lot of work.
   I do not understand what you say the references say.
 }
-
-\begin{comment}
-All the more \textit{Prologish} things exist in Haskell, as mentioned alone it is not the only one if we consider it in the ''Scheme'' \cite{friedman05reasoned} of things and so is replication to other languages \cite{krishnamurthi2007programming}.
-\end{comment}
-
-\begin{comment}
-\begin{enumerate}
-\item The Reasoned Schemer, Daniel P. Friedman, William E. Byrd, Oleg Kiselyov
-
-\item Programming Languages: Application and Interpretation, Shriram Krishnamurthi,
-\\*  Chapters 33-34 of PLAI discuss Prolog and implementing Prolog
-
-\end{enumerate}
-\end{comment}
 
 \section{Related Papers}
 \textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
@@ -200,7 +154,7 @@ The papers provide a minimalistic extension to \progLang{Haskell} with only four
 Though no implementation exists, the synthesis and transformation techniques for functional programs have been
 \textit{logicalised} and applied to \progLang{Prolog} programs.
 Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
-problems at hand\endnote{% 
+problems at hand\{% 
   What are ``the problems at hand''?
 } and accommodate and jump between search strategies.
 
@@ -251,17 +205,6 @@ Prolog.
 But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or
 no monadic support and an REPL without the ability to ``write a Prolog Program File''.
 
-\begin{comment}
-\begin{enumerate}
-	\item Nano Prolog
-	\item Prolog
-	\item cspm-To-Prolog
-	\item prolog-graph and prolog-graph-lib
-	\item hswip,
-	\\* \url{https://groups.google.com/forum/#!topic/haskell-cafe/3vmCuw7NlWE}
-\end{enumerate}
-\end{comment}
-
 %\item[$\bullet$]Logic Libraries
 \subsection{Logic Libraries}
 
@@ -299,15 +242,9 @@ There are two libraries that exist \cite{unification-fd-lib},
 \cite{cmu-lib} that unify two Prolog Terms and return the resulting substitution.\endnote{%
   Do you want to make the point here that \cite{unification-fd-lib} is more general than just \progLang{Prolog}? 
 
-I do not know since we are just listing stuff out.
+\mehul{I do not know since we are just listing stuff out.}
 }
 
-\begin{comment}
-\begin{enumerate}
-	\item unification-fd
-	\item cmu
-\end{enumerate}
-\end{comment}
 
 %\item[$\bullet$]Backtracking
 \subsection{Backtracking}
@@ -317,47 +254,9 @@ To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logi
 Moreover, there is a package for the \progLang{Egison} programming language \cite{egison-lib} which supports
 non-linear pattern-matching with backtracking.
 
-\begin{comment}
-
-\begin{enumerate}
-	\item Egison \cite{egison-lib}
-	\item stream-monad \cite{stream-monad-lib}
-	\item logicst \cite{logicst-lib}
-\end{enumerate}
-
-\end{comment}
 
 %% \end{description}
 
-\begin{comment}
-\section{Possibly Related Content}
-\begin{enumerate}
-
-\item Unifying Theories of Programming, C.A.R. Hoare,
-\\* \url{http://www.unifyingtheories.org/}
-
-\item Unifying Theories of Programming with Monads, Jeremy Gibbons,
-\\* \url{http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/utp-monads.pdf}
-
-\end{enumerate}
-\end{comment}
-
-\begin{comment}
-\begin{description}
-\item[$\bullet$]Concatenative Programming Libraries
-\begin{enumerate}
-	\item peg \cite{peg-lib}
-\end{enumerate}
-
-\item[$\bullet$]Constraint Programming and Constraint Handling Rules
-\begin{enumerate}
-	\item monadiccp \cite{monadiccp-lib}
-	\item monadicccp-gecode \cite{monadiccp-gecode-lib}
-	\item csp \cite{csp-lib}
-	\item liquid fix point \cite{liquid-fix-point-lib}
-\end{enumerate}
-\end{description}
-\end{comment}
 
 
 \section{\textbf{From chap 7}}

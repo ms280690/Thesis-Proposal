@@ -30,14 +30,6 @@ which programmers can work in a variety of styles, freely intermixing constructs
 paradigms.\yyy{"}{''}
 
 
-
-\begin{comment}
-\subparagraph{}
-In this section we talk about marrying or integrating the paradigms, multi paradigm programming language approach.
-Here we talk about combining the two most important and widely spread declarative paradigms, Functional and Logical
-Programming Paradigms.
-\end{comment}  
-
 \section{The Informal Content from Blogs, Articles and Internet Discussions}
 %\begin{description}
   
@@ -53,20 +45,6 @@ Programming Paradigms.
   Generally speaking, it does not feel all that hot or popular in programming circles; one reason could be that it
   is a very broad topic and specifying details can clear the fog.
 
-\begin{comment}
-\begin{enumerate}
-\item Wikipedia Multiparadigm Programming Languages
-\\* \url{http://en.wikipedia.org/wiki/Multi-paradigm_programming_language#Multi-paradigm}
-\\* \url{http://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Multiparadigm_languages}
-
-\item Mozilla Developer Network MDN,
-\\* \url{https://developer.mozilla.org/en-US/docs/multiparadigmlanguage.html}
-
-\item Some blog called c2,
-\\* \url{http://c2.com/cgi/wiki?MultiParadigmProgrammingLanguage} 
-\end{enumerate}
-\end{comment}
-
 \subsection{Functional Logic Programming Languages}
 
   Continuing from the previous section, narrowing down the search by considering only multi paradigm declarative
@@ -81,35 +59,9 @@ Programming Paradigms.
   As a matter of fact the holy grail of information is maintained by two of the most important people in the field
   Michael Hanus \cite{website:mhanus} and Sergio Antoy \cite{website:santoy}.
 
-\begin{comment}
-\begin{enumerate}
-\item FLPL Wikipedia,
-\\* \url{http://en.wikipedia.org/wiki/Functional_logic_programming}
-\\* \url{http://en.wikipedia.org/wiki/Category:Functional_logic_programming_languages}
 
-\item Implementation of Functional Logic Languages
-\\* \url{http://web.cecs.pdx.edu/~antoy/research/flp/}
-
-\item Functional Logic Programming
-\\* \url{http://www.informatik.uni-kiel.de/~mh/FLP/}
- 
-\end{enumerate}
-\end{comment}
 %\end{description}
 
-
-\begin{comment}
-\section{People}
-There are a lot of people working on this but, I found a lot of papers of two of them,
-\begin{enumerate}
-\item Michael Hanus,
-\\* \url{http://www.informatik.uni-kiel.de/~mh/}
-\item Sergio Antoy,
-\\* \url{http://web.cecs.pdx.edu/~antoy/}
-\item Uday S Reddy 
-\\* \url{}
-\end{enumerate}
-\end{comment}
 
 \section{Literature and Publications}
 %\begin{description}
@@ -161,17 +113,6 @@ Although the language can do a lot but gaps do exist such as the improvement of 
 
 The list of multi paradigm languages is huge, but in this thesis we will mostly stick to Functional Logical programming languages. Beginning with functional hybrids, a small project language called \progLang{Virgil} \cite{website:virgil}, combining objects to work with functions and procedures. On similar lines is \progLang{Common Object Lisp System (CLOS)} \cite{website:closwiki}. This can be justified as object oriented programming has been one of the most dominant styles of programming and hence even \progLang{Haskell} has one called \progLang{O'Haskell} \cite{website:ohaskell} though it last saw a release back in 2001. Another prominent implementation is \progLang{OCaml} \cite{website:ocamlwiki,website:ocamllang} which adds object oriented capabilities with a powerful type system and module support. This is the case with most of the languages in this section hardly a few have survived as the new ones incorporated the positives of the old.  As mentioned before one of the most poplar \cite{website:langpop} and widely usage both in academia and industry is the \progLang{Scala} \cite{website:scala} programming language stands out.       
 
-\begin{comment}
-\begin{enumerate}
-\item \progLang{Scala}, Object Functional Programming Language.
-
-\item Virgil, Object Functional Programming Language.
-
-\item CLOS, Common Lisp Object System.
-
-\item .......................????????
-\end{enumerate}
-\end{comment}
 
 \section{Functional Logic Programming Languages}
 
@@ -196,58 +137,6 @@ The functional language \progLang{Scheme} is a very popular choice for this sort
 
 Finally talking about \progLang{Curry}, one of the most popular \progLang{Haskell} based multi paradigm languages with support for deterministic and non-deterministic computations. Contributing to the same there have been some predecessors \cite{website:alf,website:toy}.       
 
-
-
-\begin{comment}
-\section{Functional Logic Programming Language}
-\begin{enumerate}
-	\item The intergration of functions into Logic Programming : From Theory to Practice,
-				\\* \url{http://www.informatik.uni-kiel.de/~mh/publications/papers/JLP94.html}
-	\item Functional Logic Programming : From theory to curry,
-				\\* \url{http://www.informatik.uni-kiel.de/~mh/papers/GanzingerFestschrift.pdf}
-	\item Functional Logic Programming,
-				\\* \url{http://dl.acm.org/citation.cfm?doid=1721654.1721675}
-	\item A Higher Order Rewriting Logic for FLP,
-				 \url{http://books.google.ca/books?hl=en\&lr=\&id=TSJDeaVpJyMC\&oi=fnd\&pg=PA153\&dq=functional+logic+programming\&ots=Ikp3Y-kZRV\&sig=j7XQq-Hi-utdeNG54ZFkE1BeBNw\#v=onepage\&q=functional%20logic%20programming&f=false}
-	\item Toy a multiparadigm declarative system
-	\item A unified computation model for functional and logic programming 
-	\item Semantics and Types in Functional Logic Programming 
-	\item Polymorphic Types in FLP
-	\item A general Computation Scheme for Constraint Logic Programming
-\end{enumerate}
-
-\subparagraph{}
-List of Functional Logic Languages
-\begin{enumerate}
-	\item Mercury \cite{website:mercury} provides a boundary, so either deterministic / non-deterministic at call time
-	\item Curry \cite{website:curry} 
-	\item Escher \cite{lloyd1999programming:escher} lazy eval with monads like haskell and simple 
-	\item ALF \cite{website:alf} another release from the Michael Hanus, predecessor to curry, works on a modified wam
-  	\item Babel \cite{website:babel,moreno1992logic, moreno1988babel} BABEL combines pure PROLOG with a first order functional notation.
-  	\item Ciao \cite{website:ciao} preprocessor for supporting functional syntax which is then converts the code to Prolog
-  	\item Life \cite{website:life} LIFE is an interpreted logic programming language, related to Prolog, with features for functional and object-oriented programming. Intended mainly as a research vehicle, LIFE integrates inheritance, functional, and constraint rule programming styles into a logic programming framework.
-  	The syntax of LIFE is similar to that of Prolog, and its logic semantics are also related to Prolog. Prolog uses indexed Herbrand terms as its primary data element, but LIFE uses extensible psi-terms. Primitive data types supported by LIFE include booleans, integers, floats, symbols, strings, and sorts (a sort is a kind of type descriptor). In addition to psi-terms, LIFE supports lists with the same syntax as Prolog. As a functional language, LIFE supports higher-order functions, currying, and similar operations. It does not support lazy evaluation.
-  	An implementation of the LIFE language is available for free download, it is written in C and works on Unix systems. A programmer's manual and various scholarly papers are also available. The name LIFE is an acronym for Logic, Inheritance, Functions, and Equations.
-  	One of the most novel aspects of LIFE, as a logic programming language, is its notion of sorts. Sorts are like types, and like the types in most object-oriented languages, have inheritance relationships.
-  	Several different institutions have hosted LIFE development: MCC in Texas, DEC's Paris Research Lab, and most recently Simon Frasier U in Canada. 
-  	\item LPG \cite{bert1987lpg} algebraic + logic programming language
-  	\item NUE-Prolog \cite{website:nue-prolog} like prolog but with special support for functions
-  	\item Oz (Mozart Programming System) \cite{website:oz-mozart} concurrent constraint programming + distributed support, with different function types for goal solving and expression rewriting
-  	\item TOY \cite{website:toy} very close to Curry with better constraint handling but no good libs
-  	\item $\lambda$ Prolog \cite{website:lambda-prolog} modular higher order programming with abstract data types in a logical setting
-	\item Visual Prolog (They claim it is a OOFLPL) \cite{website:visual-prolog} a version of prolog which supports not only func but alos oops which can be used to develop windows applications
-	\item TABLOG \cite{malachi1984tablog} TABLOG (Tableau Logic Programming Language) is a language based on first-order predicate logic with equality that combines functional and logic programming. TABLOG incorporate advantages of LISP and PROLOG. A program in TABLOG is a list of formulas in a first-order logic (including equality, negation, and equivalence) that is more general and more expressive than PROLOG?s Horn Clauses. Whereas PROLOG programs must be relational, TABLOG programs may define either relations or functions. While LISP programs yield results of a computation by returning a single output value, TABLOG programs can be relations and can produce several results simultaneously through their arguments. TABLOG employs the Manna-Waldinger deductive-tableau proof system as an interpreter in the same way that PROLOG uses a resolution-based proof system. Unification is used by TABLOG to match a call with a line in the program and to bind arguments. The basic rules of deduction used for computing are nonclausal resolution and rewriting by means of equality and equivalence. A pilot interpreter for the language has been implemented.
-	\item Caledon Language \cite{website:caledon} Caledon is a dependently typed, polymorphic, higher order logic programming language in Haskell
-	\item HAL \cite{website:hal} constraint solving capabilities to functional programming
-	\item Omega System ($\Omega$mega) \cite{website:omega} Haskell theorem prover
-	\item MiniKanrenT \cite{website:minikanrent} implementation from reasoned schemer for haskell
-	\item Haskell Kanren \cite{website:haskellkanren} implementation from reasoned schemer for haskell
-	\item Molog	 \cite{website:molog} implementation from reasoned schemer for haskell
-	\item Mini Kanren \cite{website:minkanren} implementation from reasoned schemer to extend scheme with logic capabilities, few new constructs into scheme replicates the essence of prolog.
-	\item Kanren \cite{website:kanren}, scheme library from the book 
-	\end{enumerate}
-
-\end{comment}
 
 \section{\textbf{From chap 9}}
 
