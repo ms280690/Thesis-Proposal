@@ -147,7 +147,7 @@ yes
   and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2}\,.
   Similarly, if \mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2}
   unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
-variables, they’re both instantiated to each other, and we say that they share values.)
+variables, \yyy{they’re}{they're} both instantiated to each other, and we say that they share values.)
 \begin{code-list}[h]
 \begin{minted}[linenos]{prolog}
 ?-  mia  =  X.
@@ -396,7 +396,10 @@ because with our original grammar all the expression that could be defined would
 The approach to tackling this problem is to find the ``fixed-point''.
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
-It means that applying one more FlatTerm would not change anything – a fix point does not move under FlatTerm.
+It means that applying one more FlatTerm would not change anything \yyy{–}{--}\eref{non-ascii}\textsuperscript{,}\endnote{%
+  Even if entered correctly, an en-dash is not appropriate here.
+}
+a fix point does not move under FlatTerm.
 
 \progLang{Haskell} provides it in two forms,\endnote{%
   \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
