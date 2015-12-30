@@ -25,21 +25,25 @@ A programming language must not only provide an easy to use environment but also
 
 Over the last decade the declarative style of programming has gained popularity.
 The methodologies that have stood out are the functional and logical approaches.\endnote{%
-  What style guide are you using to determine capitalization? \newline 
-  \mehul{none at the moment but I will change certain capitals to small}
+  \david{What style guide are you using to determine capitalization?}\newline
+  \mehul{none at the moment
+  but I will change certain capitals to small}
 }
-The former is based on functions and lambda calculus, while the latter is based on horn clause logic.
-Each of them has its own advantages and ﬂaws.
+The former is based on functions and lambda calculus, while the latter is based on Horn clause logic.
+Each of them has its own advantages and \yyy{ﬂaws}{flaws}\endnote{%
+  The first character of flaws was \\u\(+\)fb02 (an FL-ligature), which makes me think
+  that this text was cut and pasted.
+}
+.
 How does one choose which approach to adopt?
 Perhaps one does not need to choose!
 This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a purely
 functional programming language and \progLang{Prolog}, a logical programming language so that one is not forced to
-choose. The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and a single
-typed system.\endnote{%
-  Say more here?
-  This seems like a natural place to have more high-level comments on where the thesis is going.
-} The thesis aims at leveraging the features of the host language in order to incorporate logic programming features resulting in extending 
-\progLang{Haskell} with capabilities like unification. 
+choose.
+The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and
+a single typed system.
+The thesis aims at leveraging the features of the host language in order to incorporate logic programming features
+resulting in extending \progLang{Haskell} with capabilities like unification.
 
 
 
@@ -57,13 +61,7 @@ capabilities.
 %----------------------------------------------------------------------------
 
 Over the years the development of programming languages has become more and more rapid.
-Today the number of is in the thousands and counting \cite{website:timelineproglangwiki, website:historyofproglang}.\endnote{%
-  Reference?  How did you come up with this estimate?
-  
-\mehul{https://en.wikipedia.org/wiki/Timeline\_of\_programming\_languages}
-
-\mehul{http://www.thesoftwareguild.com/history-of-programming-languages/}
-}
+Today the number of is in the thousands and counting \cite{website:timelineproglangwiki, website:historyofproglang}.
 The successors attempt to introduce new concepts and features to simplify the process of coding a solution and assist
 the programmer by lessening the burden of carrying out standard tasks and procedures.
 A new one tries to capture the best of the old; learn from the mistakes, add new concepts and move on; which seems to be
@@ -71,15 +69,13 @@ good enough from an evolutionary perspective.
 But all is not that straight forward when shifting from one language to another.
 There are costs and incompatibilities to look at.
 A language might be simple to use and provide better performance than its predecessor but not always be worth the
-switch.\endnote{%
-  What is the key idea in this \P{}?
-  I believe that you want to link this \P{} to the idea that embedded or merged languages are good, but I don't see
-  where you do that.
+switch.
+One other approach would be to replicate target features exhibited by a language in the present one to avoid the
+hassle of jumping between the two\yyy{}{\Large,} more commonly known as an embedded or a foreign function interface.\endnote{%
+  Rewrite as two sentences.
 }
-One other approach would be to replicate target features exhibited by a language in the present one to avoid the hassle of
-jumping between the two more commonly known as an embedded or a foreign function interface. A mixture of these ideologies results in a 
-multi-paradigm / merged programming language. We try to encapsulated both the approaches of embedding and merging to develop a hybrid 
-approach.
+A mixture of these ideologies results in a multi-paradigm / merged programming language.
+We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.
 
 \begin{comment}
 \progLang{Prolog} has a similar story. It was born in an era where procedural programming had made everyone notice their presence. Talking about
@@ -119,32 +115,40 @@ help to blend the two.
 Generally speaking, programming languages with a wide scope over problem domains do not provide bespoke support for
 accomplishing  mundane tasks.
 Approaching towards the solution can be complicated and tiresome, but the programming language in question acts as the
-master key.\endnote{%
-  The idea of this sentence is good, but the wording needs improvement.
-}%
-A general purpose language, as the name suggests{\large ,} provides a general set of tools to cover many
+master key.
+A general purpose language, as the name suggests,\endnote{%
+  Where I have put a {\ttfamily\expandafter\string\csname Large\endcsname} before a comma
+  in a correction, it is just to make the comma more visible.
+  Remove it when you do the correction.
+}
+provides a general set of tools to cover many
 problem domains.
-The downside is that such environments lack focus and approaching towards the solution can be complicated and
+The downside is that such environments\endnote{%
+  Do you mean languages?  If not, what environments are you talking about?
+}
+lack focus and approaching towards the solution\endnote{%
+  ``approaching towards the solution'' does not flow well.  Reword.
+}
+can be complicated and
 tiresome.
 
 
 Flipping the coin to the other side, we see, the more specific the language is to the problem domain, the easier it
-is to solve the problem since it need not be moulded according to the capability  of the
-language.\endnote{%
-  This preceding phrase is not a sentence.
-}\elabel{not-a-sentence}
+is to solve the problem since \yyy{it}{the solution} need not be moulded according to the capability  of the
+language.
 For example, a problem with a naturally recursive solution cannot take advantage of tail recursion in many
 imperative languages.
 Many domains require the system to be mutation free, but must deal with uncontrolled side-effects and so
 on.\endnote{%
-  This example isn't as clear to me as the one in the last sentence.
-  how do I say that mathematics can be translated to declarative easily in declarative paradigm 
+  \david{This example isn't as clear to me as the one in the last sentence.}
+  \mehul{how do I say that mathematics can be translated to declarative easily in declarative paradigm}
 }
 
 Putting all of the above together, Domain Specific Languages\endnote{%
-  I have the feeling that you should introduce the concept of DSLs
-  slightly higher.
+  \david{I have the feeling that you should introduce the concept of DSLs
+  slightly higher.}
   \mehul{higher ???}
+  \david{Earlier.}
 }
 are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
 every time.
@@ -157,7 +161,9 @@ Depending upon the problem, the language shapes itself accordingly and exhibits 
 The ideal situation is a language with a rich feature set and the ability to mould itself according to the problem.
 A language with the ability to take the appropriate skill set and provide them to the programmer, which will reduce
 the hassle of jumping between languages or forcibly trying to solve a problem according to a
-paradigm.\eref{not-a-sentence}
+paradigm.\endnote{%
+  This preceding phrase is not a sentence.
+}\elabel{not-a-sentence}
 
 The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be pushed to
 don the avatar of \progLang{Prolog}?
