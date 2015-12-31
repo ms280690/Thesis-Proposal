@@ -18,7 +18,10 @@ Programming languages fall into different categories also known as ``paradigms''
 They exhibit different characteristics according to the paradigm they fall into.
 It has been argued \cite{Krishnamurthi:2008:TPL:1480828.1480846} that
 rather than classifying a language into a particular paradigm
-\textcolor{fuchsia}{Tt} is
+\textcolor{fuchsia}{Tt}\endnote{%
+  Fix.
+}
+is
 more accurate that a language exhibits a set of characteristics from a
 number of paradigms.\endnote{%
   This sentence still needs more crafting.
@@ -47,17 +50,16 @@ restriction on what sort(type) of data can a function work with.
 \progLang{Scheme} is based on the untyped variant{\large,} while \progLang{ML} and \progLang{Haskell} are based on typed
 $\lambda$ calculus.
 Most typed $\lambda$ calculus langauges are based on Hindley-Milner or Damas-Milner or Damas- Hindley-Milner
-\cite{website:hdmtypesystemwiki} type system.\endnote{%
-  Can you find an article or book rather than a website as a reference here?
-  \mehul{\cite{hindley1969principal}, \cite{milner1978theory}}
-}
+\yyy{\cite{website:hdmtypesystemwiki}}{(\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki})} type system.
 The Hindley-Milner like type systems have the ability to give a most general type of a program without any
 annotations. 
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the
 variables, lastly unifying all of the constraints giving the type of the result.\endnote{%
-  What is the relevance of this \P{} to the thesis?
-  \mehul{To explain the working, not directly required I guess but since \progLang{Haskell} is statically typed}
+  \david{What is the relevance of this \P{} to the thesis?}\newline
+  \mehul{To explain the working, not directly required I guess but since \progLang{Haskell} is statically
+    typed}\newline
+  \david{Perhaps it is also relevant that this requires unification.}
 }
 
 Logical Programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
@@ -65,15 +67,6 @@ A program is a set of rules and formul\ae{} in symbolic logic that are used to d
 ones.
 This is done until the one which gives the solution is not derived.
 
-\noindent
-\textcolor{blue}{\rule{0.40\textwidth}{2pt}}
-Endnote\endnote{%
-  There is an abrupt transition here.
-  The preceding \P's have discussed the general nature of functional and logic programming.
-  You need to tell the reader that you now want to talk about integrating two programming languages, namely,
-  \progLang{Prolog} and \progLang{Haskell}.
-}
-\textcolor{blue}{\rule{0.40\textwidth}{2pt}}\par
 In this thesis we aim to merge the two languages\endnote{%
   ``the two languages''?
   As per the remarks above, the reader is not going to remember what two languages we are talking about.
@@ -89,7 +82,7 @@ Unification, \progLang{Haskell} is all about functions while \progLang{Prolog} i
 on.\endnote{%
   This \P{} needs rewriting.
 }
-The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are,
+The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are,\eref{comma-before-list}
 \begin{enumerate}
 \item { Haskell} uses Pattern Matching while \progLang{Prolog} uses Unification
 
@@ -114,9 +107,9 @@ bringing them onto the same plate is tricky.
 The differences in typing, execution, working among others lead to an altogether mixed bag of properties.
 
 The target language; \progLang{Prolog} is not \yyy{a}{an} uncommon choice. To prove their power, many language have implemented \cite{swipembedd} a 
-modified \progLang{Prolog} for example, \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
+modified \progLang{Prolog}\yyy{}{\Large:} for example, \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
-\progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on. 
+\progLang{JavaScript} \cite{jscriptlog}\yyy{}{\Large,} and the list \cite{yieldprolog} goes on. 
 
 The selection of languages is not uncommon and this not only the case with \progLang{Haskell,\endnote{%
     I do not understand the sentence before the comma.
@@ -135,7 +128,7 @@ languages like \progLang{Scheme} \cite{racklog}, \progLang{Lisp}
 The technique of embedding is a shallow one.
 It is as if the embedded language floats over the host.
 Other approaches provide deeper integration between the target and the host.
-\yy{Further on}{Here}\endnote{%
+\yyy{Further on}{Here}\endnote{%
   I am not sure which ``further on'' you are referring to.
   Is it the rest of this \P{}, or is it Chapter~\ref{chap:multiparadigm}?
 }
@@ -146,7 +139,7 @@ A lot of work has been done on Unifying the Theories of Programming
   gibbons2013unifying}.
 \yyy{All sorts of hybrid}{Hybrid} languages \yyy{which}{that} have characteristics from more than one paradigm are coming into the
 mainstream.
-One of the more successful attempts is \progLang{Scala}\cite{website:scala}. Simply speaking it is like a \textit{functional} 
+One of the more successful attempts is \yyy{\progLang{Scala}\cite{website:scala}}{\progLang{Scala} \cite{website:scala}}. Simply speaking it is like a \textit{functional} 
 \progLang{Java} providing side-effect free programming environment along with \xxx{the}
 \yyy{\progLang{Java} like}{\progLang{Java}-like} features.
 
@@ -201,7 +194,7 @@ A specific tool used in meta programming is quasi quotation\endnote{%
 }
 \cite{mainland2007s,haskellquasi,wikiquasi},
 which permits
-\progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined concrete
+\progLang{Haskell} expressions and patterns to be constructed using domain specific, pro\-gram\-mer-de\-fined concrete
 syntax.
 For example, consider a particular application that requires a complex data type.
 To accommodate the same it has to represented using \progLang{Haskell} syntax and preforming\endnote{%
@@ -227,9 +220,9 @@ going through the code, the first rule says that and empty list appended with an
 The second predicate matches the head of the first and the resulting
 lists and then \yyy{recurs}{\mbox{recurses}} on the tails. 
 The same in \progLang{Haskell},\endnote{%
-  \textcolor{dark-green}{Is the point here that templating helps, or what?}\newline
+  \david{Is the point here that templating helps, or what?}\newline
   \mehul{it is just one of the many ways to bring the languages together}\newline
-  \textcolor{dark-green}{Say something in the text.}
+  \david{Say something in the text.}
 }
 %\begin{minted}[linenos]{haskell}
 %append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
@@ -262,9 +255,7 @@ paradigms.\endnote{%
   \end{quote}
   The word ``the'' confuses me here.
 }
-The attempts fall into two categories as follows,\endnote{%
-  See some other end-note or comment about commas before lists, {\Large And fix throughout}.
-}
+The attempts fall into two categories as follows,\eref{comma-before-list}
 
 \begin{enumerate}
 \item
