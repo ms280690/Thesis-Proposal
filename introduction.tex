@@ -39,11 +39,21 @@ How does one choose which approach to adopt?
 Perhaps one does not need to choose!
 This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a purely
 functional programming language and \progLang{Prolog}, a logical programming language so that one is not forced to
+<<<<<<< 92e9eab348fb38506776f3025d3176b4e48557a9
 choose.
 The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and
 a single typed system.
 The thesis aims at leveraging the features of the host language in order to incorporate logic programming features
 resulting in extending \progLang{Haskell} with capabilities like unification.
+=======
+choose. The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and a single
+typed system.\endnote{%
+  Say more here?
+  This seems like a natural place to have more high-level comments on where the thesis is going.
+} The thesis aims at leveraging the features of the host language in order to incorporate logic programming features resulting in extending 
+\progLang{Haskell} with capabilities like unification. We achieve this by adopting various aspects from approaches related to merging 
+paradigms and embedding techniques for programming languages.  
+>>>>>>> added some content to introduction in reference to adressing notes
 
 
 
@@ -74,8 +84,17 @@ One other approach would be to replicate target features exhibited by a language
 hassle of jumping between the two\yyy{}{\Large,} more commonly known as an embedded or a foreign function interface.\endnote{%
   Rewrite as two sentences.
 }
+<<<<<<< 92e9eab348fb38506776f3025d3176b4e48557a9
 A mixture of these ideologies results in a multi-paradigm / merged programming language.
 We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.
+=======
+One other approach would be to replicate features exhibited by a target language in the present one to avoid the hassle of
+jumping between the two more commonly known as an embedded or a foreign function interface. A mixture of these ideologies results in a 
+multi-paradigm / merged programming language. We try to encapsulated both the approaches of embedding and merging to develop a hybrid 
+approach.
+>>>>>>> added some content to introduction in reference to adressing notes
+
+An embedded language provides a lot of shortcuts
 
 \begin{comment}
 \progLang{Prolog} has a similar story. It was born in an era where procedural programming had made everyone notice their presence. Talking about
