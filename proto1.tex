@@ -15,7 +15,11 @@
 
 This chapter demonstrates a fairly generic procedure of creating an open embedded domain specific language in
 \progLang{Haskell} along with \textit{monadic unification}.
-As a proof of concept, the implementation consists of creating a \progLang{Prolog} like open language whose
+As a proof of concept, the implementation consists of creating a \progLang{Prolog} like\endnote{%
+  ``\textit{\progLang{Prolog} like}'' should be hyphenated as \text{\progLang{Prolog}-like}
+  when used as an adjective, as here.
+}\elabel{language-like}
+open language whose
 unification procedure is carried out in a monad.
 
 
@@ -93,7 +97,7 @@ The relevant components are,
   This implementation applies to practice the procedure to create an open language to accommodate types,
   custom variables, quantifiers and logic and recovering primitives while preserving the structure of a
   language commonly defined by a recursive abstract syntax tree.
-  The resulting language is then adapted to apply a \progLang{Prolog} like unification.
+  The resulting language is then adapted to apply a \progLang{Prolog} like\eref{language-like} unification.
 
 The implementation consists of the following components,
 \begin{enumerate}
@@ -222,7 +226,7 @@ a data type to replicate the target language type system while conforming to the
 benefits.
 
 
-We have a \progLang{Prolog} like language in \progLang{Haskell} defined via \textit{data}.
+We have a \progLang{Prolog} like\eref{language-like} language in \progLang{Haskell} defined via \textit{data}.
 
 The language defined is recursive in nature.
 
@@ -234,7 +238,7 @@ Basically we do Unification monadically.
 
 \section{Creating a data type}
 
-To start we need to define a abstract syntax for the \progLang{Prolog} like language. But there is a conflict between the type systems as
+To start we need to define a abstract syntax for the \progLang{Prolog} like\eref{language-like} language. But there is a conflict between the type systems as
 we shall discuss.
 
 
