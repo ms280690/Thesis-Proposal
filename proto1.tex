@@ -53,9 +53,13 @@ The ones relevant to this thesis are,\eref{comma-before-list}
 
 \item \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}
 
-  One of the existing implementation of \progLang{Prolog} in \progLang{Haskell} though partial provides a starting
-  point for the implementation providing certain components to exercise our approach.
-  The main components of this library are adopted from \progLang{Prolog} and modified\yyy{,}{:}
+  One of the existing implementation of \progLang{Prolog} in \progLang{Haskell}\yyy{}{\Large,} though partial\yyy{}{\Large,} provides a starting
+  point for the implementation \yyy{providing}{as it provides}
+  certain components to exercise\endnote{%
+    Do you mean ``test''?
+}
+  our approach.
+  The main components of this library are adopted from \progLang{Prolog} and modified,\eref{comma-before-list}
 
 \begin{enumerate}
 \item the language, adopted from \progLang{Prolog} but trimmed down;
@@ -119,7 +123,17 @@ Each of the components are discussed in the following sections.
 
 \section{How Prolog works}
 
-To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
+To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.\endnote{%
+  You might want to add words before some references. For instance
+  \begin{quote}\itshape
+    To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
+  \end{quote}
+  is probably better as
+  \begin{quote}\slshape
+    To replicate \progLang{Prolog} we look into how it works \enparen{see, for instance,
+      \textup{\cite{webiste:learnprolognow}}}. 
+  \end{quote}
+}
 %
 As any other language we start with the syntax and semantics.
 We begin with the programming constructs of the language.
@@ -230,10 +244,16 @@ We have a \progLang{Prolog} like\eref{language-like} language in \progLang{Haske
 
 The language defined is recursive in nature.
 
-We convert it into a non recursive data type.
+We convert it into a non recursive\endnote{%
+  ``non recursive'' is hyphenated.
+}
+data type.
 
 
-Basically we do Unification monadically.
+Basically we do Unification\endnote{%
+  Why is unification capitalized?
+}
+monadically.
 
 
 \section{Creating a data type}
@@ -520,11 +540,19 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 
 \section{Working with the language / Making language compatible with unification-fd}
 
-Our language now opened up and is ready for expansion but it still needs to conform to the requirements of the \cite{unification-fd-lib}
-library so that the generic unification algorithm upon customization works with it.
+Our language \yyy{}{is} now opened up and \xxx{is}\endnote{%
+  The ``is'' seems mispaced.
+}
+ready for expansion\yyy{}{\Large,}
+but it still needs to conform to the requirements of
+\yyy{the \cite{unification-fd-lib} library}{the \codeLibrary{unifiication-fd} library
+  (\cite{unification-fd-lib}),}\endnote{%
+  
+} so that the generic unification algorithm upon customization works with it.\endnote{% This sentence can be
+                                % simplified, I think.}
 
-The library provides functionality for first-order structural unification over general structure types along with mutable variable
-bindings.
+  The library provides functionality for first-order structural unification over general structure types along with
+  mutable variable bindings.
 
 In this section we discuss
 \begin{enumerate}
