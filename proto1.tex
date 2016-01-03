@@ -32,7 +32,7 @@ using the concepts mentioned above.
 \item \progLang{Prolog}
 
 The language itself has a number of sub components.
-The ones relevant to this thesis are,
+The ones relevant to this thesis are,\eref{comma-before-list}
 \begin{enumerate}
 \item Language, the syntax, semantics.
 
@@ -76,7 +76,7 @@ The ones relevant to this thesis are,
 This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable
 generic unification algorithm implementation.
 
-The relevant components are,
+The relevant components are,\eref{comma-before-list}
 \begin{enumerate}
 \item The \Verb!Unifiable! class
 
@@ -99,7 +99,7 @@ The relevant components are,
   language commonly defined by a recursive abstract syntax tree.
   The resulting language is then adapted to apply a \progLang{Prolog} like\eref{language-like} unification.
 
-The implementation consists of the following components,
+The implementation consists of the following components,\eref{comma-before-list}
 \begin{enumerate}
 \item An open language
 
@@ -136,7 +136,7 @@ We begin with the programming constructs of the language.
 Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
 terms are equal.
 
-The possibilities are,
+The possibilities are,\eref{comma-before-list}
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
   are the same atom, or the same number.
@@ -247,9 +247,13 @@ and so on. A static type system requires types to be attached to the programming
 compile time and thus increase the reliability of the program. The other end is the dynamic type system which passes through code which
 would not have worked in former environment, it comes of as less rigid.
 
-\textcolor{red}{Why do we need the following two paragraphs? To talk about the type systems of the languages}
 
-The advantages of static typing \cite{meijer2004static}
+
+The advantages of static typing \cite{meijer2004static}\endnote{
+  \david{Why do we need the following two paragraphs?}\newline
+  \mehul{To
+  talk about the type systems of the languages}
+}
 \begin{enumerate}
 \item Earlier detection of errors
 \item Better documentation in terms of type signatures
@@ -497,7 +501,6 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
 
 \begin{code-list}[h]
-  \rule{0.98\textwidth}{0.3pt}
   \begin{minted}[linenos,gobble=2]{haskell}
     data Extended f  = New_Constructor_1 ...
                      | New_Constructor_2 ....
@@ -505,10 +508,12 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
   \end{minted}
   \caption{garfunkle}
   \label{tab:garfunkle}
-  \rule{0.98\textwidth}{0.3pt}
 \end{code-list}
-
-\noindent\textcolor{blue}{\rule{\0.95\textwidth}{0.25pt}}
+\vspace*{-1.5\baselineskip}
+\begin{center}
+  end text from David\\[-3ex]
+  \textcolor{blue}{\rule{0.95\textwidth}{1pt}}
+\end{center}
 %---------------------------------------------------------------------%%
 %% -- end code inserted by David                                   -- %%
 %%====================================================================%%
