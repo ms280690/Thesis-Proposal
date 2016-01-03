@@ -20,14 +20,15 @@ objectives is to implement monadic unification using the library \cite{unificati
 
 
 \section{Unifiable Data Structures}
-For a data type to be Unifiable, it must have instances of Functor, Foldable and Traversable. The interaction between different classes is 
-depicted in figure \ref{fig:Functor Hierarchy}.
+For a data type to be Unifiable, it must have instances of Functor, Foldable and Traversable.
+The interaction between different classes is depicted in Figure \ref{fig:Functor Hierarchy Redux}.
 
 \begin{figure}[th]
 \centering
 \includegraphics[scale = 0.7]{FunctorHierarchy.png}
-\caption{Functor Hierarchy \cite{website:foldablenadtraversable}}
-\label{fig:Functor Hierarchy}
+\caption{Functor Hierarchy \cite{website:foldablenadtraversable}
+(This is also Figure~\ref{fig:Functor Hierarchy}, repeated here for convenience)}
+\label{fig:Functor Hierarchy Redux}
 \end{figure}  
 
 The Functor class provides the \texttt{fmap} function which applies a particular operation to each element in the given data structure. The Foldable class \textit{folds} the data structure by recursively applying the operation to each element and 
