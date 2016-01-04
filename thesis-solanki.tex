@@ -21,8 +21,8 @@
 \usepackage{etoolbox}
 \usepackage{amssymb}
 \usepackage{tcolorbox}
-%% added dgc 2015-12-07
-\usepackage{float}
+\usepackage{float}      %% added dgc 2015-12-07
+
 %% added dgc 2015-12-07
 \floatstyle{ruled}%
 \floatname{code-list}{Listing}%
@@ -37,22 +37,23 @@
 \hyphenation{pro-gram-ming pa-ra-digm pa-ra-digms}
 
 
-\externaldocument{background}
-\externaldocument{conclusion}
-\externaldocument{embedding}
-\externaldocument{introduction}
-\externaldocument{miscrelcon}
-\externaldocument{multiparadigm}
-\externaldocument{prologin} 
-\externaldocument{prologinhaskell}
-\externaldocument{proposedwork}
-\externaldocument{pwp}
-\externaldocument{quasiquotation}
-\externaldocument{metasyntacticvariables}
-\externaldocument{relatedtermskeywords}
-\externaldocument{relatedWork}
-\externaldocument{ummcpp}
-\externaldocument{workCompleted}
+%% Do we need the external document cross-references??
+%- \externaldocument{background}
+%- \externaldocument{conclusion}
+%- \externaldocument{embedding}
+%- \externaldocument{introduction}
+%- \externaldocument{miscrelcon}
+%- \externaldocument{multiparadigm}
+%- \externaldocument{prologin} 
+%- \externaldocument{prologinhaskell}
+%- \externaldocument{proposedwork}
+%- \externaldocument{pwp}
+%- \externaldocument{quasiquotation}
+%- \externaldocument{metasyntacticvariables}
+%- \externaldocument{relatedtermskeywords}
+%- \externaldocument{relatedWork}
+%- \externaldocument{ummcpp}
+%- \externaldocument{workCompleted}
 
 %\newcommand{\chapterReference}[1]{\textcolor{blue} {\nameref{#1} } }
 \renewcommand\makeenmark{\hbox{\textcolor{red}{$^{\theenmark}$}}}
@@ -155,6 +156,9 @@
 \item[]\lstinputlisting[caption=#2,label=#1]{#1.hs}
 \end{itemize}
 }
+
+\newif\ifMain
+\csname @ifl@aded\endcsname{cls}{subfiles}{\Maintrue}{\Mainfalse}
 
 \begin{document}
 %   ==========================================================================
@@ -386,5 +390,5 @@
 %   ==========================================================================
    	
 
-	\unbcbibliography{bibliography}
+\unbcbibliography{bibliography}
 \end{document}
