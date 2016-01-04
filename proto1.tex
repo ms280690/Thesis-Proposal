@@ -209,15 +209,28 @@ Unification is just a part of the process \yyy{were}{where} the language
 attempts to find a solution for the given query using the rules provided
 in the knowledge base.
 The other part is actually reaching a point where two terms need to be
-unified i.e searching.
+unified i.e searching.\endnote{%
+  ``i.e.'' is missing the final period.
+  Secondly, ``\textit{where two terms need to be
+    unified that is searching}'' doesn't read well because it is missing
+  commas.  Check that latin abbreviations read correctly when replaced
+  with English words.
+}
 Together they form the query resolver in \progLang{Prolog}.
 
 For example, consider the append function
-
-\begin{minted}[linenos]{prolog}
+\par
+\begin{minted}[linenos,frame=lines]{prolog}
 append([],L,L).
 append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \end{minted}
+%
+\yyy{}{whose operation is illustrated in Figure~\ref{fig:Trace for append}.}
+In this prototype we explore the unification aspect only.\endnote{%
+  I've tidied up a bit here.  See if this reads more clearly.  I've also
+  removed a comment.\newline  (Commit \textsf{\bfseries fe997de\-08bda2\-64c453\-204e97\-1a1cfd\-219457acf}).
+}
+
 
 
 \begin{figure}
@@ -227,7 +240,7 @@ append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \label{fig:Trace for append}
 \end{figure}
 
-\section{What we do in this Prototype}
+\section{What we do in this Prototype}\label{sec:proto1-what-we-do}
 This prototype throws light on the process of tackling the issues involved in creating
 a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the
 benefits.
@@ -539,10 +552,9 @@ Our language \yyy{}{is} now opened up and \xxx{is}\endnote{%
 ready for expansion\yyy{}{\Large,}
 but it still needs to conform to the requirements of
 \yyy{the \cite{unification-fd-lib} library}{the \codeLibrary{unifiication-fd} library
-  (\cite{unification-fd-lib}),}\endnote{%
-  
-} so that the generic unification algorithm upon customization works with it.\endnote{% This sentence can be
-                                % simplified, I think.}
+  (\cite{unification-fd-lib}),} so that the generic unification algorithm upon customization works
+with it.\endnote{%
+  This sentence can be simplified, I think.}
 
   The library provides functionality for first-order structural unification over general structure types along with
   mutable variable bindings.
@@ -573,7 +585,7 @@ The data here is the \progLang{Prolog} abstract syntax and the containers are
 
 \clearpage
 
-Below \ref{fig:Functor Hierarchy} shows the relation between the different classes.
+Below \yyy{}{\Huge Figure~}\ref{fig:Functor Hierarchy} shows the relation between the different classes.
 
 \begin{figure}[th]
 \centering
@@ -582,12 +594,16 @@ Below \ref{fig:Functor Hierarchy} shows the relation between the different class
 \label{fig:Functor Hierarchy}
 \end{figure}
 
-The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce to the data structure. The primary issue is that at the end
-of the operation the structure if the data type is lost which would not help our cause since the result of a query must be a list of
-substitutions which are essential pairs of language variable with language values(language constructs).
+The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce\endnote{%
+  What is ``\texttt{map-reduce}''?
+}
+to the data structure.
+The primary issue is that at the end of the operation the structure if the data type is lost which would not help
+our cause since the result of a query must be a list of substitutions which are essential pairs of language
+variable with language values(language constructs).
 
-Enter, \Verb[formatcom=\bf]!Traversable!, %}{
-it allows reduce whilst preserving the shape of the structure. Lastly, the Applicative instance is an intermediate
+Enter\xxx{,} \Verb[formatcom=\bf]!Traversable!\yyy{,}{\,.}%}{
+\yyy{it}{It} allows reduce whilst preserving the shape of the structure. Lastly, the Applicative instance is an intermediate
 between a functor and a monad.
 
 We create the necessary instances\endnote{%
@@ -595,7 +611,7 @@ We create the necessary instances\endnote{%
 
   \mehul{I agree, I think I just created one for the purpose of the diagram.}
 }
-as shown in Figure~\ref{tab:flat-term-class-inst}.
+as shown in \yyy{Figure}{Listing}~\ref{tab:flat-term-class-inst}.
 \begin{code-list}
   \begin{minted}[linenos,gobble=4]{haskell}
     instance Functor (FlatTerm) where
