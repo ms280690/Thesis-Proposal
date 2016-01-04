@@ -1,0 +1,153 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{website:commonlisp}
+James Bielman and Luís Oliveira, \emph{Common lisp foreign function
+  interface}, March 2014.
+
+\bibitem{DBLP:conf/utp/2008}
+Andrew Butterfield (ed.), \emph{Unifying theories of programming, second
+  international symposium, utp 2008, dublin, ireland, september 8-10, 2008,
+  revised selected papers}, Lecture Notes in Computer Science, vol. 5713,
+  Springer, 2010.
+
+\bibitem{website:hdmtypesystem}
+Code Commit, \emph{Hindley milner type system}, December 2008.
+
+\bibitem{swipembedd}
+SWI~Prolog Documentation, \emph{Embedding swi-prolog in other applications},
+  June 2013, \url{http://www.swi-prolog.org/pldoc/man?section=embedded}.
+
+\bibitem{DBLP:conf/utp/2006}
+Steve Dunne and Bill Stoddart (eds.), \emph{Unifying theories of programming,
+  first international symposium, utp 2006, walworth castle, county durham, uk,
+  february 5-7, 2006, revised selected papers}, Lecture Notes in Computer
+  Science, vol. 4010, Springer, 2006.
+
+\bibitem{gibbons2013unifying}
+Jeremy Gibbons, \emph{Unifying theories of programming with monads}, Unifying
+  Theories of Programming, Springer, 2013, pp.~23--67.
+
+\bibitem{website:templatehaskell}
+Haskellwiki, \emph{Template haskell}, October 2013.
+
+\bibitem{hindley1969principal}
+Roger Hindley, \emph{The principal type-scheme of an object in combinatory
+  logic}, Transactions of the american mathematical society (1969), 29--60.
+
+\bibitem{hoare1998unifying}
+Charles Anthony~Richard Hoare and Jifeng He, \emph{Unifying theories of
+  programming}, vol.~14, Prentice Hall Englewood Cliffs, 1998.
+
+\bibitem{hughes1989functional}
+John Hughes, \emph{Why functional programming matters}, The computer journal
+  \textbf{32} (1989), no.~2, 98--107.
+
+\bibitem{jlog}
+JLogic, \emph{Jlog - prolog in java}, September 2012,
+  \url{http://jlogic.sourceforge.net/index.html}.
+
+\bibitem{jscriptlog}
+\bysame, \emph{Jscriptlog - prolog in javascript}, September 2012,
+  \url{http://jlogic.sourceforge.net/index.html}.
+
+\bibitem{komorowski1982qlog}
+H~Jan Komorowski, \emph{Qlog: The programming environment for prolog in lisp},
+  Logic Programming (1982), 315--324.
+
+\bibitem{Krishnamurthi:2008:TPL:1480828.1480846}
+Shriram Krishnamurthi, \emph{Teaching programming languages in a post-linnaean
+  age}, SIGPLAN Not. \textbf{43} (2008), no.~11, 81--83.
+
+\bibitem{website:langpop}
+LangPop.com, \emph{Programming language popularity}, October 2013.
+
+\bibitem{mainland2007s}
+Geoffrey Mainland, \emph{Why it's nice to be quoted: quasiquoting for haskell},
+  Proceedings of the ACM SIGPLAN workshop on Haskell workshop, ACM, 2007,
+  pp.~73--82.
+
+\bibitem{milner1978theory}
+Robin Milner, \emph{A theory of type polymorphism in programming}, Journal of
+  computer and system sciences \textbf{17} (1978), no.~3, 348--375.
+
+\bibitem{yieldprolog}
+Yield Prolog, \emph{Yield prolog}, October 2011,
+  \url{http://yieldprolog.sourceforge.net/}.
+
+\bibitem{DBLP:conf/utp/2010}
+Shengchao Qin (ed.), \emph{Unifying theories of programming - third
+  international symposium, utp 2010, shanghai, china, november 15-16, 2010.
+  proceedings}, Lecture Notes in Computer Science, vol. 6445, Springer, 2010.
+
+\bibitem{robinson1982loglisp}
+J~Alan Robinson and Ernest~E Sibert, \emph{Loglisp: Motivation, design, and
+  implementation}, 1982.
+
+\bibitem{robinson1980loglisp}
+John~Alan Robinson and EE~Silbert, \emph{Loglisp: an alternative to prolog},
+  School of Computer and Information SCience, Syracuse University, 1980.
+
+\bibitem{rojas2004tutorial}
+Ra{\'u}l Rojas, \emph{A tutorial introduction to the lambda calculus}, DOI=
+  http://www. utdallas. edu/\~{} gupta/courses/apl/lambda. pdf (2004).
+
+\bibitem{racklog}
+Dorai Sitaram, \emph{Racklog: Prolog-style logic programming}, January 2014.
+
+\bibitem{spivey1995introduction}
+JM~Spivey, \emph{An introduction to logic programming through prolog}, 1995.
+
+\bibitem{wadler1992comprehending}
+Philip Wadler, \emph{Comprehending monads}, Mathematical Structures in Computer
+  Science \textbf{2} (1992), no.~04, 461--493.
+
+\bibitem{haskellquasi}
+Haskell Website, \emph{Quasiquotation in haskell}, January 2014,
+  \url{http://www.haskell.org/haskellwiki/Quasiquotation}.
+
+\bibitem{website:monadshaskellorg}
+Haskell Wiki, \emph{Monads in haskell}, January 2014.
+
+\bibitem{wikiprolog}
+Wikipedia, \emph{Prolog wikipedia}, March 2004.
+
+\bibitem{wikiquasi}
+\bysame, \emph{Quasiquotation}, Novemeber 2013,
+  \url{http://en.wikipedia.org/wiki/Quasi-quotation}.
+
+\bibitem{website:cliwiki}
+\bysame, \emph{Common language infrastructure}, February 2014.
+
+\bibitem{website:clrwiki}
+\bysame, \emph{Common language runtime}, March 2014.
+
+\bibitem{website:hdmtypesystemwiki}
+\bysame, \emph{Damas-hindley-milner type system}, February 2014.
+
+\bibitem{website:ffiwiki}
+\bysame, \emph{Foreign function interface}, January 2014.
+
+\bibitem{website:lambdacalculuswiki}
+\bysame, \emph{Lambda calculus}, March 2014.
+
+\bibitem{website:metaprogwiki}
+\bysame, \emph{Meta programming}, March 2014.
+
+\bibitem{DBLP:conf/utp/2012}
+Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),
+  \emph{Unifying theories of programming, 4th international symposium, utp
+  2012, paris, france, august 27-28, 2012, revised selected papers}, Lecture
+  Notes in Computer Science, vol. 7681, Springer, 2013.
+
+\bibitem{website:scala}
+Switzerland École Polytechnique Fédérale~de Lausanne (EPFL)~Lausanne,
+  \emph{Scala programming language}, 2002-2014.
+
+\end{thebibliography}

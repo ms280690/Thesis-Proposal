@@ -1,11 +1,28 @@
 \documentclass[thesis-solanki.tex]{subfiles}
 
 
+\ifMain
+\externaldocument{thesis-solanki}
+\fi
 \begin{document}
 
 \chapter{Prototype 2.2}{\label{proto2.2}}
 
 nothing to do here
 
+
+\ifMain
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
+\unbcbibliography{bibliography}
+\fi
 
 \end{document}

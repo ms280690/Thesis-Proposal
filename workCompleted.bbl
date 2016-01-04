@@ -1,0 +1,30 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{website:understandingalgebrasfpcomplete}
+FP~Complete Bartosz~Milewski, \emph{Understanding algebras}, October 2013.
+
+\bibitem{data-fix-lib}
+Anton Kholomiov, \emph{data-fix}, February 2013.
+
+\bibitem{prolog-lib}
+Daniel Seidel, \emph{The prolog package}, June 2012,
+  \url{http://hackage.haskell.org/package/prolog}.
+
+\bibitem{unification-fd-lib}
+Wren Thornton, \emph{The unification-fd package}, July 2012,
+  \url{http://hackage.haskellhttp://yieldprolog.sourceforge.net/.org/package/unification-fd}.
+
+\bibitem{website:kindhaskellwiki}
+Haskell Wiki, \emph{Kind}, August 2012.
+
+\bibitem{website:foldablenadtraversable}
+\bysame, \emph{Foldable and traversable}, January 2013.
+
+\end{thebibliography}

@@ -1,0 +1,184 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{website:imlpementingflpl}
+Sergio Antoy, \emph{Implementing functional logic programming languages}.
+
+\bibitem{website:santoy}
+\bysame, \emph{Sergio antoy home page}.
+
+\bibitem{antoy2010functional}
+Sergio Antoy and Michael Hanus, \emph{Functional logic programming},
+  Communications of the ACM \textbf{53} (2010), no.~4, 74--85.
+
+\bibitem{bert1987lpg}
+Didier Bert, Pascal Drabik, and Rachid Echahed, \emph{Lpg: A generic, logic and
+  functional programming language}, STACS 87, Springer, 1987, pp.~468--469.
+
+\bibitem{DBLP:conf/utp/2008}
+Andrew Butterfield (ed.), \emph{Unifying theories of programming, second
+  international symposium, utp 2008, dublin, ireland, september 8-10, 2008,
+  revised selected papers}, Lecture Notes in Computer Science, vol. 5713,
+  Springer, 2010.
+
+\bibitem{website:blogc2}
+C2, \emph{Multi paradigm programming language}, September 2012.
+
+\bibitem{website:ciao}
+Ciao, \emph{Ciao programming language}, August 2011.
+
+\bibitem{website:oz-mozart}
+Mozart Consortium, \emph{Oz / mozart}, March 2013.
+
+\bibitem{friedman05reasoned}
+Oleg~Kiselyov Daniel P.~Friedman, William E.~Byrd, \emph{The reasoned schemer},
+  The MIT Press, Cambridge Massachusetts, London England, 2005.
+
+\bibitem{website:kanren}
+William E.~Byrd Daniel P.~Friedman and Oleg Kiselyov, \emph{Kanren}, March
+  2009.
+
+\bibitem{website:toy}
+Universidad~Complutense de~Madrid, \emph{Toy}, Decmeber 2006.
+
+\bibitem{website:mercury}
+University Of Melbourne Computer~Science department, \emph{Mercury programming
+  language}, February 2014.
+
+\bibitem{website:dmoz}
+Open Directory~Project dmoz, \emph{Multi paradigm}, November 2013.
+
+\bibitem{DBLP:conf/utp/2006}
+Steve Dunne and Bill Stoddart (eds.), \emph{Unifying theories of programming,
+  first international symposium, utp 2006, walworth castle, county durham, uk,
+  february 5-7, 2006, revised selected papers}, Lecture Notes in Computer
+  Science, vol. 4010, Springer, 2006.
+
+\bibitem{website:molog}
+Adam~C. Foltzer, \emph{Molog}, March 2013.
+
+\bibitem{gibbons2013unifying}
+Jeremy Gibbons, \emph{Unifying theories of programming with monads}, Unifying
+  Theories of Programming, Springer, 2013, pp.~23--67.
+
+\bibitem{website:mhanus}
+Michael Hanus, \emph{Michael hanus home page}.
+
+\bibitem{hanus2007multi}
+Michael Hanus, \emph{Multi-paradigm declarative languages}, Logic Programming,
+  Springer, 2007, pp.~45--75.
+
+\bibitem{website:funclogprog}
+Michael Hanus, \emph{Functional logic programming}, February 2009.
+
+\bibitem{website:babel}
+Juan Jose Moreno~Navarro Herbert~Kuchen, \emph{Babel programming language},
+  January 1988.
+
+\bibitem{hoare1998unifying}
+Charles Anthony~Richard Hoare and Jifeng He, \emph{Unifying theories of
+  programming}, vol.~14, Prentice Hall Englewood Cliffs, 1998.
+
+\bibitem{website:haskellkanren}
+JaimieMurdock, \emph{Haskell kanren}, March 2012.
+
+\bibitem{Krishnamurthi:2008:TPL:1480828.1480846}
+Shriram Krishnamurthi, \emph{Teaching programming languages in a post-linnaean
+  age}, SIGPLAN Not. \textbf{43} (2008), no.~11, 81--83.
+
+\bibitem{website:langpop}
+LangPop.com, \emph{Programming language popularity}, October 2013.
+
+\bibitem{website:nue-prolog}
+University of~Melbourne Lee~Naish, \emph{Neu prolog}, February 1991.
+
+\bibitem{lloyd1999programming:escher}
+John~W Lloyd, \emph{Programming in an integrated functional and logic
+  language}, Journal of Functional and Logic Programming \textbf{3} (1999),
+  no.~1-49, 68--69.
+
+\bibitem{malachi1984tablog}
+Yonathan Malachi, Zohar Manna, and Richard Waldinger, \emph{Tablog: The
+  deductive-tableau programming language}, Proceedings of the 1984 ACM
+  Symposium on LISP and functional programming, ACM, 1984, pp.~323--330.
+
+\bibitem{moreno1988babel}
+Juan~Jos{\'e} Moreno-Navarro and Mario Rodriguez-Artalejo, \emph{Babel: A
+  functional and logic programming language based on constructor discipline and
+  narrowing}, Algebraic and Logic Programming, Springer, 1988, pp.~223--232.
+
+\bibitem{moreno1992logic}
+Juan~Jose Moreno-Navarro and Mario Rodriguez-Artalejo, \emph{Logic programming
+  with functions and predicates: The language babel}, The Journal of Logic
+  Programming \textbf{12} (1992), no.~3, 191--223.
+
+\bibitem{website:lambda-prolog}
+Gopalan Nadathur, \emph{$\lambda$ prolog}, September 2013.
+
+\bibitem{website:mdn}
+Mozilla~Developer Network, \emph{Multi paradigm language}, February 2014.
+
+\bibitem{website:ohaskell}
+Johan Nordlander, \emph{O'haskell}, January 2001.
+
+\bibitem{website:ocamllang}
+Ocaml Org, \emph{Ocaml programming language}, March 2014.
+
+\bibitem{DBLP:conf/utp/2010}
+Shengchao Qin (ed.), \emph{Unifying theories of programming - third
+  international symposium, utp 2010, shanghai, china, november 15-16, 2010.
+  proceedings}, Lecture Notes in Computer Science, vol. 6445, Springer, 2010.
+
+\bibitem{website:minkanren}
+William E.~Byrd The Reasoned Schemer' (MIT~Press, 2005) by Daniel P.~Friedman
+  and Oleg Kiselyov, \emph{minikanren}.
+
+\bibitem{website:alf}
+Carnegie~Mellon University, \emph{Algebraic logic functional programming
+  language}, February 1995.
+
+\bibitem{website:life}
+Simon~Fraiser University, \emph{Life programming language}, March 1998.
+
+\bibitem{website:virgil}
+Los~Angeles University~of California, \emph{Virgil programming language}, March
+  2012.
+
+\bibitem{website:minikanrent}
+Job Vranish, \emph{minikanrent}, March 2013.
+
+\bibitem{website:wikiflpllist}
+Wikipedia, \emph{Functional logic programming languages}, February 2005.
+
+\bibitem{website:closwiki}
+\bysame, \emph{Common lisp object system}, December 2013.
+
+\bibitem{website:wikiflpl}
+\bysame, \emph{Functional logic programming}, May 2013.
+
+\bibitem{website:wikimpllist}
+\bysame, \emph{List of multi paradigm languages}, March 2014.
+
+\bibitem{website:ocamlwiki}
+\bysame, \emph{Ocaml}, March 2014.
+
+\bibitem{website:wikimultiparadigm}
+\bysame, \emph{Programming paradigm}, March 2014.
+
+\bibitem{DBLP:conf/utp/2012}
+Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),
+  \emph{Unifying theories of programming, 4th international symposium, utp
+  2012, paris, france, august 27-28, 2012, revised selected papers}, Lecture
+  Notes in Computer Science, vol. 7681, Springer, 2013.
+
+\bibitem{website:scala}
+Switzerland École Polytechnique Fédérale~de Lausanne (EPFL)~Lausanne,
+  \emph{Scala programming language}, 2002-2014.
+
+\end{thebibliography}

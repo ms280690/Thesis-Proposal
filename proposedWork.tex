@@ -1,6 +1,9 @@
 \documentclass[thesis-solanki.tex]{subfiles}
 
 
+\ifMain
+\externaldocument{thesis-solanki}
+\fi
 \begin{document}
 
 %-----------------------------------------------------------------------------
@@ -239,6 +242,18 @@ statement) which when executed would result in a side effect but till that point
 \section{Chapter Recapitulation}
 
 
-
+\ifMain
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
+\unbcbibliography{bibliography}
+\fi
 
 \end{document}
