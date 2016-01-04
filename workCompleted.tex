@@ -2,6 +2,9 @@
 
 
 
+\ifMain
+\externaldocument{thesis-solanki}
+\fi
 \begin{document}
 
 %----------------------------------------------------------------------------
@@ -386,5 +389,18 @@ Whereas a \textit{FlatTerm} exspression can not only have an outer wrapper but a
 
 \section{Chapter Recapitulation}
 
+\ifMain
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
+\unbcbibliography{bibliography}
+\fi
 
 \end{document}

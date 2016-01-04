@@ -1,0 +1,32 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{website:quasiquotationfreedictionary}
+Free Dictionary, \emph{Quasi-quotation}.
+
+\bibitem{website:quotationstanford}
+Ernest~Lepore Herman~Cappelen, \emph{Quotation}, January 2012.
+
+\bibitem{mainland2007s}
+Geoffrey Mainland, \emph{Why it's nice to be quoted: quasiquoting for haskell},
+  Proceedings of the ACM SIGPLAN workshop on Haskell workshop, ACM, 2007,
+  pp.~73--82.
+
+\bibitem{haskellquasi}
+Haskell Website, \emph{Quasiquotation in haskell}, January 2014,
+  \url{http://www.haskell.org/haskellwiki/Quasiquotation}.
+
+\bibitem{wikiquasi}
+Wikipedia, \emph{Quasiquotation}, Novemeber 2013,
+  \url{http://en.wikipedia.org/wiki/Quasi-quotation}.
+
+\bibitem{website:usementiondistinctionwiki}
+\bysame, \emph{Use–mention distinction}, October 2015.
+
+\end{thebibliography}

@@ -1,0 +1,59 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{driscoll1986making}
+James~R Driscoll, Neil Sarnak, Daniel~Dominic Sleator, and Robert~Endre Tarjan,
+  \emph{Making data structures persistent}, Proceedings of the eighteenth
+  annual ACM symposium on Theory of computing, ACM, 1986, pp.~109--121.
+
+\bibitem{website:paulspontifications}
+Paul Johnson, \emph{Why haskell is good for embedded domain specific
+  languages}, January 2008.
+
+\bibitem{jones2001composing}
+Simon L~Peyton Jones, Jean-Marc Eber, and Julian Seward, \emph{Composing
+  contracts: An adventure in financial engineering}, FME, vol. 2021, 2001,
+  p.~435.
+
+\bibitem{website:persistentdatastructuresmit}
+David Karger, \emph{Persistent data structures}, September 2005.
+
+\bibitem{website:langpop}
+LangPop.com, \emph{Programming language popularity}, October 2013.
+
+\bibitem{meyer2008eiffel}
+Bertrand Meyer, \emph{Eiffel as a framework for verification}, Verified
+  Software: Theories, Tools, Experiments, Springer, 2008, pp.~301--307.
+
+\bibitem{morrison1990persistent}
+R~Morrison and MP~Atkinson, \emph{Persistent languages and architectures},
+  Security and Persistence, Springer, 1990, pp.~9--28.
+
+\bibitem{website:controlflowdalhousie}
+Dalhousie University, \emph{Control flow}, January 2012.
+
+\bibitem{website:monadascomputation}
+Haskell Wiki, \emph{Monads as computation}, December 2011.
+
+\bibitem{website:haskellwiki}
+\bysame, \emph{The haskell programming language}, October 2013.
+
+\bibitem{website:haskelllazinesswiki}
+\bysame, \emph{Haskell/laziness}, November 2014.
+
+\bibitem{website:haskellinindustry}
+\bysame, \emph{Haskell in industry}, June 2015.
+
+\bibitem{website:controlflowwiki}
+Wikipedia, \emph{Control flow}, August 2015.
+
+\bibitem{website:declarativeprogrammingwiki}
+\bysame, \emph{Declarative programming}, September 2015.
+
+\end{thebibliography}

@@ -1,0 +1,19 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{Aho:1986:CPT:6448}
+Alfred~V. Aho, Ravi Sethi, and Jeffrey~D. Ullman, \emph{Compilers: Principles,
+  techniques, and tools}, Addison-Wesley Longman Publishing Co., Inc., Boston,
+  MA, USA, 1986.
+
+\bibitem{prolog-lib}
+Daniel Seidel, \emph{The prolog package}, June 2012,
+  \url{http://hackage.haskell.org/package/prolog}.
+
+\end{thebibliography}

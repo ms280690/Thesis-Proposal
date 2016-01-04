@@ -5,6 +5,9 @@
 \providecommand\metaSyntacticVariable[1]{\textsl{\ttfamily #1}}
 \providecommand\mSV{\metaSyntacticVariable}
 
+\ifMain
+\externaldocument{thesis-solanki}
+\fi
 \begin{document}
 
 \chapter{Prototype 1}{\label{proto1}}
@@ -857,7 +860,7 @@ The final reconversion to return a list of substitutions,
 \clearpage
 \section{Chapter Recapitulation}
 
-\if\jobname={thesis-solanki}\else
+\ifMain
 \begin{scope}
   \nolinenumbers
   \enotesize
@@ -868,6 +871,7 @@ The final reconversion to return a list of substitutions,
   \par
   \end{singlespace}
 \end{scope}
+\unbcbibliography{bibliography}
 \fi
 
 \end{document}

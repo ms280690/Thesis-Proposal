@@ -2,6 +2,9 @@
 
 
 
+\ifMain
+\externaldocument{thesis-solanki}
+\fi
 \begin{document}
 
 % ---------------------------------------------------------------------------
@@ -57,4 +60,19 @@ Unifying / Marrying / Merging / Combining Programming Paradigms / Theories
 \begin{enumerate}
 \item ???
 \end{enumerate}
+
+\ifMain
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
+\unbcbibliography{bibliography}
+\fi
+
 \end{document}

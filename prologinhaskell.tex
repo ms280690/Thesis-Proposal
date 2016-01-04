@@ -2,6 +2,9 @@
 
 
 
+\ifMain
+\externaldocument{thesis-solanki}
+\fi
 \begin{document}
 
 
@@ -129,5 +132,19 @@ Prolog in Haskell
 	\item liquid fix point, \cite{liquid-fix-point-lib}
 \end{enumerate}
 \end{enumerate}
+
+\ifMain
+\begin{scope}
+  \nolinenumbers
+  \enotesize
+  \par
+  \begin{singlespace}
+  \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \theendnotes
+  \par
+  \end{singlespace}
+\end{scope}
+\unbcbibliography{bibliography}
+\fi
 
 \end{document}
