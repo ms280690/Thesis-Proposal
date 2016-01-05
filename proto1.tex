@@ -613,28 +613,9 @@ We create the necessary instances\endnote{%
 }
 as shown in \yyy{Figure}{Listing}~\ref{tab:flat-term-class-inst}.
 \begin{code-list}
-  \begin{minted}[linenos,gobble=4]{haskell}
-    instance Functor (FlatTerm) where
-      fmap = T.fmapDefault
-
-    instance Foldable (FlatTerm) where
-      foldMap = T.foldMapDefault
-
-    instance Traversable (FlatTerm) where
-       traverse f (Struct atom x)   =   Struct atom <$>
-          sequenceA (Prelude.map f x)
-       traverse _ (Var v)   =   pure (Var v)
-       traverse _ Wildcard  =   pure (Wildcard)
-       traverse _ (Cut i)   =    pure (Cut i)
-
-    instance Applicative (FlatTerm) where
-       pure x = Struct "" [x]
-       _ <*> Wildcard  =   Wildcard
-       _ <*> (Cut i)   =   Cut i
-       _ <*> (Var v)   =   (Var v)
-       (Struct a fs) <*> (Struct b xs)
-                       = Struct (a ++ b) [f x | f <- fs, x <- xs]
-  \end{minted}
+  \begin{singlespace}
+    \inputminted[linenos,gobble=4]{haskell}{haskell-proto1-class-flat.hs}
+  \end{singlespace}
   \caption{FlatTerm class instances}
   \label{tab:flat-term-class-inst}
 \end{code-list}
