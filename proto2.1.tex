@@ -125,52 +125,6 @@ Beginning with language from Figure~\ref{tab:origgramp0201} is transformed into 
 Figure~\ref{tab:flatgrp0201}.
 
 \begin{code-list}[h]
-	\begin{singlespace}
-		\begin{minted}[linenos]{haskell}
-data Term = Struct Atom [Term]
-          | Var VariableName
-          | Wildcard -- Don't cares 
-          | Cut Int
-      deriving (Eq, Data, Typeable)
-
-var = Var . VariableName 0
-cut = Cut 0
-	      
-data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
-            | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
-      deriving (Data, Typeable)
-
-rhs :: Clause -> [Term] -> [Goal]      
-rhs (Clause   _ rhs) = const rhs
-rhs (ClauseFn _ fn ) = fn
-
-data VariableName = VariableName Int String
-      deriving (Eq, Data, Typeable, Ord)
-
-type Atom         = String
-type Goal         = Term
-type Program      = [Clause]		
-		\end{minted}
-	\end{singlespace}
-	\caption{Original Recursive Grammar}
-\label{tab:origgramp0201}
-\end{code-list}
-
-
-The steps involved for the transformation are listed below.
-\begin{enumerate}
-\item Flatten the language by introducing a type variable.
-
-\item Create the necessary instances for \cite{unification-fd-lib} compatibility.
-
-\item Create a fixed-point version of the resulting grammar.
-\end{enumerate}
-
-The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities. 
-
-The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.
-
-\begin{code-list}[h]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto2-flattened-rarefy.hs}
   \end{singlespace}
