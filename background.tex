@@ -21,13 +21,12 @@ rather than classifying a language into a particular paradigm
 \textcolor{fuchsia}{Tt}\endnote{%
   Fix.
 }
-is
+it is
 more accurate that a language exhibits a set of characteristics from a
 number of paradigms.\endnote{%
   This sentence still needs more crafting.
 }
-Either way, the broader the scope of a language the more the
-expressibility or use it has.
+The broader the scope of a language, the broader is the versatility in solving problems.
 
 Programming Languages that fall into the same family, in our case declarative programming languages, can be of
 different paradigms and can have very contrasting, conflicting characteristics and behaviours.
@@ -45,12 +44,12 @@ and substitution.
 It can be thought as the smallest programming language \cite{rojas2004tutorial}, a single rule and a single
 function definition scheme.
 In particular there are typed and untyped $\lambda$ calculi.
-In the untyped $\lambda$ calculus functions have no predetermined type whereas{\large,} typed lambda calculus puts
+In the untyped $\lambda$ calculus functions have no predetermined type whereas, typed lambda calculus puts
 restriction on what sort(type) of data can a function work with.
-\progLang{Scheme} is based on the untyped variant{\large,} while \progLang{ML} and \progLang{Haskell} are based on typed
+\progLang{Scheme} is based on the untyped variant, while \progLang{ML} and \progLang{Haskell} are based on typed
 $\lambda$ calculus.
 Most typed $\lambda$ calculus langauges are based on Hindley-Milner or Damas-Milner or Damas- Hindley-Milner
-\yyy{\cite{website:hdmtypesystemwiki}}{(\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki})} type system.
+(\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki}) type system.
 The Hindley-Milner like type systems have the ability to give a most general type of a program without any
 annotations. 
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
@@ -60,14 +59,15 @@ variables, lastly unifying all of the constraints giving the type of the result.
   \mehul{To explain the working, not directly required I guess but since \progLang{Haskell} is statically
     typed}\newline
   \david{Perhaps it is also relevant that this requires unification.}
+  \mehul{unificaiton is explained in proto1 and hints have been dropped at other places. Do you want me to write a short snipped here?}	
 }
 
-Logical Programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
+Logic Programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
 A program is a set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old
 ones.
 This is done until the one which gives the solution is not derived.
 
-In this thesis we aim to merge the two languages\endnote{%
+In this thesis we aim to merge two languages\endnote{%
   ``the two languages''?
   As per the remarks above, the reader is not going to remember what two languages we are talking about.
   Perhaps just dropping ``the'' will fix this.
@@ -81,20 +81,21 @@ Some differences include things like, \progLang{ Haskell} uses Pattern Matching 
 Unification, \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic and so
 on.\endnote{%
   This \P{} needs rewriting.
+\mehul{see below}
 }
-The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are,\eref{comma-before-list}
+The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are:\eref{comma-before-list}
 \begin{enumerate}
 \item { Haskell} uses Pattern Matching while \progLang{Prolog} uses Unification
 
 \item \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic
 \end{enumerate} 
 
-\progLang{Prolog} \cite{wikiprolog}\yyy{}{\Large,} being one of the most dominant Logic Programming
-Languages\yyy{}{\Large,} has  
+\progLang{Prolog} \cite{wikiprolog}, being one of the most dominant Logic Programming
+Languages, has  
 spawned a number of distributions and is present from academia to industry.  
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
-first language to incorporate Monads \cite{wadler1992comprehending} for safe \textit{IO}. Monads can be 
+first language to incorporate monads \cite{wadler1992comprehending} for safe \textit{IO}. Monads can be 
 described as composable computation descriptions \cite{website:monadshaskellorg} . Each monad consists of a 
 description of what has action has to be executed, how the action has to be run and how to combine such 
 computations. An action can describe an impure or side-effecting computation, for example, \textit{IO} can be 
@@ -102,14 +103,16 @@ performed outside the language but can be brought together with pure functions i
 separation and maintaining safety with practicality. \progLang{Haskell} computes results lazily and is strongly 
 typed. 
 
-\yyy{The languages taken up}{\progLang{Prolog} and \progLang{Haskell}} are contrasting in nature\yyy{}{\Large,} and
+\progLang{Prolog} and \progLang{Haskell} are contrasting in nature, and
 bringing them onto the same plate is tricky.
 The differences in typing, execution, working among others lead to an altogether mixed bag of properties.
 
-The target language; \progLang{Prolog} is not \yyy{a}{an} uncommon choice. To prove their power, many language have implemented \cite{swipembedd} a 
-modified \progLang{Prolog}\yyy{}{\Large:} for example, \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
+The target language; \progLang{Prolog} is not an uncommon choice. To prove their power, many language have implemented \cite{swipembedd} a 
+modified \progLang{Prolog}: for example, \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
-\progLang{JavaScript} \cite{jscriptlog}\yyy{}{\Large,} and the list \cite{yieldprolog} goes on. 
+\progLang{JavaScript} \cite{jscriptlog}, and the list \cite{yieldprolog} goes on. 
+
+The selection of the target language is not uncommon; \progLang{}
 
 The selection of languages is not uncommon and this not only the case with \progLang{Haskell,\endnote{%
     I do not understand the sentence before the comma.

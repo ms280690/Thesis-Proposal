@@ -8,6 +8,8 @@ it?
 Or
 complete
 it.
+\mehul
+{Removed}
 
 \par\endgroup
 \@doanenote {2}
@@ -57,6 +59,11 @@ was
 cut
 and
 pasted.
+\mehul
+{I
+do
+not
+understand}
 
 \par\endgroup
 \@doanenote {4}
@@ -90,6 +97,35 @@ sentences.
 
 \par\endgroup
 \@doanenote {6}
+macro:->\david
+{I
+have
+the
+feeling
+that
+you
+should
+introduce
+the
+concept
+of
+DSLs
+slightly
+higher.}
+\mehul
+{higher
+???}
+\david
+{Earlier.}
+\mehul
+{Moved
+up
+a
+few
+paragraphs}
+
+\par\endgroup
+\@doanenote {7}
 macro:->Where
 I
 have
@@ -125,7 +161,7 @@ the
 correction.
 
 \par\endgroup
-\@doanenote {7}
+\@doanenote {8}
 macro:->Do
 you
 mean
@@ -138,9 +174,21 @@ are
 you
 talking
 about?
+\mehul
+{the
+programming
+environment
+that
+the
+embedded
+language
+provides
+as
+a
+library}
 
 \par\endgroup
-\@doanenote {8}
+\@doanenote {9}
 macro:->``approaching
 towards
 the
@@ -152,7 +200,7 @@ well.
 Reword.
 
 \par\endgroup
-\@doanenote {9}
+\@doanenote {10}
 macro:->\david
 {This
 example
@@ -186,29 +234,6 @@ declarative
 paradigm}
 
 \par\endgroup
-\@doanenote {10}
-macro:->\david
-{I
-have
-the
-feeling
-that
-you
-should
-introduce
-the
-concept
-of
-DSLs
-slightly
-higher.}
-\mehul
-{higher
-???}
-\david
-{Earlier.}
-
-\par\endgroup
 \@doanenote {11}
 macro:->This
 preceding
@@ -217,6 +242,8 @@ is
 not
 a
 sentence.
+\mehul
+{Changed}
 
 \par\endgroup
 \@doanenote {12}
@@ -351,6 +378,30 @@ that
 this
 requires
 unification.}
+\mehul
+{unificaiton
+is
+explained
+in
+proto1
+and
+hints
+have
+been
+dropped
+at
+other
+places.
+Do
+you
+want
+me
+to
+write
+a
+short
+snipped
+here?}
 
 \par\endgroup
 \@doanenote {17}
@@ -391,6 +442,9 @@ macro:->This
 {}
 needs
 rewriting.
+\mehul
+{see
+below}
 
 \par\endgroup
 \@doanenote {19}
