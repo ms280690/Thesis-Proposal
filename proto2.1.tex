@@ -12,11 +12,16 @@
 This chapter attempts to infuse the generic methodology from \ref{proto1} in a current \progLang{Prolog} implementation \cite{prolog-lib}
 and make the unification ``monadic''.
 
+This chapter discusses the idea of implementing a basic working \progLang{Prolog} query resolver while using \cite{prolog-lib} as the base 
+implementation. The language modifications and unification mechanism have been taken from \ref{proto1} and adapted to fit in with the other
+components such as the search strategy of the library.  
+
+
 \section{How prolog-0.2.0.1 works}
 
 As described in the previous chapter about extending languages to incorporate functionality, this prototype applies the procedure to the
 eDSL in \cite{prolog-lib}.
-
+\begin{comment}
 The original abstract syntax used by the library,
 \begin{code-list}[h]
 \begin{minted}[linenos]{haskell}
@@ -42,8 +47,9 @@ type Program      = [Clause]
 \caption{Current Language Implementation}
 \label{tab:currlangimpl}
 \end{code-list}
+\end{comment}
 
-From the Figure~\ref{tab:currlangimpl} we will focus on the \textit{Term} since the others just add wrappers around expressions which can
+From the Figure~\ref{tab:origgramp0201} we will focus on the \textit{Term} since the others just add wrappers around expressions which can
 be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct
 \progLang{Prolog} ``terms'' which are of a ``single type''.
 
@@ -89,17 +95,80 @@ customized.
 
 \clearpage
 \section{What we do in this prototype?}
+
+\begin{comment}
 In the first prototype we just did unification of two terms not query resolution.
 
 We do complete \progLang{Prolog} query resolution like stuff.
 
 \ref{proto1} provides a generic procedure / methodology to convert a language into monadic unifiable form
+\end{comment}
+
+
+Unification is a part of the \progLang{Prolog} working. Simply speaking unification tells us whether or not two terms can be made equal. 
+The other part is to reach to a point in time when two terms are gathered depending upon matching rules in the knowledge base. This is where
+a search strategy comes into play along with a backtracking mechanism.
+
+Putting everything together forms the \progLang{Prolog} query resolver. Given a query and a knowledge, the query resolver matches the 
+input query with the rules in the knowledge base to create a list of goals to satisfy to generate an unifier along with saving choice 
+points on the way for backtracking.
+
+This chapter discusses about how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to the concepts and 
+implementation from Chapter~\ref{proto1}. This not only proves how generic and modular the approach from the previous chapter is but also
+the system working as a whole. 
+
 
 \clearpage
 \section{Current implementation (prolog-0.2.0.1)}
 
-Beginning with language from Figure~\ref{tab:currlangimpl} is transformed into an isomorphically equivalent grammar described in 
-Figure~\ref{tab:flatgrp0201}
+Beginning with language from Figure~\ref{tab:origgramp0201} is transformed into an isomorphically equivalent grammar described in 
+Figure~\ref{tab:flatgrp0201}.
+
+\begin{code-list}[h]
+	\begin{singlespace}
+		\begin{minted}[linenos]{haskell}
+data Term = Struct Atom [Term]
+          | Var VariableName
+          | Wildcard -- Don't cares 
+          | Cut Int
+      deriving (Eq, Data, Typeable)
+
+var = Var . VariableName 0
+cut = Cut 0
+	      
+data Clause = Clause { lhs :: Term, rhs_ :: [Goal] }
+            | ClauseFn { lhs :: Term, fn :: [Term] -> [Goal] }
+      deriving (Data, Typeable)
+
+rhs :: Clause -> [Term] -> [Goal]      
+rhs (Clause   _ rhs) = const rhs
+rhs (ClauseFn _ fn ) = fn
+
+data VariableName = VariableName Int String
+      deriving (Eq, Data, Typeable, Ord)
+
+type Atom         = String
+type Goal         = Term
+type Program      = [Clause]		
+		\end{minted}
+	\end{singlespace}
+	\caption{Original Recursive Grammar}
+\label{tab:origgramp0201}
+\end{code-list}
+
+
+The steps involved for the transformation are listed below.
+\begin{enumerate}
+\item Flatten the language by introducing a type variable.
+
+\item Create the necessary instances for \cite{unification-fd-lib} compatibility.
+
+\item Create a fixed-point version of the resulting grammar.
+\end{enumerate}
+
+The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities. 
+
+The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.
 
 \begin{code-list}[h]
   \begin{singlespace}
@@ -109,11 +178,16 @@ Figure~\ref{tab:flatgrp0201}
 \label{tab:flatgrp0201}
 \end{code-list}
 
+
 \clearpage
 
-The current unification uses basic pattern matching to unify the terms. 
+After the language is opened up, the next step is to replace the current unification procedure to the one 
 
-The process returns a Unifier,
+
+The current unification uses basic pattern matching to unify the terms. All the shortcomings related to the language also affect the 
+unification mechanism.
+
+Beginning with the result produces by the query resolver shown in Figure~\ref{tab:prlg0201unifier}.
 \begin{code-list}[h]
 \begin{minted}[linenos]{haskell}
 type Unifier      = [Substitution]
@@ -122,13 +196,12 @@ type Substitution = (VariableName, Term)
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
 \end{code-list}
+A \textit{Unifier} is a list of \textit{Substitutions} which binds a variable to a value.  
 
-
-
+\begin{comment}
 Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
 unification library \cite{prolog-lib}.
-
-\clearpage
+\end{comment}
 
 Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}. Each language expression is matched based on its 
 structure.
@@ -141,7 +214,7 @@ structure.
 \label{tab:prlg0201unification}
 \end{code-list}
 
-The issue with the current appraoch is the rigidity of the procedure. Any language modification will cause a ripple effect across the 
+The issue with the current approach is the rigidity of the procedure. Any language modification will cause a ripple effect across the 
 system. As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation as well.
 
 \clearpage
