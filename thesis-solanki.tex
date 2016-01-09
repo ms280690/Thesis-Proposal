@@ -381,7 +381,12 @@
   \par
   \begin{singlespace}
   \setlength{\parskip}{12pt plus 2pt minus 1pt}
+  \begin{scope}
   \theendnotes
+  \end{scope}
+  %% dgc 2016-01-09.  If you see an error message that
+  %% \begin{scope} is ended by \end{singlespace}, then
+  %% there is an unended soope somewhere in an \endnote.
   \par
   \end{singlespace}
 \end{scope}
