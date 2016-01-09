@@ -22,11 +22,13 @@
 \begin{minted}[linenos]{haskell}
 [prolog|a(X) :- b(y)|]
 \end{minted}
-where X is a  \progLang{Prolog} variable and y is a \progLang{Haskell} variable injected into the expression
+where \markWord{X} is a  \progLang{Prolog} variable and \markWord{y} is a \progLang{Haskell} variable injected into
+the expression 
 
 
-\item We already have variable search strategies, what if the query resolver could be instructed to use a particular search strategy to get 
-the result.
+\item
+  We already have variable search strategies, what if the query resolver could be instructed to use a particular
+  search strategy to get the result.
 \begin{minted}[linenos]{haskell}
 queryResolver searcStrategy query knowledgeBase
 \end{minted}

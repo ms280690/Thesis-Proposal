@@ -29,24 +29,35 @@ A programming language must not only provide an easy to use environment but also
 Over the last decade the declarative style of programming has gained popularity.
 The methodologies that have stood out are the functional and logical approaches.\endnote{%
   \david{What style guide are you using to determine capitalization?}\newline
-  \mehul{none at the moment
-  but I will change certain capitals to small}
+  \mehul{none at the moment but I will change certain capitals to small}
 }
 The former is based on functions and lambda calculus, while the latter is based on Horn clause logic.
-Each of them has its own advantages and \yyy{ﬂaws}{flaws}\endnote{%
+Each of them has its own advantages and flaws\endnote{%
   The first character of flaws was \\u\(+\)fb02 (an FL-ligature), which makes me think
   that this text was cut and pasted.
+  \mehul{I do not understand}
 }
 .
 How does one choose which approach to adopt?
 Perhaps one does not need to choose!
 This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a purely
 functional programming language and \progLang{Prolog}, a logical programming language so that one is not forced to
+%<<<<<<< 92e9eab348fb38506776f3025d3176b4e48557a9
 choose.
-The task at hand involves replicating \progLang{Prolog} like\eref{language-like} features in \progLang{Haskell} such as unification and
+The task at hand involves replicating \progLang{Prolog}-like\eref{language-like} features in \progLang{Haskell} such as unification and
 a single typed system.
 The thesis aims at leveraging the features of the host language in order to incorporate logic programming features
 resulting in extending \progLang{Haskell} with capabilities like unification.
+%=======
+choose. The task at hand involves replicating \progLang{Prolog} like features in \progLang{Haskell} such as unification and a single
+typed system.\endnote{%
+  Say more here?
+  This seems like a natural place to have more high-level comments on where the thesis is going.
+} The thesis aims at leveraging the features of the host language in order to incorporate logic programming features resulting in extending 
+\progLang{Haskell} with capabilities like unification. We achieve this by adopting various aspects from approaches related to merging 
+paradigms and embedding techniques for programming languages. This results in a hybrid approach which provides a library taking advantage 
+of the host language features.
+% >>>>>>> added some content to introduction in reference to adressing notes
 
 
 
@@ -73,12 +84,21 @@ But all is not that straight forward when shifting from one language to another.
 There are costs and incompatibilities to look at.
 A language might be simple to use and provide better performance than its predecessor but not always be worth the
 switch.
-One other approach would be to replicate target features exhibited by a language in the present one to avoid the
-hassle of jumping between the two\yyy{}{\Large,} more commonly known as an embedded or a foreign function interface.\endnote{%
+Another approach would be to replicate target features exhibited by a language in the present one to avoid the
+hassle of jumping between the two. Commonly this results in an embedded language or a foreign function interface.\endnote{%
   Rewrite as two sentences.
 }
+%<<<<<<< 92e9eab348fb38506776f3025d3176b4e48557a9
 A mixture of these ideologies results in a multi-paradigm / merged programming language.
 We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.
+%=======
+One other approach would be to replicate features exhibited by a target language in the present one to avoid the hassle of
+jumping between the two more commonly known as an embedded or a foreign function interface. A mixture of these ideologies results in a 
+multi-paradigm / merged programming language. We try to encapsulated both the approaches of embedding and merging to develop a hybrid 
+approach.
+%>>>>>>> added some content to introduction in reference to adressing notes
+
+%An embedded language provides a lot of shortcuts
 
 \begin{comment}
 \progLang{Prolog} has a similar story. It was born in an era where procedural programming had made everyone notice their presence. Talking about
@@ -115,6 +135,18 @@ One idea is to make \progLang{Prolog} an add-on to another language which is wid
 Here the choice is \progLang{Haskell}; as both the languages are declarative they share a common background which can
 help to blend the two.
 
+Putting all of the above together, Domain Specific Languages\endnote{%
+  \david{I have the feeling that you should introduce the concept of DSLs
+  slightly higher.}
+  \mehul{higher ???}
+  \david{Earlier.}
+  \mehul{Moved up a few paragraphs}
+}
+are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
+every time.
+On the other hand, a general purpose language can be used for solving a wide variety of problems but often the
+programmer ends up writing some code dictated by the language rather than by the problem.
+
 Generally speaking, programming languages with a wide scope over problem domains do not provide bespoke support for
 accomplishing  mundane tasks.
 Approaching towards the solution can be complicated and tiresome, but the programming language in question acts as the
@@ -128,16 +160,14 @@ provides a general set of tools to cover many
 problem domains.
 The downside is that such environments\endnote{%
   Do you mean languages?  If not, what environments are you talking about?
+  \mehul{the programming environment that the embedded language provides as a library}
 }
-lack focus and approaching towards the solution\endnote{%
+lack the complete feature set which can make problem solving difficult.\endnote{%
   ``approaching towards the solution'' does not flow well.  Reword.
 }
-can be complicated and
-tiresome.
-
 
 Flipping the coin to the other side, we see, the more specific the language is to the problem domain, the easier it
-is to solve the problem since \yyy{it}{the solution} need not be moulded according to the capability  of the
+is to solve the problem since the solution need not be moulded according to the capability  of the
 language.
 For example, a problem with a naturally recursive solution cannot take advantage of tail recursion in many
 imperative languages.
@@ -147,38 +177,29 @@ on.\endnote{%
   \mehul{how do I say that mathematics can be translated to declarative easily in declarative paradigm}
 }
 
-Putting all of the above together, Domain Specific Languages\endnote{%
-  \david{I have the feeling that you should introduce the concept of DSLs
-  slightly higher.}
-  \mehul{higher ???}
-  \david{Earlier.}
-}
-are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
-every time.
-On the other hand, a general purpose language can be used for solving a wide variety of problems but often the
-programmer ends up writing some code dictated by the language rather than by the problem.
 
 The solution is to develop a programming language with a split personality, in our case, sometimes functional,
 sometimes logical and sometimes both.
 Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics.
 The ideal situation is a language with a rich feature set and the ability to mould itself according to the problem.
-A language with the ability to take the appropriate skill set and provide them to the programmer, which will reduce
-the hassle of jumping between languages or forcibly trying to solve a problem according to a
-paradigm.\endnote{%
+A language with the ability to take the appropriate skill set and provide them to the programmer will reduce
+the hassle of jumping between languages or forcibly trying to solve a problem according within the limitations of a paradigm.\endnote{%
   This preceding phrase is not a sentence.
+  \mehul{Changed}
 }\elabel{not-a-sentence}
 
-The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be pushed to
+The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be 
+pushed to
 don the avatar of \progLang{Prolog}?
 This is the million dollar question.
 
-A \progLang{Haskell} with \progLang{Prolog} like\eref{language-like} features will result in a set of characteristics which are from
+A \progLang{Haskell} with \progLang{Prolog}-like\eref{language-like} features will result in a set of characteristics which are from
 both the declarative paradigms.
 %----------------------------------------------------------------------------------------------------------------------
 
 %The issue being discussed here is that often when a problem is to solved using a given language, it has to be moulded %according to the capability the
 %language can provide.
-This can be achieved in two ways\yyy{,}{:}\endnote{%
+This can be achieved in two ways:\endnote{%
   I believe that I have commented on the preceding elsewhere.
   The punctuation to introduce a list (that is, the end of the phrase immediately preceding the list) should not be
   ``,'', but more likely a colon, or possibly a period.
@@ -200,7 +221,7 @@ This can be achieved in two ways\yyy{,}{:}\endnote{%
 
   This approach goes much deeper as it does not involve a direct translation.
   An attempt is made by taking a particular characteristic of a language and merging it with the characteristic of
-  the host language in order to eliminate conflicts resulting in a multi paradigm language.
+  the host language in order to eliminate conflicts resulting in a multiparadigm language.
   It is more of weaving the two languages into one tight package with the best of both and maybe even the worst of
   both.
 \end{description}

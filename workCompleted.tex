@@ -189,7 +189,7 @@ instance Functor ExprF where
     fmap eval (left `Mul` right) = (eval left) `Mul` (eval right)
 \end{minted}
 
-We \yyy{"}{``}map\yyy{"}{''} the \yyy{"}{``}eval\yyy{"}{''} through our ExpF term for example,
+We \yyy{"}{``}map\yyy{"}{''} the \yyy{"}{``}\markWord{eval}\yyy{"}{''} through our \markWord{ExpF} term for example,
 \begin{minted}[linenos]{haskell}
 alg :: ExprF Int -> Int
 alg (Const i)   = i
