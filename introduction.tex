@@ -76,13 +76,15 @@ Another approach would be to replicate target features exhibited by a language i
 hassle of jumping between the two.
 Commonly this results in an embedded language or a foreign function interface.
 A mixture of these ideologies results in a multi-paradigm / merged programming language.
-We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.
-%=======
-One other approach would be to replicate features exhibited by a target language in the present one to avoid the hassle of
-jumping between the two more commonly known as an embedded or a foreign function interface. A mixture of these ideologies results in a 
-multi-paradigm / merged programming language. We try to encapsulated both the approaches of embedding and merging to develop a hybrid 
-approach.
-%>>>>>>> added some content to introduction in reference to adressing notes
+We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.\endnote{%
+  Removed a \P{} that followed, as the one that currently follows seems to say the same thing.
+  That \P{} was
+  \begin{quote}
+    \slshape
+    The adoption of \progLang{Prolog} has been difficult since procedural languages were making
+    a mark when it was released. 
+  \end{quote}
+}
 
 %An embedded language provides a lot of shortcuts
 
@@ -98,8 +100,6 @@ is usually \textit{practical} \progLang{Prolog} and the area being academia. It 
 logic,website:prolog1000db}. But there are a lot of good things about \progLang{Prolog} that should not die away. Moreover, \progLang{Prolog} is ideal
 for search problems.
 \end{comment}
-
-The adoption of \progLang{Prolog} has been difficult since procedural languages were making a mark when it was released.
 
 \progLang{Prolog} is a language that has a hard time being adopted.
 Born in an era where procedural languages were receiving a lot of attention, it suffered from competing against another
@@ -122,11 +122,12 @@ Here the choice is \progLang{Haskell}; as both the languages are declarative the
 help to blend the two.
 
 Putting all of the above together, Domain Specific Languages\endnote{%
-  \david{I have the feeling that you should introduce the concept of DSLs
-  slightly higher.}
-  \mehul{higher ???}
-  \david{Earlier.}
-  \mehul{Moved up a few paragraphs}
+  \david{This footnote changed 2016-01-08.
+    The point I want to make here is that you are talking about Domain Specific Languages as if you expect the
+    reader to know what they are.  Should she?
+    You have discussed general purpose languages somewhat, but you haven't said what you mean by ``Domain Specific
+    Language'', nor have you given an example.
+  }%
 }
 are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
 every time.
