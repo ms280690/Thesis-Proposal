@@ -39,9 +39,22 @@ computer science for expressing computation based on function abstraction and ap
 and substitution.
 It can be thought as the smallest programming language \cite{rojas2004tutorial}, a single rule and a single
 function definition scheme.
-In particular there are typed and untyped $\lambda$ calculi.
-In the untyped $\lambda$ calculus functions have no predetermined type whereas, typed lambda calculus puts
-restriction on what sort(type) of data can a function work with.
+In particular there are typed and untyped $\lambda$ calculi.\endnote{%
+  There are a bunch of minor inconsistencies here.
+  \begin{inparaitem}
+  \item Two sentences up,
+    you hyphenate (\(\lambda\)-calculus), but here and in the following
+    sentences you drop the hyphen (``\(\lambda\) calculi'').
+  \item
+    In one place you have ``lambda'' rather than ``\(\lambda\)''.
+  \item
+    You introduce the plural (\(\lambda\)-calculi), then promptly switch
+    back to the singular, even though you are not yet talking about
+    specific languages.
+  \end{inparaitem}
+}
+In the untyped $\lambda$ calculus functions have no predetermined \yyy{type whereas,}{type, whereas} typed lambda calculus puts
+restriction on what sort\yyy{}{\Verb[showspaces]! !}(type) of data can a function work with.
 \progLang{Scheme} is based on the untyped variant, while \progLang{ML} and \progLang{Haskell} are based on typed
 $\lambda$ calculus.
 Most typed $\lambda$ calculus langauges are based on Hindley-Milner or Damas-Milner or Damas- Hindley-Milner
