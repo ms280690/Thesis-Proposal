@@ -82,6 +82,12 @@ A program is a set of rules and formul\ae{} in symbolic logic that are used to d
 ones.
 This is done until the one which gives the solution is not derived.
 
+\david{In
+  the following \P's there seem to be a number of instances of material repeated twice with an older version
+  followed by a newer version.  I find it hard to imagine what the final result is going to be, so I am going to
+  cut material in the commit that introduces this comment, and let you see if you agree that I've got it right. 
+}
+
 In this thesis we aim to merge two languages\endnote{%
   ``the two languages''?
   As per the remarks above, the reader is not going to remember what two languages we are talking about.
@@ -91,14 +97,7 @@ together and produce a result which would exhibit hybrid
 properties.
 Further on we talk about more about the languages in question and approaches .
 
-The languages to be worked with being \progLang{Haskell} and \progLang{Prolog} respectively.\eref{not-a-sentence}
-Some differences include things like, \progLang{ Haskell} uses Pattern Matching while \progLang{Prolog} uses
-Unification, \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic and so
-on.\endnote{%
-  This \P{} needs rewriting.
-\mehul{see below}
-}
-The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are:\eref{comma-before-list}
+The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are:
 \begin{enumerate}
 \item { Haskell} uses Pattern Matching while \progLang{Prolog} uses Unification
 
@@ -122,28 +121,14 @@ typed.
 bringing them onto the same plate is tricky.
 The differences in typing, execution, working among others lead to an altogether mixed bag of properties.
 
-The target language; \progLang{Prolog} is not an uncommon choice. To prove their power, many language have implemented \cite{swipembedd} a 
-modified \progLang{Prolog}: for example, \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
-\cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
-\progLang{JavaScript} \cite{jscriptlog}, and the list \cite{yieldprolog} goes on. 
 
-The selection of the target language is not uncommon;
-
-%The selection of languages is not uncommon and this not only the case with \progLang{Haskell,
-\endnote{%
-    I do not understand the sentence before the comma.
-}\textsuperscript{,}\endnote{%
-    comma splice.
-}\elabel{comma-splice}
+The selection of the target language is not uncommon\yyy{;}{:}
   \progLang{Prolog} seems 
 to be the all time favourite for ``let's implement \progLang{Prolog} in the language X for proving it's power and 
 expressibility''. The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
 languages such as \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
-\progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on.\endnote{%
-  This \P{} seems to repeat the preceding \P{}.  Merge them.
-  \mehul{It is meant to be a replacement}
-}
+\progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on.
 
 The technique of embedding is a shallow one.
 It is as if the embedded language floats over the host.
