@@ -17,7 +17,7 @@
 (define-skeleton insert-something
   "Insert a braced command around the inter-regions"
   (read-string "Command? " "\\" latex-insert-something-history)
-  str "{" _ "}" \n)
+  str "{" _ "}" )
 
 
 (define-skeleton insert-code-library
