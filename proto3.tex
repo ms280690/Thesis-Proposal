@@ -10,9 +10,9 @@
 
 -----------------------------------------------------------------------------
 
-When two terms are to be unified we can use \ref{proto1} ,
+When two terms are to be unified we can use \yyy{}{\Huge Chapter}~\ref{proto1} ,
 
-term1 and term2 are matched and an assignment is the result 
+\markWord{term1} and \markWord{term2} are matched and an assignment is the result 
 
 now this may be a part of a query resolution procedure
 
@@ -23,7 +23,9 @@ variable search strategy
 
 
 \section{Unification}
-The first, \yyy{"}{``}unification,\yyy{"}{''} regards how terms are matched and variables assigned to make terms match. \cite{website:prologunification}
+The first, \yyy{"}{``}unification,\yyy{"}{''} regards how terms are matched and variables assigned to make terms
+match.
+\cite{website:prologunification}
 
 
 
@@ -40,7 +42,8 @@ the resolver searches to create and a list of  goals and then tries to achieve e
 
 
 \section{Search strategies}
-The base implementation used for this prototype  is \cite{website:mini-prolog-hugs98} and below are the search strategies 
+The base implementation used for this prototype  is \cite{website:mini-prolog-hugs98} and below are the search
+strategies
 \section{Stack Engine}
 \begin{singlespace}
 \inputminted[linenos]{haskell}{haskell-proto3-sudsy-woe.hs}
