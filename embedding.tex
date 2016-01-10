@@ -48,7 +48,7 @@ in \progLang{Haskell} for Hugs 98, called Mini \progLang{Prolog} \cite{website:m
     One of the implementations discussed on ``Lambda The Ultimate''
     leads us something.
   \item
-    \texttt{Mini Prolog} (\cite{website:mini-prolog-hugs98}) is 
+    \texttt{Mini Prolog} (\cite{website:mini-prolog-hugs98}) is
     one of the earliest implementations of \progLang{Prolog} in \progLang{Haskell}.
   \item
     \texttt{Mini Prolog} works with
@@ -67,7 +67,7 @@ with{\large,} but still lacks complete list support\endnote{%
   defined either of these terms.}\newline
   \mehul{I forgot}.
 }
-and a lot of 
+and a lot of
 practical features that \progLang{Prolog} has.
 This seems to be a common problem with the other
 implementation that exists, \cite{website:takashi-workplace}.
@@ -131,7 +131,7 @@ A general out look towards implementing \progLang{Prolog} has also been discusse
 \section{Related Papers}
 \textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
 
-Abundant literature 
+Abundant literature
 can be found \yyy{which consist of}{on} embedding detailed parts of Prolog features
 like\eref{such-as-like} basic constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
@@ -152,16 +152,16 @@ Being the very first documented formal attempt, the work is influenced by simila
 in other languages like \progLang{Scheme} and \progLang{Lisp}.
 Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed
 scheme tends to be general as the aim here is to achieve
-\progLang{Prolog} like\eref{language-like} working not a multi paradigm 
+\progLang{Prolog} like\eref{language-like} working not a multi paradigm
 declarative language.
 \progLang{Prolog} predicates are translated to \progLang{Haskell} functions which produce a stream of results
 lazily depicting depth first search with support for different strategies and practical operators such as
-\textit{cut} and \textit{fail} with higher order functions.
+\markWord{cut} and \markWord{fail} with higher order functions.
 The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
 Though no implementation exists, the synthesis and transformation techniques for functional programs have been
 \textit{logicalised} and applied to \progLang{Prolog} programs.
 Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
-problems at hand\endnote{% 
+problems at hand\endnote{%
   What are ``the problems at hand''?
 } and accommodate and jump between search strategies.
 
