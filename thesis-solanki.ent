@@ -39,129 +39,116 @@ small}
 
 \par\endgroup
 \@doanenote {3}
-macro:->The
-first
-character
-of
-flaws
-was
-\\u\(+\)fb02
-(an
-FL-ligature),
-which
-makes
-me
-think
+macro:->Removed
+a
+\P
+{}
 that
-this
-text
+followed,
+as
+the
+one
+that
+currently
+follows
+seems
+to
+say
+the
+same
+thing.
+That
+\P
+{}
 was
-cut
-and
-pasted.
-\mehul
-{I
-do
-not
-understand}
+\begin
+{quote}
+\slshape
+The
+adoption
+of
+\progLang
+{Prolog}
+has
+been
+difficult
+since
+procedural
+languages
+were
+making
+a
+mark
+when
+it
+was
+released.
+\end
+{quote}
 
 \par\endgroup
 \@doanenote {4}
-macro:->Say
-more
-here?
-This
-seems
-like
-a
-natural
-place
-to
-have
-more
-high-level
-comments
-on
-where
-the
-thesis
-is
-going.
-
-\par\endgroup
-\@doanenote {5}
-macro:->Rewrite
-as
-two
-sentences.
-
-\par\endgroup
-\@doanenote {6}
 macro:->\david
-{I
-have
-the
-feeling
-that
-you
-should
-introduce
-the
-concept
-of
-DSLs
-slightly
-higher.}
-\mehul
-{higher
-???}
-\david
-{Earlier.}
-\mehul
-{Moved
-up
-a
-few
-paragraphs}
-
-\par\endgroup
-\@doanenote {7}
-macro:->Where
+{This
+footnote
+changed
+2016-01-08.
+The
+point
 I
-have
-put
-a
-{\ttfamily
-\expandafter
-\string
-\csname
-Large\endcsname
-}
-before
-a
-comma
-in
-a
-correction,
-it
-is
-just
+want
 to
 make
-the
-comma
-more
-visible.
-Remove
-it
-when
+here
+is
+that
 you
-do
+are
+talking
+about
+Domain
+Specific
+Languages
+as
+if
+you
+expect
 the
-correction.
-
+reader
+to
+know
+what
+they
+are.
+Should
+she?
+You
+have
+discussed
+general
+purpose
+languages
+somewhat,
+but
+you
+haven't
+said
+what
+you
+mean
+by
+``Domain
+Specific
+Language'',
+nor
+have
+you
+given
+an
+example.
+}
 \par\endgroup
-\@doanenote {8}
+\@doanenote {5}
 macro:->Do
 you
 mean
@@ -188,19 +175,7 @@ a
 library}
 
 \par\endgroup
-\@doanenote {9}
-macro:->``approaching
-towards
-the
-solution''
-does
-not
-flow
-well.
-Reword.
-
-\par\endgroup
-\@doanenote {10}
+\@doanenote {6}
 macro:->\david
 {This
 example
@@ -234,111 +209,87 @@ declarative
 paradigm}
 
 \par\endgroup
-\@doanenote {11}
-macro:->This
-preceding
-phrase
+\@doanenote {7}
+macro:->The
+word
+``Examples''
 is
-not
-a
-sentence.
-\mehul
-{Changed}
+plural.
 
 \par\endgroup
-\@doanenote {12}
-macro:->I
-believe
-that
-I
-have
-commented
-on
-the
-preceding
-elsewhere.
-The
-punctuation
-to
-introduce
+\@doanenote {8}
+macro:->There
+are
 a
-list
-(that
-is,
-the
-end
+bunch
 of
-the
-phrase
-immediately
-preceding
-the
-list)
-should
-not
-be
-``,'',
+minor
+inconsistencies
+here.
+\begin
+{inparaitem}
+\item
+Two
+sentences
+up,
+you
+hyphenate
+(\(\lambda
+\)-calculus),
 but
-more
-likely
-a
-colon,
-or
-possibly
-a
-period.
-There
-should
-also
-be
-punctuation
-after
-each
-item
-in
-a
-list.
-See
-item~\ref
-{item:5}
+here
+and
 in
 the
-to-do
-list.
-
-\par\endgroup
-\@doanenote {13}
-macro:->``Shortcomings''
-is
+following
+sentences
+you
+drop
+the
+hyphen
+(``\(\lambda
+\)
+calculi'').
+\item
+In
 one
-word.
-``the
-road
+place
+you
+have
+``lambda''
+rather
+than
+``\(\lambda
+\)''.
+\item
+You
+introduce
+the
+plural
+(\(\lambda
+\)-calculi),
+then
+promptly
+switch
+back
 to
-a
-better
-future''
-is
-poetic,
-but
-too
-vague.
+the
+singular,
+even
+though
+you
+are
+not
+yet
+talking
+about
+specific
+languages.
+\end
+{inparaitem}
 
 \par\endgroup
-\@doanenote {14}
-macro:->Fix.
-
-\par\endgroup
-\@doanenote {15}
-macro:->This
-sentence
-still
-needs
-more
-crafting.
-
-\par\endgroup
-\@doanenote {16}
+\@doanenote {9}
 macro:->\david
 {What
 is
@@ -401,93 +352,150 @@ write
 a
 short
 snipped
-here?}
+here?}\newline
+\david
+{``snipped''
+or
+``snippet''?
+You
+can
+just
+add
+a
+sentence
+like
+``\textsl
+{This
+is,
+in
+fact,
+an
+instance
+of
+the
+unification
+algorithm
+that
+we
+discuss
+in
+a
+different
+context
+in
+Chapter~\ref
+{proto1}}.''.
+}
 
 \par\endgroup
-\@doanenote {17}
-macro:->``the
-two
-languages''?
-As
-per
+\@doanenote {10}
+macro:->Make
 the
-remarks
-above,
+suggested
+fixes
+in
+this
+sentence,
+then
+remove
+this
+\macroName
+{endnote}.
+
+\par\endgroup
+\@doanenote {11}
+macro:->Remove
+this
+sentence,
+and
+merge
+with
 the
-reader
-is
-not
-going
-to
-remember
-what
+following
+\P
+.
+
+\par\endgroup
+\@doanenote {12}
+macro:->Insert
+a
+sentence
+here
+linking
+these
 two
 languages
-we
-are
-talking
-about.
-Perhaps
+with
+the
+\P
+'s
+above.
+Use
+something
+like
+\begin
+{quote}\slshape
+These
+two
+languages
+come
+from
+respective
+the
+functional
+programming
+and
+logical
+programming
+branches
+of
+the
+declarative
+language
+group.
+\end
+{quote}
+
+\par\endgroup
+\@doanenote {13}
+macro:->Perhaps
 just
-dropping
-``the''
-will
-fix
-this.
+use
+``\textsl
+{input
+and
+output}''
+in
+place
+of
+``\textit
+{IO}''.
 
 \par\endgroup
-\@doanenote {18}
-macro:->This
-\P
-{}
-needs
-rewriting.
-\mehul
-{see
-below}
-
-\par\endgroup
-\@doanenote {19}
-macro:->I
-do
-not
-understand
-the
-sentence
-before
-the
-comma.
-
-\par\endgroup
-\@doanenote {20}
-macro:->comma
-splice.
-
-\par\endgroup
-\@doanenote {21}
-macro:->This
-\P
-{}
-seems
-to
-repeat
-the
-preceding
-\P
-{}.
-Merge
-them.
-\mehul
-{It
-is
-meant
-to
+\@doanenote {14}
+macro:->Please
 be
-a
-replacement}
+careful
+about
+``it's''
+and
+``its''.
+Remove
+this
+endnote
+when
+you
+are
+confident
+that
+you
+have
+checked
+them
+all.
 
 \par\endgroup
-\@doanenote {22}
+\@doanenote {15}
 macro:->I
 am
 not
@@ -514,7 +522,7 @@ Chapter~\ref
 {chap:multiparadigm}?
 
 \par\endgroup
-\@doanenote {23}
+\@doanenote {16}
 macro:->I
 am
 not
@@ -550,7 +558,7 @@ one
 word.
 
 \par\endgroup
-\@doanenote {24}
+\@doanenote {17}
 macro:->I
 think
 that
@@ -560,8 +568,7 @@ of
 ``reflective''
 needs
 some
-\yyy
-{common}{comment}.
+comment.
 Usually
 \textit
 {reflective}
@@ -590,7 +597,7 @@ language.
 ?????
 
 \par\endgroup
-\@doanenote {25}
+\@doanenote {18}
 macro:->The
 preceding
 sentence
@@ -598,7 +605,7 @@ needs
 fixing.
 
 \par\endgroup
-\@doanenote {26}
+\@doanenote {19}
 macro:->I
 believe
 that
@@ -618,13 +625,13 @@ commonly
 used.
 
 \par\endgroup
-\@doanenote {27}
+\@doanenote {20}
 macro:->``preforming''
 or
 ``performing''?
 
 \par\endgroup
-\@doanenote {28}
+\@doanenote {21}
 macro:->\david
 {Is
 the
@@ -657,7 +664,7 @@ the
 text.}
 
 \par\endgroup
-\@doanenote {29}
+\@doanenote {22}
 macro:->Should
 this
 example
@@ -680,12 +687,12 @@ up
 there.
 
 \par\endgroup
-\@doanenote {30}
+\@doanenote {23}
 macro:->Sentence
 fragment.
 
 \par\endgroup
-\@doanenote {31}
+\@doanenote {24}
 macro:->Do
 you
 mean
@@ -745,7 +752,7 @@ me
 here.
 
 \par\endgroup
-\@doanenote {32}
+\@doanenote {25}
 macro:->What
 is
 ``the
@@ -768,7 +775,12 @@ See
 {sec:list-colloquialisms}.
 
 \par\endgroup
-\@doanenote {33}
+\@doanenote {26}
+macro:->comma
+splice.
+
+\par\endgroup
+\@doanenote {27}
 macro:->Did
 I
 get
@@ -776,13 +788,13 @@ your
 sense?
 
 \par\endgroup
-\@doanenote {34}
+\@doanenote {28}
 macro:->``exist''
 or
 ``exists''?
 
 \par\endgroup
-\@doanenote {35}
+\@doanenote {29}
 macro:->\david
 {What
 does
@@ -801,7 +813,7 @@ not
 remember.}
 
 \par\endgroup
-\@doanenote {36}
+\@doanenote {30}
 macro:->\S
 ~\ref
 {sec:what-this-chapter:proposedWork}
@@ -823,31 +835,23 @@ off
 topic.
 
 \par\endgroup
-\@doanenote {37}
+\@doanenote {31}
 macro:->Which
 sections
 above?
 Use
-{\ttfamily
-\expandafter
-\string
-\csname
-label\endcsname
-}
+\macroName
+{label}
 and
-{\ttfamily
-\expandafter
-\string
-\csname
-ref\endcsname
-}
+\macroName
+{ref}
 to
 say
 precisely
 which.
 
 \par\endgroup
-\@doanenote {38}
+\@doanenote {32}
 macro:->I
 am
 uncertain
@@ -867,7 +871,7 @@ overly
 argumentative.
 
 \par\endgroup
-\@doanenote {39}
+\@doanenote {33}
 macro:->What
 is
 the
@@ -883,14 +887,12 @@ overall
 thesis?
 
 \par\endgroup
-\@doanenote {40}
+\@doanenote {34}
 macro:->Write
 macros
 like
-{\ttfamily
-\string
-\progLang
-}
+\macroName
+{progLang}
 for
 the
 various
@@ -931,7 +933,7 @@ some
 such.
 
 \par\endgroup
-\@doanenote {41}
+\@doanenote {35}
 macro:->Not
 ``would
 form''.
@@ -949,7 +951,7 @@ the
 thesis.
 
 \par\endgroup
-\@doanenote {42}
+\@doanenote {36}
 macro:->\david
 {Strike
 this?}\newline
@@ -966,7 +968,7 @@ right
 ?}
 
 \par\endgroup
-\@doanenote {43}
+\@doanenote {37}
 macro:->This
 is
 not
@@ -975,7 +977,80 @@ complete
 sentence.
 
 \par\endgroup
-\@doanenote {44}
+\@doanenote {38}
+macro:->Make
+this
+clearer.
+Perhaps\par
+\vspace
+{-1\baselineskip
+}
+\begin
+{quote}\slshape
+A
+third
+question
+to
+address
+is
+the
+accommodation
+of
+input
+and
+output.
+More
+specifically,
+\progLang
+{Prolog}
+uses
+\textit
+{ad
+hoc}
+side
+effects
+to
+accomplish
+input
+and
+output,
+whereas
+\progLang
+{Haskell}
+forces
+the
+use
+of
+the
+\unknownLabel
+{IO
+Monad},
+making
+it
+difficult
+to
+model
+the
+former
+in
+the
+latter.
+\enparen
+{See
+Chapter~\ref
+{proto3}.}
+\end
+{quote}
+\vspace
+{-1\baselineskip
+}
+\noindent
+or
+something
+simlar.
+
+\par\endgroup
+\@doanenote {39}
 macro:->Have
 we
 defined
@@ -992,7 +1067,7 @@ language
 {eDSL}}''.
 
 \par\endgroup
-\@doanenote {45}
+\@doanenote {40}
 macro:->See
 \textit
 {p.}~\pageref
@@ -1001,7 +1076,7 @@ item~\ref
 {item:no-and}.
 
 \par\endgroup
-\@doanenote {46}
+\@doanenote {41}
 macro:->Reword.
 I
 believe
@@ -1069,7 +1144,7 @@ of
 {compactitem}
 
 \par\endgroup
-\@doanenote {47}
+\@doanenote {42}
 macro:->What
 is
 the
@@ -1078,7 +1153,7 @@ the
 Engine?
 
 \par\endgroup
-\@doanenote {48}
+\@doanenote {43}
 macro:->\david
 {What
 is
@@ -1102,12 +1177,12 @@ terms.}\newline
 forgot}.
 
 \par\endgroup
-\@doanenote {49}
+\@doanenote {44}
 macro:->``far
 scarcer''?
 
 \par\endgroup
-\@doanenote {50}
+\@doanenote {45}
 macro:->Do
 you
 mean
@@ -1134,7 +1209,7 @@ or
 ?
 
 \par\endgroup
-\@doanenote {51}
+\@doanenote {46}
 macro:->\david
 {What
 does
@@ -1195,9 +1270,75 @@ not
 \progLang
 {Haskell}
 ?}
+\par
+\david
+{Then
+say
+something
+like
+``\textsl
+{Another
+issue
+raised
+by
+ongoing
+informal
+discussions
+are
+unflattering
+comparison
+between
+siblings
+\cite
+{website:haskell-choice}.
+This
+makes
+potential
+users
+question
+the
+choice
+of
+\progLang
+{Prolog},
+when
+\progLang
+{Haskell}---also
+a
+language
+in
+the
+family
+of
+declarative
+languages---is
+so
+popular.}''
+I
+am
+not
+sure
+if
+I
+have
+that
+sentence
+exactly
+right,
+but
+you
+need
+to
+be
+more
+explicit
+about
+the
+argument.
+}
 
 \par\endgroup
-\@doanenote {52}
+\@doanenote {47}
 macro:->\david
 {I
 have
@@ -1233,7 +1374,7 @@ in
 {Haskell}}
 
 \par\endgroup
-\@doanenote {53}
+\@doanenote {48}
 macro:->Consider
 using
 ``such
@@ -1244,7 +1385,7 @@ of
 ``like''.
 
 \par\endgroup
-\@doanenote {54}
+\@doanenote {49}
 macro:->This
 \P
 {}
@@ -1265,7 +1406,7 @@ references
 say.
 
 \par\endgroup
-\@doanenote {55}
+\@doanenote {50}
 macro:->I
 am
 not
@@ -1280,7 +1421,7 @@ here:
 {spivey1999embedding}?.
 
 \par\endgroup
-\@doanenote {56}
+\@doanenote {51}
 macro:->What
 are
 ``the
@@ -1289,7 +1430,7 @@ at
 hand''?
 
 \par\endgroup
-\@doanenote {57}
+\@doanenote {52}
 macro:->This
 is
 a
@@ -1297,7 +1438,7 @@ sentence
 fragment.
 
 \par\endgroup
-\@doanenote {58}
+\@doanenote {53}
 macro:->I
 do
 not
@@ -1307,7 +1448,7 @@ preceding
 sentence.
 
 \par\endgroup
-\@doanenote {59}
+\@doanenote {54}
 macro:->Yet
 another
 metaphor
@@ -1321,7 +1462,7 @@ in
 context.
 
 \par\endgroup
-\@doanenote {60}
+\@doanenote {55}
 macro:->There
 seem
 to
@@ -1331,22 +1472,29 @@ missing
 here.
 
 \par\endgroup
-\@doanenote {61}
-macro:->Be
-more
-precise
-than
-``sort
+\@doanenote {56}
+macro:->\dots
+{}
+or
+simply
+``\textsl
+{which
+replicates}'',
+unless
+you
+have
+strong
+doubts
+as
+to
+the
+efficacy
 of
-depicts''.
+the
+library.
 
 \par\endgroup
-\@doanenote {62}
-macro:->Other
-whats?
-
-\par\endgroup
-\@doanenote {63}
+\@doanenote {57}
 macro:->Mark
 this
 text
@@ -1379,7 +1527,7 @@ so
 on.
 
 \par\endgroup
-\@doanenote {64}
+\@doanenote {58}
 macro:->``Moving
 on
 to
@@ -1396,41 +1544,23 @@ it
 aloud.
 
 \par\endgroup
-\@doanenote {65}
-macro:->Do
-you
-want
-to
-make
+\@doanenote {59}
+macro:->Check
+for
+unmarked
+\texttt
+{Prolog}s
+and
+strange
+capitals
+in
 the
-point
-here
-that
-\cite
-{unification-fd-lib}
-is
-more
-general
-than
-just
-\progLang
-{Prolog}?
-\par
-\mehul
-{I
-do
-not
-know
-since
-we
-are
-just
-listing
-stuff
-out.}
+middle
+of
+sentences.
 
 \par\endgroup
-\@doanenote {66}
+\@doanenote {60}
 macro:->How
 do
 these
@@ -1439,7 +1569,7 @@ sentences
 relate?
 
 \par\endgroup
-\@doanenote {67}
+\@doanenote {61}
 macro:->Ample
 doesn't
 fit
@@ -1447,7 +1577,7 @@ well
 here.
 
 \par\endgroup
-\@doanenote {68}
+\@doanenote {62}
 macro:->This
 \P
 {}
@@ -1455,7 +1585,7 @@ is
 good.
 
 \par\endgroup
-\@doanenote {69}
+\@doanenote {63}
 macro:->Here
 ``eDSl''
 should
@@ -1463,7 +1593,7 @@ be
 ``eDSL''.
 
 \par\endgroup
-\@doanenote {70}
+\@doanenote {64}
 macro:->Something
 strange
 has
@@ -1471,7 +1601,7 @@ happened
 here!.
 
 \par\endgroup
-\@doanenote {71}
+\@doanenote {65}
 macro:->Unless
 you
 are
@@ -1500,7 +1630,7 @@ mixed
 metaphor.
 
 \par\endgroup
-\@doanenote {72}
+\@doanenote {66}
 macro:->There
 are
 some
@@ -1511,7 +1641,7 @@ at
 here.
 
 \par\endgroup
-\@doanenote {73}
+\@doanenote {67}
 macro:->``discussed
 on''
 does
@@ -1519,7 +1649,7 @@ not
 work.
 
 \par\endgroup
-\@doanenote {74}
+\@doanenote {68}
 macro:->What
 is
 the
@@ -1531,7 +1661,7 @@ defined
 where?
 
 \par\endgroup
-\@doanenote {75}
+\@doanenote {69}
 macro:->Yet
 another
 metaphor
@@ -1542,14 +1672,14 @@ my
 wheels.
 
 \par\endgroup
-\@doanenote {76}
+\@doanenote {70}
 macro:->What
 is
 ``it''
 here?
 
 \par\endgroup
-\@doanenote {77}
+\@doanenote {71}
 macro:->What
 is
 ``it''
@@ -1563,12 +1693,12 @@ as
 above?
 
 \par\endgroup
-\@doanenote {78}
+\@doanenote {72}
 macro:->Which
 fog?
 
 \par\endgroup
-\@doanenote {79}
+\@doanenote {73}
 macro:->What
 do
 you
@@ -1580,7 +1710,7 @@ of
 publications''?
 
 \par\endgroup
-\@doanenote {80}
+\@doanenote {74}
 macro:->Use
 ``must''
 in
@@ -1593,7 +1723,7 @@ you
 can.
 
 \par\endgroup
-\@doanenote {81}
+\@doanenote {75}
 macro:->``Although''
 fights
 with
@@ -1612,7 +1742,7 @@ before
 as''.
 
 \par\endgroup
-\@doanenote {82}
+\@doanenote {76}
 macro:->Otherwise
 you
 have
@@ -1621,7 +1751,7 @@ sentence
 fragment.
 
 \par\endgroup
-\@doanenote {83}
+\@doanenote {77}
 macro:->The
 preceding
 sentence
@@ -1693,7 +1823,7 @@ in
 {quote}
 
 \par\endgroup
-\@doanenote {84}
+\@doanenote {78}
 macro:->This
 is
 a
@@ -1711,7 +1841,7 @@ it
 clearer.
 
 \par\endgroup
-\@doanenote {85}
+\@doanenote {79}
 macro:->The
 rewording
 avoids
@@ -1720,7 +1850,7 @@ sentence
 fragment.
 
 \par\endgroup
-\@doanenote {86}
+\@doanenote {80}
 macro:->``\progLang
 {Nue
 Prolog}''
@@ -1730,7 +1860,7 @@ or
 Prolog}''?
 
 \par\endgroup
-\@doanenote {87}
+\@doanenote {81}
 macro:->Are
 we
 done
@@ -1749,7 +1879,7 @@ other
 languages,}''.
 
 \par\endgroup
-\@doanenote {88}
+\@doanenote {82}
 macro:->This
 is
 a
@@ -1860,14 +1990,24 @@ others
 {bert1987lpg,malachi1984tablog}}.}
 
 \par\endgroup
-\@doanenote {89}
+\@doanenote {83}
 macro:->What
 sort
 of
 thing?
 
 \par\endgroup
-\@doanenote {90}
+\@doanenote {84}
+macro:->This
+preceding
+phrase
+is
+not
+a
+sentence.
+
+\par\endgroup
+\@doanenote {85}
 macro:->Avoid
 non-\textsc
 {ascii}
@@ -1949,7 +2089,7 @@ minus
 signs.
 
 \par\endgroup
-\@doanenote {91}
+\@doanenote {86}
 macro:->``ComputerScience''
 should
 be
@@ -1957,7 +2097,7 @@ be
 Science''.
 
 \par\endgroup
-\@doanenote {92}
+\@doanenote {87}
 macro:->``\textit
 {\progLang
 {Prolog}
@@ -1978,36 +2118,43 @@ as
 here.
 
 \par\endgroup
-\@doanenote {93}
+\@doanenote {88}
 macro:->Do
 you
 mean
 ``test''?
 
 \par\endgroup
-\@doanenote {94}
-macro:->and
-so
-on.
+\@doanenote {89}
+macro:->The
+first
+two
+items
+start
+with
+``\textit
+{The}''.
+The
+remaining
+items
+do
+not,
+which
+is
+probably
+incorrect.
 
 \par\endgroup
-\@doanenote {95}
+\@doanenote {90}
 macro:->what
-does
-this
-reference?
+do
+``\textit
+{Variables}''
+refer
+to?
 
 \par\endgroup
-\@doanenote {96}
-macro:->Decide
-on
-a
-convention
-for
-capitals.
-
-\par\endgroup
-\@doanenote {97}
+\@doanenote {91}
 macro:->You
 might
 want
@@ -2062,7 +2209,68 @@ instance,
 {quote}
 
 \par\endgroup
-\@doanenote {98}
+\@doanenote {92}
+macro:->I
+believe
+that
+I
+have
+commented
+on
+the
+preceding
+elsewhere.
+The
+punctuation
+to
+introduce
+a
+list
+(that
+is,
+the
+end
+of
+the
+phrase
+immediately
+preceding
+the
+list)
+should
+not
+be
+``,'',
+but
+more
+likely
+a
+colon,
+or
+possibly
+a
+period.
+There
+should
+also
+be
+punctuation
+after
+each
+item
+in
+a
+list.
+See
+item~\ref
+{item:5}
+in
+the
+to-do
+list.
+
+\par\endgroup
+\@doanenote {93}
 macro:->``i.e.''
 is
 missing
@@ -2102,7 +2310,7 @@ English
 words.
 
 \par\endgroup
-\@doanenote {99}
+\@doanenote {94}
 macro:->I've
 tidied
 up
@@ -2126,21 +2334,21 @@ comment.\newline
 fe997de\-08bda2\-64c453\-204e97\-1a1cfd\-219457acf}).
 
 \par\endgroup
-\@doanenote {100}
+\@doanenote {95}
 macro:->``non
 recursive''
 is
 hyphenated.
 
 \par\endgroup
-\@doanenote {101}
+\@doanenote {96}
 macro:->Why
 is
 unification
 capitalized?
 
 \par\endgroup
-\@doanenote {102}
+\@doanenote {97}
 macro:->
 \david
 {Why
@@ -2163,14 +2371,53 @@ the
 languages}
 
 \par\endgroup
-\@doanenote {103}
+\@doanenote {98}
+macro:->If
+we
+are
+going
+to
+keep
+this,
+we
+need
+to
+have
+sentences.
+We
+need
+something
+like
+``\textsl
+{The
+advantages
+of
+static
+typing
+are:
+\dots
+{},
+and\dots
+,
+whereas
+the
+advantages
+of
+dynamic
+typing
+are:
+\dots
+}''.
+
+\par\endgroup
+\@doanenote {99}
 macro:->Drop
 the
 ``would''s
 here.
 
 \par\endgroup
-\@doanenote {104}
+\@doanenote {100}
 macro:->Are
 you
 sure
@@ -2194,52 +2441,13 @@ with
 lists.
 
 \par\endgroup
-\@doanenote {105}
-macro:->What
-do
-you
-mean
-by
-``primitives
-of
-the
-language''?
-Adopted
-from
-\cite
-{website:understandingalgebrasfpcomplete}
+\@doanenote {101}
+macro:->is
+this
+ok?
 
 \par\endgroup
-\@doanenote {106}
-macro:->You
-have
-`\textit
-{FlatTerm}'
-and
-`"FlatTerm"'.
-Why
-not
-\texttt
-{FlatTerm}
-or
-better
-yet
-\texttt
-{@`\\code\char
-`\{FlatTerm\char
-`\}},
-where
-\texttt
-{\char
-`\\code}
-is
-a
-macro
-you
-define.
-
-\par\endgroup
-\@doanenote {107}
+\@doanenote {102}
 macro:->Why
 do
 we
@@ -2274,7 +2482,7 @@ is
 *}
 
 \par\endgroup
-\@doanenote {108}
+\@doanenote {103}
 macro:->Even
 if
 entered
@@ -2287,7 +2495,11 @@ appropriate
 here.
 
 \par\endgroup
-\@doanenote {109}
+\@doanenote {104}
+macro:->Spelling!
+
+\par\endgroup
+\@doanenote {105}
 macro:->\david
 {Why
 do
@@ -2350,14 +2562,14 @@ git
 repository.}
 
 \par\endgroup
-\@doanenote {110}
+\@doanenote {106}
 macro:->The
 ``is''
 seems
 mispaced.
 
 \par\endgroup
-\@doanenote {111}
+\@doanenote {107}
 macro:->This
 sentence
 can
@@ -2366,14 +2578,21 @@ simplified,
 I
 think.
 \par\endgroup
-\@doanenote {112}
+\@doanenote {108}
+macro:->Removed
+the
+\macroName
+{clearpage}.
+
+\par\endgroup
+\@doanenote {109}
 macro:->What
 is
 ``\texttt
 {map-reduce}''?
 
 \par\endgroup
-\@doanenote {113}
+\@doanenote {110}
 macro:->I
 am
 deeply
@@ -2403,7 +2622,7 @@ the
 diagram.}
 
 \par\endgroup
-\@doanenote {114}
+\@doanenote {111}
 macro:->In
 this
 immediate
@@ -2433,5 +2652,80 @@ commit
 \texttt
 {95804e3\dots
 }.
+
+\par\endgroup
+\@doanenote {112}
+macro:->Check
+the
+whole
+thesis
+for
+naked
+\macroName
+{ref}s.
+
+\par\endgroup
+\@doanenote {113}
+macro:->Fix
+me!!
+
+\par\endgroup
+\@doanenote {114}
+macro:->Fix
+the
+preceding
+space.
+
+\par\endgroup
+\@doanenote {115}
+macro:->Page
+break
+following
+removed.
+
+\par\endgroup
+\@doanenote {116}
+macro:->Page
+break
+following
+removed.
+
+\par\endgroup
+\@doanenote {117}
+macro:->Page
+break
+following
+removed.
+
+\par\endgroup
+\@doanenote {118}
+macro:->Something
+is
+missing
+here.
+The
+current
+text
+comes
+from
+commit
+\texttt
+{a1b2c01fb24}.
+
+\par\endgroup
+\@doanenote {119}
+macro:->Page
+break
+following
+removed.
+
+\par\endgroup
+\@doanenote {120}
+macro:->Fix
+me!
+
+\par\endgroup
+\@doanenote {121}
+macro:->Huh?
 
 \par\endgroup
