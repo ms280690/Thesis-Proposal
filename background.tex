@@ -88,16 +88,24 @@ This is done until the one which gives the solution is not derived.
   cut material in the commit that introduces this comment, and let you see if you agree that I've got it right. 
 }
 
-In this thesis we aim to merge two languages\endnote{%
-  ``the two languages''?
-  As per the remarks above, the reader is not going to remember what two languages we are talking about.
-  Perhaps just dropping ``the'' will fix this.
+In this thesis we aim to merge two languages
+together and produce a result which \xxx{would} \yyy{exhibit}{exhibits} hybrid
+properties.\endnote{%
+  Make the suggested fixes in this sentence, then remove this \macroName{endnote}.
 }
-together and produce a result which would exhibit hybrid
-properties.
-Further on we talk about more about the languages in question and approaches .
+Further on we talk about more about the languages in question and approaches\xxx{\Verb[showspaces]! !}.\endnote{%
+  Remove this sentence, and merge with the following \P.
+}
 
-The languages in question are \progLang{Haskell} and \progLang{Prolog}. Some of the dissimilarities between the languages are:
+The languages in question are \progLang{Haskell} and \progLang{Prolog}.\endnote{%
+  Insert a sentence here linking these two languages with the \P's above.
+  Use something like
+  \begin{quote}\slshape
+    These two languages come from respective the functional programming and logical programming branches of the
+    declarative language group.
+  \end{quote}
+}
+Some of the dissimilarities between the languages are:
 \begin{enumerate}
 \item { Haskell} uses Pattern Matching while \progLang{Prolog} uses Unification
 
@@ -109,7 +117,9 @@ Languages, has
 spawned a number of distributions and is present from academia to industry.  
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
-first language to incorporate monads \cite{wadler1992comprehending} for safe \textit{IO}. Monads can be 
+first language to incorporate monads \cite{wadler1992comprehending} for safe \unknownLabel{IO}\endnote{%
+  Perhaps just use ``\textsl{input and output}'' in place of ``\textit{IO}''.
+}\,. Monads can be 
 described as composable computation descriptions \cite{website:monadshaskellorg} . Each monad consists of a 
 description of what has action has to be executed, how the action has to be run and how to combine such 
 computations. An action can describe an impure or side-effecting computation, for example, \textit{IO} can be 
@@ -124,14 +134,20 @@ The differences in typing, execution, working among others lead to an altogether
 
 The selection of the target language is not uncommon\yyy{;}{:}
   \progLang{Prolog} seems 
-to be the all time favourite for ``let's implement \progLang{Prolog} in the language X for proving it's power and 
+to be the all time favourite for ``let's implement \progLang{Prolog} in
+the language X for proving
+\yyy{it's}{its}\endnote{%
+  Please be careful about ``it's'' and ``its''.  Remove this endnote when you are confident that you have checked
+  them all.
+}
+power and 
 expressibility''. The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
 languages such as \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
 \progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on.
 
 The technique of embedding is a shallow one.
-It is as if the embedded language floats over the host.
+It is as if the embedded language floats over the host\yyy{}{ language}.
 Other approaches provide deeper integration between the target and the host.
 \yyy{Further on}{Here}\endnote{%
   I am not sure which ``further on'' you are referring to.
@@ -144,7 +160,7 @@ A lot of work has been done on Unifying the Theories of Programming
   gibbons2013unifying}.
 \yyy{All sorts of hybrid}{Hybrid} languages \yyy{which}{that} have characteristics from more than one paradigm are coming into the
 mainstream.
-One of the more successful attempts is \yyy{\progLang{Scala}\cite{website:scala}}{\progLang{Scala} \cite{website:scala}}. Simply speaking it is like a \textit{functional} 
+One of the more successful attempts is \progLang{Scala}\yyy{}{\Verb[showspaces]! !}\cite{website:scala}. Simply speaking it is like a \textit{functional} 
 \progLang{Java} providing side-effect free programming environment along with \xxx{the}
 \yyy{\progLang{Java} like}{\progLang{Java}-like} features.
 
@@ -181,7 +197,7 @@ that write or manipulate other programs.
 The language used to write meta programs is known as the meta language while the the language in which the program
 to be modified is written is the object language.
 If both of them are the same then the language is said to be reflective.\endnote{%
-  I think that this usage of ``reflective'' needs some \yyy{common}{comment}.
+  I think that this usage of ``reflective'' needs some comment.
   Usually \textit{reflective} refers to run-time access to information about the object language text;
   what you are discussing is compile-time access to the object language.
   ?????

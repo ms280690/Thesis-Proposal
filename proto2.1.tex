@@ -9,11 +9,19 @@
 \chapter{Prototype 2.1}{\label{proto2.1}}
 
 \section{About this chapter}
-This chapter attempts to infuse the generic methodology from \ref{proto1} in a current \progLang{Prolog} implementation \cite{prolog-lib}
+This chapter attempts to infuse the generic methodology from
+\yyy{}{\Huge Chapter}\ref{proto1}\endnote{%
+  Check the whole thesis for naked \macroName{ref}s.
+}
+in a current \progLang{Prolog} implementation \cite{prolog-lib}
 and make the unification ``monadic''.
 
 This chapter discusses the idea of implementing a basic working \progLang{Prolog} query resolver while using \cite{prolog-lib} as the base 
-implementation. The language modifications and unification mechanism have been taken from \ref{proto1} and adapted to fit in with the other
+implementation. The language modifications and unification mechanism
+have been taken from {\Huge \ref{proto1}\endnote{%
+  Fix me!!
+}}
+and adapted to fit in with the other
 components such as the search strategy of the library.  
 
 
@@ -49,21 +57,23 @@ type Program      = [Clause]
 \end{code-list}
 \end{comment}
 
-From the Figure~\ref{tab:origgramp0201} we will focus on the \textit{Term} since the others just add wrappers around expressions which can
+From the Figure~\ref{tab:origgramp0201} we will focus on \xxx{the} \markWord{Term}\yyy{}{s,} since the others just add wrappers around expressions which can
 be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct
 \progLang{Prolog} ``terms'' which are of a ``single type''.
 
 
-The implementation consists of components that one would find in a Language Processing System \ref{fig:A language-processing system},
+The implementation consists of components that one would find in a Language Processing System \yyy{}{(see {\Huge
+    ??}}~\ref{fig:A language-processing system}\yyy{,}{),}
 
 \begin{figure}[th]
 \centering
-\includegraphics[scale = 0.7]{Language_Processing_System.png}
-\caption{A language-processing system \cite{Aho:1986:CPT:6448}}
+\includegraphics[scale = .95]{Language_Processing_System.png}
+\caption{A language-processing system \yyy{}{(taken from} \cite{Aho:1986:CPT:6448}\yyy{}{)}}
 \label{fig:A language-processing system}
 \end{figure}
 
-specifically speaking, parts of a compiler \ref{fig:Phases of Compiler},
+specifically speaking, parts of a compiler \yyy{}{(see {\Huge
+    ??}}~\ref{fig:Phases of Compiler}\yyy{,}{).}
 
 \begin{figure}[th]
 \centering
@@ -72,8 +82,10 @@ specifically speaking, parts of a compiler \ref{fig:Phases of Compiler},
 \label{fig:Phases of Compiler}
 \end{figure}
 
-The architecture for a compiler as described in \ref{fig:Phases of Compiler} would not be needed since \progLang{Haskell} provides most of
-them. Nonetheless, the library has the following major components,
+The architecture for a compiler as described in \ref{fig:Phases of Compiler} \yyy{would not be}{is not} needed
+since \progLang{Haskell} provides most of
+them.
+Nonetheless, the library has the following major components,\eref{comma-before-list}
 
 \begin{enumerate}
 \item Syntax, defining the language.
@@ -86,14 +98,18 @@ them. Nonetheless, the library has the following major components,
 
 \item Unifier.
 
-\item Read-Eval-Print Loop(REPL). 
+\item Read-Eval-Print Loop\Verb[showspaces]! !(REPL).\endnote{%
+  Fix the preceding space.
+}
 \end{enumerate}
 
-To prove the modularity of the approach for language modification and monadic unification only the abstract syntax and unifier will be
-customized.
+To prove the modularity of the approach for language modification and monadic unification only the abstract syntax
+and unifier will be customized.\endnote{%
+  Page break following removed.
+}
 
 
-\clearpage
+
 \section{What we do in this prototype?}
 
 \begin{comment}
@@ -113,12 +129,14 @@ Putting everything together forms the \progLang{Prolog} query resolver. Given a 
 input query with the rules in the knowledge base to create a list of goals to satisfy to generate an unifier along with saving choice 
 points on the way for backtracking.
 
-This chapter discusses about how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to the concepts and 
+This chapter discusses about how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to the concepts and
 implementation from Chapter~\ref{proto1}. This not only proves how generic and modular the approach from the previous chapter is but also
-the system working as a whole. 
+the system working as a whole.\endnote{%
+  Page break following removed.
+}
 
 
-\clearpage
+
 \section{Current implementation (prolog-0.2.0.1)}
 
 Beginning with language from Figure~\ref{tab:origgramp0201} is transformed into an isomorphically equivalent grammar described in 
@@ -168,9 +186,12 @@ The steps involved for the transformation are listed below.
 
 The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities. 
 
-The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.
+The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.\endnote{%
+  Page break following removed.
+}
 
-\begin{code-list}[h]
+
+\begin{code-list}[th]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto2-flattened-rarefy.hs}
   \end{singlespace}
@@ -178,8 +199,6 @@ The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.
 \label{tab:flatgrp0201}
 \end{code-list}
 
-
-\clearpage
 
 After the language is opened up, the next step is to replace the current unification procedure to the one 
 
@@ -196,16 +215,16 @@ type Substitution = (VariableName, Term)
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
 \end{code-list}
-A \textit{Unifier} is a list of \textit{Substitutions} which binds a variable to a value.  
+A \markWord{Unifier} is a list of \markWord{Substitutions} which binds a variable to a value.
 
 \begin{comment}
 Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
 unification library \cite{prolog-lib}.
 \end{comment}
 
-Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}. Each language expression is matched based on its 
-structure.
-  
+Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}.
+Each language expression is matched based on its structure.
+
 \begin{code-list}[h]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto2-unification-lion.hs}
@@ -214,10 +233,14 @@ structure.
 \label{tab:prlg0201unification}
 \end{code-list}
 
-The issue with the current approach is the rigidity of the procedure. Any language modification will cause a ripple effect across the 
-system. As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation as well.
+The issue with the current approach is the rigidity of the procedure.
+Any language modification will cause a ripple effect across the system.
+As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation
+as well.\endnote{%
+  Page break following removed.
+}
 
-\clearpage
+
 \section{Modifications}
 The resulting language is not far from what we did in \ref{proto1} apart from the fact that the \textit{Term} expressions are encapsulated
 to form \textit{Clauses} which in turn form a \textit{Program}.
@@ -228,7 +251,7 @@ Moreover, the required instances make the language compatible with the unificati
   \inputminted[linenos]{haskell}{haskell-proto2-starry-forked.hs}
 \end{singlespace}
 
-Aditionally helper functions for converting expressions between the two domains and translation to \textit{UTerm}.
+Aditionally helper functions for converting expressions between the two domains and translation to \markWord{UTerm}.
 
 To solve the issue of infinitely deep language expressions, we find the fixed point of the expression. The unification function provided by 
 \cite{prolog-lib} is not very \progLang{Prolog} like\eref{language-like} in nature and certain adjustments need to be made. 
@@ -243,7 +266,9 @@ To solve the issue of infinitely deep language expressions, we find the fixed po
 \end{singlespace}
 
 Take original expressions flatten fix convert unify
-run it STBinding monad to extract substitutions.
+run it \markWord{STBinding} monad to extract substitutions.\endnote{%
+  Huh?
+}
 
 \begin{singlespace}
   \inputminted[linenos]{haskell}{haskell-proto2-hearty-kayo.hs}
@@ -253,7 +278,7 @@ run it STBinding monad to extract substitutions.
 
 \section{Results}
 
-It works,
+It works\yyy{,}{.}
 
 
 
