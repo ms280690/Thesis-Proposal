@@ -84,7 +84,7 @@ discussed below{\large,} along with their shortcomings.
 \end{enumerate}
 
 And as far as the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
-``add-on''.
+``add-on''.\eref{no-and}
 A handful of crossover hybrid languages based on \progLang{Haskell} exist, \progLang{Curry} \cite{website:curry}
 being the prominent one.
 Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
@@ -126,14 +126,27 @@ This \yyy{would form}{forms}\endnote{%
   Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
 }
 the first stage of the implementation.
-Secondly, exploring aspects such as \textit{assert} and database capabilities.\endnote{%
+Secondly, exploring aspects such as \markWord{assert} and database capabilities.\endnote{%
   \david{Strike this?}\newline
   \mehul{well we/ the library does some of this right ?}
 }\textsuperscript{,}\endnote{%
   This is not a complete sentence.
 }
-A third question to address is the accommodation of input and output, specifically dealing with the \textit{IO
-  Monad} in \progLang{Haskell} with \progLang{Prolog} \textit{IO}.
+A third question to address is the accommodation of input and output, specifically dealing with the \markWord{IO
+  Monad} in \progLang{Haskell} with \progLang{Prolog} \markWord{IO}.\endnote{%
+  Make this clearer. Perhaps\par\vspace{-1\baselineskip}
+  \begin{quote}\slshape
+    A third question to address is the accommodation of input and
+    output.
+    More specifically, \progLang{Prolog}
+    uses \textit{ad hoc} side effects to accomplish input and output,
+    whereas \progLang{Haskell} forces the use of the \unknownLabel{IO
+      Monad}, making it difficult to model the former in the latter.
+    \enparen{See Chapter~\ref{proto3}.}
+  \end{quote}
+  \vspace{-1\baselineskip}
+  \noindent or something simlar.
+}
 Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be
 created.
 Something like this is not by default in \progLang{Haskell}.
@@ -161,7 +174,7 @@ Lastly, how would characteristics of hybrid languages fit into and play a role i
   And for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
   implementation encapsulated into a monad.\endnote{%
     See \textit{p.}~\pageref{item:no-and}, item~\ref{item:no-and}.
-}
+}\elabel{no-and}
 
 \item
   (\chapterReference{proto2.1}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a

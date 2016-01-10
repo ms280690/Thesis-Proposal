@@ -67,15 +67,16 @@ The ones relevant to this thesis are,\eref{comma-before-list}
 \begin{enumerate}
 \item the language, adopted from \progLang{Prolog} but trimmed down;
 
-\item the database;\endnote{%
-  and so on.
-}
+\item the database;
 
 \item Unifier
 
 \item Read-Eval-Print Loop(REPL)
 
-\item Interpreter which consists of a parsing mechanism and resembles the query resolver.
+\item Interpreter which consists of a parsing mechanism and resembles the query resolver.\endnote{%
+  The first two items start with ``\textit{The}''.  The remaining items
+  do not, which is probably incorrect.
+}
 \end{enumerate}
 
 \item \codeLibrary{unification-fd} \cite{unification-fd-lib}
@@ -90,7 +91,7 @@ The relevant components are,\eref{comma-before-list}
 \item The \Verb!UTerm! data type
 
 \item Variables\endnote{%
-  what does this reference?
+  what do ``\textit{Variables}'' refer to?
 },
   \Verb!STVar!, \Verb!IntVar!
 
@@ -112,9 +113,7 @@ The implementation consists of the following components,\eref{comma-before-list}
 
 \item Compatibility with the unification library \cite{unification-fd-lib}
 
-\item Variable bindings\endnote{%
-  Decide on a convention for capitals.
-}
+\item Variable bindings
 
 \item Monadic unification
 
@@ -163,30 +162,30 @@ The possibilities are,\endnote{%
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
   are the same atom, or the same number.
-\begin{code-list}[h]
-\begin{minted}[linenos]{prolog}
+\par
+\begin{minted}[linenos,frame=lines]{prolog}
 ?-  =(mia,mia).
 yes
 \end{minted}
-\end{code-list}
+
 
 \item If \mSV{term1} is an uninstantiated variable and \mSV{term2} is any type of term, then \mSV{term1}
   and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2}\,.
   Similarly, if \mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2}
   unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
 variables, \yyy{they’re}{they're} both instantiated to each other, and we say that they share values.)
-\begin{code-list}[h]
-\begin{minted}[linenos]{prolog}
+\par
+\begin{minted}[linenos,frame=lines]{prolog}
 ?-  mia  =  X.
 X  =  mia
 yes
 \end{minted}
 
-\begin{minted}[linenos]{prolog}
+\begin{minted}[linenos,frame=lines]{prolog}
 ?-  X  =  Y.
 yes
 \end{minted}
-\end{code-list}
+
 
 \item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
 
@@ -197,15 +196,15 @@ yes
 
 \item the variable instantiations are compatible.
 \end{enumerate}
-\begin{code-list}[h]
 
-\begin{minted}[linenos]{prolog}
+\par
+\begin{minted}[linenos,frame=lines]{prolog}
 ?-  k(s(g),Y)  =  k(X,t(k)).
 X  =  s(g)
 Y  =  t(k)
 yes
 \end{minted}
-\end{code-list}
+
 
 
 \item Two terms unify if and only if it follows from the previous three clauses that they unify.
@@ -287,6 +286,10 @@ The advantages of static typing \cite{meijer2004static}\endnote{
   \david{Why do we need the following two paragraphs?}\newline
   \mehul{To
   talk about the type systems of the languages}
+}\textsuperscript{,}\endnote{%
+  If we are going to keep this, we need to have sentences.  We need something like
+  ``\textsl{The advantages of static typing are: \dots{}, and\dots, whereas the advantages of dynamic typing are:
+    \dots}''.
 }
 \begin{enumerate}
 \item Earlier detection of errors
@@ -357,12 +360,11 @@ The \xxx{above} data type \yyy{}{Figure~\ref{tab:closed-terms}} is recursive as 
 abstract syntax of a language.
 One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from
 the data type itself \cite{sheard2004two}.
-Moreover, the primitives of the language\endnote{%
-  What do you mean by ``primitives of the language''?
-  Adopted from \cite{website:understandingalgebrasfpcomplete}
+Moreover, the primitives of the language\yyy{}{(see \cite{website:understandingalgebrasfpcomplete})}\endnote{%
+  is this ok?
 }
 are not accessible as the language can have expressions of only one
-type i.e. ``Term''.
+type\yyy{}{\Large,} i.e.\yyy{}{\Large,} ``\unknownLabel{Term}''.
 
 \begin{comment}
 The solution \xxx{to} would be to add a type constructor split the data type into two levels, a single recursive
@@ -385,14 +387,10 @@ One result of \yyy{the approach}{coding as in Listing~\ref{tab:non-recurse} rath
   Listing~\ref{tab:closed-terms} (lines 6--9)}
   is that the non-recursive type
 \texttt{FlatTerm} is modular and generic as the structure
-"FlatTerm"\endnote{%
-  You have `\textit{FlatTerm}' and `"FlatTerm"'.  Why not \texttt{FlatTerm} or better yet
-  \texttt{@`\\code\char`\{FlatTerm\char`\}},
-  where \texttt{\char`\\code} is a macro you define.
-}
+\markWord{FlatTerm}
 is separate
 from its
-type which is ``\textit{a}''.
+type which is ``\unknownLabel{\textit{a}}''\eref{text-kind}.
 The above language can be of any type \textit{a}.
 A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
 \progLang{Haskell}.\endnote{%
@@ -405,7 +403,7 @@ In type theory, a kind is the type of a type constructor or, less commonly, the 
 essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of
 any (monomorphic) data type for example \cite{website:kindhaskellwiki},
 
-\begin{minted}[linenos]{haskell}
+\begin{minted}[linenos,frame=lines]{haskell}
 Int :: *
 Maybe :: * -> *
 Maybe Bool :: *
@@ -423,18 +421,17 @@ and a generic function like,
   I think this is more to say all terms in the language can be (FlatTerm a) and not
   (FlatTerm (FlatTerm (FlatTerm ....)))
 \end{comment}
-Although one problem remains, how does one represent infinitely nested / deep expressions of the above language,
+\yyy{Although one}{One} problem remains\yyy{,}{:} how does one represent \xxx{infinitely nested /} deep expressions
+of the above language, 
 for example something of the form,
-\newline
 \mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
-\mbox{}\newline
-and how to represent it generically to perform operations on it since,
+and how to represent it generically to perform operations on it\yyy{ since,}{, since}
 \begin{minted}[linenos]{haskell}
 (FlatTerm a) != (FlatTerm (FlatTerm a))
 \end{minted}
 %
 because with our original grammar all the expression that could be defined would be represented by a single entity
-``Term'' no matter how infinitely deep they were.
+\markWord{Term} no matter how infinitely deep they were.
 
 The approach to tackling this problem is to find the ``fixed-point''.
 After infinitely many iterations we should get to a fixed point where further iterations make no
@@ -442,7 +439,10 @@ difference.
 It means that applying one more \markWord{FlatTerm} would not change anything \yyy{–}{--}\eref{non-ascii}\textsuperscript{,}\endnote{%
   Even if entered correctly, an en-dash is not appropriate here.
 }
-a fix point does not move under \markWord{FlatTerm}.
+a \textcolor{red}{fix}\endnote{%
+  Spelling!
+}
+point does not move under \markWord{FlatTerm}.
 
 \progLang{Haskell} provides it in two forms,\endnote{%
   \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
@@ -453,20 +453,19 @@ a fix point does not move under \markWord{FlatTerm}.
 }
 \begin{enumerate}
 
-\item The fix function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
+\item The \markWord{fix} function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
 
 \mint{haskell}|fix :: (a -> a) -> a|
 
 The above function results in an infinite application stream,
 \mint{haskell}|f s : f (f (f (... )))|
 
-A fixed point of a function f is a value a such that f a == a. This is where the name of fix comes from: it finds the least-defined fixed
+A fixed point of a function \markWord{f} is a value a such that \markWord{f a} \Verb!==! \markWord{a}.
+This is where the name of fix comes from: it finds the least-defined fixed
 point of a function.
 
-\item And in type constructor form,
-
+\item And\eref{no-and} in type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
-
 which we apply to our abstract syntax.
 
 \end{enumerate}
@@ -553,7 +552,9 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 %% -- end code inserted by David                                   -- %%
 %%====================================================================%%
 
-\section{Working with the language / Making language compatible with unification-fd}
+\section{Making the language compatible with \protect\codeLibrary{unification-fd}}\label{sec:making-lang-comp}
+
+\david{Check the Section~\ref{sec:making-lang-comp} title change above.}
 
 Our language \yyy{}{is} now opened up and \xxx{is}\endnote{%
   The ``is'' seems mispaced.
@@ -590,11 +591,11 @@ instance of a class the function(s) can be applied to each element / primitive i
 The data here is the \progLang{Prolog} abstract syntax and the containers are
 \Verb!Functor!, \Verb!Foldable!, \Verb!Traversable!, \Verb!Applicative!
   and
-\Verb!Monad!.
+\Verb!Monad!.\endnote{%
+  Removed the \macroName{clearpage}.
+}
 
-\clearpage
-
-Below \yyy{}{\Huge Figure~}\ref{fig:Functor Hierarchy} shows the relation between the different classes.
+\yyy{Below}{\Huge Figure~}\ref{fig:Functor Hierarchy} shows the relation between the different classes.
 
 \begin{figure}[th]
 \centering
@@ -609,7 +610,7 @@ The \Verb!Functor! and \Verb!Foldable! instances providing functions for applyin
 to the data structure.
 The primary issue is that at the end of the operation the structure if the data type is lost which would not help
 our cause since the result of a query must be a list of substitutions which are essential pairs of language
-variable with language values(language constructs).
+variable with language values\yyy{}{\Verb[showspaces]! !}(language constructs).
 
 Enter\xxx{,} \Verb[formatcom=\bf]!Traversable!\yyy{,}{\,.}%}{
 \yyy{it}{It} allows reduce whilst preserving the shape of the structure.
@@ -632,14 +633,15 @@ as shown in \yyy{Figure}{Listing}~\ref{tab:flat-term-class-inst}.
 The above lay the foundation to work with the library.
 Coming back to the library, the language must have the \Verb!Unifiable! instance.
 This works in tandem with the \Verb!UTerm! data type.
-The \Verb!UTerm! data type captures the recursive structure of logic terms i.e, given some functor \(t\) which describes the
+The \Verb!UTerm! data type captures the recursive structure of logic terms\yyy{}{\Large,} i.e\yyy{}{\Large.}, given
+some functor \(t\) which describes the 
 constructors of our logic terms, and some type \(v\) which describes our logic variables, the type
 \Verb!UTerm! \(t\) \(v\) is the
 type of logic terms: trees with multiple layers of \(t\) structure and leaves of type \(v\).
 The \Verb!Unifiable! class gives one step of the unification process.
 Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \Verb!UTerm! to generate
 the recursive ADT, so too we only need to specify one level of the unification (i.e., \Verb!zipMatch!) and then we can use
-the library's operators to perform the recursive unification, subsumption.
+the library's operators to perform the recursive unification\xxx{, subsumption}.
 This is shown in Figure~\ref{tab:zipMatch}.
 \begin{code-list}
   \begin{minted}[linenos]{haskell}

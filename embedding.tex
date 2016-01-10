@@ -93,12 +93,20 @@ family of Declarative Languages.\endnote{%
   Well \progLang{Haskell} has a lot of advantages over \progLang{Prolog} despite being from the same paradigm
   \newline
   So a choice has to be made for a declarative language why not \progLang{Haskell} ?}
+
+  \david{Then say something like
+    ``\textsl{Another issue raised by ongoing informal discussions are unflattering comparison between siblings
+      \cite{website:haskell-choice}.
+      This makes potential users question the choice of \progLang{Prolog},
+      when \progLang{Haskell}---also a language in the family of declarative languages---is so popular.}''
+    I am not sure if I have that sentence exactly right, but you need to be more explicit about the argument.
+  }
 }
 Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
-enables encoding of search problems.\endnote{%
+enables encoding of search problems.\eref{not-a-sentence}\textsuperscript{\,}\endnote{%
   \david{I have lost track of the general argument here.
   What is the unofficially published content saying about \progLang{Prolog} here?}
-  
+
   \mehul{Attempting to do AI like search stuff in \progLang{Haskell}}
 }
 
@@ -171,13 +179,13 @@ to the other.
 While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
 anything new rather than doing something new with what is available.\endnote{%
     This is a sentence fragment.
-  }
+  }\elabel{sentence-fragment}
 Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
-solutions are instances.\endnote{%
+solutions are instances.\eref{sentence-fragment}\textsuperscript{,}\endnote{%
     I do not understant the preceding sentence.
   }
 \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
-use of the \progLang{Haskell} \textit{State Monad} to capture and maintain a global state.
+use of the \progLang{Haskell} \markWord{State Monad} to capture and maintain a global state.
 The main contributions are a Backtracking Monad Transformer that can enrich any monad with backtracking abilities
 and a monadic encapsulation to turn a \progLang{Prolog} predicate into a \progLang{Haskell} function.
 
@@ -212,16 +220,16 @@ no monadic support and an REPL without the ability to ``write a Prolog Program F
     There seem to be words missing here.
 }
   to propositional logic and backtracking.
-  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which attempts at replicating\endnote{%
-    Be more precise than ``sort of depicts''.
+  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which attempts \yyy{at
+    replicating}{to replicate}\endnote{%
+    \dots{} or simply ``\textsl{which replicates}'', unless you have strong doubts as to the efficacy of the
+    library. 
 }
   \progLang{Prolog}'s
   backtracking behaviour.
   Prolog is heavily based on formal logic.
   \cite{proplogic-lib} provides a powerful system for Propositional Logic.
-  Other libraries\endnote{%
-    Other whats?
-}
+  Other libraries
   include small hybrid languages \cite{cflp-lib} and
   \textcolor{blue}{``Parallelising Logic Programming and Tree Exploration''}\endnote{%
     Mark this text up somehow: for intance surround with quotation marks if it is the title of a paper, put in
@@ -238,10 +246,9 @@ Moving on to the other distinct feature of \progLang{Prolog} is unification.\end
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
 }
 There are two libraries that exist \cite{unification-fd-lib},
-\cite{cmu-lib} that unify two Prolog Terms and return the resulting substitution.\endnote{%
-  Do you want to make the point here that \cite{unification-fd-lib} is more general than just \progLang{Prolog}? 
-
-\mehul{I do not know since we are just listing stuff out.}
+\cite{cmu-lib} that unify two \yyy{Prolog}{\progLang{Prolog}} \yyy{Terms}{terms} and return the resulting
+substitution.\endnote{% 
+  Check for unmarked \texttt{Prolog}s and strange capitals in the middle of sentences.
 }
 
 

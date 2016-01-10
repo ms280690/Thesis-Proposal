@@ -73,6 +73,7 @@ Strings of alphanumerics and \_, starting with a lower case alphabetic.
 Strings enclosed in 'single quotes'
 Integers are numeric
 Example
+\par
 \begin{minted}[linenos]{prolog}
 geoff
 'the cat and the rat'
@@ -85,21 +86,24 @@ Function terms
 Functions have the form <functor>(<term>{,<term>})
 Functor starts with a lower case alphabetic.
 Example
+\par
 \begin{minted}[linenos]{prolog}
 prerequisite_to(adv_ai)
 grade_attained_in(prerequisite_to(adv_ai),pass)
 \end{minted}
      
-The number of arguments is the arity of the function. When referring to a functor, it is written with its arity in the format <functor>/<arity>. This is also true for atoms, whose arity is 0.
+The number of arguments is the arity of the function. When referring to a functor, it is written with its arity in
+the format \Verb!<functor>/<arity>!. This is also true for atoms, whose arity is 0.
 Note that this is a recursive definition.
 The view of functions as trees
 Operators
-Some functors are used in infix notation, e.g. 5+4
+Some functors are used in infix notation, e.g. \Verb!5+4!
 Operators do not cause the associated function to be carried out.
 Variables
 
 Uppercase or \_ for start of variables
 Example
+\par
 \begin{minted}[linenos]{prolog}
 Who
 What
