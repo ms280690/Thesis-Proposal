@@ -1,0 +1,801 @@
+\begin{thebibliography}{100}
+
+\bibitem{ait1999warren}
+Hassan A{\"\i}t-Kaci and For{\^e}t Des~Flambertins.
+\newblock Warren’s abstract machine a tutorial reconstruction.
+\newblock 1999.
+
+\bibitem{website:imlpementingflpl}
+Sergio Antoy.
+\newblock Implementing functional logic programming languages.
+
+\bibitem{website:santoy}
+Sergio Antoy.
+\newblock Sergio antoy home page.
+
+\bibitem{antoy2010functional}
+Sergio Antoy and Michael Hanus.
+\newblock Functional logic programming.
+\newblock {\em Communications of the ACM}, 53(4):74--85, 2010.
+
+\bibitem{Augustsson98cayenne--}
+Lennart Augustsson.
+\newblock Cayenne -- a language with dependent types.
+\newblock In {\em IN INTERNATIONAL CONFERENCE ON FUNCTIONAL PROGRAMMING}, pages
+  239--250. ACM Press, 1998.
+
+\bibitem{csp-lib}
+Andrei Barbu.
+\newblock The csp package, August 2013.
+\newblock \url{http://hackage.haskell.org/package/csp}.
+
+\bibitem{prolog-graph-lib}
+Matthias Bartsch.
+\newblock The prolog-graph package, September 2011.
+\newblock \url{http://hackage.haskell.org/package/prolog-graph}.
+
+\bibitem{barzilay2004foreign}
+Eli Barzilay and Dmitry Orlovsky.
+\newblock Foreign interface for plt scheme.
+\newblock {\em on Scheme and Functional Programming}, page~63, 2004.
+
+\bibitem{benton2005embedded}
+Nick Benton.
+\newblock Embedded interpreters.
+\newblock {\em Journal of Functional Programming}, 15(4):503--542, 2005.
+
+\bibitem{bert1987lpg}
+Didier Bert, Pascal Drabik, and Rachid Echahed.
+\newblock Lpg: A generic, logic and functional programming language.
+\newblock In {\em STACS 87}, pages 468--469. Springer, 1987.
+
+\bibitem{website:commonlisp}
+James Bielman and Luís Oliveira.
+\newblock Common lisp foreign function interface, March 2014.
+
+\bibitem{DBLP:conf/utp/2008}
+Andrew Butterfield, editor.
+\newblock {\em Unifying Theories of Programming, Second International
+  Symposium, UTP 2008, Dublin, Ireland, September 8-10, 2008, Revised Selected
+  Papers}, volume 5713 of {\em Lecture Notes in Computer Science}. Springer,
+  2010.
+
+\bibitem{website:blogc2}
+C2.
+\newblock Multi paradigm programming language, September 2012.
+
+\bibitem{webste:metasyntacticvariablesc2wiki}
+c2~wiki.
+\newblock Metasyntactic variables, September 2011.
+
+\bibitem{webiste:metasyntacticvariablescatb}
+Catb.
+\newblock Metasynatactic variables.
+
+\bibitem{website:visual-prolog}
+Prolog~Development Center.
+\newblock Visual prolog, June 2013.
+
+\bibitem{chin2003type}
+Wei-Ngan Chin, Martin Sulzmann, and Meng Wang.
+\newblock A type-safe embedding of constraint handling rules into haskell.
+\newblock {\em Technical reportSchool of Computing, National University of
+  Singapore, Boston, MA, USA}, 2003.
+
+\bibitem{website:ciao}
+Ciao.
+\newblock Ciao programming language, August 2011.
+
+\bibitem{claessen2000typed}
+Koen Claessen and Peter Ljungl{\"o}f.
+\newblock Typed logical variables in haskell.
+\newblock {\em Electr. Notes Theor. Comput. Sci.}, 41(1):37, 2000.
+
+\bibitem{website:hdmtypesystem}
+Code Commit.
+\newblock Hindley milner type system, December 2008.
+
+\bibitem{website:oz-mozart}
+Mozart Consortium.
+\newblock Oz / mozart, March 2013.
+
+\bibitem{logic-grows-on-trees-lib}
+Gregory Crosswhite.
+\newblock The logicgrowsontrees package, September 2013.
+\newblock \url{http://hackage.haskell.org/package/LogicGrowsOnTrees}.
+
+\bibitem{logict-lib}
+DanDoel.
+\newblock The logict package, August 2013.
+\newblock \url{http://hackage.haskell.org/package/logict}.
+
+\bibitem{logict2-lib}
+DanDoel.
+\newblock The logict package example, August 2013.
+\newblock \url{http://okmij.org/ftp/Computation/monads.html}.
+
+\bibitem{friedman05reasoned}
+Oleg~Kiselyov Daniel P.~Friedman, William E.~Byrd.
+\newblock {\em The Reasoned Schemer}.
+\newblock The MIT Press, Cambridge Massachusetts, London England, 2005.
+
+\bibitem{website:kanren}
+William E.~Byrd Daniel P.~Friedman and Oleg Kiselyov.
+\newblock Kanren, March 2009.
+
+\bibitem{website:toy}
+Universidad~Complutense de~Madrid.
+\newblock Toy, Decmeber 2006.
+
+\bibitem{website:mercury}
+University Of Melbourne Computer~Science department.
+\newblock Mercury programming language, February 2014.
+
+\bibitem{peg-lib}
+Dustin DeWeese.
+\newblock The peg package, April 2012.
+\newblock \url{http://hackage.haskell.org/package/peg}.
+
+\bibitem{website:dmoz}
+Open Directory~Project dmoz.
+\newblock Multi paradigm, November 2013.
+
+\bibitem{swipembedd}
+SWI~Prolog Documentation.
+\newblock Embedding swi-prolog in other applications, June 2013.
+\newblock \url{http://www.swi-prolog.org/pldoc/man?section=embedded}.
+
+\bibitem{driscoll1986making}
+James~R Driscoll, Neil Sarnak, Daniel~Dominic Sleator, and Robert~Endre Tarjan.
+\newblock Making data structures persistent.
+\newblock In {\em Proceedings of the eighteenth annual ACM symposium on Theory
+  of computing}, pages 109--121. ACM, 1986.
+
+\bibitem{DBLP:conf/utp/2006}
+Steve Dunne and Bill Stoddart, editors.
+\newblock {\em Unifying Theories of Programming, First International Symposium,
+  UTP 2006, Walworth Castle, County Durham, UK, February 5-7, 2006, Revised
+  Selected Papers}, volume 4010 of {\em Lecture Notes in Computer Science}.
+  Springer, 2006.
+
+\bibitem{website:prologresolution}
+Joshua Eckroth.
+\newblock Prolog resolution, April 2014.
+
+\bibitem{website:prologunification}
+Joshua Eckroth.
+\newblock Prolog unification, April 2014.
+
+\bibitem{erwig2004escape}
+Martin Erwig.
+\newblock Escape from zurg: an exercise in logic programming.
+\newblock {\em Journal of Functional Programming}, 14(03):253--261, 2004.
+
+\bibitem{cflp-lib}
+Sebastian Fischer.
+\newblock The cflp package, June 2009.
+\newblock \url{http://hackage.haskell.org/package/cflp}.
+
+\bibitem{stream-monad-lib}
+Sebastian Fischer.
+\newblock stream-monad, September 2012.
+
+\bibitem{website:molog}
+Adam~C. Foltzer.
+\newblock Molog, March 2013.
+
+\bibitem{cspm-To-Prolog-lib}
+Marc Fontaine.
+\newblock The cspm-toprolog package, August 2013.
+\newblock \url{http://hackage.haskell.org/package/CSPM-ToProlog}.
+
+\bibitem{proplogic-lib}
+David Fox.
+\newblock The proplogic package, April 2012.
+\newblock \url{http://hackage.haskell.org/package/PropLogic}.
+
+\bibitem{logic-classes-lib}
+David Fox.
+\newblock The logic-classes package, October 2013.
+\newblock \url{http://hackage.haskell.org/package/logic-classes}.
+
+\bibitem{gibbons2013unifying}
+Jeremy Gibbons.
+\newblock Unifying theories of programming with monads.
+\newblock In {\em Unifying Theories of Programming}, pages 23--67. Springer,
+  2013.
+
+\bibitem{gnuprolog}
+GNU.
+\newblock Gnu prolog for java, August 2010.
+\newblock \url{http://www.gnu.org/software/gnuprologjava/}.
+
+\bibitem{website:mhanus}
+Michael Hanus.
+\newblock Michael hanus home page.
+
+\bibitem{hanus2007multi}
+Michael Hanus.
+\newblock Multi-paradigm declarative languages.
+\newblock In {\em Logic Programming}, pages 45--75. Springer, 2007.
+
+\bibitem{website:funclogprog}
+Michael Hanus.
+\newblock Functional logic programming, February 2009.
+
+\bibitem{hanus1995curry}
+Michael Hanus, Herbert Kuchen, and Juan~Jose Moreno-Navarro.
+\newblock Curry: A truly functional logic language.
+\newblock In {\em Proc. ILPS}, volume~95, pages 95--107, 1995.
+
+\bibitem{website:templatehaskell}
+Haskellwiki.
+\newblock Template haskell, October 2013.
+
+\bibitem{website:babel}
+Juan Jose Moreno~Navarro Herbert~Kuchen.
+\newblock Babel programming language, January 1988.
+
+\bibitem{hinze1998prological}
+Ralf Hinze et~al.
+\newblock Prological features in a functional setting axioms and
+  implementation.
+\newblock In {\em Fuji International Symposium on Functional and Logic
+  Programming}, pages 98--122. Citeseer, 1998.
+
+\bibitem{hoare1998unifying}
+Charles Anthony~Richard Hoare and Jifeng He.
+\newblock {\em Unifying theories of programming}, volume~14.
+\newblock Prentice Hall Englewood Cliffs, 1998.
+
+\bibitem{egison-lib}
+Satoshi Egi Ryo Tanaka Takahisa Watanabe~Kentaro Honda.
+\newblock Egison package, March 2014.
+
+\bibitem{hudak1996building}
+Paul Hudak.
+\newblock Building domain-specific embedded languages.
+\newblock {\em ACM Comput. Surv.}, 28(4es):196, 1996.
+
+\bibitem{hughes1989functional}
+John Hughes.
+\newblock Why functional programming matters.
+\newblock {\em The computer journal}, 32(2):98--107, 1989.
+
+\bibitem{webiste:metasyntacticvariableswhatistectarget}
+What is~Tech~Target.
+\newblock Metasynatactic variables, September 2005.
+
+\bibitem{website:haskellkanren}
+JaimieMurdock.
+\newblock Haskell kanren, March 2012.
+
+\bibitem{jlog}
+JLogic.
+\newblock Jlog - prolog in java, September 2012.
+\newblock \url{http://jlogic.sourceforge.net/index.html}.
+
+\bibitem{jscriptlog}
+JLogic.
+\newblock Jscriptlog - prolog in javascript, September 2012.
+\newblock \url{http://jlogic.sourceforge.net/index.html}.
+
+\bibitem{website:paulspontifications}
+Paul Johnson.
+\newblock Why haskell is good for embedded domain specific languages, January
+  2008.
+
+\bibitem{website:mini-prolog-hugs98}
+Mark~P Jones.
+\newblock Mini-prolog for hugs 98, June 1996.
+\newblock \url{http://darcs.haskell.org/hugs98/demos/prolog/}.
+
+\bibitem{jones2001composing}
+Simon L~Peyton Jones, Jean-Marc Eber, and Julian Seward.
+\newblock Composing contracts: An adventure in financial engineering.
+\newblock In {\em FME}, volume 2021, page 435, 2001.
+
+\bibitem{website:prolog1000db}
+Mark Kantrowitz.
+\newblock The prolog 1000 datbase, August 2012.
+
+\bibitem{website:persistentdatastructuresmit}
+David Karger.
+\newblock Persistent data structures, September 2005.
+
+\bibitem{data-fix-lib}
+Anton Kholomiov.
+\newblock data-fix, February 2013.
+
+\bibitem{komorowski1982qlog}
+H~Jan Komorowski.
+\newblock Qlog: The programming environment for prolog in lisp.
+\newblock {\em Logic Programming}, pages 315--324, 1982.
+
+\bibitem{krishnamurthi2007programming}
+Shriram Krishnamurthi.
+\newblock {\em Programming languages: Application and interpretation}, chapter
+  33-34, pages 295--305, 307--311.
+\newblock Brown Univ., 2007.
+
+\bibitem{Krishnamurthi:2008:TPL:1480828.1480846}
+Shriram Krishnamurthi.
+\newblock Teaching programming languages in a post-linnaean age.
+\newblock {\em SIGPLAN Not.}, 43(11):81--83, November 2008.
+
+\bibitem{website:lambda-the-ultimate}
+The Programming Languages~Weblog Lambda The~Ultimate.
+\newblock Embedding prolog in haskell, July 2004.
+\newblock \url{http://lambda-the-ultimate.org/node/112}.
+
+\bibitem{website:lambda-the-ultimate-2}
+The Programming Languages~Weblog Lambda The~Ultimate.
+\newblock Embedding one language into another, March 2005.
+\newblock \url{http://lambda-the-ultimate.org/node/578}.
+
+\bibitem{website:lambda-the-ultimate-3}
+The Programming Languages~Weblog Lambda The~Ultimate.
+\newblock Application-specific foreign-interface generation, October 2006.
+\newblock \url{http://lambda-the-ultimate.org/node/2304}.
+
+\bibitem{lang2001embedding}
+Duncan~Temple Lang.
+\newblock Embedding s in other languages and environments.
+\newblock In {\em Proceedings of DSC}, volume~2, page~1, 2001.
+
+\bibitem{website:langpop}
+LangPop.com.
+\newblock Programming language popularity, October 2013.
+
+\bibitem{website:nue-prolog}
+University of~Melbourne Lee~Naish.
+\newblock Neu prolog, February 1991.
+
+\bibitem{lloyd1999programming:escher}
+John~W Lloyd.
+\newblock Programming in an integrated functional and logic language.
+\newblock {\em Journal of Functional and Logic Programming}, 3(1-49):68--69,
+  1999.
+
+\bibitem{mainland2007s}
+Geoffrey Mainland.
+\newblock Why it's nice to be quoted: quasiquoting for haskell.
+\newblock In {\em Proceedings of the ACM SIGPLAN workshop on Haskell workshop},
+  pages 73--82. ACM, 2007.
+
+\bibitem{malachi1984tablog}
+Yonathan Malachi, Zohar Manna, and Richard Waldinger.
+\newblock Tablog: The deductive-tableau programming language.
+\newblock In {\em Proceedings of the 1984 ACM Symposium on LISP and functional
+  programming}, pages 323--330. ACM, 1984.
+
+\bibitem{meijer2004static}
+Erik Meijer and Peter Drayton.
+\newblock Static typing where possible, dynamic typing when needed: The end of
+  the cold war between programming languages.
+\newblock Citeseer, 2004.
+
+\bibitem{meyer2008eiffel}
+Bertrand Meyer.
+\newblock Eiffel as a framework for verification.
+\newblock In {\em Verified Software: Theories, Tools, Experiments}, pages
+  301--307. Springer, 2008.
+
+\bibitem{moreno1988babel}
+Juan~Jos{\'e} Moreno-Navarro and Mario Rodriguez-Artalejo.
+\newblock Babel: A functional and logic programming language based on
+  constructor discipline and narrowing.
+\newblock In {\em Algebraic and Logic Programming}, pages 223--232. Springer,
+  1988.
+
+\bibitem{moreno1992logic}
+Juan~Jose Moreno-Navarro and Mario Rodriguez-Artalejo.
+\newblock Logic programming with functions and predicates: The language babel.
+\newblock {\em The Journal of Logic Programming}, 12(3):191--223, 1992.
+
+\bibitem{morrison1990persistent}
+R~Morrison and MP~Atkinson.
+\newblock Persistent languages and architectures.
+\newblock In {\em Security and Persistence}, pages 9--28. Springer, 1990.
+
+\bibitem{castorc++}
+MPprogramming.com.
+\newblock Castor : Logic paradigm for c++, August 2010.
+\newblock \url{http://www.mpprogramming.com/cpp/}.
+
+\bibitem{website:lambda-prolog}
+Gopalan Nadathur.
+\newblock $\lambda$ prolog, September 2013.
+
+\bibitem{website:prolog-steam}
+Mark~J Nelson.
+\newblock Why did prolog lose steam?, August 2010.
+\newblock \url{http://www.kmjn.org/notes/prolog_lost_steam.html}.
+
+\bibitem{website:mdn}
+Mozilla~Developer Network.
+\newblock Multi paradigm language, February 2014.
+
+\bibitem{website:ohaskell}
+Johan Nordlander.
+\newblock O'haskell, January 2001.
+
+\bibitem{audklangembedd}
+Kurt Nørmark~Department of~Computer Science Aalborg University~Denmark.
+\newblock Linguistic abstraction, July 2013.
+\newblock
+  \url{http://people.cs.aau.dk/~normark/prog3-03/html/notes/languages_themes-intro-sec.html#languages_intro-sec_section-title
+  _1}.
+
+\bibitem{ummlisp}
+University of~Maryland Medical~Center.
+\newblock Lisp, unification and embedded languages, October 2012.
+\newblock \url{http://www.cs.unm.edu/~luger/ai-final2/LISP/}.
+
+\bibitem{website:ocamllang}
+Ocaml Org.
+\newblock Ocaml programming language, March 2014.
+
+\bibitem{pinto2003dot}
+Pedro Pinto.
+\newblock Dot-scheme: A plt scheme ffi for the .net framework.
+\newblock In {\em Workshop on Scheme and Functional Programming}. Citeseer,
+  2003.
+
+\bibitem{quintusprolog}
+Quintus Prolog.
+\newblock Embeddability, December 2003.
+\newblock \url{http://quintus.sics.se/isl/quintuswww/site/embed.html}.
+
+\bibitem{yieldprolog}
+Yield Prolog.
+\newblock Yield prolog, October 2011.
+\newblock \url{http://yieldprolog.sourceforge.net/}.
+
+\bibitem{DBLP:conf/utp/2010}
+Shengchao Qin, editor.
+\newblock {\em Unifying Theories of Programming - Third International
+  Symposium, UTP 2010, Shanghai, China, November 15-16, 2010. Proceedings},
+  volume 6445 of {\em Lecture Notes in Computer Science}. Springer, 2010.
+
+\bibitem{cmu-lib}
+John Ramsdell.
+\newblock The cmu package, February 2013.
+\newblock \url{http://hackage.haskell.org/package/cmu}.
+
+\bibitem{ramsey2003embedding}
+Norman Ramsey.
+\newblock Embedding an interpreted language using higher-order functions and
+  types.
+\newblock In {\em Proceedings of the 2003 workshop on Interpreters, virtual
+  machines and emulators}, pages 6--14. ACM, 2003.
+
+\bibitem{reppy2006application}
+John Reppy and Chunyan Song.
+\newblock Application-specific foreign-interface generation.
+\newblock In {\em Proceedings of the 5th international conference on Generative
+  programming and component engineering}, pages 49--58. ACM, 2006.
+
+\bibitem{monadiccp-lib}
+Maik Riechert.
+\newblock The monadiccp package, July 2013.
+\newblock \url{http://hackage.haskell.org/package/monadiccp}.
+
+\bibitem{robinson1982loglisp}
+J~Alan Robinson and Ernest~E Sibert.
+\newblock Loglisp: Motivation, design, and implementation, 1982.
+
+\bibitem{robinson1980loglisp}
+John~Alan Robinson and EE~Silbert.
+\newblock {\em LOGLISP: an alternative to PROLOG}.
+\newblock School of Computer and Information SCience, Syracuse University,
+  1980.
+
+\bibitem{rojas2004tutorial}
+Ra{\'u}l Rojas.
+\newblock A tutorial introduction to the lambda calculus.
+\newblock {\em DOI= http://www. utdallas. edu/\~{} gupta/courses/apl/lambda.
+  pdf}, 2004.
+
+\bibitem{prolog-graph-lib-lib}
+Daniel Seidel.
+\newblock The prolog-graph-lib package, June 2012.
+\newblock \url{http://hackage.haskell.org/package/prolog-graph-lib}.
+
+\bibitem{prolog-lib}
+Daniel Seidel.
+\newblock The prolog package, June 2012.
+\newblock \url{http://hackage.haskell.org/package/prolog}.
+
+\bibitem{liquid-fix-point-lib}
+Eric Seidel.
+\newblock The liquid-fixpoint package, September 2013.
+\newblock \url{http://hackage.haskell.org/package/liquid-fixpoint}.
+
+\bibitem{seres2001algebra}
+Silvija Seres.
+\newblock {\em The algebra of logic programming}.
+\newblock PhD thesis, 2001.
+
+\bibitem{seres2000optimisation}
+Silvija Seres and Shin-Cheng Mu.
+\newblock Optimisation problems in logic programming: an algebraic approach.
+\newblock 2000.
+
+\bibitem{seres1999algebra}
+Silvija Seres, J~Michael Spivey, and CAR Hoare.
+\newblock Algebra of logic programming.
+\newblock In {\em ICLP}, pages 184--199, 1999.
+
+\bibitem{seres2001higher}
+Silvija Seres and Michael Spivey.
+\newblock Higher-order transformation of logic programs.
+\newblock In {\em Logic Based Program Synthesis and Transformation}, pages
+  57--68. Springer, 2001.
+
+\bibitem{sheard2004two}
+Tim Sheard and Emir Pasalic.
+\newblock Two-level types and parameterized modules.
+\newblock {\em Journal of Functional Programming}, 14(05):547--587, 2004.
+
+\bibitem{racklog}
+Dorai Sitaram.
+\newblock Racklog: Prolog-style logic programming, January 2014.
+
+\bibitem{somogyi1995logic}
+Zoltan Somogyi, Fergus Henderson, Thomas Conway, and Richard O’Keefe.
+\newblock Logic programming for the real world.
+\newblock In {\em Proceedings of the ILPS}, volume~95, pages 83--94, 1995.
+
+\bibitem{logicst-lib}
+Andy Sonnenburg.
+\newblock logicst, April 2013.
+
+\bibitem{spivey1995introduction}
+JM~Spivey.
+\newblock An introduction to logic programming through prolog, 1995.
+
+\bibitem{spivey1999algebra}
+JM~Spivey and Silvija Seres.
+\newblock The algebra of searching.
+\newblock {\em Festschritf in hounour of CAR Hoare}, 1999.
+
+\bibitem{spivey1999embedding}
+JM~Spivey and Silvija Seres.
+\newblock Embedding prolog in haskell.
+\newblock In {\em Proceedings of Haskell}, volume~99, pages 1999--28. Citeseer,
+  1999.
+
+\bibitem{spivey2000functional}
+Michael Spivey.
+\newblock Functional pearls combinators for breadth-first search.
+\newblock {\em Journal of Functional Programming}, 10(4):397--408, 2000.
+
+\bibitem{website:stackoverflow}
+Stackoverflow.
+\newblock Haskell vs. prolog comparison, December 2009.
+\newblock
+  \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}.
+
+\bibitem{webiste:learnprolognowappend}
+Patrick Blackburn Johan Bos~Kristina Striegnitz.
+\newblock Learn prolog now, January 2012.
+
+\bibitem{webiste:learnprolognow}
+Patrick Blackburn Johan Bos~Kristina Striegnitz.
+\newblock Learn prolog now, January 2012.
+
+\bibitem{nanoprolog-lib}
+Jurrien Stutterheim.
+\newblock The nanoprolog package, December 2011.
+\newblock \url{http://hackage.haskell.org/package/NanoProlog}.
+
+\bibitem{hswip-lib}
+Evgeny Tarasov.
+\newblock The hswip package, August 2010.
+\newblock \url{http://hackage.haskell.org/package/hswip}.
+
+\bibitem{website:minkanren}
+William E.~Byrd The Reasoned Schemer' (MIT~Press, 2005) by Daniel P.~Friedman
+  and Oleg Kiselyov.
+\newblock minikanren.
+
+\bibitem{unification-fd-lib}
+Wren Thornton.
+\newblock The unification-fd package, July 2012.
+\newblock
+  \url{http://hackage.haskellhttp://yieldprolog.sourceforge.net/.org/package/unification-fd}.
+
+\bibitem{monadiccp-gecode-lib}
+Jan Tikovsky.
+\newblock The monadiccp-gecode package, January 2014.
+\newblock \url{http://hackage.haskell.org/package/monadiccp-gecode}.
+
+\bibitem{website:alf}
+Carnegie~Mellon University.
+\newblock Algebraic logic functional programming language, February 1995.
+
+\bibitem{website:controlflowdalhousie}
+Dalhousie University.
+\newblock Control flow, January 2012.
+
+\bibitem{website:life}
+Simon~Fraiser University.
+\newblock Life programming language, March 1998.
+
+\bibitem{website:virgil}
+Los~Angeles University~of California.
+\newblock Virgil programming language, March 2012.
+
+\bibitem{website:curry}
+Germany University~of Kiel.
+\newblock Curry programming language, September 2013.
+
+\bibitem{website:prolog-killer}
+Maarten van Emden.
+\newblock Who killed prolog?, August 2010.
+\newblock \url{http://vanemden.wordpress.com/2010/08/21/who-killed-prolog/}.
+
+\bibitem{website:prolog-death}
+Andre Vellino.
+\newblock Prolog's death, August 2010.
+\newblock \url{http://synthese.wordpress.com/2010/08/21/prologs-death/}.
+
+\bibitem{website:minikanrent}
+Job Vranish.
+\newblock minikanrent, March 2013.
+
+\bibitem{wadler1992comprehending}
+Philip Wadler.
+\newblock Comprehending monads.
+\newblock {\em Mathematical Structures in Computer Science}, 2(04):461--493,
+  1992.
+
+\bibitem{website:logic-programming-haskell}
+Haskell Website.
+\newblock Logic programming example, February 2010.
+\newblock \url{http://www.haskell.org/haskellwiki/Logic_programming_example}.
+
+\bibitem{website:logicprogexamplehaskell}
+Haskell Website.
+\newblock Logic programming example in haskell, February 2010.
+
+\bibitem{haskellquasi}
+Haskell Website.
+\newblock Quasiquotation in haskell, January 2014.
+\newblock \url{http://www.haskell.org/haskellwiki/Quasiquotation}.
+
+\bibitem{website:monadascomputation}
+Haskell Wiki.
+\newblock Monads as computation, December 2011.
+
+\bibitem{website:foldablenadtraversable}
+Haskell Wiki.
+\newblock Foldable and traversable, January 2013.
+
+\bibitem{website:haskellwiki}
+Haskell Wiki.
+\newblock The haskell programming language, October 2013.
+
+\bibitem{website:eDSLhaskellwiki}
+Haskell Wiki.
+\newblock Embedded domain specific languages, September 2014.
+
+\bibitem{website:haskelllazinesswiki}
+Haskell Wiki.
+\newblock Haskell/laziness, November 2014.
+
+\bibitem{website:monadshaskellorg}
+Haskell Wiki.
+\newblock Monads in haskell, January 2014.
+
+\bibitem{website:haskellinindustry}
+Haskell Wiki.
+\newblock Haskell in industry, June 2015.
+
+\bibitem{wikiprolog}
+Wikipedia.
+\newblock Prolog wikipedia, March 2004.
+
+\bibitem{website:wikiflpllist}
+Wikipedia.
+\newblock Functional logic programming languages, February 2005.
+
+\bibitem{website:closwiki}
+Wikipedia.
+\newblock Common lisp object system, December 2013.
+
+\bibitem{webiste:wikicurry}
+Wikipedia.
+\newblock Curry programming language, December 2013.
+
+\bibitem{website:wikiflpl}
+Wikipedia.
+\newblock Functional logic programming, May 2013.
+
+\bibitem{wikiquasi}
+Wikipedia.
+\newblock Quasiquotation, Novemeber 2013.
+\newblock \url{http://en.wikipedia.org/wiki/Quasi-quotation}.
+
+\bibitem{website:cliwiki}
+Wikipedia.
+\newblock Common language infrastructure, February 2014.
+
+\bibitem{website:clrwiki}
+Wikipedia.
+\newblock Common language runtime, March 2014.
+
+\bibitem{website:chrwiki}
+Wikipedia.
+\newblock Constraint handling rules, March 2014.
+
+\bibitem{website:constraintprogwiki}
+Wikipedia.
+\newblock Constraint programming, March 2014.
+
+\bibitem{website:hdmtypesystemwiki}
+Wikipedia.
+\newblock Damas-hindley-milner type system, February 2014.
+
+\bibitem{website:ffiwiki}
+Wikipedia.
+\newblock Foreign function interface, January 2014.
+
+\bibitem{website:lambdacalculuswiki}
+Wikipedia.
+\newblock Lambda calculus, March 2014.
+
+\bibitem{website:wikimpllist}
+Wikipedia.
+\newblock List of multi paradigm languages, March 2014.
+
+\bibitem{website:metaprogwiki}
+Wikipedia.
+\newblock Meta programming, March 2014.
+
+\bibitem{website:ocamlwiki}
+Wikipedia.
+\newblock Ocaml, March 2014.
+
+\bibitem{website:wikimultiparadigm}
+Wikipedia.
+\newblock Programming paradigm, March 2014.
+
+\bibitem{website:comparisonofprologimplementationswiki}
+Wikipedia.
+\newblock Comparison of prolog implementations, August 2015.
+
+\bibitem{website:controlflowwiki}
+Wikipedia.
+\newblock Control flow, August 2015.
+
+\bibitem{website:declarativeprogrammingwiki}
+Wikipedia.
+\newblock Declarative programming, September 2015.
+
+\bibitem{website:metasyntacticvariableswiki}
+Wikipedia.
+\newblock Metasyntactic variable, October 2015.
+
+\bibitem{DBLP:conf/utp/2012}
+Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi, editors.
+\newblock {\em Unifying Theories of Programming, 4th International Symposium,
+  UTP 2012, Paris, France, August 27-28, 2012, Revised Selected Papers}, volume
+  7681 of {\em Lecture Notes in Computer Science}. Springer, 2013.
+
+\bibitem{website:takashi-workplace}
+Takashi's Workplace.
+\newblock A prolog in haskell, April 2009.
+\newblock \url{http://propella.blogspot.in/2009/04/prolog-in-haskell.html}.
+
+\bibitem{website:haskell-choice}
+xkcd.
+\newblock Haskell vs prolog, or giving haskell a choice, February 2009.
+\newblock \url{http://echochamber.me/viewtopic.php?f=11&t=35369}.
+
+\bibitem{website:scala}
+Switzerland École Polytechnique Fédérale~de Lausanne (EPFL)~Lausanne.
+\newblock Scala programming language, 2002-2014.
+
+\end{thebibliography}
