@@ -27,12 +27,12 @@ This chapter discusses the current work in done in embedding programming languag
 
 \section{\protect{Existing Work by Others}}
 
-There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell}{\large,} which are
-discussed below{\large,} along with their shortcomings.
+There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell}, which are
+discussed below, along with their shortcomings.
 
 \begin{enumerate}
 \item
-  Very few embedded implementations exist which offer a perspective into the job at hand.\endnote{%
+  Very few embedded implementations exist which offer a starting point for the task of embedding.\endnote{%
     What is ``the job at hand''?
     What is `` a perspective into the job at hand''?
     See \textit{p.}~\pageref{sec:list-colloquialisms}.
@@ -57,25 +57,25 @@ discussed below{\large,} along with their shortcomings.
 
 \item
   The papers that try to take the above further are also few in number and do not have any implementations with the
-  proposed concepts \yyy{}{(see }\cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional, seres2000optimisation}\yyy{}{)}.
+  proposed concepts (see \cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional, seres2000optimisation}).
   Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
 
 \item
-  In the case of libraries, a few exist,\endnote{%
+  In the case of libraries, a few exist.\endnote{%
     comma splice.
-}\elabel{comma-splice} most are old and are not currently maintained or updated.
+}\elabel{comma-splice} Most are old and are not currently maintained or updated.
   Many provide only a shell through which one has to
   do\eref{must-have-to} all the work, which is synonymous with the
   embeddings mentioned above.
-  Some are \xxx{far} more feature rich than others\yyy{ that is with
-    some}{; that is, some have} practical \progLang{Prolog} concepts,
-  but are \yyy{}{still} not complete.\endnote{%
+  Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
+  but are still not complete.\endnote{%
     Did I get your sense?
 }
 
 \item
-  Moreover, none of the above have natural list support that exist\endnote{%
+  Moreover, none of the above have natural list support that exists\endnote{%
     ``exist'' or ``exists''?
+    \mehul{exists}
 }
   in \progLang{Prolog}.\endnote{%
     \david{What does this point mean?}
@@ -83,7 +83,7 @@ discussed below{\large,} along with their shortcomings.
 }
 \end{enumerate}
 
-And as far as the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
+As for the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
 ``add-on''.\eref{no-and}
 A handful of crossover hybrid languages based on \progLang{Haskell} exist, \progLang{Curry} \cite{website:curry}
 being the prominent one.
@@ -106,7 +106,7 @@ compromised language that takes advantages of neither paradigms.\endnote{%
   I am uncertain as to the tone.
   Words like ``very'', ``mere'', and so on seem overly argumentative.
 }
-Mostly\yyy{}{\Large,} the trend is to build a library for extension to replicate the features as an add on.\endnote{%
+Mostly, the trend is to build a library for extension to replicate the features as an add on.\endnote{%
   What is the point of this \P{} relative to the overall thesis?
 }
 
@@ -114,7 +114,7 @@ Taking into consideration above, there is quite some room for improvement and ad
 \section{Proposal Contributions}
 
 Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
-close to a \progLang{Prolog} like\eref{language-like} language and has practical abilities to carry out real-world tasks.
+close to a \progLang{Prolog}-like\eref{language-like} language and has practical abilities to carry out real-world tasks.
 They include predicates like\eref{such-as-like} \unknownLabel{cut}\endnote{%
   Write macros like \macroName{progLang} for the various classes
   of special symbols in your thesis, and then apply them to words like
@@ -122,7 +122,7 @@ They include predicates like\eref{such-as-like} \unknownLabel{cut}\endnote{%
   typeset as \texttt{\char`\\prologCode\char`\{fail\char`\}}, or some such.
 }\elabel{text-kind}
 , \markWord{assert}, \markWord{fail}, \markWord{setOf}, \markWord{bagOf} among others.
-This \yyy{would form}{forms}\endnote{%
+This forms\endnote{%
   Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
 }
 the first stage of the implementation.

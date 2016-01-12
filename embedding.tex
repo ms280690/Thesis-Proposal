@@ -34,7 +34,7 @@ A lot has been talked about embedding languages and also the techniques and meth
 It might not seem such a hot topic as such but it has always been a part of any programming language to work and
 integrate their code with other programming languages.
 One of the top discussions are in, Lambda the Ultimate, The Programming Languages Weblog
-\cite{website:lambda-the-ultimate}\xxx{,  which} lists a number of \progLang{Prolog} implementations in a variety of
+\cite{website:lambda-the-ultimate} lists a number of \progLang{Prolog} implementations in a variety of
 languages like \progLang{Lisp, Scheme, Scala, Java, Javascript}, \progLang{Racket} \cite{racklog} and so on.
 Moreover the discussion focuses on a lot of critical points that should be considered in a translation of
 \progLang{Prolog} to the host language in terms of types and modules among others.
@@ -76,6 +76,7 @@ Adding fuel to fire, is the question on \progLang{Prolog}'s existence and surviv
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
 is far scarcer\endnote{%
   ``far scarcer''?
+  \mehul{minimal}
 }
 than the leading languages of other paradigms.
 The purely declarative nature lacks basic requirements such as support for modules.\endnote{%
@@ -132,7 +133,7 @@ A general out look towards implementing \progLang{Prolog} has also been discusse
 \textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
 
 Abundant literature
-can be found \yyy{which consist of}{on} embedding detailed parts of Prolog features
+can be found on embedding detailed parts of Prolog features
 like\eref{such-as-like} basic constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
 Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
@@ -220,8 +221,7 @@ no monadic support and an REPL without the ability to ``write a Prolog Program F
     There seem to be words missing here.
 }
   to propositional logic and backtracking.
-  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which attempts \yyy{at
-    replicating}{to replicate}\endnote{%
+  \cite{logict-lib} is a continuation-based, backtracking, logic programming monad which attempts to replicate\endnote{%
     \dots{} or simply ``\textsl{which replicates}'', unless you have strong doubts as to the efficacy of the
     library. 
 }
@@ -246,7 +246,7 @@ Moving on to the other distinct feature of \progLang{Prolog} is unification.\end
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
 }
 There are two libraries that exist \cite{unification-fd-lib},
-\cite{cmu-lib} that unify two \yyy{Prolog}{\progLang{Prolog}} \yyy{Terms}{terms} and return the resulting
+\cite{cmu-lib} that unify two \progLang{Prolog} terms and return the resulting
 substitution.\endnote{% 
   Check for unmarked \texttt{Prolog}s and strange capitals in the middle of sentences.
 }
@@ -323,7 +323,7 @@ data Term = Struct Atom [Term]
       deriving (Eq, Data, Typeable)
 \end{minted}
 
-The above can be described as concrete syntax for the \yyy{"}{``}new\yyy{"}{''} language and can be used to write a program.
+The above can be described as concrete syntax for the ``new'' language and can be used to write a program.
 
 
 As discussed in the\marginpar{{\color{red}\large *}}\endnote{%
