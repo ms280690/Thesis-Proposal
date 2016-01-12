@@ -70,6 +70,7 @@ discussed below, along with their shortcomings.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
   but are still not complete.\endnote{%
     Did I get your sense?
+    \mehul{I do not understand}
 }
 
 \item
@@ -91,16 +92,17 @@ Moving away from \progLang{Haskell} and exploring other languages from different
 crossover implementations exist but again most of them have faded out.\endnote{%
   \S~\ref{sec:what-this-chapter:proposedWork} says that this chapter is about embedding programming languages.
   You appear to have wandered off topic.
+ \mehul{I believe we might have to change ``what is this chapter about''}
 }
 
-As discussed in the sections above,\endnote{%
+As discussed in the above,\endnote{%
   Which sections above?  Use \macroName{label} and \macroName{ref}
   to say precisely which.
 }
 either an embedding or an integration approach is taken up for programming
 languages to work together.
-So, there is either a very shallow approach that does not utilize the constructs available in the host language and
-results in a mere translation of the characteristics, or the other is a fairly complex process which results in
+So, there is either a shallow approach that does not utilize the constructs available in the host language and
+results in a translation of the characteristics, or the other is a fairly complex process which results in
 tackling the conflicting nature of different programming paradigms and languages, resulting in a toned-down
 compromised language that takes advantages of neither paradigms.\endnote{%
   I am uncertain as to the tone.
@@ -108,6 +110,7 @@ compromised language that takes advantages of neither paradigms.\endnote{%
 }
 Mostly, the trend is to build a library for extension to replicate the features as an add on.\endnote{%
   What is the point of this \P{} relative to the overall thesis?
+  \mehul{too deep == too complex, too shallow == does not do much, mix == a little better I guess?}
 }
 
 Taking into consideration above, there is quite some room for improvement and additions.
@@ -115,7 +118,7 @@ Taking into consideration above, there is quite some room for improvement and ad
 
 Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
 close to a \progLang{Prolog}-like\eref{language-like} language and has practical abilities to carry out real-world tasks.
-They include predicates like\eref{such-as-like} \unknownLabel{cut}\endnote{%
+They include predicates such as\eref{such-as-like} \unknownLabel{cut}\endnote{%
   Write macros like \macroName{progLang} for the various classes
   of special symbols in your thesis, and then apply them to words like
   ``fail'', which when used as a \progLang{Prolog} word, should be
@@ -145,7 +148,7 @@ A third question to address is the accommodation of input and output, specifical
     \enparen{See Chapter~\ref{proto3}.}
   \end{quote}
   \vspace{-1\baselineskip}
-  \noindent or something simlar.
+  \noindent or something similar.
 }
 Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be
 created.
@@ -170,8 +173,8 @@ Lastly, how would characteristics of hybrid languages fit into and play a role i
   the original type.
   One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}{\Large.}
 
-  To test it out we adopt the closed \progLang{Prolog} like\eref{language-like} language defined in \cite{prolog-lib} and open it up.
-  And for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
+  To test it out we adopt the closed \progLang{Prolog}-like\eref{language-like} language defined in \cite{prolog-lib} and open it up.
+  As for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
   implementation encapsulated into a monad.\endnote{%
     See \textit{p.}~\pageref{item:no-and}, item~\ref{item:no-and}.
 }\elabel{no-and}
