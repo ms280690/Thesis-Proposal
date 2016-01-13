@@ -6,11 +6,11 @@
 \fi
 \begin{document}
 
-\chapter{Prototype 2.1}{\label{proto2.1}}
+\chapter{Prototype 2}{\label{proto2.1}}
 
 \section{About this chapter}
 This chapter attempts to infuse the generic methodology from
-\yyy{}{\Huge Chapter}\ref{proto1}\endnote{%
+Chapter~\ref{proto1}\endnote{%
   Check the whole thesis for naked \macroName{ref}s.
 }
 in a current \progLang{Prolog} implementation \cite{prolog-lib}
@@ -18,7 +18,7 @@ and make the unification ``monadic''.
 
 This chapter discusses the idea of implementing a basic working \progLang{Prolog} query resolver while using \cite{prolog-lib} as the base
 implementation. The language modifications and unification mechanism
-have been taken from {\Huge \ref{proto1}\endnote{%
+have been taken from Chapter~\ref{proto1}\endnote{%
   Fix me!!
 }}
 and adapted to fit in with the other
@@ -61,18 +61,16 @@ be created by it. The above language suffers from most of the problems discussed
 \progLang{Prolog} ``terms'' which are of a ``single type''.
 
 
-The implementation consists of components that one would find in a Language Processing System \yyy{}{(see {\Huge
-    ??}}~\ref{fig:A language-processing system}\yyy{,}{),}
+The implementation consists of components that one would find in a language processing system (see Figure~\ref{fig:A language-processing system}).
 
 \begin{figure}[th]
 \centering
 \includegraphics[scale = .95]{Language_Processing_System.png}
-\caption{A language-processing system \yyy{}{(taken from} \cite{Aho:1986:CPT:6448}\yyy{}{)}}
+\caption{A language-processing system (taken from \cite{Aho:1986:CPT:6448})}
 \label{fig:A language-processing system}
 \end{figure}
 
-specifically speaking, parts of a compiler \yyy{}{(see {\Huge
-    ??}}~\ref{fig:Phases of Compiler}\yyy{,}{).}
+specifically speaking, parts of a compiler (see Figure~\ref{fig:Phases of Compiler}).
 
 \begin{figure}[th]
 \centering
@@ -81,7 +79,7 @@ specifically speaking, parts of a compiler \yyy{}{(see {\Huge
 \label{fig:Phases of Compiler}
 \end{figure}
 
-The architecture for a compiler as described in \ref{fig:Phases of Compiler} \yyy{would not be}{is not} needed
+The architecture for a compiler as described in Figure~\ref{fig:Phases of Compiler} is not needed
 since \progLang{Haskell} provides most of
 them.
 Nonetheless, the library has the following major components,\eref{comma-before-list}
