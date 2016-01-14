@@ -105,20 +105,20 @@ The languages in question are \progLang{Haskell} and \progLang{Prolog}. These tw
 }
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
-\item { Haskell} uses Pattern Matching while \progLang{Prolog} uses Unification
+\item { Haskell} uses \haskellConstruct{pattern matching} while \progLang{Prolog} uses \prologConstruct{unification}.
 
-\item \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn Clause Logic
+\item \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn clause logic.
 \end{enumerate} 
 
-\progLang{Prolog} \cite{wikiprolog}, being one of the most dominant Logic Programming
-Languages, has  
+\progLang{Prolog} \cite{wikiprolog}, being one of the most dominant logic programming
+languages, has  
 spawned a number of distributions and is present from academia to industry.  
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
-first language to incorporate monads \cite{wadler1992comprehending} for safe input and output\endnote{%
+first language to incorporate \haskellConstruct{monads} \cite{wadler1992comprehending} for safe input and output\endnote{%
   Perhaps just use ``\textsl{input and output}'' in place of ``\textit{IO}''.
-}\,. Monads can be 
-described as composable computation descriptions \cite{website:monadshaskellorg} . Each monad consists of a 
+}\,. \haskellConstruct{Monads} can be 
+described as composable computation descriptions \cite{website:monadshaskellorg} . Each \haskellConstruct{monad} consists of a 
 description of what has action has to be executed, how the action has to be run and how to combine such 
 computations. An action can describe an impure or side-effecting computation, for example, input and output can be 
 performed outside the language but can be brought together with pure functions inside in a program resulting in a 
@@ -126,7 +126,7 @@ separation and maintaining safety with practicality. \progLang{Haskell} computes
 typed. 
 
 \progLang{Prolog} and \progLang{Haskell} are contrasting in nature, and
-bringing them onto the same plate is tricky.
+bringing them into the same environment is tricky.
 The differences in typing, execution, working among others lead to an altogether mixed bag of properties.
 
 
@@ -152,7 +152,7 @@ Here\endnote{%
   Is it the rest of this \P{}, or is it Chapter~\ref{chap:multiparadigm}?
 }
 we look at a few.
-Over time there has been an approach that branches out, which is Paradigm Integration.
+Over time there has been an approach that branches out, which is paradigm integration.
 A lot of work has been done on Unifying the Theories of Programming
 \cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
   gibbons2013unifying}.
@@ -163,15 +163,15 @@ One of the more successful attempts is \progLang{Scala} \cite{website:scala}. Si
 \progLang{Java}-like features.
 
 Before moving on, let us take a look at some terms related to the content above.
-To begin with Foreign Function Interfaces (FFI) \cite{website:ffiwiki}, a mechanism by which a program written in
+To begin with foreign function interfaces (FFI) \cite{website:ffiwiki}, a mechanism by which a program written in
 one programming language can make use of services written in another.\eref{not-a-sentence}
 For example, a function written in \progLang{C} can be called within a program written in \progLang{Haskell} and
 vice versa through the FFI mechanism.
 Currently the \progLang{Haskell} foreign function interface works only for one language.
-Another notable example is the Common Foreign Function Interface (CFFI) \cite{website:commonlisp} for
+Another notable example is the common foreign function interface (CFFI) \cite{website:commonlisp} for
 \progLang{Lisp} which provides fairly complete support for \progLang{C} functions and data.
 As yet another example,
-\progLang{Java} provides the Java Native Interface(JNI) for the working with other languages.
+\progLang{Java} provides the java native interface(JNI) for the working with other languages.
 Moreover there are services that provide a common platform for multiple languages to work with each other. 
 They can be termed as multilingual run-times\endnote{%
   I am not sure which of 
@@ -187,8 +187,8 @@ They can be termed as multilingual run-times\endnote{%
 }
 which lay down a common layer for languages to use each others
 functions.
-An example for this is the Microsoft Common Language Runtime (CLR) \cite{website:clrwiki} which is an
-implementation of the Common Language Infrastructure (CLI) standard \cite{website:cliwiki}.
+An example for this is the Microsoft common language runtime (CLR) \cite{website:clrwiki} which is an
+implementation of the common language infrastructure (CLI) standard \cite{website:cliwiki}.
 
 Another important concept is meta programming \cite{website:metaprogwiki}, which involves writing computer programs
 that write or manipulate other programs.
@@ -254,11 +254,11 @@ The same in \progLang{Haskell},\endnote{%
 \inputminted[linenos]{haskell}{append.pl}
 
 Consider the Object Functional Programming Language, \progLang{Scala}
-\cite{website:scala}\eref{comma-splice}\textsuperscript{,}\endnote{%
+\cite{website:scala}.\endnote{%
   Should this example be moved up to where you are discussing multi-paradigm languages?
   Wrote something about \progLang{Scala} up there.
 }
-it is purely functional but with objects and classes.
+It is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
   Sentence fragment.
 }
@@ -282,11 +282,11 @@ The attempts fall into two categories as follows:
 
 \begin{enumerate}
 \item
-  Embedding, where \progLang{Prolog} is merely translated to the host language \progLang{Haskell} or a Foreign
-  Function Interface.
+  Embedding, where \progLang{Prolog} is merely translated to the host language \progLang{Haskell} or a foreign
+  function interface.
 
 \item
-  Paradigm Integration, developing a hybrid programming language that is a Functional Logic Programming Language
+  Paradigm integration, developing a hybrid programming language that is a functional logic programming language
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
 

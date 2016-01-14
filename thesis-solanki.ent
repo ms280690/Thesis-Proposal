@@ -1166,7 +1166,8 @@ something.
 \item
 \texttt
 {Mini
-Prolog}
+\progLang
+{Prolog}}
 (\cite
 {website:mini-prolog-hugs98})
 is
@@ -1207,6 +1208,13 @@ the
 \progLang
 {Prolog}
 Engine?
+\mehul
+{got
+that
+from
+Warren
+Abstraction
+Machine}
 
 \par\endgroup
 \@doanenote {42}
@@ -1256,7 +1264,8 @@ that
 \progLang
 {Prolog}
 lacks
-modules
+\languageConstruct
+{modules}
 because
 it
 is
