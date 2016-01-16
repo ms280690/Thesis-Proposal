@@ -121,12 +121,15 @@ One idea is to make \progLang{Prolog} an add-on to another language which is wid
 Here the choice is \progLang{Haskell}; as both the languages are declarative they share a common background which can
 help to blend the two.
 
+A domain-specific language (DSL) is a concise micro language that offers tools and functionalities focused on a particular problem domain. In many cases, DSL programs are translated to calls to a common subroutine library and the DSL can be viewed as a means to hide the details of that library \cite{van2000domain}.
+
 Putting all of the above together, Domain Specific Languages\endnote{%
   \david{This footnote changed 2016-01-08.
     The point I want to make here is that you are talking about Domain Specific Languages as if you expect the
     reader to know what they are.  Should she?
     You have discussed general purpose languages somewhat, but you haven't said what you mean by ``Domain Specific
     Language'', nor have you given an example.
+    \mehul{added content for dsl}
   }%
 }
 are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
@@ -171,7 +174,7 @@ pushed to
 don the avatar of \progLang{Prolog}?
 This is the million dollar question.
 
-A \progLang{Haskell} with \progLang{Prolog}-like\eref{language-like} features will result in a set of characteristics which are from
+A \progLang{Haskell} with \progLang{Prolog}-like features will result in a set of characteristics which are from
 both the declarative paradigms.
 %----------------------------------------------------------------------------------------------------------------------
 
@@ -187,7 +190,7 @@ This can be achieved in two ways:
   as all the positives as well as the negatives are brought into the host language.
   The negatives mentioned being, that languages from different paradigms usually have conflicting characteristics
   and result in inconsistent properties of the resulting embedding.
-  Examples and further discussion on the same \yyy{is}{are}\endnote{%
+  Examples and further discussion on the same are\endnote{%
       The word ``Examples'' is plural.
 }
     provided in the chapters to come.

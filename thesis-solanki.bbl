@@ -542,6 +542,11 @@ Los~Angeles University~of California, \emph{Virgil programming language}, March
 \bibitem{website:curry}
 Germany University~of Kiel, \emph{Curry programming language}, September 2013.
 
+\bibitem{van2000domain}
+Arie Van~Deursen, Paul Klint, and Joost Visser, \emph{Domain-specific
+  languages: An annotated bibliography.}, Sigplan Notices \textbf{35} (2000),
+  no.~6, 26--36.
+
 \bibitem{website:prolog-killer}
 Maarten van Emden, \emph{Who killed prolog?}, August 2010,
   \url{http://vanemden.wordpress.com/2010/08/21/who-killed-prolog/}.
@@ -579,9 +584,6 @@ Haskell Wiki, \emph{Monads as computation}, December 2011.
 
 \bibitem{website:haskellwiki}
 \bysame, \emph{The haskell programming language}, October 2013.
-
-\bibitem{website:eDSLhaskellwiki}
-\bysame, \emph{Embedded domain specific languages}, September 2014.
 
 \bibitem{website:haskelllazinesswiki}
 \bysame, \emph{Haskell/laziness}, November 2014.
