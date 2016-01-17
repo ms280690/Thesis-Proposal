@@ -42,20 +42,7 @@ computer science for expressing computation based on function abstraction and ap
 and substitution.
 It can be thought as the smallest programming language \cite{rojas2004tutorial}, a single rule and a single
 function definition scheme.
-In particular there are typed and untyped $\lambda$-calculi.\endnote{%
-  There are a bunch of minor inconsistencies here.
-  \begin{inparaitem}
-  \item Two sentences up,
-    you hyphenate (\(\lambda\)-calculus), but here and in the following
-    sentences you drop the hyphen (``\(\lambda\) calculi'').
-  \item
-    In one place you have ``lambda'' rather than ``\(\lambda\)''.
-  \item
-    You introduce the plural (\(\lambda\)-calculi), then promptly switch
-    back to the singular, even though you are not yet talking about
-    specific languages.
-  \end{inparaitem}
-}
+In particular there are typed and untyped $\lambda$-calculi.
 In untyped $\lambda$-calculi functions have no predetermined type, whereas typed $\lambda$-calculi puts
 restriction on what sort (type) of data can a function work with.
 \progLang{Scheme} is based on the untyped variant, while \progLang{ML} and \progLang{Haskell} are based on typed
@@ -91,25 +78,19 @@ This is done until the one which gives the solution is not derived.
   cut material in the commit that introduces this comment, and let you see if you agree that I've got it right. 
 }
 
-In this thesis we aim to merge two languages
-together and produce a result which exhibits hybrid
-properties.\endnote{%
-  Remove this sentence, and merge with the following \P.
-}
-
-The languages in question are \progLang{Haskell} and \progLang{Prolog}. These two languages come from respective the functional programming and logical programming branches of the
-    declarative language group.\endnote{%
-  Insert a sentence here linking these two languages with the \P's above.
-  Use something like
-  \begin{quote}\slshape
-    These two languages come from respective the functional programming and logical programming branches of the
-    declarative language group.
-  \end{quote}
-}
+In this thesis we aim to merge two languages together and produce a result which exhibits hybrid properties.
+%
+The languages in question are \progLang{Haskell} and \progLang{Prolog}.
+These two languages come from respective the functional programming and logical programming branches of the
+declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
-\item { Haskell} uses \haskellConstruct{pattern matching} while \progLang{Prolog} uses \prologConstruct{unification}.
-
+%% TODO 2016-01-16.  The braces around Haskell below are suspicsion.
+\item \progLang{Haskell}\endnote{%
+  Inserted a missing \macroName{progLang}.
+}
+  uses \haskellConstruct{pattern matching} while \progLang{Prolog} uses
+  \prologConstruct{unification}. 
 \item \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn clause logic.
 \end{enumerate} 
 
@@ -118,15 +99,18 @@ languages, has
 spawned a number of distributions and is present from academia to industry.  
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
-first language to incorporate \haskellConstruct{monads} \cite{wadler1992comprehending} for safe input and output\endnote{%
-  Perhaps just use ``\textsl{input and output}'' in place of ``\textit{IO}''.
-}\,. \haskellConstruct{Monads} can be 
 described as composable computation descriptions \cite{website:monadshaskellorg} . Each \haskellConstruct{monad} consists of a 
 description of what has action has to be executed, how the action has to be run and how to combine such 
 computations. An action can describe an impure or side-effecting computation, for example, input and output can be 
 performed outside the language but can be brought together with pure functions inside in a program resulting in a 
 separation and maintaining safety with practicality. \progLang{Haskell} computes results lazily and is strongly 
 typed. 
+first language to incorporate \haskellConstruct{monads} \cite{wadler1992comprehending} for safe input and output.
+\haskellConstruct{Monads}\endnote{%
+  Here ``monad'' is an (admittedly technical) English word.
+  It doesn't need special marking.
+}
+can be 
 
 \progLang{Prolog} and \progLang{Haskell} are contrasting in nature, and
 bringing them into the same environment is tricky.
@@ -134,15 +118,9 @@ The differences in typing, execution, working among others lead to an altogether
 
 
 The selection of the target language is not uncommon:
-  \progLang{Prolog} seems 
-to be the all time favourite for ``let's implement \progLang{Prolog} in
-the language X for proving
-its\endnote{%
-  Please be careful about ``it's'' and ``its''.  Remove this endnote when you are confident that you have checked
-  them all.
-}
-power and 
-expressibility''. The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
+\progLang{Prolog} seems to be the all time favourite for ``let's implement \progLang{Prolog} in the language X for
+proving its power and expressibility''.
+The \progLang{Prolog} language has been partially implemented \cite{swipembedd} in other 
 languages such as \progLang{Scheme} \cite{racklog}, \progLang{Lisp}  
 \cite{komorowski1982qlog,robinson1982loglisp,robinson1980loglisp}, \progLang{Java} \cite{wikiprolog, jlog}, 
 \progLang{JavaScript} \cite{jscriptlog} and the list \cite{yieldprolog} goes on.
@@ -150,11 +128,7 @@ languages such as \progLang{Scheme} \cite{racklog}, \progLang{Lisp}
 The technique of embedding is a shallow one.
 It is as if the embedded language floats over the host language.
 Other approaches provide deeper integration between the target and the host.
-Here\endnote{%
-  I am not sure which ``further on'' you are referring to.
-  Is it the rest of this \P{}, or is it Chapter~\ref{chap:multiparadigm}?
-}
-we look at a few.
+Here we look at a few.
 Over time there has been an approach that branches out, which is paradigm integration.
 A lot of work has been done on Unifying the Theories\eref{caps-choices} of Programming\eref{caps-choices}
 \cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
@@ -210,20 +184,16 @@ modified at compile time which allows playing with the code and going back and f
   The preceding sentence needs fixing.
 }
 
-A specific tool used in meta programming is quasi-quotation\endnote{%
-  I believe that Wikipedia uses ``quasi-quotation'' rather than ``quasi quotation''.
-  Check to see what is commonly used.
-}
+A specific tool used in meta programming is quasi-quotation
 \cite{mainland2007s,haskellquasi,wikiquasi},
 which permits
 \progLang{Haskell} expressions and patterns to be constructed using domain specific, pro\-gram\-mer-de\-fined concrete
 syntax.
 For example, consider a particular application that requires a complex data type.
-To accommodate the same it has to represented using \progLang{Haskell} syntax and performing\endnote{%
-  ``preforming'' or ``performing''?
-  \mehul{performing}
-
+To accommodate the same it has to represented\endnote{%
+  \textit{has to represented}: Do you mean ``\textsl{must be represented}''?
 }
+using \progLang{Haskell} syntax and performing
 pattern matching may
 turn into a tedious task.
 So having the option of using specific syntax reduces the programmer from this burden and this is where a

@@ -24,9 +24,7 @@ object-functional programming language which takes a leaf from each of the two b
 }
 In this thesis, the languages in question are \progLang{Haskell} and \progLang{Prolog}.
 This section takes a look at the literature on multi paradigm languages, mainly functional logic programming
-languages that combine two of the most widespread declarative programming styles.\endnote{%
-  There are some capitals to look at here.
-}\elabel{capitals}
+languages that combine two of the most widespread declarative programming styles.
 
 A peak into language classification reveals that it is not always a straight forward task to segregate languages
 according to their features and characteristics.
@@ -131,37 +129,26 @@ Putting it all together, it gives us the feel of a logic language for something 
 \progLang{Haskell}.
 Unification is like two way pattern matching and with a similar analogy \progLang{Curry} is a \progLang{Haskell}
 that works both ways and hence variables can be on either sides.
-Although the language can do a lot but gaps do exist, such as the improvement of narrowing techniques.\endnote{%
-  ``Although'' fights with ``but''.  Remove one or the other; and put a comma before ``such as''.
-}
+Although the language can do a lot but gaps do exist, such as the improvement of narrowing techniques.
  
  
 %\end{description}
 
 \section{Some Multi Paradigm Languages}
 
-The list of multi paradigm languages is huge, but in this thesis we will mostly stick to functional logical programming languages. Beginning with functional hybrids, a small project language called \progLang{Virgil} \cite{website:virgil}, combines\endnote{%
-  Otherwise you have a sentence fragment.
-}
+The list of multi paradigm languages is huge, but in this thesis we will mostly stick to functional logical programming languages. Beginning with functional hybrids, a small project language called \progLang{Virgil} \cite{website:virgil}, combines
 objects to work with functions and procedures.
 On similar lines is \progLang{Common Object Lisp System (CLOS)} \cite{website:closwiki}.
-This can be justified as object oriented programming has been one of the most dominant styles of programming and
-hence even \progLang{Haskell} has one called \progLang{O'Haskell} \cite{website:ohaskell} though it last saw a
-release back in 2001.\endnote{%
-  The preceding sentence is awkward, although the intent is very good.
-  Here is one attempt at rewording it.
-  \par\vspace*{-1\baselineskip}
-  \begin{quote}
-    \slshape
-    Combining objects with functions is important
-    as object-oriented programming has become one of the most common styles of programming.
-    Hence even \progLang{Haskell} has a combined language
-    \enparen{called \progLang{O'Haskell}, \cite{website:ohaskell}}, 
-    though it last saw a release back in 2001.
-  \end{quote}
+This can be justified\yyy{}{\Large,}\endnote{%
+  Add the comma, then remove this endnote.
 }
 Another prominent implementation is \progLang{OCaml} \cite{website:ocamlwiki,website:ocamllang} which adds object
 oriented capabilities with a powerful type system and module support.
+as object oriented programming has been \yyy{one of the most}{a} dominant styles of programming\yyy{ and
+hence even}{Even} \progLang{Haskell} has one called \progLang{O'Haskell} \cite{website:ohaskell}\yyy{}{\Large,}\endnote{%
+  Add the comma, then remove this endnote.
+} though it last saw a
+release back in 2001.
 This is the case with most of the languages in this section hardly a few have survived as the new ones incorporated
 the positives of the old.
 As mentioned before one of the most poplar \cite{website:langpop} and widely usage both in academia and industry is
@@ -182,12 +169,11 @@ Only the ones that
 \item
   have been cited or referred by other attempts
 \end{inparaenum}
-have been included, as the list is long and is not the main focus of the thesis.\endnote{%
-  This is a good sentence; but I believe that the changes indicated make it clearer.
+have been included \yyy{}{below}, as the list is long and \xxx{is} not the main focus of the thesis.\endnote{%
+  Make the change and delete this footnote.
+  I believe that adding ``\textsl{below}'' makes this sentence a lot clearer.
 }
-We begin\endnote{%
-  The rewording avoids a sentence fragment.
-}
+We begin
 with the ones from Australia, which seems to be a popular location for fiddling with
 \progLang{Prolog} and merging paradigms.
 As of now there have been three popular ones, beginning with \progLang{Neu Prolog}, \cite{website:nue-prolog},

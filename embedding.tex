@@ -40,21 +40,8 @@ Moreover the discussion focuses on a lot of critical points that should be consi
 \progLang{Prolog} to the host language in terms of types and modules among others.
 
 One of the implementations discussed redirects us to one of the earliest implementations of \progLang{Prolog}
-in \progLang{Haskell} for \haskellConstruct{Hugs 98}, called \haskellConstruct{Mini} \progLang{Prolog} \cite{website:mini-prolog-hugs98}.\endnote{%
-  Reword.
-  I believe that the list of facts that you are trying to combine is:
-  \begin{compactitem}
-  \item
-    One of the implementations discussed on ``Lambda The Ultimate''
-    leads us something.
-  \item
-    \texttt{Mini \progLang{Prolog}} (\cite{website:mini-prolog-hugs98}) is
-    one of the earliest implementations of \progLang{Prolog} in \progLang{Haskell}.
-  \item
-    \texttt{Mini Prolog} works with
-    \progLang{Hugs 98}, an early dialect of \progLang{Haskell}.
-  \end{compactitem}
-}
+in \progLang{Haskell} for \haskellConstruct{Hugs 98}, called
+\haskellConstruct{Mini} \progLang{Prolog} \cite{website:mini-prolog-hugs98}.
 Although this implementation takes as reference the working of the \progLang{ Prolog} Engine\endnote{%
   What is the \progLang{Prolog} Engine? 
   \mehul{got that from Warren Abstraction Machine}
@@ -135,7 +122,7 @@ A general out look towards implementing \progLang{Prolog} has also been discusse
 
 Abundant literature
 can be found on embedding detailed parts of \progLang{Prolog} features
-such as\eref{such-as-like} basic constructs, search strategies and data types.
+such as basic constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
 Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
 The next subsection covers the literature based on the above\endnote{%
@@ -154,7 +141,7 @@ Being the very first documented formal attempt, the work is influenced by simila
 in other languages like \progLang{Scheme} and \progLang{Lisp}.
 Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed
 scheme tends to be general as the aim here is to achieve
-\progLang{Prolog}-like\eref{language-like} working not a multiparadigm
+\progLang{Prolog}-like working not a multiparadigm
 declarative language.
 \progLang{Prolog} \prologConstruct{predicates} are translated to \progLang{Haskell} functions which produce a stream of results
 lazily depicting depth first search with support for different strategies and practical operators such as
@@ -201,7 +188,7 @@ and a \haskellConstruct{monadic encapsulation} to turn a \progLang{Prolog} predi
 %% }
 \subsection{Prolog Libraries}
 
-To replicate \progLang{Prolog}-like\eref{language-like}
+To replicate \progLang{Prolog}-like
 capabilities \progLang{Haskell} seems to be already in the race\endnote{%
   Yet another metaphor whose meaning I do not understand in context.
 }
@@ -235,10 +222,7 @@ no \haskellConstruct{monadic} support and an REPL without the ability to ``write
   \cite{proplogic-lib} provides a powerful system for propositional logic.
   Other libraries
   include small hybrid languages \cite{cflp-lib} and
-  \textcolor{blue}{``Parallelising Logic Programming and Tree Exploration''}\endnote{%
-    Mark this text up somehow: for intance surround with quotation marks if it is the title of a paper, put in
-    italics if it is a book, and so on.
-}
+  ``Parallelising Logic Programming and Tree Exploration''
   \cite{logic-grows-on-trees-lib}.
 
 
