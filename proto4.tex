@@ -89,11 +89,18 @@ hello = put "What is your name?"      `seqio` \_    ->
         put ("Hello " ++ name ++ "!") `seqio` \_    ->
         put ("You are " ++ age ++ " years old")
 \end{minted}
-Although this looks like imperative code (admittedly with pretty unpleasant syntax), it’s really a value of type IOAction (). In Haskell, 
+Although this looks like imperative code (admittedly with pretty unpleasant syntax), it’s really a value of type \markWord{IOAction} \Verb!()!. In Haskell,\endnote{%
+  Use \macroName{progLang}!
+}
 code can be data and data can be code.
 
-In the gist I’ve defined a function to convert an IOAction to a String, which allows them to be printed, so you can load the file into GHCi 
-and verify that hello is in fact just data:
+In the gist\endnote{%
+  The word ``\textit{gist}'' is an English word, but in this context you are using it for a meaning other than its
+  natural English meaning.
+  You'll need to explain this usage.
+}
+ I’ve defined a function to convert an \markWord{IOAction} to a \markWord{String}, which allows them to be printed, so you can load the file into \markWord{GHCi} 
+and verify that \markWord{hello} is in fact just data:
 
 \begin{minted}[linenos]{haskell}
 *Main> print hello
@@ -119,9 +126,12 @@ instance Monad IOAction where
     (>>=)  = seqio
 \end{minted}
 
-The main benefit of doing this is that we can now sequence actions using Haskell’s do notation, which desugars into calls to (>>=), and 
-hence to seqio. Our earlier hello example can now be written as:
-
+The main benefit of doing this is that we can now sequence actions using Haskell’s\endnote{%
+  Use \macroName{progLang}!
+}
+\markWord{do} notation, which desugars into calls to \Verb!(>>=)!, and 
+hence to \markWord{seqio}. Our earlier \markWord{hello} example can now be written as:
+\par
 \begin{minted}[linenos]{haskell}
 hello2 = do put "What is your name?"
             name <- get
