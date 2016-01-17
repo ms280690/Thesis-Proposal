@@ -24,7 +24,7 @@ general.
 
 \section{The Informal Content from Blogs, Articles and Internet Discussions}
 
-Before moving on to the formal content such as publications, modules and libraries let's take a look at some of the
+Before moving on to the formal content such as publications, modules and libraries\yyy{}{\Large,} let's take a look at some of the
 unofficially published content.
 This subsection takes a look at the information, thoughts and discussions that are currently taking place from time
 to time on the internet.
@@ -40,24 +40,15 @@ Moreover the discussion focuses on a lot of critical points that should be consi
 \progLang{Prolog} to the host language in terms of types and modules among others.
 
 One of the implementations discussed redirects us to one of the earliest implementations of \progLang{Prolog}
-in \progLang{Haskell} for \haskellConstruct{Hugs 98}, called \haskellConstruct{Mini} \progLang{Prolog} \cite{website:mini-prolog-hugs98}.\endnote{%
-  Reword.
-  I believe that the list of facts that you are trying to combine is:
-  \begin{compactitem}
-  \item
-    One of the implementations discussed on ``Lambda The Ultimate''
-    leads us something.
-  \item
-    \texttt{Mini Prolog} (\cite{website:mini-prolog-hugs98}) is
-    one of the earliest implementations of \progLang{Prolog} in \progLang{Haskell}.
-  \item
-    \texttt{Mini Prolog} works with
-    \progLang{Hugs 98}, an early dialect of \progLang{Haskell}.
-  \end{compactitem}
-}
+in \progLang{Haskell} for \haskellConstruct{Hugs 98}, called
+\haskellConstruct{Mini} \progLang{Prolog} \cite{website:mini-prolog-hugs98}.
 Although this implementation takes as reference the working of the \progLang{ Prolog} Engine\endnote{%
-  What is the \progLang{Prolog} Engine? 
-  \mehul{got that from Warren Abstraction Machine}
+  \david{What is the \progLang{Prolog} Engine?} \newline
+  \mehul{got that from Warren Abstraction Machine} \newline
+  \david{What does the \cite{website:mini-prolog-hugs98} implementation takes as reference?
+    Is it based on the Warren Abstract Machine?
+    Some other formal specification of \progLang{Prolog}?
+  }
 }
 and other details, it
 still is an unpublished implementation
@@ -75,9 +66,10 @@ implementation that exists, \cite{website:takashi-workplace}.
 
 Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
-is far scarcer\endnote{%
+is far scarcer{%
   ``far scarcer''?
-  \mehul{minimal}
+  \mehul{minimal}.
+  \david{``\textsl{Its use in industry is minimal than the leading languages\dots}'' makes no sense.}
 }
 than the leading languages of other paradigms.
 The purely declarative nature lacks basic requirements such as support for \languageConstruct{modules}.\endnote{%
@@ -105,7 +97,7 @@ family of Declarative Languages.\eref{caps-choices}\textsuperscript{,}\endnote{%
   }
 }
 Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
-enables encoding of search problems.\eref{not-a-sentence}\textsuperscript{\,}\endnote{%
+enables encoding of search problems\yyy{}{in \progLang{Haskell} rather than \progLang{Prolog}}.\eref{not-a-sentence}\textsuperscript{,}\endnote{%
   \david{I have lost track of the general argument here.
   What is the unofficially published content saying about \progLang{Prolog} here?}
 
@@ -124,7 +116,7 @@ constructs to the language to bring together both styles of declarative programm
 \progLang{Prolog}.
 Moreover, \progLang{Haskell} also claims for it to be suitable for basic logic programming naturally using the \haskellConstruct{List
 Monad} \cite{website:logicprogexamplehaskell}.
-A general out look towards implementing \progLang{Prolog} has also been discussed by
+A general \yyy{out look}{outlook} towards implementing \progLang{Prolog} has also been discussed by
 \cite{krishnamurthi2007programming} to push the ideas forward.\endnote{%
   This \P{} needs a lot of work.
   I do not understand what you say the references say.
@@ -164,7 +156,7 @@ Though no implementation exists, the synthesis and transformation techniques for
 \textit{logicalised} and applied to \progLang{Prolog} programs.
 Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
 problems in the domain\endnote{%
-  What are ``the problems at hand''?
+  I still don't understand what problems we are talking about here.
 } and accommodate and jump between search strategies.
 
 
@@ -209,10 +201,24 @@ with a host of related libraries.
 First we begin with the libraries about Prolog\endnote{%
   Naked Prolog.
 }
-itself, a few exist \cite{nanoprolog-lib} being a preliminary or
-``mini \progLang{Prolog}'' as such with not much in it to be able to be useful, \cite{hswip-lib} is all powerful but is an
-foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need \progLang{Prolog} for it,
-\cite{prolog-lib} which is the only implementation that comes the closest to something like an actual practical
+itself,\endnote{%
+  comma splice
+}\elabel{comma-splice}
+a few exist \cite{nanoprolog-lib} being a preliminary or
+``mini \progLang{Prolog}'' as such with not much in it to be able to be useful,\eref{comma-splice} \cite{hswip-lib} is all powerful but is \yyy{an}{a}
+foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need \progLang{Prolog} for it,\eref{comma-splice}
+\cite{prolog-lib}\yyy{}{\Large,} which is the only implementation that comes the closest\endnote{%
+  Here ``\textit{only}'' fights with ``\textit{closest}''.
+  Use either
+  \begin{quote}
+    \cite{prolog-lib}, which is the only implementation that comes \xxx{the} \yyy{closest}{close}\dots
+  \end{quote}
+  or
+  \begin{quote}
+    \cite{prolog-lib}, which is the \xxx{only} implementation that comes the closest\dots
+  \end{quote}
+}
+to something like an actual practical
 \progLang{Prolog}.
 But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or
 no \haskellConstruct{monadic} support and an REPL without the ability to ``write a \progLang{Prolog} Program File''.\eref{caps-choices}
@@ -220,11 +226,13 @@ no \haskellConstruct{monadic} support and an REPL without the ability to ``write
 %\item[$\bullet$]Logic Libraries
 \subsection{Logic Libraries}
 
-  The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries do exist and provide a
-  part of the functionality which are related\endnote{%
-    There seem to be words missing here.
+The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries \xxx{do exist
+  and} provide \xxx{a 
+part of the} functionality \xxx{which are} related
+  to propositional logic and backtracking.\endnote{%
+    Does this sentence make sentence make sense with my deletions?
+    If so, remove the \macroName{xxx}-stuff and this endnote.
 }
-  to propositional logic and backtracking.
   \cite{logict-lib} is a continuation-based, backtracking, logic programming \haskellConstruct{monad} which attempts to replicate\endnote{%
     \dots{} or simply ``\textsl{which replicates}'', unless you have strong doubts as to the efficacy of the
     library. 
@@ -249,10 +257,11 @@ The more specific the feature, the lesser the support in \progLang{Haskell}.
 Moving on to the other distinct feature of \progLang{Prolog} is \prologConstruct{unification}.\endnote{%
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
 }
-There are two libraries that exist \cite{unification-fd-lib},
-\cite{cmu-lib} that unify two \progLang{Prolog} terms and return the resulting
+There are two libraries \xxx{that exist}
+\xxx{\cite{unification-fd-lib}}
+\yyy{, \cite{cmu-lib}}{(\cite{unification-fd-lib}, \cite{cmu-lib})} that unify two \progLang{Prolog} terms and return the resulting
 substitution.\endnote{% 
-  Check for unmarked \texttt{Prolog}s and strange capitals in the middle of sentences.
+  Make the changes suggested or similar, then delete this endnote.
 }
 
 

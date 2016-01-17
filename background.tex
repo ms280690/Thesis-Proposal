@@ -60,10 +60,23 @@ In untyped $\lambda$-calculi functions have no predetermined type, whereas typed
 restriction on what sort (type) of data can a function work with.
 \progLang{Scheme} is based on the untyped variant, while \progLang{ML} and \progLang{Haskell} are based on typed
 $\lambda$-calculi.
-Most typed $\lambda$-calculi langauges are based on Hindley-Milner or Damas-Milner or Damas- Hindley-Milner
-(\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki}) type system.
-The Hindley-Milner like type systems have the ability to give a most general type of a program without any
-annotations. 
+Most typed $\lambda$-calculi langauges are based on Hindley-Milner or Damas-Milner or Damas-Hindley-Milner
+(\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki}) type system.\endnote{%
+  I fixed a space here.
+  Are 
+  \begin{inparaitem}
+  \item  Hindley-Milner 
+  \item Damas-Milner
+  \item Damas-Hindley-Milner
+  \end{inparaitem}
+  three different names for the same type system; or three different variations on the same idea?
+  
+}\textsuperscript{,}\endnote{%
+  This sentence feels wrong.  I expect either ``\textit{\textsl{the} \dots type system.}'' or ``\textit{\dots type
+    system\yyy{}{s}.}'' 
+}
+The Hindley-Milner\yyy{ }{-}like type systems have the ability to give a most general type \yyy{of}{to} a program
+without any annotations. 
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the
 variables, lastly unifying all of the constraints giving the type of the result.\endnote{%
@@ -118,15 +131,24 @@ languages, has
 spawned a number of distributions and is present from academia to industry.  
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the 
-first language to incorporate \haskellConstruct{monads} \cite{wadler1992comprehending} for safe input and output\endnote{%
-  Perhaps just use ``\textsl{input and output}'' in place of ``\textit{IO}''.
-}\,. \haskellConstruct{Monads} can be 
-described as composable computation descriptions \cite{website:monadshaskellorg} . Each \haskellConstruct{monad} consists of a 
-description of what has action has to be executed, how the action has to be run and how to combine such 
-computations. An action can describe an impure or side-effecting computation, for example, input and output can be 
-performed outside the language but can be brought together with pure functions inside in a program resulting in a 
-separation and maintaining safety with practicality. \progLang{Haskell} computes results lazily and is strongly 
-typed. 
+first language to incorporate \haskellConstruct{monads} \cite{wadler1992comprehending} for safe input and output.
+\haskellConstruct{Monads}\endnote{%
+  Here ``monad'' is an (admittedly technical) English word.
+  It doesn't need special marking.
+}
+can be 
+described as composable computation descriptions \cite{website:monadshaskellorg}\yyy{ }{}.\endnote{%
+  Remove the space before the period.
+}
+Each \haskellConstruct{monad}\endnote{%
+  See the preceding endnote.
+}
+consists of a description of what has action has to be executed, how the action has to be run and how to combine
+such computations.
+An action can describe an impure or side-effecting computation, for example, input and output can be performed
+outside the language but can be brought together with pure functions inside in a program resulting in a separation
+and maintaining safety with practicality.
+\progLang{Haskell} computes results lazily and is strongly typed.
 
 \progLang{Prolog} and \progLang{Haskell} are contrasting in nature, and
 bringing them into the same environment is tricky.
@@ -200,8 +222,8 @@ to be modified is written is the object language.
 If both of them are the same then the language is said to be reflective.\endnote{%
   I think that this usage of ``reflective'' needs some comment.
   Usually \textit{reflective} refers to run-time access to information about the object language text;
-  what you are discussing is compile-time access to the object language.
-  ?????
+  what you are discussing is compile-time access to the object language.\newline
+  \david{Is this your \mehul?????}?}
 }
 \progLang{Haskell} programs can be modified using Template \progLang{Haskell} \cite{website:templatehaskell}, an
 extension to the language which provides services to jump between the two types of programs.
