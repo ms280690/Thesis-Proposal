@@ -23,9 +23,10 @@ provides for embedding domain specific languages(EDSLs).
 
 \begin{enumerate}
 
-\item Why a Functional Language?
+\item Why a Functional Language?\eref{caps-choices}
 
 \item
+  %% TODO 2016-01-16.  There is a comma splice immediately below.
   \progLang{Haskell} as a functional programming language Haskell is an advanced purely-functional programming
   language.
   In particular, it is a polymorphically statically typed, lazy, purely functional language
@@ -33,7 +34,9 @@ provides for embedding domain specific languages(EDSLs).
   It is one of the popular functional programming languages \cite{website:langpop}.
   \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
 
-  Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP.
+  Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP.\endnote{%
+    Raw language name.
+}
   Opting for embedding provides a ``shortcut'' to create a language which may be designed to provide specific
   functionality.
   Designing a language from scratch would require writing a parser, code generator / interpreter and possibly a
@@ -62,7 +65,7 @@ The declarative style consists of defining components of programs i.e.
 computations not a control flow \cite{website:declarativeprogrammingwiki}.
 
 This is where \progLang{Haskell} shines by providing something called a \textit{monad}.
-Functional Programming Languages define computations which then need to be ordered in some way to form a
+Functional Programming Languages\eref{caps-choices} define computations which then need to be ordered in some way to form a
 combination\cite{website:monadascomputation}.
 A monad gives a bubble within the language to allow modification of control flow without affecting the rest of the
 universe.
