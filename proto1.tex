@@ -616,7 +616,7 @@ variable with language values (language constructs).
 
 Enter \Verb[formatcom=\bf]!Traversable!\,.%}{
 It allows reduce whilst preserving the shape of the structure.
-Lastly, the Applicative instance is an intermediate between a functor and a monad.
+Lastly, the \markWord{Applicative} instance is an intermediate between a functor and a monad.
 
 We create the necessary instances\endnote{%
   I am deeply suspicious of the instance for \texttt{Applicative} given.
@@ -673,20 +673,21 @@ implementations exist,\endnote{%
 
 \begin{comment}
   The library ships with two implementations of logic variables.
-  The IntVar implementation uses Int as the names of variables, and uses an IntMap to keep track of the
+  The \markWord{IntVar} implementation uses \markWord{Int} as the names of variables, and uses an \markWord{IntMap}
+  to keep track of the 
   environment.
-  The STVar implementation uses STRefs, so we can use actual mutation for binding logic variables, rather than
+  The \markWord{STVar} implementation uses \markWord{STRefs}, so we can use actual mutation for binding logic variables, rather than
   keeping an explicit environment around.
-  This implementation uses STVars.
+  This implementation uses \markWord{STVars}.
 
   Performing unification has the side effect of binding logic variables to terms.
   Thus, we'll want to use a monad in order to keep track of these effects.
-  The BindingMonad type class provides the definition of what we need from our ambient monad.
+  The \markWord{BindingMonad} type class provides the definition of what we need from our ambient monad.
   In particular, we need to be able to generate fresh logic variables, to bind logic variables, and to lookup what
   our logic variables are bound to.
-  The library provides the necessary instances for both IntVar and STVar.
+  The library provides the necessary instances for both \markWord{IntVar} and \markWord{STVar}.
 
-  You can provide your own implementations of Variable and BindingMonad.
+  You can provide your own implementations of \markWord{Variable} and \markWord{BindingMonad}.
 \end{comment}
 
 \textbf{Some stuff about Meta syntactic variables can be put in here}
