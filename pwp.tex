@@ -46,10 +46,16 @@ improve upon giving a starting point.
 
 Prolog is dynamically typed. It has a single data type, the term, which has several subtypes: atoms, numbers, variables and compound terms.
 
-An atom is a general-purpose name with no inherent meaning. It is composed of a sequence of characters that is parsed by the Prolog reader 
+An atom is a general-purpose name with no inherent meaning. It is composed of a sequence of characters that is parsed by the Prolog\endnote{%
+  Use \macroName{progLang}!
+}
+reader 
 as a single unit.
 
-Numbers can be floats or integers. Many Prolog implementations also provide unbounded integers and rational numbers.
+Numbers can be floats or integers. Many Prolog\endnote{%
+  Use \macroName{progLang}!
+}
+ implementations also provide unbounded integers and rational numbers.
 
 Variables are denoted by a string consisting of letters, numbers and underscore characters, and beginning with an upper-case letter or 
 underscore. Variables closely resemble variables in logic in that they are placeholders for arbitrary terms. A variable can become 
@@ -65,8 +71,12 @@ first-order predicate logic. There are two types of clauses: Facts and rules.
 
 
 \cite{website:prologintroumiami}
-In Prolog all data objects are called terms
-Atomic terms
+In Prolog\endnote{%
+  Use \macroName{progLang}!
+}
+ all data objects are called terms
+ Atomic terms
+ %% TODO. 2016-01-16.  junk above
 
 Come in two forms, atoms and integers.
 Atoms (this is a misnomer as in logic predicates are called atoms and atoms are called constants. However, we'll stick to the Prolog convention.)
@@ -120,8 +130,14 @@ Variables in Prolog are rather different to those in most other languages. Furth
 \item Simple Semantics
 
 Under a declarative reading, the order of rules, and of goals within rules, is irrelevant since logical disjunction and conjunction are 
-commutative. Procedurally, however, it is often important to take into account Prolog's execution strategy, either for efficiency reasons, 
-or due to the semantics of impure built-in predicates for which the order of evaluation matters. Also, as Prolog interpreters try to unify 
+commutative. Procedurally, however, it is often important to take into account Prolog's\endnote{%
+  Use \macroName{progLang}!
+}
+ execution strategy, either for efficiency reasons, 
+or due to the semantics of impure built-in predicates for which the order of evaluation matters. Also, as Prolog\endnote{%
+  Use \macroName{progLang}!
+}
+ interpreters try to unify 
 clauses in the order they're provided, failing to give a correct ordering can lead to infinite recursion.
 
 
