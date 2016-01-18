@@ -22,10 +22,11 @@ This chapter introduces the scope of the thesis along with the preliminary argum
 
 \section{Beginnings}
 
-Programming has become an integral part of working and interacting with computers and day by day more and more complex
-problems are being tackled using the power of programming technologies.
+Programming has become an integral part of working and interacting with computers and day by day more and more
+complex problems are being tackled using the power of programming technologies.
 
-A programming language must not only provide an easy to use environment but also adaptability towards the problem domain.
+A programming language must not only provide an easy to use environment but also adaptability towards the problem
+domain. 
 
 Over the last decade the declarative style of programming has gained popularity.
 The methodologies that have stood out are the functional and logical approaches.
@@ -49,10 +50,10 @@ This results in a hybrid approach which provides a library taking advantage of t
 \section{Thesis Statement}
 
 The thesis aims to provide insights into merging two declarative languages namely, \progLang{Haskell} and
-\progLang{Prolog} by embedding the latter into the former and analyzing the result of doing so as they have conflicting
-characteristics.
-The finished product will be something like a \textit{haskellised} \progLang{Prolog} which has logical programming like
-capabilities.
+\progLang{Prolog} by embedding the latter into the former and analyzing the result of doing so as they have
+conflicting characteristics.
+The finished product will be something like a \textit{haskellised} \progLang{Prolog} which has logical programming
+like capabilities.
 
 
 %----------------------------------------------------------------------------
@@ -100,14 +101,15 @@ for search problems.
 \end{comment}
 
 \progLang{Prolog} is a language that has a hard time being adopted.
-Born in an era where procedural languages were receiving a lot of attention, it suffered from competing against another
-new kid on the block: \progLang{C}.
+Born in an era where procedural languages were receiving a lot of attention, it suffered from competing against
+another new kid on the block: \progLang{C}.
 
 Some of the problems were due to its own limitations.
 Basic features like modules were not provided by all compilers.
-Practical features for real world problems were added in an ad hoc way resulting in the loss of its purely declarative
-nature.
-Some say that \progLang{Prolog} is fading away, \cite{website:prolog-steam,website:prolog-death,website:prolog-killer}.
+Practical features for real world problems were added in an ad hoc way resulting in the loss of its purely
+declarative nature.
+Some say that \progLang{Prolog} is fading away,
+\cite{website:prolog-steam,website:prolog-death,website:prolog-killer}.
 It is apparently not used for building large programs \cite{wikiprolog,somogyi1995logic,website:prolog1000db}.
 However there are a lot of good things about Prolog\endnote{%
   naked \progLang{Prolog}.
@@ -119,10 +121,13 @@ It is a language that should not die away.
 So the question is how to have all the good qualities of \textsc{Prolog} without actually using \progLang{Prolog}?
 
 One idea is to make \progLang{Prolog} an add-on to another language which is widely used and in demand.
-Here the choice is \progLang{Haskell}; as both the languages are declarative they share a common background which can
-help to blend the two.
+Here the choice is \progLang{Haskell}; as both the languages are declarative they share a common background which
+can help to blend the two.
 
-A domain-specific language (DSL) is a concise micro language that offers tools and functionalities focused on a particular problem domain. In many cases, DSL programs are translated to calls to a common subroutine library and the DSL can be viewed as a means to hide the details of that library \cite{van2000domain}.
+A domain-specific language (DSL) is a concise micro language that offers tools and functionalities focused on a
+particular problem domain.
+In many cases, DSL programs are translated to calls to a common subroutine library and the DSL can be viewed as a
+means to hide the details of that library \cite{van2000domain}.
 
 Putting all of the above together, Domain Specific Languages\endnote{%
   \david{This footnote changed 2016-01-08.
@@ -140,11 +145,9 @@ programmer ends up writing some code dictated by the language rather than by the
 
 Generally speaking, programming languages with a wide scope over problem domains do not provide bespoke support for
 accomplishing  mundane tasks.
-Approaching towards the solution can be complicated and tiresome, but the programming language in question acts as the
-master key.
-A general purpose language, as the name suggests,
-provides a general set of tools to cover many
-problem domains.
+Approaching towards the solution can be complicated and tiresome, but the programming language in question acts as
+the master key.
+A general purpose language, as the name suggests, provides a general set of tools to cover many problem domains.
 The downside is that such environments\endnote{%
   Do you mean languages?  If not, what environments are you talking about?
   \mehul{the programming environment that the embedded language provides as a library}
@@ -152,8 +155,7 @@ The downside is that such environments\endnote{%
 lack the complete feature set which can make problem solving difficult.
 
 Flipping the coin to the other side, we see, the more specific the language is to the problem domain, the easier it
-is to solve the problem since the solution need not be moulded according to the capability  of the
-language.
+is to solve the problem since the solution need not be moulded according to the capability  of the language.
 For example, a problem with a naturally recursive solution cannot take advantage of tail recursion in many
 imperative languages.
 Many domains require the system to be mutation free, but must deal with uncontrolled side-effects and so
@@ -167,12 +169,12 @@ The solution is to develop a programming language with a split personality, in o
 sometimes logical and sometimes both.
 Depending upon the problem, the language shapes itself accordingly and exhibits the desired characteristics.
 The ideal situation is a language with a rich feature set and the ability to mould itself according to the problem.
-A language with the ability to take the appropriate skill set and provide them to the programmer will reduce
-the hassle of jumping between languages or forcibly trying to solve a problem according within the limitations of a paradigm.
+A language with the ability to take the appropriate skill set and provide them to the programmer will reduce the
+hassle of jumping between languages or forcibly trying to solve a problem according within the limitations of a
+paradigm.
 
-The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}. How far can \progLang{Haskell} be 
-pushed to
-don the avatar of \progLang{Prolog}?
+The subject in question here is \progLang{Haskell} and the split personality being \progLang{Prolog}.
+How far can \progLang{Haskell} be pushed to don the avatar of \progLang{Prolog}?
 This is the million dollar question.
 
 A \progLang{Haskell} with \progLang{Prolog}-like features will result in a set of characteristics which are from
