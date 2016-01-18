@@ -19,8 +19,9 @@
     I do not know what you are trying to do here.
 }}
 
-This chapter discusses the current work in done in embedding programming languages. Specifically speaking embedding \progLang{Prolog} in 
-\progLang{Haskell}. We analyze the current implementations and provide insights into the contributions of this thesis. 
+This chapter discusses the current work in done in embedding programming languages.
+Specifically speaking embedding \progLang{Prolog} in \progLang{Haskell}.
+We analyze the current implementations and provide insights into the contributions of this thesis.
 
 %-----------------------------------------------------------------------------
 \noindent\rule{\textwidth}{0.5pt}
@@ -54,15 +55,15 @@ discussed below, along with their shortcomings.
 
 \item
   The papers that try to take the above further are also few in number and do not have any implementations with the
-  proposed concepts (see \cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional, seres2000optimisation}).
+  proposed concepts (see \cite{spivey1999embedding, seres1999algebra, seres2001algebra, spivey2000functional,
+    seres2000optimisation}).
   Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
 
 \item
   In the case of libraries, a few exist.
   Most are old and are not currently maintained or updated.
-  Many provide only a shell through which one has to
-  do\eref{must-have-to} all the work, which is synonymous with the
-  embeddings mentioned above.
+  Many provide only a shell through which one has to do\eref{must-have-to} all the work, which is synonymous with
+  the embeddings mentioned above.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
   but are still not complete.\endnote{%
     Did I get your sense?\newline
@@ -81,9 +82,8 @@ discussed below, along with their shortcomings.
 \end{enumerate}
 
 As for the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
-``add-on''.\eref{no-and}
-A handful of crossover hybrid languages based on \progLang{Haskell} exist, \progLang{Curry} \cite{website:curry}
-being the prominent one.
+``add-on''.\eref{no-and} A handful of crossover hybrid languages based on \progLang{Haskell} exist,
+\progLang{Curry} \cite{website:curry} being the prominent one.
 Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
 crossover implementations exist but again most of them have faded out.\endnote{%
   \S~\ref{sec:what-this-chapter:proposedWork} says that this chapter is about embedding programming languages.
@@ -106,12 +106,11 @@ As discussed in the above,\endnote{%
     \end{compactitem}
   \end{compactdesc}
 }
-either an embedding or an integration approach is taken up for programming
-languages to work together.
+either an embedding or an integration approach is taken up for programming languages to work together.
 So, there is either a shallow approach that does not utilize the constructs available in the host language and
-results in a translation of the characteristics, or the other is a fairly complex process which results in
-tackling the conflicting nature of different programming paradigms and languages, resulting in a toned-down
-compromised language that takes advantages of neither paradigms.
+results in a translation of the characteristics, or the other is a fairly complex process which results in tackling
+the conflicting nature of different programming paradigms and languages, resulting in a toned-down compromised
+language that takes advantages of neither paradigms.
 Mostly, the trend is to build a library for extension to replicate the features as an add on.\endnote{%
   What is the point of this \P{} relative to the overall thesis?
   \mehul{too deep == too complex, too shallow == does not do much, mix == a little better I guess?}
@@ -123,7 +122,8 @@ Taking into consideration above, there is quite some room for improvement and ad
 \section{Proposal Contributions}
 
 Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
-close to a \progLang{Prolog}-like\eref{language-like} language and has practical abilities to carry out real-world tasks.
+close to a \progLang{Prolog}-like\eref{language-like} language and has practical abilities to carry out real-world
+tasks.
 They include predicates such as\eref{such-as-like} \prologConstruct{cut}\endnote{%
   Write macros like \macroName{progLang} for the various classes
   of special symbols in your thesis, and then apply them to words like
@@ -160,8 +160,10 @@ Moreover, \progLang{Prolog} is an untyped language which allows lists with eleme
 created.
 Something like this is not by default in \progLang{Haskell}.
 Hence syntactic support for the same is the next question to address.
-Furthermore, experimenting with how programs expressed with same declarative meaning differ operationally.\eref{not-a-sentence}
-Lastly, how would characteristics of hybrid languages fit into and play a role in an embedded setting.\eref{not-a-sentence}
+Furthermore, experimenting with how programs expressed with same declarative meaning differ
+operationally.\eref{not-a-sentence} 
+Lastly, how would characteristics of hybrid languages fit into and play a role in an embedded
+setting.\eref{not-a-sentence} 
 
 
 \section{Improved Contributions}
@@ -171,9 +173,8 @@ Lastly, how would characteristics of hybrid languages fit into and play a role i
     Have we defined ``eDSL'' yet?  If not, write
     ``\textsl{embedded, domain-specific language \enparen{eDSL}}''.
 }
-  in terms of its capability to
-  \textit{open up} the language{\large,} i.e{\large,}
-  to include meta syntactic variables, custom quantifiers and logic.
+  in terms of its capability to \textit{open up} the language{\large,} i.e{\large,} to include meta syntactic
+  variables, custom quantifiers and logic.
   (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
   syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to
   the original type.
