@@ -16,16 +16,19 @@
 \section{Types}
 
 
-One of the major differences between \progLang{Prolog} and \progLang{Haskell} is how each language handles types. \progLang{Prolog} is an 
-untyped language meaning any operation can be performed on the data irrespective of its type. \progLang{Haskell} on the other hand is 
-strongly typed i.e. each operation requires a signature stating what types of data it can work with. Moreover, the \progLang{Haskell} type 
-system is static. 
+One of the major differences between \progLang{Prolog} and \progLang{Haskell} is how each language handles types.
+\progLang{Prolog} is an untyped language meaning any operation can be performed on the data irrespective of its
+type.
+\progLang{Haskell} on the other hand is strongly typed i.e.
+each operation requires a signature stating what types of data it can work with.
+Moreover, the \progLang{Haskell} type system is static.
 
 
-\progLang{Prolog} like any other language can work with some basic data types like numbers, characters, strings among others. Using these  
-one can make terms like \textit{Atoms}, \textit{Clauses}, \textit{Constants}, \textit{Strings}, \textit{Characters}, \textit{Predicates}, 
-\textit{Structures}, \textit{Special Characters} and so on. These need to be incorporated into the implementation so as to give a palette
-for writing programs. 
+\progLang{Prolog} like any other language can work with some basic data types like numbers, characters, strings
+among others.
+Using these one can make terms like \textit{Atoms}, \textit{Clauses}, \textit{Constants}, \textit{Strings},
+\textit{Characters}, \textit{Predicates}, \textit{Structures}, \textit{Special Characters} and so on.
+These need to be incorporated into the implementation so as to give a palette for writing programs.
 
 Our preliminary implementation is as follows,
 \begin{minted}{haskell}

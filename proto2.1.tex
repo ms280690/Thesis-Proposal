@@ -12,11 +12,10 @@
 This chapter attempts to infuse the generic methodology from Chapter~\ref{proto1} in a current \progLang{Prolog}
 implementation \cite{prolog-lib} and make the unification ``monadic''.
 
-This chapter discusses the idea of implementing a basic working \progLang{Prolog} query resolver while using \cite{prolog-lib} as the base
-implementation. The language modifications and unification mechanism
-have been taken from Chapter~\ref{proto1}
-and adapted to fit in with the other
-components such as the search strategy of the library.
+This chapter discusses the idea of implementing a basic working \progLang{Prolog} query resolver while using
+\cite{prolog-lib} as the base implementation.
+The language modifications and unification mechanism have been taken from Chapter~\ref{proto1} and adapted to fit
+in with the other components such as the search strategy of the library.
 
 
 \section{How prolog-0.2.0.1 works}
@@ -50,9 +49,10 @@ type Program      = [Clause]
 \end{code-list}
 \end{comment}
 
-From the Figure~\ref{tab:origgramp0201} we will focus on \xxx{the} \markWord{Term}\yyy{}{s,} since the others just add wrappers around expressions which can
-be created by it. The above language suffers from most of the problems discussed in the previous chapter. The above is used to construct
-\progLang{Prolog} ``terms'' which are of a ``single type''.
+From the Figure~\ref{tab:origgramp0201} we will focus on \xxx{the} \markWord{Term}\yyy{}{s,} since the others just
+add wrappers around expressions which can be created by it.
+The above language suffers from most of the problems discussed in the previous chapter.
+The above is used to construct \progLang{Prolog} ``terms'' which are of a ``single type''.
 
 
 The implementation consists of components that one would find in a language processing system (see
@@ -74,9 +74,8 @@ specifically speaking, parts of a compiler (see Figure~\ref{fig:Phases of Compil
 \label{fig:Phases of Compiler}
 \end{figure}
 
-The architecture for a compiler as described in Figure~\ref{fig:Phases of Compiler} is not needed
-since \progLang{Haskell} provides most of
-them.
+The architecture for a compiler as described in Figure~\ref{fig:Phases of Compiler} is not needed since
+\progLang{Haskell} provides most of them.
 Nonetheless, the library has the following major components,\eref{comma-before-list}
 
 \begin{enumerate}
@@ -106,13 +105,16 @@ and unifier will be customized.\endnote{%
 
 
 
-Unification is a part of the \progLang{Prolog} working. Simply speaking unification tells us whether or not two terms can be made equal.
-The other part is to reach to a point in time when two terms are gathered depending upon matching rules in the knowledge base. This is where
-a search strategy comes into play along with a backtracking mechanism.
+Unification is a part of the \progLang{Prolog} working.
+Simply speaking unification tells us whether or not two terms can be made equal.
+The other part is to reach to a point in time when two terms are gathered depending upon matching rules in the
+knowledge base.
+This is where a search strategy comes into play along with a backtracking mechanism.
 
-Putting everything together forms the \progLang{Prolog} query resolver. Given a query and a knowledge, the query resolver matches the
-input query with the rules in the knowledge base to create a list of goals to satisfy to generate an unifier along with saving choice
-points on the way for backtracking.
+Putting everything together forms the \progLang{Prolog} query resolver.
+Given a query and a knowledge, the query resolver matches the input query with the rules in the knowledge base to
+create a list of goals to satisfy to generate an unifier along with saving choice points on the way for
+backtracking.
 
 This chapter discusses about how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to
 the concepts and implementation from Chapter~\ref{proto1}.
@@ -194,8 +196,8 @@ After the language is opened up, the next step is to replace the current unifica
 }}
 
 
-The current unification uses basic pattern matching to unify the terms. All the shortcomings related to the language also affect the
-unification mechanism.
+The current unification uses basic pattern matching to unify the terms.
+All the shortcomings related to the language also affect the unification mechanism.
 
 Beginning with the result produces by the query resolver shown in Figure~\ref{tab:prlg0201unifier}.
 \begin{code-list}[h]
@@ -235,8 +237,8 @@ as well.\endnote{%
 The resulting language is not far from what we did in {\Large ?\LARGE ?}~\ref{proto1}\endnote{%
   Fix me!
 }
-apart from the fact that the \markWord{Term} expressions are encapsulated
-to form \markWord{Clauses} which in turn form a \markWord{Program}.
+apart from the fact that the \markWord{Term} expressions are encapsulated to form \markWord{Clauses} which in turn
+form a \markWord{Program}.
 
 Moreover, the required instances make the language compatible with the unification procedure.
 
