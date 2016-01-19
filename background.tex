@@ -22,15 +22,15 @@ particular paradigm, it is more accurate that a language exhibits a set of chara
 paradigms.
 The broader the scope of a language, the broader is the versatility in solving problems.
 
-Programming Languages\endnote{%
+Programming languages\endnote{%
   \david{What style guide are you using to determine capitalization?}\newline
   \mehul{none at the moment but I will change certain capitals to small}
 }\elabel{caps-choices} that fall into the same family, in our case declarative programming languages, can be of
 different paradigms and can have very contrasting, conflicting characteristics and behaviours.
-The two most important ones in the family of declarative languages are the Functional\eref{caps-choices} and
-Logical\eref{caps-choices} style of programming.
+The two most important ones in the family of declarative languages are the functional\eref{caps-choices} and
+logical\eref{caps-choices} style of programming.
 
-Functional Programming\eref{caps-choices}, \cite{hughes1989functional} gets its name as the fundamental concept is
+Functional programming\eref{caps-choices}, \cite{hughes1989functional} gets its name as the fundamental concept is
 to apply mathematical functions to arguments to get results.
 A program itself consists of functions and functions only which when applied to arguments produce results without
 changing the state that is values on variables and so on.
@@ -45,7 +45,7 @@ In untyped $\lambda$-calculi functions have no predetermined type, whereas typed
 on what sort (type) of data can a function work with.
 \progLang{Scheme} is based on the untyped variant, while \progLang{ML} and \progLang{Haskell} are based on typed
 $\lambda$-calculi.
-Most typed $\lambda$-calculi langauges are based on Hindley-Milner or Damas-Milner or Damas-Hindley-Milner
+Most typed $\lambda$-calculi langauges are based on the Hindley-Milner or Damas-Milner or Damas-Hindley-Milner
 (\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki}) type system.\endnote{%
   I fixed a space here.
   Are 
@@ -55,12 +55,15 @@ Most typed $\lambda$-calculi langauges are based on Hindley-Milner or Damas-Miln
   \item Damas-Hindley-Milner
   \end{inparaitem}
   three different names for the same type system; or three different variations on the same idea?
+  \mehul{Just different names.
+  It is like Backus normal form and Panini-Backus normal form.}
   
 }\textsuperscript{,}\endnote{%
   This sentence feels wrong.  I expect either ``\textit{\textsl{the} \dots type system.}'' or ``\textit{\dots type
     system\yyy{}{s}.}'' 
+    \mehul{added the}
 }
-The Hindley-Milner\yyy{ }{-}like type systems have the ability to give a most general type \yyy{of}{to} a program
+The Hindley-Milner-like type systems have the ability to give a most general type to a program
 without any annotations.
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the 
@@ -76,9 +79,11 @@ variables, lastly unifying all of the constraints giving the type of the result.
     ``\textsl{This is, in fact, an instance of the unification algorithm
       that we discuss in a different context in Chapter~\ref{proto1}}.''.
   }
+  \mehul{added the sentece above}
 }
+This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}
 
-Logic Programming\eref{caps-choices}, \cite{spivey1995introduction} on the other hand is based on formal logic.
+Logic programming\eref{caps-choices}, \cite{spivey1995introduction} on the other hand is based on formal logic.
 A program is a set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old
 ones.
 This is done until the one which gives the solution is not derived.
@@ -104,6 +109,7 @@ The languages in question are \progLang{Haskell} and \progLang{Prolog}. These tw
     declarative language group.
   \end{quote}
 }
+These two languages come from respective the functional programming and logical programming branches of the declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
 \item { Haskell} uses \haskellConstruct{pattern matching} while \progLang{Prolog} uses \prologConstruct{unification}.
@@ -115,16 +121,17 @@ Some of the dissimilarities between the languages are:
 number of distributions and is present from academia to industry.
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the first
-language to incorporate \haskellConstruct{monads} \cite{wadler1992comprehending} for safe input and output.
+language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
 \haskellConstruct{Monads}\endnote{%
   Here ``monad'' is an (admittedly technical) English word.
   It doesn't need special marking.
+  \mehul{changed}
 }
 can be 
-described as composable computation descriptions \cite{website:monadshaskellorg}\yyy{ }{}.\endnote{%
+described as composable computation descriptions \cite{website:monadshaskellorg}.\endnote{%
   Remove the space before the period.
 }
-Each \haskellConstruct{monad}\endnote{%
+Each monad\endnote{%
   See the preceding endnote.
 }
 consists of a description of what has action has to be executed, how the action has to be run and how to combine
@@ -164,8 +171,8 @@ Simply speaking it is like a \textit{functional} \progLang{Java} providing side-
 along with \progLang{Java}-like features.
 
 Before moving on, let us take a look at some terms related to the content above.
-To begin with foreign function interfaces (FFI) \cite{website:ffiwiki}, a mechanism by which a program written in
-one programming language can make use of services written in another.\eref{not-a-sentence} For example, a function
+To begin with foreign function interfaces (FFI) \cite{website:ffiwiki} provide a mechanism by which a program written in
+one programming language can make use of services written in another programming language.\eref{not-a-sentence} For example, a function
 written in \progLang{C} can be called within a program written in \progLang{Haskell} and vice versa through the FFI
 mechanism.
 Currently the \progLang{Haskell} foreign function interface works only for one language.
@@ -185,6 +192,7 @@ They can be termed as multilingual run-times\endnote{%
   What do basic O/S texts use?
   ``Multilingual'' is definitely one word.
   \Verb!https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase)!
+  \mehul{I think all of them can be found}
 }
 which lay down a common layer for languages to use each others functions.
 An example for this is the Microsoft common language runtime (CLR) \cite{website:clrwiki} which is an
@@ -199,12 +207,13 @@ If both of them are the same then the language is said to be reflective.\endnote
   Usually \textit{reflective} refers to run-time access to information about the object language text;
   what you are discussing is compile-time access to the object language.\newline
   \david{Is this your \mehul?????}?}
-}
+
 \progLang{Haskell} programs can be modified using Template \progLang{Haskell} \cite{website:templatehaskell}, an
 extension to the language which provides services to jump between the two types of programs.
 The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type which can be
-modified at compile time which allows playing with the code and going back and forth possible.\endnote{%
+modified at compile time allowing us to play with the code and going back and forth.\endnote{%
   The preceding sentence needs fixing.
+\mehul{changed}	
 }
 
 A specific tool used in meta programming is quasi-quotation \cite{mainland2007s,haskellquasi,wikiquasi}, which
@@ -233,7 +242,7 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
 The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
-The same in \progLang{Haskell},\endnote{%
+The same in \progLang{Haskell} would be of the form:\endnote{%
   \david{Is the point here that templating helps, or what?}\newline
   \mehul{it is just one of the many ways to bring the languages together}\newline
   \david{Say something in the text.}
@@ -244,12 +253,22 @@ The same in \progLang{Haskell},\endnote{%
 %		Rs = [X|Ys] & 
 %			append(Xs, Qs, Ys))
 %\end{minted}  
-\inputminted[linenos]{haskell}{append.pl}
 
-Consider the Object Functional Programming Language\eref{caps-choices}, \progLang{Scala}
+
+\begin{code-list}[th]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{append.pl}
+  \end{singlespace}
+  \caption{\progLang{Prolog} append function translated to \progLang{Haskell}.}
+\label{tab:prlgappndhskl}
+\end{code-list}
+
+Listing~\ref{tab:prlgappndhskl} shows 
+
+Consider the object functional programming language\eref{caps-choices}, \progLang{Scala}
 \cite{website:scala}.\endnote{%
   Should this example be moved up to where you are discussing multi-paradigm languages?
-  Wrote something about \progLang{Scala} up there.
+  \mehul{Wrote something about \progLang{Scala} up there.}
 }
 It is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
@@ -283,8 +302,8 @@ The attempts fall into two categories as follows:
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
 
-\yyy{The approaches listed above are next in line for discussions}{These two approaches---embedding, and paradigm
-  integration---are discussed \dots {\color{dark-green}\footnotesize\sffamily in [specific location]}}.  
+The approaches of embedding and paradigm integration are discussed in Chapter~\ref{chap:embedding} and Chapter~\ref{chap:multiparadigm} 
+respectively.  
 
 \section{Chapter Recapitulation}
 

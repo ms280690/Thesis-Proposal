@@ -26,8 +26,12 @@ We analyze the current implementations and provide insights into the contributio
 %-----------------------------------------------------------------------------
 \noindent\rule{\textwidth}{0.5pt}
 
+This chapter discusses the current implementations and publications for embedding \progLang{Prolog} in languages and specifically 
+\progLang{Haskell}. This chapter also discusses the shortcomings of the same to get a direction for improvements and contributions of this 
+thesis. 
+\mehul{What i want to say is that we looked at a lot of stuff and then found these problems. Now these problems are like points for improvment. Also we wanted to add some other things like monadic unification. }
 
-\section{\protect{Existing Work by Others}}
+\section{\protect{Existing Work by Others}} \label{sec:existing-work-by-others}
 
 There have been several attempts at embedding \progLang{Prolog} into \progLang{Haskell}, which are
 discussed below, along with their shortcomings.
@@ -38,6 +42,7 @@ discussed below, along with their shortcomings.
     What is ``the job at hand''?
     What is `` a perspective into the job at hand''?
     See \textit{p.}~\pageref{sec:list-colloquialisms}.
+    \mehul{ which offer a starting point for the task of embedding.}
 }
   One of the earliest implementations \cite{website:mini-prolog-hugs98} is for an older specification of
   \progLang{Haskell} called \progLang{Haskell 98} \texttt{\bfseries{hugs}}.
@@ -66,7 +71,7 @@ discussed below, along with their shortcomings.
 \item
   In the case of libraries, a few exist.
   Most are old and are not currently maintained or updated.
-  Many provide only a shell through which one has to do\eref{must-have-to} all the work, which is synonymous with
+  Many provide only a shell through which one must have to do\eref{must-have-to} all the work, which is synonymous with
   the embeddings mentioned above.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
   but are still not complete.\endnote{%
@@ -85,6 +90,7 @@ discussed below, along with their shortcomings.
   in \progLang{Prolog}.\endnote{%
     \david{What does this point mean?}
     \mehul{I would have to think; I do not remember.}
+    \mehul{I think what we were saying is that a \progLang{Prolog} list can have elements of any type unlike a \progLang{Haskell} list so we created this nice datatype and then fixed it so that we get infinitely nested list consists of diff constructors of the same type meaning it is still uni typed like \progLang{Prolog}}
 }
 \end{enumerate}
 
@@ -96,9 +102,12 @@ crossover implementations exist but again most of them have faded out.\endnote{%
   \S~\ref{sec:what-this-chapter:proposedWork} says that this chapter is about embedding programming languages.
   You appear to have wandered off topic.
  \mehul{I believe we might have to change ``what is this chapter about''}
+ \mehul{Added some content to first section of this chapter}
 }
 
-As discussed in the above,\endnote{%
+\mehul{Split needed here}
+
+As discussed in Section~\ref{sec:existing-work-by-others},\endnote{%
   \vspace*{-2\baselineskip}
   \begin{compactdesc}
   \item []
@@ -123,13 +132,13 @@ Mostly, the trend is to build a library for extension to replicate the features 
   \mehul{too deep == too complex, too shallow == does not do much, mix == a little better I guess?}
 }
 
-Taking into consideration above, there is quite some room for improvement and additions.\endnote{%
+Taking into consideration the above, there is quite some room for improvement and additions.\endnote{%
   Try completely rephrasing this sentence.
 }
 \section{Proposal Contributions}
 
 Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
-close to a \progLang{Prolog}-like\eref{language-like} language and has practical abilities to carry out real-world
+close to a \progLang{Prolog}-like language and has practical abilities to carry out real-world
 tasks.
 They include predicates such as \prologConstruct{cut}\endnote{%
   Write macros like \macroName{progLang} for the various classes
@@ -137,19 +146,19 @@ They include predicates such as \prologConstruct{cut}\endnote{%
   ``fail'', which when used as a \progLang{Prolog} word, should be
   typeset as \texttt{\char`\\prologCode\char`\{fail\char`\}}, or some such.
 }\elabel{text-kind}
-, \markWord{assert}, \markWord{fail}, \markWord{setOf}, \markWord{bagOf} among others.
+, \prologConstruct{assert}, \prologConstruct{fail}, \prologConstruct{setOf}, \prologConstruct{bagOf} among others.
 This forms\endnote{%
   Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
 }
 the first stage of the implementation.
-Secondly, exploring aspects such as \markWord{assert} and database capabilities.\endnote{%
+Secondly, exploring aspects such as \prologConstruct{assert} and database capabilities.\endnote{%
   \david{Strike this?}\newline
   \mehul{well we/ the library does some of this right ?}
 }\textsuperscript{,}\endnote{%
   This is not a complete sentence.
 }
 A third question to address is the accommodation of input and output, specifically dealing with the \markWord{IO
-  Monad} in \progLang{Haskell} with \progLang{Prolog} \markWord{IO}.\endnote{%
+  Monad} in \progLang{Haskell} with \progLang{Prolog} \languageConstruct{IO}.\endnote{%
   Make this clearer. Perhaps\par\vspace{-1\baselineskip}
   \begin{quote}\slshape
     A third question to address is the accommodation of input and
@@ -180,14 +189,14 @@ setting.\eref{not-a-sentence}
     Have we defined ``eDSL'' yet?  If not, write
     ``\textsl{embedded, domain-specific language \enparen{eDSL}}''.
 }
-  in terms of its capability to \textit{open up} the language{\large,} i.e{\large,} to include meta syntactic
+  in terms of its capability to \textit{open up} the language, i.e, to include meta syntactic
   variables, custom quantifiers and logic.
   (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
   syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to
   the original type.
-  One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}{\Large.}
+  One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}.
 
-  To test it out we adopt the closed \progLang{Prolog}-like\eref{language-like} language defined in \cite{prolog-lib} and open it up.
+  To test it out we adopt the closed \progLang{Prolog}-like language defined in \cite{prolog-lib} and open it up.
   As for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
   implementation encapsulated into a monad.
 
