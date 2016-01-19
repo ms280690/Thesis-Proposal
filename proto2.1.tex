@@ -49,7 +49,7 @@ type Program      = [Clause]
 \end{code-list}
 \end{comment}
 
-From the Figure~\ref{tab:origgramp0201} we will focus on \xxx{the} \markWord{Term}\yyy{}{s,} since the others just
+From the Figure~\ref{tab:origgramp0201} we will focus on \haskellConstruct{Terms}, since the others just
 add wrappers around expressions which can be created by it.
 The above language suffers from most of the problems discussed in the previous chapter.
 The above is used to construct \progLang{Prolog} ``terms'' which are of a ``single type''.
@@ -76,7 +76,7 @@ specifically speaking, parts of a compiler (see Figure~\ref{fig:Phases of Compil
 
 The architecture for a compiler as described in Figure~\ref{fig:Phases of Compiler} is not needed since
 \progLang{Haskell} provides most of them.
-Nonetheless, the library has the following major components,\eref{comma-before-list}
+Nonetheless, the library has the following major components:
 
 \begin{enumerate}
 \item Syntax, defining the language.
@@ -89,7 +89,7 @@ Nonetheless, the library has the following major components,\eref{comma-before-l
 
 \item Unifier.
 
-\item Read-Eval-Print Loop\Verb[showspaces]! !(REPL).\endnote{%
+\item Read-Eval-Print Loop (REPL).\endnote{%
   Fix the preceding space.
 }
 \end{enumerate}
@@ -106,7 +106,7 @@ and unifier will be customized.\endnote{%
 
 
 Unification is a part of the \progLang{Prolog} working.
-Simply speaking unification tells us whether or not two terms can be made equal.
+Simply speaking \prologConstruct{unification} tells us whether or not two terms can be made equal.
 The other part is to reach to a point in time when two terms are gathered depending upon matching rules in the
 knowledge base.
 This is where a search strategy comes into play along with a backtracking mechanism.
@@ -119,14 +119,11 @@ backtracking.
 This chapter discusses about how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to
 the concepts and implementation from Chapter~\ref{proto1}.
 This not only proves how generic and modular the approach from the previous chapter is but also the system working
-as a whole.\endnote{%
-  Page break following removed.\newline
-  \david{Mehul: remove this endnote if you have no questions about removing the pagebreak.}
-}
+as a whole.
 
 
 
-\section{Current implementation (prolog-0.2.0.1)}
+\section{Steps involved / Procedure }
 
 Beginning with language from Figure~\ref{tab:origgramp0201} is transformed into an isomorphically equivalent
 grammar described in Figure~\ref{tab:flatgrp0201}.
@@ -173,7 +170,8 @@ The steps involved for the transformation are listed below.
 \item Create a fixed-point version of the resulting grammar.
 \end{enumerate}
 
-The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities.
+The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities 
+Listing~\ref{tab:prlg0201monadicunificationtranslation} and Listing~\ref{tab:prlg0201monadicunificationconversion}.
 
 The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.\endnote{%
   Page break following removed.\newline
@@ -193,7 +191,7 @@ The resulting abstract grammar is shown in the Figure~\ref{tab:flatgrp0201}.\end
 After the language is opened up, the next step is to replace the current unification procedure to the one {\Huge
   ?\endnote{%
   Something is missing here.  The current text comes from commit \texttt{a1b2c01fb24}.
-}}
+}} which is similar to Chapter~\ref{proto1}.
 
 
 The current unification uses basic pattern matching to unify the terms.
@@ -208,7 +206,7 @@ type Substitution = (VariableName, Term)
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
 \end{code-list}
-A \markWord{Unifier} is a list of \markWord{Substitutions} which binds a variable to a value.
+A \prologConstruct{Unifier} is a list of \prologConstruct{Substitutions} which binds a variable to a value.
 
 \begin{comment}
 Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
@@ -218,7 +216,7 @@ unification library \cite{prolog-lib}.
 Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}.
 Each language expression is matched based on its structure.
 
-\begin{code-list}[h]
+\begin{code-list}[th]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto2-unification-lion.hs}
   \end{singlespace}
@@ -232,6 +230,47 @@ As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} la
 as well.\endnote{%
   Page break following removed.
 }
+
+Before we can unify terms of our language they need to be converted from the old grammar. We also generate a mapping of variables for 
+library compatibility. See Listing~\ref{tab:prlg0201monadicunificationconversion} and 
+Listing~\ref{tab:prlg0201monadicunificationtranslation}.
+
+\begin{code-list}[th]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto2-monadic-unification-conversion.hs}
+  \end{singlespace}
+\caption{prolog-0.2.0.1 Monadic Unification Conversion Functions}
+\label{tab:prlg0201monadicunificationconversion}
+\end{code-list}
+
+
+
+\begin{code-list}[th]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto2-monadic-unification-translation.hs}
+  \end{singlespace}
+\caption{prolog-0.2.0.1 Monadic Unification Translation Functions}
+\label{tab:prlg0201monadicunificationtranslation}
+\end{code-list}
+
+
+\begin{code-list}[th]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto2-monadic-unification-functions.hs}
+  \end{singlespace}
+\caption{prolog-0.2.0.1 Monadic Unification Functions}
+\label{tab:prlg0201monadicunificationfunctions}
+\end{code-list}
+
+\begin{code-list}[th]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+  \end{singlespace}
+\caption{prolog-0.2.0.1 Monadic Unification Tests and Extraction}
+\label{tab:prlg0201monadicunificationtestsandextraction}
+\end{code-list}
+
+
 \begin{comment}
 \section{Modifications}
 The resulting language is not far from what we did in {\Large ?\LARGE ?}~\ref{proto1}\endnote{%
@@ -270,12 +309,6 @@ run it \markWord{STBinding} monad to extract substitutions.\endnote{%
   \inputminted[linenos]{haskell}{haskell-proto2-hearty-kayo.hs}
 \end{singlespace}
 \end{comment}
-
-
-
-\section{Results}
-
-It works\yyy{,}{.}
 
 
 
