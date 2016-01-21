@@ -18,7 +18,7 @@
 
 This chapter demonstrates a fairly generic procedure of creating an open embedded domain specific language in
 \progLang{Haskell} along with \textit{monadic unification}.
-As a proof of concept, the implementation consists of creating a \progLang{Prolog} like\endnote{%
+As a proof of concept, the implementation consists of creating a \progLang{Prolog}-like\endnote{%
   ``\textit{\progLang{Prolog} like}'' should be hyphenated as \text{\progLang{Prolog}-like}
   when used as an adjective, as here.
 }\elabel{language-like}
@@ -35,7 +35,7 @@ using the concepts mentioned above.
 \item \progLang{Prolog}
 
 The language itself has a number of sub components.
-The ones relevant to this thesis are,\eref{comma-before-list}
+The ones relevant to this thesis are:\eref{comma-before-list}
 \begin{enumerate}
 \item Language, the syntax, semantics.
 
@@ -85,13 +85,13 @@ The ones relevant to this thesis are,\eref{comma-before-list}
 This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable
 generic unification algorithm implementation.
 
-The relevant components are,\eref{comma-before-list}
+The relevant components are:\eref{comma-before-list}
 \begin{enumerate}
 \item The \Verb!Unifiable! class
 
 \item The \Verb!UTerm! data type
 
-\item Variables\endnote{%
+\item Variable implementations\endnote{%
   what do ``\textit{Variables}'' refer to?
 },
   \Verb!STVar!, \Verb!IntVar!
@@ -106,9 +106,9 @@ The relevant components are,\eref{comma-before-list}
   This implementation applies to practice the procedure to create an open language to accommodate types,
   custom variables, quantifiers and logic and recovering primitives while preserving the structure of a
   language commonly defined by a recursive abstract syntax tree.
-  The resulting language is then adapted to apply a \progLang{Prolog} like\eref{language-like} unification.
+  The resulting language is then adapted to apply a \progLang{Prolog}-like\eref{language-like} unification.
 
-The implementation consists of the following components,\eref{comma-before-list}
+The implementation consists of the following components:\eref{comma-before-list}
 \begin{enumerate}
 \item An open language
 
@@ -153,7 +153,7 @@ We begin with the programming constructs of the language.
 Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
 terms are equal.
 
-The possibilities are,\endnote{%
+The possibilities are:\endnote{%
   I believe that I have commented on the preceding elsewhere.
   The punctuation to introduce a list (that is, the end of the phrase immediately preceding the list) should not be
   ``,'', but more likely a colon, or possibly a period.
@@ -215,7 +215,7 @@ Unification is just a part of the process where the language
 attempts to find a solution for the given query using the rules provided
 in the knowledge base.
 The other part is actually reaching a point where two terms need to be
-unified i.e searching.\endnote{%
+unified i.e. searching.\endnote{%
   ``i.e.'' is missing the final period.
   Secondly, ``\textit{where two terms need to be
     unified that is searching}'' doesn't read well because it is missing
@@ -254,7 +254,7 @@ a data type to replicate the target language type system while conforming to the
 benefits.
 
 
-We have a \progLang{Prolog} like\eref{language-like} language in \progLang{Haskell} defined via \textit{data}.
+We have a \progLang{Prolog}-like\eref{language-like} language in \progLang{Haskell} defined via \textit{data}.
 
 The language defined is recursive in nature.
 
@@ -264,13 +264,13 @@ We convert it into a non recursive\endnote{%
 data type.
 
 
-Basically we do Unification\eref{caps-choices}
+Basically we do unification\eref{caps-choices}
 monadically.
 
 
 \section{Creating a data type}
 
-To start we need to define a abstract syntax for the \progLang{Prolog} like\eref{language-like} language.
+To start we need to define a abstract syntax for the \progLang{Prolog}-like\eref{language-like} language.
 But there is a conflict between the type systems as we shall discuss.
 
 
@@ -287,7 +287,7 @@ The advantages of static typing \cite{meijer2004static}\endnote{
   \david{Why do we need the following two paragraphs?}\newline
   \mehul{To
   talk about the type systems of the languages}
-}\textsuperscript{,}\endnote{%
+}:\endnote{%
   If we are going to keep this, we need to have sentences.  We need something like
   ``\textsl{The advantages of static typing are: \dots{}, and\dots, whereas the advantages of dynamic typing are:
     \dots}''.
@@ -388,7 +388,7 @@ One result of coding as in Listing~\ref{tab:non-recurse} rather than as in
   Listing~\ref{tab:closed-terms} (lines 6--9)
   is that the non-recursive type
 \texttt{FlatTerm} is modular and generic as the structure
-\markWord{FlatTerm}
+\haskellConstruct{FlatTerm}
 is separate
 from its
 type which is ``\unknownLabel{\textit{a}}''\eref{text-kind}.
@@ -431,18 +431,18 @@ and how to represent it generically to perform operations on it, since
 \end{minted}
 %
 because with our original grammar all the expression that could be defined would be represented by a single entity
-\markWord{Term} no matter how infinitely deep they were.
+\haskellConstruct{Term} no matter how infinitely deep they were.
 
 The approach to tackling this problem is to find the ``fixed-point''.
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
-It means that applying one more \markWord{FlatTerm} would not change anything \yyy{–}{--}\eref{non-ascii}\textsuperscript{,}\endnote{%
+It means that applying one more \haskellConstruct{FlatTerm} would not change anything \yyy{–}{--}\eref{non-ascii}\textsuperscript{,}\endnote{%
   Even if entered correctly, an en-dash is not appropriate here.
 }
 a \textcolor{red}{fix}\endnote{%
   Spelling!
 }
-point does not move under \markWord{FlatTerm}.
+point does not move under \haskellConstruct{FlatTerm}.
 
 \progLang{Haskell} provides it in two forms,\endnote{%
   \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
@@ -464,7 +464,7 @@ A fixed point of a function \markWord{f} is a value a such that \markWord{f a} \
 This is where the name of fix comes from: it finds the least-defined fixed
 point of a function.
 
-\item And\eref{no-and} in type constructor form,
+\item \eref{no-and} In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
 
@@ -476,7 +476,7 @@ The resulting language is of the form,
 data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)
 \end{minted}
 %
-simply speaking all the expressions resulting from \markWord{FlatTerm} can be represented  by the type signature \markWord{Fix FlatTerm}.
+simply speaking all the expressions resulting from \haskellConstruct{FlatTerm} can be represented  by the type signature \haskellConstruct{Fix FlatTerm}.
 
 A sample function working with such expressions would be of the form,
 \mint{haskell}|func :: Fix FlatTerm -> Fix FlatTerm|
@@ -558,7 +558,7 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \david{\macroName{codeLibrary} is local to this file, which creates a
   problem in the Table of Contents.}
 
-Our language is now opened up and \endnote{%
+Our language now opened up and \endnote{%
   The ``is'' seems mispaced.
 }
 ready for expansion,
@@ -573,15 +573,15 @@ with it.\endnote{%
 
 In this section we discuss
 \begin{enumerate}
-\item Functor Hierarchy.\eref{caps-choices}
+\item Functor hierarchy.\eref{caps-choices}
 
 \item Required instances the language must have.
 
 \item Mutable variables.
 
-\item Variable Bindings.\eref{caps-choices}
+\item Variable bindings.\eref{caps-choices}
 
-\item Monadic Unification.\eref{caps-choices}
+\item Monadic unification.\eref{caps-choices}
 
 \item Replicating \progLang{Prolog} unification in \progLang{Haskell}
 \end{enumerate}

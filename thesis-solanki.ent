@@ -1302,6 +1302,31 @@ forgot}.
 
 \par\endgroup
 \@doanenote {41}
+macro:->``far
+scarcer''?
+\mehul
+{minimal}.
+\david
+{``\textsl
+{Its
+use
+in
+industry
+is
+minimal
+than
+the
+leading
+languages\dots
+}''
+makes
+no
+sense.}
+\mehul
+{Changed}
+
+\par\endgroup
+\@doanenote {42}
 macro:->Do
 you
 mean
@@ -1329,7 +1354,7 @@ or
 ?
 
 \par\endgroup
-\@doanenote {42}
+\@doanenote {43}
 macro:->\david
 {What
 does
@@ -1454,7 +1479,7 @@ argument.
 }
 
 \par\endgroup
-\@doanenote {43}
+\@doanenote {44}
 macro:->\david
 {I
 have
@@ -1490,7 +1515,7 @@ in
 {Haskell}}
 
 \par\endgroup
-\@doanenote {44}
+\@doanenote {45}
 macro:->This
 \P
 {}
@@ -1511,7 +1536,7 @@ references
 say.
 
 \par\endgroup
-\@doanenote {45}
+\@doanenote {46}
 macro:->I
 am
 not
@@ -1526,7 +1551,7 @@ here:
 {spivey1999embedding}?.
 
 \par\endgroup
-\@doanenote {46}
+\@doanenote {47}
 macro:->I
 still
 don't
@@ -1540,7 +1565,7 @@ about
 here.
 
 \par\endgroup
-\@doanenote {47}
+\@doanenote {48}
 macro:->This
 is
 a
@@ -1548,7 +1573,7 @@ sentence
 fragment.
 
 \par\endgroup
-\@doanenote {48}
+\@doanenote {49}
 macro:->I
 do
 not
@@ -1558,7 +1583,7 @@ preceding
 sentence.
 
 \par\endgroup
-\@doanenote {49}
+\@doanenote {50}
 macro:->Yet
 another
 metaphor
@@ -1572,17 +1597,17 @@ in
 context.
 
 \par\endgroup
-\@doanenote {50}
+\@doanenote {51}
 macro:->Naked
 Prolog.
 
 \par\endgroup
-\@doanenote {51}
+\@doanenote {52}
 macro:->comma
 splice
 
 \par\endgroup
-\@doanenote {52}
+\@doanenote {53}
 macro:->Here
 ``\textit
 {only}''
@@ -1603,10 +1628,7 @@ only
 implementation
 that
 comes
-\xxx
-{the}
-\yyy
-{closest}{close}\dots
+close\dots
 \end
 {quote}
 or
@@ -1617,8 +1639,6 @@ or
 which
 is
 the
-\xxx
-{only}
 implementation
 that
 comes
@@ -1628,7 +1648,7 @@ closest\dots
 {quote}
 
 \par\endgroup
-\@doanenote {53}
+\@doanenote {54}
 macro:->Does
 this
 sentence
@@ -1648,9 +1668,16 @@ the
 and
 this
 endnote.
+\mehul
+{Sort
+of
+yes,
+made
+changes
+anyways}
 
 \par\endgroup
-\@doanenote {54}
+\@doanenote {55}
 macro:->\dots
 {}
 or
@@ -1670,9 +1697,23 @@ efficacy
 of
 the
 library.
+\mehul
+{I
+have
+not
+played
+with
+all
+the
+componenents
+of
+the
+library
+so
+.....}
 
 \par\endgroup
-\@doanenote {55}
+\@doanenote {56}
 macro:->``Moving
 on
 to
@@ -1687,19 +1728,6 @@ Unification.''?
 Say
 it
 aloud.
-
-\par\endgroup
-\@doanenote {56}
-macro:->Make
-the
-changes
-suggested
-or
-similar,
-then
-delete
-this
-endnote.
 
 \par\endgroup
 \@doanenote {57}
@@ -1760,6 +1788,8 @@ here?
 As
 defined
 where?
+\mehul
+{changed}
 
 \par\endgroup
 \@doanenote {61}
@@ -1771,6 +1801,8 @@ doesn't
 spin
 my
 wheels.
+\mehul
+{changed}
 
 \par\endgroup
 \@doanenote {62}
@@ -1778,6 +1810,8 @@ macro:->What
 is
 ``it''
 here?
+\mehul
+{changed}
 
 \par\endgroup
 \@doanenote {63}
@@ -1797,6 +1831,8 @@ above?
 \@doanenote {64}
 macro:->Which
 fog?
+\mehul
+{changed}
 
 \par\endgroup
 \@doanenote {65}
@@ -1822,6 +1858,8 @@ to''
 where
 you
 can.
+\mehul
+{changed}
 
 \par\endgroup
 \@doanenote {67}
@@ -1841,6 +1879,8 @@ comma
 before
 ``such
 as''.
+\mehul
+{changed}
 
 \par\endgroup
 \@doanenote {68}
@@ -1913,29 +1953,11 @@ in
 2001.
 \end
 {quote}
+\mehul
+{Changed}
 
 \par\endgroup
 \@doanenote {69}
-macro:->Add
-the
-comma,
-then
-remove
-this
-endnote.
-
-\par\endgroup
-\@doanenote {70}
-macro:->Add
-the
-comma,
-then
-remove
-this
-endnote.
-
-\par\endgroup
-\@doanenote {71}
 macro:->I
 do
 not
@@ -1947,17 +1969,7 @@ at
 all.
 
 \par\endgroup
-\@doanenote {72}
-macro:->Add
-the
-comma,
-then
-remove
-this
-endnote.
-
-\par\endgroup
-\@doanenote {73}
+\@doanenote {70}
 macro:->This
 is
 a
@@ -1975,7 +1987,7 @@ it
 clearer.
 
 \par\endgroup
-\@doanenote {74}
+\@doanenote {71}
 macro:->The
 rewording
 avoids
@@ -1984,7 +1996,7 @@ sentence
 fragment.
 
 \par\endgroup
-\@doanenote {75}
+\@doanenote {72}
 macro:->``\progLang
 {Nue
 Prolog}''
@@ -1992,9 +2004,13 @@ or
 ``\progLang
 {Neu
 Prolog}''?
+\mehul
+{nue
+\progLang
+{Prolog}}
 
 \par\endgroup
-\@doanenote {76}
+\@doanenote {73}
 macro:->Are
 we
 done
@@ -2013,7 +2029,7 @@ other
 languages,}''.
 
 \par\endgroup
-\@doanenote {77}
+\@doanenote {74}
 macro:->This
 is
 a
@@ -2124,14 +2140,14 @@ others
 {bert1987lpg,malachi1984tablog}}.}
 
 \par\endgroup
-\@doanenote {78}
+\@doanenote {75}
 macro:->What
 sort
 of
 thing?
 
 \par\endgroup
-\@doanenote {79}
+\@doanenote {76}
 macro:->This
 preceding
 phrase
@@ -2141,7 +2157,7 @@ a
 sentence.
 
 \par\endgroup
-\@doanenote {80}
+\@doanenote {77}
 macro:->Avoid
 non-\textsc
 {ascii}
@@ -2223,7 +2239,7 @@ minus
 signs.
 
 \par\endgroup
-\@doanenote {81}
+\@doanenote {78}
 macro:->``ComputerScience''
 should
 be
@@ -2231,13 +2247,13 @@ be
 Science''.
 
 \par\endgroup
-\@doanenote {82}
+\@doanenote {79}
 macro:->Raw
 language
 name.
 
 \par\endgroup
-\@doanenote {83}
+\@doanenote {80}
 macro:->Consider
 using
 ``such
@@ -2248,7 +2264,7 @@ of
 ``like''.
 
 \par\endgroup
-\@doanenote {84}
+\@doanenote {81}
 macro:->See
 \textit
 {p.}~\pageref
@@ -2257,7 +2273,7 @@ item~\ref
 {item:no-and}.
 
 \par\endgroup
-\@doanenote {85}
+\@doanenote {82}
 macro:->The
 surrounding
 \macroName
@@ -2280,6 +2296,24 @@ of
 {section}'s.
 
 \par\endgroup
+\@doanenote {83}
+macro:->Use
+\macroName
+{progLang}!
+
+\par\endgroup
+\@doanenote {84}
+macro:->Use
+\macroName
+{progLang}!
+
+\par\endgroup
+\@doanenote {85}
+macro:->Use
+\macroName
+{progLang}!
+
+\par\endgroup
 \@doanenote {86}
 macro:->Use
 \macroName
@@ -2293,24 +2327,6 @@ macro:->Use
 
 \par\endgroup
 \@doanenote {88}
-macro:->Use
-\macroName
-{progLang}!
-
-\par\endgroup
-\@doanenote {89}
-macro:->Use
-\macroName
-{progLang}!
-
-\par\endgroup
-\@doanenote {90}
-macro:->Use
-\macroName
-{progLang}!
-
-\par\endgroup
-\@doanenote {91}
 macro:->``\textit
 {\progLang
 {Prolog}
@@ -2331,7 +2347,7 @@ as
 here.
 
 \par\endgroup
-\@doanenote {92}
+\@doanenote {89}
 macro:->Do
 you
 mean
@@ -2340,7 +2356,7 @@ mean
 {Yes}
 
 \par\endgroup
-\@doanenote {93}
+\@doanenote {90}
 macro:->The
 first
 two
@@ -2360,7 +2376,7 @@ probably
 incorrect.
 
 \par\endgroup
-\@doanenote {94}
+\@doanenote {91}
 macro:->what
 do
 ``\textit
@@ -2369,7 +2385,7 @@ refer
 to?
 
 \par\endgroup
-\@doanenote {95}
+\@doanenote {92}
 macro:->You
 might
 want
@@ -2424,7 +2440,7 @@ instance,
 {quote}
 
 \par\endgroup
-\@doanenote {96}
+\@doanenote {93}
 macro:->I
 believe
 that
@@ -2485,7 +2501,7 @@ to-do
 list.
 
 \par\endgroup
-\@doanenote {97}
+\@doanenote {94}
 macro:->``i.e.''
 is
 missing
@@ -2525,7 +2541,7 @@ English
 words.
 
 \par\endgroup
-\@doanenote {98}
+\@doanenote {95}
 macro:->I've
 tidied
 up
@@ -2549,14 +2565,14 @@ comment.\newline
 fe997de\-08bda2\-64c453\-204e97\-1a1cfd\-219457acf}).
 
 \par\endgroup
-\@doanenote {99}
+\@doanenote {96}
 macro:->``non
 recursive''
 is
 hyphenated.
 
 \par\endgroup
-\@doanenote {100}
+\@doanenote {97}
 macro:->
 \david
 {Why
@@ -2579,7 +2595,7 @@ the
 languages}
 
 \par\endgroup
-\@doanenote {101}
+\@doanenote {98}
 macro:->If
 we
 are
@@ -2618,14 +2634,14 @@ are:
 }''.
 
 \par\endgroup
-\@doanenote {102}
+\@doanenote {99}
 macro:->Drop
 the
 ``would''s
 here.
 
 \par\endgroup
-\@doanenote {103}
+\@doanenote {100}
 macro:->Are
 you
 sure
@@ -2649,13 +2665,13 @@ with
 lists.
 
 \par\endgroup
-\@doanenote {104}
+\@doanenote {101}
 macro:->is
 this
 ok?
 
 \par\endgroup
-\@doanenote {105}
+\@doanenote {102}
 macro:->Why
 do
 we
@@ -2690,7 +2706,7 @@ is
 *}
 
 \par\endgroup
-\@doanenote {106}
+\@doanenote {103}
 macro:->Even
 if
 entered
@@ -2703,11 +2719,11 @@ appropriate
 here.
 
 \par\endgroup
-\@doanenote {107}
+\@doanenote {104}
 macro:->Spelling!
 
 \par\endgroup
-\@doanenote {108}
+\@doanenote {105}
 macro:->\david
 {Why
 do
@@ -2770,14 +2786,14 @@ git
 repository.}
 
 \par\endgroup
-\@doanenote {109}
+\@doanenote {106}
 macro:->The
 ``is''
 seems
 mispaced.
 
 \par\endgroup
-\@doanenote {110}
+\@doanenote {107}
 macro:->This
 sentence
 can
@@ -2786,21 +2802,21 @@ simplified,
 I
 think.
 \par\endgroup
-\@doanenote {111}
+\@doanenote {108}
 macro:->Removed
 the
 \macroName
 {clearpage}.
 
 \par\endgroup
-\@doanenote {112}
+\@doanenote {109}
 macro:->What
 is
 ``\texttt
 {map-reduce}''?
 
 \par\endgroup
-\@doanenote {113}
+\@doanenote {110}
 macro:->I
 am
 deeply
@@ -2830,7 +2846,7 @@ the
 diagram.}
 
 \par\endgroup
-\@doanenote {114}
+\@doanenote {111}
 macro:->In
 this
 immediate
@@ -2862,21 +2878,21 @@ commit
 }.
 
 \par\endgroup
-\@doanenote {115}
+\@doanenote {112}
 macro:->Fix
 the
 preceding
 space.
 
 \par\endgroup
-\@doanenote {116}
+\@doanenote {113}
 macro:->Page
 break
 following
 removed.
 
 \par\endgroup
-\@doanenote {117}
+\@doanenote {114}
 macro:->Page
 break
 following
@@ -2901,7 +2917,7 @@ pages
 break.}
 
 \par\endgroup
-\@doanenote {118}
+\@doanenote {115}
 macro:->Something
 is
 missing
@@ -2916,14 +2932,14 @@ commit
 {a1b2c01fb24}.
 
 \par\endgroup
-\@doanenote {119}
+\@doanenote {116}
 macro:->Page
 break
 following
 removed.
 
 \par\endgroup
-\@doanenote {120}
+\@doanenote {117}
 macro:->The
 preceding
 character
@@ -2935,7 +2951,7 @@ an
 character!
 
 \par\endgroup
-\@doanenote {121}
+\@doanenote {118}
 macro:->The
 preceding
 punctuation
@@ -2944,13 +2960,13 @@ is
 incorrect.
 
 \par\endgroup
-\@doanenote {122}
+\@doanenote {119}
 macro:->Use
 \macroName
 {progLang}!
 
 \par\endgroup
-\@doanenote {123}
+\@doanenote {120}
 macro:->The
 word
 ``\textit
@@ -2984,13 +3000,13 @@ this
 usage.
 
 \par\endgroup
-\@doanenote {124}
+\@doanenote {121}
 macro:->Use
 \macroName
 {progLang}!
 
 \par\endgroup
-\@doanenote {125}
+\@doanenote {122}
 macro:->You
 want
 an
@@ -2999,6 +3015,40 @@ not
 a
 hyphen
 here.
+
+\par\endgroup
+\@doanenote {123}
+macro:->The
+preceding
+character
+is
+not
+an
+\textsc
+{ascii}
+character!
+
+\par\endgroup
+\@doanenote {124}
+macro:->The
+preceding
+punctuation
+mark
+should
+be
+an
+em-dash.
+
+\par\endgroup
+\@doanenote {125}
+macro:->The
+preceding
+punctuation
+mark
+should
+be
+an
+em-dash.
 
 \par\endgroup
 \@doanenote {126}
@@ -3016,50 +3066,16 @@ character!
 \@doanenote {127}
 macro:->The
 preceding
-punctuation
-mark
-should
-be
+character
+is
+not
 an
-em-dash.
+\textsc
+{ascii}
+character!
 
 \par\endgroup
 \@doanenote {128}
-macro:->The
-preceding
-punctuation
-mark
-should
-be
-an
-em-dash.
-
-\par\endgroup
-\@doanenote {129}
-macro:->The
-preceding
-character
-is
-not
-an
-\textsc
-{ascii}
-character!
-
-\par\endgroup
-\@doanenote {130}
-macro:->The
-preceding
-character
-is
-not
-an
-\textsc
-{ascii}
-character!
-
-\par\endgroup
-\@doanenote {131}
 macro:->The
 preceding
 character
@@ -3072,7 +3088,7 @@ character!
 \par
 
 \par\endgroup
-\@doanenote {132}
+\@doanenote {129}
 macro:->This
 appears
 to
@@ -3080,7 +3096,7 @@ wander
 off.
 
 \par\endgroup
-\@doanenote {133}
+\@doanenote {130}
 macro:->the
 preceding
 should
