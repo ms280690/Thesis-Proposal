@@ -2315,18 +2315,6 @@ macro:->Use
 
 \par\endgroup
 \@doanenote {86}
-macro:->Use
-\macroName
-{progLang}!
-
-\par\endgroup
-\@doanenote {87}
-macro:->Use
-\macroName
-{progLang}!
-
-\par\endgroup
-\@doanenote {88}
 macro:->``\textit
 {\progLang
 {Prolog}
@@ -2347,7 +2335,7 @@ as
 here.
 
 \par\endgroup
-\@doanenote {89}
+\@doanenote {87}
 macro:->Do
 you
 mean
@@ -2356,7 +2344,7 @@ mean
 {Yes}
 
 \par\endgroup
-\@doanenote {90}
+\@doanenote {88}
 macro:->The
 first
 two
@@ -2376,7 +2364,7 @@ probably
 incorrect.
 
 \par\endgroup
-\@doanenote {91}
+\@doanenote {89}
 macro:->what
 do
 ``\textit
@@ -2385,7 +2373,7 @@ refer
 to?
 
 \par\endgroup
-\@doanenote {92}
+\@doanenote {90}
 macro:->You
 might
 want
@@ -2440,7 +2428,7 @@ instance,
 {quote}
 
 \par\endgroup
-\@doanenote {93}
+\@doanenote {91}
 macro:->I
 believe
 that
@@ -2501,7 +2489,7 @@ to-do
 list.
 
 \par\endgroup
-\@doanenote {94}
+\@doanenote {92}
 macro:->``i.e.''
 is
 missing
@@ -2541,7 +2529,7 @@ English
 words.
 
 \par\endgroup
-\@doanenote {95}
+\@doanenote {93}
 macro:->I've
 tidied
 up
@@ -2565,14 +2553,14 @@ comment.\newline
 fe997de\-08bda2\-64c453\-204e97\-1a1cfd\-219457acf}).
 
 \par\endgroup
-\@doanenote {96}
+\@doanenote {94}
 macro:->``non
 recursive''
 is
 hyphenated.
 
 \par\endgroup
-\@doanenote {97}
+\@doanenote {95}
 macro:->
 \david
 {Why
@@ -2595,7 +2583,7 @@ the
 languages}
 
 \par\endgroup
-\@doanenote {98}
+\@doanenote {96}
 macro:->If
 we
 are
@@ -2634,14 +2622,14 @@ are:
 }''.
 
 \par\endgroup
-\@doanenote {99}
+\@doanenote {97}
 macro:->Drop
 the
 ``would''s
 here.
 
 \par\endgroup
-\@doanenote {100}
+\@doanenote {98}
 macro:->Are
 you
 sure
@@ -2665,13 +2653,13 @@ with
 lists.
 
 \par\endgroup
-\@doanenote {101}
+\@doanenote {99}
 macro:->is
 this
 ok?
 
 \par\endgroup
-\@doanenote {102}
+\@doanenote {100}
 macro:->Why
 do
 we
@@ -2706,7 +2694,7 @@ is
 *}
 
 \par\endgroup
-\@doanenote {103}
+\@doanenote {101}
 macro:->Even
 if
 entered
@@ -2719,11 +2707,11 @@ appropriate
 here.
 
 \par\endgroup
-\@doanenote {104}
+\@doanenote {102}
 macro:->Spelling!
 
 \par\endgroup
-\@doanenote {105}
+\@doanenote {103}
 macro:->\david
 {Why
 do
@@ -2786,14 +2774,14 @@ git
 repository.}
 
 \par\endgroup
-\@doanenote {106}
+\@doanenote {104}
 macro:->The
 ``is''
 seems
 mispaced.
 
 \par\endgroup
-\@doanenote {107}
+\@doanenote {105}
 macro:->This
 sentence
 can
@@ -2802,21 +2790,21 @@ simplified,
 I
 think.
 \par\endgroup
-\@doanenote {108}
+\@doanenote {106}
 macro:->Removed
 the
 \macroName
 {clearpage}.
 
 \par\endgroup
-\@doanenote {109}
+\@doanenote {107}
 macro:->What
 is
 ``\texttt
 {map-reduce}''?
 
 \par\endgroup
-\@doanenote {110}
+\@doanenote {108}
 macro:->I
 am
 deeply
@@ -2846,7 +2834,7 @@ the
 diagram.}
 
 \par\endgroup
-\@doanenote {111}
+\@doanenote {109}
 macro:->In
 this
 immediate
@@ -2878,21 +2866,21 @@ commit
 }.
 
 \par\endgroup
-\@doanenote {112}
+\@doanenote {110}
 macro:->Fix
 the
 preceding
 space.
 
 \par\endgroup
-\@doanenote {113}
+\@doanenote {111}
 macro:->Page
 break
 following
 removed.
 
 \par\endgroup
-\@doanenote {114}
+\@doanenote {112}
 macro:->Page
 break
 following
@@ -2917,7 +2905,7 @@ pages
 break.}
 
 \par\endgroup
-\@doanenote {115}
+\@doanenote {113}
 macro:->Something
 is
 missing
@@ -2932,14 +2920,14 @@ commit
 {a1b2c01fb24}.
 
 \par\endgroup
-\@doanenote {116}
+\@doanenote {114}
 macro:->Page
 break
 following
 removed.
 
 \par\endgroup
-\@doanenote {117}
+\@doanenote {115}
 macro:->The
 preceding
 character
@@ -2951,7 +2939,7 @@ an
 character!
 
 \par\endgroup
-\@doanenote {118}
+\@doanenote {116}
 macro:->The
 preceding
 punctuation
@@ -2960,13 +2948,13 @@ is
 incorrect.
 
 \par\endgroup
-\@doanenote {119}
+\@doanenote {117}
 macro:->Use
 \macroName
 {progLang}!
 
 \par\endgroup
-\@doanenote {120}
+\@doanenote {118}
 macro:->The
 word
 ``\textit
@@ -3000,13 +2988,13 @@ this
 usage.
 
 \par\endgroup
-\@doanenote {121}
+\@doanenote {119}
 macro:->Use
 \macroName
 {progLang}!
 
 \par\endgroup
-\@doanenote {122}
+\@doanenote {120}
 macro:->You
 want
 an
@@ -3017,7 +3005,7 @@ hyphen
 here.
 
 \par\endgroup
-\@doanenote {123}
+\@doanenote {121}
 macro:->The
 preceding
 character
@@ -3029,7 +3017,7 @@ an
 character!
 
 \par\endgroup
-\@doanenote {124}
+\@doanenote {122}
 macro:->The
 preceding
 punctuation
@@ -3040,7 +3028,7 @@ an
 em-dash.
 
 \par\endgroup
-\@doanenote {125}
+\@doanenote {123}
 macro:->The
 preceding
 punctuation
@@ -3049,6 +3037,30 @@ should
 be
 an
 em-dash.
+
+\par\endgroup
+\@doanenote {124}
+macro:->The
+preceding
+character
+is
+not
+an
+\textsc
+{ascii}
+character!
+
+\par\endgroup
+\@doanenote {125}
+macro:->The
+preceding
+character
+is
+not
+an
+\textsc
+{ascii}
+character!
 
 \par\endgroup
 \@doanenote {126}
@@ -3061,34 +3073,10 @@ an
 \textsc
 {ascii}
 character!
-
-\par\endgroup
-\@doanenote {127}
-macro:->The
-preceding
-character
-is
-not
-an
-\textsc
-{ascii}
-character!
-
-\par\endgroup
-\@doanenote {128}
-macro:->The
-preceding
-character
-is
-not
-an
-\textsc
-{ascii}
-character!
 \par
 
 \par\endgroup
-\@doanenote {129}
+\@doanenote {127}
 macro:->This
 appears
 to
@@ -3096,7 +3084,7 @@ wander
 off.
 
 \par\endgroup
-\@doanenote {130}
+\@doanenote {128}
 macro:->the
 preceding
 should
