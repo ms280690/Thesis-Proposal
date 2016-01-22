@@ -170,28 +170,31 @@ type IntegerDictionary = [Variable]
 
 -- Creating Initial State of Integer Dictionary
 init_dictionary :: IntegerDictionary
-init_dictionary = [Variable ("x0", 0), Variable ("x1", 1), Variable ("x2", 2), Variable ("x3", 3), Variable ("x4", 4), Variable ("x5", 5)] 
-
+init_dictionary = [Variable ("x0", 0), Variable ("x1", 1), Variable ("x2", 2), 
+	Variable ("x3", 3), Variable ("x4", 4), Variable ("x5", 5)] 
 
 insertVariable :: Variable -> State IntegerDictionary Variable
 insertVariable variable = do
 	init_dictionary <- get
 	put (insertVariableHelper init_dictionary variable)
 	return variable
-
 insertVariableHelper :: IntegerDictionary -> Variable -> IntegerDictionary
-insertVariableHelper init_dictionary variable = if (elem variable init_dictionary) then (updateVariable init_dictionary variable)
+insertVariableHelper init_dictionary variable = if (elem variable
+	 init_dictionary) then (updateVariable init_dictionary variable)
 	else init_dictionary ++ [variable]
 
-
 updateVariable :: IntegerDictionary -> Variable -> IntegerDictionary
-updateVariable init_dictionary variable = (take (fromJust $ elemIndex variable init_dictionary) init_dictionary ++ [variable] ++ drop ((fromJust $ elemIndex variable init_dictionary) + 1) init_dictionary)
-
+updateVariable init_dictionary variable = (take (fromJust $ elemIndex variable 
+	init_dictionary) init_dictionary ++ 
+	[variable] ++ drop ((fromJust $ elemIndex variable init_dictionary) + 1) 
+		init_dictionary)
 runInsertVariable :: IntegerDictionary -> Variable -> IntegerDictionary
-runInsertVariable init_dictionary variable = snd $ runState (insertVariable variable) init_dictionary
+runInsertVariable init_dictionary variable = snd $ runState (insertVariable 
+	 variable) init_dictionary
 {--
 runInsertVariable init_dictionary (Variable ("x",10))
-[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),Variable ("x4",4),Variable ("x5",5),Variable ("x",10)]
+[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
+Variable ("x4",4),Variable ("x5",5),Variable ("x",10)]
 --}
 
 removeVariable :: Variable -> State IntegerDictionary Variable
@@ -199,15 +202,46 @@ removeVariable variable = do
 	init_dictionary <- get
 	put (removeVariableHelper init_dictionary variable)
 	return variable
-
 removeVariableHelper :: IntegerDictionary -> Variable -> IntegerDictionary
 removeVariableHelper [] variable = error "Empty Dictionary"
-removeVariableHelper init_dictionary variable = if (elem variable init_dictionary) then (delete variable init_dictionary)
+removeVariableHelper init_dictionary variable = if (elem variable 
+	init_dictionary) then (delete variable init_dictionary)
 	else error "Variable Not Found"
 
 runRemoveVariable :: IntegerDictionary -> Variable -> IntegerDictionary
-runRemoveVariable init_dictionary variable = snd $ runState (removeVariable variable) init_dictionary
+runRemoveVariable init_dictionary variable = snd $ runState (removeVariable 
+	variable) init_dictionary
 {--
 runRemoveVariable init_dictionary (Variable ("x0",0))
-[Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),Variable ("x4",4),Variable ("x5",5)]
+[Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),Variable ("x4",4),
+Variable ("x5",5)]
+--}
+
+
+-- give example of x * y with insert and update
+
+extractVariableValue :: Variable -> Value
+extractVariableValue (Variable (_, value)) = value
+
+exampleOperation :: Variable -> Variable -> State IntegerDictionary Variable
+exampleOperation variableX variableY = do 
+	init_dictionary_1 <- get
+	put (insertVariableHelper init_dictionary_1 variableX)
+	init_dictionary_2 <- get
+	put (insertVariableHelper init_dictionary_2 variableY)
+	let product = Variable ("product", (extractVariableValue variableX) * (
+		extractVariableValue variableY))
+	init_dictionary_3 <- get
+	put (insertVariableHelper init_dictionary_3 product) 
+	return product
+
+runExampleOperation :: IntegerDictionary -> Variable -> Variable -> 
+	IntegerDictionary
+runExampleOperation init_dictionary variableX variableY = snd $ runState (
+	exampleOperation variableX variableY) init_dictionary
+{--
+runExampleOperation init_dictionary (Variable ("x", 10)) (Variable ("y", 20)) 
+[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
+Variable ("x4",4),Variable ("x5",5),Variable ("x",10),Variable ("y",20),
+Variable ("product",200)]
 --}
