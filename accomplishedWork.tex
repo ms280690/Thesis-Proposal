@@ -10,53 +10,6 @@
 \chapter{Accomplished Work}\label{chap:accomplishedWork}
 %-----------------------------------------------------------------------------
 
-\section{Proposal Contributions}
-
-Moving onto what this thesis shall explore, first thing's first a complete, fully functional library which comes
-close to a \progLang{Prolog}-like language and has practical abilities to carry out real-world
-tasks.
-They include predicates such as \prologConstruct{cut}\endnote{%
-  Write macros like \macroName{progLang} for the various classes
-  of special symbols in your thesis, and then apply them to words like
-  ``fail'', which when used as a \progLang{Prolog} word, should be
-  typeset as \texttt{\char`\\prologCode\char`\{fail\char`\}}, or some such.
-}\elabel{text-kind}
-, \prologConstruct{assert}, \prologConstruct{fail}, \prologConstruct{setOf}, \prologConstruct{bagOf} among others.
-This forms\endnote{%
-  Not ``would form''.  ``forms'' perhaps.  You are talking about what \textbf{is} in the thesis.
-}
-the first stage of the implementation.
-Secondly, exploring aspects such as \prologConstruct{assert} and database capabilities.\endnote{%
-  \david{Strike this?}\newline
-  \mehul{well we/ the library does some of this right ?}
-}\textsuperscript{,}\endnote{%
-  This is not a complete sentence.
-}
-A third question to address is the accommodation of input and output, specifically dealing with the \markWord{IO
-  Monad} in \progLang{Haskell} with \progLang{Prolog} \languageConstruct{IO}.\endnote{%
-  Make this clearer. Perhaps\par\vspace{-1\baselineskip}
-  \begin{quote}\slshape
-    A third question to address is the accommodation of input and
-    output.
-    More specifically, \progLang{Prolog}
-    uses \textit{ad hoc} side effects to accomplish input and output,
-    whereas \progLang{Haskell} forces the use of the \unknownLabel{IO
-      Monad}, making it difficult to model the former in the latter.
-    \enparen{See Chapter~\ref{proto3}.}
-  \end{quote}
-  \vspace{-1\baselineskip}
-  \noindent or something similar.
-}
-Moreover, \progLang{Prolog} is an untyped language which allows lists with elements of different types to be
-created.
-Something like this is not by default in \progLang{Haskell}.
-Hence syntactic support for the same is the next question to address.
-Furthermore, experimenting with how programs expressed with same declarative meaning differ
-operationally.\eref{not-a-sentence} 
-Lastly, how would characteristics of hybrid languages fit into and play a role in an embedded
-setting.\eref{not-a-sentence} 
-
-
 \section{Improved Contributions}
 \begin{enumerate}
 \item
