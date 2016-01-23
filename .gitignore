@@ -26,7 +26,10 @@
 *.tex.bak
 /.DS_Store
 /_minted-*/
-/Diagrams- Proto1_Proto2_Proto3.pdf
+/*.ent
+/thesis-solanki.lis
+/abstract.pdf
+/accomplishedWork.pdf
 /background.pdf
 /conclusion.pdf
 /embedding.pdf
@@ -37,10 +40,7 @@
 /metasyntacticvariables.pdf
 /miscrelcon.pdf
 /multiparadigm.pdf
-/prologin.pdf
-/prologinhaskell.pdf
 /proposal.pdf
-/proposal30J2014an.pdf
 /proposedWork.pdf
 /proto1.pdf
 /proto1.pdf
@@ -51,13 +51,6 @@
 /pwp.pdf
 /quasiquotation.pdf
 /relatedWork.pdf
-/relatedtermskeywords.pdf
 /results.pdf
-/thesis-solanki (Mehul’s MacBook Pro's conflicted copy 2015-11-02).pdf
-/thesis-solanki (pg4460-102040m's conflicted copy 2015-11-06).pdf
 /thesis-solanki.pdf
-/thesis-solanki.pdf
-/ummcpp.pdf
 /workCompleted.pdf
-/*.ent
-/thesis-solanki.lis
