@@ -18,8 +18,38 @@ Some sources for the topic
 
 
 \cite{website:metasyntacticvariableswiki}
-A metasyntactic variable is a placeholder name used in computer science, a word without meaning intended to be substituted by some objects pertaining to the context where it is used. The word foo as used in IETF Requests for Comments is a good example.
-By mathematical analogy, a metasyntactic variable is a word that is a variable for other words, just as in algebra letters are used as variables for numbers.Any symbol or word which does not violate the syntactic rules of the language can be used as a metasyntactic variable.
+A metasyntactic variable is a placeholder name used in computer science, a word without meaning intended to be
+substituted by some objects pertaining to the context where it is used.
+The word \markWord{foo} as used in IETF Requests for Comments is a good example.\endnote{%
+  This regards
+  \vspace*{-1.5\baselineskip}
+  \begin{quote}\itshape
+    A metasyntactic variable is a placeholder name used in computer science, a word without meaning intended to be
+    substituted by some objects pertaining to the context where it is used. 
+    The word \textsf{foo} as used in IETF Requests for Comments is a good example.
+  \end{quote}
+  \vspace*{-1.5\baselineskip}
+  Some comments
+  \begin{compactitem}
+  \item
+    ``IETF'' needs explanation.
+  \item
+    Because it is a something other than an English word with its ordinary meaning, ``foo'' needs to be marked
+    up.
+  \item
+    The claim is overly broad.  In ``\texttt{\bfseries cat foo > bar}'', the word
+    ``\texttt{\bfseries foo}'' is a file-name variable; it may be replaced by any file name
+    (appropriately quoted for the surrounding shell).
+    It is only when the variable ranges over syntax of an appropriate that the variable is metasyntactic.  For
+    instance in ``\texttt{3 + 5 * }\textsf{term}'' the word ``\textsf{term}'' is a metasyntactic variable, the
+    remainder is presumably either concrete or abstract syntax.
+  \end{compactitem}
+}
+
+By mathematical analogy, a metasyntactic variable is a word that is a variable for other words, just as in algebra
+letters are used as variables for numbers.
+Any symbol or word which does not violate the syntactic rules of the language can be used as a metasyntactic
+variable.
 
 
 
