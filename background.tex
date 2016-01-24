@@ -56,15 +56,28 @@ A program is a set of rules and formul\ae{} in symbolic logic that are used to d
 ones.
 This is done until the one which gives the solution is not derived.
 
-\david{In
-  the following \P's there seem to be a number of instances of material repeated twice with an older version
-  followed by a newer version.  I find it hard to imagine what the final result is going to be, so I am going to
-  cut material in the commit that introduces this comment, and let you see if you agree that I've got it right. 
-}
-
 In this thesis we aim to merge two languages
 together and produce a result which exhibits hybrid
 properties.
+The languages in question are \progLang{Haskell} and \progLang{Prolog}.\endnote{%
+  Replace
+  \vspace*{-1\baselineskip}
+  \begin{quote}\itshape
+    In this thesis we aim to merge two languages
+    together and produce a result which exhibits hybrid
+    properties.
+    The languages in question are \progLang{Haskell} and \progLang{Prolog}.
+  \end{quote}
+  \vspace*{-1\baselineskip}
+  with
+  \vspace*{-1\baselineskip}
+  \begin{quote}\slshape
+    In this thesis we aim to merge two languages---%
+    \progLang{Haskell} and \progLang{Prolog}---%
+    together and produce a result which exhibits hybrid
+    properties.
+  \end{quote}}
+%
 These two languages come from respective the functional programming and logical programming branches of the declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
@@ -112,9 +125,29 @@ It is as if the embedded language floats over the host language.
 Other approaches provide deeper integration between the target and the host.
 Here we look at a few.
 Over time there has been an approach that branches out, which is paradigm integration.
-A lot of work has been done on Unifying the Theories\eref{caps-choices} of Programming\eref{caps-choices}
+A lot of work has been done on Unifying the Theories of Programming
+\cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
+  gibbons2013unifying}.\endnote{%
+  Perhaps
+  \vspace*{-1\baselineskip}
+  \begin{quote}\itshape
+    A lot of work has been done on Unifying the Theories of Programming
 \cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
   gibbons2013unifying}.
+  \end{quote}
+  \vspace*{-1\baselineskip}
+  could become
+  \vspace*{-1\baselineskip}
+  \begin{quote}\slshape
+    The First International Symposium on \textit{Unifying the Theories of Programming}
+    \textup{(\cite{DBLP:conf/utp/2006})}
+    produced a lot of work
+    \textup{\cite{DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
+      gibbons2013unifying}}.
+  \end{quote}
+  \vspace*{-1\baselineskip}
+  thereby fixing the capitals.
+}
 Hybrid languages that have characteristics from more than one paradigm are coming into the mainstream.
 One of the more successful attempts is \progLang{Scala} \cite{website:scala}.
 Simply speaking it is like a \textit{functional} \progLang{Java} providing side-effect free programming environment
@@ -135,15 +168,14 @@ Moreover there are services that provide a common platform for multiple language
 They can be termed as multilingual run-times\endnote{%
   I am not sure which of 
   \begin{compactitem}
-  \item \textit{run times}
+  \item \textit{run times}  \david{We do not use this one.}
   \item \textit{run-times}
-  \item \textit{runtimes}
+  \item \textit{runtimes} \david{Let's pick this one, and use it consistently throughout.}
   \end{compactitem}
   is correct.
   What do basic O/S texts use?
   ``Multilingual'' is definitely one word.
-  \Verb!https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase)!
-  \mehul{I think all of them can be found}
+  \path!https://en.wikipedia.org/wiki/Run_time_(program_lifecycle_phase)!
 }
 which lay down a common layer for languages to use each others functions.
 An example for this is the Microsoft common language runtime (CLR) \cite{website:clrwiki} which is an
@@ -164,7 +196,7 @@ extension to the language which provides services to jump between the two types 
 The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type which can be
 modified at compile time allowing us to play with the code and going back and forth.\endnote{%
   The preceding sentence needs fixing.
-\mehul{changed}	
+\mehul{changed}	\\ \david{Read it out loud.}
 }
 
 A specific tool used in meta programming is quasi-quotation \cite{mainland2007s,haskellquasi,wikiquasi}, which
@@ -212,8 +244,8 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
 \label{tab:prlgappndhskl}
 \end{code-list}
 
-Listing~\ref{tab:prlgappndhskl} shows 
-
+Listing~\ref{tab:prlgappndhskl} shows \yyy{}{\LARGE !}\endnote{%
+  Shows what?
 }
 
 Consider the object functional programming language, \progLang{Scala}
