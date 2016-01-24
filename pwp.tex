@@ -57,18 +57,26 @@ improve upon giving a starting point.
 \item Simple Syntax
 \cite{wikiprolog}
 
-Dynamically singly typed encapsulating atoms, numbers, variables and compound terms.
+Prolog is dynamically typed. It has a single data type, the term, which has several subtypes: atoms, numbers, variables and compound terms.
 
-Atoms : A string of characters made up of upper-case letters, lower-case letters, digits, and the underscore character, that begins with a 
-lower-case letter.
+An atom is a general-purpose name with no inherent meaning. It is composed of a sequence of characters that is parsed by the Prolog\endnote{%
+  Use \macroName{progLang}!
+}
+reader 
+as a single unit.
 
-Variable : A variable is a string of upper-case letters, lower-case letters, digits and underscore characters that starts either with an upper-case letter or with an underscore.
+Numbers can be floats or integers. Many Prolog\endnote{%
+  Use \macroName{progLang}!
+}
+ implementations also provide unbounded integers and rational numbers.
 
-Compound Term : Complex terms are build out of a functor followed by a sequence of arguments. The arguments are put in ordinary 
-parentheses, separated by commas, and placed after the functor. Note that the functor has to be directly followed by the parenthesis; you 
-can’t have a space between the functor and the parenthesis enclosing the arguments. The functor must be an atom. That is, variables cannot 
-be used as functors. On the other hand, arguments can be any kind of term.
+Variables are denoted by a string consisting of letters, numbers and underscore characters, and beginning with an upper-case letter or 
+underscore. Variables closely resemble variables in logic in that they are placeholders for arbitrary terms. A variable can become 
+instantiated (bound to equal a specific term) via unification.
 
+A compound term is composed of an atom called a ``functor'' and a number of ``arguments'', which are again terms. Compound terms are ordinarily 
+written as a functor followed by a comma-separated list of argument terms, which is contained in parentheses. The number of arguments is 
+called the term's arity. An atom can be regarded as a compound term with arity zero.
 
 Prolog programs describe relations, defined by means of clauses. Pure Prolog is restricted to Horn clauses, a Turing-complete subset of 
 first-order predicate logic. There are two types of clauses: Facts and rules.
