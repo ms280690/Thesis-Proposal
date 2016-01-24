@@ -43,8 +43,6 @@ One of the implementations discussed redirects us to one of the earliest impleme
 \progLang{Haskell} for \haskellConstruct{Hugs 98}, called \haskellConstruct{Mini} \progLang{Prolog}
 \cite{website:mini-prolog-hugs98}.
 Although this implementation takes as reference the working of the \progLang{ Prolog} Engine\endnote{%
-  \david{What is the \progLang{Prolog} Engine?} \newline
-  \mehul{got that from Warren Abstraction Machine} \newline
   \david{What does the \cite{website:mini-prolog-hugs98} implementation takes as reference?
     Is it based on the Warren Abstract Machine?
     Some other formal specification of \progLang{Prolog}?
@@ -63,20 +61,14 @@ This seems to be a common problem with the other implementation that exists, \ci
 
 Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
-is minimal\endnote{%
-  ``far scarcer''?
-  \mehul{minimal}.
-  \david{``\textsl{Its use in industry is minimal than the leading languages\dots}'' makes no sense.}
-  \mehul{Changed}
-}
-in comparison the languages of imperative nature.
+is minimal in comparison with the languages of imperative nature.
 The purely declarative nature lacks basic requirements such as support for \languageConstruct{modules}.\endnote{%
   Do you mean that basic \progLang{Prolog} implementations lack modules;
   or that \progLang{Prolog} lacks \languageConstruct{modules} because it is purely
   declarative; or \dots?
 }
 The other issue is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
-family of declarative languages.\eref{caps-choices}\textsuperscript{,}\endnote{%
+family of declarative languages.\endnote{%
   \david{What does this sentence mean?
   Are you suggesting that one of \progLang{Prolog}'s problems is that it is
   competing with \progLang{Haskell}?
@@ -96,12 +88,7 @@ family of declarative languages.\eref{caps-choices}\textsuperscript{,}\endnote{%
 }
 Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
 enables encoding of search problems in \progLang{Haskell} rather than
-\progLang{Prolog}.\eref{not-a-sentence}\textsuperscript{,}\endnote{% 
-  \david{I have lost track of the general argument here.
-  What is the unofficially published content saying about \progLang{Prolog} here?}
-
-  \mehul{Attempting to do AI like search stuff in \progLang{Haskell}}
-}
+\progLang{Prolog}.\eref{not-a-sentence}
 
 \section{Related Books}
 \textcolor{blue}{Perhaps the section title should be ``Books related to embedding Programming Languges''.}
@@ -200,39 +187,23 @@ itself,\endnote{%
   comma splice
 }\elabel{comma-splice}
 a few exist \cite{nanoprolog-lib} being a preliminary or
-``mini \progLang{Prolog}'' as such with not much in it to be able to be useful,\eref{comma-splice} \cite{hswip-lib} is all powerful but is a
-foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need \progLang{Prolog} for it,\eref{comma-splice}
-\cite{prolog-lib}, which is the only implementation that comes the closest\endnote{%
-  Here ``\textit{only}'' fights with ``\textit{closest}''.
-  Use either
-  \begin{quote}
-    \cite{prolog-lib}, which is the only implementation that comes \xxx{the} \yyy{closest}{close}\dots
-  \end{quote}
-  or
-  \begin{quote}
-    \cite{prolog-lib}, which is the \xxx{only} implementation that comes the closest\dots
-  \end{quote}
-}
+``mini \progLang{Prolog}'' as such with not much in it to be able to be useful,\eref{comma-splice} \cite{hswip-lib}
+is all powerful but is a foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we
+need \progLang{Prolog} for it;
+\cite{prolog-lib}
+is the implementation that comes the closest
 to something like an actual practical \progLang{Prolog}.
 But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or
-no \haskellConstruct{monadic} support and an REPL without the ability to ``write a \progLang{Prolog} program
-file''.\eref{caps-choices}
+no \haskellConstruct{monadic} support and \yyy{an}{a} REPL without the ability to ``write a \progLang{Prolog} program
+file''.
 
 %\item[$\bullet$]Logic Libraries
 \subsection{Logic Libraries}
 
-The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries provide functionality related
-to propositional logic and backtracking.\endnote{%
-    Does this sentence make sentence make sense with my deletions?
-    If so, remove the \macroName{xxx}-stuff and this endnote.
-    \mehul{Sort of yes, made changes anyways}
-}
+The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries provide
+functionality related to propositional logic and backtracking.
 \cite{logict-lib} is a continuation-based, backtracking, logic programming \haskellConstruct{monad} which attempts
-to replicate\endnote{% 
-    \dots{} or simply ``\textsl{which replicates}'', unless you have strong doubts as to the efficacy of the
-    library. 
-	\mehul{I have not played with all the componenents of the library so .....}
-}
+to replicate
 \progLang{Prolog}'s backtracking behaviour.
 \progLang{Prolog} is heavily based on formal logic.
 \cite{proplogic-lib} provides a powerful system for propositional logic.
