@@ -24,7 +24,10 @@ objectives is to implement monadic unification using the library \cite{unificati
 
 
 \section{Unifiable Data Structures}
-For a data type to be Unifiable, it must have instances of \markWord{Functor}, \markWord{Foldable} and \markWord{Traversable}.
+For a data type to be Unifiable, it must have instances of \markWord{Functor}, \markWord{Foldable} and \unknownLabel{Traversable}\endnote{%
+  Mark the preceding word or phrase with a macro indicating its kind.
+}\elabel{text-kind}
+.
 The interaction between different classes is depicted in Figure~\ref{fig:Functor Hierarchy Redux}.
 
 \begin{figure}[th]
@@ -236,7 +239,10 @@ which inside contain \markWord{Exprs}, and so on. It's trees all the way down.
 But recursion can be abstracted away to uncover the real primitives behind expressions.
 The trick is to define a non-recursive function and then find its fixed point.
 
-Since here we are dealing with types, we have to\eref{must-have-to} define a type function, otherwise known as type
+Since here we are dealing with types, we have to\endnote{%
+  Use ``must'' in place of ``have to'' where you can.
+  \mehul{changed}
+}\elabel{must-have-to} define a type function, otherwise known as type
 constructor.
 Here's the non-recursive precursor of our grammar (later you'll see that the \markWord{F} in \markWord{ExprF}
 stands for functor): 

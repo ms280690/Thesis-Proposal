@@ -18,10 +18,7 @@
 Over the years another approach has branched off from embedding languages, to merge and/or integrate programming
 languages from different paradigms.
 Let us take an example of the \progLang{Scala} programming language \cite{website:scala}, a hybrid
-object-functional programming language which takes features from each of the two paradigms.\endnote{%
-  Unless you are using leaf in the sense of page (as in \textit{overleaf}), ``a leaf from each of the [two] books''
-  is a mixed metaphor.
-}
+object-functional programming language which takes features from each of the two paradigms.
 In this thesis, the languages in question are \progLang{Haskell} and \progLang{Prolog}.
 This section takes a look at the literature on multi paradigm languages, mainly functional logic programming
 languages that combine two of the most widespread declarative programming styles.
@@ -41,16 +38,10 @@ programmers can work in a variety of styles, freely intermixing constructs from 
   
 \subsection{Multi Paradigm Languages}
 
-A lot has been worked upon before\endnote{%
-    ``discussed on'' does not work.
-}
-coming to clear grounds about the classification of programming languages.
-One approach\endnote{%
-    What is the ``conventional ideology'' here?  As defined where?
-    \mehul{changed}
-}
-is to consider that the scope of each language is pretty much infinite as small extension modules that replicate
-different feature sets which are not naturally native to the language itself can be implemented on top of the base language.
+A lot has been worked upon before coming to clear grounds about the classification of programming languages.
+One approach is to consider that the scope of each language is pretty much infinite as small extension modules that
+replicate different feature sets which are not naturally native to the language itself can be implemented on top of
+the base language.
 The definitions of multi paradigm languages across the web
 \cite{website:wikimultiparadigm,website:mdn,website:blogc2} converge to roughly the same thing that of providing a
 framework to work with different styles with a list of languages \cite{website:wikimpllist,website:dmoz} that suffices the requirements.\endnote{%
@@ -58,13 +49,8 @@ framework to work with different styles with a list of languages \cite{website:w
     \mehul{changed}\newline
     \david{Now I just do not understand.}
 }
-Generally speaking, this\endnote{%
-    What is ``it'' here?
-    \mehul{changed}
-}
-is not very popular in programming circles; one reason could be that it\endnote{%
-  What is ``it'' here?  Is this the same ``it'' as above?
-}
+Generally speaking, this
+is not very popular in programming circles; one reason could be that it
 is a very broad topic and specifying details can clear the confusion.\endnote{%
     Which fog?\newline
     \mehul{changed}\newline
@@ -74,11 +60,18 @@ is a very broad topic and specifying details can clear the confusion.\endnote{%
 \subsection{Functional Logic Programming Languages}
 
 Continuing from the previous section, narrowing down the search by considering only multi paradigm declarative
-languages namely, functional logical programming languages.
+languages namely, functional logical programming languages.\endnote{%
+  This is a sentence fragment.
+}
 By doing so a large amount of information pops up, from articles that give brief description and mentions
-\cite{website:wikiflpl, website:wikiflpllist} to the implementing techniques \cite{website:imlpementingflpl} which
-give a brief overview of the aim and also the list of publications.\endnote{%
-  What do you mean by ``backdrop of [the] publications''?
+\cite{website:wikiflpl, website:wikiflpllist} to \yyy{}{articles that give} \yyy{the implementing}{implementation} techniques\endnote{%
+  Are the previous two fixes correct?
+  If so, remove this endnote.
+}
+\cite{website:imlpementingflpl}\yyy{}{\Large,} which \yyy{}{also}
+\yyy{and}{give} a brief overview of the aim and also the list of publications.\endnote{%
+  Have I understood it?
+  If not, revert the change and try again.
 }
 
 The important piece however is the fact that there is a dedicated website \cite{website:funclogprog} for the history,
@@ -97,11 +90,8 @@ Michael Hanus \cite{website:mhanus} and Sergio Antoy \cite{website:santoy}.
 Possibly one of the most important works towards bringing programming styles together is the book by C.A.R.
 Hoare \cite{hoare1998unifying} which points out that among the large number of programming paradigms and/or
 theories the unification theory serves as a complementary rather than a replacement to relate the universe.
-As as always since we are talking about \progLang{Haskell} we must\endnote{%
-  Use ``must'' in place of ``have to'' where you can.
-  \mehul{changed}
-}\elabel{must-have-to} include monads and unifying theories using
-  monads \cite{gibbons2013unifying}.
+As as always since we are talking about \progLang{Haskell} we must include monads and unifying theories using
+monads \cite{gibbons2013unifying}.
  
 
 \subsection{Functional Logic Programming Languages}
@@ -133,10 +123,7 @@ Putting it all together, it gives us the feel of a logic language for something 
 \progLang{Haskell}.
 Unification is like two way pattern matching and with a similar analogy \progLang{Curry} is a \progLang{Haskell}
 that works both ways and hence variables can be on either sides.
-Although the language can do a lot; gaps do exist, such as the improvement of narrowing techniques.\endnote{%
-  ``Although'' fights with ``but''.  Remove one or the other; and put a comma before ``such as''.
-  \mehul{changed}
-}
+Although the language can do a lot; gaps do exist, such as the improvement of narrowing techniques.
  
  
 %\end{description}
@@ -149,20 +136,7 @@ programming languages. Beginning with functional hybrids, a small project langua
 On similar lines is \progLang{Common Object Lisp System (CLOS)} \cite{website:closwiki}.
 Combining objects with functions is important as object-oriented programming has become one of the most common styles of programming. Hence 
 even \progLang{Haskell} has a combined language \enparen{called \progLang{O'Haskell}, \cite{website:ohaskell}}, though it last saw a 
-release back in 2001.\endnote{%
-  The preceding sentence is awkward, although the intent is very good.
-  Here is one attempt at rewording it.
-  \par\vspace*{-1\baselineskip}
-  \begin{quote}
-    \slshape
-    Combining objects with functions is important
-    as object-oriented programming has become one of the most common styles of programming.
-    Hence even \progLang{Haskell} has a combined language
-    \enparen{called \progLang{O'Haskell}, \cite{website:ohaskell}}, 
-    though it last saw a release back in 2001.
-  \end{quote}
-  \mehul{Changed}
-}
+release back in 2001.
 as object oriented programming has been a dominant styles of programming. Even \progLang{Haskell} has one called \progLang{O'Haskell}
 \cite{website:ohaskell},
 though it last saw a release back in 2001.
@@ -201,14 +175,9 @@ with the ones from Australia, which seems to be a popular location for fiddling 
 As of now there have been three popular ones, beginning with \progLang{Nue Prolog}, \cite{website:nue-prolog},
 \progLang{Oz (Mozart Programming System)} \cite{website:oz-mozart} and \progLang{Mercury} \cite{website:mercury}.
 Delving deeper, the languages feel more like extensions of \progLang{Prolog} rather than hybrids.
-To start with \progLang{Mercury} represents a boundary between deterministic and
-non-deterministic programs. Similarly,
-\progLang{Nue Prolog}\endnote{%
-  ``\progLang{Nue Prolog}'' or ``\progLang{Neu Prolog}''?
-  \mehul{nue \progLang{Prolog}}
-}
-has special support for functions, while \progLang{Oz} gives concurrent constraint programming
-plus distributed support, with different function types for goal solving and expression rewriting.\endnote{%
+To start with \progLang{Mercury} represents a boundary between deterministic and non-deterministic programs.
+Similarly, \progLang{Nue Prolog} has special support for functions, while \progLang{Oz} gives concurrent constraint
+programming plus distributed support, with different function types for goal solving and expression rewriting.\endnote{%
   Are we done with Australia?
   If so, insert something like ``\textsl{Turning now to other languages,}''.
 }
@@ -239,11 +208,11 @@ The functional language \progLang{Scheme} is a very popular choice for this sort
   What sort of thing?
 }
 With a book \cite{friedman05reasoned} and an implementation to accompany
-\cite{website:kanren,website:minkanren}\endnote{%
-  This preceding phrase is not a sentence.
-}\elabel{not-a-sentence}, 
+\cite{website:kanren,website:minkanren}, 
 which seems to have translated into \progLang{Haskell}, 
-\cite{website:haskellkanren,website:molog,website:minikanrent}. 
+\cite{website:haskellkanren,website:molog,website:minikanrent}.\endnote{%
+  This preceding phrase is not a sentence.
+}\elabel{not-a-sentence}
 
 Finally talking about \progLang{Curry}, one of the most popular \progLang{Haskell} based multi paradigm languages
 with support for deterministic and non-deterministic computations. Contributing to the same there have been some
