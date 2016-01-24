@@ -22,12 +22,17 @@ This chapter discusses the properties of the target language \progLang{Prolog} a
 language to extend its capabilities.
 
 \begin{enumerate}
-\item Why a Logic Programming Languagee\eref{caps-choices} ?
+\item Why a logic programming language\eref{caps-choices} ?
+Our base language; \progLang{Haskell} is from the same paradigm. 
+
+It would be interesting to see how two languages of the same family with conflicting features can be made to work together.
+
+
 
 \item \progLang{Prolog} as a logic programming language.
 
 \progLang{Prolog} is a general purpose logic programming language mainly used in artificial intelligence and computational linguistics.  
-It is a Declarative\eref{caps-choices} language i.e. a program is a set of facts an rules running a query on which will return a result. The relation
+It is a declarative\eref{caps-choices} language i.e. a program is a set of facts an rules running a query on which will return a result. The relation
 between them is defined by clauses using \textit{Horn Clauses}\cite{wikiprolog}. \progLang{Prolog} is very popular and has a number of 
 implementations \cite{website:comparisonofprologimplementationswiki} for different purposes. 
 
@@ -75,7 +80,7 @@ first-order predicate logic. There are two types of clauses: Facts and rules.
 
 
 \cite{website:prologintroumiami}
-In Prolog\endnote{%
+In \progLang{Prolog}\endnote{%
   Use \macroName{progLang}!
 }
  all data objects are called terms
@@ -134,11 +139,11 @@ Variables in Prolog are rather different to those in most other languages. Furth
 \item Simple Semantics
 
 Under a declarative reading, the order of rules, and of goals within rules, is irrelevant since logical disjunction and conjunction are 
-commutative. Procedurally, however, it is often important to take into account Prolog's\endnote{%
+commutative. Procedurally, however, it is often important to take into account \progLang{Prolog}'s\endnote{%
   Use \macroName{progLang}!
 }
  execution strategy, either for efficiency reasons, 
-or due to the semantics of impure built-in predicates for which the order of evaluation matters. Also, as Prolog\endnote{%
+or due to the semantics of impure built-in predicates for which the order of evaluation matters. Also, as \progLang{Prolog}\endnote{%
   Use \macroName{progLang}!
 }
  interpreters try to unify 

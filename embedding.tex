@@ -63,7 +63,7 @@ This seems to be a common problem with the other implementation that exists, \ci
 
 Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
-is minimal{%
+is minimal\endnote{%
   ``far scarcer''?
   \mehul{minimal}.
   \david{``\textsl{Its use in industry is minimal than the leading languages\dots}'' makes no sense.}
@@ -76,7 +76,7 @@ The purely declarative nature lacks basic requirements such as support for \lang
   declarative; or \dots?
 }
 The other issue is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
-family of Declarative Languages.\eref{caps-choices}\textsuperscript{,}\endnote{%
+family of declarative languages.\eref{caps-choices}\textsuperscript{,}\endnote{%
   \david{What does this sentence mean?
   Are you suggesting that one of \progLang{Prolog}'s problems is that it is
   competing with \progLang{Haskell}?
@@ -112,7 +112,7 @@ constructs to the language to bring together both styles of declarative programm
 \progLang{Prolog}.
 Moreover, \progLang{Haskell} also claims for it to be suitable for basic logic programming naturally using the
 \haskellConstruct{List Monad} \cite{website:logicprogexamplehaskell}.
-A general \yyy{out look}{outlook} towards implementing \progLang{Prolog} has also been discussed by
+A general outlook towards implementing \progLang{Prolog} has also been discussed by
 \cite{krishnamurthi2007programming} to push the ideas forward.\endnote{%
   This \P{} needs a lot of work.
   I do not understand what you say the references say.
@@ -200,9 +200,9 @@ itself,\endnote{%
   comma splice
 }\elabel{comma-splice}
 a few exist \cite{nanoprolog-lib} being a preliminary or
-``mini \progLang{Prolog}'' as such with not much in it to be able to be useful,\eref{comma-splice} \cite{hswip-lib} is all powerful but is \yyy{an}{a}
+``mini \progLang{Prolog}'' as such with not much in it to be able to be useful,\eref{comma-splice} \cite{hswip-lib} is all powerful but is a
 foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we need \progLang{Prolog} for it,\eref{comma-splice}
-\cite{prolog-lib}\yyy{}{\Large,} which is the only implementation that comes the closest\endnote{%
+\cite{prolog-lib}, which is the only implementation that comes the closest\endnote{%
   Here ``\textit{only}'' fights with ``\textit{closest}''.
   Use either
   \begin{quote}
@@ -215,23 +215,23 @@ foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' 
 }
 to something like an actual practical \progLang{Prolog}.
 But all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or
-no \haskellConstruct{monadic} support and an REPL without the ability to ``write a \progLang{Prolog} Program
-File''.\eref{caps-choices}
+no \haskellConstruct{monadic} support and an REPL without the ability to ``write a \progLang{Prolog} program
+file''.\eref{caps-choices}
 
 %\item[$\bullet$]Logic Libraries
 \subsection{Logic Libraries}
 
-The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries \xxx{do exist
-  and} provide \xxx{a 
-part of the} functionality \xxx{which are} related
+The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries provide functionality related
 to propositional logic and backtracking.\endnote{%
     Does this sentence make sentence make sense with my deletions?
     If so, remove the \macroName{xxx}-stuff and this endnote.
+    \mehul{Sort of yes, made changes anyways}
 }
 \cite{logict-lib} is a continuation-based, backtracking, logic programming \haskellConstruct{monad} which attempts
 to replicate\endnote{% 
     \dots{} or simply ``\textsl{which replicates}'', unless you have strong doubts as to the efficacy of the
     library. 
+	\mehul{I have not played with all the componenents of the library so .....}
 }
 \progLang{Prolog}'s backtracking behaviour.
 \progLang{Prolog} is heavily based on formal logic.
@@ -247,11 +247,8 @@ The more specific the feature, the lesser the support in \progLang{Haskell}.
 Moving on to the other distinct feature of \progLang{Prolog} is \prologConstruct{unification}.\endnote{%
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
 }
-There are two libraries \xxx{that exist} \xxx{\cite{unification-fd-lib}} \yyy{,
-  \cite{cmu-lib}}{(\cite{unification-fd-lib}, \cite{cmu-lib})} that unify two \progLang{Prolog} terms and return
-the resulting substitution.\endnote{% 
-  Make the changes suggested or similar, then delete this endnote.
-}
+There are two libraries (\cite{unification-fd-lib}, \cite{cmu-lib}) that unify two \progLang{Prolog} terms and return
+the resulting substitution.
 
 
 %\item[$\bullet$]Backtracking

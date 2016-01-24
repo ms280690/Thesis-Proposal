@@ -56,13 +56,13 @@ An \markWord{F}-algebra consists of:
 \item a morphism from \markWord{F(A)} to \markWord{A}.
 \end{enumerate}
 
-An \markWord{F}-algebra in \progLang{Haskell} is defined by a functor \markWord{f}, a carrier type \markWord{a}, and a function from \markWord{(f a)} to \markWord{a}. (The underlying category is \markWord{Hask}.)
+An \markWord{F}-algebra in \progLang{Haskell} is defined by a functor \haskellConstruct{f}, a carrier type \markWord{a}, and a function from \markWord{(f a)} to \markWord{a}. (The underlying category is \haskellConstruct{Hask}.)
 
 Right about now the definition with which I started this post should start making sense:
 
 \mint{haskell}|type Algebra f a = f a -> a|
 
-For a given functor \markWord{f} and a carrier type \markWord{a} the algebra is defined by specifying just one function.
+For a given functor \haskellConstruct{f} and a carrier type \markWord{a} the algebra is defined by specifying just one function.
 Often this function itself is called the algebra, hence my use of the name alg in previous examples.
 
 
