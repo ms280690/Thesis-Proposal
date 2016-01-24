@@ -37,7 +37,7 @@ Perhaps one does not need to choose!
 This document looks at the attempts, improvements and future possibilities of uniting \progLang{Haskell}, a purely
 functional programming language and \progLang{Prolog}, a logical programming language so that one is not forced to
 choose.
-The task at hand involves replicating \progLang{Prolog}-like\eref{language-like} features in \progLang{Haskell} such as unification and
+The task at hand involves replicating \progLang{Prolog}-like features in \progLang{Haskell} such as unification and
 a single typed system.
 The thesis aims at leveraging the features of the host language in order to incorporate logic programming features
 resulting in extending \progLang{Haskell} with capabilities like unification.
@@ -76,15 +76,7 @@ Another approach would be to replicate target features exhibited by a language i
 hassle of jumping between the two.
 Commonly this results in an embedded language or a foreign function interface.
 A mixture of these ideologies results in a multi-paradigm / merged programming language.
-We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.\endnote{%
-  Removed a \P{} that followed, as the one that currently follows seems to say the same thing.
-  That \P{} was
-  \begin{quote}
-    \slshape
-    The adoption of \progLang{Prolog} has been difficult since procedural languages were making
-    a mark when it was released. 
-  \end{quote}
-}
+We try to encapsulated both the approaches of embedding and merging to develop a hybrid approach.
 
 %An embedded language provides a lot of shortcuts
 
@@ -112,11 +104,8 @@ declarative nature.
 Some say that \progLang{Prolog} is fading away,
 \cite{website:prolog-steam,website:prolog-death,website:prolog-killer}.
 It is apparently not used for building large programs \cite{wikiprolog,somogyi1995logic,website:prolog1000db}.
-However there are a lot of good things about \progLang{Prolog}\endnote{%
-  naked \progLang{Prolog}.
-}
-: it is ideal for search problems; it has a simple syntax, and a
-strong underlying theory.
+However there are a lot of good things about \progLang{Prolog}: it is ideal for search problems; it has a simple
+syntax, and a strong underlying theory.
 It is a language that should not die away.
 
 So the question is how to have all the good qualities of \textsc{Prolog} without actually using \progLang{Prolog}?
@@ -130,15 +119,7 @@ particular problem domain.
 In many cases, DSL programs are translated to calls to a common subroutine library and the DSL can be viewed as a
 means to hide the details of that library \cite{van2000domain}.
 
-Putting all of the above together, Domain Specific Languages\endnote{%
-  \david{This footnote changed 2016-01-08.
-    The point I want to make here is that you are talking about Domain Specific Languages as if you expect the
-    reader to know what they are.  Should she?
-    You have discussed general purpose languages somewhat, but you haven't said what you mean by ``Domain Specific
-    Language'', nor have you given an example.
-    \mehul{added content for dsl, please see previous paragraph}
-  }%
-}
+Putting all of the above together, Domain Specific Languages
 are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
 every time.
 On the other hand, a general purpose language can be used for solving a wide variety of problems but often the
@@ -194,10 +175,8 @@ This can be achieved in two ways:
   as all the positives as well as the negatives are brought into the host language.
   The negatives mentioned being, that languages from different paradigms usually have conflicting characteristics
   and result in inconsistent properties of the resulting embedding.
-  Examples and further discussion on the same are\endnote{%
-      The word ``Examples'' is plural.
-}
-    provided in the chapters to come.
+  Examples and further discussion on the same are
+  provided in the chapters to come.
 
 \item [Paradigm Integration (\chapterReference{chap:multiparadigm}{Chapter 5}):]
 
