@@ -22,15 +22,12 @@ particular paradigm, it is more accurate that a language exhibits a set of chara
 paradigms.
 The broader the scope of a language, the broader is the versatility in solving problems.
 
-Programming languages\endnote{%
-  \david{What style guide are you using to determine capitalization?}\newline
-  \mehul{none at the moment but I will change certain capitals to small}
-}\elabel{caps-choices} that fall into the same family, in our case declarative programming languages, can be of
+Programming languages that fall into the same family, in our case declarative programming languages, can be of
 different paradigms and can have very contrasting, conflicting characteristics and behaviours.
-The two most important ones in the family of declarative languages are the functional\eref{caps-choices} and
-logical\eref{caps-choices} style of programming.
+The two most important ones in the family of declarative languages are the functional and
+logical style of programming.
 
-Functional programming\eref{caps-choices}, \cite{hughes1989functional} gets its name as the fundamental concept is
+Functional programming, \cite{hughes1989functional} gets its name as the fundamental concept is
 to apply mathematical functions to arguments to get results.
 A program itself consists of functions and functions only which when applied to arguments produce results without
 changing the state that is values on variables and so on.
@@ -45,45 +42,16 @@ In untyped $\lambda$-calculi functions have no predetermined type, whereas typed
 on what sort (type) of data can a function work with.
 \progLang{Scheme} is based on the untyped variant, while \progLang{ML} and \progLang{Haskell} are based on typed
 $\lambda$-calculi.
-Most typed $\lambda$-calculi langauges are based on the Hindley-Milner or Damas-Milner or Damas-Hindley-Milner
-(\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki}) type system.\endnote{%
-  I fixed a space here.
-  Are 
-  \begin{inparaitem}
-  \item  Hindley-Milner 
-  \item Damas-Milner
-  \item Damas-Hindley-Milner
-  \end{inparaitem}
-  three different names for the same type system; or three different variations on the same idea?
-  \mehul{Just different names.
-  It is like Backus normal form and Panini-Backus normal form.}
-  
-}\textsuperscript{,}\endnote{%
-  This sentence feels wrong.  I expect either ``\textit{\textsl{the} \dots type system.}'' or ``\textit{\dots type
-    system\yyy{}{s}.}'' 
-    \mehul{added the}
-}
+Most typed $\lambda$-calculi langauges are based on the Hindley-Milner (or Damas-Milner or Damas-Hindley-Milner,
+\cite{hindley1969principal,milner1978theory,website:hdmtypesystemwiki}) type system.
 The Hindley-Milner-like type systems have the ability to give a most general type to a program
 without any annotations.
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the 
-variables, lastly unifying all of the constraints giving the type of the result.\endnote{%
-  \david{What is the relevance of this \P{} to the thesis?}\newline
-  \mehul{To explain the working, not directly required I guess but since \progLang{Haskell} is statically
-    typed}\newline
-  \david{Perhaps it is also relevant that this requires unification.}
-  \mehul{unificaiton is explained in proto1 and hints have been dropped
-    at other places. Do you want me to write a short snipped
-    here?}\newline
-  \david{``snipped'' or ``snippet''?  You can just add a sentence like
-    ``\textsl{This is, in fact, an instance of the unification algorithm
-      that we discuss in a different context in Chapter~\ref{proto1}}.''.
-  }
-  \mehul{added the sentece above}
-}
-This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}
+variables, lastly unifying all of the constraints giving the type of the result.
+This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}\yyy{}{\Large.}
 
-Logic programming\eref{caps-choices}, \cite{spivey1995introduction} on the other hand is based on formal logic.
+Logic programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
 A program is a set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old
 ones.
 This is done until the one which gives the solution is not derived.
@@ -96,24 +64,14 @@ This is done until the one which gives the solution is not derived.
 
 In this thesis we aim to merge two languages
 together and produce a result which exhibits hybrid
-properties.\endnote{%
-  Remove this sentence, and merge with the following \P.
-}
-
-The languages in question are \progLang{Haskell} and \progLang{Prolog}. These two languages come from respective the functional programming and logical programming branches of the
-    declarative language group.\endnote{%
-  Insert a sentence here linking these two languages with the \P's above.
-  Use something like
-  \begin{quote}\slshape
-    These two languages come from respective the functional programming and logical programming branches of the
-    declarative language group.
-  \end{quote}
-}
+properties.
 These two languages come from respective the functional programming and logical programming branches of the declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
-\item { Haskell} uses \haskellConstruct{pattern matching} while \progLang{Prolog} uses \prologConstruct{unification}.
-
+%% TODO 2016-01-16.  The braces around Haskell below are suspicsion.
+\item \progLang{Haskell}
+  uses \haskellConstruct{pattern matching} while \progLang{Prolog} uses
+  \prologConstruct{unification}. 
 \item \progLang{Haskell} is all about functions while \progLang{Prolog} is on Horn clause logic.
 \end{enumerate} 
 
@@ -128,12 +86,8 @@ language to incorporate monads \cite{wadler1992comprehending} for safe input and
   \mehul{changed}
 }
 can be 
-described as composable computation descriptions \cite{website:monadshaskellorg}.\endnote{%
-  Remove the space before the period.
-}
-Each monad\endnote{%
-  See the preceding endnote.
-}
+described as composable computation descriptions \cite{website:monadshaskellorg}.
+Each monad
 consists of a description of what has action has to be executed, how the action has to be run and how to combine
 such computations.
 An action can describe an impure or side-effecting computation, for example, input and output can be performed
@@ -156,11 +110,7 @@ The \progLang{Prolog} language has been partially implemented \cite{swipembedd} 
 The technique of embedding is a shallow one.
 It is as if the embedded language floats over the host language.
 Other approaches provide deeper integration between the target and the host.
-Here\endnote{%
-  I am not sure which ``further on'' you are referring to.
-  Is it the rest of this \P{}, or is it Chapter~\ref{chap:multiparadigm}?
-}
-we look at a few.
+Here we look at a few.
 Over time there has been an approach that branches out, which is paradigm integration.
 A lot of work has been done on Unifying the Theories\eref{caps-choices} of Programming\eref{caps-choices}
 \cite{DBLP:conf/utp/2006,DBLP:conf/utp/2008,DBLP:conf/utp/2010,DBLP:conf/utp/2012,hoare1998unifying,
@@ -171,8 +121,9 @@ Simply speaking it is like a \textit{functional} \progLang{Java} providing side-
 along with \progLang{Java}-like features.
 
 Before moving on, let us take a look at some terms related to the content above.
-To begin with foreign function interfaces (FFI) \cite{website:ffiwiki} provide a mechanism by which a program written in
-one programming language can make use of services written in another programming language.\eref{not-a-sentence} For example, a function
+To begin with foreign function interfaces (FFI) \cite{website:ffiwiki} provide a mechanism by which a program
+written in one programming language can make use of services written in another programming language.
+For example, a function
 written in \progLang{C} can be called within a program written in \progLang{Haskell} and vice versa through the FFI
 mechanism.
 Currently the \progLang{Haskell} foreign function interface works only for one language.
@@ -220,10 +171,8 @@ A specific tool used in meta programming is quasi-quotation \cite{mainland2007s,
 permits \progLang{Haskell} expressions and patterns to be constructed using domain specific,
 pro\-gram\-mer-de\-fined concrete syntax.
 For example, consider a particular application that requires a complex data type.
-To accommodate the same it has to represented using \progLang{Haskell} syntax and performing\endnote{%
-  ``preforming'' or ``performing''?
-  \mehul{performing}
-
+To accommodate the same it has to represented\endnote{%
+  \textit{has to represented}: Do you mean ``\textsl{must be represented}''?
 }
 using \progLang{Haskell} syntax and performing pattern matching may turn into a tedious task.
 So having the option of using specific syntax reduces the programmer from this burden and this is where a
@@ -265,31 +214,16 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
 
 Listing~\ref{tab:prlgappndhskl} shows 
 
-Consider the object functional programming language\eref{caps-choices}, \progLang{Scala}
-\cite{website:scala}.\endnote{%
-  Should this example be moved up to where you are discussing multi-paradigm languages?
-  \mehul{Wrote something about \progLang{Scala} up there.}
 }
+
+Consider the object functional programming language, \progLang{Scala}
+\cite{website:scala}.
 It is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
   Sentence fragment.
 }
 There have been quite a few attempts to ``merge'' these two programming languages that are from different programming
-paradigms.\endnote{% 
-  Do you mean
-  \begin{quote}
-    There have been quite a few attempts to ``merge'' \xxx{the} two programming languages from different programming
-    paradigms.
-  \end{quote}
-  or
-  \begin{quote}
-    There have been quite a few attempts to ``merge'' \yyy{the}{these} two programming languages\yyy{}{, that are}
-    from different programming paradigms.
-  \end{quote}
-  The word ``the'' confuses me here.
-  \mehul{There have been quite a few attempts to ``merge'' \yyy{the}{these} two programming languages\yyy{}{, that are}
-    from different programming paradigms.}
-}
+paradigms.
 The attempts fall into two categories as follows:
 
 \begin{enumerate}
