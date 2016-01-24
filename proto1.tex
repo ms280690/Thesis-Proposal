@@ -13,12 +13,9 @@
 
 This chapter demonstrates a fairly generic procedure of creating an open embedded domain specific language in
 \progLang{Haskell} along with \textit{monadic unification}.
-As a proof of concept, the implementation consists of creating a \progLang{Prolog}-like\endnote{%
-  ``\textit{\progLang{Prolog} like}'' should be hyphenated as \text{\progLang{Prolog}-like}
-  when used as an adjective, as here.
-}\elabel{language-like}
-open language whose
-unification procedure is carried out in a monad.
+As a proof of concept, the implementation consists of creating a
+\progLang{Prolog}-like open language whose unification procedure is
+carried out in a monad.
 
 
 \section{Ideas}
@@ -30,7 +27,7 @@ using the concepts mentioned above.
 \item \progLang{Prolog}
 
 The language itself has a number of sub components.
-The ones relevant to this thesis are:\eref{comma-before-list}
+The ones relevant to this thesis are:
 \begin{enumerate}
 \item Language, the syntax, semantics.
 
@@ -58,7 +55,7 @@ The ones relevant to this thesis are:\eref{comma-before-list}
     \mehul{Yes}
 }
   our approach.
-  The main components of this library are adopted from \progLang{Prolog} and modified:\eref{comma-before-list}
+  The main components of this library are adopted from \progLang{Prolog} and modified:
 
 \begin{enumerate}
 \item the language, adopted from \progLang{Prolog} but trimmed down;
@@ -80,15 +77,13 @@ The ones relevant to this thesis are:\eref{comma-before-list}
 This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable
 generic unification algorithm implementation.
 
-The relevant components are:\eref{comma-before-list}
+The relevant components are:
 \begin{enumerate}
 \item The \Verb!Unifiable! class
 
 \item The \Verb!UTerm! data type
 
-\item Variable implementations\endnote{%
-  what do ``\textit{Variables}'' refer to?
-},
+\item Variable implementations,
   \Verb!STVar!, \Verb!IntVar!
 
 \item The \Verb!Binding! monad
@@ -101,9 +96,9 @@ The relevant components are:\eref{comma-before-list}
   This implementation applies to practice the procedure to create an open language to accommodate types,
   custom variables, quantifiers and logic and recovering primitives while preserving the structure of a
   language commonly defined by a recursive abstract syntax tree.
-  The resulting language is then adapted to apply a \progLang{Prolog}-like\eref{language-like} unification.
+  The resulting language is then adapted to apply a \progLang{Prolog}-like unification.
 
-The implementation consists of the following components:\eref{comma-before-list}
+The implementation consists of the following components:
 \begin{enumerate}
 \item An open language
 
@@ -148,13 +143,7 @@ We begin with the programming constructs of the language.
 Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
 terms are equal.
 
-The possibilities are:\endnote{%
-  I believe that I have commented on the preceding elsewhere.
-  The punctuation to introduce a list (that is, the end of the phrase immediately preceding the list) should not be
-  ``,'', but more likely a colon, or possibly a period.
-  There should also be punctuation after each item in a list.
-  See item~\ref{item:5} in the to-do list.
-}\elabel{comma-before-list}
+The possibilities are:
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
   are the same atom, or the same number.
@@ -265,13 +254,12 @@ We convert it into a non recursive\endnote{%
 data type.
 
 
-Basically we do unification\eref{caps-choices}
-monadically.
+Basically we do unification monadically.
 
 
 \section{Creating a data type}
 
-To start we need to define a abstract syntax for the \progLang{Prolog}-like\eref{language-like} language.
+To start we need to define a abstract syntax for the \progLang{Prolog}-like language.
 But there is a conflict between the type systems as we shall discuss.
 
 
@@ -437,8 +425,8 @@ because with our original grammar all the expression that could be defined would
 The approach to tackling this problem is to find the ``fixed-point''.
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
-It means that applying one more \haskellConstruct{FlatTerm} would not change anything \yyy{–}{--}\eref{non-ascii}\textsuperscript{,}\endnote{%
-  Even if entered correctly, an en-dash is not appropriate here.
+It means that applying one more \haskellConstruct{FlatTerm} would not change anything --\textsuperscript{,}\endnote{%
+  An en-dash is not appropriate here.
 }
 a \textcolor{red}{fix}\endnote{%
   Spelling!
@@ -465,7 +453,7 @@ A fixed point of a function \markWord{f} is a value a such that \markWord{f a} \
 This is where the name of fix comes from: it finds the least-defined fixed
 point of a function.
 
-\item \eref{no-and} In type constructor form,
+\item In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
 
@@ -556,17 +544,10 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \section{Making the language compatible with \protect\codeLibrary{unification-fd}}\label{sec:making-lang-comp}
 
 \david{Check the Section~\ref{sec:making-lang-comp} title change above.}
-\david{\macroName{codeLibrary} is local to this file, which creates a
-  problem in the Table of Contents.}
 
-Our language now opened up and \endnote{%
-  The ``is'' seems mispaced.
-}
-ready for expansion,
-but it still needs to conform to the requirements of
-the \codeLibrary{unifiication-fd} library
-  (\cite{unification-fd-lib}), so that the generic unification algorithm upon customization works
-with it.\endnote{%
+Our language is now opened up and ready for expansion, but it still needs to conform to the requirements of the
+\codeLibrary{unifiication-fd} library (\cite{unification-fd-lib}), so that the generic unification algorithm upon
+customization works with it.\endnote{%
   This sentence can be simplified, I think.}
 
   The library provides functionality for first-order structural unification over general structure types along with
@@ -574,15 +555,15 @@ with it.\endnote{%
 
 In this section we discuss
 \begin{enumerate}
-\item Functor hierarchy.\eref{caps-choices}
+\item Functor hierarchy.
 
 \item Required instances the language must have.
 
 \item Mutable variables.
 
-\item Variable bindings.\eref{caps-choices}
+\item Variable bindings.
 
-\item Monadic unification.\eref{caps-choices}
+\item Monadic unification.
 
 \item Replicating \progLang{Prolog} unification in \progLang{Haskell}
 \end{enumerate}
