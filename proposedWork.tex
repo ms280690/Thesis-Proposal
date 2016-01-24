@@ -10,14 +10,10 @@
 \chapter{Current}\label{chap:proposedWork}
 %-----------------------------------------------------------------------------
 
-\textcolor{blue}{\textsl{I suspect that the title of this chapter needs to change.}}
+\textcolor{blue}{\textsl{The title of this chapter needs to change.}}
 
 \section{What this chapter is about}\label{sec:what-this-chapter:proposedWork}
 %% 2016-01-16.  dgc.  Perhaps we should change the label above? TODO
-
-\textcolor{blue}{\textsl{I need this information.
-    I do not know what you are trying to do here.
-}}
 
 This chapter discusses the current work in done in embedding programming languages.
 Specifically speaking embedding \progLang{Prolog} in \progLang{Haskell}.
@@ -26,9 +22,10 @@ We analyze the current implementations and provide insights into the contributio
 %-----------------------------------------------------------------------------
 \noindent\rule{\textwidth}{0.5pt}
 
-This chapter discusses the current implementations and publications for embedding \progLang{Prolog} in languages and specifically 
-\progLang{Haskell}. This chapter also discusses the shortcomings of the same to get a direction for improvements and contributions of this 
-thesis. 
+This chapter discusses the current implementations and publications for embedding \progLang{Prolog} in languages
+and specifically \progLang{Haskell}.
+This chapter also discusses the shortcomings of the same to get a direction for improvements and contributions of
+this thesis.
 \mehul{What i want to say is that we looked at a lot of stuff and then found these problems. Now these problems are like points for improvment. Also we wanted to add some other things like monadic unification. }
 
 \section{\protect{Existing Work by Others}} \label{sec:existing-work-by-others}
@@ -38,12 +35,7 @@ discussed below, along with their shortcomings.
 
 \begin{enumerate}
 \item
-  Very few embedded implementations exist which offer a starting point for the task of embedding.\endnote{%
-    What is ``the job at hand''?
-    What is `` a perspective into the job at hand''?
-    See \textit{p.}~\pageref{sec:list-colloquialisms}.
-    \mehul{ which offer a starting point for the task of embedding.}
-}
+  Very few embedded implementations exist which offer a starting point for the task of embedding.
   One of the earliest implementations \cite{website:mini-prolog-hugs98} is for an older specification of
   \progLang{Haskell} called \progLang{Haskell 98} \texttt{\bfseries{hugs}}.
   It is more of a proof of concept providing a mechanism to include variable search strategies in order to produce
@@ -71,7 +63,7 @@ discussed below, along with their shortcomings.
 \item
   In the case of libraries, a few exist.
   Most are old and are not currently maintained or updated.
-  Many provide only a shell through which one must have to do\eref{must-have-to} all the work, which is synonymous with
+  Many provide only a shell through which one must do all the work, which is synonymous with
   the embeddings mentioned above.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
   but are still not complete.\endnote{%
@@ -83,10 +75,7 @@ discussed below, along with their shortcomings.
 }
 
 \item
-  Moreover, none of the above have natural list support that exists\endnote{%
-    ``exist'' or ``exists''?
-    \mehul{exists}
-}
+  Moreover, none of the above have natural list support that exists
   in \progLang{Prolog}.\endnote{%
     \david{What does this point mean?}
     \mehul{I would have to think; I do not remember.}
@@ -95,15 +84,11 @@ discussed below, along with their shortcomings.
 \end{enumerate}
 
 As for the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
-``add-on''.\eref{no-and} A handful of crossover hybrid languages based on \progLang{Haskell} exist,
+``add-on''.
+A handful of crossover hybrid languages based on \progLang{Haskell} exist,
 \progLang{Curry} \cite{website:curry} being the prominent one.
 Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
-crossover implementations exist but again most of them have faded out.\endnote{%
-  \S~\ref{sec:what-this-chapter:proposedWork} says that this chapter is about embedding programming languages.
-  You appear to have wandered off topic.
- \mehul{I believe we might have to change ``what is this chapter about''}
- \mehul{Added some content to first section of this chapter}
-}
+crossover implementations exist but again most of them have faded out.
 
 \mehul{Split needed here}
 
@@ -134,6 +119,8 @@ Mostly, the trend is to build a library for extension to replicate the features 
 
 Taking into consideration the above, there is quite some room for improvement and additions.\endnote{%
   Try completely rephrasing this sentence.
+}\textsuperscript{,}\endnote{%
+  Move this sentence to the beginning of the following section.
 }
 
 \section{Things that this thesis fixes}\label{sec:things-fixed}
