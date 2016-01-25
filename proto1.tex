@@ -50,10 +50,7 @@ The ones relevant to this thesis are:
 
   One of the existing implementation of \progLang{Prolog} in \progLang{Haskell}, though partial, provides a starting
   point for the implementation as it provides
-  certain components to test\endnote{%
-    Do you mean ``test''?
-    \mehul{Yes}
-}
+  certain components to test
   our approach.
   The main components of this library are adopted from \progLang{Prolog} and modified:
 
@@ -62,9 +59,9 @@ The ones relevant to this thesis are:
 
 \item the database;
 
-\item Unifier
+\item the unifier
 
-\item Read-Eval-Print Loop(REPL)
+\item the Read-Eval-Print Loop(REPL)
 
 \item Interpreter which consists of a parsing mechanism and resembles the query resolver.\endnote{%
   The first two items start with ``\textit{The}''.  The remaining items
@@ -198,8 +195,7 @@ yes
 Unification is just a part of the process where the language
 attempts to find a solution for the given query using the rules provided
 in the knowledge base.
-The other part is actually reaching a point where two terms need to be
-unified i.e. searching.\endnote{%
+The other part is to reach a point where two terms are required to be unified i.e. searching.\endnote{%
   ``i.e.'' is missing the final period.
   Secondly, ``\textit{where two terms need to be
     unified that is searching}'' doesn't read well because it is missing
@@ -244,7 +240,7 @@ a data type to replicate the target language type system while conforming to the
 benefits.
 
 
-We have a \progLang{Prolog}-like\eref{language-like} language in \progLang{Haskell} defined via \textit{data}.
+We have a \progLang{Prolog}-lik language in \progLang{Haskell} defined via \textit{data}.
 
 The language defined is recursive in nature.
 
@@ -540,6 +536,20 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 %---------------------------------------------------------------------%%
 %% -- end code inserted by David                                   -- %%
 %%====================================================================%%
+
+\Figure~\ref{fig:manual_extension} \Figure~\ref{fig:automatic_extension}
+
+\begin{figure}
+  \includegraphics[width=1\textwidth]{extended_data_type_1.pdf}
+  \caption{Manually Extension of data type}
+  \label{fig:manual-extension}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=1\textwidth]{extended_data_type_2.pdf}
+  \caption{Automatic Extension of data type}
+  \label{fig:automatic-extension}
+\end{figure}
 
 \section{Making the language compatible with \protect\codeLibrary{unification-fd}}\label{sec:making-lang-comp}
 
