@@ -52,21 +52,18 @@ The ones relevant to this thesis are:
   point for the implementation as it provides
   certain components to test
   our approach.
-  The main components of this library are adopted from \progLang{Prolog} and modified:
+  The main components of this library are adopted from \progLang{Prolog} and modified. These are:
 
 \begin{enumerate}
 \item the language, adopted from \progLang{Prolog} but trimmed down;
 
 \item the database;
 
-\item the unifier
+\item the unifier;
 
-\item the Read-Eval-Print Loop(REPL)
+\item the Read-Eval-Print Loop (REPL);
 
-\item Interpreter which consists of a parsing mechanism and resembles the query resolver.\endnote{%
-  The first two items start with ``\textit{The}''.  The remaining items
-  do not, which is probably incorrect.
-}
+\item the interpreter which consists of a parsing mechanism and resembles the query resolver.
 \end{enumerate}
 
 \item \codeLibrary{unification-fd} \cite{unification-fd-lib}
@@ -76,16 +73,16 @@ generic unification algorithm implementation.
 
 The relevant components are:
 \begin{enumerate}
-\item The \Verb!Unifiable! class
+\item the \Verb!Unifiable! class;
 
-\item The \Verb!UTerm! data type
+\item the \Verb!UTerm! data type;
 
-\item Variable implementations,
-  \Verb!STVar!, \Verb!IntVar!
+\item variable implementations:
+  \Verb!STVar! and \Verb!IntVar!;
 
-\item The \Verb!Binding! monad
+\item the \Verb!Binding! monad; and 
 
-\item Unification (\Verb!unify! and \Verb!unifyOccurs!)
+\item Unification (\Verb!unify! and \Verb!unifyOccurs!).
 \end{enumerate}
 
 \item Prototype 1
@@ -97,13 +94,13 @@ The relevant components are:
 
 The implementation consists of the following components:
 \begin{enumerate}
-\item An open language
+\item an open language,
 
-\item Compatibility with the unification library \cite{unification-fd-lib}
+\item compatibility with the unification library \cite{unification-fd-lib},
 
-\item Variable bindings
+\item variable bindings,
 
-\item Monadic unification
+\item monadic unification.
 
 \end{enumerate}
 \end{enumerate}
@@ -113,29 +110,13 @@ Each of the components are discussed in the following sections.
 
 \section{How Prolog works}
 
-To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.\endnote{%
-  You might want to add words before some references. For instance
-  \begin{quote}\itshape
-    To replicate \progLang{Prolog} we look into how it works \cite{webiste:learnprolognow}.
-  \end{quote}
-  is probably better as
-  \begin{quote}\slshape
-    To replicate \progLang{Prolog} we look into how it works \enparen{see, for instance,
-      \textup{\cite{webiste:learnprolognow}}}. 
-  \end{quote}
-}
+To replicate \progLang{Prolog} we look into how it works \enparen{see, for instance,
+      \textup{\cite{webiste:learnprolognow}}}.
 %
 As any other language we start with the syntax and semantics.
 We begin with the programming constructs of the language.
 
-\progLang{Prolog} has three types of terms:
-\begin{enumerate}
-\item Constants.
-
-\item Variables.
-
-\item Complex terms.
-\end{enumerate}
+\progLang{Prolog} has three types of terms: constants, variables and complex terms.
 
 Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
 terms are equal.
@@ -172,7 +153,7 @@ yes
 \item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
 
 \begin{enumerate}
-\item They have the same functor and arity, and
+\item t hey have the same functor and arity, and
 
 \item all their corresponding arguments unify, and
 
@@ -195,13 +176,7 @@ yes
 Unification is just a part of the process where the language
 attempts to find a solution for the given query using the rules provided
 in the knowledge base.
-The other part is to reach a point where two terms are required to be unified i.e. searching.\endnote{%
-  ``i.e.'' is missing the final period.
-  Secondly, ``\textit{where two terms need to be
-    unified that is searching}'' doesn't read well because it is missing
-  commas.  Check that latin abbreviations read correctly when replaced
-  with English words.
-}
+The other part (searching) is to reach a point where two terms are required to be unified.
 Together they form the query resolver in \progLang{Prolog}.
 
 For example, consider the append function
@@ -212,11 +187,7 @@ append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \end{minted}
 %
 whose operation is illustrated in Figure~\ref{fig:Trace for append}.
-In this prototype we explore the unification aspect only.\endnote{%
-  I've tidied up a bit here.  See if this reads more clearly.  I've also
-  removed a comment.\newline  (Commit \textsf{\bfseries fe997de\-08bda2\-64c453\-204e97\-1a1cfd\-219457acf}).
-}
-
+In this prototype we explore the unification aspect only.
 
 
 \begin{figure}
@@ -226,7 +197,7 @@ In this prototype we explore the unification aspect only.\endnote{%
 \label{fig:Trace for append}
 \end{figure}
 
-In this prototype we explore the unification aspect only.
+
 
 \begin{figure}
   \includegraphics[width=1\textwidth]{Prototype-1.pdf}
@@ -237,21 +208,13 @@ In this prototype we explore the unification aspect only.
 \section{What we do in this Prototype}
 This prototype throws light on the process of tackling the issues involved in creating
 a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the
-benefits.
-
-
-We have a \progLang{Prolog}-lik language in \progLang{Haskell} defined via \textit{data}.
-
-The language defined is recursive in nature.
-
-We convert it into a non recursive\endnote{%
-  ``non recursive'' is hyphenated.
+benefits.\endnote{
+  \david{simplify}
 }
-data type.
 
 
-Basically we do unification monadically.
-
+We have a \progLang{Prolog}-like language in \progLang{Haskell} defined via \haskellConstruct{data}. The language defined is recursive in nature. We convert 
+it into a non-recursive data type. Basically we do unification monadically.
 
 \section{Creating a data type}
 
