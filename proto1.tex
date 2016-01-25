@@ -98,7 +98,7 @@ The implementation consists of the following components:
 
 \item compatibility with the unification library \cite{unification-fd-lib},
 
-\item variable bindings,
+\item variable bindings, and
 
 \item monadic unification.
 
@@ -153,7 +153,7 @@ yes
 \item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
 
 \begin{enumerate}
-\item t hey have the same functor and arity, and
+\item they have the same functor and arity, and
 
 \item all their corresponding arguments unify, and
 
@@ -222,44 +222,41 @@ To start we need to define a abstract syntax for the \progLang{Prolog}-like lang
 But there is a conflict between the type systems as we shall discuss.
 
 
+\endnote{
+  \david{move to related concepts Start}
+}
+
 A type system consists of a set of rules to define a ``type'' to different constructs in a
 programming language such as variables, functions and so on.
 A static type system requires types to be attached to the programming constructs before hand which results in
 finding errors at compile time and thus increase the reliability of the program.
-The other end is the dynamic type system which passes through code which would not have worked in former
-environment, it comes of as less rigid.
+On the other hand the dynamic type system passes through code which would not have worked in former
+environment; it comes off as less rigid.
 
 
+The advantages of static typing \cite{meijer2004static} are :
+\begin{itemize}
+\item earlier detection of errors,
+\item better documentation in terms of type signatures,
+\item more opportunities for compiler optimizations,
+\item increased run-time efficiency, and
+\item better developer tools;
+\end{itemize}
 
-The advantages of static typing \cite{meijer2004static}\endnote{
-  \david{Why do we need the following two paragraphs?}\newline
-  \mehul{To
-  talk about the type systems of the languages}
-}\textsuperscript{,}\endnote{%
-  If we are going to keep this, we need to have sentences.  We need something like
-  ``\textsl{The advantages of static typing are: \dots{}, and\dots, whereas the advantages of dynamic typing are:
-    \dots}''.
+whereas for dynamic typing the advantages are:
+\begin{itemize}
+\item less rigidity,
+\item suitability, and
+\item re-usability.
+\end{itemize}
+
+\endnote{
+  \david{move to related concepts end}
 }
-\begin{enumerate}
-\item Earlier detection of errors
-\item Better documentation in terms of type signatures
-\item More opportunities for compiler optimizations
-\item Increased run-time efficiency
-\item Better developer tools
-\end{enumerate}
 
-For dynamic typing
-\begin{enumerate}
-\item Less rigid
-\item Ideal for prototyping / unknown / changing requirements or unpredictable behaviour
-\item Re-usability
-\end{enumerate}
-
-Since \progLang{Haskell} is statically type we would need to define a ``typed\yyy'' language which
-should have a number of constructs representing different terms in \progLang{Prolog} such as complex structures
-(for example predicates, clauses etc.), don't cares, cuts, variables and so on.\endnote{% 
-  Drop the ``would''s here.
-}
+Since \progLang{Haskell} is statically typed we need to define a ``typed'' language which
+has a number of constructs representing different terms in \progLang{Prolog}, such as complex structures
+(for example predicates, clauses etc.), don't cares, cuts, variables and so on.
 
 Consider the language in Listing~\ref{tab:closed-terms}, which has been adopted from
 \cite{prolog-lib}.
@@ -291,29 +288,21 @@ Consider the language in Listing~\ref{tab:closed-terms}, which has been adopted 
 \end{code-list}
 
 Even though \textit{Term} has a number of constructors the resulting construct has a single type.
-Hence, a function would still be untyped / singly typed\endnote{%
-  Are you sure about the type below?  This seems to me to be confusing \progLang{Prolog} lists with
-  \progLang{Haskell} lists.
-}
+Hence, a binary function would have type
 \par
 \begin{minted}{haskell}
-append :: [Term] -> [Term] -> [Term]
+foo :: Term -> Term -> Term
 \end{minted}
-
-\begin{comment}
-The  data type in Figure~\ref{tab:closed-terms} is recursive as seen in the constructor,
-\mint{haskell}|Struct Atom [Term]|
-\end{comment}
 
 Listing~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
 abstract syntax of a language.
-One of the issues with the above datatype is that it is not possible to distinguish the structure of the data from
+One of the issues with the datatype in Listing~\ref{tab:closed-terms} is that it is not possible to distinguish the structure of the data from
 the data type itself \cite{sheard2004two}.
 Moreover, the primitives of the language (see \cite{website:understandingalgebrasfpcomplete})\endnote{%
   is this ok?
 }
-are not accessible as the language can have expressions of only one
-type, i.e., ``\unknownLabel{Term}''.
+are not accessible, as the language can have expressions of only one
+type, ``\haskellConstruct{Term}''.
 
 \begin{comment}
 The solution  would be to add a type constructor split the data type into two levels, a single recursive
