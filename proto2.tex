@@ -68,11 +68,7 @@ Nonetheless, the library has the following major components:
 \item the Read-Eval-Print Loop (REPL).
 \end{itemize}
 
-To prove the modularity of the approach used in Chapter~\ref{proto1} for language modification and monadic unification only the abstract syntax and unifier will be customized.\endnote{%
-  Page break following removed.
-}
-
-
+To prove the modularity of the approach used in Chapter~\ref{proto1} for language modification and monadic unification only the abstract syntax and unifier will be customized.
 
 \section{What we do in this prototype?}
 
@@ -149,10 +145,6 @@ Lastly, the fixed point version is created using the Fix constructor
 \label{tab:fixflatgrp0201}
 \end{code-list}
 
-
-
-
-
 The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities 
 Listing~\ref{tab:prlg0201monadicunificationtranslation} and Listing~\ref{tab:prlg0201monadicunificationconversion}.
 
@@ -163,8 +155,6 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation} and Listing~\ref{tab:prl
 \caption{prolog-0.2.0.1 Monadic Unification Conversion Functions}
 \label{tab:prlg0201monadicunificationconversion}
 \end{code-list}
-
-
 
 \begin{code-list}[H]
   \begin{singlespace}
@@ -193,17 +183,13 @@ type Substitution = (VariableName, Term)
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
 \end{code-list}
+
 A \prologConstruct{Unifier} is a list of \prologConstruct{Substitutions} which binds a variable to a value.
 
-\begin{comment}
-Figure~\ref{tab:prlg0201unifier} shows the result type. The instances are created to open up the language and make it compatible with the
-unification library \cite{prolog-lib}.
-\end{comment}
-
 Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}.
-Each language expression is matched based on its structure.
+Each language expression is matched based on its structure and returns a \haskellConstruct{Unifier} . 
 
-\begin{code-list}[th]
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto2-unification-lion.hs}
   \end{singlespace}
@@ -214,16 +200,14 @@ Each language expression is matched based on its structure.
 The issue with the current approach is the rigidity of the procedure.
 Any language modification will cause a ripple effect across the system.
 As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation
-as well.\endnote{%
-  Page break following removed.
-}
+as well.
 
-Before we can unify terms of our language they need to be converted from the old grammar. We also generate a mapping of variables for 
-library compatibility. See Listing~\ref{tab:prlg0201monadicunificationconversion} and 
+Before we can unify terms of our language they need to be converted to the new grammar. We also generate a mapping of variables for 
+library the library to carry out unification. See Listing~\ref{tab:prlg0201monadicunificationconversion} and 
 Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 
 
-\begin{code-list}[th]
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto2-monadic-unification-functions.hs}
   \end{singlespace}
@@ -231,7 +215,7 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 \label{tab:prlg0201monadicunificationfunctions}
 \end{code-list}
 
-\begin{code-list}[th]
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,lastline=30]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
@@ -239,7 +223,7 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 \label{tab:prlg0201monadicunificationtestsandextraction1}
 \end{code-list}
 
-\begin{code-list}[th]
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,firstline=32]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
@@ -247,56 +231,13 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 \label{tab:prlg0201monadicunificationtestsandextraction2}
 \end{code-list}
 
-\begin{code-list}[th]
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,firstline=96]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
 \caption{prolog-0.2.0.1 Monadic Unification Tests and Extraction 3}
 \label{tab:prlg0201monadicunificationtestsandextraction2}
 \end{code-list}
-
-\begin{comment}
-\section{Modifications}
-The resulting language is not far from what we did in {\Large ?\LARGE ?}~\ref{proto1}\endnote{%
-  Fix me!
-}
-%% dgc 2016-01-16 Above TODO
-apart from the fact that the \markWord{Term} expressions are encapsulated to form \markWord{Clauses} which in turn
-form a \markWord{Program}.
-
-Moreover, the required instances make the language compatible with the unification procedure.
-
-\begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto2-starry-forked.hs}
-\end{singlespace}
-
-Aditionally helper functions for converting expressions between the two domains and translation to \markWord{UTerm}.
-
-To solve the issue of infinitely deep language expressions, we find the fixed point of the expression.
-The unification function provided by \cite{prolog-lib} is not very \progLang{Prolog} like\endnote{%
-  ``\textit{\progLang{Prolog} like}'' should be hyphenated as \text{\progLang{Prolog}-like}
-  when used as an adjective, as here.
-}\elabel{language-like} in
-nature and certain adjustments need to be made.
-\begin{enumerate}
-\item Extracting variable and creating dictionaries.
-
-\item Converting to \markWord{UTerm}s and back
-\end{enumerate}
-
-\begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto2-clean-lemur.hs}
-\end{singlespace}
-
-Take original expressions flatten fix convert unify
-run it \markWord{STBinding} monad to extract substitutions.\endnote{%
-  Huh?
-}
-
-\begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto2-hearty-kayo.hs}
-\end{singlespace}
-\end{comment}
 
 
 
