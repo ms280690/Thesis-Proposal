@@ -13,11 +13,10 @@ instance Foldable (FTS) where
   foldMap             = T.foldMapDefault
 
 instance Traversable (FTS) where
-    traverse f (FS atom xs)      =   FS atom <$>
-    sequenceA (Prelude.map f xs)
-    traverse _ (FV v)          =   pure (FV v)
-    traverse _ FW         =   pure (FW)
-    traverse _ (FC i)          =   pure (FC i)
+    traverse f (FS atom xs) =   FS atom <$> sequenceA (Prelude.map f xs)
+    traverse _ (FV v)       =   pure (FV v)
+    traverse _ FW           =   pure (FW)
+    traverse _ (FC i)       =   pure (FC i)
 
 instance Unifiable (FTS) where
   zipMatch (FS al ls) (FS ar rs) =
