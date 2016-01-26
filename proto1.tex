@@ -124,30 +124,43 @@ terms are equal.
 The possibilities are:
 \begin{enumerate}
 \item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
-  are the same atom, or the same number.
+  are the same atom, or the same number. Consider the example in Listing~\ref{tab:unifyingconstants}
 \par
-\begin{minted}[linenos,frame=lines]{prolog}
+\begin{code-list}[H]
+\begin{minted}[linenos]{prolog}
 ?-  =(mia,mia).
 yes
 \end{minted}
+\caption{Unification with constants.}
+\label{tab:unifyingconstants}
+\end{code-list}
 
 
 \item If \mSV{term1} is an uninstantiated variable and \mSV{term2} is any type of term, then \mSV{term1}
   and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2}\,.
   Similarly, if \mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2}
-  unify, and \mSV{term2} is instantiated to \mSV{term1} . (So if they are both 
+  unify, and \mSV{term2} is instantiated to \mSV{term1}.Consider the examples in Listing~\ref{tab:unificationinglevariable} and 
+  Listing~\ref{tab:unificationmultiplevariable}. (So if they are both 
 variables, they're both instantiated to each other, and we say that they share values.)
 \par
-\begin{minted}[linenos,frame=lines]{prolog}
+\begin{code-list}[H]
+\begin{minted}[linenos]{prolog}
 ?-  mia  =  X.
 X  =  mia
 yes
 \end{minted}
+\caption{Unification with a single variable.}
+\label{tab:unificationsinglevariable}
+\end{code-list}
 
-\begin{minted}[linenos,frame=lines]{prolog}
+\begin{code-list}[H]
+\begin{minted}[linenos]{prolog}
 ?-  X  =  Y.
 yes
 \end{minted}
+\caption{Unification with variables.}
+\label{tab:unificationmultiplevariable}
+\end{code-list}
 
 
 \item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
@@ -159,14 +172,18 @@ yes
 
 \item the variable instantiations are compatible.
 \end{enumerate}
-
+Consider the example in Listing~\ref{tab:unificationcomplexterms}.
 \par
-\begin{minted}[linenos,frame=lines]{prolog}
+\begin{code-list}[H]
+\begin{minted}[linenos]{prolog}
 ?-  k(s(g),Y)  =  k(X,t(k)).
 X  =  s(g)
 Y  =  t(k)
 yes
 \end{minted}
+\caption{Unification of complex terms.}
+\label{tab:unificationcomplexterms}
+\end{code-list}
 
 
 
@@ -179,38 +196,43 @@ in the knowledge base.
 The other part (searching) is to reach a point where two terms are required to be unified.
 Together they form the query resolver in \progLang{Prolog}.
 
-For example, consider the append function
-\par
-\begin{minted}[linenos,frame=lines]{prolog}
+For example, consider the append function shown in Listing~\ref{tab:prlgappnd}.
+
+\begin{code-list}[H]
+\begin{minted}[linenos]{prolog}
 append([],L,L).
 append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 \end{minted}
+\caption{append function in \progLang{Prolog}}
+\label{tab:prlgappnd}
+\end{code-list}
 %
 whose operation is illustrated in Figure~\ref{fig:Trace for append}.
 In this prototype we explore the unification aspect only.
 
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[scale = 0.5]{PrologAppendWorking.png}
 \caption{Trace for append \cite{webiste:learnprolognowappend}}
 \label{fig:Trace for append}
 \end{figure}
 
+\section{What we do in this Prototype}
 
-
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=1\textwidth]{Prototype-1.pdf}
   \caption{Architecture of Prototype 1}
   \label{fig:proto1-arch}
 \end{figure}
 
-\section{What we do in this Prototype}
-This prototype throws light on the process of tackling the issues involved in creating
-a data type to replicate the target language type system while conforming to the host language restrictions and also utilizing the
+This prototype demonstrates the process of creating a data type to replicate the target language type system while conforming to the host 
+language restrictions by utilizing the
 benefits.\endnote{
   \david{simplify}
+  \mehul{updated, please review.}
 }
+
 
 
 We have a \progLang{Prolog}-like language in \progLang{Haskell} defined via \haskellConstruct{data}. The language defined is recursive in nature. We convert 
@@ -261,7 +283,7 @@ has a number of constructs representing different terms in \progLang{Prolog}, su
 Consider the language in Listing~\ref{tab:closed-terms}, which has been adopted from
 \cite{prolog-lib}.
 
-\begin{code-list}
+\begin{code-list}[H]
 \begin{minted}[linenos]{haskell}
   data VariableName = VariableName Int String
   deriving (Eq, Data, Typeable, Ord)
@@ -309,7 +331,7 @@ The solution  would be to add a type constructor split the data type into two le
 data type is replaced by two related data types.
 \end{comment}
 Consider the code in Listing~\ref{tab:non-recurse}
-\begin{code-list}
+\begin{code-list}[H]
   \begin{minted}[gobble=3,linenos]{haskell}
     data FlatTerm a = Struct Atom [a]
                     | Var VariableName
@@ -339,9 +361,11 @@ A more accurate way of saying it would be that \textit{a} can be a \textit{kind}
 
 In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is
 essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of
-any (monomorphic) data type for example \cite{website:kindhaskellwiki},
+any (monomorphic) data type for example \cite{website:kindhaskellwiki}. Listing~\ref{tab:kindsinhaskell} describes kinds in 
+\progLang{Haskell}.
 
-\begin{minted}[linenos,frame=lines]{haskell}
+\begin{code-list}[H]
+\begin{minted}[linenos]{haskell}
 Int :: *
 Maybe :: * -> *
 Maybe Bool :: *
@@ -349,15 +373,15 @@ a -> a :: *
 [] :: * -> *
 (->) :: * -> * -> *
 \end{minted}
+\caption{\haskellConstruct{kinds} in \progLang{Haskell}}
+\label{tab:kindsinhaskell}
+\end{code-list}
 
 Simply speaking we can have something like
 \mint{haskell}|FlatTerm Bool|
 and a generic function like,
 \mint{haskell}|function :: (a -> b) -> FlatTerm a -> FlatTerm b|
-\begin{comment}
-  I think this is more to say all terms in the language can be (FlatTerm a) and not
-  (FlatTerm (FlatTerm (FlatTerm ....)))
-\end{comment}
+
 One problem remains: how does one represent deep expressions
 of the above language, 
 for example something of the form,
@@ -424,7 +448,7 @@ the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
 \item Manually modifying the structure of the language, as shown in Listing~\ref{tab:man-enhan-gram}
-  \begin{code-list}
+  \begin{code-list}[H]
     \begin{minted}[linenos,gobble=5]{haskell}
       type Atom            = String
 
@@ -471,7 +495,7 @@ Why not continue the example that you started in Figure~\ref{tab:man-enhan-gram}
 That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
 
-\begin{code-list}[h]
+\begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
     data Extended f  = New_Constructor_1 ...
                      | New_Constructor_2 ....
@@ -489,16 +513,23 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 %% -- end code inserted by David                                   -- %%
 %%====================================================================%%
 
-Figure~\ref{fig:manual_extension} Figure~\ref{fig:automatic_extension}
+Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.
+Rather than modifying the the base language and the operation defined for it, we extend the language as shown in 
+Figure~\ref{fig:automatic-extension}. 
 
-\begin{figure}
-  \includegraphics[width=1\textwidth]{extended_data_type_1.pdf}
+\mint{haskell}|Extended FlatTerm| is isomorphically equivalent to the abstract grammar in Figure~\ref{fig:manual-extension}.
+
+
+
+
+\begin{figure}[H]
+  \includegraphics[scale=0.3, width=1\textwidth]{extended_data_type_1.png}
   \caption{Manually Extension of data type}
   \label{fig:manual-extension}
 \end{figure}
 
-\begin{figure}
-  \includegraphics[width=1\textwidth]{extended_data_type_2.pdf}
+\begin{figure}[H]
+  \includegraphics[width=1\textwidth, scale=0.5]{extended_data_type_2.png}
   \caption{Automatic Extension of data type}
   \label{fig:automatic-extension}
 \end{figure}
