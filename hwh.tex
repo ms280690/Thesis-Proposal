@@ -16,43 +16,32 @@
 %-----------------------------------------------------------------------------
 
 
-In this chapter we discuss the properties of \progLang{Haskell}\yyy{}{\LARGE.}\endnote{%
-  Fix and remove this footnote.
-}
+In this chapter we discuss the properties of \progLang{Haskell}.
 
 This chapter discusses the properties of the host language \progLang{Haskell} and mainly the feature set it
-provides for \yyy{embedding domain specific languages(EDSLs)}{embedded
-  domain specific languages (eDSLs)}.\endnote{%
-  Be consistent with previous notation, and put a space before the open ``\textbf{(}''.
-}
+provides for embedded domain specific languages (eDSLs).
 
 \david{%
   This chapter needs to be rewritten without the list.
 }
 
-\begin{enumerate}
+\paragraph{why a functional language?}
 
-\item Why a Functional Language?\eref{caps-choices}
-
-\item
-  %% TODO 2016-01-16.  There is a comma splice immediately below.
-  \progLang{Haskell} as a functional programming language Haskell is an advanced purely-functional programming
+\paragraph{why \progLang{Haskell}?}
+\progLang{Haskell} as a functional programming language \progLang{Haskell} is an advanced purely-functional programming
   language.
   In particular, it is a polymorphically statically typed, lazy, purely functional language
   \cite{website:haskellwiki}.
   It is one of the popular functional programming languages \cite{website:langpop}.
   \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
 
-  Shifting a bit to Embedded Domain Specific Languages (EDSLs) such as Emacs LISP.\endnote{%
-    Raw language name.
-}
+\paragraph{eDSL}
+  Shifting a bit to embedded domain specific languages (eDSLs) such as \progLang{Emacs LISP}.
   Opting for embedding provides a ``shortcut'' to create a language which may be designed to provide specific
   functionality.
   Designing a language from scratch would require writing a parser, code generator / interpreter and possibly a
   debugger, not to mention all the routine stuff that every language
-  needs like\endnote{%
-  Consider using ``such as'' in place of ``like''.
-}\elabel{such-as-like} variables, control structures and 
+  needs such as variables, control structures and 
   arithmetic types.
   All of the aforementioned are provided by the host language; in this case \progLang{Haskell}.
   Examples for the same can be found here \cite{jones2001composing, meyer2008eiffel} which talk about introducing
@@ -62,11 +51,7 @@ provides for \yyy{embedding domain specific languages(EDSLs)}{embedded
   might not be exact to specification, all required constructs cannot be implemented due to constraints, programs
   could be difficult to debug since it happens at the host level and so on.
 
-\item Looking at \progLang{Haskell} as a tool for embedding domain specific languages \cite{website:paulspontifications}
-
-\begin{enumerate}
-\item Monads
-\newline
+\paragraph{\progLang{Haskell} feature : Monads}
 Control flow defines the order/ manner of execution of statements in a pro\-gram \cite{website:controlflowwiki}.
 The specification is set by the programming language.
 Generally, in the case of imperative languages the control flow is sequential while for a functional language is
@@ -98,20 +83,14 @@ Coming back to control flow; for example, implementing backtracking in an impera
 side effects which even \progLang{Prolog} is not able to do since the asserts and retracts cannot be undone.
 In \progLang{Haskell}, a monad defines a model for control flow and how side effects would propagate through a
 computation from step to step or modification to modification.
-And \progLang{Haskell} allows creation of custom monads relieving the burden of dealing with a fixed model of the
-host language.\endnote{%
-    See \textit{p.}~\pageref{item:no-and}, item~\ref{item:no-and}.
-}\elabel{no-and}
+\progLang{Haskell} allows creation of custom monads relieving the burden of dealing with a fixed model of the
+host language.
 
-\item Lazy Evaluation
-\newline
+\paragraph{\progLang{Haskell} feature : Lazy evaluation}
 Another property of \progLang{Haskell} is laziness or lazy evaluation which means that nothing is evaluated until
 it is necessary.
 This results in the ability to define infinite data structures because at execution only a fragment is used
 \cite{website:haskelllazinesswiki}.
-
-\end{enumerate}
-\end{enumerate}
 
 
 
