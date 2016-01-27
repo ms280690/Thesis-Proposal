@@ -320,9 +320,7 @@ Listing~\ref{tab:closed-terms} is a classic example of using a recursive data ty
 abstract syntax of a language.
 One of the issues with the datatype in Listing~\ref{tab:closed-terms} is that it is not possible to distinguish the structure of the data from
 the data type itself \cite{sheard2004two}.
-Moreover, the primitives of the language (see \cite{website:understandingalgebrasfpcomplete})\endnote{%
-  is this ok?
-}
+Moreover, the primitives of the language (see \cite{website:understandingalgebrasfpcomplete})
 are not accessible, as the language can have expressions of only one
 type, ``\haskellConstruct{Term}''.
 
@@ -330,7 +328,7 @@ type, ``\haskellConstruct{Term}''.
 The solution  would be to add a type constructor split the data type into two levels, a single recursive
 data type is replaced by two related data types.
 \end{comment}
-Consider the code in Listing~\ref{tab:non-recurse}
+Consider the code in Listing~\ref{tab:non-recurse}.
 \begin{code-list}[H]
   \begin{minted}[gobble=3,linenos]{haskell}
     data FlatTerm a = Struct Atom [a]
