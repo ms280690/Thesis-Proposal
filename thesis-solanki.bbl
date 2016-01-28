@@ -252,10 +252,6 @@ JLogic, \emph{Jlog - prolog in java}, September 2012,
 \bysame, \emph{Jscriptlog - prolog in javascript}, September 2012,
   \url{http://jlogic.sourceforge.net/index.html}.
 
-\bibitem{website:paulspontifications}
-Paul Johnson, \emph{Why haskell is good for embedded domain specific
-  languages}, January 2008.
-
 \bibitem{website:mini-prolog-hugs98}
 Mark~P Jones, \emph{Mini-prolog for hugs 98}, June 1996,
   \url{http://darcs.haskell.org/hugs98/demos/prolog/}.
@@ -494,6 +490,10 @@ Michael Spivey, \emph{Functional pearls combinators for breadth-first search},
 \bibitem{website:stackoverflow}
 Stackoverflow, \emph{Haskell vs. prolog comparison}, December 2009,
   \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}.
+
+\bibitem{Sterling:1994:APA:175753}
+Leon Sterling and Ehud Shapiro, \emph{The art of prolog (2nd ed.): Advanced
+  programming techniques}, MIT Press, Cambridge, MA, USA, 1994.
 
 \bibitem{webiste:learnprolognowappend}
 Patrick Blackburn Johan Bos~Kristina Striegnitz, \emph{Learn prolog now},
