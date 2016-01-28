@@ -103,7 +103,7 @@ Often this function itself is called the algebra, hence my use of the name alg i
 
 
 \section{The execution model of \progLang{Prolog} \cite{Sterling:1994:APA:175753}}
-
+Two major decisions must be taken for \progLang{Prolog} to resolve a query:
 \begin{enumerate}
 \item Scheduling policy
 
@@ -112,7 +112,26 @@ Select leftmost goal and replace the non deterministic choice of a clause by seq
 Stack scheduling policy, pop the topmost goal for reduction and push derived goals back.
 
 \item Search strategy
+
+\progLang{Prolog} simulates the non-deterministic choice of reducing clause by sequential search and backtracking. 
+
+The first goal whose head unifies with the goal is chosen. If no match is found then the computation is unwound to the last choice point and
+the next unifiable clause is chosen.
 \end{enumerate}
+
+\progLang{Prolog} generates all possible solutions of the goal with respect to the \progLang{Prolog} program. It performs a complete
+depth first traversal of a particular search tree for the goal by always choosing the leftmost goal. Listing~\ref{tab:prlgprgrmtrce} shows
+a sample trace for a query.
+
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos]{prolog}{prologprogramtrace.pl}
+  \end{singlespace}
+  \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753}}
+\label{tab:prlgprgrmtrce}
+\end{code-list}
+
+
 
 \section{Chapter Recapitulation}
 
