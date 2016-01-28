@@ -491,6 +491,10 @@ Michael Spivey, \emph{Functional pearls combinators for breadth-first search},
 Stackoverflow, \emph{Haskell vs. prolog comparison}, December 2009,
   \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}.
 
+\bibitem{Sterling:1994:APA:175753}
+Leon Sterling and Ehud Shapiro, \emph{The art of prolog (2nd ed.): Advanced
+  programming techniques}, MIT Press, Cambridge, MA, USA, 1994.
+
 \bibitem{webiste:learnprolognowappend}
 Patrick Blackburn Johan Bos~Kristina Striegnitz, \emph{Learn prolog now},
   January 2012.
