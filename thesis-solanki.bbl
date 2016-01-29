@@ -267,9 +267,6 @@ Mark Kantrowitz, \emph{The prolog 1000 datbase}, August 2012.
 \bibitem{website:persistentdatastructuresmit}
 David Karger, \emph{Persistent data structures}, September 2005.
 
-\bibitem{data-fix-lib}
-Anton Kholomiov, \emph{data-fix}, February 2013.
-
 \bibitem{komorowski1982qlog}
 H~Jan Komorowski, \emph{Qlog: The programming environment for prolog in lisp},
   Logic Programming (1982), 315--324.
