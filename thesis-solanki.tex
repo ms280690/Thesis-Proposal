@@ -389,8 +389,8 @@
 	\clearpage
 
   \input{toDo}
-	\clearpage
-\addcontentsline{toc}{section}{\numberline\thesection{End Notes}}
+  \clearpage
+
 \begin{scope}
   \nolinenumbers
   \enotesize
@@ -398,7 +398,10 @@
   \begin{singlespace}
   \setlength{\parskip}{12pt plus 2pt minus 1pt}
   \begin{scope}
-  \theendnotes
+    \def\enoteheading{\section*{\notesname}%
+      \addtocounter{section}{1}%
+      \addcontentsline{toc}{section}{\numberline\thesection{End Notes}}}
+    \theendnotes
   \end{scope}
   %% dgc 2016-01-09.  If you see an error message that
   %% \begin{scope} is ended by \end{singlespace}, then
