@@ -13,7 +13,7 @@ Alfred~V. Aho, Ravi Sethi, and Jeffrey~D. Ullman, \emph{Compilers: Principles,
   MA, USA, 1986.
 
 \bibitem{ait1999warren}
-Hassan A{\"\i}t-Kaci and For{\^e}t Des~Flambertins, \emph{Warren’s abstract
+Hassan A{\"\i}t-Kaci and For{\^e}t Des~Flambertins, \emph{Warren's abstract
   machine a tutorial reconstruction},  (1999).
 
 \bibitem{website:imlpementingflpl}
@@ -55,7 +55,7 @@ Didier Bert, Pascal Drabik, and Rachid Echahed, \emph{Lpg: A generic, logic and
   functional programming language}, STACS 87, Springer, 1987, pp.~468--469.
 
 \bibitem{website:commonlisp}
-James Bielman and Luís Oliveira, \emph{Common lisp foreign function
+James Bielman and Lu\'\i{}s Oliveira, \emph{Common lisp foreign function
   interface}, March 2014.
 
 \bibitem{DBLP:conf/utp/2008}
@@ -151,6 +151,10 @@ Joshua Eckroth, \emph{Prolog resolution}, April 2014.
 
 \bibitem{website:prologunification}
 \bysame, \emph{Prolog unification}, April 2014.
+
+\bibitem{website:scala}
+Switzerland \'Ecole Polytechnique F\'ed\'erale~de Lausanne (EPFL)~Lausanne,
+  \emph{Scala programming language}, 2002-2014.
 
 \bibitem{erwig2004escape}
 Martin Erwig, \emph{Escape from zurg: an exercise in logic programming},
@@ -361,7 +365,7 @@ Mozilla~Developer Network, \emph{Multi paradigm language}, February 2014.
 Johan Nordlander, \emph{O'haskell}, January 2001.
 
 \bibitem{audklangembedd}
-Kurt Nørmark~Department of~Computer Science Aalborg University~Denmark,
+Kurt N[\o]rmark~Department of~Computer Science Aalborg University~Denmark,
   \emph{Linguistic abstraction}, July 2013,
   \url{http://people.cs.aau.dk/~normark/prog3-03/html/notes/languages_themes-intro-sec.html#languages_intro-sec_section-title
   _1}.
@@ -462,7 +466,7 @@ Tim Sheard and Emir Pasalic, \emph{Two-level types and parameterized modules},
 Dorai Sitaram, \emph{Racklog: Prolog-style logic programming}, January 2014.
 
 \bibitem{somogyi1995logic}
-Zoltan Somogyi, Fergus Henderson, Thomas Conway, and Richard O’Keefe,
+Zoltan Somogyi, Fergus Henderson, Thomas Conway, and Richard O'Keefe,
   \emph{Logic programming for the real world}, Proceedings of the ILPS,
   vol.~95, 1995, pp.~83--94.
 
@@ -662,7 +666,7 @@ Wikipedia, \emph{Prolog wikipedia}, March 2004.
 \bysame, \emph{Timeline of programming languages}, November 2015.
 
 \bibitem{website:usementiondistinctionwiki}
-\bysame, \emph{Use–mention distinction}, October 2015.
+\bysame, \emph{Use--mention distinction}, October 2015.
 
 \bibitem{DBLP:conf/utp/2012}
 Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),
@@ -677,9 +681,5 @@ Takashi's Workplace, \emph{A prolog in haskell}, April 2009,
 \bibitem{website:haskell-choice}
 xkcd, \emph{Haskell vs prolog, or giving haskell a choice}, February 2009,
   \url{http://echochamber.me/viewtopic.php?f=11&t=35369}.
-
-\bibitem{website:scala}
-Switzerland École Polytechnique Fédérale~de Lausanne (EPFL)~Lausanne,
-  \emph{Scala programming language}, 2002-2014.
 
 \end{thebibliography}
