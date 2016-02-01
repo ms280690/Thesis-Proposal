@@ -122,11 +122,6 @@ Johan Nordlander, \emph{O'haskell}, January 2001.
 \bibitem{website:ocamllang}
 Ocaml Org, \emph{Ocaml programming language}, March 2014.
 
-\bibitem{DBLP:conf/utp/2010}
-Shengchao Qin (ed.), \emph{Unifying theories of programming - third
-  international symposium, utp 2010, shanghai, china, november 15-16, 2010.
-  proceedings}, Lecture Notes in Computer Science, vol. 6445, Springer, 2010.
-
 \bibitem{website:minkanren}
 William E.~Byrd The Reasoned Schemer' (MIT~Press, 2005) by Daniel P.~Friedman
   and Oleg Kiselyov, \emph{minikanren}.
@@ -162,15 +157,5 @@ Wikipedia, \emph{Functional logic programming languages}, February 2005.
 
 \bibitem{website:wikimultiparadigm}
 \bysame, \emph{Programming paradigm}, March 2014.
-
-\bibitem{DBLP:conf/utp/2012}
-Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),
-  \emph{Unifying theories of programming, 4th international symposium, utp
-  2012, paris, france, august 27-28, 2012, revised selected papers}, Lecture
-  Notes in Computer Science, vol. 7681, Springer, 2013.
-
-\bibitem{website:scala}
-Switzerland École Polytechnique Fédérale~de Lausanne (EPFL)~Lausanne,
-  \emph{Scala programming language}, 2002-2014.
 
 \end{thebibliography}
