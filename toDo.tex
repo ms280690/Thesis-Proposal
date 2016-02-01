@@ -34,9 +34,14 @@
 \item [\textbf{Mehul}]
 
 \item
+  We need to decide on which version of ghc this compiles against, and ensure that the code does indeed compile
+  against that version (\Verb!ErrorT! versus \Verb!ExceptT! and the like).
+
+\item
   Abstract is too long.  (Guidelines limit it to 150 words.  Currently
   at 275-ish.)
 
+\item
   Watch out for sentences that begin with ``But''.
 
 \item
@@ -72,7 +77,6 @@
 \item Review Chapter 6
 \item Review Chapter 7
 \item Review Chapter 8
-\item Review Chapter 18
 \item ``\textit{IO}'' or ``\textit{I/O}''?  Check!
 \item Check spaces before opening parentheses.
 \item Search for variants on ``\textit{metasyntactic}'', such as
@@ -87,7 +91,7 @@
 
 \section{Editing suggestions from David}\label{sec:edit-sugg-david}
 
-\paragraph{Thoughts on Chapter~\ref{proto2.1}}\mbox{}
+\subsection{Thoughts on Chapter~\ref{proto2}}\label{subsec:thoughts-chapt-proto2}
 
 \begin{itemize}
 \item
@@ -95,9 +99,7 @@
   earlier section and reference that discussion here.  For instance, it
   isn't clear that \Verb!prolog-0.2.0.1! comes from~ \cite{prolog-lib}.
 \item
-  Line~7 on p~55 is not a complete sentence.
-\item
-  I suspect that \S~\ref{proto2.1}.2 should start with a sentence like 
+  I suspect that \S~\ref{proto2}.2 should start with a sentence like 
   \begin{quote}\color[rgb]{0.3,0,0.6}\small\singlespacing
     The \Verb!prolog-0.2.0.1! (\cite{prolog-lib}) was written by Indira
     Ghandi and consists of 718 \progLang{Haskell} files.
@@ -107,18 +109,11 @@
   and then go on to discuss the syntax.
 \end{itemize}
 
-\paragraph{Thoughts on Chapter~\ref{proto1}}
+\subsection{Thoughts on Chapter~\ref{proto1}}\label{subsec:thoughts-chapt-proto1}
 
 I am looking at what are currently lines 145--\textit{on} in
 \Verb!proto1.tex!, and I am not sure whether 
-\begin{compactenum}
-\item
-  the text should be loose---as you have it, or floated to a figure.
-\item
-  I am also not sure whether I like the inlined code, or whether I would
-  prefer to have it \Verb!\inputminted! from a \progLang{Haskell} file.
-  I suppose that this depends on your work-flow.  Thoughts?
-\end{compactenum}
+the text should be loose---as you have it, or floated to a figure.
 
 I am not sure what conventions you are following with respect to code in
 text.
@@ -127,36 +122,6 @@ At some point you have \Verb!FlatTerm! in italics (\'a la
 double quotes ("FlatTerm") and I don't know what the different
 typesetting implies.
 
-Just above Section~\ref{proto1}.5 you mention a generic function
-\Verb[formatcom=\color{blue}]!map!,
-which for \progLang{Standard ML} and \progLang{Haskell} readers likely
-means the function with signature
-\Verb!(a -> b) -> ([a] -> [b])!\,.
-Why not 
-\Verb[formatcom=\color{blue}]!fmap!?
-
-I am not sure what the point of the \P{} before Section~\ref{proto1}.5
-is. 
-
-\paragraph{Thoughts on 1.1}
-
-We need to firmly fix in mind who the target audience is.  Some
-possibilities
-\begin{enumerate}
-\item Undergraduate Physics students
-\item Undergraduate Computer Science students
-\item
-  Future graduate students of Casperson who have just begun their
-  thesis work.
-\item
-  Simon Peyton-Jones.
-\end{enumerate}
-If we assume (3), then the material in the first paragraph and part of
-the second are unnecessary.
-
-\paragraph{Thoughts on 1.4}
-
-Rename to ``Thesis Organization''.
 
 \paragraph{Thoughts on Chapter 2}
 
