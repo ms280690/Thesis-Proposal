@@ -15,9 +15,20 @@
 \textit{\color{red} This chapter needs to be removed from the final
   work.}
 
-\textbf{Meeting on 5th Novemeber 2015} 
-\begin{enumerate}
-\item Write about this chapter and chapter conclusion for all chapters
+\section{Conventions for section and chapter capitalization}
+\begin{description}
+\item [Chapter titles]
+  \dots should be entirely capitalized, excepting small words like
+  ``\textit{of}'',
+  ``\textit{an}'',
+  ``\textit{the}'',
+  and so on.
+\item [Section, Sub-section, and lower titles]
+  \dots should have a leading capital only, excepting words 
+  that are normally capitalized in text.
+\end{description}
+
+\section{The ``To Do'' list}
 
 \begin{enumerate}
 \item [\textbf{Meeting on 5th Novemeber 2015}]
@@ -26,16 +37,29 @@
 \item [\textbf{Both}]
 
 \item
+  Decide on which version of \codeLibrary{ghc} this compiles against, and ensure that the code does indeed compile 
+  against that version (\Verb!ErrorT! versus \Verb!ExceptT! and the like).
 
 \item [\textbf{Mehul}]
 
 \item Remove the remaining non-\textsc{ascii} characters.
 
 \item
-  We need to decide on which version of ghc this compiles against, and ensure that the code does indeed compile
-  against that version (\Verb!ErrorT! versus \Verb!ExceptT! and the like).
+  Fix the capitalization of chapter,
+  section, sub-section, and paragraph titles according to the rules above.
 
 \item
+  Write ``about this chapter'' and ``recapituation'' sections for all chapters.
+
+\item
+  Replace the \progLang{Haskell} code in Listing~\vref{tab:prlgappndhskl} with non-quasi-quoted \progLang{Haskell}
+  code that produces the equivalent of Listing~\ref{tab:prlgappndhsklqq}.
+
+\item
+  Replace the title of Chapter~\vref{chap:proposedWork}.
+  
+\item
+    Move material from \S~\ref{sec:existing-work-by-others} to \S~\ref{sec:things-fixed}. 
 
 \item
   Watch out for sentences that begin with ``But''.
