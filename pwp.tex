@@ -69,19 +69,28 @@ written as a functor followed by a comma-separated list of argument terms, which
 called the term's arity. An atom can be regarded as a compound term with arity zero.
 
 Prolog programs describe relations, defined by means of clauses. Pure Prolog is restricted to Horn clauses, a Turing-complete subset of 
-first-order predicate logic. There are two types of clauses: Facts and rules.
+first-order predicate logic. There are two types of clauses: \yyy{Facts}{facts} and rules.
 
 \cite{website:prologintroumiami}
 In \progLang{Prolog}
- all data objects are called terms
+ all data objects are called terms\yyy{}{\Huge.}\endnote{%
+   Fix.
+}
  Atomic terms
- %% TODO. 2016-01-16.  junk above
-
-Come in two forms, atoms and integers.
-Atoms (this is a misnomer as in logic predicates are called atoms and atoms are called constants. However, we'll stick to the Prolog convention.)
-Strings of alphanumerics and \_, starting with a lower case alphabetic.
-Strings enclosed in 'single quotes'
-Integers are numeric
+ \yyy{Come}{come} in two forms\yyy{,}{:} atoms and integers.
+ Atoms (this is a misnomeryyy{}{\Huge,}\endnote{%
+   Fix
+}
+ as in logic predicates are called atoms\yyy{}{\Large,} and atoms are called constants. However, we'll stick to the \yyy{Prolog}{\progLang{Prolog}}\endnote{%
+   Fix.
+}
+ convention.)
+\yyy{}{consist of}
+\yyy{Strings}{strings} of alphanumerics and ``\texttt{\_}'', starting with a lower case alphabetic.
+Strings enclosed in 'single quotes'\endnote{%
+  What?
+}
+Integers are numeric\yyy{}{\Large.}
 Example
 \par
 \begin{minted}[linenos]{prolog}
@@ -91,11 +100,11 @@ geoff
 123
 \end{minted}
      
-Function terms
+\subsection{Function terms}
 
-Functions have the form <functor>(<term>{,<term>})
-Functor starts with a lower case alphabetic.
-Example
+Functions have the form \Verb!<functor>(<term>{,<term>})!
+where \yyy{Functor}{\Verb!functor!} starts with a \yyy{lower case}{lower-case} alphabetic. 
+\paragraph{Example}
 \par
 \begin{minted}[linenos]{prolog}
 prerequisite_to(adv_ai)
@@ -105,15 +114,14 @@ grade_attained_in(prerequisite_to(adv_ai),pass)
 The number of arguments is the arity of the function. When referring to a functor, it is written with its arity in
 the format \Verb!<functor>/<arity>!. This is also true for atoms, whose arity is 0.
 Note that this is a recursive definition.
-The view of functions as trees
-Operators
-Some functors are used in infix notation, e.g. \Verb!5+4!
+\paragraph{The view of functions as trees}
+\subparagraph{Operators}
+Some functors are used in infix notation, e.g.\yyy{}{\Large,} \Verb!5+4!\yyy{}{\Large.}
 Operators do not cause the associated function to be carried out.
-Variables
+\subparagraph{Variables}
 
-Uppercase or \_ for start of variables
-Example
-\par
+Uppercase or `\Verb!_!' \xxx{for} start \xxx{of} variables\yyy{}{\Large.}
+\paragraph{Example}
 \begin{minted}[linenos]{prolog}
 Who
 What
@@ -121,7 +129,7 @@ _special
 _
 \end{minted}
      
-Variables in Prolog are rather different to those in most other languages. Further discussion and use is deferred until later.
+Variables in \yyy{Prolog}{\progLang{Prolog}} are rather different \yyy{to}{from} those in most other languages. Further discussion and use is deferred until later.
 
 
 \paragraph{Simple Semantics}
@@ -135,14 +143,27 @@ Also, as \progLang{Prolog} interpreters try to unify clauses in the order they'r
 correct ordering can lead to infinite recursion.
 
 
-In this subsection the operational semantics of CHR in Prolog are presented informally. They do not differ essentially from other CHR systems.
-When a constraint is called, it is considered an active constraint and the system will try to apply the rules to it. Rules are tried and executed sequentially in the order they are written.
+In this subsection the operational semantics of CHR\endnote{%
+  What is CHR?
+}\elabel{CHR-query}
+in Prolog are presented informally. They do not differ essentially from other CHR\eref{CHR-query} systems.
+When a constraint\endnote{%
+  In this context, what is a constraint?
+}
+is called, it is considered an active constraint and the system will try to apply the rules to it. Rules are tried and executed sequentially in the order they are written.
 
 \cite{website:swiprologsyntaxandsemantics}
 
-\begin{enumerate}
-
-\item Rule Types There are three different kinds of rules, each with its specific semantics:
+A rule is conceptually tried for an active constraint in the following way.
+The active constraint is matched with a constraint in the head of the rule.
+If more constraints appear in the head, they are looked for among the suspended constraints, which are called
+passive constraints in this context.
+If the necessary passive constraints can be found and all match with the head of the rule and the guard of the rule
+succeeds, then the rule is committed and the body of the rule executed.
+If not all the necessary passive constraints can be found, or the matching or the guard fails, then the body is not
+executed and the process of trying and executing simply continues with the following rules.
+If for a rule there are multiple constraints in the head, the active constraint will try the rule sequentially
+multiple times, each time trying to match with another constraint.
 
 This process ends either when the active constraint disappears, i.e.\yyy{}{\Large,} it is removed by some rule, or
 after the last rule has been processed.
@@ -153,6 +174,10 @@ The other way it may interact again with the rules is when a variable appearing 
 either a non-variable or another variable involved in one or more constraints.
 In that case the constraint is triggered, i.e.\yyy{}{\Large,}
 it becomes an active constraint and all the rules are tried.
+\begin{description}
+
+\item [Rule Types]
+  There are three different kinds of rules, each with its specific semantics:
 \begin{enumerate}
 
 \item simplification
@@ -169,14 +194,18 @@ $\backslash$constraints\_2 $<=>$ body ] The constraints\_1 constraints are not c
 \end{enumerate}
 
 
-\item Rule Names Naming a rule is optional and has no semantic meaning. It only functions as documentation for the programmer.
+\item [Rule Names] Naming a rule is optional and has no semantic meaning. It only functions as documentation for the programmer.
 
-\item Pragmas The semantics of the pragmas are:
+\item [Pragmas] The semantics of the pragmas are:
 
-\item passive(Identifier)
-The constraint in the head of a rule Identifier can only match a passive constraint in that rule. 
-
-\end{enumerate}
+  \begin{itemize}
+  \item \Verb!passive(Identifier)!
+    The constraint in the head of a rule \unknownLabel{Identifier}\endnote{%
+      Choose an appropriate semantic tag for this word unless it is intended to have its ordinary English meaning.
+}\elabel{text-kind}
+    can only match a passive constraint in that rule.  
+  \end{itemize}
+\end{description}
 
 \paragraph{Universal Horn Clauses}
 
