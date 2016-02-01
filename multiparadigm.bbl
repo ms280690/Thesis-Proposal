@@ -21,12 +21,6 @@ Sergio Antoy and Michael Hanus, \emph{Functional logic programming},
 Didier Bert, Pascal Drabik, and Rachid Echahed, \emph{Lpg: A generic, logic and
   functional programming language}, STACS 87, Springer, 1987, pp.~468--469.
 
-\bibitem{DBLP:conf/utp/2008}
-Andrew Butterfield (ed.), \emph{Unifying theories of programming, second
-  international symposium, utp 2008, dublin, ireland, september 8-10, 2008,
-  revised selected papers}, Lecture Notes in Computer Science, vol. 5713,
-  Springer, 2010.
-
 \bibitem{website:blogc2}
 C2, \emph{Multi paradigm programming language}, September 2012.
 
@@ -54,11 +48,9 @@ University Of Melbourne Computer~Science department, \emph{Mercury programming
 \bibitem{website:dmoz}
 Open Directory~Project dmoz, \emph{Multi paradigm}, November 2013.
 
-\bibitem{DBLP:conf/utp/2006}
-Steve Dunne and Bill Stoddart (eds.), \emph{Unifying theories of programming,
-  first international symposium, utp 2006, walworth castle, county durham, uk,
-  february 5-7, 2006, revised selected papers}, Lecture Notes in Computer
-  Science, vol. 4010, Springer, 2006.
+\bibitem{website:scala}
+Switzerland \'Ecole Polytechnique F\'ed\'erale~de Lausanne (EPFL)~Lausanne,
+  \emph{Scala programming language}, 2002-2014.
 
 \bibitem{website:molog}
 Adam~C. Foltzer, \emph{Molog}, March 2013.

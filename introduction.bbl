@@ -18,9 +18,14 @@ Mark~J Nelson, \emph{Why did prolog lose steam?}, August 2010,
   \url{http://www.kmjn.org/notes/prolog_lost_steam.html}.
 
 \bibitem{somogyi1995logic}
-Zoltan Somogyi, Fergus Henderson, Thomas Conway, and Richard O’Keefe,
+Zoltan Somogyi, Fergus Henderson, Thomas Conway, and Richard O'Keefe,
   \emph{Logic programming for the real world}, Proceedings of the ILPS,
   vol.~95, 1995, pp.~83--94.
+
+\bibitem{van2000domain}
+Arie Van~Deursen, Paul Klint, and Joost Visser, \emph{Domain-specific
+  languages: An annotated bibliography.}, Sigplan Notices \textbf{35} (2000),
+  no.~6, 26--36.
 
 \bibitem{website:prolog-killer}
 Maarten van Emden, \emph{Who killed prolog?}, August 2010,

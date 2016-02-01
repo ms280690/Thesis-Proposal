@@ -8,7 +8,7 @@
 \begin{thebibliography}{10}
 
 \bibitem{website:commonlisp}
-James Bielman and Luís Oliveira, \emph{Common lisp foreign function
+James Bielman and Lu\'\i{}s Oliveira, \emph{Common lisp foreign function
   interface}, March 2014.
 
 \bibitem{DBLP:conf/utp/2008}
@@ -29,6 +29,10 @@ Steve Dunne and Bill Stoddart (eds.), \emph{Unifying theories of programming,
   first international symposium, utp 2006, walworth castle, county durham, uk,
   february 5-7, 2006, revised selected papers}, Lecture Notes in Computer
   Science, vol. 4010, Springer, 2006.
+
+\bibitem{website:scala}
+Switzerland \'Ecole Polytechnique F\'ed\'erale~de Lausanne (EPFL)~Lausanne,
+  \emph{Scala programming language}, 2002-2014.
 
 \bibitem{gibbons2013unifying}
 Jeremy Gibbons, \emph{Unifying theories of programming with monads}, Unifying
@@ -145,9 +149,5 @@ Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),
   \emph{Unifying theories of programming, 4th international symposium, utp
   2012, paris, france, august 27-28, 2012, revised selected papers}, Lecture
   Notes in Computer Science, vol. 7681, Springer, 2013.
-
-\bibitem{website:scala}
-Switzerland École Polytechnique Fédérale~de Lausanne (EPFL)~Lausanne,
-  \emph{Scala programming language}, 2002-2014.
 
 \end{thebibliography}
