@@ -50,6 +50,7 @@
     (define-key map (kbd "C") 'insert-code-library)
     (define-key map (kbd "e") 'insert-endnote)
     (define-key map (kbd "S") 'insert-meta-syntactic-variable)
+    (define-key map (kbd "?") 'insert-something)
     (define-key map (kbd "p") 'latex-dgc-toggle-progLang))
   (define-key latex-mode-map (kbd "M-&") 'another-one-sentence-regions)
   (define-key latex-mode-map (kbd "s-<backspace>")   'insert-crossout)
