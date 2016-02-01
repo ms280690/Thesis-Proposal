@@ -140,14 +140,19 @@ When a constraint is called, it is considered an active constraint and the syste
 
 \cite{website:swiprologsyntaxandsemantics}
 
-A rule is conceptually tried for an active constraint in the following way. The active constraint is matched with a constraint in the head of the rule. If more constraints appear in the head, they are looked for among the suspended constraints, which are called passive constraints in this context. If the necessary passive constraints can be found and all match with the head of the rule and the guard of the rule succeeds, then the rule is committed and the body of the rule executed. If not all the necessary passive constraints can be found, or the matching or the guard fails, then the body is not executed and the process of trying and executing simply continues with the following rules. If for a rule there are multiple constraints in the head, the active constraint will try the rule sequentially multiple times, each time trying to match with another constraint.
-
-This process ends either when the active constraint disappears, i.e. it is removed by some rule, or after the last rule has been processed. In the latter case the active constraint becomes suspended.
-
-A suspended constraint is eligible as a passive constraint for an active constraint. The other way it may interact again with the rules is when a variable appearing in the constraint becomes bound to either a non-variable or another variable involved in one or more constraints. In that case the constraint is triggered, i.e. it becomes an active constraint and all the rules are tried.
 \begin{enumerate}
 
 \item Rule Types There are three different kinds of rules, each with its specific semantics:
+
+This process ends either when the active constraint disappears, i.e.\yyy{}{\Large,} it is removed by some rule, or
+after the last rule has been processed.
+In the latter case the active constraint becomes suspended.
+
+A suspended constraint is eligible as a passive constraint for an active constraint.
+The other way it may interact again with the rules is when a variable appearing in the constraint becomes bound to
+either a non-variable or another variable involved in one or more constraints.
+In that case the constraint is triggered, i.e.\yyy{}{\Large,}
+it becomes an active constraint and all the rules are tried.
 \begin{enumerate}
 
 \item simplification
