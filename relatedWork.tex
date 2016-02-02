@@ -184,6 +184,90 @@ required to build values of a given data type, or, worse yet, to pattern match a
 Allow \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined concrete syntax.
 
 
+\section{Meta syntactic variables}
+Some sources for the topic 
+
+
+\cite{website:metasyntacticvariableswiki}
+A metasyntactic variable is a placeholder name used in computer science, a word without meaning intended to be
+substituted by some objects pertaining to the context where it is used.
+The word \markWord{foo} as used in IETF Requests for Comments is a good example.\endnote{%
+  This regards
+  \vspace*{-1.5\baselineskip}
+  \begin{quote}\itshape
+    A metasyntactic variable is a placeholder name used in computer science, a word without meaning intended to be
+    substituted by some objects pertaining to the context where it is used. 
+    The word \textsf{foo} as used in IETF Requests for Comments is a good example.
+  \end{quote}
+  \vspace*{-1.5\baselineskip}
+  Some comments
+  \begin{compactitem}
+  \item
+    ``IETF'' needs explanation.
+  \item
+    Because it is a something other than an English word with its ordinary meaning, ``foo'' needs to be marked
+    up.
+  \item
+    The claim is overly broad.  In ``\texttt{\bfseries cat foo > bar}'', the word
+    ``\texttt{\bfseries foo}'' is a file-name variable; it may be replaced by any file name
+    (appropriately quoted for the surrounding shell).
+    It is only when the variable ranges over syntax of an appropriate that the variable is metasyntactic.  For
+    instance in ``\texttt{3 + 5 * }\textsf{term}'' the word ``\textsf{term}'' is a metasyntactic variable, the
+    remainder is presumably either concrete or abstract syntax.
+  \end{compactitem}
+}
+
+By mathematical analogy, a metasyntactic variable is a word that is a variable for other words, just as in algebra
+letters are used as variables for numbers.
+Any symbol or word which does not violate the syntactic rules of the language can be used as a metasyntactic
+variable.
+
+
+
+
+\cite{webiste:metasyntacticvariablescatb}
+A name used in examples and understood to stand for whatever thing is under discussion, or any random member of a class of things under discussion. The word foo is the canonical example. To avoid confusion, hackers never (well, hardly ever) use `foo'\endnote{%
+  This particular instance fixed.
+  Avoid non-\textsc{ascii} characters.  Left single quote (u\(+\)x2018) should be entered in files as a grave
+  accent (u\(+\)x60), and right single quote (u\(+\)x2019) as a plain single quote (0x27).
+
+  Similarly, left double quote (u\(+\)x201c) should be entered as two grave accents, and right double quote as two
+  single quotes.
+
+  Em-dashes (u\(+\)x2014)---used to separate thoughts inside sentences---are typed as three minus signs.
+
+  En-dashes (u\(+\)x2013), used to separate numbers, for instance 3--5, are typed as two minus signs.
+}\elabel{non-ascii}
+or other words like it as permanent names for anything. In filenames, a common convention is that any filename beginning with a metasyntactic-variable name is a scratch file that may be deleted at any time.
+
+Metasyntactic variables are so called because they are variables in the metalanguage used to talk about programs
+etc; they are variables whose values are often variables (as in usages like ``the value of f(foo,bar) is
+the sum of foo and bar'').
+However, it has been plausibly suggested that the real reason for the term ``metasyntactic
+variable'' is that it sounds good.
+To some extent, the list of one's preferred metasyntactic variables is a cultural signature.
+They occur both in series (used for related groups of variables or objects) and as singletons.
+Here are a few common signatures:
+
+
+\cite{webiste:metasyntacticvariableswhatistectarget}
+In programming, a metasyntactic (which derives from meta and syntax ) variable is a variable (a changeable value) that is used to temporarily represent a function . Examples of metasyntactic variables include (but are by no means limited to) ack, bar , baz, blarg, wibble, foo , fum, and qux. Metasyntactic variables are sometimes used in developing a conceptual version of a program or examples of programming code written for illustrative purposes.
+
+Any filename beginning with a metasyntactic variable denotes a scratch file. This means the file can be deleted at any time without affecting the program.
+
+
+
+\cite{webste:metasyntacticvariablesc2wiki}
+
+A word, used in conversation or text that is meant as a variable. There is a fairly standard set in the ComputerScience\endnote{%
+  ``ComputerScience'' should be ``Computer Science''.
+}
+culture. People tend to create their own if they are not exposed to others, which can be confusing. Of course, if you haven't seen them before they can be quite confusing. They are, however, useful enough that this is not enough reason to give them up.
+Standard set: foo, bar, baz, foobar/quux, quuux, quuuux, ....
+
+example: ``Suppose I have a list, foo, with a node, bar, ...''
+
+
 \section{Chapter Recapitulation}
 
 
