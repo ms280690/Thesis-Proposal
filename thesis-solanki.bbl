@@ -310,6 +310,10 @@ John~W Lloyd, \emph{Programming in an integrated functional and logic
   language}, Journal of Functional and Logic Programming \textbf{3} (1999),
   no.~1-49, 68--69.
 
+\bibitem{machadomodel}
+Ricardo~J Machado, Rita Suzana~P Maciel, Julia Rubin, and Goetz Botterweck,
+  \emph{Model-based methodologies for pervasive and embedded software}.
+
 \bibitem{mainland2007s}
 Geoffrey Mainland, \emph{Why it's nice to be quoted: quasiquoting for haskell},
   Proceedings of the ACM SIGPLAN workshop on Haskell workshop, ACM, 2007,

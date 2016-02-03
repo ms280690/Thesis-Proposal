@@ -14,12 +14,26 @@
 
 \section{Conceptual Advances beyond Section~\ref{sec:things-fixed}}\label{sec:advances:accomplishedWork}
 
+\begin{enumerate}
+\item provide a modular methodology to functorize a recursive abstract grammar used to define a language,
+
+\item modular monadic unification to leverage imperative unification algorithms,
+
+\item integrate the procedures mentioned above into a working \prologConstruct{Prolog} implementation,
+
+\item support for variable search strategies,
+
+\item approach for embedding IO in eDSL.
+
+\end{enumerate}
+
 \section{What the prototypes contain}
 \subsection{What Prototype 1 contains}
 
-Most languages have a recursive abstract syntax which restricts the \yyy{eDSL}{embedded, domain-specific language
-  \enparen{eDSL, see p.~\pageref{sec:DSL-def}}}\endnote{%  
+Most languages have a recursive abstract syntax which restricts the embedded, domain-specific language
+  \enparen{eDSL, see p.~\pageref{sec:DSL-def}}\endnote{%  
   We have only defined ``DSL'' before.
+  \mehul{defined eDSL}
 }
   in terms of its capability to \textit{open up} the language, i.e, to include meta syntactic
   variables, custom quantifiers and logic.
@@ -114,6 +128,14 @@ statement) which when executed would result in a side effect but till that point
   can be controlled.
 
 \end{enumerate}
+
+Furthermore, this thesis provides a literature review on embedded domain specific languages in Chapter~\ref{chap:embedding} and a survey on
+multi paradigm declarative languages in Chapter~\ref{chap:multiparadigm}. The current chapter and Chapter~\ref{chap:proposedWork} evaluate 
+and access the current work in embedding \progLang{Prolog} in \progLang{Haskell}.  Creating a micro language to represent and encapsulate 
+IO operation in an eDSL so that the it remains pure even after interpretation and only produces side effects when the action is actually 
+executed and hence in some way it can be controlled.
+
+
 \section{Chapter Recapitulation}
 
 

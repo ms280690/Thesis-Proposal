@@ -50,7 +50,7 @@ This results in a hybrid approach which provides a library taking advantage of t
 
 \section{Thesis Statement}
 
-The thesis aims to provide insights into merging two declarative languages namely, \progLang{Haskell} and
+%The thesis aims to provide insights into merging two declarative languages namely, \progLang{Haskell} and
 \progLang{Prolog} by embedding the latter into the former and analyzing the result of doing so as they have
 conflicting characteristics.
 The finished product will be something like a \textit{haskellised} \progLang{Prolog} which has logical programming
@@ -117,7 +117,9 @@ can help to blend the two.
 A domain-specific language (DSL) is a concise micro language that offers tools and functionalities focused on a
 particular problem domain.\label{sec:DSL-def}
 In many cases, DSL programs are translated to calls to a common subroutine library and the DSL can be viewed as a
-means to hide the details of that library \cite{van2000domain}.
+means to hide the details of that library \cite{van2000domain}. A domain specific language (DSL) is built specically to express the 
+concepts of a particular domain. Generally, two types of DSL can be distinguished according to the underlying implementation strategy. An
+external DSL is constructed from scratch, starting from definition of the desired syntax to implementation of the associated parser for reading it. In contrast, internal or embedded DSL are constructed on top of an existing host language \cite{machadomodel}.
 
 Putting all of the above together, Domain Specific Languages
 are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
