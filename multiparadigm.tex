@@ -42,34 +42,35 @@ A lot has been worked upon before coming to clear grounds about the classificati
 One approach is to consider that the scope of each language is pretty much infinite as small extension modules that
 replicate different feature sets which are not naturally native to the language itself can be implemented on top of
 the base language.
-The definitions of multi paradigm languages across the web
-\cite{website:wikimultiparadigm,website:mdn,website:blogc2} converge to roughly the same thing that of providing a
-framework to work with different styles with a list of languages \cite{website:wikimpllist,website:dmoz} that suffices the requirements.\endnote{%
+The descriptions of multi paradigm languages across the web
+\cite{website:wikimultiparadigm,website:mdn,website:blogc2} converge to roughly of a framework providing tools to work with different 
+styles of programming \cite{website:wikimpllist,website:dmoz}.\endnote{%
     Yet another metaphor that doesn't spin my wheels.\newline
     \mehul{changed}\newline
     \david{Now I just do not understand.}
+    \mehul{changed}
 }
 Generally speaking, this
 is not very popular in programming circles; one reason could be that it
-is a very broad topic and specifying details can clear the confusion.\endnote{%
+is a very broad topic and specifying details can be helpful.\endnote{%
     Which fog?\newline
     \mehul{changed}\newline
-    \david{\dots Which confusion?}
+    \david{\dots Which confusion?} \newline
+    \mehul{changed}
 }
 
 \subsection{Functional Logic Programming Languages}
 
 Continuing from the previous section, narrowing down the search by considering only multi paradigm declarative
-languages namely, functional logical programming languages.\endnote{%
+languages namely i.e. functional logical programming languages.\endnote{%
   This is a sentence fragment.
 }
 By doing so a large amount of information pops up, from articles that give brief description and mentions
-\cite{website:wikiflpl, website:wikiflpllist} to \yyy{}{articles that give} \yyy{the implementing}{implementation} techniques\endnote{%
+\cite{website:wikiflpl, website:wikiflpllist} to the ones that provide implementation techniques\endnote{%
   Are the previous two fixes correct?
   If so, remove this endnote.
 }
-\cite{website:imlpementingflpl}\yyy{}{\Large,} which \yyy{}{also}
-\yyy{and}{give} a brief overview of the aim and also the list of publications.\endnote{%
+\cite{website:imlpementingflpl}, which also give a brief overview of the aim and also the list of publications.\endnote{%
   Have I understood it?
   If not, revert the change and try again.
 }
@@ -143,7 +144,7 @@ though it last saw a release back in 2001.
 Another prominent implementation is \progLang{OCaml}
 \cite{website:ocamlwiki,website:ocamllang},
 which adds object oriented capabilities to a powerful type system and module support.
-This is the case with most of the languages in this section hardly a few have survived as the new ones incorporated
+This is the case with most of the languages of the paradigm, hardly a few have survived. as the new ones incorporated
 the positives of the old.\endnote{%
   I do not understand the preceding sentence at all.
 }
@@ -156,7 +157,7 @@ the \progLang{Scala} \cite{website:scala} programming language.
 Knowing the amount of literature  on these type of languages, it is fairly easy to say that there have been numerous 
 attempts at specifications and implementations.
 Sadly though, not many have survived, let alone been successful.
-Only the ones that
+Only the ones that are easily available
 \begin{inparaenum}[(a)]
 \item
   are easily available or
@@ -165,16 +166,16 @@ Only the ones that
 \item
   have been cited or referred by other attempts
 \end{inparaenum}
-have been included \yyy{}{below}, as the list is long and \xxx{is} not the main focus of the thesis.\endnote{%
+have been included below, as the list is long and not the main focus of the thesis.\endnote{%
   Make the change and delete this footnote.
   I believe that adding ``\textsl{below}'' makes this sentence a lot clearer.
 }
-We begin
-with the ones from Australia, which seems to be a popular location for fiddling with
-\progLang{Prolog} and merging paradigms.
+We begin with
+variants of
+\progLang{Prolog}.
 As of now there have been three popular ones, beginning with \progLang{Nue Prolog}, \cite{website:nue-prolog},
 \progLang{Oz (Mozart Programming System)} \cite{website:oz-mozart} and \progLang{Mercury} \cite{website:mercury}.
-Delving deeper, the languages feel more like extensions of \progLang{Prolog} rather than hybrids.
+These languages feel more like extensions of \progLang{Prolog} rather than hybrids.
 To start with \progLang{Mercury} represents a boundary between deterministic and non-deterministic programs.
 Similarly, \progLang{Nue Prolog} has special support for functions, while \progLang{Oz} gives concurrent constraint
 programming plus distributed support, with different function types for goal solving and expression rewriting.\endnote{%
@@ -183,13 +184,15 @@ programming plus distributed support, with different function types for goal sol
 }
 \progLang{Escher} \cite{lloyd1999programming:escher} comes very close to \progLang{Haskell} with monads, higher
 order functions and lazy evaluation.
-Taking a look at \progLang{Prolog} variants, \progLang{Ciao} \cite{website:ciao}; a preprocessor to
-\progLang{Prolog} for functional syntax support, \progLang{$\lambda $ Prolog} \cite{website:lambda-prolog} aims at
-modular higher order programming with abstract data types in a logical setting, \progLang{Babel}
-\cite{website:babel,moreno1992logic, moreno1988babel} combines pure \progLang{Prolog} with a first order functional
-notation, \progLang{LIFE} \cite{website:life} is for  logic, inheritance, functions and equations in
-\progLang{Prolog} syntax with currying and other features like functional languages and others
-\cite{bert1987lpg,malachi1984tablog}.\endnote{%
+ We take a look at \progLang{Prolog} variants: \progLang{Ciao} \enparen{\cite{website:ciao}} is a preprocessor
+    to \progLang{Prolog} for functional syntax support; \progLang{$\lambda $ Prolog}
+    \enparen{\cite{website:lambda-prolog}}
+    aims at modular higher order programming with abstract data types in a logical setting;
+    \progLang{Babel} \enparen{\cite{website:babel,moreno1992logic, moreno1988babel}} combines pure
+    \progLang{Prolog} with a first order functional 
+    notation; \progLang{LIFE} \enparen{\cite{website:life}} is for  Logic, Inheritance, Functions and Equations in
+    \progLang{Prolog} syntax with currying and other features like functional languages; and there are others
+    \enparen{\cite{bert1987lpg,malachi1984tablog}}.\endnote{%
   This is a good sentence but could be worded more clearly.
   Here is one attempt:
   \textsl{
@@ -202,14 +205,16 @@ notation, \progLang{LIFE} \cite{website:life} is for  logic, inheritance, functi
     notation; \progLang{LIFE} \enparen{\cite{website:life}} is for  Logic, Inheritance, Functions and Equations in
     \progLang{Prolog} syntax with currying and other features like functional languages; and there are others
     \enparen{\cite{bert1987lpg,malachi1984tablog}}.}
+    \mehul{changed}
 }
 
-The functional language \progLang{Scheme} is a very popular choice for this sort of a thing.\endnote{%
+The functional language \progLang{Scheme} is a very popular choice for adding logic programming functionality to a funcitonal 
+language.\endnote{%
   What sort of thing?
 }
-With a book \cite{friedman05reasoned} and an implementation to accompany
+The book \cite{friedman05reasoned} and an implementation to accompany
 \cite{website:kanren,website:minkanren}, 
-which seems to have translated into \progLang{Haskell}, 
+which seems to have translated the approach into \progLang{Haskell}, 
 \cite{website:haskellkanren,website:molog,website:minikanrent}.\endnote{%
   This preceding phrase is not a sentence.
 }\elabel{not-a-sentence}
