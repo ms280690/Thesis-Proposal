@@ -69,28 +69,29 @@ written as a functor followed by a comma-separated list of argument terms, which
 called the term's arity. An atom can be regarded as a compound term with arity zero.
 
 Prolog programs describe relations, defined by means of clauses. Pure Prolog is restricted to Horn clauses, a Turing-complete subset of 
-first-order predicate logic. There are two types of clauses: \yyy{Facts}{facts} and rules.
+first-order predicate logic. There are two types of clauses: facts and rules.
 
 \cite{website:prologintroumiami}
 In \progLang{Prolog}
- all data objects are called terms\yyy{}{\Huge.}\endnote{%
+ all data objects are called terms.\endnote{%
    Fix.
 }
  Atomic terms
- \yyy{Come}{come} in two forms\yyy{,}{:} atoms and integers.
- Atoms (this is a misnomeryyy{}{\Huge,}\endnote{%
+ come in two forms: atoms and integers.
+ Atoms (this is a misnomer,\endnote{%
    Fix
 }
- as in logic predicates are called atoms\yyy{}{\Large,} and atoms are called constants. However, we'll stick to the \yyy{Prolog}{\progLang{Prolog}}\endnote{%
+ as in logic predicates are called atoms, and atoms are called constants. However, we'll stick to the 
+ \progLang{Prolog}\endnote{%
    Fix.
 }
  convention.)
-\yyy{}{consist of}
-\yyy{Strings}{strings} of alphanumerics and ``\texttt{\_}'', starting with a lower case alphabetic.
+consist of
+strings of alphanumerics and ``\texttt{\_}'', starting with a lower case alphabetic.
 Strings enclosed in 'single quotes'\endnote{%
   What?
 }
-Integers are numeric\yyy{}{\Large.}
+Integers are numeric.
 Example
 \par
 \begin{minted}[linenos]{prolog}
@@ -103,7 +104,7 @@ geoff
 \subsection{Function terms}
 
 Functions have the form \Verb!<functor>(<term>{,<term>})!
-where \yyy{Functor}{\Verb!functor!} starts with a \yyy{lower case}{lower-case} alphabetic. 
+where \Verb!functor! starts with a lower-case alphabetic. 
 \paragraph{Example}
 \par
 \begin{minted}[linenos]{prolog}
@@ -116,11 +117,11 @@ the format \Verb!<functor>/<arity>!. This is also true for atoms, whose arity is
 Note that this is a recursive definition.
 \paragraph{The view of functions as trees}
 \subparagraph{Operators}
-Some functors are used in infix notation, e.g.\yyy{}{\Large,} \Verb!5+4!\yyy{}{\Large.}
+Some functors are used in infix notation, e.g., \Verb!5+4!.
 Operators do not cause the associated function to be carried out.
 \subparagraph{Variables}
 
-Uppercase or `\Verb!_!' \xxx{for} start \xxx{of} variables\yyy{}{\Large.}
+Uppercase or `\Verb!_!' start variables.
 \paragraph{Example}
 \begin{minted}[linenos]{prolog}
 Who
@@ -129,7 +130,7 @@ _special
 _
 \end{minted}
      
-Variables in \yyy{Prolog}{\progLang{Prolog}} are rather different \yyy{to}{from} those in most other languages. Further discussion and use is deferred until later.
+Variables in \progLang{Prolog} are rather different from those in most other languages. Further discussion and use is deferred until later.
 
 
 \paragraph{Simple Semantics}
@@ -165,14 +166,14 @@ executed and the process of trying and executing simply continues with the follo
 If for a rule there are multiple constraints in the head, the active constraint will try the rule sequentially
 multiple times, each time trying to match with another constraint.
 
-This process ends either when the active constraint disappears, i.e.\yyy{}{\Large,} it is removed by some rule, or
+This process ends either when the active constraint disappears, i.e., it is removed by some rule, or
 after the last rule has been processed.
 In the latter case the active constraint becomes suspended.
 
 A suspended constraint is eligible as a passive constraint for an active constraint.
 The other way it may interact again with the rules is when a variable appearing in the constraint becomes bound to
 either a non-variable or another variable involved in one or more constraints.
-In that case the constraint is triggered, i.e.\yyy{}{\Large,}
+In that case the constraint is triggered, i.e.,
 it becomes an active constraint and all the rules are tried.
 \begin{description}
 
