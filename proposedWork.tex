@@ -42,9 +42,9 @@ discussed below, along with their shortcomings.
   a result.
   Another implementation \cite{website:takashi-workplace} based of it simplifies the notation to a list format.
   Nonetheless, both implementations lack simplicity and support for basic \progLang{Prolog} features such as
-  \markWord{cuts},
-  \markWord{fails},
-  \markWord{assert}
+  \prologConstruct{cuts},
+  \prologConstruct{fails},
+  \prologConstruct{assert}
   among others.
 
 \begin{comment}
@@ -69,17 +69,11 @@ discussed below, along with their shortcomings.
   Many provide only a shell through which one must do all the work, which is synonymous with
   the embeddings mentioned above.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
-  but are still not complete.\endnote{%
-    Did I get your sense?\newline
-    \mehul{I do not understand}\newline
-    \david{I edited here: did I get it right?
-      See commit \texttt{24dd4b09dbb8aa7e}.
-    }
-}
+  but are still not complete.
 
 \item
   Moreover, none of the above have natural list support that exists
-  in \progLang{Prolog}.\endnote{%
+  in \progLang{Prolog} i.e. having a list of different types of \progLang{Prolog} constructs.\endnote{%
     \david{What does this point mean?}
     \mehul{I would have to think; I do not remember.}
     \mehul{I think what we were saying is that a \progLang{Prolog} list can have elements of any type unlike a \progLang{Haskell} list so we created this nice datatype and then fixed it so that we get infinitely nested list consists of diff constructors of the same type meaning it is still uni typed like \progLang{Prolog}}
@@ -93,7 +87,8 @@ A handful of crossover hybrid languages based on \progLang{Haskell} exist,
 Moving away from \progLang{Haskell} and exploring other languages from different paradigms, a respectable number of
 crossover implementations exist but again most of them have faded out.
 
-\mehul{Split needed here}
+
+\section{Things that this thesis fixes}\label{sec:things-fixed}
 
 As discussed in Section~\ref{sec:existing-work-by-others},\endnote{%
   \vspace*{-2\baselineskip}
@@ -120,17 +115,22 @@ Mostly, the trend is to build a library for extension to replicate the features 
   \mehul{too deep == too complex, too shallow == does not do much, mix == a little better I guess?}
 }
 
-Taking into consideration the above, there is quite some room for improvement and additions.\endnote{%
-  Try completely rephrasing this sentence.
-}\textsuperscript{,}\endnote{%
-  Move this sentence to the beginning of the following section.
-}
-\section{Things that this thesis fixes}\label{sec:things-fixed}
 
-\david{Here is a discussion of problems mentioned above that this thesis
-tackles.}\endnote{%
+Here is a discussion of problems mentioned above that this thesis
+tackles.\endnote{%
   Move material from \S~\ref{sec:existing-work-by-others} to \S~\ref{sec:things-fixed}.
 }
+
+\begin{enumerate}
+\item The \languageConstruct{eDSL} supports \prologConstruct{fails} and \prologConstruct{cuts}.
+
+\item A more 'complete' implementation.
+
+\item Not REPL based, you can write a program file and compile and run it like a normal \progLang{Haskell} file.
+
+\item The \languageConstruct{eDSL} is constructed in a way to encapsulate multiple \progLang{Prolog} types under one \progLang{Haskell}
+data type.
+\end{enumerate}
 
 \section{Chapter Recapitulation}
 
