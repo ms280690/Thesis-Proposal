@@ -53,7 +53,7 @@ without any annotations.
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the 
 variables, lastly unifying all of the constraints giving the type of the result.
-This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}\yyy{}{\Large.}
+This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}.
 
 Logic programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
 A program is a set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old
@@ -194,6 +194,7 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
   \david{Is the point here that templating helps, or what?}\newline
   \mehul{it is just one of the many ways to bring the languages together}\newline
   \david{Say something in the text.}
+  \mehul{added some content below the listings in this tex file.}
 }
 %\begin{minted}[linenos]{haskell}
 %append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
@@ -221,15 +222,16 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
 
 
 
-Listing~\ref{tab:prlgappndhskl} shows \yyy{}{\LARGE !}\endnote{%
-  Shows what?
-}
+Listing~\ref{tab:prlgappndhskl} shows how a direct translation of Listing~\ref{fig:append-prolog} into \progLang{Haskell} while 
+Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation. 
 
 Consider the object functional programming language, \progLang{Scala}
 \cite{website:scala}.
 It is purely functional but with objects and classes.
-With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
+With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell} and the possible 
+methodologies to do so.\endnote{%
   Sentence fragment.
+  \mehul{changed}
 }
 There have been quite a few attempts to ``merge'' these two programming languages that are from different programming
 paradigms.
