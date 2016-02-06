@@ -54,6 +54,7 @@ with, but still lacks complete list support\endnote{%
   \david{What is list support?  What is complete list support?  You have not
   defined either of these terms.}\newline
   \mehul{I forgot}.
+  \mehul{i remembered. All the different types of data types in \progLang{Prolog} are uni type just like our abstract syntax language.}
 }
 and quite a few of practical features that \progLang{Prolog} has.
 This seems to be a common problem with the other implementation that exists, \cite{website:takashi-workplace}.
@@ -65,6 +66,7 @@ The purely declarative nature lacks basic requirements such as support for \lang
   Do you mean that basic \progLang{Prolog} implementations lack modules;
   or that \progLang{Prolog} lacks \languageConstruct{modules} because it is purely
   declarative; or \dots?
+  \mehul{I do not know about the paradigm, but \progLang{Prolog} language having a declarative nature lacks modules}
 }
 The other issue is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
 family of declarative languages.\endnote{%
@@ -85,11 +87,10 @@ family of declarative languages.\endnote{%
     I am not sure if I have that sentence exactly right, but you need to be more explicit about the argument.
   }
 }
-Not to forget \progLang{Haskell} also has some tricks \cite{website:logic-programming-haskell} up its sleeve which
-enables encoding of search problems in \progLang{Haskell} rather than
-\progLang{Prolog}.\eref{not-a-sentence}
+Not to forget \progLang{Haskell} also has some support for logic programming \cite{website:logic-programming-haskell} which
+enables encoding of search problems.\eref{not-a-sentence} \mehul{changed}
 
-\section{Related Books}
+\section{Perhaps the section title should be ``Books related to embedding Programming Languges''}
 \textcolor{blue}{Perhaps the section title should be ``Books related to embedding Programming Languges''.}
 
 As \progLang{Haskell} is relatively new in terms of being popular, its predecessors such as \progLang{Scheme} have
@@ -104,7 +105,7 @@ A general outlook towards implementing \progLang{Prolog} has also been discussed
   I do not understand what you say the references say.
 }
 
-\section{Related Papers}
+\section{Perhaps the section title should be ``Papers related to embedding Programming Languges''}
 \textcolor{blue}{Perhaps the section title should be ``Papers related to embedding Programming Languges''.}
 
 Abundant literature can be found on embedding detailed parts of \progLang{Prolog} features such as basic
@@ -113,6 +114,7 @@ One of the major works is covered by the subsection below consisting of a series
 Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
 The next subsection covers the literature based on the above\endnote{%
   I am not sure what ``the above'' refers to here: \cite{spivey1999embedding}?.
+\mehul{you mean below?}
 }
 with improvements and further additions.
 
@@ -148,16 +150,17 @@ Continuing from above, \cite{claessen2000typed} taps into the advantages of the 
 functional logic programming language.
 This results in typed logical predicates and a backtracking \haskellConstruct{monad} with support for various data
 types and search strategies.
-Though not very efficient nor practical\yyy{}{\Large,}
+Though not very efficient nor practical,
 the method aims at a more elegant translation of programs from one language
 to the other.
 While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
-anything new rather than doing something new with what is available.\endnote{%
+anything new.\endnote{%
     This is a sentence fragment.
-  }\elabel{sentence-fragment}
-Specifically speaking, using \progLang{Haskell} type classes to express general structure of a problem while the
-solutions are instances.\eref{sentence-fragment}\textsuperscript{,}\endnote{%
+  }\elabel{sentence-fragment} \mehul{changed}
+Specifically speaking, using \progLang{Haskell}'s type class to express general structure of a problem while the
+solutions are instances.\eref{sentence-fragment},\endnote{%
     I do not understant the preceding sentence.
+
   }
 \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
 use of the \progLang{Haskell} \haskellConstruct{State Monad} to capture and maintain a global state.
@@ -176,7 +179,7 @@ backtracking abilities and a \haskellConstruct{monadic encapsulation} to turn a 
 \subsection{Prolog Libraries}
 
 To replicate \progLang{Prolog}-like
-capabilities \progLang{Haskell} seems to be already in the race\endnote{%
+capabilities \progLang{Haskell} seems to be a popular choice\endnote{%
   Perhaps its the sentence order rather than the metaphor that is the problem here.
   Does
   \vspace*{-1\baselineskip}
@@ -191,18 +194,18 @@ with a host of related libraries.
 First we begin with the libraries about Prolog\endnote{%
   Naked Prolog.
 }
-itself,\endnote{%
+itself.\endnote{%
   comma splice
 }\elabel{comma-splice}
-a few exist \cite{nanoprolog-lib} being a preliminary or
-``mini \progLang{Prolog}'' as such with not much in it to be able to be useful,\eref{comma-splice} \cite{hswip-lib}
+A few exist \cite{nanoprolog-lib} being a preliminary or
+``mini \progLang{Prolog}'' as such with not much in it to be able to be useful.\eref{comma-splice} \cite{hswip-lib}
 is all powerful but is a foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we
 need \progLang{Prolog} for it;
 \cite{prolog-lib}
 is the implementation that comes the closest
 to something like an actual practical \progLang{Prolog}.
-But\butbut{} all they give is a small interpreter, none or a few practical features, incomplete support for lists, minor or
-no \haskellConstruct{monadic} support and \yyy{an}{a} REPL without the ability to ``write a \progLang{Prolog} program
+All these libraries provide is a small interpreter, none or a few practical features, incomplete support for lists, minor or
+no \haskellConstruct{monadic} support and a REPL without the ability to ``write a \progLang{Prolog} program
 file''.
 
 %\item[$\bullet$]Logic Libraries
@@ -223,8 +226,9 @@ Exploration'' \cite{logic-grows-on-trees-lib}.
 \subsection{Unification Libraries}
 
 The more specific the feature, the lesser the support in \progLang{Haskell}.
-Moving on to the other distinct feature of \progLang{Prolog} is \prologConstruct{unification}.\endnote{%
+Moving on to the other feature of \progLang{Prolog} is \prologConstruct{unification}.\endnote{%
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
+  \mehul{changed}
 }
 There are two libraries (\cite{unification-fd-lib}, \cite{cmu-lib}) that unify two \progLang{Prolog} terms and return
 the resulting substitution.
@@ -243,7 +247,8 @@ non-linear pattern-matching with backtracking.
 
 
 \section{Chapter Recapitulation}
-
+Recapitulating, this chapter surveys the approach to embedding programming languages, especially \progLang{Prolog} in \progLang{Haskell}.
+Moreover, it provides tools, some of which are utilized in the prototype implementation.   
 
 \ifMain
 \begin{scope}
