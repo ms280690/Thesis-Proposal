@@ -11,10 +11,10 @@
 
 \section{What this chapter is about}
 
-\noindent\rule{\textwidth}{0.5pt}
-%-----------------------------------------------------------------------------
+This chapter describes the approach for integrating properties of multiple languages from different programming paradigms, especially, 
+functional logic programming languages.  
 
-
+\section{Section title needed}
 Over the years another approach has branched off from embedding languages, to merge and/or integrate programming
 languages from different paradigms.
 Let us take an example of the \progLang{Scala} programming language \cite{website:scala}, a hybrid
@@ -61,25 +61,34 @@ is a very broad topic and specifying details can be helpful.\endnote{%
 
 \subsection{Functional Logic Programming Languages}
 
-Continuing from the previous section, narrowing down the search by considering only multi paradigm declarative
-languages namely i.e. functional logical programming languages.\endnote{%
+Continuing from the previous section, we narrow down the scope by considering only multi paradigm declarative
+languages, i.e. functional logical programming languages.\endnote{%
   This is a sentence fragment.
+  \mehul{changed}
 }
 By doing so a large amount of information pops up, from articles that give brief description and mentions
 \cite{website:wikiflpl, website:wikiflpllist} to the ones that provide implementation techniques\endnote{%
   Are the previous two fixes correct?
   If so, remove this endnote.
 }
-\cite{website:imlpementingflpl}, which also give a brief overview of the aim and also the list of publications.\endnote{%
+\cite{website:imlpementingflpl}, which also give an overview of the aim and also the list of publications.\endnote{%
   Have I understood it?
   If not, revert the change and try again.
 }
 
+\begin{comment}
+
 The important piece however is the fact that there is a dedicated website \cite{website:funclogprog} for the history,
 research and development, existing languages, the literature, the contacts and everything else that one can think
 of for functional logic languages.
+\end{comment}
+An important resource for this topic can be found in \cite{website:funclogprog} which is maintained by Michael Hanus \cite{website:mhanus} 
+and Sergio Antoy \cite{website:santoy} who have developed \progLang{Curry} \cite{hanus1995curry}.
+
+\begin{comment}
 As a matter of fact the holy grail of information is maintained by two of the most important people in the field
 Michael Hanus \cite{website:mhanus} and Sergio Antoy \cite{website:santoy}.
+\end{comment}
 
 
 %\end{description}
@@ -144,9 +153,10 @@ though it last saw a release back in 2001.
 Another prominent implementation is \progLang{OCaml}
 \cite{website:ocamlwiki,website:ocamllang},
 which adds object oriented capabilities to a powerful type system and module support.
-This is the case with most of the languages of the paradigm, hardly a few have survived. as the new ones incorporated
-the positives of the old.\endnote{%
+This is the case with most of the languages of the paradigm,most of them were developed as a proof of concept and are replaced by 
+new ones based on different approaches to developing a multi paradigm language.\endnote{%
   I do not understand the preceding sentence at all.
+  \mehul{changed}
 }
 As mentioned before, one of the most poplar \cite{website:langpop} and widely used both in academia and industry is
 the \progLang{Scala} \cite{website:scala} programming language.
@@ -169,6 +179,7 @@ Only the ones that are easily available
 have been included below, as the list is long and not the main focus of the thesis.\endnote{%
   Make the change and delete this footnote.
   I believe that adding ``\textsl{below}'' makes this sentence a lot clearer.
+  \mehul{changed}	
 }
 We begin with
 variants of
@@ -181,6 +192,7 @@ Similarly, \progLang{Nue Prolog} has special support for functions, while \progL
 programming plus distributed support, with different function types for goal solving and expression rewriting.\endnote{%
   Are we done with Australia?
   If so, insert something like ``\textsl{Turning now to other languages,}''.
+  \mehul{changed}
 }
 \progLang{Escher} \cite{lloyd1999programming:escher} comes very close to \progLang{Haskell} with monads, higher
 order functions and lazy evaluation.
@@ -208,15 +220,16 @@ order functions and lazy evaluation.
     \mehul{changed}
 }
 
-The functional language \progLang{Scheme} is a very popular choice for adding logic programming functionality to a funcitonal 
+The functional language \progLang{Scheme} is a very popular choice for adding logic programming functionality to a functional 
 language.\endnote{%
   What sort of thing?
+  \mehul{changed}
 }
-The book \cite{friedman05reasoned} and an implementation to accompany
-\cite{website:kanren,website:minkanren}, 
-which seems to have translated the approach into \progLang{Haskell}, 
-\cite{website:haskellkanren,website:molog,website:minikanrent}.\endnote{%
+The book \cite{friedman05reasoned} along with the accompanying implementation \cite{website:kanren,website:minkanren} provides a similar 
+approach but for \progLang{Haskell} \cite{website:haskellkanren,website:molog,website:minikanrent}.
+\endnote{%
   This preceding phrase is not a sentence.
+	\mehul{changed}
 }\elabel{not-a-sentence}
 
 Finally talking about \progLang{Curry}, one of the most popular \progLang{Haskell} based multi paradigm languages
@@ -225,6 +238,8 @@ predecessors \cite{website:alf,website:toy}.
 
 
 \section{Chapter Recapitulation}
+Recapitulating, this chapter surveys the approach to merging different programming paradigms to result in a hybrid programming language. Moreover, we talked about multi paradigm declarative languages along with \progLang{Prolog} and \progLang{Haskell} hybrids.  
+
 
 \ifMain
 \begin{scope}
