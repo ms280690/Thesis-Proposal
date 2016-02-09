@@ -42,8 +42,9 @@ Figure~\ref{fig:A language-processing system}).
 \label{fig:A language-processing system}
 \end{figure}
 
-specifically speaking, parts of a compiler (see Figure~\ref{fig:Phases of Compiler}).\endnote{%
+They specifically contain parts of a compiler (see Figure~\ref{fig:Phases of Compiler}).\endnote{%
   There is a stranded sentence fragment here.  Fix.
+	\mehul{changed}
 }
 
 \begin{figure}[H]
@@ -130,6 +131,7 @@ the data itself.
   \caption{Flattened (non-recursive) grammar}
 \label{tab:flatgrp0201}
 \end{code-list}
+
 We implement the necessary instances to make the language unifiable as shown in Listing~\ref{tab:instncflatgrp0201}.
 \begin{code-list}[H]
   \begin{singlespace}
@@ -168,10 +170,12 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation} and Listing~\ref{tab:prl
 \end{code-list}
 
 
-After the language is opened up, the next step is to replace the current unification procedure to the one {\Huge
+After the language is opened up, the next step is to replace the current unification procedure to the one similar to Chapter~\ref{proto1}.{\Huge
   ?\endnote{%
   Something is missing here.  The current text comes from commit \texttt{a1b2c01fb24}.
-}} which is similar to Chapter~\ref{proto1}.
+\mehul{changed}
+}
+}
 
 
 The current unification uses basic pattern matching to unify the terms.
@@ -189,8 +193,14 @@ type Substitution = (VariableName, Term)
 
 A \prologConstruct{Unifier} is a list of \prologConstruct{Substitutions} which binds a variable to a value.
 
-Coming back to the unification itself shown in Figure~\ref{tab:prlg0201unification}.
+The unification procedure is shown in Figure~\ref{tab:prlg0201unification}.
 Each language expression is matched based on its structure and returns a \haskellConstruct{Unifier} . 
+
+The issue with the current approach is the rigidity of the procedure.
+Any language modification will cause a ripple effect across the system.
+As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation
+as well. 
+
 
 \begin{code-list}[H]
   \begin{singlespace}
@@ -200,14 +210,15 @@ Each language expression is matched based on its structure and returns a \haskel
 \label{tab:prlg0201unification}
 \end{code-list}
 
-The issue with the current approach is the rigidity of the procedure.
-Any language modification will cause a ripple effect across the system.
-As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation
-as well.
-
+\begin{comment}
 Before we can unify terms of our language they need to be converted to the new grammar. We also generate a mapping of variables for 
 library the library to carry out unification. See Listing~\ref{tab:prlg0201monadicunificationconversion} and 
 Listing~\ref{tab:prlg0201monadicunificationtranslation}.
+\end{comment}
+
+The modification to the unification procedure is described in Listing~\ref{tab:prlg0201monadicunificationfunctions}, 
+Listing~\ref{tab:prlg0201monadicunificationtestsandextraction1}, Listing~\ref{tab:prlg0201monadicunificationtestsandextraction2} and 
+Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3}
 
 
 \begin{code-list}[H]
@@ -234,6 +245,19 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 \label{tab:prlg0201monadicunificationtestsandextraction2}
 \end{code-list}
 
+\subsubsection{monadicUnification}
+Takes two fixed flat terms and converts them into UTerms. Performs unification on them inside the \haskellConstruct{Binding Monad} and 
+returns unifier along with a dictionary mapping variables to values. 
+
+\subsubsection{goUnify}
+Runs the above function 
+
+
+\subsubsection{f1}
+
+Retranslate the terms back to fixed flat terms and return results. 
+
+
 \begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,firstline=96]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
@@ -245,6 +269,8 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 
 
 \section{Chapter Recapitulation}
+Recapitulating, this chapter provides the details on a \progLang{Prolog} query resolver adapted to perform unification in a monadic way. 
+
 
 \ifMain
 \begin{scope}
