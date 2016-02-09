@@ -496,6 +496,9 @@ Michael Spivey, \emph{Functional pearls combinators for breadth-first search},
 Stackoverflow, \emph{Haskell vs. prolog comparison}, December 2009,
   \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}.
 
+\bibitem{website:stmonadstackoverflow}
+\bysame, \emph{How does the st monad work?}, September 2012.
+
 \bibitem{Sterling:1994:APA:175753}
 Leon Sterling and Ehud Shapiro, \emph{The art of prolog (2nd ed.): Advanced
   programming techniques}, MIT Press, Cambridge, MA, USA, 1994.
@@ -583,6 +586,9 @@ Haskell Wiki, \emph{Monads as computation}, December 2011.
 
 \bibitem{website:kindhaskellwiki}
 \bysame, \emph{Kind}, August 2012.
+
+\bibitem{website:stmonadwiki}
+\bysame, \emph{St monad}, July 2012.
 
 \bibitem{website:foldablenadtraversable}
 \bysame, \emph{Foldable and traversable}, January 2013.
