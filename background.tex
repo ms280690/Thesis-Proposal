@@ -13,7 +13,7 @@
 \section{What this chapter is about}
 
 This chapter consists of information on the subject of programming languages and their classification into paradigms such as functional and 
-logic styles. Further on, we talk about the languages used for the implementations in this thesis namely \progLang{Prolog} and 
+logic styles. Further on, we talk about the languages used for the implementations in this thesis\yyy{}{\Large,} namely \progLang{Prolog} and 
 \progLang{Haskell}. Moreover, this chapter provides a starting point for various approaches for bringing features of a different languages 
 into the same environment.
 
@@ -99,8 +99,9 @@ number of distributions and is present from academia to industry.
 language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
 \haskellConstruct{Monads}\endnote{%
   Here ``monad'' is an (admittedly technical) English word.
-  It doesn't need special marking.
-  \mehul{changed}
+  It doesn't need special marking.\newline
+  \mehul{changed}\newline
+  \david{No it isn't.  It's still marked \macroName{haskellConstruct}.}
 }
 can be 
 described as composable computation descriptions \cite{website:monadshaskellorg}.
@@ -191,10 +192,7 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
 The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
 The same in \progLang{Haskell} would be of the form:\endnote{%
-  \david{Is the point here that templating helps, or what?}\newline
-  \mehul{it is just one of the many ways to bring the languages together}\newline
-  \david{Say something in the text.}
-  \mehul{added some content below the listings in this tex file.}
+  I've rewritten the \progLang{Haskell} code here.  Please check it.
 }
 %\begin{minted}[linenos]{haskell}
 %append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
@@ -206,7 +204,7 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
 
 \begin{code-list}[th]
   \begin{singlespace}
-    \inputminted[linenos]{haskell}{append.pl}
+    \inputminted[linenos]{haskell}{append_no_quasi.hs}
   \end{singlespace}
   \caption{\progLang{Prolog} append function translated to \progLang{Haskell}.}
 \label{tab:prlgappndhskl}
@@ -230,8 +228,9 @@ Consider the object functional programming language, \progLang{Scala}
 It is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell} and the possible 
 methodologies to do so.\endnote{%
-  Sentence fragment.
-  \mehul{changed}
+  Sentence fragment.\newline
+  \mehul{changed}\newline
+  \david{It's still a sentence fragment.}
 }
 There have been quite a few attempts to ``merge'' these two programming languages that are from different programming
 paradigms.
