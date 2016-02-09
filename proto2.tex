@@ -25,9 +25,9 @@ the procedure to the eDSL in \cite{prolog-lib}.\endnote{%
   See the comments in \S~\ref{subsec:thoughts-chapt-proto2}.
 }
 
-From the Figure~\ref{tab:origgramp0201} we will focus on \haskellConstruct{Terms}, since the others just
+From the Listing~\ref{tab:origgramp0201} we will focus on \haskellConstruct{Terms}, since the others just
 add wrappers around expressions which can be created by it.
-The above language suffers from most of the problems discussed in the previous chapter.
+This language suffers from most of the problems discussed in the previous chapter.
 The above is used to construct \progLang{Prolog} ``terms'' which are of a ``single type''.
 
 The implementation consists of components that one would find in a language processing system (see
@@ -95,7 +95,7 @@ Given a query and a knowledge, the query resolver matches the input query with t
 create a list of goals to satisfy to generate an unifier along with saving choice points on the way for
 backtracking.
 
-This chapter discusses about how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to
+This chapter discusses how the abstract syntax and query resolver from \cite{prolog-lib} can be adapted to
 the concepts and implementation from Chapter~\ref{proto1}.
 This not only proves how generic and modular the approach from the previous chapter is, but also the working \progLang{Prolog} system
 as a whole.
@@ -118,7 +118,7 @@ The first component describes the process of creating a modified version of the 
 
 The grammar suffers from most of the drawbacks mentioned in Chapter~\ref{proto1}. This implementation focuses on creating a working  
 \progLang{Prolog} query resolver with \haskellConstruct{monadic} \prologConstruct{unification}. The base implementation 
-adopted from \codeLibrary{unification-fd} \cite{unification-fd-lib} already has a working implementation but lacks benefits achieved from
+adopted from \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib} already has a working implementation, but lacks benefits achieved from
 our approach mention in the previous chapter.
 
 The non-recursive implementation described in Listing~\ref{tab:flatgrp0201} introduces a type variable which separates the structure from 
@@ -170,18 +170,16 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation} and Listing~\ref{tab:prl
 \end{code-list}
 
 
-After the language is opened up, the next step is to replace the current unification procedure to the one similar to Chapter~\ref{proto1}.{\Huge
-  ?\endnote{%
-  Something is missing here.  The current text comes from commit \texttt{a1b2c01fb24}.
-\mehul{changed}
-}
-}
+After the language is opened up, the next step is to replace the current unification procedure from \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib} with one 
+similar to Chapter~\ref{proto1}.
 
 
-The current unification uses basic pattern matching to unify the terms.
-All the shortcomings related to the language also affect the unification mechanism.
+The current unification uses basic pattern matching to unify terms. This approach tightly couples the unification to the embedded language meaning that every 
+language change requires rewriting the unification procedure. Secondly, the unification procedure is correct but not very efficient. Given that 
+\codeLibrary{unification-fd} \cite{unification-fd-lib} provides an efficient implementation of imperative unification algorithms, we have another reason to 
+replace the unification mechanism from \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}.  
 
-Beginning with the result produces by the query resolver shown in Figure~\ref{tab:prlg0201unifier}.
+The results produced by the query resolver are shown in Listing~\ref{tab:prlg0201unifier}.
 \begin{code-list}[H]
 \begin{minted}[linenos]{haskell}
 type Unifier      = [Substitution]
@@ -195,11 +193,6 @@ A \prologConstruct{Unifier} is a list of \prologConstruct{Substitutions} which b
 
 The unification procedure is shown in Figure~\ref{tab:prlg0201unification}.
 Each language expression is matched based on its structure and returns a \haskellConstruct{Unifier} . 
-
-The issue with the current approach is the rigidity of the procedure.
-Any language modification will cause a ripple effect across the system.
-As described in Chapter~\ref{proto1}, the advantages of \textit{functorizing} language hold in this implementation
-as well. 
 
 
 \begin{code-list}[H]
@@ -218,7 +211,7 @@ Listing~\ref{tab:prlg0201monadicunificationtranslation}.
 
 The modification to the unification procedure is described in Listing~\ref{tab:prlg0201monadicunificationfunctions}, 
 Listing~\ref{tab:prlg0201monadicunificationtestsandextraction1}, Listing~\ref{tab:prlg0201monadicunificationtestsandextraction2} and 
-Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3}
+Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3}.
 
 
 \begin{code-list}[H]
