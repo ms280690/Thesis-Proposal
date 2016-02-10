@@ -53,9 +53,7 @@ That is, an \markWord{IOAction} is one of the following three things:
   to whatever \markWord{String} is read from \markWord{stdin}. 
 \end{enumerate}
 
-Notice that the only terminal constructor is \markWord{Return} –\endnote{%
-  The preceding character is not an \textsc{ascii} character!
-}
+Notice that the only terminal constructor is \markWord{Return} --
 that means that any \markWord{IOAction} must be a combination of \markWord{Get} and \markWord{Put} constructors, 
 finally ending in a \markWord{Return}.
 
@@ -164,9 +162,7 @@ run (Put s io) = putStrLn s >> run io
 run (Get g)    = getLine >>= \s -> run (g s)
 \end{minted}
 
-You can now load up \markWord{GHCi} and apply run to any action –\endnote{%
-  The preceding character is not an \textsc{ascii} character!
-}
+You can now load up \markWord{GHCi} and apply run to any action --
 a value of type \markWord{IO} \markWord{a} will be returned, and then immediately executed by the 
 interpreter:
 
@@ -190,17 +186,10 @@ an \markWord{IOAction} is a mini-language for doing I/O. In this mini language y
 }
 there is no accessing files, spawning threads or network I/O.
 
-In effect we have a “\endnote{%
-  The preceding character is not an \textsc{ascii} character!
-}
-safe”\endnote{%
-  The preceding character is not an \textsc{ascii} character!
-} domain-specific language.
+In effect we have a 
+``safe'' domain-specific language.
 If a user of your program or library supplies a value of type \markWord{IOAction} \markWord{a}, you know that you are free to convert it to an \markWord{IO} \markWord{a} using run and execute it, 
-and it will never do anything except reading from \markWord{stdin} and writing to \markWord{stdout} (not that those things aren't potentially dangerous in themselves, but…\endnote{%
-  The preceding character is not an \textsc{ascii} character!
-  
-})
+and it will never do anything except reading from \markWord{stdin} and writing to \markWord{stdout} (not that those things aren't potentially dangerous in themselves, but\dots)
 
 
 \begin{singlespace}
