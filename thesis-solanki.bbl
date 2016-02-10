@@ -245,9 +245,6 @@ John Hughes, \emph{Why functional programming matters}, The computer journal
 \bibitem{webiste:metasyntacticvariableswhatistectarget}
 What is~Tech~Target, \emph{Metasynatactic variables}, September 2005.
 
-\bibitem{website:haskellkanren}
-JaimieMurdock, \emph{Haskell kanren}, March 2012.
-
 \bibitem{jlog}
 JLogic, \emph{Jlog - prolog in java}, September 2012,
   \url{http://jlogic.sourceforge.net/index.html}.
@@ -355,6 +352,9 @@ R~Morrison and MP~Atkinson, \emph{Persistent languages and architectures},
 MPprogramming.com, \emph{Castor : Logic paradigm for c++}, August 2010,
   \url{http://www.mpprogramming.com/cpp/}.
 
+\bibitem{website:haskellkanren}
+Jaimie Murdock, \emph{Haskell kanren}, March 2012.
+
 \bibitem{website:lambda-prolog}
 Gopalan Nadathur, \emph{$\lambda$ prolog}, September 2013.
 
@@ -383,6 +383,10 @@ University of~Miami, \emph{Prolog introduction}, March 2012.
 
 \bibitem{website:ocamllang}
 Ocaml Org, \emph{Ocaml programming language}, March 2014.
+
+\bibitem{website:cutprologunionedu}
+Johan~Bos Patrick~Blackburn and Kristina Striegnitz, \emph{The cut}, February
+  2003.
 
 \bibitem{pinto2003dot}
 Pedro Pinto, \emph{Dot-scheme: A plt scheme ffi for the .net framework},
@@ -677,6 +681,9 @@ Wikipedia, \emph{Prolog wikipedia}, March 2004.
 
 \bibitem{website:usementiondistinctionwiki}
 \bysame, \emph{Use--mention distinction}, October 2015.
+
+\bibitem{website:prologcut}
+\bysame, \emph{cut in prolog}, January 2016.
 
 \bibitem{DBLP:conf/utp/2012}
 Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),
