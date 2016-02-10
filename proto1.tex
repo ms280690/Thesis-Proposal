@@ -671,16 +671,18 @@ implementations exist,\endnote{%
 
 \textbf{Some stuff about Meta syntactic variables can be put in here}
 
+\begin{comment}
 The issue with the \haskellConstruct{State monad} is that it can only hold substitutions of a single type \haskellConstruct{State}. For
 using several different term datatypes at the same time we need to use the \haskellConstruct{ST monad}. \haskellConstruct{ST monad} 
 provides the capability to  create, read and update reference cells of arbitrary type \cite{claessen2000typed} .
+\end{comment}
 
 The \haskellConstruct{ST monad} is similar to the \haskellConstruct{IO monad} but is escapable. An \haskellConstruct{ST} action  is of the 
 form:
 
 \mint{haskell}|ST s a|
 
-\textit{a} is the return type of the result of the computation in thread \textit{s}. The s keeps objects inside the 
+\textit{a} is the return type of the result of the computation in thread \textit{s}. The s keeps references to objects inside the 
 \haskellConstruct{ST monad} from leaking to the outside of the \haskellConstruct{ST monad} meaning the actions can only affect their own 
 thread. To escape we require:
 \mint{haskell}|runST :: forall a. (forall s. ST s a) -> a|
@@ -689,8 +691,8 @@ The action \textit{a} must be universal in \textit{s}, meaning the threading ass
 runST is pure \cite{website:stmonadwiki, website:stmonadstackoverflow}. This is the idea behind \haskellConstruct{STVars} which are 
 implemented using \haskellConstruct{STRefs}. Hence to use "true mutability" we carry out the computation in the \haskellConstruct{ST monad}.
 
-This implementation uses \haskellConstruct{STVars}
-but a custom implementation can be used inside the \haskellConstruct{BindingMonad}.
+This implementation uses \haskellConstruct{STVars} and \haskellConstruct{STBindings} to implement the \haskellConstruct{BindingMonad}
+but a custom implementation could also be used inside the \haskellConstruct{BindingMonad}.
 For our language expressions to be unifiable we must deal with the variables in the expressions being compared.
 For that we extract the variables and then convert them into a dictionary consisting of a free variable for each
 language variable as shown in Figure~\ref{tab:varsToDictM}.
