@@ -33,6 +33,19 @@ prooftree db = pt
        pt n s []     = Done s 													-- Rule 1
        pt n s (g:gs) = Choice [ pt (n+1) (u@@s) (map (app u) (tp++gs))
                               | (tm:-tp)<-renClauses db n g, u<-unify g tm ]	-- Rule 2
+
+-- DFS Function
+-- search performs a depth-first search of a proof tree, producing the list
+-- of solution stitutions as they are encountered.
+search              :: Prooftree -> [st] 
+search (Done s)      = [s]
+search (Choice pts)  = [ s | pt <- pts, s <- search pt ]
+
+
+prove    :: Database -> [Term] -> [st]
+prove db  = search . prooftree db 1 nullst
+
+
 {--
 pt 1 nullst [] = Done (nullst)
 
@@ -85,17 +98,5 @@ tp ==> "[] , [] , [world] , [] , "
 
 --}
 
-
-
--- DFS Function
--- search performs a depth-first search of a proof tree, producing the list
--- of solution stitutions as they are encountered.
-search              :: Prooftree -> [st] 
-search (Done s)      = [s]
-search (Choice pts)  = [ s | pt <- pts, s <- search pt ]
-
-
-prove    :: Database -> [Term] -> [st]
-prove db  = search . prooftree db 1 nullst
 
 --- End of PureEngine.hs

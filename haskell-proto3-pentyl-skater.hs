@@ -62,11 +62,25 @@ import Control.Monad.Trans.State as Trans
 infixr 3 @@
 infix  4 ->-
 
---- stitutions:
-
 type st = Id -> Term
 
 newtype stP = stP { unstP :: st }
+
+app                     :: st -> Term -> Term
+app s (Var i)            = s i
+app s (Struct a ts)      = Struct a (Prelude.map (app s) ts)
+
+nullst               :: st
+nullst i              = Var i
+
+(->-)                   :: Id -> Term -> st
+(i ->- t) j | j==i       = t
+            | otherwise  = Var j
+
+-- Function composition for applying two stitution functions.
+(@@)                    :: st -> st -> st
+s1 @@ s2                 = app s1 . s2
+
 
 -- instance Show stP where
 --  show (i) = show $ Var i
@@ -91,9 +105,6 @@ Looks like an apply function that applies a stitution function tho the variables
 --                  app (s1 @@ s2) = app s1 . app s2
 --                 s @@ nullst = s = nullst @@ s
 
-app                     :: st -> Term -> Term
-app s (Var i)            = s i
-app s (Struct a ts)      = Struct a (Prelude.map (app s) ts)
 {--
 app (stFunction) (Struct "hello" [Var (0, "Var")])
 hello(Var_2) :: Term
@@ -101,24 +112,13 @@ hello(Var_2) :: Term
 --}
 
 
-nullst               :: st
-nullst i              = Var i
 {--
 nullst (0, "Var")
 Var :: Term
 --}
 
 
---
-(->-)                   :: Id -> Term -> st
-(i ->- t) j | j==i       = t
-            | otherwise  = Var j
 {--
 :t (->-) (1,"X") (Struct "hello" [])
 (1,"X") ->- Struct "hello" [] :: (Int,[Char]) -> Term
 --}
-
-
--- Function composition for applying two stitution functions.
-(@@)                    :: st -> st -> st
-s1 @@ s2                 = app s1 . s2
