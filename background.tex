@@ -13,7 +13,7 @@
 \section{About this chapter}
 
 This chapter consists of information on the subject of programming languages and their classification into paradigms such as functional and 
-logic styles. Further on, we talk about the languages used for the implementations in this thesis\yyy{}{\Large,} namely \progLang{Prolog} and 
+logic styles. Further on, we talk about the languages used for the implementations in this thesis, namely \progLang{Prolog} and 
 \progLang{Haskell}. Moreover, this chapter provides a starting point for various approaches for bringing features of a different languages 
 into the same environment.
 
@@ -61,7 +61,7 @@ ones.
 This is done until the one which gives the solution is not derived.
 
 \section{\progLang{Haskell} and \progLang{Prolog}}
-In this thesis we aim to merge two languages
+In this thesis we aim to merge two languages \progLang{Haskell} and \progLang{Prolog}
 together and produce a result which exhibits hybrid
 properties.
 The languages in question are \progLang{Haskell} and \progLang{Prolog}.\endnote{%
@@ -81,7 +81,9 @@ The languages in question are \progLang{Haskell} and \progLang{Prolog}.\endnote{
     \progLang{Haskell} and \progLang{Prolog}---%
     together and produce a result which exhibits hybrid
     properties.
-  \end{quote}}
+  \end{quote}
+  \mehul{changed}
+  }
 %
 These two languages come from respective the functional programming and logical programming branches of the declarative language group.
 Some of the dissimilarities between the languages are:
@@ -97,11 +99,12 @@ number of distributions and is present from academia to industry.
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the first
 language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
-\haskellConstruct{Monads}\endnote{%
+Monads\endnote{%
   Here ``monad'' is an (admittedly technical) English word.
   It doesn't need special marking.\newline
   \mehul{changed}\newline
   \david{No it isn't.  It's still marked \macroName{haskellConstruct}.}
+	\mehul{changed}
 }
 can be 
 described as composable computation descriptions \cite{website:monadshaskellorg}.
@@ -193,6 +196,7 @@ going through the code, the first rule says that and empty list appended with an
 The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
 The same in \progLang{Haskell} would be of the form:\endnote{%
   I've rewritten the \progLang{Haskell} code here.  Please check it.
+	\mehul{looked at it breifly cannot find any mistake}
 }
 %\begin{minted}[linenos]{haskell}
 %append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
