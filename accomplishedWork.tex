@@ -12,7 +12,11 @@
 
 \section{About this chapter}\label{sec:what-this-chapter:accomplishedWork}
 This chapter provides the details for the conceptual contributions of this thesis along with information on the implementation of each 
-prototype. Moreover, we state the other 'soft'\mehul{surveys, making libraries work etc etc} contributions of this thesis.
+prototype. Moreover, we state the other 'soft'
+
+\mehul{surveys, making libraries work etc etc} 
+
+contributions of this thesis.
 
 
 
@@ -37,6 +41,7 @@ prototype. Moreover, we state the other 'soft'\mehul{surveys, making libraries w
 Most languages have a recursive abstract syntax which restricts the embedded, domain-specific language
   \enparen{eDSL, see p.~\pageref{sec:DSL-def}}\endnote{%  
     See Note~\eref{eDSL1}, then remove this.
+    \mehul{addressed note 2}
 }
   in terms of its capability to \textit{open up} the language, i.e, to include meta syntactic
   variables, custom quantifiers and logic.
@@ -136,9 +141,10 @@ statement) which when executed would result in a side effect but till that point
 
 Furthermore, this thesis provides a literature review on embedded domain specific languages in Chapter~\ref{chap:embedding} and a survey on
 multi paradigm declarative languages in Chapter~\ref{chap:multiparadigm}. The current chapter and Chapter~\ref{chap:proposedWork} evaluate 
-and access the current work in embedding \progLang{Prolog} in \progLang{Haskell}.  Creating a micro language to represent and encapsulate 
-IO operation in an eDSL so that the it remains pure even after interpretation and only produces side effects when the action is actually 
-executed and hence in some way it can be controlled.
+and assess the current work for embedding \progLang{Prolog} in \progLang{Haskell}. Chapter~\ref{proto4} attempts at creating a micro 
+language to represent and encapsulate IO operation in an eDSL so that the it remains pure even after interpretation and only produces side 
+effects when the action is actually executed and hence in some way it can be controlled. This thesis also provides an environment for 
+multiple \progLang{Haskell} libraries which provide parts of \progLang{Prolog}-like functionality. 
 
 
 \section{Chapter Recapitulation}
