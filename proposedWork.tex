@@ -7,27 +7,14 @@
 \begin{document}
 
 %-----------------------------------------------------------------------------
-\chapter{Extensions and improvements on existing work}\label{chap:proposedWork}
+\chapter{Existing Work and Proposed Improvements}\label{chap:proposedWork}
 %-----------------------------------------------------------------------------
 
-\textcolor{blue}{\textsl{The title of this chapter needs to change.}}
-\mehul{changed}
-
 \section{About this chapter}\label{sec:what-this-chapter:proposedWork}
-%% 2016-01-16.  dgc.  Perhaps we should change the label above? TODO
 
-\begin{comment}
-This chapter discusses the current work in done in embedding programming languages.
-Specifically speaking embedding \progLang{Prolog} in \progLang{Haskell}.
-We analyze the current implementations and provide insights into the contributions of this thesis.
-\end{comment}
 This chapter discusses the current implementations and publications for embedding \progLang{Prolog} in languages
-and specifically \progLang{Haskell}. Moreover, we take a look at their shortcomings to get a direction for improvements and contributions 
-of this thesis. This chapter provides details of the improvements that have been built on top of the existing work.
-\mehul{What i want to say is that we looked at a lot of stuff and then found these problems. Now these problems are like points for 
-improvement. Also we wanted to add some other things like monadic unification. }
+and specifically in \progLang{Haskell}. We take a look at their shortcomings and propose improvements.
 
-\mehul{changed}
 
 \section{\protect{Existing Work by Others}} \label{sec:existing-work-by-others}
 
@@ -72,15 +59,6 @@ discussed below, along with their shortcomings.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
   but are still not complete.
 
-\item
-  Moreover, none of the above have natural list support that exists
-  in \progLang{Prolog} i.e. having a list of different types of \progLang{Prolog} constructs.\endnote{%
-    \david{What does this point mean?}
-    \mehul{I would have to think; I do not remember.}
-    \mehul{I think what we were saying is that a \progLang{Prolog} list can have elements of any type unlike a \progLang{Haskell} list so we created this nice datatype and then fixed it so that we get infinitely nested list consists of diff constructors of the same type meaning it is still uni typed like \progLang{Prolog}
-    \mehul{as per our discussion on wednesday 9 feb, what shall I do ?}
-    }
-}
 \end{enumerate}
 
 As for the idea of merging paradigms goes, it is not the main focus of this thesis and can be more of an
@@ -91,54 +69,31 @@ Moving away from \progLang{Haskell} and exploring other languages from different
 crossover implementations exist but again most of them have faded out.
 
 
-\section{Things that this thesis fixes}\label{sec:things-fixed}
+\section{Proposed improvements}\label{sec:things-fixed}
 
-As discussed in Section~\ref{sec:existing-work-by-others},\endnote{%
-  \vspace*{-2\baselineskip}
-  \begin{compactdesc}
-  \item []
-    Which sections above?  Use \macroName{label} and \macroName{ref}
-    to say precisely which.
-  \item [2016-01-16]
-    You removed ``sections'', but you still do not say \textit{where}
-    above.
-    \begin{compactitem}
-    \item Two paragraphs above?
-    \item In Section~\ref{sec:what-this-chapter:proposedWork}?
-    \end{compactitem}
-  \end{compactdesc}
-  \mehul{changed}
-}
+As discussed in Section~\ref{sec:existing-work-by-others},
 either an embedding or an integration approach is taken up for programming languages to work together.
 So, there is either a shallow approach that does not utilize the constructs available in the host language and
 results in a translation of the characteristics, or the other is a fairly complex process which results in tackling
 the conflicting nature of different programming paradigms and languages, resulting in a toned-down compromised
 language that takes advantages of neither paradigms.
-Mostly, the trend is to build a library for extension to replicate the features as an add on.\endnote{%
-  What is the point of this \P{} relative to the overall thesis?
-  \mehul{too deep == too complex, too shallow == does not do much, mix == a little better I guess?}
-}
+Mostly, the trend is towards the former.
 
 
 Here is a discussion of problems mentioned above that this thesis
-tackles.\endnote{%
-  Move material from \S~\ref{sec:existing-work-by-others} to \S~\ref{sec:things-fixed}.
-}
+tackles.
 
 \begin{enumerate}
 \item The \languageConstruct{eDSL} supports \prologConstruct{fails} and \prologConstruct{cuts}.
 
-\item A more 'complete' implementation.
+\item the implementation is more complete.
 
-\item Not REPL based, you can write a program file and compile and run it like a normal \progLang{Haskell} file.
-
-\item The \languageConstruct{eDSL} is constructed in a way to encapsulate multiple \progLang{Prolog} types under one \progLang{Haskell}
-data type.
+\item The implementation is not REPL based. You can write a program file and compile and run it like a normal a \progLang{Haskell} file.
 \end{enumerate}
 
 \section{Chapter Recapitulation}
-Recapitulating, this chapter provided us with the improvements over the shortcomings of the current work. The next chapter
-provides the contributions of the thesis which are not necessarily built upon the existing work and more from scratch.\mehul{which came out of our heads, new stuff! }
+This chapter reviewed current work and proposed improvements. The next chapter
+provides the contributions of this thesis which are not necessarily built upon existing work.
 
 \ifMain
 \begin{scope}
