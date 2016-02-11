@@ -64,27 +64,7 @@ This is done until the one which gives the solution is not derived.
 In this thesis we aim to merge two languages \progLang{Haskell} and \progLang{Prolog}
 together and produce a result which exhibits hybrid
 properties.
-The languages in question are \progLang{Haskell} and \progLang{Prolog}.\endnote{%
-  Replace
-  \vspace*{-1\baselineskip}
-  \begin{quote}\itshape
-    In this thesis we aim to merge two languages
-    together and produce a result which exhibits hybrid
-    properties.
-    The languages in question are \progLang{Haskell} and \progLang{Prolog}.
-  \end{quote}
-  \vspace*{-1\baselineskip}
-  with
-  \vspace*{-1\baselineskip}
-  \begin{quote}\slshape
-    In this thesis we aim to merge two languages---%
-    \progLang{Haskell} and \progLang{Prolog}---%
-    together and produce a result which exhibits hybrid
-    properties.
-  \end{quote}
-  \mehul{changed}
-  }
-%
+The languages in question are \progLang{Haskell} and \progLang{Prolog}.
 These two languages come from respective the functional programming and logical programming branches of the declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
@@ -99,17 +79,8 @@ number of distributions and is present from academia to industry.
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the first
 language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
-Monads\endnote{%
-  Here ``monad'' is an (admittedly technical) English word.
-  It doesn't need special marking.\newline
-  \mehul{changed}\newline
-  \david{No it isn't.  It's still marked \macroName{haskellConstruct}.}
-	\mehul{changed}
-}
-can be 
-described as composable computation descriptions \cite{website:monadshaskellorg}.
-Each monad
-consists of a description of what has action has to be executed, how the action has to be run and how to combine
+Monads can be described as composable computation descriptions \cite{website:monadshaskellorg}.
+Each monad consists of a description of what has action has to be executed, how the action has to be run and how to combine
 such computations.
 An action can describe an impure or side-effecting computation, for example, input and output can be performed
 outside the language but can be brought together with pure functions inside in a program resulting in a separation
@@ -193,18 +164,9 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \label{fig:append-prolog}
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
-The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
-The same in \progLang{Haskell} would be of the form:\endnote{%
-  I've rewritten the \progLang{Haskell} code here.  Please check it.
-	\mehul{looked at it breifly cannot find any mistake}
-}
-%\begin{minted}[linenos]{haskell}
-%append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
-%	(∃ X, Xs, Ys -> Ps = [X|Xs] & 
-%		Rs = [X|Ys] & 
-%			append(Xs, Qs, Ys))
-%\end{minted}  
-
+The second predicate matches the head of the first and the resulting lists and then recurses on the tails. Listing~\ref{tab:prlgappndhskl} shows how a direct 
+translation of Listing~\ref{fig:append-prolog} into \progLang{Haskell} while 
+Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation.
 
 \begin{code-list}[th]
   \begin{singlespace}
@@ -223,20 +185,12 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
 \end{code-list}
 
 
-
-Listing~\ref{tab:prlgappndhskl} shows how a direct translation of Listing~\ref{fig:append-prolog} into \progLang{Haskell} while 
-Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation. 
-
 Consider the object functional programming language, \progLang{Scala}
 \cite{website:scala}.
 It is purely functional but with objects and classes.
 With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell} and the possible 
-methodologies to do so.\endnote{%
-  Sentence fragment.\newline
-  \mehul{changed}\newline
-  \david{It's still a sentence fragment.}
-}
-There have been quite a few attempts to ``merge'' these two programming languages that are from different programming
+methodologies to do so,
+there have been quite a few attempts to ``merge'' these two programming languages that are from different programming
 paradigms.
 The attempts fall into two categories as follows:
 
@@ -249,14 +203,8 @@ The attempts fall into two categories as follows:
   Paradigm integration, developing a hybrid programming language that is a functional logic programming language
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
-
 The approaches of embedding and paradigm integration are discussed in Chapter~\ref{chap:embedding} and Chapter~\ref{chap:multiparadigm} 
 respectively.  
-
-\section{Chapter Recapitulation}
-
-\mehul{same as the last paragraph along with enumerations}
-
 
 
 \ifMain
