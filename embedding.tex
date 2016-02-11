@@ -45,6 +45,7 @@ Although this implementation takes as reference the working of the \progLang{ Pr
   \david{What does the \cite{website:mini-prolog-hugs98} implementation takes as reference?
     Is it based on the Warren Abstract Machine?
     Some other formal specification of \progLang{Prolog}?
+    \mehul{I checked the website, could not find anything as such.}
   }
 }
 and other details, it still is an unpublished implementation with almost no documentation, support  or ongoing
@@ -60,6 +61,7 @@ with, but still lacks complete list support\endnote{%
   \david{Are you saying that you want lists in \progLang{Prolog} to be constructed from something other than
     the \progLang{Prolog} functors equivalent to \progLang{Haskell}'s ``\texttt{\bfseries :}'' and
     ``\texttt{\bfseries []}''?  I think that that has far reaching consequences.}
+    \mehul{We discussd this, waiting for feedback}
 }
 and quite a few of practical features that \progLang{Prolog} has.
 This seems to be a common problem with the other implementation that exists, \cite{website:takashi-workplace}.
@@ -68,8 +70,9 @@ Adding fuel to fire, is the question on \progLang{Prolog}'s existence and surviv
 \cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
 is minimal in comparison with the languages of imperative nature.
 Some \progLang{Prolog} implementations lack basic requirements such as support for \languageConstruct{modules}.
-The other issue is the ongoing comparison between the siblings \cite{website:haskell-choice} of the same family, the
-family of declarative languages.\endnote{%
+Another issue raised by ongoing informal discussions are unflattering comparison between siblings \cite{website:haskell-choice}.This makes 
+potential users question the choice of \progLang{Prolog}, when \progLang{Haskell}, also a language in the family of declarative languages 
+is so popular.\endnote{%
   \david{What does this sentence mean?
   Are you suggesting that one of \progLang{Prolog}'s problems is that it is
   competing with \progLang{Haskell}?
@@ -86,6 +89,7 @@ family of declarative languages.\endnote{%
       when \progLang{Haskell}---also a language in the family of declarative languages---is so popular.}''
     I am not sure if I have that sentence exactly right, but you need to be more explicit about the argument.
   }
+  \mehul{changed}
 }
 Not to forget \progLang{Haskell} also has some support for logic programming \cite{website:logic-programming-haskell} which
 enables encoding of search problems.\endnote{%
@@ -95,16 +99,17 @@ enables encoding of search problems.\endnote{%
 
 \section{Books related to embedding Programming Languges}
 
-As \progLang{Haskell} is relatively new in terms of being popular, its predecessors such as \progLang{Scheme} have
-explored the territory of embedding  quite profoundly \cite{friedman05reasoned}, which aims at adding a few
-constructs to the language to bring together both styles of declarative programming and capture the essence of
-\progLang{Prolog}.
-Moreover, \progLang{Haskell} also claims for it to be suitable for basic logic programming naturally using the
+As \progLang{Haskell} is relatively new in terms of being popular, other functional languages such as \progLang{Scheme} have
+explored the problem of embedding in great depth. \cite{friedman05reasoned} aims at adding a few
+constructs to \progLang{Scheme} to bring together both styles of declarative programming and capture the essence of
+\progLang{Prolog} in the host language.
+Moreover, \progLang{Haskell} also claims for it to be suitable for basic logic programming using the
 \haskellConstruct{List Monad} \cite{website:logicprogexamplehaskell}.
 A general outlook towards implementing \progLang{Prolog} has also been discussed by
-\cite{krishnamurthi2007programming} to push the ideas forward.\endnote{%
+\cite{krishnamurthi2007programming} to popularize the idea of embedding \progLang{Prolog}.\endnote{%
   This \P{} needs a lot of work.
   I do not understand what you say the references say.
+  \mehul{changed}
 }
 
 \section{Papers related to embedding Programming Languges}
@@ -126,10 +131,10 @@ with improvements and further additions.
 The work presented in the series
 \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
 encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
-Being the very first documented formal attempt, the work is influenced by similar embeddings of \progLang{Prolog}
+Being one of the very first attempts, the work is influenced by embeddings of \progLang{Prolog}
 in other languages like \progLang{Scheme} and \progLang{Lisp}.
-Although the host language has distinct characteristics such as lazy evaluation and strong type system the proposed
-scheme tends to be general as the aim here is to achieve \progLang{Prolog}-like working not a multiparadigm
+Although the host language has distinct characteristics such as lazy evaluation and a strong type system, the proposed
+scheme tends to be general as the aim here is to achieve a \progLang{Prolog}-like eDSL and not a multiparadigm
 declarative language.
 \progLang{Prolog} \prologConstruct{predicates} are translated to \progLang{Haskell} functions which produce a
 stream of results lazily depicting depth first search with support for different strategies and practical operators
@@ -140,6 +145,7 @@ Though no implementation exists, the synthesis and transformation techniques for
 Another related work \cite{spivey2000functional} looks through conventional data types so as to adapt to the
 problems in the domain\endnote{%
   I still don't understand what problems we are talking about here.
+  \mehul{I am trying to say what the papers did in terms of embedding \progLang{Prolog} in \progLang{Haskell}}
 } and accommodate and jump between search strategies.
 
 
@@ -154,14 +160,14 @@ types and search strategies.
 Though not very efficient nor practical,
 the method aims at a more elegant translation of programs from one language
 to the other.
-While other papers \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding
-anything new.\endnote{%
+While other publications such as \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding any new 
+constructs.\endnote{%
     This is a sentence fragment.
   }\elabel{sentence-fragment} \mehul{changed}
-Specifically speaking, using \progLang{Haskell}'s type class to express general structure of a problem while the
-solutions are instances.\eref{sentence-fragment}\textsuperscript{,}\endnote{%
+It uses \progLang{Haskell}'s type class to express a general structure for the problem while its instances represent the solutions. 
+\eref{sentence-fragment}\textsuperscript{,}\endnote{%
     I do not understant the preceding sentence.
-
+	\mehul{changed}
   }
 \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
 use of the \progLang{Haskell} \haskellConstruct{State Monad} to capture and maintain a global state.
@@ -182,13 +188,10 @@ backtracking abilities and a \haskellConstruct{monadic encapsulation} to turn a 
 To replicate \progLang{Prolog}-like
 capabilities \progLang{Haskell} seems to be a popular choice
 with a host of related libraries.
-First we begin with the libraries about Prolog\endnote{%
-  Naked Prolog.
-}
-itself.
-A few exist\yyy{}{\Huge.} \cite{nanoprolog-lib} \yyy{being}{is} a preliminary or
-``mini \progLang{Prolog}'' \xxx{as such} with not much in it to be able to be useful. \cite{hswip-lib}
-is all powerful\yyy{}{\Large,} but is a foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we
+First we begin with the libraries about \progLang{Prolog} itself.
+A few exist. \cite{nanoprolog-lib} is a preliminary or
+``mini \progLang{Prolog}'' with not much in it to be able to be useful. \cite{hswip-lib}
+is all powerful, but is a foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we
 need \progLang{Prolog} for it;
 \cite{prolog-lib}
 is the implementation that comes the closest
