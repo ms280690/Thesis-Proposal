@@ -235,8 +235,9 @@ language restrictions.\endnote{
 
 
 
-We have a \progLang{Prolog}-like language in \progLang{Haskell} defined via \haskellConstruct{data}. The language defined is recursive in nature. We convert 
-it into a non-recursive data type. Basically we do unification monadically.
+We have a \progLang{Prolog}-like language in \progLang{Haskell} defined via \haskellConstruct{data}. The language defined is recursive in 
+nature. 
+We convert it into a non-recursive data type. Basically we do unification monadically.
 
 \section{Creating a data type}
 %% dgc removed the [H] as it forces a bad page break.
@@ -492,19 +493,20 @@ Figure~\ref{fig:automatic-extension}.
 \mint{haskell}|Extended FlatTerm| is isomorphically equivalent to the abstract grammar in Figure~\ref{fig:manual-extension}.
 
 
-
-
 \begin{figure}[H]
-  \includegraphics[scale=0.3, width=1\textwidth]{extended_data_type_1.png}
+  \centering
+  \includegraphics[scale=0.1, width=0.7\textwidth]{extended_data_type_1.png}
   \caption{Manually Extension of data type}
   \label{fig:manual-extension}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=1\textwidth, scale=0.5]{extended_data_type_2.png}
+  \centering
+  \includegraphics[width=0.7\textwidth, scale=0.1]{extended_data_type_2.png}
   \caption{Automatic Extension of data type}
   \label{fig:automatic-extension}
 \end{figure}
+
 
 \section{Making the language compatible with \protect\codeLibrary{unification-fd}}\label{sec:making-lang-comp}
 
