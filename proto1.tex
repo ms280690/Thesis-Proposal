@@ -378,13 +378,17 @@ a \textcolor{red}{fix}\endnote{%
 }
 point does not move under \haskellConstruct{FlatTerm}.
 
-\progLang{Haskell} provides it in two forms,\endnote{%
+\progLang{Haskell} provides it in two forms, as a function and as a constructor.\endnote{%
   \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
 
   \mehul{Well not really but since we are talking about fixed point in general}
 
   \david{Get rid of it.  Put in a marker if you want.  If we really need it, we can drag it from the git repository.}
+	
+  \mehul{changed}
 }
+
+\begin{comment}
 \begin{enumerate}
 
 \item The \markWord{fix} function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
@@ -403,6 +407,11 @@ point of a function.
 which we apply to our abstract syntax.
 
 \end{enumerate}
+\end{comment}
+
+In type constructor form,
+\mint{haskell}|newtype Fix f = f (Fix f)|
+which we apply to our abstract syntax.
 
 
 The resulting language is of the form,
@@ -576,7 +585,7 @@ We create the necessary instances\endnote{%
   \mehul{delete?}
 }
 as shown in Listing~\ref{tab:flat-term-class-inst}.
-\begin{code-list}
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,gobble=4,lastline=12]{haskell}{haskell-proto1-class-flat.hs}
   \end{singlespace}
@@ -597,7 +606,7 @@ Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then w
 the recursive ADT, so too we only need to specify one level of the unification (i.e., \Verb!zipMatch!) and then we can use
 the library's operators to perform the recursive unification.
 This is shown in Figure~\ref{tab:zipMatch}.
-\begin{code-list}
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto1-zip-flat.hs}
   \end{singlespace}
@@ -671,7 +680,7 @@ For our language expressions to be unifiable we must deal with the variables in 
 For that we extract the variables and then convert them into a dictionary consisting of a free variable for each
 language variable as shown in Figure~\ref{tab:varsToDictM}.
 
-\begin{code-list}
+\begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
   variableExtractor :: Fix FlatTerm -> [Fix FlatTerm]
   variableExtractor (Fix x) = case x of
@@ -706,7 +715,7 @@ A language to \markWord{STVar} dictionary is only one part of the unification pr
 compatible for the in built unify procedure to perform look ups for the variables in them.
 The dictionary along with the fixed point version flattened of the term, as shown in Figure~\ref{tab:to-UTerm}.
 %
-\begin{code-list}
+\begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
   uTermify
     :: Map VariableName (ST.STVar s (FlatTerm))
@@ -738,7 +747,7 @@ The dictionary along with the fixed point version flattened of the term, as show
 %
 and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 %
-\begin{code-list}
+\begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
   vTermify :: Map Int VariableName ->
               UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) ->
@@ -790,7 +799,9 @@ monadicUnification t1 t2 = do
   \vspace*{-1.0\baselineskip}
   \caption{Unification code}
   \label{tab:unification}
+\end{code-list}
 
+\begin{code-list}[H]
 \begin{minted}[linenos]{haskell}
 goUnify ::
   (forall s. (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
@@ -817,7 +828,7 @@ goUnify test = ST.runSTBinding $ do
 The final reconversion to return a list of substitutions,
   called \texttt{f1} in Figure~\ref{tab:unif-driver}, is shown in
   Figure~\ref{tab:vars-extract}.
-\begin{code-list}
+\begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
   f1 ::
     (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
