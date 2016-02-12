@@ -41,61 +41,10 @@ Moreover the discussion focuses on a lot of critical points that should be consi
 One of the implementations discussed redirects us to one of the earliest implementations of \progLang{Prolog} in
 \progLang{Haskell} for \haskellConstruct{Hugs 98}, called \haskellConstruct{Mini} \progLang{Prolog}
 \cite{website:mini-prolog-hugs98}.
-Although this implementation takes as reference the working of the \progLang{ Prolog} Engine\endnote{%
-  \david{What does the \cite{website:mini-prolog-hugs98} implementation takes as reference?
-    Is it based on the Warren Abstract Machine?
-    Some other formal specification of \progLang{Prolog}?
-    \mehul{I checked the website, could not find anything as such.}
-  }
-}
-and other details, it still is an unpublished implementation with almost no documentation, support  or ongoing
-development.
-Moreover, it comes with an option of three engines to play
-with, but still lacks complete list support\endnote{%
-  \david{What is list support?  What is complete list support?  You have not
-  defined either of these terms.}\newline
-  \mehul{I forgot}.\newline
-  \mehul{i remembered. All the different types of data types in
-    \progLang{Prolog} are uni type just like our abstract syntax
-    language.}\newline
-  \david{Are you saying that you want lists in \progLang{Prolog} to be constructed from something other than
-    the \progLang{Prolog} functors equivalent to \progLang{Haskell}'s ``\texttt{\bfseries :}'' and
-    ``\texttt{\bfseries []}''?  I think that that has far reaching consequences.}
-    \mehul{We discussd this, waiting for feedback}
-}
-and quite a few of practical features that \progLang{Prolog} has.
-This seems to be a common problem with the other implementation that exists, \cite{website:takashi-workplace}.
-
-Adding fuel to fire, is the question on \progLang{Prolog}'s existence and survival
-\cite{website:prolog-killer,website:prolog-steam,website:prolog-death,somogyi1995logic} since its use in industry
-is minimal in comparison with the languages of imperative nature.
-Some \progLang{Prolog} implementations lack basic requirements such as support for \languageConstruct{modules}.
-Another issue raised by ongoing informal discussions are unflattering comparison between siblings \cite{website:haskell-choice}.This makes 
-potential users question the choice of \progLang{Prolog}, when \progLang{Haskell}, also a language in the family of declarative languages 
-is so popular.\endnote{%
-  \david{What does this sentence mean?
-  Are you suggesting that one of \progLang{Prolog}'s problems is that it is
-  competing with \progLang{Haskell}?
-  }\par
-  \mehul{
-  \progLang{Haskell} has advantages over \progLang{Prolog} despite being from the same paradigm
-  \newline
-  So a choice has to be made for a declarative language why not \progLang{Haskell} ?}
-
-  \david{Then say something like
-    ``\textsl{Another issue raised by ongoing informal discussions are unflattering comparison between siblings
-      \cite{website:haskell-choice}.
-      This makes potential users question the choice of \progLang{Prolog},
-      when \progLang{Haskell}---also a language in the family of declarative languages---is so popular.}''
-    I am not sure if I have that sentence exactly right, but you need to be more explicit about the argument.
-  }
-  \mehul{changed}
-}
-Not to forget \progLang{Haskell} also has some support for logic programming \cite{website:logic-programming-haskell} which
-enables encoding of search problems.\endnote{%
-  This preceding phrase is not a sentence.
-	\mehul{changed}
-}\elabel{not-a-sentence} \mehul{changed}
+Although this implementation aims in the right direction, it is not supported by documentaion or literature.
+It comes with three engines for query resolution, but still lacks practical \progLang{Prolog} features.
+This seems to be a common problem with the other implementations, \cite{website:takashi-workplace}.
+Other informal discussions of \progLang{Prolog} have already been mentioned in Chapter~\ref{chap:introduction}.
 
 \section{Books related to embedding Programming Languges}
 
