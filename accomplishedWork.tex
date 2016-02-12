@@ -7,7 +7,7 @@
 \begin{document}
 
 %-----------------------------------------------------------------------------
-\chapter{Accomplished Work}\label{chap:accomplishedWork}
+\chapter{Other Contributions}\label{chap:accomplishedWork}
 %-----------------------------------------------------------------------------
 
 \section{About this chapter}\label{sec:what-this-chapter:accomplishedWork}
@@ -20,8 +20,9 @@ contributions of this thesis.
 
 
 
-\section{Conceptual Advances beyond Section~\ref{sec:things-fixed}}\label{sec:advances:accomplishedWork}
-
+\section{The prototypes}\label{sec:advances:accomplishedWork}
+A large part of this thesis consists of prototypes of a \progLang{Prolog}-like language in \progLang{Haskell}. The conceptual advances of 
+these prototypes are:
 \begin{enumerate}
 \item provide a modular methodology to functorize a recursive abstract grammar used to define a language,
 
@@ -35,8 +36,9 @@ contributions of this thesis.
 
 \end{enumerate}
 
-\section{What the prototypes contain}
-\subsection{What Prototype 1 contains}
+The details of these prototypes follows.
+
+\subsection{Prototype 1}
 
 Most languages have a recursive abstract syntax which restricts the embedded, domain-specific language
   \enparen{eDSL, see p.~\pageref{sec:DSL-def}}\endnote{%  
@@ -55,7 +57,7 @@ Most languages have a recursive abstract syntax which restricts the embedded, do
   implementation encapsulated into a monad.
 
 
-\subsection{What Prototype 2 contains}
+\subsection{Prototype 2}
 
   (\chapterReference{proto2}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a
   query and a knowledge base.
@@ -65,12 +67,12 @@ Most languages have a recursive abstract syntax which restricts the embedded, do
   other components.
   Lastly the result is converted into the original language via a translate function.
 
-\subsection{What Prototype 3 contains}
+\subsection{Prototype 3}
 
   (\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query
   resolver with multiple search strategies.
 
-\subsection{What Prototype 4 contains}
+\subsection{Prototype 4}
 
   (\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract
   syntax of a DSL which when interpreted would produce output consisting of a pure set of instructions irrespective
@@ -112,7 +114,7 @@ statement) which when executed would result in a side effect but till that point
 \end{comment}
 
 
-\section{What work was done in terms of points}\label{sec:work-in-points}
+\section{Possible directions for \progLang{Prolog} in \progLang{Haskell}}\label{sec:work-in-points}
 \begin{enumerate}
 \item Literature review on eDSL's.
 
