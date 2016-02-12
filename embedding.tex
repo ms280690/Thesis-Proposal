@@ -21,7 +21,7 @@ includes information on some other implementations and embedding languages in ge
 %The following are the sources or related work that can be found,
 
 
-\section{The Informal Content from Blogs, Articles and Internet Discussions}
+\section{The informal content from blogs, articles and internet discussions}
 
 Before moving on to the formal content such as publications, modules and libraries, let's take a look
 at some of the unofficially published content.
@@ -55,7 +55,7 @@ constructs to \progLang{Scheme} to bring together the functional and logic style
 programming using the \haskellConstruct{List Monad}.
 \cite{krishnamurthi2007programming} provides a general outlook towards embedding \progLang{Prolog} in other languages.
 
-\section{Papers related to embedding Programming Languges}
+\section{Papers related to embedding programming languges}
 
 Abundant literature can be found on embedding detailed parts of \progLang{Prolog} features such as basic
 constructs, search strategies and data types.
@@ -120,13 +120,13 @@ backtracking abilities and a \haskellConstruct{monadic encapsulation} to turn a 
 
 
 
-\section{Related Libraries in Haskell}
+\section{Related libraries in \progLang{Haskell}}
 %\begin{description}
 %\item[$\bullet$]\endnote{%
 %%   See the preceding comments about using \texttt{itemize} rather than \texttt{description}.
 %%   Maybe these should be subsections.
 %% }
-\subsection{Prolog Libraries}
+\subsection{Prolog libraries}
 
 To replicate \progLang{Prolog}-like
 capabilities \progLang{Haskell} seems to be a popular choice
@@ -144,7 +144,7 @@ no \haskellConstruct{monadic} support and a REPL without the ability to ``write 
 file''.
 
 %\item[$\bullet$]Logic Libraries
-\subsection{Logic Libraries}
+\subsection{Logic libraries}
 
 The next category is about the logical aspects of \progLang{Prolog}; again a handful of libraries provide
 functionality related to propositional logic and backtracking.
@@ -158,7 +158,7 @@ Exploration'' \cite{logic-grows-on-trees-lib}.
 
 
 %\item[$\bullet$]Unification Libraries
-\subsection{Unification Libraries}
+\subsection{Unification libraries}
 
 The more specific the feature, the lesser the support in \progLang{Haskell}.
 Moving on to the other feature of \progLang{Prolog} is \prologConstruct{unification}.\endnote{%
@@ -170,7 +170,7 @@ the resulting substitution.
 
 
 %\item[$\bullet$]Backtracking
-\subsection{Backtracking}
+\subsection{Backtracking libraries}
 
 Another important aspect of \progLang{Prolog} is backtracking.
 To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use \haskellConstruct{monads}.
@@ -181,7 +181,7 @@ non-linear pattern-matching with backtracking.
 %% \end{description}
 
 
-\section{Chapter Recapitulation}
+\section{Chapter recapitulation}
 Recapitulating, this chapter surveys the approach to embedding programming languages, especially \progLang{Prolog} in \progLang{Haskell}.
 Moreover, it provides tools, some of which are utilized in the prototype implementation.   
 
