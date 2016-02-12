@@ -151,17 +151,8 @@ Since the commutative nature of logical disjunction and conjunction, declarative
 irrelevant. However, the procedural aspect must be taken into account to determine the execution strategy of \progLang{Prolog} since it
 has to deal with impure predicates. Moreover, a particular order of execution can lead to infinite recursion.
 
-\begin{comment}
-Under a declarative reading, the order of rules, and of goals within rules, is irrelevant since logical disjunction and conjunction are 
-commutative.
-Procedurally, however, it is often important to take into account \progLang{Prolog}'s execution strategy, either
-for efficiency reasons, or due to the semantics of impure built-in predicates for which the order of evaluation
-matters.
-Also, as \progLang{Prolog} interpreters try to unify clauses in the order they're provided, failing to give a
-correct ordering can lead to infinite recursion.
-\end{comment}
 
-\begin{comment}
+\textbf{semantics of chr in \progLang{swi Prolog}} 
 In this subsection the operational semantics of CHR\endnote{%
   What is CHR?
 }\elabel{CHR-query}
@@ -170,7 +161,6 @@ When a constraint\endnote{%
   In this context, what is a constraint?
 }
 is called, it is considered an active constraint and the system will try to apply the rules to it. Rules are tried and executed sequentially in the order they are written.
-\end{comment}
 
 
 
@@ -240,6 +230,7 @@ $\backslash$constraints\_2 $<=>$ body ] The constraints\_1 constraints are not c
 
 
 \section{Chapter recapitulation}
+Recapitulating, this chapter provided information on \progLang{Prolog} as a logic programming language.
 
 \ifMain
 \begin{scope}
