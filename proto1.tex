@@ -227,17 +227,17 @@ In this prototype we explore the unification aspect only.
   \label{fig:proto1-arch}
 \end{figure}
 
-This prototype demonstrates the process of creating a data type to replicate the target language type system while conforming to the host 
-language restrictions.\endnote{
+This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type system while conforming 
+to the host language.\endnote{
   \david{``\textit{the benefits}'' of what?}
 	\mehul{changed}
 }
 
+We create a \progLang{Prolog}-like language using a recursive abstract grammar in \progLang{Haskell} defined via \haskellConstruct{data} 
+construct. We then convert it to a non-recursive fixed point version which is isomorphically equivalent to the original. This gives us a 
+more open implementation which will be discussed in the sections to come.
 
-
-We have a \progLang{Prolog}-like language in \progLang{Haskell} defined via \haskellConstruct{data}. The language defined is recursive in 
-nature. 
-We convert it into a non-recursive data type. Basically we do unification monadically.
+The rest of the procedure includes managing library compatibility for the language and more importantly monadic unification. 
 
 \section{Creating a data type}
 %% dgc removed the [H] as it forces a bad page break.
