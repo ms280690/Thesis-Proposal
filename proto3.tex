@@ -142,7 +142,10 @@ Listing~\ref{tab:andorraengineminiprlg}
 
 \section{Language}
 \subsection{Current language}
-Listing~\ref{tab:miniprlglang}
+Listing~\ref{tab:miniprlglang} shows the original abstract syntax for a \progLang{Prolog}-like language.
+A \progLang{Prolog} term can consists of two constructs a variable and a complex term with an atom as a head. A \haskellConstruct{Clause} consists 
+of a head of type \haskellConstruct{Term }and a body of type \haskellConstruct{[Term]}. 
+
 \begin{code-list}[H]
 \begin{singlespace}
   \inputminted[linenos, firstline=24, lastline=37]{haskell}{haskell-proto3-butter-chicken.hs}
@@ -151,8 +154,12 @@ Listing~\ref{tab:miniprlglang}
 \label{tab:miniprlglang}
 \end{code-list}
 
+This language suffers from most of the drawbacks mentioned in the previous prototypes and hence limiting its flexibility.
+
 \subsection{Language modification}
-Listing~\ref{tab:miniprlglangmod}
+Listing~\ref{tab:miniprlglangmod} describes the necessary modifications required to adapt the language for monadic unification.
+This procedure consists of opening the language and adding the necessary instances for \codeLibrary{unification-fd} \cite{unification-fd-lib}
+compatibility.
 
 \begin{code-list}[H]
 \begin{singlespace}
