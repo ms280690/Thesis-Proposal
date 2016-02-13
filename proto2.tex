@@ -133,7 +133,7 @@ The first component describes the process of creating a modified version of the 
 \end{code-list}
 
 The grammar suffers from most of the drawbacks mentioned in Chapter~\ref{proto1}. This implementation focuses on creating a working  
-\progLang{Prolog} query resolver with \haskellConstruct{monadic} \prologConstruct{unification}. The base implementation 
+\progLang{Prolog} query resolver with \haskellConstruct{monadic} \prologConstruct{uni\-fi\-ca\-tion}. The base implementation 
 adopted from \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib} already has a working implementation, but lacks benefits achieved from
 our approach mention in the previous chapter.
 
@@ -166,7 +166,7 @@ Lastly, the fixed point version is created using the Fix constructor
 \label{tab:fixflatgrp0201}
 \end{code-list}
 
-The above approach allows to us to jump between the environments(grammars) easily provided the back and forth conversion capabilities 
+The above approach allows to us to jump between the environments (grammars) easily provided the back and forth conversion capabilities 
 Listing~\ref{tab:prlg0201monadicunificationtranslation} and Listing~\ref{tab:prlg0201monadicunificationconversion}.
 
 \begin{code-list}[H]
