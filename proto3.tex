@@ -172,25 +172,34 @@ compatibility.
 \section{Unification}
 
 \subsection{Current unification}
-Listing~\ref{tab:miniprlgunif}
+
+Listing~\ref{tab:miniprlgunif} describes the current unification mechanism which works on \haskellConstruct{st} substitutions. The 
+\haskellConstruct{unify} function compares the two terms and returns a list of substitutions. As with the base implementations from
+the previous prototypes.
+
 \begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos, firstline=65, lastline=82]{haskell}{haskell-proto3-pentyl-skater.hs}
+  \inputminted[linenos, firstline=67, lastline=95]{haskell}{haskell-proto3-pentyl-skater.hs}
 \end{singlespace}
 \caption{Current unification procedure in \cite{website:mini-prolog-hugs98}}
 \label{tab:miniprlgunif}
 \end{code-list}
 
+THe shortcomings are translated from the language to the unification as it is based on basic pattern matching.
+
 \subsection{Monadic unification}
-Listing~\ref{tab:miniprlgmonadicunif}
+Listing~\ref{tab:miniprlgmonadicunif} shows the procedure for monadic unification. Most components of the procedure remain similar to the ones
+in previous prototypes.
 \begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos, firstline=1, lastline=41]{haskell}{haskell-proto3-bevy-icebox.hs}
+  \inputminted[linenos, firstline=1, lastline=42]{haskell}{haskell-proto3-bevy-icebox.hs}
 \end{singlespace}
 \caption{Monadic unification}
 \label{tab:miniprlgmonadicunif}
 \end{code-list}
 
+The major changes occur in \haskellConstruct{stConvertor} used to convert the result of monadic unification into the original \haskellConstruct{st} form 
+and \haskellConstruct{unify}.
 
 
 \section{Chapter recapitulation}

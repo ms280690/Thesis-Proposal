@@ -77,9 +77,22 @@ nullst i              = Var i
 (i ->- t) j | j==i       = t
             | otherwise  = Var j
 
--- Function composition for applying two stitution functions.
 (@@)                    :: st -> st -> st
 s1 @@ s2                 = app s1 . s2
+
+unify :: Term -> Term -> [Subst]
+unify (Var x)       (Var y)       = if x==y then [nullSubst] else [x->-Var y]
+unify (Var x)       t2            = [ x ->- t2 | x `notElem` varsIn t2 ]
+unify t1            (Var y)       = [ y ->- t1 | y `notElem` varsIn t1 ]
+unify (Struct a ts) (Struct b ss) = [ u | a==b, u<-listUnify ts ss ]
+
+listUnify :: [Term] -> [Term] -> [Subst]
+listUnify []     []     = [nullSubst]
+listUnify []     (r:rs) = []
+listUnify (t:ts) []     = []
+listUnify (t:ts) (r:rs) = [ u2 @@ u1 | u1<-unify t r,
+                                       u2<-listUnify (map (app u1) ts)
+                                                     (map (app u1) rs) ]
 
 
 -- instance Show stP where
@@ -122,3 +135,11 @@ Var :: Term
 :t (->-) (1,"X") (Struct "hello" [])
 (1,"X") ->- Struct "hello" [] :: (Int,[Char]) -> Term
 --}
+
+-- Function composition for applying two stitution functions.
+
+--- Unification:
+
+-- unify t1 t2 returns a list containing a single substitution s which is
+--             the most general unifier of terms t1 t2.  If no unifier
+--             exists, the list returned is empty.
