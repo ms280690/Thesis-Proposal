@@ -13,15 +13,14 @@
 The aim of this prototype is to embed \languageConstruct{IO} operations within the definition on an eDSL so as to allow the chaining and control 
 of operations of the language irrespective of them pure or impure.
 
-\section{Current work}
+\section{\progLang{Haskell} \languageConstruct{IO} is pure}
 
 \cite{website:ioispurechristaylor}
 
-A common question amongst people learning Haskell is whether I/O is pure or not. Haskell advertises itself as a purely functional 
-programming language, but I/O looks like it's inherently impure - for example, the function getLine, which gets a line from stdin, returns 
-a different result depending on what the user types:
-
-
+\progLang{Haskell} calls itself a pure functional programming language. Every function in Haskell is a function in the mathematical sense (i.e., ``pure'').
+ Even side-effecting \languageConstruct{IO} operations are but a description of what to do, produced by pure code. There are no statements or instructions, 
+ only expressions which cannot mutate variables (local or global) nor access state like time or random numbers \cite{website:haskellorg}. Consider the
+ example in Listing~\ref{tab:haskellgetline} describing the \haskellConstruct{getLine} function in \progLang{Haskell}. 
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -32,19 +31,26 @@ Prelude> x
 "Hello"
 \end{minted}
 \end{singlespace}
-\caption{}
-\label{}
+\caption{\progLang{Haskell} \haskellConstruct{getLine}}
+\label{tab:haskellgetline}
 \end{code-list}
-How can this possibly be pure?
 
-In this post I want to explain exactly why I/O in Haskell is pure. I'll do it by building up data structures that represent blocks of code. 
-These data structures can later be executed, and they cause effects to occur - but until that point we'll always work with pure functions, 
-never with effects.
+\languageConstruct{IO} actions can be embedded by building up data structures which can then be executed to cause side-effects, but until that point they 
+are pure. Consider the Listing~\ref{tab:ioactiondatatype} describing an example for the same.
 
-Let's look at a simplified form of I/O, where we only care about reading from stdin, writing to stdout and returning a value. We can model 
-this with the \haskellConstruct{IOAction} data type.
+\begin{code-list}[H]
+\begin{singlespace}
+\begin{minted}[linenos]{haskell}
+data IOAction a = Return a
+                | Put String (IOAction a)
+                | Get (String -> IOAction a)
+\end{minted}
+\end{singlespace}
+\caption{\languageConstruct{IO} action data type taken from \cite{website:ioispurechristaylor}}
+\label{tab:ioactiondatatype}
+\end{code-list}
 
-That is, an \haskellConstruct{IOAction} is one of the following three things:
+\haskellConstruct{IOAction} is one of the following three types:
 \begin{enumerate}
 \item A container for a value of type \haskellConstruct{a},
 
@@ -55,9 +61,7 @@ That is, an \haskellConstruct{IOAction} is one of the following three things:
   to whatever \haskellConstruct{String} is read from \haskellConstruct{stdin}. 
 \end{enumerate}
 
-Notice that the only terminal constructor is \haskellConstruct{Return} --
-that means that any \haskellConstruct{IOAction} must be a combination of \haskellConstruct{Get} and \haskellConstruct{Put} constructors, 
-finally ending in a \haskellConstruct{Return}.
+The \haskellConstruct{Return} constructor is the terminal operation for any program written in \haskellConstruct{IOAction}. 
 
 Some simple actions include the one that prints to \haskellConstruct{stdout} before returning \Verb!()!:
 
@@ -67,17 +71,23 @@ and the action that reads from \haskellConstruct{stdin} and returns the string u
 
 \mint{haskell}|get = Get (\s -> Return s)|
 
-To build up a language for doing I/O we need to be able to combine and sequence actions. We want the ability to perform an \haskellConstruct{IOAction} \haskellConstruct{a} 
-followed by an \haskellConstruct{IOAction} \haskellConstruct{b}, and return some result.
+A program is a sequence of actions. Operators for chaining actions and then performing them in a particular order would be required to execute
+a program. We could have the second \haskellConstruct{IOAction} depend on the return value of the first one. Consider the \haskellConstruct{seqio}
+operator described in Listing~\ref{tab:seqioop}.
 
-In fact, we could have the second \haskellConstruct{IOAction} depend on the return value of the first one \endnote{%
-  The preceding punctuation mark is incorrect.
-  \mehul{changed}
-}
-that is, we need a sequencing combinator of the 
-following type:
+\begin{code-list}[H]
+\begin{singlespace}
+\begin{minted}[linenos]{haskell}
+seqio :: IOAction a -> (a -> IOAction b) -> IOAction b
+seqio (Return a) f = f a
+seqio (Put s io) f = Put s (seqio io f)
+seqio (Get g)    f = Get (\s -> seqio (g s) f)
+\end{minted}
+\end{singlespace}
+\caption{\haskellConstruct{seqio} operation}
+\label{tab:seqioop}
+\end{code-list}
 
-\mint{haskell}|seqio :: IOAction a -> (a -> IOAction b) -> IOAction b|
 
 We want to take the \haskellConstruct{IOAction} \haskellConstruct{a} supplied in the first argument, get its return value (which is of type \haskellConstruct{a}) and feed that to the function in 
 the second argument, getting an \haskellConstruct{IOAction} \haskellConstruct{b} out, which can be sequenced with the first \haskellConstruct{IOAction} \haskellConstruct{a}.
