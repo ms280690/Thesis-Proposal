@@ -227,11 +227,8 @@ In this prototype we explore the unification aspect only.
   \label{fig:proto1-arch}
 \end{figure}
 
-This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type system while conforming 
-to the host language.\endnote{
-  \david{``\textit{the benefits}'' of what?}
-	\mehul{changed}
-}
+This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type system while
+conforming to the host language.
 
 We create a \progLang{Prolog}-like language using a recursive abstract grammar in \progLang{Haskell} defined via \haskellConstruct{data} 
 construct. We then convert it to a non-recursive fixed point version which is isomorphically equivalent to the original. This gives us a 
@@ -519,13 +516,10 @@ Figure~\ref{fig:automatic-extension}.
 \david{Check the Section~\ref{sec:making-lang-comp} title change above.}
 
 Our language is now opened up and ready for expansion, but it still needs to conform to the requirements of the
-\codeLibrary{unifiication-fd} library (\cite{unification-fd-lib}) for the unification algorithm to work.\endnote{%
-  This sentence can be simplified, I think.
-  \mehul{changed}
-  }
+\codeLibrary{unifiication-fd} library (\cite{unification-fd-lib}) for the unification algorithm to work.
 
-  The library provides functionality for first-order structural unification over general structure types along with
-  mutable variable bindings.
+The library provides functionality for first-order structural unification over general structure types along with
+mutable variable bindings.
 
 In this section we discuss
 \begin{enumerate}
@@ -560,8 +554,11 @@ Figure~\ref{fig:Functor Hierarchy} shows the relation between the different clas
 \end{figure}
 
 The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce as described in Chapter~\ref{chap:relatedWork}.\endnote{%
-  What is ``\texttt{map-reduce}''?
-  \mehul{changed}
+  ``\textit{The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce as
+    described in Chapter~\ref{chap:relatedWork}.}'' is not a sentence.
+
+  Also it is not clear that you are talking about the functional interface to \texttt{map-reduce} rather than the
+  large-scale data capabilities.  Perhaps this can be cleared up in Chapter~\ref{chap:relatedWork}.
 }
 to the data structure.
 The primary issue is that at the end of the operation the structure if the data type is lost which would not help
