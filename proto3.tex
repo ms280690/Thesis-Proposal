@@ -8,48 +8,28 @@
 
 \section{About this chapter}
 This chapter discusses the procedure to infuse multiple search strategies into a \progLang{Prolog} query resolver with monadic unification. 
+The base implementation for this prototype is \codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98}.
 
-\david{This chapter is beautifully illustrated by Figure~\vref{fig:architecture-proto-3}.}
+\section{Prototype architecture}
+The architecture for this prototype is beautifully illustrated by Figure~\ref{fig:architecture-proto-3}. 
 
-\begin{figure}
-  \includegraphics[width=1\textwidth]{Prototype-3-diagram.pdf}
+\begin{figure}[H]
+  \includegraphics[width=1\textwidth]{proto3_architecture_revised.png}
 \vspace*{-1cm}
   \caption{Architecture of Prototype 3}
   \label{fig:architecture-proto-3}
 \end{figure}
 
 
-\section{Section title needed}
-When two terms are to be unified we can use Chapter~\ref{proto1},
+\section{\codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98} architecture}
 
-\prologConstruct{term1} and \prologConstruct{term2} are matched and an assignment is the result 
-
-now this may be a part of a query resolution procedure
-
-to reach the point where two terms need to unified will happen through some sort of search strategy
-
-and our approach is independent of that, and this prototype is a proof of concept to implementing query resolution using unification with
-variable search strategy
-
-
-\section{Unification}
-The first, ``unification'' regards how terms are matched and variables assigned to make terms
-match.
-\cite{website:prologunification}
-
-
-
-\section{Resolution}
-this where the complete procedure takes place after the query is passed along with the knowledge 
-
-the resolver searches to create and a list of  goals and then tries to achieve each one.
-
-\cite{website:prologresolution}
-
-\cite{website:resolutionlogicwiki}
-
-
-\section{Backtracking}
+\begin{figure}[H]
+	\centering
+  \includegraphics[width=0.7\textwidth]{miniprologhugs_architecture.png}
+%\vspace*{1cm}
+  \caption{Mini \progLang{Prolog} architecture}
+  \label{fig:miniprlgarchitecture}
+\end{figure}
 
 \section{Search strategies}
 The base implementation used for this prototype  is \cite{website:mini-prolog-hugs98} and below are the search
@@ -69,18 +49,22 @@ strategies
 \inputminted[linenos, firstline=29, lastline=75]{haskell}{haskell-proto3-diatomic-unbank.hs}
 \end{singlespace}
 
-\section{Current unification}
+\section{Language}
+\subsection{Current language}
+
+\subsection{Language modification}
+\begin{singlespace}
+  \inputminted[linenos, lastline=352]{haskell}{haskell-proto3-uplift-apart.hs}
+\end{singlespace}
+
+\section{Unification}
+\subsection{Current unification}
 \begin{singlespace}
   \inputminted[linenos, firstline=65, lastline=82]{haskell}{haskell-proto3-pentyl-skater.hs}
 \end{singlespace}
 
 
-\section{Syntax modification}
-\begin{singlespace}
-  \inputminted[linenos, lastline=352]{haskell}{haskell-proto3-uplift-apart.hs}
-\end{singlespace}
-
-\section{Monadic unification}
+\subsection{Monadic unification}
 \begin{singlespace}
   \inputminted[linenos]{haskell}{haskell-proto3-bevy-icebox.hs}
 \end{singlespace}

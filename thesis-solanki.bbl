@@ -151,12 +151,6 @@ Steve Dunne and Bill Stoddart (eds.), \emph{Unifying theories of programming,
   february 5-7, 2006, revised selected papers}, Lecture Notes in Computer
   Science, vol. 4010, Springer, 2006.
 
-\bibitem{website:prologresolution}
-Joshua Eckroth, \emph{Prolog resolution}, April 2014.
-
-\bibitem{website:prologunification}
-\bysame, \emph{Prolog unification}, April 2014.
-
 \bibitem{website:scala}
 Switzerland \'Ecole Polytechnique F\'ed\'erale~de Lausanne (EPFL)~Lausanne,
   \emph{Scala programming language}, 2002-2014.
@@ -677,9 +671,6 @@ Wikipedia, \emph{Prolog wikipedia}, March 2004.
 
 \bibitem{website:metasyntacticvariableswiki}
 \bysame, \emph{Metasyntactic variable}, October 2015.
-
-\bibitem{website:resolutionlogicwiki}
-\bysame, \emph{Resolution}, October 2015.
 
 \bibitem{website:timelineproglangwiki}
 \bysame, \emph{Timeline of programming languages}, November 2015.
