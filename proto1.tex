@@ -377,27 +377,6 @@ point does not move under \haskellConstruct{FlatTerm}.
 
 \progLang{Haskell} provides it in two forms, as a function and as a constructor.
 
-\begin{comment}
-\begin{enumerate}
-
-\item The \markWord{fix} function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
-
-\mint{haskell}|fix :: (a -> a) -> a|
-
-The above function results in an infinite application stream,
-\mint{haskell}|f s : f (f (f (... )))|
-
-A fixed point of a function \markWord{f} is a value a such that \markWord{f a} \Verb!==! \markWord{a}.
-This is where the name of fix comes from: it finds the least-defined fixed
-point of a function.
-
-\item In type constructor form,
-\mint{haskell}|newtype Fix f = f (Fix f)|
-which we apply to our abstract syntax.
-
-\end{enumerate}
-\end{comment}
-
 In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
