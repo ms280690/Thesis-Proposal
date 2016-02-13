@@ -380,7 +380,7 @@ point does not move under \haskellConstruct{FlatTerm}.
 In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
-
+\par
 
 The resulting language is of the form,
 \begin{minted}[linenos]{haskell}
@@ -460,7 +460,9 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \david{end code inserted by David}
 }
 
-Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.
+Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.\endnote{%
+  Something is mangled here.
+}
 Rather than modifying the the base language and the operation defined for it, we extend the language as shown in 
 Figure~\ref{fig:automatic-extension}. 
 
@@ -783,7 +785,6 @@ goUnify test = ST.runSTBinding $ do
     (Left _)            -> return []
     (Right (_, dict))   -> f1 dict
 \end{minted}
-  %\vspace*{-1.0\baselineskip}
   \caption{Driver code}
   \label{tab:unif-driver}
 \end{code-list}
