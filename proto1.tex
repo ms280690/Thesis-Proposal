@@ -322,7 +322,7 @@ One result of coding as in Listing~\ref{tab:non-recurse} rather than as in
 \haskellConstruct{FlatTerm}
 is separate
 from its
-type which is ``\unknownLabel{\textit{a}}''\eref{text-kind}.
+type which is \haskellConstruct{a} \eref{text-kind} \mehul{changed}.
 The above language can be of any type \textit{a}.
 A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
 \progLang{Haskell}.\endnote{%
@@ -465,17 +465,14 @@ T (Struct 'atom' [Abox, T (Cut 0)])
 \end{enumerate}
 is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom
 functionality.
-
-%%====================================================================%%
-%% -- begin code inserted by David                                 -- %%
-%---------------------------------------------------------------------%%
-\begin{center}
-  \textcolor{blue}{\rule{0.95\textwidth}{0.2em}}\\[-1ex]
-  text from David
-\end{center}
+\endnote{
+\david{begin code inserted by David}
+\david{
 Why not continue the example that you started in Figure~\ref{tab:man-enhan-gram}?
 That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
 \Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
+}
+}
 
 \begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
@@ -491,9 +488,9 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
   end text from David\\[-3ex]
   \textcolor{blue}{\rule{0.95\textwidth}{1pt}}
 \end{center}
-%---------------------------------------------------------------------%%
-%% -- end code inserted by David                                   -- %%
-%%====================================================================%%
+\endnote{
+\david{end code inserted by David}
+}
 
 Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.
 Rather than modifying the the base language and the operation defined for it, we extend the language as shown in 
@@ -552,10 +549,7 @@ instance of a class the function(s) can be applied to each element / primitive i
 The data here is the \progLang{Prolog} abstract syntax and the containers are
 \Verb!Functor!, \Verb!Foldable!, \Verb!Traversable!, \Verb!Applicative!
   and
-\Verb!Monad!.\endnote{%
-  Removed the \macroName{clearpage}.
-}
-
+\Verb!Monad!.
 Figure~\ref{fig:Functor Hierarchy} shows the relation between the different classes.
 
 \begin{figure}[th]
@@ -576,7 +570,7 @@ variable with language values (language constructs).
 
 Enter \Verb[formatcom=\bf]!Traversable!\,.%}{
 It allows reduce whilst preserving the shape of the structure.
-Lastly, the \markWord{Applicative} instance is an intermediate between a functor and a monad.
+Lastly, the \haskellConstruct{Applicative} instance is an intermediate between a functor and a monad.
 
 We create the necessary instances\endnote{%
   I am deeply suspicious of the instance for \texttt{Applicative} given.
@@ -625,10 +619,10 @@ implementations exist,\endnote{%
 }
 
 \begin{enumerate}
-\item The \markWord{IntVar} implementation uses \markWord{Int} as the names of variables, and uses an
-  \markWord{IntMap} to keep track of the environment. 
+\item The \haskellConstruct{IntVar} implementation uses \haskellConstruct{Int} as the names of variables, and uses an
+  \haskellConstruct{IntMap} to keep track of the environment. 
 
-\item The \markWord{STVar} implementation uses \markWord{STRef}s, so we can use actual mutation for binding logic
+\item The \haskellConstruct{STVar} implementation uses \haskellConstruct{STRef}s, so we can use actual mutation for binding logic
   variables, rather than keeping an explicit environment around.
 
 \end{enumerate}
@@ -652,7 +646,7 @@ implementations exist,\endnote{%
   You can provide your own implementations of \markWord{Variable} and \markWord{BindingMonad}.
 \end{comment}
 
-\textbf{Some stuff about Meta syntactic variables can be put in here}
+%\textbf{Some stuff about Meta syntactic variables can be put in here}
 
 \begin{comment}
 The issue with the \haskellConstruct{State monad} is that it can only hold substitutions of a single type \haskellConstruct{State}. For
@@ -692,7 +686,7 @@ language variable as shown in Figure~\ref{tab:varsToDictM}.
   variableNameExtractor (Fix x) = case x of
      (Struct _ xs)   -> Prelude.concat $ Prelude.map variableNameExtractor xs
      (Var v)         -> [v]
-     _             -> []
+     _               -> []
 
   variableSet :: [Fix FlatTerm] -> S.Set (Fix FlatTerm)
   variableSet a = S.fromList a
@@ -707,11 +701,12 @@ language variable as shown in Figure~\ref{tab:varsToDictM}.
       iv <- freeVar
       return $! Map.insert sv iv dict
   \end{minted}
-  \vspace*{-1.0\baselineskip}
+  %\vspace*{-1.0\baselineskip}
   \caption{Creating a variable dictionary}
   \label{tab:varsToDictM}
 \end{code-list}
-A language to \markWord{STVar} dictionary is only one part of the unification procedure, the terms themselves should be made
+
+A language to \haskellConstruct{STVar} dictionary is only one part of the unification procedure, the terms themselves should be made
 compatible for the in built unify procedure to perform look ups for the variables in them.
 The dictionary along with the fixed point version flattened of the term, as shown in Figure~\ref{tab:to-UTerm}.
 %
@@ -774,9 +769,10 @@ and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
   \label{tab:from-UTerm}
 \end{code-list}
 
-\clearpage
-The variable dictionaries and \markWord{UTerm}ified language expressions are unified in the binding monad as shown
+
+The variable dictionaries and \haskellConstruct{UTerm}ified language expressions are unified in the binding monad as shown
 in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
+
 %
 \begin{code-list}
 \begin{minted}[linenos]{haskell}
@@ -819,7 +815,7 @@ goUnify test = ST.runSTBinding $ do
     (Left _)            -> return []
     (Right (_, dict))   -> f1 dict
 \end{minted}
-  \vspace*{-1.0\baselineskip}
+  %\vspace*{-1.0\baselineskip}
   \caption{Driver code}
   \label{tab:unif-driver}
 \end{code-list}
@@ -844,7 +840,7 @@ The final reconversion to return a list of substitutions,
                 let v = translateFromUTerm dict v2 ]
     return ld4
   \end{minted}
-  \vspace*{-1.0\baselineskip}
+  %\vspace*{-1.0\baselineskip}
   \caption{Variable substitution list extraction}
   \label{tab:vars-extract}
 \end{code-list}
