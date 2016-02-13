@@ -91,6 +91,13 @@ Listing~\ref{tab:stackengineminiprlg}
 \end{code-list}
 
 \subsection{Pure engine}
+ Each node in a \haskellConstruct{Prooftree} corresponds to:
+ either: a solution to the current goal, represented by \haskellConstruct{Done s}, where \haskellConstruct{s}
+         is the required substitution
+ or:     a choice between a number of trees \haskellConstruct{ts}, each corresponding to a
+         proof of a goal of the current goal, represented by \haskellConstruct{Choice ts}.
+         The proof tree corresponding to an unsolvable goal is \haskellConstruct{Choice []} 
+
 Listing~\ref{tab:pureengineminiprlg}
 
 \begin{code-list}[H]
