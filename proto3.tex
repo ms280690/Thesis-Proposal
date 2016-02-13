@@ -10,6 +10,41 @@
 This chapter discusses the procedure to infuse multiple search strategies into a \progLang{Prolog} query resolver with monadic unification. 
 The base implementation for this prototype is \codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98}.
 
+
+\section{\codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98} architecture}
+The \codeLibrary{Mini \progLang{Prolog}} is based on an older specification of \progLang{Haskell} called \codeLibrary{Hugs 98}. The architecture of
+the library is described in the Figure~\ref{fig:miniprlgarchitecture}. The main components are as follows:
+
+\begin{enumerate}
+\item the language itself,
+
+\item multiple search strategies used by the query resolver,
+
+\item a parser,
+
+\item a unification mechanism,
+
+\item an interpreter,
+
+\item a knowledge base, and
+
+\item a REPL.  
+\end{enumerate}
+
+The main highlight of this implementation is the fact that the query resolver can work with multiple search strategies decided at runtime. A query request 
+will consist of the query itself i.e. the terms to be unified, a knowledge base storing the clauses, the unification procedure and finally a user provided 
+search strategy. 
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{miniprologhugs_architecture.png}
+%\vspace*{1cm}
+  \caption{Mini \progLang{Prolog} architecture}
+  \label{fig:miniprlgarchitecture}
+\end{figure}
+
+
 \section{Prototype architecture}
 The architecture for this prototype is beautifully illustrated by Figure~\ref{fig:architecture-proto-3}. 
 
@@ -20,16 +55,6 @@ The architecture for this prototype is beautifully illustrated by Figure~\ref{fi
   \label{fig:architecture-proto-3}
 \end{figure}
 
-
-\section{\codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98} architecture}
-
-\begin{figure}[H]
-	\centering
-  \includegraphics[width=0.7\textwidth]{miniprologhugs_architecture.png}
-%\vspace*{1cm}
-  \caption{Mini \progLang{Prolog} architecture}
-  \label{fig:miniprlgarchitecture}
-\end{figure}
 
 \section{Search strategies}
 The base implementation used for this prototype is \cite{website:mini-prolog-hugs98} and below are the search
