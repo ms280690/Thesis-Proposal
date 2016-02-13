@@ -395,8 +395,14 @@ Pedro Pinto, \emph{Dot-scheme: A plt scheme ffi for the .net framework},
 Quintus Prolog, \emph{Embeddability}, December 2003,
   \url{http://quintus.sics.se/isl/quintuswww/site/embed.html}.
 
+\bibitem{website:assertzswiprolog}
+SWI Prolog, \emph{assertz in swi prolog}.
+
+\bibitem{website:swiprologdbops}
+\bysame, \emph{Database operations in swi prolog}.
+
 \bibitem{website:swiprologsyntaxandsemantics}
-SWI Prolog, \emph{swi prolog syntax and semantics}.
+\bysame, \emph{swi prolog syntax and semantics}.
 
 \bibitem{yieldprolog}
 Yield Prolog, \emph{Yield prolog}, October 2011,
