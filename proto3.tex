@@ -66,14 +66,25 @@ discussed in the sections to come.
 
 
 \section{Search strategies}
-The base implementation used for this prototype is \cite{website:mini-prolog-hugs98} and below are the search
-strategies
+The base implementation used for this prototype is \cite{website:mini-prolog-hugs98} and the sections below describe the search
+strategies.
+
 \subsection{Stack engine}
+The stack based engine maintains a stack of triples \haskellConstruct{(s,goal,alts)}
+corresponding to backtrack points, where \haskellConstruct{s} is the substitution at that
+point, goal is the outstanding goal and \haskellConstruct{alts} is a list of possible ways
+of extending the current proof to find a solution.  Each member of alts
+is a pair \haskellConstruct{(tp,u)} where \haskellConstruct{tp} is a new goal that must be proved and \haskellConstruct{u} is
+a unifying substitution that must be combined with the substitution \haskellConstruct{s}.
+The list of relevant clauses at each step in the execution is produced
+by attempting to unify the head of the current goal with a suitably
+renamed clause from the database.
+
 Listing~\ref{tab:stackengineminiprlg}
 
 \begin{code-list}[H]
 \begin{singlespace}
-\inputminted[linenos, firstline=29, lastline=62]{haskell}{haskell-proto3-sudsy-woe.hs}
+\inputminted[linenos, firstline=29, lastline=56]{haskell}{haskell-proto3-sudsy-woe.hs}
 \end{singlespace}
 \caption{Stack engine from \cite{website:mini-prolog-hugs98}}
 \label{tab:stackengineminiprlg}

@@ -31,9 +31,6 @@ type Alt   = ([Term], st)
 
 alts       :: Database -> Int -> Term -> [Alt]
 alts db n g = [ (tp,u) | (tm:-tp) <- renClauses db n g, u <- unify g tm ]
-      
--- The use of a stack enables backtracking to be described explicitly,
--- in the following `state-based' definition of prove:
 
 prove      :: Database -> [Term] -> [st]
 prove db gl = solve 1 nullst gl []
@@ -47,13 +44,10 @@ prove db gl = solve 1 nullst gl []
    choose :: Int -> st -> [Term] -> [Alt] -> Stack -> [st]
    choose n s gs []          ow = backtrack n ow
    choose n s gs ((tp,u):rs) ow = solve (n+1) (u@@s) (tp++gs) ((s,gs,rs):ow)
-
+   
    backtrack                   :: Int -> Stack -> [st]
    backtrack n []               = []
    backtrack n ((s,gs,rs):ow)   = choose (n-1) s gs rs ow
-
-
---- Special definitions for the cut predicate:
 
 theCut    :: Term
 theCut     = Struct "!" []
