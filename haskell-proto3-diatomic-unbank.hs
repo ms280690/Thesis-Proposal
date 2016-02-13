@@ -37,27 +37,16 @@ concat [slv (n+1) (u@@s) (map (app u) (tp++gs)) | (u,tp) <- gres]
 
 resolve_selecting_each_goal::
 [Term] -> Database -> Int -> [([Term],[(st,[Term])])]
---  For each pair in the list that we return, the first element of the
---  pair is the list of unresolved goals; the second element is the list
---  of resolvents of the selected goal, where a resolvent is a pair
---  consisting of a stitution and a list of new goals.
 resolve_selecting_each_goal goals db n = [(gs, gResolvents) |
   (g,gs) <- delete goals, let gResolvents = resolve db g n]
 
--- The unselected goals from above are not passed in.
 resolve :: Database -> Term -> Int -> [(st,[Term])]
 resolve db g n = [(u,tp) | (tm:-tp)<-renClauses db n g, u<-unify g tm]
--- u is not yet applied to tp, since it is possible that g won't be selected.
--- Note that unify could be nondeterministic.
 
 findMostDeterministic:: [([Term],[(st,[Term])])] -> ([Term],[(st,[Term])])
 findMostDeterministic  allResolvents = minF comp allResolvents where
 comp:: (a,[b]) -> (a,[b]) -> Bool
 comp (_,gs1) (_,gs2) = (length gs1) < (length gs2)
--- It seems to me that there is an opportunity for a clever compiler to
--- optimize this code a lot. In particular, there should be no need to
--- determine the total length of a goal list if it is known that
--- there is a shorter goal list in allResolvents ... ?
 
 delete ::  [a] -> [(a,[a])]
 delete l = d l [] where
@@ -98,3 +87,21 @@ prove db  = solve db 1 nullst
   Torkel Franzen, Seif Haridi, and Sverker Janson, "An Overview of the
   Andorra Kernel Language", In LNAI (LNCS) 596, Springer-Verlag, 1992.
   -}
+
+-- resolve_selecting_each_goal
+--  For each pair in the list that we return, the first element of the
+--  pair is the list of unresolved goals; the second element is the list
+--  of resolvents of the selected goal, where a resolvent is a pair
+--  consisting of a stitution and a list of new goals.
+
+-- The unselected goals from above are not passed in.
+-- resolve
+-- u is not yet applied to tp, since it is possible that g won't be selected.
+-- Note that unify could be nondeterministic.
+
+
+-- findMostDeterministic
+-- It seems to me that there is an opportunity for a clever compiler to
+-- optimize this code a lot. In particular, there should be no need to
+-- determine the total length of a goal list if it is known that
+-- there is a shorter goal list in allResolvents ... ?

@@ -1,6 +1,7 @@
-monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s)) => (forall s. (Term -> Term -> ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
-           (ST.STBinding s) (UT.UTerm (FTS) (ST.STVar s (FTS)),
-            Map Id (ST.STVar s (FTS)))))
+monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s)) => 
+  (forall s. (Term -> Term -> ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
+      (ST.STBinding s) (UT.UTerm (FTS) (ST.STVar s (FTS)),
+          Map Id (ST.STVar s (FTS)))))
 monadicUnification t1 t2 = do
   let
     t1f = termFlattener t1
@@ -8,19 +9,15 @@ monadicUnification t1 t2 = do
   (x1,d1) <- lift . translateToUTerm $ t1f
   (x2,d2) <- lift . translateToUTerm $ t2f
   x3 <- U.unify x1 x2
-  --get state from somehwere, state -> dict
   return $! (x3, d1 `Map.union` d2)
-
 
 goUnify ::
   (forall s. (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
-  =>
-      (ErrorT
-          (UT.UFailure FTS (ST.STVar s FTS))
-          (ST.STBinding s)
-          (UT.UTerm FTS (ST.STVar s FTS),
-             Map Id (ST.STVar s FTS)))
-     )
+  => (ErrorT
+        (UT.UFailure FTS (ST.STVar s FTS))
+        (ST.STBinding s)
+        (UT.UTerm FTS (ST.STVar s FTS),
+            Map Id (ST.STVar s FTS))))
   -> [(Id, Prolog)]
 goUnify test = ST.runSTBinding $ do
   answer <- runErrorT $ test --ERROR
@@ -28,12 +25,9 @@ goUnify test = ST.runSTBinding $ do
     (Left _)            -> return []
     (Right (_, dict))   -> f1 dict
 
-
-f1 ::
-  (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
+f1 :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
   => (forall s. Map Id (STVar s FTS)
-      -> (ST.STBinding s [(Id, Prolog)])
-     )
+      -> (ST.STBinding s [(Id, Prolog)]))
 f1 dict = do
   let ld1 = Map.toList dict
   ld2 <- sequence [ v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
@@ -41,10 +35,11 @@ f1 dict = do
       ld4 = [ (k,v) | (k,v2) <- ld3, let v = translateFromUTerm dict v2 ]
   return ld4
 
+stConvertor :: [(Id, Prolog)] -> [st]
+stConvertor xs = Prelude.map (\(varId, p) -> (->-) varId 
+                              (unFlatten $ unP $ p)) xs 
 
---unify :: Term -> Term -> [st]
 unify t1 t2 = stConvertor (goUnify (monadicUnification t1 t2))
-
 
 varX :: Term
 varX = Var (0,"x")
@@ -53,5 +48,3 @@ varY :: Term
 varY = Var (1,"y")
 
 
-stConvertor :: [(Id, Prolog)] -> [st]
-stConvertor xs = Prelude.map (\(varId, p) -> (->-) varId (unFlatten $ unP $ p)) xs 

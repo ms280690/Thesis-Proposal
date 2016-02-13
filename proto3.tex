@@ -32,42 +32,86 @@ The architecture for this prototype is beautifully illustrated by Figure~\ref{fi
 \end{figure}
 
 \section{Search strategies}
-The base implementation used for this prototype  is \cite{website:mini-prolog-hugs98} and below are the search
+The base implementation used for this prototype is \cite{website:mini-prolog-hugs98} and below are the search
 strategies
 \subsection{Stack engine}
+Listing~\ref{tab:stackengineminiprlg}
+
+\begin{code-list}[H]
 \begin{singlespace}
 \inputminted[linenos, firstline=29, lastline=62]{haskell}{haskell-proto3-sudsy-woe.hs}
 \end{singlespace}
+\caption{Stack engine from \cite{website:mini-prolog-hugs98}}
+\label{tab:stackengineminiprlg}
+\end{code-list}
 
 \subsection{Pure engine}
+Listing~\ref{tab:pureengineminiprlg}
+
+\begin{code-list}[H]
 \begin{singlespace}
 \inputminted[linenos, firstline=26, lastline=46]{haskell}{haskell-proto3-absurd-silicon.hs}
 \end{singlespace}
+\caption{Pure engine from \cite{website:mini-prolog-hugs98}}
+\label{tab:pureengineminiprlg}
+\end{code-list}
 
 \subsection{Andorra engine}
+Listing~\ref{tab:andorraengineminiprlg}
+
+\begin{code-list}[H]
 \begin{singlespace}
-\inputminted[linenos, firstline=29, lastline=75]{haskell}{haskell-proto3-diatomic-unbank.hs}
+\inputminted[linenos, firstline=29, lastline=64]{haskell}{haskell-proto3-diatomic-unbank.hs}
 \end{singlespace}
+\caption{Andorra engine from \cite{website:mini-prolog-hugs98}}
+\label{tab:andorraengineminiprlg}
+\end{code-list}
+
 
 \section{Language}
 \subsection{Current language}
+Listing~\ref{tab:miniprlglang}
+\begin{code-list}[H]
+\begin{singlespace}
+  \inputminted[linenos, firstline=24, lastline=37]{haskell}{haskell-proto3-butter-chicken.hs}
+\end{singlespace}
+\caption{Current abstract syntax grammar in \cite{website:mini-prolog-hugs98}}
+\label{tab:miniprlglang}
+\end{code-list}
 
 \subsection{Language modification}
+Listing~\ref{tab:miniprlglangmod}
+
+\begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos, lastline=352]{haskell}{haskell-proto3-uplift-apart.hs}
+  \inputminted[linenos, firstline=64, lastline=87]{haskell}{haskell-proto3-uplift-apart.hs}
 \end{singlespace}
+\caption{Language modification}
+\label{tab:miniprlglangmod}
+\end{code-list}
 
 \section{Unification}
+
 \subsection{Current unification}
+Listing~\ref{tab:miniprlgunif}
+\begin{code-list}[H]
 \begin{singlespace}
   \inputminted[linenos, firstline=65, lastline=82]{haskell}{haskell-proto3-pentyl-skater.hs}
 \end{singlespace}
-
+\caption{Current unification procedure in \cite{website:mini-prolog-hugs98}}
+\label{tab:miniprlgunif}
+\end{code-list}
 
 \subsection{Monadic unification}
+Listing~\ref{tab:miniprlgmonadicunif}
+\begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto3-bevy-icebox.hs}
+  \inputminted[linenos, firstline=1, lastline=41]{haskell}{haskell-proto3-bevy-icebox.hs}
 \end{singlespace}
+\caption{Monadic unification}
+\label{tab:miniprlgmonadicunif}
+\end{code-list}
+
 
 
 \section{Chapter recapitulation}
