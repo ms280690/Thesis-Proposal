@@ -46,6 +46,9 @@ search strategy.
 
 
 \section{Prototype architecture}
+
+The focus of this prototype is to embed the language modification procedure and monadic unification into \cite{website:mini-prolog-hugs98} so to further 
+prove the generality and modularity of the approach from the previous prototypes. 
 The architecture for this prototype is beautifully illustrated by Figure~\ref{fig:architecture-proto-3}. 
 
 \begin{figure}[H]
@@ -54,6 +57,12 @@ The architecture for this prototype is beautifully illustrated by Figure~\ref{fi
   \caption{Architecture of Prototype 3}
   \label{fig:architecture-proto-3}
 \end{figure}
+
+Since we are aiming for modularity most components in the figure above are untouched. The abstract syntax grammar is modified for the benefits and for it
+to conform to the \codeLibrary{unification-fd} \cite{unification-fd-lib}.
+Looking at the center of the figure you will find \textit{query}. This component takes as input the terms to be unified in modified language form, a 
+search strategy, the knowledge base and the monadic unifier to return a list of substitutions are required by the library. Each of these components will be
+discussed in the sections to come.   
 
 
 \section{Search strategies}
