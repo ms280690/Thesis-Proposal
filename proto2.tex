@@ -242,7 +242,7 @@ Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3f1}.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,lastline=30]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+    \inputminted[linenos,lastline=43]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
 \caption{prolog-0.2.0.1 Monadic Unification Tests and Extraction 1}
 \label{tab:prlg0201monadicunificationtestsandextraction1}
@@ -250,7 +250,7 @@ Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3f1}.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,firstline=32]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+    \inputminted[linenos,firstline=45, lastline=71]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
 \caption{prolog-0.2.0.1 Monadic Unification Tests and Extraction 2}
 \label{tab:prlg0201monadicunificationtestsandextraction2}
@@ -276,7 +276,7 @@ unify ::
 -> em m (UTerm t v)|
 		\end{minted}
 	\end{singlespace}
-\caption{\haskellConstruct{unify} type signature}
+\caption{\codeLibrary{unification-fd} \haskellConstruct{unify} type signature}
 \label{tab:unifytypesignature}
 \end{code-list}
 
@@ -285,7 +285,7 @@ Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3monadicUnification
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,firstline=96, lastline=105]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+    \inputminted[linenos,firstline=84, lastline=93]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
 \caption{monadicUnification function}
 \label{tab:prlg0201monadicunificationtestsandextraction3monadicUnification}
@@ -298,7 +298,7 @@ returns list of \haskellConstruct{VariableName}, \haskellConstruct{Prolog} pairs
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,firstline=123, lastline=132]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+    \inputminted[linenos,firstline=109, lastline=119]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
 \caption{f1 function}
 \label{tab:prlg0201monadicunificationtestsandextraction3f1}
@@ -312,10 +312,22 @@ Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3goUnify} shows the
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,firstline=108, lastline=120]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+    \inputminted[linenos,firstline=95, lastline=107]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
 \caption{goUnify function}
 \label{tab:prlg0201monadicunificationtestsandextraction3goUnify}
+\end{code-list}
+
+\item{unify}
+Putting it all together we perform the unification on the two terms and return the \haskellConstruct{Unifier} as originally intended. 
+Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3unify}
+
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos,firstline=121, lastline=130]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
+  \end{singlespace}
+\caption{unify}
+\label{tab:prlg0201monadicunificationtestsandextraction3unify}
 \end{code-list}
 
 
