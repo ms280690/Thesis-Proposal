@@ -333,10 +333,15 @@ type at all.\endnote{%
 A more accurate way of saying it would be that \yyy{\textit{a}}{\haskellVar{a}} can be any \textit{kind} in
 \progLang{Haskell}.
 
-In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is
-essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of
-any (monomorphic) data type for example \cite{website:kindhaskellwiki}. Listing~\ref{tab:kindsinhaskell} describes kinds in 
-\progLang{Haskell}.
+In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type
+operator.
+A kind system is essentially a simply-typed \(\lambda\)-calculus `one level up', endowed with a primitive type,
+denoted \Verb!*!
+and called `type', which is the kind of any (monomorphic) data type
+\yyy{for example \cite{website:kindhaskellwiki}}{(see \cite{website:kindhaskellwiki})}.\endnote{%
+    I did not understand the ``\textit{for example\dots}''; is this right?
+}
+Listing~\ref{tab:kindsinhaskell} describes kinds in \progLang{Haskell}.
 
 \begin{code-list}[H]
 \begin{minted}[linenos]{haskell}
