@@ -406,8 +406,9 @@ A sample function working with such expressions would be of the form,
 \mint{haskell}|func :: Fix FlatTerm -> Fix FlatTerm|
 
 
-Generically speaking, the language can be expanded for additional functionality without changing or modifying the base structure. Consider
-the scenario where the language needs to accommodate additional type of terms,
+Generically speaking, the language can be expanded for additional functionality without changing or modifying the
+base structure.
+Consider the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
 \item Manually modifying the structure of the language, as shown in Listing~\ref{tab:man-enhan-gram}
@@ -430,10 +431,14 @@ the scenario where the language needs to accommodate additional type of terms,
     \label{tab:man-enhan-gram}
   \end{code-list}
 
-This would then trigger a ripple effect throughout the architecture because accommodations need to be made for the new functionality.
+  This would then trigger a ripple effect throughout the architecture because accommodations need to be made for
+  the new functionality.
 
-\item The other option would be to \textit{functorize} language like we did by adding a type variable which can be used to plug something that provides the functionality into the language.
-Consider the following example,
+\item
+  The other option would be to \textit{functorize} language like we did by adding a type variable which can be used
+  to plug something that provides the functionality into the language.
+\begin{comment}  
+  Consider the following example,
 
 \begin{minted}[linenos]{haskell}
 data Box f = Abox | T f (Box f) deriving (.........)
@@ -443,17 +448,16 @@ then something like,
 \begin{minted}[linenos]{haskell}
 T (Struct 'atom' [Abox, T (Cut 0)])
 \end{minted}
+\end{comment}
 \end{enumerate}
-is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom
-functionality.
-\endnote{
-\david{begin code inserted by David}
-\david{
-Why not continue the example that you started in Figure~\ref{tab:man-enhan-gram}?
-That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
-\Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
+Since we needed the fixed point of the language we used \haskellConstruct{Fix} but generically one could add
+\xxx{multiple} custom functionality.
+\yyy{}{For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have that
+  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in Listing~\ref{tab:man-enhan-gram}.}\endnote{%
+  I've tried to guess your sense here.
+  Something is mangled in the following \P{}, so i've coloured it for now..
 }
-}
+
 
 \begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
@@ -464,23 +468,15 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
   \caption{garfunkle}
   \label{tab:garfunkle}
 \end{code-list}
-\vspace*{-1.5\baselineskip}
-\begin{center}
-  end text from David\\[-3ex]
-  \textcolor{blue}{\rule{0.95\textwidth}{1pt}}
-\end{center}
-\endnote{
-\david{end code inserted by David}
-}
 
-Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.\endnote{%
-  Something is mangled here.
-}
+
+\begin{scope}\color[rgb]{0.5,0.8,0.8}
+Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.
 Rather than modifying the the base language and the operation defined for it, we extend the language as shown in 
 Figure~\ref{fig:automatic-extension}. 
 
 \mint{haskell}|Extended FlatTerm| is isomorphically equivalent to the abstract grammar in Figure~\ref{fig:manual-extension}.
-
+\end{scope}
 
 \begin{figure}[H]
   \centering
