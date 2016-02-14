@@ -312,21 +312,24 @@ Consider the code in Listing~\ref{tab:non-recurse}.
   \label{tab:non-recurse}
 \end{code-list}
 
-One result of coding as in Listing~\ref{tab:non-recurse} rather than as in
-  Listing~\ref{tab:closed-terms} (lines 6--9)
-  is that the non-recursive type
-\texttt{FlatTerm} is modular and generic as the structure
-\haskellConstruct{FlatTerm}
-is separate
-from its
-type which is \haskellConstruct{a} \eref{text-kind} \mehul{changed}.
-The above language can be of any type \textit{a}.
-A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
-\progLang{Haskell}.\endnote{%
-  Why do we explain \textit{kinds}?
-  Is this in preparation for \texttt{\bfseries Functor}?
-  \mehul{Well Int, String etc etc are kinds in haskell so a FlatTerm int where int is *}
+One result of coding as in Listing~\ref{tab:non-recurse} rather than as in Listing~\ref{tab:closed-terms} (lines
+6--9) is that the non-recursive type \texttt{FlatTerm} is modular and generic as the structure
+\haskellConstruct{FlatTerm} is separate from \yyy{its type}{the type of its subterms}\endnote{%
+  ``\textit{its type is \haskellConstruct{a}}'' seems wrong.
+  The type \haskellConstruct{a} seems associated with terms.
+  The type \haskellConstruct{FlatTerm} has kind \Verb!* -> *!\,.
+  \par
+  Is my correction ok?
 }
+which is \haskellVar{a}.
+The above language can be of any type \haskellConstruct{FlatTerm} \haskellVar{a} where \haskellVar{a} can be of any
+type at all.\endnote{%
+  Was
+  ``which is \macroName{haskellConstruct}{a}.
+  The above language can be of any type \macroName{textit}{a}''
+}
+A more accurate way of saying it would be that \yyy{\textit{a}}{\haskellVar{a}} can be any \textit{kind} in
+\progLang{Haskell}.
 
 In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is
 essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of
