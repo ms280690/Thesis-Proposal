@@ -557,7 +557,7 @@ We create the necessary instances\endnote{%
 as shown in Listing~\ref{tab:flat-term-class-inst}.
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,gobble=4,lastline=12]{haskell}{haskell-proto1-class-flat.hs}
+    \inputminted[linenos,lastline=12]{haskell}{haskell-proto1-class-flat.hs}
   \end{singlespace}
   \caption{\protect\haskellConstruct{FlatTerm} class instances}
   \label{tab:flat-term-class-inst}
@@ -651,32 +651,9 @@ For that we extract the variables and then convert them into a dictionary consis
 language variable as shown in Figure~\ref{tab:varsToDictM}.
 
 \begin{code-list}[H]
-  \begin{minted}[linenos,gobble=2]{haskell}
-  variableExtractor :: Fix FlatTerm -> [Fix FlatTerm]
-  variableExtractor (Fix x) = case x of
-     (Struct _ xs) ->   Prelude.concat $ Prelude.map variableExtractor xs
-     (Var v)      ->   [Fix $ Var v]
-     _         ->   []
-
-  variableNameExtractor :: Fix FlatTerm -> [VariableName]
-  variableNameExtractor (Fix x) = case x of
-     (Struct _ xs)   -> Prelude.concat $ Prelude.map variableNameExtractor xs
-     (Var v)         -> [v]
-     _               -> []
-
-  variableSet :: [Fix FlatTerm] -> S.Set (Fix FlatTerm)
-  variableSet a = S.fromList a
-
-  variableNameSet :: [VariableName] -> S.Set (VariableName)
-  variableNameSet a = S.fromList a
-
-  varsToDictM :: (Ord a, Unifiable t) =>
-      S.Set a -> ST.STBinding s (Map a (ST.STVar s t))
-  varsToDictM set = foldrM addElt Map.empty set where
-    addElt sv dict = do
-      iv <- freeVar
-      return $! Map.insert sv iv dict
-  \end{minted}
+  \begin{singlespace}
+  \inputminted[linenos]{haskell}{haskell-proto1-var-extract.hs}
+  \end{singlespace}
   %\vspace*{-1.0\baselineskip}
   \caption{Creating a variable dictionary}
   \label{tab:varsToDictM}
@@ -687,31 +664,9 @@ compatible for the in built unify procedure to perform look ups for the variable
 The dictionary along with the fixed point version flattened of the term, as shown in Figure~\ref{tab:to-UTerm}.
 %
 \begin{code-list}[H]
-  \begin{minted}[linenos,gobble=2]{haskell}
-  uTermify
-    :: Map VariableName (ST.STVar s (FlatTerm))
-    -> UTerm FlatTerm (ST.STVar s (FlatTerm))
-    -> UTerm FlatTerm (ST.STVar s (FlatTerm))
-  uTermify varMap ux = case ux of
-    UT.UVar _                -> ux
-    UT.UTerm (Var v)        -> maybe (error "bad map") UT.UVar $
-                                 Map.lookup v varMap
-    -- UT.UTerm t            -> UT.UTerm $! fmap (uTermify varMap)
-    UT.UTerm (Struct a xs)   -> UT.UTerm $ Struct a $!
-                                         fmap (uTermify varMap) xs
-    UT.UTerm (Wildcard)      -> UT.UTerm Wildcard
-    UT.UTerm (Cut i)         -> UT.UTerm (Cut i)
-
-  translateToUTerm ::
-      Fix FlatTerm -> ST.STBinding s
-              (UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)),
-               Map VariableName (ST.STVar s (FlatTerm)))
-  translateToUTerm e1Term = do
-    let vs = variableNameSet $ variableNameExtractor e1Term
-    varMap <- varsToDictM vs
-    let t2 = uTermify varMap . unfreeze $ e1Term
-    return (t2,varMap)
-  \end{minted}
+  \begin{singlespace}
+  \inputminted[linenos]{haskell}{haskell-proto1-utermify-frog.hs}
+  \end{singlespace}
   \caption{Conversion to UTerm}
   \label{tab:to-UTerm}
 \end{code-list}
@@ -719,28 +674,9 @@ The dictionary along with the fixed point version flattened of the term, as show
 and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 %
 \begin{code-list}[H]
-  \begin{minted}[linenos,gobble=2]{haskell}
-  vTermify :: Map Int VariableName ->
-              UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) ->
-              UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm))
-  vTermify dict t1 = case t1 of
-    UT.UVar x  -> maybe (error "logic") (UT.UTerm . Var) $
-                           Map.lookup (UT.getVarID x) dict
-    UT.UTerm r ->
-      case r of
-        Var iv   -> t1
-        _         -> UT.UTerm . fmap (vTermify dict) $ r
-
-  translateFromUTerm ::
-      Map VariableName (ST.STVar s (FlatTerm)) ->
-      UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) -> Prolog
-  translateFromUTerm dict uTerm =
-    P .  maybe (error "Logic") id . freeze . vTermify varIdDict $ uTerm where
-      rot3 f a k v = f k v a
-      inserter k v = Map.insert (UT.getVarID v) k
-      forKV dict initial fn = Map.foldlWithKey' (rot3 fn) initial dict
-      varIdDict = forKV dict Map.empty inserter
-  \end{minted}
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-vtermify-goat.hs}
+  \end{singlespace}
   \caption{Conversion from UTerm}
   \label{tab:from-UTerm}
 \end{code-list}
@@ -751,46 +687,17 @@ in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
 
 %
 \begin{code-list}
-\begin{minted}[linenos]{haskell}
-  monadicUnification ::
-  (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
-  => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm)
-  ->  ErrorT (UT.UFailure (FlatTerm) (ST.STVar s (FlatTerm)))
-             (ST.STBinding s) (UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)),
-                               Map VariableName (ST.STVar s (FlatTerm)))))
-monadicUnification t1 t2 = do
---  let
---    t1f = termFlattener t1
---    t2f = termFlattener t2
-  (x1,d1) <- lift . translateToUTerm $ t1
-  (x2,d2) <- lift . translateToUTerm $ t2
-  x3 <- U.unify x1 x2
-  --get state from somehwere, state -> dict
-  return $! (x3, d1 `Map.union` d2)
-\end{minted}
-  \vspace*{-1.0\baselineskip}
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-unify-monad.hs}
+  \end{singlespace}
   \caption{Unification code}
   \label{tab:unification}
 \end{code-list}
 
 \begin{code-list}[H]
-\begin{minted}[linenos]{haskell}
-goUnify ::
-  (forall s. (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
-  =>
-      (ErrorT
-          (UT.UFailure FlatTerm (ST.STVar s FlatTerm))
-          (ST.STBinding s)
-          (UT.UTerm FlatTerm (ST.STVar s FlatTerm),
-             Map VariableName (ST.STVar s FlatTerm)))
-     )
-  -> [(VariableName, Prolog)]
-goUnify test = ST.runSTBinding $ do
-  answer <- runErrorT $ test --ERROR
-  case answer of
-    (Left _)            -> return []
-    (Right (_, dict))   -> f1 dict
-\end{minted}
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-unify-driver.hs}
+  \end{singlespace}
   \caption{Driver code}
   \label{tab:unif-driver}
 \end{code-list}
@@ -800,21 +707,9 @@ The final reconversion to return a list of substitutions,
   called \haskellConstruct{f1} in Figure~\ref{tab:unif-driver}, is shown in
   Figure~\ref{tab:vars-extract}.
 \begin{code-list}[H]
-  \begin{minted}[linenos,gobble=2]{haskell}
-  f1 ::
-    (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
-    => (forall s. Map VariableName (STVar s FlatTerm)
-        -> (ST.STBinding s [(VariableName, Prolog)])
-       )
-  f1 dict = do
-    let ld1 = Map.toList dict
-    ld2 <- Control.Monad.Error.sequence
-           [ v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
-    let ld3 = [ (k,v) | ((k,_),Just v) <- ld1 `zip` ld2]
-        ld4 = [ (k,v) | (k,v2) <- ld3,
-                let v = translateFromUTerm dict v2 ]
-    return ld4
-  \end{minted}
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-unify-out.hs}
+  \end{singlespace}
   \caption{Variable substitution list extraction}
   \label{tab:vars-extract}
 \end{code-list}
