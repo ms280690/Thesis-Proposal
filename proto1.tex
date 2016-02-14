@@ -73,16 +73,16 @@ generic unification algorithm implementation.
 
 The relevant components are:
 \begin{enumerate}
-\item the \Verb!Unifiable! class;
+\item the \haskellClass{Unifiable} class;
 
-\item the \Verb!UTerm! data type;
+\item the \haskellConstruct{UTerm} data type;
 
 \item variable implementations:
-  \Verb!STVar! and \Verb!IntVar!;
+  \haskellConstruct{STVar} and \haskellConstruct{IntVar};
 
-\item the \Verb!Binding! monad; and 
+\item the \haskellClass{Binding} monad; and 
 
-\item Unification (\Verb!unify! and \Verb!unifyOccurs!).
+\item Unification (\haskellConstruct{unify} and \haskellConstruct{unifyOccurs}).
 \end{enumerate}
 
 \item Prototype 1
@@ -521,9 +521,9 @@ instance of a class the function(s) can be applied to each element / primitive i
 
 
 The data here is the \progLang{Prolog} abstract syntax and the containers are
-\Verb!Functor!, \Verb!Foldable!, \Verb!Traversable!, \Verb!Applicative!
-  and
-\Verb!Monad!.
+\haskellClass{Functor}, \haskellClass{Foldable}, \yyy{}{and} \haskellClass{Traversable}\xxx{, \haskellClass{Applicative}}
+\xxx{  and
+\haskellClass{Monad}}.
 Figure~\ref{fig:Functor Hierarchy} shows the relation between the different classes.
 
 \begin{figure}[th]
@@ -533,7 +533,7 @@ Figure~\ref{fig:Functor Hierarchy} shows the relation between the different clas
 \label{fig:Functor Hierarchy}
 \end{figure}
 
-The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce as described in Chapter~\ref{chap:relatedWork}.\endnote{%
+The \haskellClass{Functor} and \haskellClass{Foldable} instances providing functions for applying map-reduce as described in Chapter~\ref{chap:relatedWork}.\endnote{%
   ``\textit{The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce as
     described in Chapter~\ref{chap:relatedWork}.}'' is not a sentence.
 
@@ -545,10 +545,9 @@ The primary issue is that at the end of the operation the structure if the data 
 our cause since the result of a query must be a list of substitutions which are essential pairs of language
 variable with language values (language constructs).
 
-Enter \Verb[formatcom=\bf]!Traversable!\,.%}{
+Enter \haskellConstruct{Traversable}.
 It allows reduce whilst preserving the shape of the structure.
-Lastly, the \haskellConstruct{Applicative} instance is an intermediate between a functor and a monad.
-
+\xxx{Lastly, the \haskellConstruct{Applicative} instance is an intermediate between a functor and a monad.}
 We create the necessary instances\endnote{%
   I am deeply suspicious of the instance for \texttt{Applicative} given.
 
@@ -565,16 +564,16 @@ as shown in Listing~\ref{tab:flat-term-class-inst}.
 \end{code-list}
 
 The above lay the foundation to work with the library.
-Coming back to the library, the language must have the \Verb!Unifiable! instance.
-This works in tandem with the \Verb!UTerm! data type.
-The \Verb!UTerm! data type captures the recursive structure of logic terms, i.e., given
+Coming back to the library, the language must have the \haskellClass{Unifiable} instance.
+This works in tandem with the \haskellConstruct{UTerm} data type.
+The \haskellConstruct{UTerm} data type captures the recursive structure of logic terms, i.e., given
 some functor \(t\) which describes the 
 constructors of our logic terms, and some type \(v\) which describes our logic variables, the type
-\Verb!UTerm! \(t\) \(v\) is the
+\haskellConstruct{UTerm} \(t\) \(v\) is the
 type of logic terms: trees with multiple layers of \(t\) structure and leaves of type \(v\).
-The \Verb!Unifiable! class gives one step of the unification process.
-Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \Verb!UTerm! to generate
-the recursive ADT, so too we only need to specify one level of the unification (i.e., \Verb!zipMatch!) and then we can use
+The \haskellClass{Unifiable} class gives one step of the unification process.
+Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \haskellConstruct{UTerm} to generate
+the recursive ADT, so too we only need to specify one level of the unification (i.e., \haskellConstruct{zipMatch}) and then we can use
 the library's operators to perform the recursive unification.
 This is shown in Figure~\ref{tab:zipMatch}.
 \begin{code-list}[H]
@@ -582,7 +581,7 @@ This is shown in Figure~\ref{tab:zipMatch}.
     \inputminted[linenos]{haskell}{haskell-proto1-zip-flat.hs}
   \end{singlespace}
   \vspace*{-0.5\baselineskip}
-  \caption{\protect\markWord{FlatTerm} instance of \protect\markWord{zipMatch}}
+  \caption{\protect\haskellConstruct{FlatTerm} instance of \protect\haskellConstruct{zipMatch}}
   \label{tab:zipMatch}
 \end{code-list}
 
@@ -636,13 +635,13 @@ form:
 
 \mint{haskell}|ST s a|
 
-\textit{a} is the return type of the result of the computation in thread \textit{s}. The s keeps references to objects inside the 
+\haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}. The s keeps references to objects inside the 
 \haskellConstruct{ST monad} from leaking to the outside of the \haskellConstruct{ST monad} meaning the actions can only affect their own 
 thread. To escape we require:
 \mint{haskell}|runST :: forall a. (forall s. ST s a) -> a|
 
-The action \textit{a} must be universal in \textit{s}, meaning the threading association is not known prohibiting to other threads and thus 
-runST is pure \cite{website:stmonadwiki, website:stmonadstackoverflow}. This is the idea behind \haskellConstruct{STVars} which are 
+The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known prohibiting to other threads and thus 
+\haskellConstruct{runST} is pure \cite{website:stmonadwiki, website:stmonadstackoverflow}. This is the idea behind \haskellConstruct{STVars} which are 
 implemented using \haskellConstruct{STRefs}. Hence to use "true mutability" we carry out the computation in the \haskellConstruct{ST monad}.
 
 This implementation uses \haskellConstruct{STVars} and \haskellConstruct{STBindings} to implement the \haskellConstruct{BindingMonad}
@@ -798,7 +797,7 @@ goUnify test = ST.runSTBinding $ do
 
 
 The final reconversion to return a list of substitutions,
-  called \texttt{f1} in Figure~\ref{tab:unif-driver}, is shown in
+  called \haskellConstruct{f1} in Figure~\ref{tab:unif-driver}, is shown in
   Figure~\ref{tab:vars-extract}.
 \begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
