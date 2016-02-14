@@ -371,28 +371,31 @@ and how to represent it generically to perform operations on it, since
 \end{minted}
 %
 because with our original grammar all the expression that could be defined would be represented by a single entity
-\haskellConstruct{Term} no matter how infinitely deep they were.
+\haskellConstruct{Term}, no matter how deep they were.
 
-The approach to tackling this problem is to find the ``fixed-point''.
+The approach to tackling this problem is to find the ``fixed-point'' of \haskellConstruct{FlatTerm}.
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
-It means that applying one more \haskellConstruct{FlatTerm} would not change anything --\textsuperscript{,}\endnote{%
-  An en-dash is not appropriate here.
-}
-a \textcolor{red}{fix}\endnote{%
-  Spelling!
-  \mehul{I do not understand}
-}
-point does not move under \haskellConstruct{FlatTerm}.
+It means that applying one more \haskellConstruct{FlatTerm} would not change anything---%
+a\endnote{%
+  Note the correct use of an em-dash.
+} fix{\Large ed} point does not move under \haskellConstruct{FlatTerm}.
 
-\progLang{Haskell} provides it in two forms, as a function and as a constructor.
+\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.\endnote{%
+  Was ``\textit{\progLang{Haskell} provides it in two forms, as a function and as a constructor.}''
+  Is  ``\textsl{\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.}''.
+  Do you agree with the change?
+  If so, remove this footnote.
+}
 
 In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
-\par
 
-The resulting language is of the form,
+
+The resulting language is of the form,\endnote{%
+  There is a weird \TeX{} problem here jamming lines together.
+}
 \begin{minted}[linenos]{haskell}
 data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)
 \end{minted}
