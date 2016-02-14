@@ -55,30 +55,13 @@
   Write ``about this chapter'' and ``recapituation'' sections for all chapters.
 
 \item
-  Replace the \progLang{Haskell} code in Listing~\vref{tab:prlgappndhskl} with non-quasi-quoted \progLang{Haskell}
-  code that produces the equivalent of Listing~\ref{tab:prlgappndhsklqq}.
+  (David: I did this.)
 
-\item
-  Replace the title of Chapter~\vref{chap:proposedWork}.
-  
 \item
     Move material from \S~\ref{sec:existing-work-by-others} to \S~\ref{sec:things-fixed}. 
 
-  \item
-
-Move material from Chapters \ref{chap:quasiquotation} and~\ref{chap:metasyntacticvariables} to ``Related Concepts''.    
-    
-
 \item
   Watch out for sentences that begin with ``But''.
-
-\item
-  There are (as of 2016-02-01 07:45:33) around 30 \macroName{xxx} and \macroName{yyy} corrections.  Fix these, and
-  for each one see if there are other changes in the same pattern that I haven't caught.
-
-\item
-  Replace \S\S~\ref{sec:thes-impr-contr}--\ref{sec:work-in-points} with
-  paragraphs.  Call the result ``\textsl{Thesis Contributions}''.
 
 \item
   Write enough of Chapters \ref{proto1}--\ref{proto4} that we can decide
@@ -110,66 +93,14 @@ Move material from Chapters \ref{chap:quasiquotation} and~\ref{chap:metasyntacti
 \item Check for ``add on'' versus ``add-on'' and decide which is correct.
 \end{enumerate}
 
-\section{Editing suggestions from David}\label{sec:edit-sugg-david}
+\section{Thoughts on Chapter~\ref{proto1}}\label{sec:thoughts-chapt-proto1}
 
-\subsection{Thoughts on Chapter~\ref{proto2}}\label{subsec:thoughts-chapt-proto2}
+\subsection{Thoughts on Chapter~\ref{proto1}
+  code}\label{sec:thoughts-chapt-proto1-code}
 
-\begin{itemize}
-\item
-  You should say more about \cite{prolog-lib}, either here or in an
-  earlier section and reference that discussion here.  For instance, it
-  isn't clear that \Verb!prolog-0.2.0.1! comes from~ \cite{prolog-lib}.
-\item
-  I suspect that \S~\ref{proto2}.2 should start with a sentence like 
-  \begin{quote}\color[rgb]{0.3,0,0.6}\small\singlespacing
-    The \Verb!prolog-0.2.0.1! (\cite{prolog-lib}) was written by Indira
-    Ghandi and consists of 718 \progLang{Haskell} files.
-    It implements data base assertions and cuts but lacks any IO
-    facilities\dots
-  \end{quote}
-  and then go on to discuss the syntax.
-\end{itemize}
-
-\subsection{Thoughts on Chapter~\ref{proto1}}\label{subsec:thoughts-chapt-proto1}
-
-I am looking at what are currently lines 145--\textit{on} in
-\Verb!proto1.tex!, and I am not sure whether 
-the text should be loose---as you have it, or floated to a figure.
-
-I am not sure what conventions you are following with respect to code in
-text.
-At some point you have \Verb!FlatTerm! in italics (\'a la
-\textit{FlatTerm}); at other points you have it typeset in straight
-double quotes ("FlatTerm") and I don't know what the different
-typesetting implies.
-
-
-\paragraph{Thoughts on Chapter 2}
-
-Here are some potential keywords from Chapter 2:
-\begin{inparaitem}
-\item Hindley-Milner type systems
-\item Horn clauses
-\item \(\lambda\)-calculi
-\item \textsc{Haskell}
-\item \textsc{Scala}
-\item declarative programming languages
-\item foreign function interfaces
-\item functional programming
-\item implementing Prolog in other languages
-\item language embedding
-\item language families
-\item language paradigms
-\item logic programming
-\item meta-programming
-\item monads
-\item paradigm integration
-\item quasi-quotation
-\item the typed \(\lambda\)-calculus
-\item the untyped \(\lambda\)-calculus
-\end{inparaitem}.
-
-What is the overall message?
+I think that a lot of code cleanup ought to happen.  For instance, in
+Listing~\vref{tab:varsToDictM}, \haskellConstruct{variableExtractor} and
+\haskellConstruct{variableSet} are not used in the subsequent code.
 
 \section{A List of Colloquialisms}\label{sec:list-colloquialisms}
 \begin{enumerate}
