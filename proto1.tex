@@ -316,12 +316,13 @@ Consider the code in Listing~\ref{tab:non-recurse}.
 
 One result of coding as in Listing~\ref{tab:non-recurse} rather than as in Listing~\ref{tab:closed-terms} (lines
 6--9) is that the non-recursive type \texttt{FlatTerm} is modular and generic as the structure
-\haskellConstruct{FlatTerm} is separate from \yyy{its type}{the type of its subterms}\endnote{%
+\haskellConstruct{FlatTerm} is separate from the type of its subterms\endnote{%
   ``\textit{its type is \haskellConstruct{a}}'' seems wrong.
   The type \haskellConstruct{a} seems associated with terms.
   The type \haskellConstruct{FlatTerm} has kind \texttt{* -> *}\,.
   \par
   Is my correction ok?
+  \mehul{yes}
 }
 which is \haskellVar{a}.
 The above language can be of any type \haskellConstruct{FlatTerm} \haskellVar{a} where \haskellVar{a} can be of any
@@ -330,7 +331,7 @@ type at all.\endnote{%
   ``which is \macroName{haskellConstruct}{a}.
   The above language can be of any type \macroName{textit}{a}''
 }
-A more accurate way of saying it would be that \yyy{\textit{a}}{\haskellVar{a}} can be any \textit{kind} in
+A more accurate way of saying it would be that \haskellVar{a} can be any \textit{kind} in
 \progLang{Haskell}.
 
 In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type
@@ -338,7 +339,7 @@ operator.
 A kind system is essentially a simply-typed \(\lambda\)-calculus `one level up', endowed with a primitive type,
 denoted \Verb!*!
 and called `type', which is the kind of any (monomorphic) data type
-\yyy{for example \cite{website:kindhaskellwiki}}{(see \cite{website:kindhaskellwiki})}.\endnote{%
+(see \cite{website:kindhaskellwiki}).\endnote{%
     I did not understand the ``\textit{for example\dots}''; is this right?
 }
 Listing~\ref{tab:kindsinhaskell} describes kinds in \progLang{Haskell}.
@@ -379,14 +380,9 @@ difference.
 It means that applying one more \haskellConstruct{FlatTerm} would not change anything---%
 a\endnote{%
   Note the correct use of an em-dash.
-} fix{\Large ed} point does not move under \haskellConstruct{FlatTerm}.
+} fixed point does not move under \haskellConstruct{FlatTerm}.
 
-\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.\endnote{%
-  Was ``\textit{\progLang{Haskell} provides it in two forms, as a function and as a constructor.}''
-  Is  ``\textsl{\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.}''.
-  Do you agree with the change?
-  If so, remove this footnote.
-}
+\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.
 
 In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
@@ -451,9 +447,9 @@ T (Struct 'atom' [Abox, T (Cut 0)])
 \end{comment}
 \end{enumerate}
 Since we needed the fixed point of the language we used \haskellConstruct{Fix} but generically one could add
-\xxx{multiple} custom functionality.
-\yyy{}{For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have that
-  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in Listing~\ref{tab:man-enhan-gram}.}\endnote{%
+custom functionality.
+For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have that
+  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in Listing~\ref{tab:man-enhan-gram}.\endnote{%
   I've tried to guess your sense here.
   Something is mangled in the following \P{}, so i've coloured it for now..
 }
@@ -521,9 +517,7 @@ instance of a class the function(s) can be applied to each element / primitive i
 
 
 The data here is the \progLang{Prolog} abstract syntax and the containers are
-\haskellClass{Functor}, \haskellClass{Foldable}, \yyy{}{and} \haskellClass{Traversable}\xxx{, \haskellClass{Applicative}}
-\xxx{  and
-\haskellClass{Monad}}.
+\haskellClass{Functor}, \haskellClass{Foldable}, and \haskellClass{Traversable}.
 Figure~\ref{fig:Functor Hierarchy} shows the relation between the different classes.
 
 \begin{figure}[th]
@@ -547,7 +541,6 @@ variable with language values (language constructs).
 
 Enter \haskellConstruct{Traversable}.
 It allows reduce whilst preserving the shape of the structure.
-\xxx{Lastly, the \haskellConstruct{Applicative} instance is an intermediate between a functor and a monad.}
 We create the necessary instances\endnote{%
   I am deeply suspicious of the instance for \texttt{Applicative} given.
 
