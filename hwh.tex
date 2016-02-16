@@ -13,31 +13,9 @@
 \section{About this chapter}
 This chapter discusses \progLang{Haskell} as a functional language and its features which assist in embedding domain specific languages.
 
+\section{Functional languages}
 
-\section{Section title needed}
-
-
-In this chapter we discuss the properties of \progLang{Haskell}.
-
-This chapter discusses the properties of the host language \progLang{Haskell} and mainly the feature set it
-provides for embedded domain specific languages (eDSLs).
-
-\david{%
-  This chapter needs to be rewritten without the list.
-\mehul{changed}
-}
-
-\paragraph{why a functional language?}
-
-\paragraph{why \progLang{Haskell}?}
-\progLang{Haskell} as a functional programming language \progLang{Haskell} is an advanced purely-functional programming
-  language.
-  In particular, it is a polymorphically statically typed, lazy, purely functional language
-  \cite{website:haskellwiki}.
-  It is one of the popular functional programming languages \cite{website:langpop}.
-  \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
-
-\paragraph{eDSL}
+\section{Embedded domain specific languages}
   Shifting a bit to embedded domain specific languages (eDSLs) such as \progLang{Emacs LISP}.
   Opting for embedding provides a ``shortcut'' to create a language which may be designed to provide specific
   functionality.
@@ -53,7 +31,16 @@ provides for embedded domain specific languages (eDSLs).
   might not be exact to specification, all required constructs cannot be implemented due to constraints, programs
   could be difficult to debug since it happens at the host level and so on.
 
-\paragraph{\progLang{Haskell} feature : Monads}
+
+\section{\progLang{Haskell}}
+\progLang{Haskell} as a functional programming language \progLang{Haskell} is an advanced purely-functional programming
+  language.
+  In particular, it is a polymorphically statically typed, lazy, purely functional language
+  \cite{website:haskellwiki}.
+  It is one of the popular functional programming languages \cite{website:langpop}.
+  \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
+
+\subsection{Monads}
 Control flow defines the order/ manner of execution of statements in a pro\-gram \cite{website:controlflowwiki}.
 The specification is set by the programming language.
 Generally, in the case of imperative languages the control flow is sequential while for a functional language is
@@ -88,7 +75,7 @@ computation from step to step or modification to modification.
 \progLang{Haskell} allows creation of custom monads relieving the burden of dealing with a fixed model of the
 host language.
 
-\paragraph{\progLang{Haskell} feature : Lazy evaluation}
+\subsection{Lazy evaluation}
 Another property of \progLang{Haskell} is laziness or lazy evaluation which means that nothing is evaluated until
 it is necessary.
 This results in the ability to define infinite data structures because at execution only a fragment is used
