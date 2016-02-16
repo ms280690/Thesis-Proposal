@@ -539,7 +539,7 @@ William E.~Byrd The Reasoned Schemer' (MIT~Press, 2005) by Daniel P.~Friedman
 
 \bibitem{unification-fd-lib}
 Wren Thornton, \emph{The unification-fd package}, July 2012,
-  \url{http://hackage.haskellhttp://yieldprolog.sourceforge.net/.org/package/unification-fd}.
+  \url{http://hackage.haskell.org/package/unification-fd}.
 
 \bibitem{monadiccp-gecode-lib}
 Jan Tikovsky, \emph{The monadiccp-gecode package}, January 2014,
