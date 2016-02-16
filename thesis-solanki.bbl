@@ -404,9 +404,6 @@ SWI Prolog, \emph{assertz in swi prolog}.
 \bibitem{website:swiprologdbops}
 \bysame, \emph{Database operations in swi prolog}.
 
-\bibitem{website:swiprologsyntaxandsemantics}
-\bysame, \emph{swi prolog syntax and semantics}.
-
 \bibitem{yieldprolog}
 Yield Prolog, \emph{Yield prolog}, October 2011,
   \url{http://yieldprolog.sourceforge.net/}.
