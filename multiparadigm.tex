@@ -14,21 +14,21 @@
 This chapter describes the approach for integrating properties of multiple languages from different programming paradigms, especially, 
 functional logic programming languages.  
 
-\section{Introduction to multi paradigm laguages}
-Over the years another approach has branched off from embedding languages, to merge and/or integrate programming
+\section{Introduction to multi paradigm languages}
+Over the years another approach has branched off from embedding languages, merging and integrate programming
 languages from different paradigms.
-Let us take an example of the \progLang{Scala} programming language \cite{website:scala}, a hybrid
+Let us take the \progLang{Scala} programming language \cite{website:scala} as an exaxmple. It is a hybrid
 object-functional programming language which takes features from each of the two paradigms.
-In this thesis, the languages in question are \progLang{Haskell} and \progLang{Prolog}.
-This section takes a look at the literature on multi paradigm languages, mainly functional logic programming
-languages that combine two of the most widespread declarative programming styles.
+This section looks at the literature on multi paradigm languages, mainly functional logic programming
+languages. This is of interest because in this thesis, the languages in question are \progLang{Haskell} 
+and \progLang{Prolog} which are of functional and logic programming paradigms respectively.
 
 A peak into language classification reveals that it is not always a straight forward task to segregate languages
 according to their features and characteristics.
 It turns out that there are a number of notions which play a role in deciding where the language belongs.
 Often a language ends up being a part of almost all paradigms due to extensive libraries.
 Simply speaking, a multi paradigm programming language is a programming language that supports more than one
-programming paradigm \cite{Krishnamurthi:2008:TPL:1480828.1480846}.Moreover, as Timothy Budd puts it
+programming paradigm \cite{Krishnamurthi:2008:TPL:1480828.1480846}. Moreover, as Timothy Budd puts it
 \cite{website:wikimultiparadigm} ``The idea of a multi paradigm language is to provide a framework in which
 programmers can work in a variety of styles, freely intermixing constructs from different paradigms.''
 
@@ -39,32 +39,22 @@ programmers can work in a variety of styles, freely intermixing constructs from 
 \subsection{Multi paradigm languages}
 
 A lot has been worked upon before coming to clear grounds about the classification of programming languages.
-One approach is to consider that the scope of each language is pretty much infinite as small extension modules that
-replicate different feature sets which are not naturally native to the language itself can be implemented on top of
+One approach is to consider that the scope of each language is pretty much infinite, as small extension modules that
+replicate different feature sets not naturally native to the language itself can be implemented on top of
 the base language.
 The descriptions of multi paradigm languages across the web
 \cite{website:wikimultiparadigm,website:mdn,website:blogc2} converge to roughly of a framework providing tools to work with different 
 styles of programming \cite{website:wikimpllist,website:dmoz}.
-Generally speaking, this
-is not very popular in programming circles; one reason could be that it
-is a very broad topic and specifying details can be helpful.\endnote{%
-  \mehul{changed}.\newline
-  \david{The English now reads well, but I am not certain what you are trying to say.
-  I take ``\textit{Generally speaking, this is not very popular in programming circles;}'' to mean that programmers
-  are not very fond of multi-paradigm languages.  Is that what you meant?
-  Does ``\textit{\dots; one reason could be that it is a very broad topic and specifying details can be helpful.}''
-  mean \textsl{one reason that multi-paradigm languages are not popular with programmers could be that\dots}; no, I
-  do not see how to complete that thought.}
-  \mehul{discussion required}
-}
+Generally speaking, the above approach to language classification
+is not very popular in programming circles; one reason is that this approach fails to identify the essence of a language.
 
 \subsection{Functional logic programming languages}
 
 Continuing from the previous section, we narrow down the scope by considering only multi paradigm declarative
 languages, i.e. functional logical programming languages.
-By doing so a large amount of information pops up, from articles that give brief description and mentions
-\cite{website:wikiflpl, website:wikiflpllist} to the ones that provide implementation techniques
-\cite{website:imlpementingflpl}, which also give an overview of the aim and also the list of publications.
+By doing so a large amount of information pops up, from articles that give brief descriptions
+\cite{website:wikiflpl, website:wikiflpllist} to articles that provide implementation techniques (for instance
+\cite{website:imlpementingflpl}, which also gives an overview of implementing functional logic languages and a list of publications).
 
 \begin{comment}
 
@@ -72,8 +62,8 @@ The important piece however is the fact that there is a dedicated website \cite{
 research and development, existing languages, the literature, the contacts and everything else that one can think
 of for functional logic languages.
 \end{comment}
-An important resource for this topic can be found in \cite{website:funclogprog} which is maintained by Michael Hanus \cite{website:mhanus} 
-and Sergio Antoy \cite{website:santoy} who have developed \progLang{Curry} \cite{hanus1995curry}.
+An important resource for this topic is \cite{website:funclogprog} which is maintained by Michael Hanus \cite{website:mhanus} 
+and Sergio Antoy \cite{website:santoy} who developed \progLang{Curry} \cite{hanus1995curry}.
 
 \begin{comment}
 As a matter of fact the holy grail of information is maintained by two of the most important people in the field
@@ -87,43 +77,43 @@ Michael Hanus \cite{website:mhanus} and Sergio Antoy \cite{website:santoy}.
 \section{Literature and publications}
 %\begin{description}
 \subsection{Multi paradigm languages}
-Possibly one of the most important works towards bringing programming styles together is the book by C.A.R.
-Hoare \cite{hoare1998unifying} which points out that among the large number of programming paradigms and/or
-theories the unification theory serves as a complementary rather than a replacement to relate the universe.
-As as always since we are talking about \progLang{Haskell} we must include monads and unifying theories using
-monads \cite{gibbons2013unifying}.
+Possibly one of the most important works towards bringing programming styles together is the book \cite{hoare1998unifying} by C.A.R.
+Hoare which points out that among the large number of programming paradigms and
+theories, the unification theory serves as a complement rather than a replacement for classification.
+Since we are talking about \progLang{Haskell} we should mention \cite{gibbons2013unifying}, which includes monads and unifying theories using
+monads.
  
 
 \subsection{Functional logic programming languages}
 
-A recent survey \cite{hanus2007multi} throws light on these hybrid languages. 
+A recent survey \cite{hanus2007multi} throws light on this category hybrid languages. 
 
 One of the most prominent multi paradigm languages in \progLang{Haskell} is \progLang{Curry}
 \cite{antoy2010functional}.
 The syntax is borrowed from the parent language and so are a lot of the features.
 Recapitulating, a functional programming language works on the notion of mathematical functions while a logic
 programming language is based on predicate logic.
-The strong points of \progLang{Curry} are that the features or basis of the language are general and are visible in
+The strong points of \progLang{Curry} are that the features of the language are general, and are visible in
 a number of languages like \cite{website:toy}.
 The language can play with problems from both worlds.
-In a problem where there are no unknowns and/or variables the language behaves like a functional language which is
-pattern matching the rules and execute the respective bodies.
-In the case of missing information, it behaves like \progLang{Prolog}; a sub-expression \textit{e} is evaluated on
-the conditions that it should satisfy which constraint the possible values of \textit{e}.
-This brings us to the first important feature of functional logic languages \textit{narrowing}.
-The expressions contain \textit{free variables}; simply speaking incomplete information that needs to be
+In a problem where there are no unknowns (variables) the language behaves like a functional language which is
+pattern matching the rules and executing the respective bodies.
+In the case of missing information, it behaves like \progLang{Prolog}: a sub-expression \textit{e} is evaluated on
+the conditions that it should satisfy, which constrain the possible values of \textit{e}.
+This brings us to the first important feature of functional logic languages, \textit{narrowing}.
+In narrowing, the expressions contain \textit{free variables}, simply speaking incomplete information that needs to be
 \textit{unified} to a value depending on the constraints of the problem.
-The language introduces only a few new constructs to support non determinism and choice.
-Firstly, \textit{narrowing} ($\mathtt{=:=}$), which deals with the expressions and unknown values and binds them
+The language introduces only a few new constructs to support non-determinism and choice.
+Firstly, narrowing {\Verb[formatcom=\bf]!(=:=)!}, which deals with the expressions and unknown values and binds them
 with appropriate values.
-The next one is the \textit{choice} operator ($\mathtt{?}$) for non-deterministic operations.
-Lastly, for unifying variables and values under some conditions, ($\mathtt{\&}$) operator has been provided to add
+The next one is the \textit{choice} operator {\Verb[formatcom=\bf]!(?)!} for non-deterministic operations.
+Lastly, for unifying variables and values under some conditions, {\Verb[formatcom=\bf]!(&)!} operator has been provided to add
 constraints to the equation.
 Putting it all together, it gives us the feel of a logic language for something that looks very much like
 \progLang{Haskell}.
-Unification is like two way pattern matching and with a similar analogy \progLang{Curry} is a \progLang{Haskell}
-that works both ways and hence variables can be on either sides.
-Although the language can do a lot; gaps do exist, such as the improvement of narrowing techniques.
+Unification is like two-way pattern matching, and by a similar analogy \progLang{Curry} is a \progLang{Haskell}
+that works both ways and hence variables can be on either side of an assignment.
+Although the language can do a lot; gaps do exist, such as the need to improve narrowing techniques.
  
  
 %\end{description}
@@ -131,45 +121,43 @@ Although the language can do a lot; gaps do exist, such as the improvement of na
 \section{Some multi paradigm languages}
 
 The list of multi paradigm languages is huge, but in this thesis we will mostly stick to functional logical
-programming languages. Beginning with functional hybrids, a small project language called \progLang{Virgil}
+programming languages. Beginning with functional hybrids, a small project language called \progLang{Virgil}, 
 \cite{website:virgil}, combines objects to work with functions and procedures.
 On similar lines is \progLang{Common Object Lisp System (CLOS)} \cite{website:closwiki}.
-Combining objects with functions is important as object-oriented programming has become one of the most common styles of programming. Hence 
-even \progLang{Haskell} has a combined language \enparen{called \progLang{O'Haskell}, \cite{website:ohaskell}}, though it last saw a 
-release back in 2001.
-as object oriented programming has been a dominant styles of programming. Even \progLang{Haskell} has one called \progLang{O'Haskell}
+Combining objects with functions is important as object-oriented programming has become one of the most common styles of programming.
+As object-oriented programming has been a dominant style of programming, even \progLang{Haskell} has one called \progLang{O'Haskell}
 \cite{website:ohaskell},
 though it last saw a release back in 2001.
-Another prominent implementation is \progLang{OCaml}
+Another prominent language is \progLang{OCaml}
 \cite{website:ocamlwiki,website:ocamllang},
-which adds object oriented capabilities to a powerful type system and module support.
-This is the case with most of the languages of the paradigm. Most of them were developed as a proof of concept and are replaced by 
-new ones based on different approaches to developing a multi paradigm language.
-As mentioned before, one of the most poplar \cite{website:langpop} and widely used both in academia and industry is
+which adds object-oriented capabilities to a powerful type system and module support. Many of the multi paradigm languages 
+were developed as a proof of concept and are replaced by 
+new ones based on different approaches.
+As mentioned before, one of the most popular (see \cite{website:langpop}) and widely used both in academia and industry is
 the \progLang{Scala} \cite{website:scala} programming language.
 
 
 \section{Functional logic programming languages}
 
 Knowing the amount of literature  on these type of languages, it is fairly easy to say that there have been numerous 
-attempts at specifications and implementations.
-Sadly though, not many have survived, let alone been successful.
-Only the ones that are easily available
+attempts at specification and implementation.
+Sadly though, not many have survived.
+Only the ones that 
 \begin{inparaenum}[(a)]
 \item
-  are easily available or
+  are easily available, or
 \item
-  have an implementation or
+  have an implementation, or
 \item
   have been cited or referred by other attempts
 \end{inparaenum}
-have been included below, as the list is long and not the main focus of the thesis.
+have been included below.
 We begin with variants of \progLang{Prolog}.
-As of now there have been three popular ones, beginning with \progLang{Nue Prolog}, \cite{website:nue-prolog},
+As of now, there have been three popular ones, beginning with \progLang{Nue Prolog}, \cite{website:nue-prolog},
 \progLang{Oz (Mozart Programming System)} \cite{website:oz-mozart} and \progLang{Mercury} \cite{website:mercury}.
-These languages feel more like extensions of \progLang{Prolog} rather than hybrids.
+These languages represent themselves as extensions of \progLang{Prolog} rather than hybrids.
 To start with \progLang{Mercury} represents a boundary between deterministic and non-deterministic programs.
-Similarly, \progLang{Nue Prolog} has special support for functions, while \progLang{Oz} gives concurrent constraint
+Similarly, \progLang{Nue Prolog} has special support for functions, while \progLang{Oz} provides concurrent constraint
 programming plus distributed support, with different function types for goal solving and expression rewriting.
 \progLang{Escher} \cite{lloyd1999programming:escher} comes very close to \progLang{Haskell} with monads, higher
 order functions and lazy evaluation.
@@ -182,9 +170,9 @@ Logic, Inheritance, Functions and Equations in \progLang{Prolog} syntax with cur
 functional languages; and there are others \enparen{\cite{bert1987lpg,malachi1984tablog}}.
 
 The functional language \progLang{Scheme} is a very popular choice for adding logic programming functionality to a functional 
-language.
-The book \cite{friedman05reasoned} along with the accompanying implementation \cite{website:kanren,website:minkanren} provides a similar 
-approach, but for \progLang{Haskell} \cite{website:haskellkanren,website:molog,website:minikanrent}.
+language as described in the book \cite{friedman05reasoned} along with the accompanying implementation \cite{website:kanren,website:minkanren}.
+\cite{website:haskellkanren,website:molog,website:minikanrent} provide a similar 
+approach, but for \progLang{Haskell}.
 
 
 Finally talking about \progLang{Curry}, one of the most popular \progLang{Haskell} based multi paradigm languages
@@ -193,7 +181,7 @@ predecessors \cite{website:alf,website:toy}.
 
 
 \section{Chapter recapitulation}
-Recapitulating, this chapter surveys the approach to merging different programming paradigms to result in a hybrid programming language. Moreover, we talked about multi paradigm declarative languages along with \progLang{Prolog} and \progLang{Haskell} hybrids.  
+Recapitulating, this chapter surveys the approach to merging different programming paradigms to result in a hybrid programming language. Moreover, we talked about multi paradigm declarative languages along with \progLang{Prolog} and \progLang{Haskell} hybrids respectively.  
 
 
 \ifMain
