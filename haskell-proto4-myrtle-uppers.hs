@@ -1,12 +1,12 @@
 -- Prolog IO
 
-{--
-FREE MONADS
-In general, a structure is called free when it is left-adjoint to a forgetful functor.
-In this specific instance, the Term data type is a higher-order functor that maps
-a functor f to the monad Term f ; this is illustrated by the above two instance
-definitions. This Term functor is left-adjoint to the forgetful functor from monads
-to their underlying functors.
+{-- FREE MONADS
+In general, a structure is called free when it is
+left-adjoint to a forgetful functor.  In this specific instance, the
+Term data type is a higher-order functor that maps a functor f to the
+monad Term f ; this is illustrated by the above two instance
+definitions. This Term functor is left-adjoint to the forgetful
+functor from monads to their underlying functors.
 --}
 
 data Term f a = Pure a | Impure (f (Term f a))

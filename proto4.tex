@@ -96,9 +96,9 @@ the second argument, getting an \haskellConstruct{IOAction} \haskellConstruct{b}
 Listing~\ref{tab:ioactionexampleoutput} shows the output.
 
 
-\begin{code-list}[H]
+\begin{scope}
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
+\begin{minted}[frame=lines,linenos]{haskell}
 hello = put "What is your name?"      `seqio` \_    ->
         get                           `seqio` \name ->
         put "What is your age?"       `seqio` \_    ->
@@ -116,7 +116,7 @@ code can be data and data can be code.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
+\begin{minted}[frame=lines,linenos]{haskell}
 *Main> print hello
 Put "What is your name?" (
   Get ($0 -> 
@@ -141,7 +141,7 @@ Put "What is your name?" (
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
+\begin{minted}[linenos,frame=lines]{haskell}
 instance Monad IOAction where
     return = Return
     (>>=)  = seqio
@@ -158,7 +158,7 @@ The main benefit of doing this is that we can now sequence actions using \progLa
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
+\begin{minted}[linenos,frame=lines]{haskell}
 hello2 = do put "What is your name?"
             name <- get
             put "What is your age?"
@@ -180,7 +180,7 @@ Listing~\ref{tab:ioactionrun} shows the \haskellConstruct{run} function for \has
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
+\begin{minted}[linenos,frame=lines]{haskell}
 run :: IOAction a -> IO a
 run (Return a) = return a
 run (Put s io) = putStrLn s >> run io
@@ -195,7 +195,7 @@ Listing~\ref{tab:ioactionrunoutput} shows the output for the \haskellConstruct{r
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
+\begin{minted}[linenos,frame=lines]{haskell}
 *Main> run hello
 What is your name?
 Chris
@@ -214,13 +214,11 @@ from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} in effect
 
 \begin{comment}
 \begin{code-list}[H]
-
 \begin{singlespace}
   \inputminted[linenos]{haskell}{haskell-proto4-purvey-wincer.hs}
 \end{singlespace}
-
-\caption{}
-\label{}
+\caption{\protect\haskellConstruct{IOAction} definitions}
+\label{lis:IOAction}
 \end{code-list}
 \end{comment}
 
@@ -234,11 +232,9 @@ constructor represents a result that is returned while \haskellConstruct{Impure 
 with side-effecting operations.
 
 \begin{code-list}[H]
-
 \begin{singlespace}
   \inputminted[linenos, firstline=12, lastline=21]{haskell}{haskell-proto4-myrtle-uppers.hs}
 \end{singlespace}
-
 \caption{eDSL with pure and impure constructors}
 \label{tab:edslpureimpure}
 \end{code-list}
@@ -260,7 +256,7 @@ if the running is done inside a monad then the IO still is pure.
   \inputminted[linenos]{haskell}{haskell-proto4-platen-winkel.hs}
 \end{singlespace}
 \caption{}
-\label{}
+\label{000588761}
 \end{code-list}
 
 
@@ -271,7 +267,7 @@ if the running is done inside a monad then the IO still is pure.
 \inputminted[linenos]{haskell}{IOSketch.hs}
 \end{singlespace}
 \caption{}
-\label{}
+\label{056385920}
 \end{code-list}
 
 
