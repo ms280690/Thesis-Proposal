@@ -8,22 +8,25 @@
 \begin{document}
 
 % ---------------------------------------------------------------------------
-\chapter{Prolog or Why Prolog ?}\label{chap:pwp}
+\chapter{\progLang{Prolog}}\label{chap:pwp}
 % ---------------------------------------------------------------------------
 %Prolog / Why Prolog ?
 
 
-\section{What this chapter is about}
-
-\noindent\rule{\textwidth}{0.5pt}
-%-----------------------------------------------------------------------------
+\section{About this chapter}
 
 This chapter discusses the properties of the target language \progLang{Prolog} and the feature set that will be translated to the host 
 language to extend its capabilities.
 
+\section{Section title needed}
+
 \paragraph{Why a logic programming language?}
-Our base language, \progLang{Haskell}, is from the same paradigm. It would be interesting to see how two languages of the same family with 
-conflicting features can be made to work together.
+
+%Our base language, \progLang{Haskell}, is from the same paradigm. It would be interesting to see how two languages of the same family with 
+%conflicting features can be made to work together.
+
+One of the reasons is that both \progLang{Haskell}, the base language and \progLang{Prolog}, the target language are from the same paradigm.
+This provides a platform to play around with the conflicting characteristics of the two languages.
 
 \paragraph{\progLang{Prolog} as a logic programming language}
 \progLang{Prolog} is a general purpose logic programming language mainly used in artificial intelligence and
@@ -36,42 +39,48 @@ conflicting features can be made to work together.
 
 
 \paragraph{Why embed \progLang{Prolog} ?}
-Existing implementations\endnote{%
-  The surrounding \macroName{begin}\macroArg{enumerate} should be a
-  \texttt{description} environment, or a list of
-  \macroName{sub}\textsuperscript{\textasteriskcentered}\texttt{section}'s.
-}
+
+\begin{comment}
+Existing implementations
 
 As a starting point a few publications and implementations helped in exploring the topic. The shortcomings were clearly visible to work and
 improve upon giving a starting point.
+\end{comment}
+
+\progLang{Prolog} seems to be a very popular choice as a target language. Also for the specific topic of embedding \progLang{Prolog} in 
+\progLang{Haskell}, implementations and publications exist which provide a starting point.\endnote{%
+  The surrounding \macroName{begin}\macroArg{enumerate} should be a
+  \texttt{description} environment, or a list of
+  \macroName{sub}\textsuperscript{\textasteriskcentered}\texttt{section}'s.
+	\mehul{changed}
+}
 
 
 \paragraph{Simple Syntax}
-\cite{wikiprolog}
 
-Prolog is dynamically typed. It has a single data type, the term, which has several subtypes: atoms, numbers, variables and compound terms.
+\progLang{Prolog} is dynamically typed. It has a single data type, the term, which has several subtypes: atoms, numbers, variables and 
+compound terms \cite{wikiprolog}.
+
 
 An atom is a general-purpose name with no inherent meaning. It is composed of a sequence of characters that is parsed by the 
-\progLang{Prolog}
-reader 
-as a single unit.
+\progLang{Prolog} reader as a single unit.
 
-Numbers can be floats or integers. Many \progLang{Prolog}
- implementations also provide unbounded integers and rational numbers.
+Numbers can be floats or integers. Many \progLang{Prolog} implementations also provide unbounded integers and rational numbers.
 
 Variables are denoted by a string consisting of letters, numbers and underscore characters, and beginning with an upper-case letter or 
 underscore. Variables closely resemble variables in logic in that they are placeholders for arbitrary terms. A variable can become 
 instantiated (bound to equal a specific term) via unification.
 
 A compound term is composed of an atom called a ``functor'' and a number of ``arguments'', which are again terms. Compound terms are 
-ordinarily 
-written as a functor followed by a comma-separated list of argument terms, which is contained in parentheses. The number of arguments is 
-called the term's arity. An atom can be regarded as a compound term with arity zero.
+ordinarily written as a functor followed by a comma-separated list of argument terms, which is contained in parentheses. The number of 
+arguments is called the term's arity. An atom can be regarded as a compound term with arity zero.
 
-Prolog programs describe relations, defined by means of clauses. Pure Prolog is restricted to Horn clauses, a Turing-complete subset of 
-first-order predicate logic. There are two types of clauses: facts and rules.
 
-\cite{website:prologintroumiami}
+A \progLang{Prolog} program is a description of relations, defined by the use of clauses. Pure \progLang{Prolog} is restricted to Horn 
+clauses, a Turing-complete subset of first-order predicate logic. The clauses can be one of two types: facts and rules 
+\cite{website:prologintroumiami}.
+
+\begin{comment}
 In \progLang{Prolog}
  all data objects are called terms.\endnote{%
    Fix.
@@ -100,7 +109,9 @@ geoff
 'ABCD'
 123
 \end{minted}
-     
+\end{comment}
+
+\begin{comment}
 \subsection{Function terms}
 
 Functions have the form \Verb!<functor>(<term>{,<term>})!
@@ -132,18 +143,16 @@ _
      
 Variables in \progLang{Prolog} are rather different from those in most other languages. Further discussion and use is deferred until later.
 
+\end{comment}
 
 \paragraph{Simple Semantics}
 
-Under a declarative reading, the order of rules, and of goals within rules, is irrelevant since logical disjunction and conjunction are 
-commutative.
-Procedurally, however, it is often important to take into account \progLang{Prolog}'s execution strategy, either
-for efficiency reasons, or due to the semantics of impure built-in predicates for which the order of evaluation
-matters.
-Also, as \progLang{Prolog} interpreters try to unify clauses in the order they're provided, failing to give a
-correct ordering can lead to infinite recursion.
+Since the commutative nature of logical disjunction and conjunction, declaratively speaking the order of rules and their sub goals is
+irrelevant. However, the procedural aspect must be taken into account to determine the execution strategy of \progLang{Prolog} since it
+has to deal with impure predicates. Moreover, a particular order of execution can lead to infinite recursion.
 
 
+\textbf{semantics of chr in \progLang{swi Prolog}} 
 In this subsection the operational semantics of CHR\endnote{%
   What is CHR?
 }\elabel{CHR-query}
@@ -153,7 +162,8 @@ When a constraint\endnote{%
 }
 is called, it is considered an active constraint and the system will try to apply the rules to it. Rules are tried and executed sequentially in the order they are written.
 
-\cite{website:swiprologsyntaxandsemantics}
+
+
 
 A rule is conceptually tried for an active constraint in the following way.
 The active constraint is matched with a constraint in the head of the rule.
@@ -164,7 +174,7 @@ succeeds, then the rule is committed and the body of the rule executed.
 If not all the necessary passive constraints can be found, or the matching or the guard fails, then the body is not
 executed and the process of trying and executing simply continues with the following rules.
 If for a rule there are multiple constraints in the head, the active constraint will try the rule sequentially
-multiple times, each time trying to match with another constraint.
+multiple times, each time trying to match with another constraint \cite{website:swiprologsyntaxandsemantics}.
 
 This process ends either when the active constraint disappears, i.e., it is removed by some rule, or
 after the last rule has been processed.
@@ -219,7 +229,8 @@ $\backslash$constraints\_2 $<=>$ body ] The constraints\_1 constraints are not c
 
 
 
-\section{Chapter Recapitulation}
+\section{Chapter recapitulation}
+Recapitulating, this chapter provided information on \progLang{Prolog} as a logic programming language.
 
 \ifMain
 \begin{scope}

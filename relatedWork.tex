@@ -10,12 +10,43 @@
 % ---------------------------------------------------------------------------
 
 
-\section{What this chapter is about}
+\section{About this chapter}
+This chapter discusses concepts which are related to the work presented in this thesis which may no bear a direct point of contact but 
+contribute to understanding. 
 
-\noindent\rule{\textwidth}{0.5pt}
-%-----------------------------------------------------------------------------
+\section{Map-reduce}
+
+MapReduce is a programming model and an associated implementation for processing and generating large data sets. Users specify a map 
+function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all 
+intermediate values associated with the same intermediate key \cite{dean2008mapreduce}.
+
+\section{Type systems}
+
+A type system consists of a set of rules to define a ``type'' to different constructs in a
+programming language such as variables, functions and so on.
+A static type system requires types to be attached to the programming constructs before hand which results in
+finding errors at compile time and thus increase the reliability of the program.
+On the other hand the dynamic type system passes through code which would not have worked in former
+environment; it comes off as less rigid.
 
 
+The advantages of static typing \cite{meijer2004static} are :
+\begin{itemize}
+\item earlier detection of errors,
+\item better documentation in terms of type signatures,
+\item more opportunities for compiler optimizations,
+\item increased run-time efficiency, and
+\item better developer tools;
+\end{itemize}
+
+whereas for dynamic typing the advantages are:
+\begin{itemize}
+\item less rigidity,
+\item suitability, and
+\item re-usability.
+\end{itemize}
+
+\section{Warren abstract machine}
 There are some technicalities which are indirectly related to the problem but do not bare a point of contact.
 The underpinnings of the languages throw some more light on the how different languages work to solve a problem.
 Different programming paradigms incorporate different operational mechanisms.
@@ -23,6 +54,7 @@ For example, \progLang{Prolog} programs execute on the Warren Abstract Machine \
 different storage usages; a global stack for compound terms, for environment frames and choice points and lastly
 the trail to record which variables bindings ought to be undone on backtracking.
 
+\section{Constraint programming}
 Constraint programming \cite{website:constraintprogwiki} is closely related to the declarative programming paradigm
 in the sense that the relations between variables is specified in the form of constraints.
 For example, consider a program to solve a simultaneous equation, now adding on to that restricting the range of
@@ -30,6 +62,8 @@ the values that the variables can possible take, thus adding constraints to the 
 Related to the same are constraint handling rules \cite{website:chrwiki}, which are extensions to a language,
 simply speaking adding constraints to a language like \progLang{Prolog}.
 
+
+\section{Residuation and narrowing}
 Lastly some details on the working of functional logic programming languages, residuation and narrowing
 \cite{hanus1995curry,webiste:wikicurry}.
 Residuation involves delaying of functions calls until they are deterministic, that is, deterministic reduction of
@@ -43,7 +77,7 @@ The languages based on this approach are \progLang{ALF} \cite{website:alf}, \pro
 \progLang{LPG} \cite{bert1987lpg} and \progLang{Curry} \cite{website:curry}.
 
 
-F-Algebras
+\section{F-Algebras}
 
 
 We are now ready to define \markWord{F}-algebras in the most general terms.
@@ -63,39 +97,41 @@ Right about now the definition with which I started this post should start makin
 \mint{haskell}|type Algebra f a = f a -> a|
 
 For a given functor \haskellConstruct{f} and a carrier type \markWord{a} the algebra is defined by specifying just one function.
-Often this function itself is called the algebra, hence my use of the name alg in previous examples.
+Often this function itself is called the algebra, hence my use of the name \markWord{alg} in previous examples.
 
 
-\section{Monads by example: The State Monad}
+\section{Monads by example: state monad}
 
-
+In this section we try and replicate a dictionary of variables. The operations such as adding and removing entries to and from the
+dictionary are implemented so as to replicate modification. Listing~\ref{tab:hskllmndworkngdatatype} shows the structure of the 
+\haskellConstruct{IntegerDictionary} for storing and modifying the \haskellConstruct{Variables}. Each \haskellConstruct{Variable} is a \haskellConstruct{VariableName}, \haskellConstruct{Value} pair.
+ 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=16, lastline=33]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=22, lastline=33]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Data Types}
 \label{tab:hskllmndworkngdatatype}
 \end{code-list}
 
-\begin{code-list}[H]
-  \begin{singlespace}
-    \inputminted[linenos, firstline=35, lastline=65]{haskell}{haskell-monad-working-2.hs}
-  \end{singlespace}
-  \caption{Haskell Monad Working: Functions 1}
-\label{tab:hskllmndworkngfunctions1}
-\end{code-list}
+Listing~\ref{tab:hskllmndworkngfunctions} shows the insertion and removal in a variable dictionary and the \haskellConstruct{run} function 
+for applying the operation on the dictionary.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=60, lastline=94]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=35, lastline=76]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
-  \caption{Haskell Monad Working: Functions 2}
-\label{tab:hskllmndworkngfunctions2}
+  \caption{Haskell Monad Working: Functions}
+\label{tab:hskllmndworkngfunctions}
 \end{code-list}
+
+Listing~\ref{tab:hskllmndworkngexamples} shows a combination of the operation of finding a product of the two variables and 
+storing back the result in the dictionary.
+
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=97, lastline=123]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=81, lastline=123]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Examples}
 \label{tab:hskllmndworkngexamples}
@@ -104,31 +140,31 @@ Often this function itself is called the algebra, hence my use of the name alg i
 
 %% dgc : The [] in the section heading avoids having the reference show
 %% up in the table of contents.  
-\section[{The execution models of \progLang{Prolog}}]{The execution models of \progLang{Prolog} \cite{Sterling:1994:APA:175753}}\label{sec:exec-models-prolog}
-\david{Rewrite this to be clear about the differences between an
-  \textit{abstract} \progLang{Prolog} and the choices made by concrete
-  implementations, such as Edinburgh \progLang{Prolog}.
-}
-
+\section[{The execution models of \progLang{Prolog}}]{The execution models of \progLang{Prolog} \cite{Sterling:1994:APA:175753}\endnote{
 \david{Move the citation from the section title, and explicitly state that
   the material here has been exerpted from
   \cite{Sterling:1994:APA:175753}, with page or chapter references.
 }
-
-Two major decisions must be taken for \progLang{Prolog} to resolve a query:
+\mehul{changed}
+}
+}\label{sec:exec-models-prolog}
+Logic programming languages are adapted from abstract interpreters for logic programs. 
+To implement a logic programming language such as \progLang{Prolog} two major decisions must be taken to resolve a query\endnote{
+\david{Rewrite this to be clear about the differences between an
+  \textit{abstract} \progLang{Prolog} and the choices made by concrete
+  implementations, such as Edinburgh \progLang{Prolog}.
+}
+\mehul{changed}
+}:
 \begin{enumerate}
-\item Scheduling policy
-
-Select leftmost goal and replace the non deterministic choice of a clause by sequential search for a unifiable clause and backtracking.
-
+\item Scheduling policy:
+Select leftmost goal and replace the non deterministic choice of a clause by sequential search for a unifiable clause and backtracking. 
 Stack scheduling policy, pop the topmost goal for reduction and push derived goals back.
 
-\item Search strategy
-
-\progLang{Prolog} simulates the non-deterministic choice of reducing clause by sequential search and backtracking. 
-
-The first goal whose head unifies with the goal is chosen. If no match is found then the computation is unwound to the last choice point and
-the next unifiable clause is chosen.
+\item Search strategy:
+\progLang{Prolog} simulates the non-deterministic choice of reducing clause by sequential search and backtracking. The first goal whose 
+head unifies with the goal is chosen. If no match is found then the computation is unwound to the last choice point and the next unifiable 
+clause is chosen.
 \end{enumerate}
 
 \progLang{Prolog} generates all possible solutions of the goal with respect to the \progLang{Prolog} program. It performs a complete
@@ -143,54 +179,85 @@ a sample trace for a query.
 \label{tab:prlgprgrmtrce}
 \end{code-list}
 
+As seen in Listing~\ref{tab:prlgprgrmtrce} how \progLang{Prolog} resolves a query. Consider the example in 
+Listing~\ref{tab:prlgcutfreeexmpl}. A sample query \prologConstruct{p(X)} will result in \ref{tab:prlgcutfreeexmploutput}. 
+
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos]{prolog}{prlgcutfreeexmpl.pl}
+  \end{singlespace}
+  \caption{A cut-free Prolog computation \cite{website:cutprologunionedu}}
+\label{tab:prlgcutfreeexmpl}
+\end{code-list}
+
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos]{prolog}{prlgcutfreeexmploutput.pl}
+  \end{singlespace}
+  \caption{cut-free Prolog computation output\cite{website:cutprologunionedu}}
+\label{tab:prlgcutfreeexmploutput}
+\end{code-list}
+
+A \prologConstruct{cut} represented as \prologConstruct{!} operator \cite{website:prologcut}.
+If \progLang{Prolog} finds a \prologConstruct{cut} in a rule, it will not backtrack on the choices it has made. Consider the example below:
+
+\mint{prolog}|p(X) :- b(X),c(X),!,d(X),e(X).|
+
+The result for a sample query \prologConstruct{p(X)}:
+\mint{prolog}|X = 1 ; no|
+
+Only a single solution is obtained because the \prologConstruct{cut} prevents backtracking. The Figure~\ref{fig:Trace with cut} shows the 
+trace for the query with the \prologConstruct{cut} operator.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale = .95]{prologcutrace.jpeg}
+\caption{Trace with cut (taken from \cite{website:cutprologunionedu})}
+\label{fig:Trace with cut}
+\end{figure}
+
+
 \endnote{
   \david{say something about cut here}
+\mehul{changed}
 }
 
-\section{What is Quasiquotation ?}
-\begin{enumerate}
-\item \cite{website:quotationstanford}
+\section{Quasiquotation and \progLang{Haskell}}
+\subsection{Quasiquotation}
+\mehul{needs to be compressed into a single short explanation}
 
-When language is used to attribute properties to language or otherwise theorize about it, a linguistic device is needed that ‘turns\eref{non-ascii} 
-language on itself'. 
-Quotation is one such device. It is our primary meta-linguistic tool.
+When language is used to attribute properties to language or otherwise theorize about it, a linguistic device is needed that `turns 
+language on itself'. Quotation is one such device \cite{website:quotationstanford}.
 
-\item \cite{website:quasiquotationfreedictionary}
-
-a metalinguistic device for referring to the form of an expression containing variables without referring to the symbols for those 
+A metalinguistic device for referring to the form of an expression containing variables without referring to the symbols for those 
 variables. Thus while ``not p'' refers to the expression consisting of the word not followed by the letter p, the quasi-quotation \newline
-$\ulcorner$ not p $\urcorner$ refers to the form of any expression consisting of the word not followed by any value of the variable p.
+$\ulcorner$ not p $\urcorner$ refers to the form of any expression consisting of the word not followed by any value of the variable p 
+\cite{website:quasiquotationfreedictionary}.
 
-\item  Quasiquotation Wikipedia, \cite{wikiquasi}
+Quasi-quotation or Quine quotation is a linguistic device in formal languages that facilitates rigorous and terse formulation of general 
+rules about linguistic expressions while properly observing the use--mention distinction \cite{wikiquasi}.
 
-Quasi-quotation or Quine quotation is a linguistic device in formal languages that facilitates rigorous and terse formulation of general rules about linguistic expressions while properly observing the use--mention distinction.
-
-\cite{website:usementiondistinctionwiki}
 The use--mention distinction is a foundational concept of analytic philosophy,[1] according to which it is necessary to make a distinction 
-between using a word (or phrase) and mentioning it
+between using a word (or phrase) and mentioning it \cite{website:usementiondistinctionwiki}.
 
 
-\end{enumerate}
-
-\section{Quasiquotaion in \progLang{Haskell}}
-\cite{haskellquasi, mainland2007s} 
+\subsection{Quasiquotaion in \progLang{Haskell}}
 
 Quasiquoting allows programmers to use custom, domain-specific syntax to construct fragments of their program. Along with 
-\progLang{Haskell}'s existing support for domain specific languages, you are now free to use new syntactic forms for your EDSLs. 
-
-Working with complex data types can impose a significant syntactic burden; extensive applications of nested data constructors are often 
-required to build values of a given data type, or, worse yet, to pattern match against values.
-
-Allow \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined concrete syntax.
+\progLang{Haskell}'s existing support for domain specific languages, you are now free to use new syntactic forms for your EDSLs. Working 
+with complex data types can impose a significant syntactic burden; extensive applications of nested data constructors are often required to 
+build values of a given data type, or, worse yet, to pattern match against values. Allow \progLang{Haskell} expressions and patterns to be 
+constructed using domain specific, programmer-defined concrete syntax \cite{haskellquasi, mainland2007s}.
 
 
 \section{Meta syntactic variables}
-Some sources for the topic 
+\mehul{needs to be compressed into a single short explanation}
 
 
 \cite{website:metasyntacticvariableswiki}
 A metasyntactic variable is a placeholder name used in computer science, a word without meaning intended to be
 substituted by some objects pertaining to the context where it is used.
+
 The word \markWord{foo} as used in IETF Requests for Comments is a good example.\endnote{%
   This regards
   \vspace*{-1.5\baselineskip}
@@ -259,16 +326,15 @@ Any filename beginning with a metasyntactic variable denotes a scratch file. Thi
 
 \cite{webste:metasyntacticvariablesc2wiki}
 
-A word, used in conversation or text that is meant as a variable. There is a fairly standard set in the ComputerScience\endnote{%
-  ``ComputerScience'' should be ``Computer Science''.
-}
+A word, used in conversation or text that is meant as a variable. There is a fairly standard set in the Computer Science
 culture. People tend to create their own if they are not exposed to others, which can be confusing. Of course, if you haven't seen them before they can be quite confusing. They are, however, useful enough that this is not enough reason to give them up.
 Standard set: foo, bar, baz, foobar/quux, quuux, quuuux, ....
 
 example: ``Suppose I have a list, foo, with a node, bar, ...''
 
 
-\section{Chapter Recapitulation}
-
+\section{Chapter recapitulation}
+Recapitulating, this chapter described the concepts loosely related to the thesis but do not bare a direct point of contact for better 
+understanding.
 
 \end{document}

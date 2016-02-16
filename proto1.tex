@@ -73,16 +73,16 @@ generic unification algorithm implementation.
 
 The relevant components are:
 \begin{enumerate}
-\item the \Verb!Unifiable! class;
+\item the \haskellClass{Unifiable} class;
 
-\item the \Verb!UTerm! data type;
+\item the \haskellConstruct{UTerm} data type;
 
 \item variable implementations:
-  \Verb!STVar! and \Verb!IntVar!;
+  \haskellConstruct{STVar} and \haskellConstruct{IntVar};
 
-\item the \Verb!Binding! monad; and 
+\item the \haskellClass{Binding} monad; and 
 
-\item Unification (\Verb!unify! and \Verb!unifyOccurs!).
+\item Unification (\haskellConstruct{unify} and \haskellConstruct{unifyOccurs}).
 \end{enumerate}
 
 \item Prototype 1
@@ -108,7 +108,7 @@ The implementation consists of the following components:
 Each of the components are discussed in the following sections.
 
 
-\section{How Prolog works}
+\section{How \progLang{Prolog} works}
 
 To replicate \progLang{Prolog} we look into how it works \enparen{see, for instance,
       \textup{\cite{webiste:learnprolognow}}}.
@@ -219,7 +219,7 @@ In this prototype we explore the unification aspect only.
 \label{fig:Trace for append}
 \end{figure}
 
-\section{What we do in this Prototype}
+\section{Prototype architecture}
 
 \begin{figure}[H]
   \includegraphics[width=1\textwidth]{Prototype-1.pdf}
@@ -227,16 +227,16 @@ In this prototype we explore the unification aspect only.
   \label{fig:proto1-arch}
 \end{figure}
 
-This prototype demonstrates the process of creating a data type to replicate the target language type system while conforming to the host 
-language restrictions by utilizing the
-benefits.\endnote{
-  \david{``\textit{the benefits}'' of what?}
-}
+This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type system while
+conforming to the host language.
 
+We create a \progLang{Prolog}-like language using a recursive abstract grammar in \progLang{Haskell} using
+\progLang{Haskell}'s  \haskellConstruct{data} statement.
+We then convert it to a non-recursive version whose fixed point is isomorphically equivalent to the original.
+This gives us a more open implementation which will be discussed in the sections to come.
 
-
-We have a \progLang{Prolog}-like language in \progLang{Haskell} defined via \haskellConstruct{data}. The language defined is recursive in nature. We convert 
-it into a non-recursive data type. Basically we do unification monadically.
+The rest of the procedure includes managing library compatibility for the language and, more importantly, monadic
+unification.
 
 \section{Creating a data type}
 %% dgc removed the [H] as it forces a bad page break.
@@ -247,40 +247,7 @@ it into a non-recursive data type. Basically we do unification monadically.
 \end{figure}
 
 To start we need to define a abstract syntax for the \progLang{Prolog}-like language.
-But\butbut{} there is a conflict between the type systems as we shall discuss.
-
-
-\endnote{
-  \david{move to related concepts Start}
-}
-
-A type system consists of a set of rules to define a ``type'' to different constructs in a
-programming language such as variables, functions and so on.
-A static type system requires types to be attached to the programming constructs before hand which results in
-finding errors at compile time and thus increase the reliability of the program.
-On the other hand the dynamic type system passes through code which would not have worked in former
-environment; it comes off as less rigid.
-
-
-The advantages of static typing \cite{meijer2004static} are :
-\begin{itemize}
-\item earlier detection of errors,
-\item better documentation in terms of type signatures,
-\item more opportunities for compiler optimizations,
-\item increased run-time efficiency, and
-\item better developer tools;
-\end{itemize}
-
-whereas for dynamic typing the advantages are:
-\begin{itemize}
-\item less rigidity,
-\item suitability, and
-\item re-usability.
-\end{itemize}
-
-\endnote{
-  \david{move to related concepts end}
-}
+There is a conflict between the type systems as discussed in Chapter~\ref{chap:relatedWork}.
 
 Since \progLang{Haskell} is statically typed we need to define a ``typed'' language which
 has a number of constructs representing different terms in \progLang{Prolog}, such as complex structures
@@ -347,26 +314,35 @@ Consider the code in Listing~\ref{tab:non-recurse}.
   \label{tab:non-recurse}
 \end{code-list}
 
-One result of coding as in Listing~\ref{tab:non-recurse} rather than as in
-  Listing~\ref{tab:closed-terms} (lines 6--9)
-  is that the non-recursive type
-\texttt{FlatTerm} is modular and generic as the structure
-\haskellConstruct{FlatTerm}
-is separate
-from its
-type which is ``\unknownLabel{\textit{a}}''\eref{text-kind}.
-The above language can be of any type \textit{a}.
-A more accurate way of saying it would be that \textit{a} can be a \textit{kind} in
-\progLang{Haskell}.\endnote{%
-  Why do we explain \textit{kinds}?
-  Is this in preparation for \texttt{\bfseries Functor}?
-  \mehul{Well Int, String etc etc are kinds in haskell so a FlatTerm int where int is *}
+One result of coding as in Listing~\ref{tab:non-recurse} rather than as in Listing~\ref{tab:closed-terms} (lines
+6--9) is that the non-recursive type \texttt{FlatTerm} is modular and generic as the structure
+\haskellConstruct{FlatTerm} is separate from the type of its subterms\endnote{%
+  ``\textit{its type is \haskellConstruct{a}}'' seems wrong.
+  The type \haskellConstruct{a} seems associated with terms.
+  The type \haskellConstruct{FlatTerm} has kind \texttt{* -> *}\,.
+  \par
+  Is my correction ok?
+  \mehul{yes}
 }
-
-In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type operator. A kind system is
-essentially a simply typed lambda calculus 'one level up,' endowed with a primitive type, denoted * and called 'type,' which is the kind of
-any (monomorphic) data type for example \cite{website:kindhaskellwiki}. Listing~\ref{tab:kindsinhaskell} describes kinds in 
+which is \haskellVar{a}.
+The above language can be of any type \haskellConstruct{FlatTerm} \haskellVar{a} where \haskellVar{a} can be of any
+type at all.\endnote{%
+  Was
+  ``which is \macroName{haskellConstruct}{a}.
+  The above language can be of any type \macroName{textit}{a}''
+}
+A more accurate way of saying it would be that \haskellVar{a} can be any \textit{kind} in
 \progLang{Haskell}.
+
+In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type
+operator.
+A kind system is essentially a simply-typed \(\lambda\)-calculus `one level up', endowed with a primitive type,
+denoted \Verb!*!
+and called `type', which is the kind of any (monomorphic) data type
+(see \cite{website:kindhaskellwiki}).\endnote{%
+    I did not understand the ``\textit{for example\dots}''; is this right?
+}
+Listing~\ref{tab:kindsinhaskell} describes kinds in \progLang{Haskell}.
 
 \begin{code-list}[H]
 \begin{minted}[linenos]{haskell}
@@ -396,44 +372,26 @@ and how to represent it generically to perform operations on it, since
 \end{minted}
 %
 because with our original grammar all the expression that could be defined would be represented by a single entity
-\haskellConstruct{Term} no matter how infinitely deep they were.
+\haskellConstruct{Term}, no matter how deep they were.
 
-The approach to tackling this problem is to find the ``fixed-point''.
+The approach to tackling this problem is to find the ``fixed-point'' of \haskellConstruct{FlatTerm}.
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
-It means that applying one more \haskellConstruct{FlatTerm} would not change anything --\textsuperscript{,}\endnote{%
-  An en-dash is not appropriate here.
-}
-a fixed point does not move under \haskellConstruct{FlatTerm}.
+It means that applying one more \haskellConstruct{FlatTerm} would not change anything---%
+a\endnote{%
+  Note the correct use of an em-dash.
+} fixed point does not move under \haskellConstruct{FlatTerm}.
 
-\progLang{Haskell} provides it in two forms,\endnote{%
-  \david{Why do you need to discuss value fixed points (\textit{i.e.,} \texttt{\bfseries fix})?  Do you need them?} 
+\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.
 
-  \mehul{Well not really but since we are talking about fixed point in general}
-
-  \david{Get rid of it.  Put in a marker if you want.  If we really need it, we can drag it from the git repository.}
-}
-\begin{enumerate}
-
-\item The \markWord{fix} function in the \texttt{Control.Monad.Fix} module allows for the definition of recursive functions in \progLang{Haskell}. Consider the following scenario,
-
-\mint{haskell}|fix :: (a -> a) -> a|
-
-The above function results in an infinite application stream,
-\mint{haskell}|f s : f (f (f (... )))|
-
-A fixed point of a function \markWord{f} is a value a such that \markWord{f a} \Verb!==! \markWord{a}.
-This is where the name of fix comes from: it finds the least-defined fixed
-point of a function.
-
-\item In type constructor form,
+In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
 
-\end{enumerate}
 
-
-The resulting language is of the form,
+The resulting language is of the form,\endnote{%
+  There is a weird \TeX{} problem here jamming lines together.
+}
 \begin{minted}[linenos]{haskell}
 data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)
 \end{minted}
@@ -444,8 +402,9 @@ A sample function working with such expressions would be of the form,
 \mint{haskell}|func :: Fix FlatTerm -> Fix FlatTerm|
 
 
-Generically speaking, the language can be expanded for additional functionality without changing or modifying the base structure. Consider
-the scenario where the language needs to accommodate additional type of terms,
+Generically speaking, the language can be expanded for additional functionality without changing or modifying the
+base structure.
+Consider the scenario where the language needs to accommodate additional type of terms,
 
 \begin{enumerate}
 \item Manually modifying the structure of the language, as shown in Listing~\ref{tab:man-enhan-gram}
@@ -468,10 +427,14 @@ the scenario where the language needs to accommodate additional type of terms,
     \label{tab:man-enhan-gram}
   \end{code-list}
 
-This would then trigger a ripple effect throughout the architecture because accommodations need to be made for the new functionality.
+  This would then trigger a ripple effect throughout the architecture because accommodations need to be made for
+  the new functionality.
 
-\item The other option would be to \textit{functorize} language like we did by adding a type variable which can be used to plug something that provides the functionality into the language.
-Consider the following example,
+\item
+  The other option would be to \textit{functorize} language like we did by adding a type variable which can be used
+  to plug something that provides the functionality into the language.
+\begin{comment}  
+  Consider the following example,
 
 \begin{minted}[linenos]{haskell}
 data Box f = Abox | T f (Box f) deriving (.........)
@@ -481,20 +444,16 @@ then something like,
 \begin{minted}[linenos]{haskell}
 T (Struct 'atom' [Abox, T (Cut 0)])
 \end{minted}
+\end{comment}
 \end{enumerate}
-is possible. Since we needed the fixed point of the language we used \textit{Fix} but generically one could add multiple custom
-functionality.
+Since we needed the fixed point of the language we used \haskellConstruct{Fix} but generically one could add
+custom functionality.
+For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have that
+  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in Listing~\ref{tab:man-enhan-gram}.\endnote{%
+  I've tried to guess your sense here.
+  Something is mangled in the following \P{}, so i've coloured it for now..
+}
 
-%%====================================================================%%
-%% -- begin code inserted by David                                 -- %%
-%---------------------------------------------------------------------%%
-\begin{center}
-  \textcolor{blue}{\rule{0.95\textwidth}{0.2em}}\\[-1ex]
-  text from David
-\end{center}
-Why not continue the example that you started in Figure~\ref{tab:man-enhan-gram}?
-That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
-\Verb!Extended FlatTerm! is isomorphic to \Verb!Term! from Figure~\ref{tab:man-enhan-gram}?
 
 \begin{code-list}[H]
   \begin{minted}[linenos,gobble=2]{haskell}
@@ -505,47 +464,38 @@ That is use code something like that in Figure~\ref{tab:garfunkle}, and show how
   \caption{garfunkle}
   \label{tab:garfunkle}
 \end{code-list}
-\vspace*{-1.5\baselineskip}
-\begin{center}
-  end text from David\\[-3ex]
-  \textcolor{blue}{\rule{0.95\textwidth}{1pt}}
-\end{center}
-%---------------------------------------------------------------------%%
-%% -- end code inserted by David                                   -- %%
-%%====================================================================%%
 
+
+\begin{scope}\color[rgb]{0.5,0.8,0.8}
 Figure~\ref{fig:manual-extension} Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:garfunkle}.
 Rather than modifying the the base language and the operation defined for it, we extend the language as shown in 
 Figure~\ref{fig:automatic-extension}. 
 
 \mint{haskell}|Extended FlatTerm| is isomorphically equivalent to the abstract grammar in Figure~\ref{fig:manual-extension}.
-
-
-
+\end{scope}
 
 \begin{figure}[H]
-  \includegraphics[scale=0.3, width=1\textwidth]{extended_data_type_1.png}
+  \centering
+  \includegraphics[scale=0.1, width=0.7\textwidth]{extended_data_type_1.png}
   \caption{Manually Extension of data type}
   \label{fig:manual-extension}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width=1\textwidth, scale=0.5]{extended_data_type_2.png}
+  \centering
+  \includegraphics[width=0.7\textwidth, scale=0.1]{extended_data_type_2.png}
   \caption{Automatic Extension of data type}
   \label{fig:automatic-extension}
 \end{figure}
 
-\section{Making the language compatible with \protect\codeLibrary{unification-fd}}\label{sec:making-lang-comp}
 
-\david{Check the Section~\ref{sec:making-lang-comp} title change above.}
+\section[Making the language compatible with \protect\codeLibrary{unification-fd}]{Making the language compatible with \newline\codeLibrary{unification-fd}}\label{sec:making-lang-comp}
 
 Our language is now opened up and ready for expansion, but it still needs to conform to the requirements of the
-\codeLibrary{unifiication-fd} library (\cite{unification-fd-lib}), so that the generic unification algorithm upon
-customization works with it.\endnote{%
-  This sentence can be simplified, I think.}
+\codeLibrary{unifiication-fd} library (\cite{unification-fd-lib}) for the unification algorithm to work.
 
-  The library provides functionality for first-order structural unification over general structure types along with
-  mutable variable bindings.
+The library provides functionality for first-order structural unification over general structure types along with
+mutable variable bindings.
 
 In this section we discuss
 \begin{enumerate}
@@ -567,66 +517,64 @@ instance of a class the function(s) can be applied to each element / primitive i
 
 
 The data here is the \progLang{Prolog} abstract syntax and the containers are
-\Verb!Functor!, \Verb!Foldable!, \Verb!Traversable!, \Verb!Applicative!
-  and
-\Verb!Monad!.\endnote{%
-  Removed the \macroName{clearpage}.
-}
-
+\haskellClass{Functor}, \haskellClass{Foldable}, and \haskellClass{Traversable}.
 Figure~\ref{fig:Functor Hierarchy} shows the relation between the different classes.
 
 \begin{figure}[th]
 \centering
-\includegraphics[scale = 0.7]{FunctorHierarchy.png}
-\caption{Functor Hierarchy \cite{website:foldablenadtraversable}}
+\includegraphics[scale = 0.7]{FunctorHierarchy.pdf}
+\caption{Functor Hierarchy (simplified from \cite{website:foldablenadtraversable})}
 \label{fig:Functor Hierarchy}
 \end{figure}
 
-The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce\endnote{%
-  What is ``\texttt{map-reduce}''?
+The \haskellClass{Functor} and \haskellClass{Foldable} instances providing functions for applying map-reduce as described in Chapter~\ref{chap:relatedWork}.\endnote{%
+  ``\textit{The \Verb!Functor! and \Verb!Foldable! instances providing functions for applying map-reduce as
+    described in Chapter~\ref{chap:relatedWork}.}'' is not a sentence.
+
+  Also it is not clear that you are talking about the functional interface to \texttt{map-reduce} rather than the
+  large-scale data capabilities.  Perhaps this can be cleared up in Chapter~\ref{chap:relatedWork}.
 }
 to the data structure.
 The primary issue is that at the end of the operation the structure if the data type is lost which would not help
 our cause since the result of a query must be a list of substitutions which are essential pairs of language
 variable with language values (language constructs).
 
-Enter \Verb[formatcom=\bf]!Traversable!\,.%}{
+Enter \haskellConstruct{Traversable}.
 It allows reduce whilst preserving the shape of the structure.
-Lastly, the \markWord{Applicative} instance is an intermediate between a functor and a monad.
-
 We create the necessary instances\endnote{%
   I am deeply suspicious of the instance for \texttt{Applicative} given.
 
   \mehul{I agree, I think I just created one for the purpose of the diagram.}
+  \mehul{delete?}
 }
 as shown in Listing~\ref{tab:flat-term-class-inst}.
-\begin{code-list}
+\begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos,gobble=4]{haskell}{haskell-proto1-class-flat.hs}
+    \inputminted[linenos,lastline=12]{haskell}{haskell-proto1-class-flat.hs}
   \end{singlespace}
-  \caption{FlatTerm class instances}
+  \caption{\protect\haskellConstruct{FlatTerm} class instances}
   \label{tab:flat-term-class-inst}
 \end{code-list}
 
 The above lay the foundation to work with the library.
-Coming back to the library, the language must have the \Verb!Unifiable! instance.
-This works in tandem with the \Verb!UTerm! data type.
-The \Verb!UTerm! data type captures the recursive structure of logic terms, i.e., given
+Coming back to the library, the language must have the \haskellClass{Unifiable} instance.
+This works in tandem with the \haskellConstruct{UTerm} data type.
+The \haskellConstruct{UTerm} data type captures the recursive structure of logic terms, i.e., given
 some functor \(t\) which describes the 
 constructors of our logic terms, and some type \(v\) which describes our logic variables, the type
-\Verb!UTerm! \(t\) \(v\) is the
+\haskellConstruct{UTerm} \(t\) \(v\) is the
 type of logic terms: trees with multiple layers of \(t\) structure and leaves of type \(v\).
-The \Verb!Unifiable! class gives one step of the unification process.
-Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \Verb!UTerm! to generate
-the recursive ADT, so too we only need to specify one level of the unification (i.e., \Verb!zipMatch!) and then we can use
+The \haskellClass{Unifiable} class gives one step of the unification process.
+Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \haskellConstruct{UTerm} to generate
+the recursive ADT, so too we only need to specify one level of the unification (i.e., \haskellConstruct{zipMatch}) and then we can use
 the library's operators to perform the recursive unification.
 This is shown in Figure~\ref{tab:zipMatch}.
-\begin{code-list}
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto1-zip-flat.hs}
   \end{singlespace}
   \vspace*{-0.5\baselineskip}
-  \caption{\protect\markWord{FlatTerm} instance of \protect\markWord{zipMatch}}
+  \caption{\protect\haskellConstruct{FlatTerm} instance of \protect\haskellConstruct{zipMatch}}
   \label{tab:zipMatch}
 \end{code-list}
 
@@ -636,13 +584,14 @@ which provides facilities to generate fresh logic variables and perform look ups
 implementations exist,\endnote{%
   In this immediate region, I (dgc) removed text inserted by a failed push or pull merge.
   Check to see that it is correct, or reverse commit \texttt{95804e3\dots}.
+	\mehul{looks ok, cannot remember exactly}
 }
 
 \begin{enumerate}
-\item The \markWord{IntVar} implementation uses \markWord{Int} as the names of variables, and uses an
-  \markWord{IntMap} to keep track of the environment. 
+\item The \haskellConstruct{IntVar} implementation uses \haskellConstruct{Int} as the names of variables, and uses an
+  \haskellConstruct{IntMap} to keep track of the environment. 
 
-\item The \markWord{STVar} implementation uses \markWord{STRef}s, so we can use actual mutation for binding logic
+\item The \haskellConstruct{STVar} implementation uses \haskellConstruct{STRef}s, so we can use actual mutation for binding logic
   variables, rather than keeping an explicit environment around.
 
 \end{enumerate}
@@ -666,182 +615,102 @@ implementations exist,\endnote{%
   You can provide your own implementations of \markWord{Variable} and \markWord{BindingMonad}.
 \end{comment}
 
-\textbf{Some stuff about Meta syntactic variables can be put in here}
+%\textbf{Some stuff about Meta syntactic variables can be put in here}
 
-This implementation uses \markWord{STVars}
-but a custom implementation can be used inside the \markWord{BindingMonad}.
+\begin{comment}
+The issue with the \haskellConstruct{State monad} is that it can only hold substitutions of a single type \haskellConstruct{State}. For
+using several different term datatypes at the same time we need to use the \haskellConstruct{ST monad}. \haskellConstruct{ST monad} 
+provides the capability to  create, read and update reference cells of arbitrary type \cite{claessen2000typed} .
+\end{comment}
+
+The \haskellConstruct{ST monad} is similar to the \haskellConstruct{IO monad} but is escapable. An \haskellConstruct{ST} action  is of the 
+form:
+
+\mint{haskell}|ST s a|
+
+\haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}. The s keeps references to objects inside the 
+\haskellConstruct{ST monad} from leaking to the outside of the \haskellConstruct{ST monad} meaning the actions can only affect their own 
+thread. To escape we require:
+\mint{haskell}|runST :: forall a. (forall s. ST s a) -> a|
+
+The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known prohibiting to other threads and thus 
+\haskellConstruct{runST} is pure \cite{website:stmonadwiki, website:stmonadstackoverflow}. This is the idea behind \haskellConstruct{STVars} which are 
+implemented using \haskellConstruct{STRefs}. Hence to use "true mutability" we carry out the computation in the \haskellConstruct{ST monad}.
+
+This implementation uses \haskellConstruct{STVars} and \haskellConstruct{STBindings} to implement the \haskellConstruct{BindingMonad}
+but a custom implementation could also be used inside the \haskellConstruct{BindingMonad}.
 For our language expressions to be unifiable we must deal with the variables in the expressions being compared.
 For that we extract the variables and then convert them into a dictionary consisting of a free variable for each
 language variable as shown in Figure~\ref{tab:varsToDictM}.
 
-\begin{code-list}
-  \begin{minted}[linenos,gobble=2]{haskell}
-  variableExtractor :: Fix FlatTerm -> [Fix FlatTerm]
-  variableExtractor (Fix x) = case x of
-     (Struct _ xs) ->   Prelude.concat $ Prelude.map variableExtractor xs
-     (Var v)      ->   [Fix $ Var v]
-     _         ->   []
-
-  variableNameExtractor :: Fix FlatTerm -> [VariableName]
-  variableNameExtractor (Fix x) = case x of
-     (Struct _ xs)   -> Prelude.concat $ Prelude.map variableNameExtractor xs
-     (Var v)         -> [v]
-     _             -> []
-
-  variableSet :: [Fix FlatTerm] -> S.Set (Fix FlatTerm)
-  variableSet a = S.fromList a
-
-  variableNameSet :: [VariableName] -> S.Set (VariableName)
-  variableNameSet a = S.fromList a
-
-  varsToDictM :: (Ord a, Unifiable t) =>
-      S.Set a -> ST.STBinding s (Map a (ST.STVar s t))
-  varsToDictM set = foldrM addElt Map.empty set where
-    addElt sv dict = do
-      iv <- freeVar
-      return $! Map.insert sv iv dict
-  \end{minted}
-  \vspace*{-1.0\baselineskip}
+\begin{code-list}[H]
+  \begin{singlespace}
+  \inputminted[linenos]{haskell}{haskell-proto1-var-extract.hs}
+  \end{singlespace}
+  %\vspace*{-1.0\baselineskip}
   \caption{Creating a variable dictionary}
   \label{tab:varsToDictM}
 \end{code-list}
-A language to \markWord{STVar} dictionary is only one part of the unification procedure, the terms themselves should be made
+
+A language to \haskellConstruct{STVar} dictionary is only one part of the unification procedure, the terms themselves should be made
 compatible for the in built unify procedure to perform look ups for the variables in them.
 The dictionary along with the fixed point version flattened of the term, as shown in Figure~\ref{tab:to-UTerm}.
 %
-\begin{code-list}
-  \begin{minted}[linenos,gobble=2]{haskell}
-  uTermify
-    :: Map VariableName (ST.STVar s (FlatTerm))
-    -> UTerm FlatTerm (ST.STVar s (FlatTerm))
-    -> UTerm FlatTerm (ST.STVar s (FlatTerm))
-  uTermify varMap ux = case ux of
-    UT.UVar _                -> ux
-    UT.UTerm (Var v)        -> maybe (error "bad map") UT.UVar $
-                                 Map.lookup v varMap
-    -- UT.UTerm t            -> UT.UTerm $! fmap (uTermify varMap)
-    UT.UTerm (Struct a xs)   -> UT.UTerm $ Struct a $!
-                                         fmap (uTermify varMap) xs
-    UT.UTerm (Wildcard)      -> UT.UTerm Wildcard
-    UT.UTerm (Cut i)         -> UT.UTerm (Cut i)
-
-  translateToUTerm ::
-      Fix FlatTerm -> ST.STBinding s
-              (UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)),
-               Map VariableName (ST.STVar s (FlatTerm)))
-  translateToUTerm e1Term = do
-    let vs = variableNameSet $ variableNameExtractor e1Term
-    varMap <- varsToDictM vs
-    let t2 = uTermify varMap . unfreeze $ e1Term
-    return (t2,varMap)
-  \end{minted}
+\begin{code-list}[H]
+  \begin{singlespace}
+  \inputminted[linenos]{haskell}{haskell-proto1-utermify-frog.hs}
+  \end{singlespace}
   \caption{Conversion to UTerm}
   \label{tab:to-UTerm}
 \end{code-list}
 %
 and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 %
-\begin{code-list}
-  \begin{minted}[linenos,gobble=2]{haskell}
-  vTermify :: Map Int VariableName ->
-              UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) ->
-              UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm))
-  vTermify dict t1 = case t1 of
-    UT.UVar x  -> maybe (error "logic") (UT.UTerm . Var) $
-                           Map.lookup (UT.getVarID x) dict
-    UT.UTerm r ->
-      case r of
-        Var iv   -> t1
-        _         -> UT.UTerm . fmap (vTermify dict) $ r
-
-  translateFromUTerm ::
-      Map VariableName (ST.STVar s (FlatTerm)) ->
-      UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)) -> Prolog
-  translateFromUTerm dict uTerm =
-    P .  maybe (error "Logic") id . freeze . vTermify varIdDict $ uTerm where
-      rot3 f a k v = f k v a
-      inserter k v = Map.insert (UT.getVarID v) k
-      forKV dict initial fn = Map.foldlWithKey' (rot3 fn) initial dict
-      varIdDict = forKV dict Map.empty inserter
-  \end{minted}
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-vtermify-goat.hs}
+  \end{singlespace}
   \caption{Conversion from UTerm}
   \label{tab:from-UTerm}
 \end{code-list}
 
-\clearpage
-The variable dictionaries and \markWord{UTerm}ified language expressions are unified in the binding monad as shown
+
+The variable dictionaries and \haskellConstruct{UTerm}ified language expressions are unified in the binding monad as shown
 in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
+
 %
 \begin{code-list}
-\begin{minted}[linenos]{haskell}
-  monadicUnification ::
-  (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
-  => (forall s. ((Fix FlatTerm) -> (Fix FlatTerm)
-  ->  ErrorT (UT.UFailure (FlatTerm) (ST.STVar s (FlatTerm)))
-             (ST.STBinding s) (UT.UTerm (FlatTerm) (ST.STVar s (FlatTerm)),
-                               Map VariableName (ST.STVar s (FlatTerm)))))
-monadicUnification t1 t2 = do
---  let
---    t1f = termFlattener t1
---    t2f = termFlattener t2
-  (x1,d1) <- lift . translateToUTerm $ t1
-  (x2,d2) <- lift . translateToUTerm $ t2
-  x3 <- U.unify x1 x2
-  --get state from somehwere, state -> dict
-  return $! (x3, d1 `Map.union` d2)
-\end{minted}
-  \vspace*{-1.0\baselineskip}
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-unify-monad.hs}
+  \end{singlespace}
   \caption{Unification code}
   \label{tab:unification}
+\end{code-list}
 
-\begin{minted}[linenos]{haskell}
-goUnify ::
-  (forall s. (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
-  =>
-      (ErrorT
-          (UT.UFailure FlatTerm (ST.STVar s FlatTerm))
-          (ST.STBinding s)
-          (UT.UTerm FlatTerm (ST.STVar s FlatTerm),
-             Map VariableName (ST.STVar s FlatTerm)))
-     )
-  -> [(VariableName, Prolog)]
-goUnify test = ST.runSTBinding $ do
-  answer <- runErrorT $ test --ERROR
-  case answer of
-    (Left _)            -> return []
-    (Right (_, dict))   -> f1 dict
-\end{minted}
-  \vspace*{-1.0\baselineskip}
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-unify-driver.hs}
+  \end{singlespace}
   \caption{Driver code}
   \label{tab:unif-driver}
 \end{code-list}
 
 
 The final reconversion to return a list of substitutions,
-  called \texttt{f1} in Figure~\ref{tab:unif-driver}, is shown in
+  called \haskellConstruct{f1} in Figure~\ref{tab:unif-driver}, is shown in
   Figure~\ref{tab:vars-extract}.
-\begin{code-list}
-  \begin{minted}[linenos,gobble=2]{haskell}
-  f1 ::
-    (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
-    => (forall s. Map VariableName (STVar s FlatTerm)
-        -> (ST.STBinding s [(VariableName, Prolog)])
-       )
-  f1 dict = do
-    let ld1 = Map.toList dict
-    ld2 <- Control.Monad.Error.sequence
-           [ v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
-    let ld3 = [ (k,v) | ((k,_),Just v) <- ld1 `zip` ld2]
-        ld4 = [ (k,v) | (k,v2) <- ld3,
-                let v = translateFromUTerm dict v2 ]
-    return ld4
-  \end{minted}
-  \vspace*{-1.0\baselineskip}
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos]{haskell}{haskell-proto1-unify-out.hs}
+  \end{singlespace}
   \caption{Variable substitution list extraction}
   \label{tab:vars-extract}
 \end{code-list}
 
-\section{Chapter Recapitulation}
+\section{Chapter recapitulation}
+Recapitulating, this chapter provides the ideas of language modification and monadic unification along with their respective 
+implementations. 
+
 
 \ifMain
 \begin{scope}

@@ -117,6 +117,11 @@ William E.~Byrd Daniel P.~Friedman and Oleg Kiselyov, \emph{Kanren}, March
 \bibitem{website:toy}
 Universidad~Complutense de~Madrid, \emph{Toy}, Decmeber 2006.
 
+\bibitem{dean2008mapreduce}
+Jeffrey Dean and Sanjay Ghemawat, \emph{Mapreduce: simplified data processing
+  on large clusters}, Communications of the ACM \textbf{51} (2008), no.~1,
+  107--113.
+
 \bibitem{website:mercury}
 University Of Melbourne Computer~Science department, \emph{Mercury programming
   language}, February 2014.
@@ -145,12 +150,6 @@ Steve Dunne and Bill Stoddart (eds.), \emph{Unifying theories of programming,
   first international symposium, utp 2006, walworth castle, county durham, uk,
   february 5-7, 2006, revised selected papers}, Lecture Notes in Computer
   Science, vol. 4010, Springer, 2006.
-
-\bibitem{website:prologresolution}
-Joshua Eckroth, \emph{Prolog resolution}, April 2014.
-
-\bibitem{website:prologunification}
-\bysame, \emph{Prolog unification}, April 2014.
 
 \bibitem{website:scala}
 Switzerland \'Ecole Polytechnique F\'ed\'erale~de Lausanne (EPFL)~Lausanne,
@@ -207,6 +206,9 @@ Michael Hanus, \emph{Functional logic programming}, February 2009.
 Michael Hanus, Herbert Kuchen, and Juan~Jose Moreno-Navarro, \emph{Curry: A
   truly functional logic language}, Proc. ILPS, vol.~95, 1995, pp.~95--107.
 
+\bibitem{website:haskellorg}
+Haskell, \emph{Haskell website}, January 2015.
+
 \bibitem{website:templatehaskell}
 Haskellwiki, \emph{Template haskell}, October 2013.
 
@@ -244,9 +246,6 @@ John Hughes, \emph{Why functional programming matters}, The computer journal
 
 \bibitem{webiste:metasyntacticvariableswhatistectarget}
 What is~Tech~Target, \emph{Metasynatactic variables}, September 2005.
-
-\bibitem{website:haskellkanren}
-JaimieMurdock, \emph{Haskell kanren}, March 2012.
 
 \bibitem{jlog}
 JLogic, \emph{Jlog - prolog in java}, September 2012,
@@ -355,6 +354,9 @@ R~Morrison and MP~Atkinson, \emph{Persistent languages and architectures},
 MPprogramming.com, \emph{Castor : Logic paradigm for c++}, August 2010,
   \url{http://www.mpprogramming.com/cpp/}.
 
+\bibitem{website:haskellkanren}
+Jaimie Murdock, \emph{Haskell kanren}, March 2012.
+
 \bibitem{website:lambda-prolog}
 Gopalan Nadathur, \emph{$\lambda$ prolog}, September 2013.
 
@@ -384,6 +386,10 @@ University of~Miami, \emph{Prolog introduction}, March 2012.
 \bibitem{website:ocamllang}
 Ocaml Org, \emph{Ocaml programming language}, March 2014.
 
+\bibitem{website:cutprologunionedu}
+Johan~Bos Patrick~Blackburn and Kristina Striegnitz, \emph{The cut}, February
+  2003.
+
 \bibitem{pinto2003dot}
 Pedro Pinto, \emph{Dot-scheme: A plt scheme ffi for the .net framework},
   Workshop on Scheme and Functional Programming, Citeseer, 2003.
@@ -392,8 +398,14 @@ Pedro Pinto, \emph{Dot-scheme: A plt scheme ffi for the .net framework},
 Quintus Prolog, \emph{Embeddability}, December 2003,
   \url{http://quintus.sics.se/isl/quintuswww/site/embed.html}.
 
+\bibitem{website:assertzswiprolog}
+SWI Prolog, \emph{assertz in swi prolog}.
+
+\bibitem{website:swiprologdbops}
+\bysame, \emph{Database operations in swi prolog}.
+
 \bibitem{website:swiprologsyntaxandsemantics}
-SWI Prolog, \emph{swi prolog syntax and semantics}.
+\bysame, \emph{swi prolog syntax and semantics}.
 
 \bibitem{yieldprolog}
 Yield Prolog, \emph{Yield prolog}, October 2011,
@@ -496,6 +508,9 @@ Michael Spivey, \emph{Functional pearls combinators for breadth-first search},
 Stackoverflow, \emph{Haskell vs. prolog comparison}, December 2009,
   \url{http://stackoverflow.com/questions/1932770/haskell-vs-prolog-comparison}.
 
+\bibitem{website:stmonadstackoverflow}
+\bysame, \emph{How does the st monad work?}, September 2012.
+
 \bibitem{Sterling:1994:APA:175753}
 Leon Sterling and Ehud Shapiro, \emph{The art of prolog (2nd ed.): Advanced
   programming techniques}, MIT Press, Cambridge, MA, USA, 1994.
@@ -524,7 +539,7 @@ William E.~Byrd The Reasoned Schemer' (MIT~Press, 2005) by Daniel P.~Friedman
 
 \bibitem{unification-fd-lib}
 Wren Thornton, \emph{The unification-fd package}, July 2012,
-  \url{http://hackage.haskellhttp://yieldprolog.sourceforge.net/.org/package/unification-fd}.
+  \url{http://hackage.haskell.org/package/unification-fd}.
 
 \bibitem{monadiccp-gecode-lib}
 Jan Tikovsky, \emph{The monadiccp-gecode package}, January 2014,
@@ -583,6 +598,9 @@ Haskell Wiki, \emph{Monads as computation}, December 2011.
 
 \bibitem{website:kindhaskellwiki}
 \bysame, \emph{Kind}, August 2012.
+
+\bibitem{website:stmonadwiki}
+\bysame, \emph{St monad}, July 2012.
 
 \bibitem{website:foldablenadtraversable}
 \bysame, \emph{Foldable and traversable}, January 2013.
@@ -663,14 +681,14 @@ Wikipedia, \emph{Prolog wikipedia}, March 2004.
 \bibitem{website:metasyntacticvariableswiki}
 \bysame, \emph{Metasyntactic variable}, October 2015.
 
-\bibitem{website:resolutionlogicwiki}
-\bysame, \emph{Resolution}, October 2015.
-
 \bibitem{website:timelineproglangwiki}
 \bysame, \emph{Timeline of programming languages}, November 2015.
 
 \bibitem{website:usementiondistinctionwiki}
 \bysame, \emph{Use--mention distinction}, October 2015.
+
+\bibitem{website:prologcut}
+\bysame, \emph{cut in prolog}, January 2016.
 
 \bibitem{DBLP:conf/utp/2012}
 Burkhart Wolff, Marie-Claude Gaudel, and Abderrahmane Feliachi (eds.),

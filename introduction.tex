@@ -11,13 +11,9 @@
 %----------------------------------------------------------------------------
 
 
-\section{What this chapter is about}
+\section{About this chapter}
 
 This chapter introduces the scope of the thesis along with the preliminary arguments.
-
-
-\noindent\rule{\textwidth}{0.5pt}
-%-----------------------------------------------------------------------------
 
 
 \section{Beginnings}
@@ -48,7 +44,7 @@ This results in a hybrid approach which provides a library taking advantage of t
 
 
 
-\section{Thesis Statement}
+\section{Thesis statement}
 
 %The thesis aims to provide insights into merging two declarative languages namely, \progLang{Haskell} and
 \progLang{Prolog} by embedding the latter into the former and analyzing the result of doing so as they have
@@ -58,7 +54,7 @@ like capabilities.
 
 
 %----------------------------------------------------------------------------
-\section{Problem Statement}
+\section{Problem statement}
 %----------------------------------------------------------------------------
 
 Over the years the development of programming languages has become more and more rapid.
@@ -68,7 +64,7 @@ The successors attempt to introduce new concepts and features to simplify the pr
 assist the programmer by lessening the burden of carrying out standard tasks and procedures.
 A new one tries to capture the best of the old; learn from the mistakes, add new concepts and move on; which seems
 to be good enough from an evolutionary perspective.
-But\butbut{} all is not that straight forward when shifting from one language to another.
+However, all is not that straight forward when shifting from one language to another.
 There are costs and incompatibilities to look at.
 A language might be simple to use and provide better performance than its predecessor but not always be worth the
 switch.
@@ -113,13 +109,16 @@ So the question is how to have all the good qualities of \textsc{Prolog} without
 One idea is to make \progLang{Prolog} an add-on to another language which is widely used and in demand.
 Here the choice is \progLang{Haskell}; as both the languages are declarative they share a common background which
 can help to blend the two.
+\progLang{Haskell} also has some support for logic programming \cite{website:logic-programming-haskell} which
+enables encoding of search problems.
 
 A domain-specific language (DSL) is a concise micro language that offers tools and functionalities focused on a
 particular problem domain.\label{sec:DSL-def}
 In many cases, DSL programs are translated to calls to a common subroutine library and the DSL can be viewed as a
 means to hide the details of that library \cite{van2000domain}. A domain specific language (DSL) is built specically to express the 
 concepts of a particular domain. Generally, two types of DSL can be distinguished according to the underlying implementation strategy. An
-external DSL is constructed from scratch, starting from definition of the desired syntax to implementation of the associated parser for reading it. In contrast, internal or embedded DSL are constructed on top of an existing host language \cite{machadomodel}.
+external DSL (eDSL)
+is constructed from scratch, starting from definition of the desired syntax to implementation of the associated parser for reading it. In contrast, internal or embedded DSL are constructed on top of an existing host language \cite{machadomodel}.
 
 Putting all of the above together, Domain Specific Languages
 are pretty good in doing what they are designed to do, but nothing else, resulting in choosing a different language
@@ -132,10 +131,7 @@ accomplishing  mundane tasks.
 Approaching towards the solution can be complicated and tiresome, but the programming language in question acts as
 the master key.
 A general purpose language, as the name suggests, provides a general set of tools to cover many problem domains.
-The downside is that such general purpose languages\endnote{%
-  \mehul{find a cute metaphor}
-}
-lack tools specific to certain problem domains.
+The downside is that such general purpose languages lack tools specific to certain problem domains.
 
 Flipping the coin to the other side, we see, the more specific the language is to the problem domain, the easier it
 is to solve the problem since the solution need not be moulded according to the capability  of the language.
@@ -165,7 +161,7 @@ both the declarative paradigms.
 %language can provide.
 This can be achieved in two ways:
 \begin{description}
-\item [Embedding (\chapterReference{chap:embedding}{Chapter 4}):]
+\item [Embedding (Chapter~\ref{chap:embedding}):]
 
   This approach involves translating a complete language into the host language as an extension such as a
   library or module.
@@ -176,7 +172,7 @@ This can be achieved in two ways:
   Examples and further discussion on the same are
   provided in the chapters to come.
 
-\item [Paradigm Integration (\chapterReference{chap:multiparadigm}{Chapter 5}):]
+\item [Paradigm Integration (Chapter~\ref{chap:multiparadigm}):]
 
   This approach goes much deeper as it does not involve a direct translation.
   An attempt is made by taking a particular characteristic of a language and merging it with the characteristic of
@@ -200,17 +196,20 @@ This can be achieved in two ways:
 
 
 %----------------------------------------------------------------------------
-\section{Thesis Organization}
+\section{Thesis organization}
 
-The next chapter, \chapterReference{chap:proposedWork}{Chapter 2} provides details about the shortcomings of the
-previous works and an approach for improvements.
-\chapterReference{chap:background}{Chapter 3}, the background talks about the programming paradigms and languages
+The next chapter, Chapter~\ref{chap:background} talks about the programming paradigms and languages
 in general and the ones in question.
-Then we look at the question from different angles namely, \chapterReference{chap:embedding}{Chapter 4},  Embedding
-a Programming Language into another Programming Language and  \chapterReference{chap:embedding}{Chapter 5}, Multi
-Paradigm Languages (Functional Logic Languages).
-Some of the indirectly related content \chapterReference{chap:relatedWork}{Chapter 6} and finishing off with the
-\chapterReference{chap:conclusion}{Chapter 7}, the expected outcomes.
+Chapter~\ref{chap:proposedWork} provides details about the shortcomings of the
+previous works and an approach for improvements. Chapter~\ref{chap:accomplishedWork} provides details on the conceptual contributions
+of this thesis and the prototypes.
+Then we look at the question from different angles namely, Chapter~\ref{chap:embedding},  embedding
+a programming language into another programming language and  Chapter~\ref{chap:multiparadigm}, multi
+paradigm languages (functional logic languages).
+Some of the indirectly related content resides in Chapter~\ref{chap:relatedWork}. Chapters \ref{chap:hwh} and \ref{chap:pwp} discuss the 
+languages used in this thesis; \progLang{Haskell} and \progLang{Prolog}. Chapters \ref{proto1}, \ref{proto2}, \ref{proto3} and 
+\ref{proto4} describe the ideas and the implementation details of the prototypes. Chapter~\ref{chap:futureScope} gives a 
+glimpse of the future and we conclude with the Chapter~\ref{chap:conclusion}.
 
 
 \ifMain

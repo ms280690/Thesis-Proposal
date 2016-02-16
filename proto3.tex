@@ -6,78 +6,204 @@
 \chapter{Prototype 3}{\label{proto3}}
 
 
-\section{What this chapter is about}
-
-\noindent\rule{\textwidth}{0.5pt}
-%-----------------------------------------------------------------------------
-
-When two terms are to be unified we can use Chapter~\ref{proto1},
-
-\prologConstruct{term1} and \prologConstruct{term2} are matched and an assignment is the result 
-
-now this may be a part of a query resolution procedure
-
-to reach the point where two terms need to unified will happen through some sort of search strategy
-
-and our approach is independent of that, and this prototype is a proof of concept to implementing query resolution using unification with
-variable search strategy
+\section{About this chapter}
+This chapter discusses the procedure to infuse multiple search strategies into a \progLang{Prolog} query resolver with monadic unification. 
+The base implementation for this prototype is \codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98}.
 
 
-\section{Unification}
-The first, ``unification'' regards how terms are matched and variables assigned to make terms
-match.
-\cite{website:prologunification}
+\section{\codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98} architecture}
+The \codeLibrary{Mini \progLang{Prolog}} is based on an older specification of \progLang{Haskell} called \codeLibrary{Hugs 98}. The architecture of
+the library is described in the Figure~\ref{fig:miniprlgarchitecture}. The main components are as follows:
+
+\begin{enumerate}
+\item the language itself,
+
+\item multiple search strategies used by the query resolver,
+
+\item a parser,
+
+\item a unification mechanism,
+
+\item an interpreter,
+
+\item a knowledge base, and
+
+\item a REPL.  
+\end{enumerate}
+
+The main highlight of this implementation is the fact that the query resolver can work with multiple search strategies decided at runtime. A query request 
+will consist of the query itself i.e. the terms to be unified, a knowledge base storing the clauses, the unification procedure and finally a user provided 
+search strategy. 
 
 
-
-\section{Resolution}
-this where the complete procedure takes place after the query is passed along with the knowledge 
-
-the resolver searches to create and a list of  goals and then tries to achieve each one.
-
-\cite{website:prologresolution}
-
-\cite{website:resolutionlogicwiki}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{miniprologhugs_architecture.png}
+%\vspace*{1cm}
+  \caption{Mini \progLang{Prolog} architecture}
+  \label{fig:miniprlgarchitecture}
+\end{figure}
 
 
+\section{Prototype architecture}
+
+The focus of this prototype is to embed the language modification procedure and monadic unification into \cite{website:mini-prolog-hugs98} so to further 
+prove the generality and modularity of the approach from the previous prototypes. 
+The architecture for this prototype is beautifully illustrated by Figure~\ref{fig:architecture-proto-3}. 
+
+\begin{figure}[H]
+  \includegraphics[width=1\textwidth]{proto3_architecture_revised.png}
+\vspace*{-1cm}
+  \caption{Architecture of Prototype 3}
+  \label{fig:architecture-proto-3}
+\end{figure}
+
+Since we are aiming for modularity most components in the figure above are untouched. The abstract syntax grammar is modified for the benefits and for it
+to conform to the \codeLibrary{unification-fd} \cite{unification-fd-lib}.
+Looking at the center of the figure you will find \textit{query}. This component takes as input the terms to be unified in modified language form, a 
+search strategy, the knowledge base and the monadic unifier to return a list of substitutions are required by the library. Each of these components will be
+discussed in the sections to come.   
 
 
 \section{Search strategies}
-The base implementation used for this prototype  is \cite{website:mini-prolog-hugs98} and below are the search
-strategies
-\section{Stack Engine}
+The base implementation used for this prototype is \cite{website:mini-prolog-hugs98} and the sections below describe the search
+strategies.
+
+\subsection{Stack engine}
+The stack based engine maintains a stack of triples \haskellConstruct{(s,goal,alts)}
+corresponding to backtrack points, where \haskellConstruct{s} is the substitution at that
+point, goal is the outstanding goal and \haskellConstruct{alts} is a list of possible ways
+of extending the current proof to find a solution.  Each member of alts
+is a pair \haskellConstruct{(tp,u)} where \haskellConstruct{tp} is a new goal that must be proved and \haskellConstruct{u} is
+a unifying substitution that must be combined with the substitution \haskellConstruct{s}.
+The list of relevant clauses at each step in the execution is produced
+by attempting to unify the head of the current goal with a suitably
+renamed clause from the database.
+
+Listing~\ref{tab:stackengineminiprlg}
+
+\begin{code-list}[H]
 \begin{singlespace}
-\inputminted[linenos]{haskell}{haskell-proto3-sudsy-woe.hs}
+\inputminted[linenos, firstline=29, lastline=56]{haskell}{haskell-proto3-sudsy-woe.hs}
 \end{singlespace}
+\caption{Stack engine from \cite{website:mini-prolog-hugs98}}
+\label{tab:stackengineminiprlg}
+\end{code-list}
 
-\section{Pure Engine}
+\subsection{Pure engine}
+ Each node in a \haskellConstruct{Prooftree} corresponds to:
+ either: a solution to the current goal, represented by \haskellConstruct{Done s}, where \haskellConstruct{s}
+         is the required substitution
+ or:     a choice between a number of trees \haskellConstruct{ts}, each corresponding to a
+         proof of a goal of the current goal, represented by \haskellConstruct{Choice ts}.
+         The proof tree corresponding to an unsolvable goal is \haskellConstruct{Choice []} 
+
+Listing~\ref{tab:pureengineminiprlg}
+
+\begin{code-list}[H]
 \begin{singlespace}
-\inputminted[linenos]{haskell}{haskell-proto3-absurd-silicon.hs}
+\inputminted[linenos, firstline=26, lastline=46]{haskell}{haskell-proto3-absurd-silicon.hs}
 \end{singlespace}
+\caption{Pure engine from \cite{website:mini-prolog-hugs98}}
+\label{tab:pureengineminiprlg}
+\end{code-list}
 
-\section{Andorra Engine}
+\subsection{Andorra engine}
+This inference engine implements a variation of the Andorra Principle for
+  logic programming. The basic
+  idea is that instead of always selecting the first goal in the current
+  list of goals, select a relatively deterministic goal.
+For each goal g in the list of goals, calculate the resolvents that would
+result from selecting g.  Then choose a g which results in the lowest
+number of resolvents.  If some g results in 0 resolvents then fail.
+(This would occur for a goal such as:  
+
+\mint{prolog}|?- append(A,B,[1,2,3]),equals(1,2).)|
+
+\progLang{Prolog} would not perform this optimization and would instead search
+and backtrack wastefully.  If some g results in a single resolvent
+(i.e., only a single clause matches) then that g will get selected;
+by selecting and resolving g, bindings are propagated sooner, and useless
+search can be avoided, since these bindings may prune away choices for
+other clauses.  For example: 
+
+\mint{prolog}|?- append(A,B,[1,2,3]),B=[].|
+
+Listing~\ref{tab:andorraengineminiprlg}
+
+\begin{code-list}[H]
 \begin{singlespace}
-\inputminted[linenos]{haskell}{haskell-proto3-diatomic-unbank.hs}
+\inputminted[linenos, firstline=29, lastline=64]{haskell}{haskell-proto3-diatomic-unbank.hs}
 \end{singlespace}
+\caption{Andorra engine from \cite{website:mini-prolog-hugs98}}
+\label{tab:andorraengineminiprlg}
+\end{code-list}
 
-\section{Current Unification}
+
+\section{Language}
+\subsection{Current language}
+Listing~\ref{tab:miniprlglang} shows the original abstract syntax for a \progLang{Prolog}-like language.
+A \progLang{Prolog} term can consists of two constructs a variable and a complex term with an atom as a head. A \haskellConstruct{Clause} consists 
+of a head of type \haskellConstruct{Term }and a body of type \haskellConstruct{[Term]}. 
+
+\begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto3-pentyl-skater.hs}
+  \inputminted[linenos, firstline=24, lastline=37]{haskell}{haskell-proto3-butter-chicken.hs}
 \end{singlespace}
+\caption{Current abstract syntax grammar in \cite{website:mini-prolog-hugs98}}
+\label{tab:miniprlglang}
+\end{code-list}
 
+This language suffers from most of the drawbacks mentioned in the previous prototypes and hence limiting its flexibility.
 
-\section{Syntax Modification}
+\subsection{Language modification}
+Listing~\ref{tab:miniprlglangmod} describes the necessary modifications required to adapt the language for monadic unification.
+This procedure consists of opening the language and adding the necessary instances for \codeLibrary{unification-fd} \cite{unification-fd-lib}
+compatibility.
+
+\begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto3-uplift-apart.hs}
+  \inputminted[linenos, firstline=64, lastline=87]{haskell}{haskell-proto3-uplift-apart.hs}
 \end{singlespace}
+\caption{Language modification}
+\label{tab:miniprlglangmod}
+\end{code-list}
 
-\section{Monadic Unification}
+\section{Unification}
+
+\subsection{Current unification}
+
+Listing~\ref{tab:miniprlgunif} describes the current unification mechanism which works on \haskellConstruct{st} substitutions. The 
+\haskellConstruct{unify} function compares the two terms and returns a list of substitutions. As with the base implementations from
+the previous prototypes.
+
+\begin{code-list}[H]
 \begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto3-bevy-icebox.hs}
+  \inputminted[linenos, firstline=67, lastline=95]{haskell}{haskell-proto3-pentyl-skater.hs}
 \end{singlespace}
+\caption{Current unification procedure in \cite{website:mini-prolog-hugs98}}
+\label{tab:miniprlgunif}
+\end{code-list}
+
+THe shortcomings are translated from the language to the unification as it is based on basic pattern matching.
+
+\subsection{Monadic unification}
+Listing~\ref{tab:miniprlgmonadicunif} shows the procedure for monadic unification. Most components of the procedure remain similar to the ones
+in previous prototypes.
+\begin{code-list}[H]
+\begin{singlespace}
+  \inputminted[linenos, firstline=1, lastline=42]{haskell}{haskell-proto3-bevy-icebox.hs}
+\end{singlespace}
+\caption{Monadic unification}
+\label{tab:miniprlgmonadicunif}
+\end{code-list}
+
+The major changes occur in \haskellConstruct{stConvertor} used to convert the result of monadic unification into the original \haskellConstruct{st} form 
+and \haskellConstruct{unify}.
 
 
-\section{Chapter Recapitulation}
-
+\section{Chapter recapitulation}
+Recapitulating, this chapter provided us with a working implementation of a \progLang{Prolog}-like interpreter with the option to change
+the search strategy further proving the modularity and genericity of the language modification and monadic unification procedure.
 
 \end{document}

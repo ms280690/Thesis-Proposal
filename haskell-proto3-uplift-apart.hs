@@ -86,20 +86,6 @@ instance Unifiable FTS where
 		else Nothing
 	zipMatch _ _ = Nothing
 
-instance Applicative FTS where
-	pure x = FS "" [x]
-	(FS a fs) <*> (FS b xs)   = FS (a ++ b) [f x | f <- fs, x <- xs]
-	--other cases
-{--
-instance Monad FTS where
-	func = 
-instance Variable FTS where
-	func = 
-
-instance BindingMonad FTS where
-	func = 
---}
-
 data VariableName = VariableName Int String
 
 idToVariableName :: Id -> VariableName
@@ -128,13 +114,6 @@ variableIdExtractor (Fix x) = case x of
 	(FS _ xs) -> Prelude.concat $ Prelude.map variableIdExtractor xs
 	(FV v) -> [v]
 
-{--
-variableNameExtractor :: Fix FTS -> [VariableName]
-variableNameExtractor (Fix x) = case x of
-  (FS _ xs) -> Prelude.concat $ Prelude.map variableNameExtractor xs
-  (FV v)     -> [v]
-  _         -> [] 
---}
 
 variableSet :: [Fix FTS] -> S.Set (Fix FTS)
 variableSet a = S.fromList a
@@ -350,6 +329,30 @@ goTest test = ST.runSTBinding $ do
   return $! case answer of
     (Left x)  -> "error: " ++ show x
     (Right y) -> "ok:    " ++ show y
+
+---------------------------------------------------------
+-- instance Applicative FTS where
+--  pure x = FS "" [x]
+--  (FS a fs) <*> (FS b xs)   = FS (a ++ b) [f x | f <- fs, x <- xs]
+--  --other cases
+{--
+instance Monad FTS where
+  func = 
+instance Variable FTS where
+  func = 
+
+instance BindingMonad FTS where
+  func = 
+--}
+
+{--
+variableNameExtractor :: Fix FTS -> [VariableName]
+variableNameExtractor (Fix x) = case x of
+  (FS _ xs) -> Prelude.concat $ Prelude.map variableNameExtractor xs
+  (FV v)     -> [v]
+  _         -> [] 
+--}
+
 
 
 ---------------------------------------------------------------

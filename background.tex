@@ -10,10 +10,13 @@
 \chapter{Background}\label{chap:background}
 %----------------------------------------------------------------------------
 
-\section{What this chapter is about}
+\section{About this chapter}
 
-\noindent\rule{\textwidth}{0.5pt}
-%-----------------------------------------------------------------------------
+This chapter consists of information on the subject of programming languages and their classification into paradigms such as functional and 
+logic styles. Further on, we talk about the languages used for the implementations in this thesis, namely \progLang{Prolog} and 
+\progLang{Haskell}. Moreover, this chapter provides a starting point for various approaches for bringing features of a different languages 
+into the same environment.
+
 
 \section{Languages and their classification}
 Programming languages fall into different categories also known as ``paradigms''.
@@ -50,7 +53,7 @@ without any annotations.
 The algorithm \cite{website:hdmtypesystem} works by initially assigning undefined types to all inputs, next check
 the body of the function for operations that impose type constraints and go on mapping the types of each of the 
 variables, lastly unifying all of the constraints giving the type of the result.
-This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}\yyy{}{\Large.}
+This is, in fact, an instance of the unification algorithm that we discuss in a different context in Chapter~\ref{proto1}.
 
 Logic programming, \cite{spivey1995introduction} on the other hand is based on formal logic.
 A program is a set of rules and formul\ae{} in symbolic logic that are used to derive new formulas from the old
@@ -58,28 +61,10 @@ ones.
 This is done until the one which gives the solution is not derived.
 
 \section{\progLang{Haskell} and \progLang{Prolog}}
-In this thesis we aim to merge two languages
+In this thesis we aim to merge two languages \progLang{Haskell} and \progLang{Prolog}
 together and produce a result which exhibits hybrid
 properties.
-The languages in question are \progLang{Haskell} and \progLang{Prolog}.\endnote{%
-  Replace
-  \vspace*{-1\baselineskip}
-  \begin{quote}\itshape
-    In this thesis we aim to merge two languages
-    together and produce a result which exhibits hybrid
-    properties.
-    The languages in question are \progLang{Haskell} and \progLang{Prolog}.
-  \end{quote}
-  \vspace*{-1\baselineskip}
-  with
-  \vspace*{-1\baselineskip}
-  \begin{quote}\slshape
-    In this thesis we aim to merge two languages---%
-    \progLang{Haskell} and \progLang{Prolog}---%
-    together and produce a result which exhibits hybrid
-    properties.
-  \end{quote}}
-%
+The languages in question are \progLang{Haskell} and \progLang{Prolog}.
 These two languages come from respective the functional programming and logical programming branches of the declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
@@ -94,15 +79,8 @@ number of distributions and is present from academia to industry.
 
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the first
 language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
-\haskellConstruct{Monads}\endnote{%
-  Here ``monad'' is an (admittedly technical) English word.
-  It doesn't need special marking.
-  \mehul{changed}
-}
-can be 
-described as composable computation descriptions \cite{website:monadshaskellorg}.
-Each monad
-consists of a description of what has action has to be executed, how the action has to be run and how to combine
+Monads can be described as composable computation descriptions \cite{website:monadshaskellorg}.
+Each monad consists of a description of what has action has to be executed, how the action has to be run and how to combine
 such computations.
 An action can describe an impure or side-effecting computation, for example, input and output can be performed
 outside the language but can be brought together with pure functions inside in a program resulting in a separation
@@ -186,23 +164,13 @@ append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
 \label{fig:append-prolog}
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
-The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
-The same in \progLang{Haskell} would be of the form:\endnote{%
-  \david{Is the point here that templating helps, or what?}\newline
-  \mehul{it is just one of the many ways to bring the languages together}\newline
-  \david{Say something in the text.}
-}
-%\begin{minted}[linenos]{haskell}
-%append(Ps, Qs, Rs) = (Ps = [] & Qs = Rs) ||
-%	(∃ X, Xs, Ys -> Ps = [X|Xs] & 
-%		Rs = [X|Ys] & 
-%			append(Xs, Qs, Ys))
-%\end{minted}  
-
+The second predicate matches the head of the first and the resulting lists and then recurses on the tails. Listing~\ref{tab:prlgappndhskl} shows how a direct 
+translation of Listing~\ref{fig:append-prolog} into \progLang{Haskell} while 
+Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation.
 
 \begin{code-list}[th]
   \begin{singlespace}
-    \inputminted[linenos]{haskell}{append.pl}
+    \inputminted[linenos]{haskell}{append_no_quasi.hs}
   \end{singlespace}
   \caption{\progLang{Prolog} append function translated to \progLang{Haskell}.}
 \label{tab:prlgappndhskl}
@@ -217,18 +185,12 @@ The same in \progLang{Haskell} would be of the form:\endnote{%
 \end{code-list}
 
 
-
-Listing~\ref{tab:prlgappndhskl} shows \yyy{}{\LARGE !}\endnote{%
-  Shows what?
-}
-
 Consider the object functional programming language, \progLang{Scala}
 \cite{website:scala}.
 It is purely functional but with objects and classes.
-With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell}.\endnote{%
-  Sentence fragment.
-}
-There have been quite a few attempts to ``merge'' these two programming languages that are from different programming
+With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell} and the possible 
+methodologies to do so,
+there have been quite a few attempts to ``merge'' these two programming languages that are from different programming
 paradigms.
 The attempts fall into two categories as follows:
 
@@ -241,11 +203,9 @@ The attempts fall into two categories as follows:
   Paradigm integration, developing a hybrid programming language that is a functional logic programming language
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
-
 The approaches of embedding and paradigm integration are discussed in Chapter~\ref{chap:embedding} and Chapter~\ref{chap:multiparadigm} 
 respectively.  
 
-\section{Chapter Recapitulation}
 
 \ifMain
 \begin{scope}
