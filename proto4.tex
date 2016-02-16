@@ -96,9 +96,9 @@ the second argument, getting an \haskellConstruct{IOAction} \haskellConstruct{b}
 Listing~\ref{tab:ioactionexampleoutput} shows the output.
 
 
-\begin{code-list}
+\begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[frame=lines,linenos]{haskell}
+\begin{minted}[linenos]{haskell}
 hello = put "What is your name?"      `seqio` \_    ->
         get                           `seqio` \name ->
         put "What is your age?"       `seqio` \_    ->
@@ -116,7 +116,7 @@ code can be data and data can be code.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[frame=lines,linenos]{haskell}
+\begin{minted}[linenos]{haskell}
 *Main> print hello
 Put "What is your name?" (
   Get ($0 -> 
@@ -141,7 +141,7 @@ Put "What is your name?" (
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos,frame=lines]{haskell}
+\begin{minted}[linenos]{haskell}
 instance Monad IOAction where
     return = Return
     (>>=)  = seqio
@@ -158,7 +158,7 @@ The main benefit of doing this is that we can now sequence actions using \progLa
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos,frame=lines]{haskell}
+\begin{minted}[linenos]{haskell}
 hello2 = do put "What is your name?"
             name <- get
             put "What is your age?"
@@ -180,7 +180,7 @@ Listing~\ref{tab:ioactionrun} shows the \haskellConstruct{run} function for \has
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos,frame=lines]{haskell}
+\begin{minted}[linenos]{haskell}
 run :: IOAction a -> IO a
 run (Return a) = return a
 run (Put s io) = putStrLn s >> run io
@@ -195,7 +195,7 @@ Listing~\ref{tab:ioactionrunoutput} shows the output for the \haskellConstruct{r
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos,frame=lines]{haskell}
+\begin{minted}[linenos]{haskell}
 *Main> run hello
 What is your name?
 Chris
@@ -262,10 +262,6 @@ operations. The \haskellClass{OneBinding} constructor represents a \prologConstr
 
   \inputminted[linenos, firstline=7, lastline=16]{haskell}{haskell-proto4-platen-winkel.hs}
 \end{singlespace}
-<<<<<<< HEAD
-\caption{}
-\label{000588761}
-=======
 \caption{\progLang{Prolog}-like language with \languageConstruct{IO} constructors}
 \label{tab:prologresultdatatype}
 \end{code-list}
