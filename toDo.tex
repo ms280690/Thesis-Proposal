@@ -65,8 +65,7 @@
 
 \item
   Write enough of Chapters \ref{proto1}--\ref{proto4} that we can decide
-  what material is needed in Chapters~\ref{chap:quasiquotation}
-  and~\ref{chap:metasyntacticvariables}.
+  what material is needed in Chapters~\ref{chap:relatedWork}.
 
 \item
   Rewrite \S~\ref{sec:exec-models-prolog} as suggested at the top of that section. 
@@ -98,9 +97,19 @@
 \subsection{Thoughts on Chapter~\ref{proto1}
   code}\label{sec:thoughts-chapt-proto1-code}
 
-I think that a lot of code cleanup ought to happen.  For instance, in
-Listing~\vref{tab:varsToDictM}, \haskellConstruct{variableExtractor} and
-\haskellConstruct{variableSet} are not used in the subsequent code.
+\begin{itemize}
+\item I think that a lot of code cleanup ought to happen.  For instance, in
+  Listing~\vref{tab:varsToDictM}, \haskellConstruct{variableExtractor} and
+  \haskellConstruct{variableSet} are not used in the subsequent code.
+
+\item 
+  Without some actual tests we are missing the code that shows how a test
+  case is built.
+
+\item
+  Names like \haskellConstruct{f1} are hacking.
+\end{itemize}
+
 
 \section{A List of Colloquialisms}\label{sec:list-colloquialisms}
 \begin{enumerate}
