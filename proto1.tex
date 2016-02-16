@@ -108,116 +108,7 @@ The implementation consists of the following components:
 Each of the components are discussed in the following sections.
 
 
-\section{How \progLang{Prolog} works}
 
-To replicate \progLang{Prolog} we look into how it works \enparen{see, for instance,
-      \textup{\cite{webiste:learnprolognow}}}.
-%
-As any other language we start with the syntax and semantics.
-We begin with the programming constructs of the language.
-
-\progLang{Prolog} has three types of terms: constants, variables and complex terms.
-
-Two terms can be unified if they are the same or the variables can be assigned to terms such that the resulting
-terms are equal.
-
-The possibilities are:
-\begin{enumerate}
-\item If \mSV{term1} and \mSV{term2} are constants, then \mSV{term1} and \mSV{term2} unify if and only if they
-  are the same atom, or the same number. Consider the example in Listing~\ref{tab:unifyingconstants}
-\par
-\begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  =(mia,mia).
-yes
-\end{minted}
-\caption{Unification with constants.}
-\label{tab:unifyingconstants}
-\end{code-list}
-
-
-\item If \mSV{term1} is an uninstantiated variable and \mSV{term2} is any type of term, then \mSV{term1}
-  and \mSV{term2} unify, and \mSV{term1} is instantiated to \mSV{term2}\,.
-  Similarly, if \mSV{term2} is a variable and \mSV{term1} is any type of term, then \mSV{term1} and \mSV{term2}
-  unify, and \mSV{term2} is instantiated to \mSV{term1}.
-  Consider the examples in Listing~\ref{tab:unificationsinglevariable} and 
-  Listing~\ref{tab:unificationmultiplevariable}. (So if they are both 
-variables, they're both instantiated to each other, and we say that they share values.)
-\par
-\begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  mia  =  X.
-X  =  mia
-yes
-\end{minted}
-\caption{Unification with a single variable.}
-\label{tab:unificationsinglevariable}
-\end{code-list}
-
-\begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  X  =  Y.
-yes
-\end{minted}
-\caption{Unification with variables.}
-\label{tab:unificationmultiplevariable}
-\end{code-list}
-
-
-\item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
-
-\begin{enumerate}
-\item they have the same functor and arity, and
-
-\item all their corresponding arguments unify, and
-
-\item the variable instantiations are compatible.
-\end{enumerate}
-Consider the example in Listing~\ref{tab:unificationcomplexterms}.
-\par
-\begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  k(s(g),Y)  =  k(X,t(k)).
-X  =  s(g)
-Y  =  t(k)
-yes
-\end{minted}
-\caption{Unification of complex terms.}
-\label{tab:unificationcomplexterms}
-\end{code-list}
-
-
-
-\item Two terms unify if and only if it follows from the previous three clauses that they unify.
-\end{enumerate}
-
-Unification is just a part of the process where the language
-attempts to find a solution for the given query using the rules provided
-in the knowledge base.
-The other part (searching) is to reach a point where two terms are required to be unified.
-Together they form the query resolver in \progLang{Prolog}.
-
-For example, consider the append function shown in Listing~\ref{tab:prlgappnd}.
-
-\begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-append([],L,L).
-append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
-\end{minted}
-\caption{append function in \progLang{Prolog}}
-\label{tab:prlgappnd}
-\end{code-list}
-%
-whose operation is illustrated in Figure~\ref{fig:Trace for append}.
-In this prototype we explore the unification aspect only.
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale = 0.5]{PrologAppendWorking.png}
-\caption{Trace for append \cite{webiste:learnprolognowappend}}
-\label{fig:Trace for append}
-\end{figure}
 
 \section{Prototype architecture}
 
@@ -226,6 +117,8 @@ In this prototype we explore the unification aspect only.
   \caption{Architecture of Prototype 1}
   \label{fig:proto1-arch}
 \end{figure}
+Chapter~\ref{chap:pwp} provides a general description of the working of \progLang{Prolog}.
+In this prototype we explore the unification aspect only.  
 
 This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type system while
 conforming to the host language.
