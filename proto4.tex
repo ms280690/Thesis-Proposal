@@ -89,18 +89,12 @@ seqio (Get g)    f = Get (\s -> seqio (g s) f)
 \end{code-list}
 
 
-We want to take the \haskellConstruct{IOAction} \haskellConstruct{a} supplied in the first argument, get its return value (which is of type \haskellConstruct{a}) and feed that to the function in 
-the second argument, getting an \haskellConstruct{IOAction} \haskellConstruct{b} out, which can be sequenced with the first \haskellConstruct{IOAction} \haskellConstruct{a}.
+We want to take the \haskellConstruct{IOAction} \haskellConstruct{a} supplied in the first argument, get its return value (which is of type 
+\haskellConstruct{a}) and feed that to the function in 
+the second argument, getting an \haskellConstruct{IOAction} \haskellConstruct{b} out, which can be sequenced with the first \haskellConstruct{IOAction} 
+\haskellConstruct{a}. Listing ~\ref{tab:ioactionexample} describes an example of chaining \haskellConstruct{IOActions} and 
+Listing~\ref{tab:ioactionexampleoutput} shows the output.
 
-That's a bit of a mouthful, but writing this combinator isn't too hard. When we reach the final \haskellConstruct{Return}, we apply the function \haskellConstruct{f} to get a 
-new action. For the other constructors, we keep the form of the action the same, and just thread seqio through the seqio constructor.
-
-Using \haskellConstruct{seqio} we can define the action that gets input from \haskellConstruct{stdin} and immediately prints it to
-the screen: 
-
-%\mint{haskell}|echo = get $\backslash$ seqio $\backslash$ put|
-
-or even more complicated actions:
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -113,23 +107,12 @@ hello = put "What is your name?"      `seqio` \_    ->
         put ("You are " ++ age ++ " years old")
 \end{minted}
 \end{singlespace}
-\caption{}
-\label{}
+\caption{Example operation with \haskellConstruct{IOAction}s}
+\label{tab:ioactionexample}
 \end{code-list}
 
-
-Although this looks like imperative code (admittedly with pretty unpleasant syntax), it's really a value of type \haskellConstruct{IOAction} \Verb!()!. In \progLang{Haskell},\endnote{%
-  Use \macroName{progLang}!
-}
+Although this looks like imperative code, it's really a value of type \haskellConstruct{IOAction} \Verb!()!. In \progLang{Haskell},
 code can be data and data can be code.
-
-In the gist\endnote{%
-  The word ``\textit{gist}'' is an English word, but in this context you are using it for a meaning other than its
-  natural English meaning.
-  You'll need to explain this usage.
-}
- I've defined a function to convert an \haskellConstruct{IOAction} to a \haskellConstruct{String}, which allows them to be printed, so you can load the file into \haskellConstruct{GHCi} 
-and verify that \haskellConstruct{hello} is in fact just data:
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -150,14 +133,11 @@ Put "What is your name?" (
 )
 \end{minted}
 \end{singlespace}
-\caption{}
-\label{}
+\caption{Output of example operation}
+\label{tab:ioactionexampleoutput}
 \end{code-list}
 
-
-It will surprise no one to learn that \haskellConstruct{IOAction} is a monad. In fact we've already defined the necessary bind operation in \
-haskellConstruct{seqio}, so getting 
-the \haskellConstruct{Monad} instance is trivial:
+\haskellConstruct{IOAction} is a monad. Listing~\ref{tab:ioactionmonad} shows the instance for the same.
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -166,20 +146,15 @@ instance Monad IOAction where
     return = Return
     (>>=)  = seqio
 \end{minted}
-
 \end{singlespace}
-\caption{}
-\label{}
+\caption{\haskellClass{IOAction Monad}}
+\label{tab:ioactionmonad}
 \end{code-list}
 
 
 
-The main benefit of doing this is that we can now sequence actions using \progLang{Haskell}'s\endnote{%
-  Use \macroName{progLang}!
-}
-\haskellConstruct{do} notation, which desugars into calls to \Verb!(>>=)!, and 
-hence to \haskellConstruct{seqio}. Our earlier \haskellConstruct{hello} example can now be written as:
-\par
+The main benefit of doing this is that we can now sequence actions using \progLang{Haskell}'s
+\haskellConstruct{do} notation. Listing~\ref{tab:ioactionexampledo} describes the example from Listing~\ref{tab:ioactionexample}:
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -192,19 +167,15 @@ hello2 = do put "What is your name?"
             put ("You are " ++ age ++ " years old!")
 \end{minted}
 \end{singlespace}
-\caption{}
-\label{}
+\caption{Example operation using \haskellClass{do} notation}
+\label{tab:ioactionexampledo}
 \end{code-list}
 
+Since no code is executed, till this the above example is pure and side-effect free.
 
-Remember though, that this is still just defining a value of type 
-\haskellConstruct{IOAction} \Verb!()! ---\endnote{%
-  You want an em-dash, not a hyphen here.
-  \mehul{changed}
-}
-no code is executed, and no effects occur! So far, this post is 100 \% pure.
-
-To see the effects, we need to define a function that takes an \haskellConstruct{IOAction} \haskellConstruct{a} and converts it into a value of type \haskellConstruct{IO} \haskellConstruct{a}, which can then be executed by the interpreter or the runtime system. It's easy to write such a function just by turning it into the approprate calls to \haskellConstruct{putStrLn} and \haskellConstruct{getLine}.
+To see the effects, we need to define a function that takes an \haskellConstruct{IOAction} \haskellConstruct{a} and converts it into a 
+value of type \haskellConstruct{IO} \haskellConstruct{a}, which can then be executed by the interpreter or the runtime system. 
+Listing~\ref{tab:ioactionrun} shows the \haskellConstruct{run} function for \haskellConstruct{IOAction}.
 
 
 \begin{code-list}[H]
@@ -216,16 +187,11 @@ run (Put s io) = putStrLn s >> run io
 run (Get g)    = getLine >>= \s -> run (g s)
 \end{minted}
 \end{singlespace}
-\caption{}
-\label{}
+\caption{\haskellConstruct{run} function for \haskellConstruct{IOAction}}
+\label{tab:ioactionrun}
 \end{code-list}
 
-
-
-You can now load up \haskellConstruct{GHCi} and apply run to any action --
-a value of type \haskellConstruct{IO} \haskellConstruct{a} will be returned, and then immediately executed by the 
-interpreter:
-
+Listing~\ref{tab:ioactionrunoutput} shows the output for the \haskellConstruct{run} function.
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -239,31 +205,14 @@ Hello Chris!
 You are 29 years old
 \end{minted}
 \end{singlespace}
-\caption{}
-\label{}
+\caption{Output for \haskellConstruct{run} function}
+\label{tab:ioactionrunoutput}
 \end{code-list}
 
+\haskellConstruct{IOAction} is a mini-language for doing impure, side-effecting code. It restricts the language constructs to only reading 
+from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} in effect creating a safe embedded domain specific language.  
 
-
-
-
-Is there any practical use to this?
-
-Yes ---\endnote{%
-  The preceding punctuation mark should be an em-dash.
-  \mehul{changed}
-}
-an \haskellConstruct{IOAction} is a mini-language for doing I/O. In this mini language you are restricted to only reading from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} ---\endnote{%
-  The preceding punctuation mark should be an em-dash.
-  \mehul{changed}
-}
-there is no accessing files, spawning threads or network I/O.
-
-In effect we have a 
-``safe'' domain-specific language.
-If a user of your program or library supplies a value of type \haskellConstruct{IOAction} \haskellConstruct{a}, you know that you are free to convert it to an \haskellConstruct{IO} \haskellConstruct{a} using run and execute it, 
-and it will never do anything except reading from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} (not that those things aren't potentially dangerous in themselves, but\dots)
-
+\begin{comment}
 \begin{code-list}[H]
 
 \begin{singlespace}
@@ -273,6 +222,8 @@ and it will never do anything except reading from \haskellConstruct{stdin} and w
 \caption{}
 \label{}
 \end{code-list}
+\end{comment}
+
 
 
 
