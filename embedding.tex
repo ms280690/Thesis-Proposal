@@ -60,11 +60,7 @@ Abundant literature can be found on embedding detailed parts of \progLang{Prolog
 constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
 Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
-The next subsection covers this literature.\endnote{%
-  I am not sure what ``the above'' refers to here: \cite{spivey1999embedding}?.
-\mehul{changed}
-}
-with improvements and further additions.
+The next subsection covers this literature with improvements and further additions.
 
 
 \subsection{Papers from Mike Spivey and Silvija Seres}
@@ -102,11 +98,8 @@ types and search strategies.
 Though not very efficient or practical,
 the method aims at a more elegant translation of programs from one language
 to the other.
-Publications such as \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding any new 
-constructs.\endnote{%
-    This is a sentence fragment.
- 	\mehul{changed}
-  }\elabel{sentence-fragment} 
+Publications such as \cite{erwig2004escape} attempt to exercise \progLang{Haskell} features without adding any new 
+constructs.
 It uses \progLang{Haskell}'s type class to express a general structure for the problem while its instances
 represent the solutions.
 \cite{hinze1998prological} replicates \progLang{Prolog}'s control operations in \progLang{Haskell} suggesting the
@@ -157,17 +150,8 @@ Exploration'' \cite{logic-grows-on-trees-lib}.
 %\item[$\bullet$]Unification Libraries
 \subsection{Unification libraries}
 \progLang{Haskell} has minimal support for unification.
-\endnote{%
-  ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
-  \mehul{changed}.
-}
 There are two libraries (\cite{cmu-lib,unification-fd-lib}) that unify two terms and return
-the resulting substitution.\endnote{%
-  This \P{} makes it sound like unification is unique to \progLang{Prolog} and that the two libraries are
-  \progLang{Prolog} specific, which at least in the case of \cite{unification-fd-lib} is incorrect.
-  \mehul{changed}
-}
-
+the resulting substitution.
 
 %\item[$\bullet$]Backtracking
 \subsection{Backtracking libraries}
@@ -183,7 +167,7 @@ non-linear pattern-matching with backtracking.
 
 \section{Chapter recapitulation}
 Recapitulating, this chapter surveys the approach to embedding programming languages, especially \progLang{Prolog} in \progLang{Haskell}.
-Moreover, it provides tools, some of which are utilized in the prototype implementation.   
+Moreover, it describes tools, some of which are utilized in the prototype implementations.   
 
 \ifMain
 \begin{scope}
