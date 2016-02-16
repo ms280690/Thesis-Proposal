@@ -10,18 +10,17 @@ data PrologResult
    | IOIn (IO String) (String -> PrologResult)
    | IOOut (IO ()) PrologResult
 
-
-
 data OneBinding = Pair VariableName VariableName
 
+data VariableName = VariableName Int String
+      deriving (Eq, Data, Typeable, Ord)
 
---data MiniLang a = MyData a | Empty | Input   
 
---runInIO :: PrologResult -> IO [OneBinding]
+-----------------------------------------------------------------------------------------------
 
 
 data PrologIO a = Input (IO a) | Output (a -> IO ()) | PrologData a | Empty 
---				deriving (Show, Eq, Ord)
+				deriving (Show, Eq, Ord)
 {--
 instance Functor (PrologIO) where
 	fmap f Empty 					= Empty
@@ -68,6 +67,13 @@ concate :: PrologIO t -> PrologIO t -> IO ()
 concate (Input f1) (Output f2) = do
 	x <- f1
 	f2 x
+
+--data MiniLang a = MyData a | Empty | Input   
+
+--runInIO :: PrologResult -> IO [OneBinding]
+
+
+
 {--
 concate (Input getLine) (Output putStrLn)
 Loading package list-extras-0.4.1.4 ... linking ... done.
