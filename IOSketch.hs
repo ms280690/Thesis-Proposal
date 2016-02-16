@@ -27,7 +27,7 @@ module IOSketch (
 where
 
 import Data.Map as Map
-
+import Control.Applicative
 -- | Language is a mini language that has two kinds of
 -- statements: 'Assign' which assign a value to an expression, and
 -- Yield, which evaluates an expression and produces a result.
