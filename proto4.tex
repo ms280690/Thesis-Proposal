@@ -229,14 +229,18 @@ from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} in effect
 
 \section{Appraoch 1}
 
+Listing~\ref{tab:edslpureimpure} describes a micro language having constructors for pure and impure actions. The \haskellConstruct{Pure a}
+constructor represents a result that is returned while \haskellConstruct{Impure (f (Term f a))} build a compound \haskellConstruct{Term}s
+with side-effecting operations.
+
 \begin{code-list}[H]
 
 \begin{singlespace}
-  \inputminted[linenos]{haskell}{haskell-proto4-myrtle-uppers.hs}
+  \inputminted[linenos, firstline=12, lastline=21]{haskell}{haskell-proto4-myrtle-uppers.hs}
 \end{singlespace}
 
-\caption{}
-\label{}
+\caption{eDSL with pure and impure constructors}
+\label{tab:edslpureimpure}
 \end{code-list}
 
 
