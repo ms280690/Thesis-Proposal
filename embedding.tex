@@ -60,9 +60,9 @@ Abundant literature can be found on embedding detailed parts of \progLang{Prolog
 constructs, search strategies and data types.
 One of the major works is covered by the subsection below consisting of a series of papers from Mike Spivey and
 Silvija Seres aimed at bring \progLang{Haskell} and \progLang{Prolog} closer to each other.
-The next subsection covers the literature based on the above\endnote{%
+The next subsection covers this literature.\endnote{%
   I am not sure what ``the above'' refers to here: \cite{spivey1999embedding}?.
-\mehul{you mean below?}
+\mehul{changed}
 }
 with improvements and further additions.
 
@@ -75,7 +75,7 @@ The work presented in the series
 encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
 Being one of the very first attempts, the work is influenced by embeddings of \progLang{Prolog}
 in other languages like \progLang{Scheme} and \progLang{Lisp}.
-Although the host language \yyy{}{\progLang{Haskell}} has distinct characteristics such as lazy evaluation and a strong type system, the proposed
+Although the host language \progLang{Haskell} has distinct characteristics such as lazy evaluation and a strong type system, the proposed
 scheme tends to be general as the aim here is to achieve a \progLang{Prolog}-like eDSL and not a multiparadigm
 declarative language.
 \progLang{Prolog} \prologConstruct{predicates} are translated to \progLang{Haskell} functions which produce a
@@ -99,12 +99,13 @@ Continuing from above, \cite{claessen2000typed} taps into the advantages of the 
 functional logic programming language.
 This results in typed logical predicates and a backtracking \haskellConstruct{monad} with support for various data
 types and search strategies.
-Though not very efficient \yyy{nor}{or} practical,
+Though not very efficient or practical,
 the method aims at a more elegant translation of programs from one language
 to the other.
-While other publications such as \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding any new 
+Publications such as \cite{erwig2004escape} attempt at exercising \progLang{Haskell} features without adding any new 
 constructs.\endnote{%
     This is a sentence fragment.
+ 	\mehul{changed}
   }\elabel{sentence-fragment} 
 It uses \progLang{Haskell}'s type class to express a general structure for the problem while its instances
 represent the solutions.
@@ -155,16 +156,16 @@ Exploration'' \cite{logic-grows-on-trees-lib}.
 
 %\item[$\bullet$]Unification Libraries
 \subsection{Unification libraries}
-
-The more specific the feature, the lesser the support in \progLang{Haskell}.
-Moving on to the other feature of \progLang{Prolog} is \prologConstruct{unification}.\endnote{%
+\progLang{Haskell} has minimal support for unification.
+\endnote{%
   ``Moving on to the other distinct feature of Prolog is Unification.''?  Say it aloud.
   \mehul{changed}.
 }
-There are two libraries (\cite{cmu-lib,unification-fd-lib}) that unify two \progLang{Prolog} terms and return
+There are two libraries (\cite{cmu-lib,unification-fd-lib}) that unify two terms and return
 the resulting substitution.\endnote{%
   This \P{} makes it sound like unification is unique to \progLang{Prolog} and that the two libraries are
   \progLang{Prolog} specific, which at least in the case of \cite{unification-fd-lib} is incorrect.
+  \mehul{changed}
 }
 
 
