@@ -207,6 +207,7 @@
 
 \newcommand{\unbctableofcontents}{
   \renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}%
+  \phantomsection
   \addcontentsline{toc}{chapter}{Table of Contents}%
   \begin{singlespacing}
   \tableofcontents
@@ -220,6 +221,7 @@
 
 \newcommand{\unbclistoftables}{
   \renewcommand{\listtablename}{\center{\small LIST OF TABLES}}%
+  \phantomsection
   \addcontentsline{toc}{chapter}{List of Tables}%
   \begin{singlespacing}
   \listoftables
@@ -234,6 +236,7 @@
 
 \newcommand{\unbclistoffigures}{
   \renewcommand{\listfigurename}{\center{\small LIST OF FIGURES}}%
+  \phantomsection
   \addcontentsline{toc}{chapter}{List of Figures}%
   \begin{singlespacing}
   \listoffigures
@@ -241,6 +244,7 @@
 }
 
 \newcommand{\unbclistofcode}{
+  \phantomsection
   \addcontentsline{toc}{chapter}{List of Code Listings}%
   \begin{singlespacing}
   \listof{code-list}{\center{\small LIST OF CODE LISTINGS}}
