@@ -155,11 +155,9 @@ Template \progLang{Haskell} provides the facilities mentioned above.
 For example, consider the code in Figure~\ref{fig:append-prolog}
 in \progLang{Prolog} to append two lists,
 \begin{code-list}[h]
-\begin{minted}[linenos,frame=lines]{prolog}
-append([], X, X).
-append([X|Xs], Ys, [X|Zs]) :- append(Xs, Ys, Zs).
-\end{minted}    
-\vspace*{-0.8\baselineskip}
+\begin{singlespace}
+\inputminted[linenos]{prolog}{prolog-background-append.pl}
+\end{singlespace}   
 \caption{Code to ``append'' in \protect\progLang{Prolog}.}
 \label{fig:append-prolog}
 \end{code-list}
