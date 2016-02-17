@@ -24,12 +24,7 @@ control of operations of the language irrespective of them pure or impure.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-Prelude> x <- getLine
-Hello
-Prelude> x
-"Hello"
-\end{minted}
+\inputminted{haskell}{haskell-proto4-haskell-getLine.hs}
 \end{singlespace}
 \caption{\progLang{Haskell} \haskellConstruct{getLine}}
 \label{tab:haskellgetline}
@@ -40,11 +35,7 @@ are pure. Consider the Listing~\ref{tab:ioactiondatatype} describing an example 
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-data IOAction a = Return a
-                | Put String (IOAction a)
-                | Get (String -> IOAction a)
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-datatype.hs}
 \end{singlespace}
 \caption{\languageConstruct{IO} action data type taken from \cite{website:ioispurechristaylor}}
 \label{tab:ioactiondatatype}
@@ -77,12 +68,7 @@ operator described in Listing~\ref{tab:seqioop}.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-seqio :: IOAction a -> (a -> IOAction b) -> IOAction b
-seqio (Return a) f = f a
-seqio (Put s io) f = Put s (seqio io f)
-seqio (Get g)    f = Get (\s -> seqio (g s) f)
-\end{minted}
+\inputminted{haskell}{haskell-proto4-seqio-op.hs}
 \end{singlespace}
 \caption{\haskellConstruct{seqio} operation}
 \label{tab:seqioop}
@@ -98,14 +84,7 @@ Listing~\ref{tab:ioactionexampleoutput} shows the output.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-hello = put "What is your name?"      `seqio` \_    ->
-        get                           `seqio` \name ->
-        put "What is your age?"       `seqio` \_    ->
-        get                           `seqio` \age  ->
-        put ("Hello " ++ name ++ "!") `seqio` \_    ->
-        put ("You are " ++ age ++ " years old")
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-example.hs}
 \end{singlespace}
 \caption{Example operation with \haskellConstruct{IOAction}s}
 \label{tab:ioactionexample}
@@ -116,22 +95,7 @@ code can be data and data can be code.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-*Main> print hello
-Put "What is your name?" (
-  Get ($0 -> 
-    Put "What is your age?" (
-      Get ($1 -> 
-        Put "Hello $0!" (
-          Put "You are $1 years old" (
-            Return ()
-          )
-        )
-      )
-    )
-  )
-)
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-example-output.hs}
 \end{singlespace}
 \caption{Output of example operation}
 \label{tab:ioactionexampleoutput}
@@ -141,11 +105,7 @@ Put "What is your name?" (
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-instance Monad IOAction where
-    return = Return
-    (>>=)  = seqio
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-monad.hs}
 \end{singlespace}
 \caption{\haskellClass{IOAction Monad}}
 \label{tab:ioactionmonad}
@@ -158,14 +118,7 @@ The main benefit of doing this is that we can now sequence actions using \progLa
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-hello2 = do put "What is your name?"
-            name <- get
-            put "What is your age?"
-            age <- get
-            put ("Hello, " ++ name ++ "!")
-            put ("You are " ++ age ++ " years old!")
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-example-do.hs}
 \end{singlespace}
 \caption{Example operation using \haskellConstruct{do} notation}
 \label{tab:ioactionexampledo}
@@ -180,12 +133,7 @@ Listing~\ref{tab:ioactionrun} shows the \haskellConstruct{run} function for \has
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-run :: IOAction a -> IO a
-run (Return a) = return a
-run (Put s io) = putStrLn s >> run io
-run (Get g)    = getLine >>= \s -> run (g s)
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-run.hs}
 \end{singlespace}
 \caption{\haskellConstruct{run} function for \haskellConstruct{IOAction}}
 \label{tab:ioactionrun}
@@ -195,15 +143,7 @@ Listing~\ref{tab:ioactionrunoutput} shows the output for the \haskellConstruct{r
 
 \begin{code-list}[H]
 \begin{singlespace}
-\begin{minted}[linenos]{haskell}
-*Main> run hello
-What is your name?
-Chris
-What is your age?
-29
-Hello Chris!
-You are 29 years old
-\end{minted}
+\inputminted{haskell}{haskell-proto4-ioaction-run-output.hs}
 \end{singlespace}
 \caption{Output for \haskellConstruct{run} function}
 \label{tab:ioactionrunoutput}
