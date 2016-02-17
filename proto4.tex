@@ -10,14 +10,14 @@
 
 
 \section{About this chapter}
-The aim of this prototype is to embed \languageConstruct{IO} operations within the definition on an eDSL so as to allow the chaining and control 
-of operations of the language irrespective of them pure or impure.
+The aim of this prototype is to embed \languageConstruct{IO} operations within the definition on an eDSL so as to allow the chaining and 
+control of operations of the language irrespective of them pure or impure.
 
 \section{\progLang{Haskell} \languageConstruct{IO} is pure}
 
 \cite{website:ioispurechristaylor}
 
-\progLang{Haskell} calls itself a pure functional programming language. Every function in Haskell is a function in the mathematical sense (i.e., ``pure'').
+\progLang{Haskell} calls itself a pure functional programming language. Every function in \progLang{Haskell} is a function in the mathematical sense (i.e., ``pure'').
  Even side-effecting \languageConstruct{IO} operations are but a description of what to do, produced by pure code. There are no statements or instructions, 
  only expressions which cannot mutate variables (local or global) nor access state like time or random numbers \cite{website:haskellorg}. Consider the
  example in Listing~\ref{tab:haskellgetline} describing the \haskellConstruct{getLine} function in \progLang{Haskell}. 
@@ -167,7 +167,7 @@ hello2 = do put "What is your name?"
             put ("You are " ++ age ++ " years old!")
 \end{minted}
 \end{singlespace}
-\caption{Example operation using \haskellClass{do} notation}
+\caption{Example operation using \haskellConstruct{do} notation}
 \label{tab:ioactionexampledo}
 \end{code-list}
 
@@ -253,8 +253,8 @@ if the running is done inside a monad then the IO still is pure.
 
 
 Listing ~\ref{tab:prologresultdatatype} shows a \progLang{Prolog}-like language encapsulating impure actions for input and output 
-operations. The \haskellClass{OneBinding} constructor represents a \prologConstruct{unifier} as a pairs of variables. For termination we use
-\haskellClass{NoResult}. 
+operations. The \haskellConstruct{OneBinding} constructor represents a \prologConstruct{unifier} as a pairs of variables. For termination 
+we use \haskellConstruct{NoResult}. 
 
 
 \begin{code-list}[H]
