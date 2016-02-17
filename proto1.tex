@@ -227,8 +227,8 @@ a \progLang{Haskell} provides fixed-points in two forms, one for data and one fo
 In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
-
-The resulting language is of the form,\endnote{%
+\newline
+\noindent The resulting language is of the form,\endnote{%
   There is a weird \TeX{} problem here jamming lines together.
 }
 \mint{haskell}|data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)|
