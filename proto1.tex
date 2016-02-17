@@ -144,18 +144,9 @@ Consider the language in Listing~\ref{tab:closed-terms}, which has been adopted 
 \cite{prolog-lib}.
 
 \begin{code-list}[H]
-\begin{minted}[linenos]{haskell}
-  data VariableName = VariableName Int String
-  deriving (Eq, Data, Typeable, Ord)
-  data Atom         = Atom      !String
-                    | Operator  !String
-  deriving (Eq, Ord, Data, Typeable)
-  data Term = Struct Atom [Term]
-            | Var VariableName
-            | Wildcard
-            | Cut Int
-  deriving (Eq, Data, Typeable)
-\end{minted}
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto1-closed-terms.hs}
+\end{singlespace}
   \caption{A classic recursive grammar}
   \label{tab:closed-terms}
 \end{code-list}
@@ -163,9 +154,7 @@ Consider the language in Listing~\ref{tab:closed-terms}, which has been adopted 
 Even though \textit{Term} has a number of constructors the resulting construct has a single type.
 Hence, a binary function would have type
 \par
-\begin{minted}{haskell}
-foo :: Term -> Term -> Term
-\end{minted}
+\mint{haskell}|foo :: Term -> Term -> Term|
 
 Listing~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
 abstract syntax of a language.
@@ -181,13 +170,9 @@ data type is replaced by two related data types.
 \end{comment}
 Consider the code in Listing~\ref{tab:non-recurse}.
 \begin{code-list}[H]
-  \begin{minted}[gobble=3,linenos]{haskell}
-    data FlatTerm a = Struct Atom [a]
-                    | Var VariableName
-                    | Wildcard
-                    | Cut Int
-               deriving (Show, Eq, Ord)
-  \end{minted}
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto1-non-recurse.hs}
+\end{singlespace}
   \caption{A flattened (non-recursive) grammar}
   \label{tab:non-recurse}
 \end{code-list}
@@ -210,14 +195,9 @@ and called `type', which is the kind of any (monomorphic) data type
 Listing~\ref{tab:kindsinhaskell} describes kinds in \progLang{Haskell}.
 
 \begin{code-list}[H]
-\begin{minted}[linenos]{haskell}
-Int :: *
-Maybe :: * -> *
-Maybe Bool :: *
-a -> a :: *
-[] :: * -> *
-(->) :: * -> * -> *
-\end{minted}
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto1-kinds-in-haskell.hs}
+\end{singlespace}
 \caption{\haskellConstruct{kinds} in \progLang{Haskell}}
 \label{tab:kindsinhaskell}
 \end{code-list}
@@ -232,9 +212,8 @@ of the above language,
 for example something of the form,
 \mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
 and how to represent it generically to perform operations on it, since
-\begin{minted}[linenos]{haskell}
-(FlatTerm a) != (FlatTerm (FlatTerm a))
-\end{minted}
+\mint{haskell}|(FlatTerm a) != (FlatTerm (FlatTerm a))|
+
 %
 because with our original grammar all the expression that could be defined would be represented by a single entity
 \haskellConstruct{Term}, no matter how deep they were.
@@ -252,9 +231,7 @@ which we apply to our abstract syntax.
 The resulting language is of the form,\endnote{%
   There is a weird \TeX{} problem here jamming lines together.
 }
-\begin{minted}[linenos]{haskell}
-data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)
-\end{minted}
+\mint{haskell}|data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)|
 %
 simply speaking all the expressions resulting from \haskellConstruct{FlatTerm} can be represented  by the type signature \haskellConstruct{Fix FlatTerm}.
 
@@ -269,20 +246,9 @@ Consider the scenario where the language needs to accommodate additional type of
 \begin{enumerate}
 \item Manually modify the structure of the language, as shown in Listing~\ref{tab:man-enhan-gram}.
   \begin{code-list}[H]
-    \begin{minted}[linenos,gobble=5]{haskell}
-      type Atom            = String
-
-      data VariableName    = VariableName Int String
-      deriving (Eq, Data, Typeable, Ord)
-
-      data Term  = Struct Atom [Term]
-                 | Var VariableName
-                 | Wildcard
-                 | Cut Int
-                 | New_Constructor_1 .........
-                 | New_Constructor_2 .........
-        deriving (Eq, Data, Typeable)
-    \end{minted}
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto1-man-enhan-gram.hs}
+\end{singlespace}
     \caption{A manually enhanced recursive grammar}
     \label{tab:man-enhan-gram}
   \end{code-list}
@@ -314,11 +280,9 @@ T (Struct 'atom' [Abox, T (Cut 0)])
 
 
 \begin{code-list}[H]
-  \begin{minted}[linenos,gobble=2]{haskell}
-    data Extended f  = New_Constructor_1 ...
-                     | New_Constructor_2 ....
-                     | Base (f (Extended f))
-  \end{minted}
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto1-garfunkle.hs}
+\end{singlespace}
   \caption{The \protect{\haskellConstruct{Extended}} type constructor}
   \label{tab:garfunkle}
 \end{code-list}
