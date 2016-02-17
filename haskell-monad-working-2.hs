@@ -24,7 +24,7 @@ type Value             = Int
 data Variable          = Variable (VariableName, Value)
                        deriving (Show, Eq)
 type IntegerDictionary = [Variable]
--- Creating Initial State of Integer Dictionary
+
 init_dictionary :: IntegerDictionary
 init_dictionary = [
   Variable ("x0", 0), Variable ("x1", 1),
@@ -51,11 +51,6 @@ insertVariableHelper variable dictionary =
 runInsertVariable :: IntegerDictionary -> Variable -> IntegerDictionary
 runInsertVariable init_dictionary variable = snd $
     runState (insertVariable variable) init_dictionary
-{--
-runInsertVariable init_dictionary (Variable ("x",10))
-[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
-Variable ("x4",4),Variable ("x5",5),Variable ("x",10)]
---}
 
 removeVariable :: Variable -> State IntegerDictionary Variable
 removeVariable variable = do
@@ -69,14 +64,6 @@ removeVariableHelper variable dictionary =
 runRemoveVariable :: IntegerDictionary -> Variable -> IntegerDictionary
 runRemoveVariable init_dictionary variable = snd $ runState (removeVariable
 	variable) init_dictionary
-{--
-runRemoveVariable init_dictionary (Variable ("x0",0))
-[Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),Variable ("x4",4),
-Variable ("x5",5)]
---}
-
-
--- give example of x * y with insert and update
 
 extractVariableValue :: Variable -> Value
 extractVariableValue (Variable (_, value)) = value
@@ -101,3 +88,21 @@ runExampleOperation init_dictionary (Variable ("x", 10)) (Variable ("y", 20))
 Variable ("x4",4),Variable ("x5",5),Variable ("x",10),Variable ("y",20),
 Variable ("product",200)]
 --}
+
+
+-- Creating Initial State of Integer Dictionary
+
+{--
+runInsertVariable init_dictionary (Variable ("x",10))
+[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
+Variable ("x4",4),Variable ("x5",5),Variable ("x",10)]
+--}
+
+{--
+runRemoveVariable init_dictionary (Variable ("x0",0))
+[Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),Variable ("x4",4),
+Variable ("x5",5)]
+--}
+
+
+-- give example of x * y with insert and update

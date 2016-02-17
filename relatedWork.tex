@@ -141,7 +141,7 @@ for applying the operation on the dictionary.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=35, lastline=76]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=35, lastline=69]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Functions}
 \label{tab:hskllmndworkngfunctions}
@@ -153,12 +153,28 @@ storing back the result in the dictionary.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=81, lastline=123]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=71, lastline=84]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Examples}
 \label{tab:hskllmndworkngexamples}
 \end{code-list}
 
+Listing~\ref{tab:hskllmndworkngexamplesoutput} shows the output of \haskellConstruct{runExampleOperation} function.
+
+\begin{code-list}[H]
+  \begin{singlespace}
+%    \inputminted[linenos, firstline=86, lastline=89]{haskell}{haskell-monad-working-2.hs} % does not colour as it is in comments in .hs 
+%file
+\begin{minted}[linenos]{haskell}
+runExampleOperation init_dictionary (Variable ("x", 10)) (Variable ("y", 20))
+[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
+Variable ("x4",4),Variable ("x5",5),Variable ("x",10),Variable ("y",20),
+Variable ("product",200)]
+\end{minted}
+  \end{singlespace}
+  \caption{Haskell Monad Working: Example output}
+\label{tab:hskllmndworkngexamplesoutput}
+\end{code-list}
 
 %% dgc : The [] in the section heading avoids having the reference show
 %% up in the table of contents.  
