@@ -158,10 +158,9 @@ The possibilities are:
   are the same atom, or the same number. Consider the example in Listing~\ref{tab:unifyingconstants}
 \par
 \begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  =(mia,mia).
-yes
-\end{minted}
+\begin{singlespace}
+\inputminted{prolog}{prolog-pwp-unify-constants.pl}
+\end{singlespace}
 \caption{Unification with constants.}
 \label{tab:unifyingconstants}
 \end{code-list}
@@ -176,23 +175,22 @@ yes
 variables, they're both instantiated to each other, and we say that they share values.)
 \par
 \begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  mia  =  X.
-X  =  mia
-yes
-\end{minted}
+\begin{singlespace}
+\inputminted{prolog}{prolog-pwp-unify-single-variable.pl}
+\end{singlespace}
 \caption{Unification with a single variable.}
 \label{tab:unificationsinglevariable}
 \end{code-list}
 
 \begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  X  =  Y.
-yes
-\end{minted}
+\begin{singlespace}
+\inputminted{prolog}{prolog-pwp-unify-multi-variable.pl}
+\end{singlespace}
 \caption{Unification with variables.}
 \label{tab:unificationmultiplevariable}
 \end{code-list}
+
+
 
 
 \item If \mSV{term1} and \mSV{term2} are complex terms, then they unify if and only if:
@@ -207,12 +205,9 @@ yes
 Consider the example in Listing~\ref{tab:unificationcomplexterms}.
 \par
 \begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-?-  k(s(g),Y)  =  k(X,t(k)).
-X  =  s(g)
-Y  =  t(k)
-yes
-\end{minted}
+\begin{singlespace}
+\inputminted{prolog}{prolog-pwp-unify-complex-terms.pl}
+\end{singlespace}
 \caption{Unification of complex terms.}
 \label{tab:unificationcomplexterms}
 \end{code-list}
@@ -231,10 +226,9 @@ Together they form the query resolver in \progLang{Prolog}.
 For example, consider the append function shown in Listing~\ref{tab:prlgappnd}.
 
 \begin{code-list}[H]
-\begin{minted}[linenos]{prolog}
-append([],L,L).
-append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
-\end{minted}
+\begin{singlespace}
+\inputminted{prolog}{prolog-pwp-append.pl}
+\end{singlespace}
 \caption{append function in \progLang{Prolog}}
 \label{tab:prlgappnd}
 \end{code-list}
