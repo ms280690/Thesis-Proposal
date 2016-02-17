@@ -191,10 +191,9 @@ replace the unification mechanism from \codeLibrary{prolog-0.2.0.1} \cite{prolog
 
 The results produced by the query resolver are shown in Listing~\ref{tab:prlg0201unifier}.
 \begin{code-list}[H]
-\begin{minted}[linenos]{haskell}
-type Unifier      = [Substitution]
-type Substitution = (VariableName, Term)
-\end{minted}
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto2-prlg-0201-unifier.hs}
+\end{singlespace}
 \caption{prolog-0.2.0.1 Unifier}
 \label{tab:prlg0201unifier}
 \end{code-list}
@@ -261,14 +260,7 @@ signature of \haskellConstruct{unify} is shown in Listing~\ref{tab:unifytypesign
 
 \begin{code-list}[H]
 	\begin{singlespace}
-		\begin{minted}[linenos]{haskell}
-unify :: 
-(BindingMonad t v m, Fallible t v e, MonadTrans em, Functor (em m), 
-	MonadError e (em m))	 
-=> UTerm t v	 
--> UTerm t v	 
--> em m (UTerm t v)|
-		\end{minted}
+\inputminted{haskell}{haskell-proto2-unify-type-signature.hs}
 	\end{singlespace}
 \caption{\codeLibrary{unification-fd} \haskellConstruct{unify} type signature}
 \label{tab:unifytypesignature}
