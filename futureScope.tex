@@ -72,6 +72,9 @@ an example.
 \label{tab:multitypevariableedsl}
 \end{code-list}
 
+In the above example, the \haskellConstruct{c} type variable is not used by any constructor in \haskellConstruct{FlatTerm} and the fixed 
+point will be calculated around it. 
+
 \section{Constructor specific unification(quantifier + logic) for the same DSL}
 Continuing the example from the previous section, with multi typed constructors one can have constructor specific unification. Generally 
 speaking, quantifiers and logic can be programmed per constructor adding to the extensibility of the language.   
@@ -90,9 +93,6 @@ Listing~\ref{tab:hybridconstruct} provides an example.
 \caption{Grammar with hybrid constructors}
 \label{tab:hybridconstruct}
 \end{code-list}
-
-In the above example, the \haskellConstruct{c} type variable is not used by any constructor in \haskellConstruct{FlatTerm} and the fixed 
-point will be calculated around it. 
 
 \section{Chapter recapitulation}
 Recapitulating, this chapter provided us with points where this thesis could be extended in the future along with suitable samples for the
