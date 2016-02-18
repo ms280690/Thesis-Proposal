@@ -1,0 +1,1 @@
+queryResolver searcStrategy query knowledgeBase
