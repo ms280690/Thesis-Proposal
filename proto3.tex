@@ -70,17 +70,25 @@ The base implementation used for this prototype is \cite{website:mini-prolog-hug
 strategies.
 
 \subsection{Stack engine}
-The stack based engine maintains a stack of triples \haskellConstruct{(s,goal,alts)}
-corresponding to backtrack points, where \haskellConstruct{s} is the substitution at that
-point, goal is the outstanding goal and \haskellConstruct{alts} is a list of possible ways
-of extending the current proof to find a solution.  Each member of alts
-is a pair \haskellConstruct{(tp,u)} where \haskellConstruct{tp} is a new goal that must be proved and \haskellConstruct{u} is
-a unifying substitution that must be combined with the substitution \haskellConstruct{s}.
-The list of relevant clauses at each step in the execution is produced
-by attempting to unify the head of the current goal with a suitably
+The stack based engine works on a stack of triples \haskellConstruct{(s,goal,alts)}
+corresponding to backtrack choice points, where: 
+\begin{enumerate}
+\item \haskellConstruct{s} is the substitution at that point,
+
+\item \haskellConstruct{goal} is the outstanding goal and  
+
+\item \haskellConstruct{alts} is a list of possible ways of extending the current proof to find a solution.   
+\end{enumerate}
+Each member of \haskellClass{alts} is a pair \haskellConstruct{(tp,u)} where: 
+\begin{enumerate}
+\item \haskellConstruct{tp} is a new goal that must be proved and 
+\item \haskellConstruct{u} is a unifying substitution that must be combined with the substitution \haskellConstruct{s}.
+\end{enumerate}
+
+The list of relevant clauses at each step in the execution is produced by attempting to unify the head of the current goal with a suitably
 renamed clause from the database.
 
-Listing~\ref{tab:stackengineminiprlg}
+Listing~\ref{tab:stackengineminiprlg} represents the Stack engine.
 
 \begin{code-list}[H]
 \begin{singlespace}
