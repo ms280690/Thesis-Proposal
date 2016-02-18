@@ -120,27 +120,27 @@ Listing~\ref{tab:pureengineminiprlg} represents the Pure engine.
 \end{code-list}
 
 \subsection{Andorra engine}
-This inference engine implements a variation of the Andorra Principle for
-  logic programming. The basic
-  idea is that instead of always selecting the first goal in the current
-  list of goals, select a relatively deterministic goal.
-For each goal g in the list of goals, calculate the resolvents that would
-result from selecting g.  Then choose a g which results in the lowest
-number of resolvents.  If some g results in 0 resolvents then fail.
-(This would occur for a goal such as:  
+This inference engine implements a variation of the Andorra Principle for logic programming adapted from \cite{haridi1990kernel}. 
+The main difference here is to select a relatively deterministic goal and not the first one. Upon selecting a goal:
+\begin{enumerate}
+\item for each goal g in the list of goals, calculate the resolvents that would result from selecting g, and
+
+\item then choose a g which results in the lowest number of resolvents.
+\end{enumerate}
+
+If some g results in no resolvents then it is regarded as a failure. For instance,
 
 \mint{prolog}|?- append(A,B,[1,2,3]),equals(1,2).)|
 
-\progLang{Prolog} would not perform this optimization and would instead search
-and backtrack wastefully.  If some g results in a single resolvent
-(i.e., only a single clause matches) then that g will get selected;
+\progLang{Prolog} would not perform this optimization and would instead search and backtrack wastefully.  
+If some g results in a single resolvent then that g will get selected;
 by selecting and resolving g, bindings are propagated sooner, and useless
 search can be avoided, since these bindings may prune away choices for
 other clauses.  For example: 
 
 \mint{prolog}|?- append(A,B,[1,2,3]),B=[].|
 
-Listing~\ref{tab:andorraengineminiprlg}
+Listing~\ref{tab:andorraengineminiprlg} represents the Andorra engine.
 
 \begin{code-list}[H]
 \begin{singlespace}

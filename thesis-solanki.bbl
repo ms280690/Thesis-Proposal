@@ -206,6 +206,10 @@ Michael Hanus, \emph{Functional logic programming}, February 2009.
 Michael Hanus, Herbert Kuchen, and Juan~Jose Moreno-Navarro, \emph{Curry: A
   truly functional logic language}, Proc. ILPS, vol.~95, 1995, pp.~95--107.
 
+\bibitem{haridi1990kernel}
+Seif Haridi and Sverker Janson, \emph{Kernel andorra prolog and its
+  computational model}, SICS Research Report (1990).
+
 \bibitem{website:haskellorg}
 Haskell, \emph{Haskell website}, January 2015.
 
