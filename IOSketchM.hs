@@ -7,7 +7,7 @@ import Control.Monad.Trans(lift)
 import qualified Control.Monad.Trans.Except as CME
 import qualified Control.Monad.Trans.State  as CMS
 import qualified Control.Monad.Trans.Cont   as CMC
-
+import Control.Applicative
 -- | Language is a mini language that has two kinds of
 -- statements: 'Assign' which assign a value to an expression, and
 -- Yield, which evaluates an expression and produces a result.
