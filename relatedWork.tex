@@ -89,30 +89,6 @@ generated while searching rather than just for testing.
 The languages based on this approach are \progLang{ALF} \cite{website:alf}, \progLang{Babel} \cite{website:babel},
 \progLang{LPG} \cite{bert1987lpg} and \progLang{Curry} \cite{website:curry}.
 
-
-\section{F-Algebras}
-
-
-We are now ready to define \markWord{F}-algebras in the most general terms.
-First I'll use the language of category theory and then quickly translate it to \progLang{Haskell}.
-
-An \markWord{F}-algebra consists of:
-\begin{enumerate}
-\item an endofunctor \markWord{F} in a category \markWord{C},
-\item an object \markWord{A} in that category, and
-\item a morphism from \markWord{F(A)} to \markWord{A}.
-\end{enumerate}
-
-An \markWord{F}-algebra in \progLang{Haskell} is defined by a functor \haskellConstruct{f}, a carrier type \markWord{a}, and a function from \markWord{(f a)} to \markWord{a}. (The underlying category is \haskellConstruct{Hask}.)
-
-Right about now the definition with which I started this post should start making sense:
-
-\mint{haskell}|type Algebra f a = f a -> a|
-
-For a given functor \haskellConstruct{f} and a carrier type \markWord{a} the algebra is defined by specifying just one function.
-Often this function itself is called the algebra, hence my use of the name \markWord{alg} in previous examples.
-
-
 \section{Monads by example: state monad}
 
 In this section we try and replicate a dictionary of variables. The operations such as adding and removing entries to and from the
