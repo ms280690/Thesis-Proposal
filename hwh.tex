@@ -84,7 +84,7 @@ dictionary are implemented so as to replicate modification. Listing~\ref{tab:hsk
  
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=22, lastline=33]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=22, lastline=35]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Data Types}
 \label{tab:hskllmndworkngdatatype}
@@ -95,7 +95,9 @@ for applying the operation on the dictionary.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=35, lastline=69]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=37
+      , lastline=71
+    ]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Functions}
 \label{tab:hskllmndworkngfunctions}
@@ -107,7 +109,7 @@ storing back the result in the dictionary.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos, firstline=71, lastline=84]{haskell}{haskell-monad-working-2.hs}
+    \inputminted[linenos, firstline=73, lastline=86]{haskell}{haskell-monad-working-2.hs}
   \end{singlespace}
   \caption{Haskell Monad Working: Examples}
 \label{tab:hskllmndworkngexamples}
@@ -120,10 +122,11 @@ Listing~\ref{tab:hskllmndworkngexamplesoutput} shows the output of \haskellConst
 %    \inputminted[linenos, firstline=86, lastline=89]{haskell}{haskell-monad-working-2.hs} % does not colour as it is in comments in .hs 
 %file
 \begin{minted}[linenos]{haskell}
-runExampleOperation init_dictionary (Variable ("x", 10)) (Variable ("y", 20))
-[Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
-Variable ("x4",4),Variable ("x5",5),Variable ("x",10),Variable ("y",20),
-Variable ("product",200)]
+runExampleOperation init_dictionary ("x" <-- 10)) ("y" <-- 20)
+-- output
+{(x0 <-- 0),  (x1 <-- 1),  (x2 <-- 2),  (x3 <-- 3), 
+ (x4 <-- 4),  (x5 <-- 5),  (x <-- 10),  (y <-- 20), 
+ (product <-- 200)}
 \end{minted}
   \end{singlespace}
   \caption{Haskell Monad Working: Example output}

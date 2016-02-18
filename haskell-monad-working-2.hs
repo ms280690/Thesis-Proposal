@@ -23,14 +23,16 @@ type VariableName      = String
 type Value             = Int
 data Variable          = Variable (VariableName, Value)
                        deriving (Show, Eq)
-type IntegerDictionary = [Variable]
+data IntegerDictionary = ID [Variable]
+
+(<--) = curry Variable
+infix 8 <--
 
 init_dictionary :: IntegerDictionary
-init_dictionary = [
-  Variable ("x0", 0), Variable ("x1", 1),
-  Variable ("x2", 2), Variable ("x3", 3),
-  Variable ("x4", 4), Variable ("x5", 5)
-  ]
+init_dictionary = ID [
+  ("x0" <-- 0), ("x1" <-- 1),
+  ("x2" <-- 2), ("x3" <-- 3),
+  ("x4" <-- 4), ("x5" <-- 5)     ]
 
 variableName :: Variable -> VariableName
 variableName (Variable (v,_)) = v
@@ -45,8 +47,8 @@ insertVariable variable = do
 	return variable
 
 insertVariableHelper :: Variable -> IntegerDictionary -> IntegerDictionary
-insertVariableHelper variable dictionary =
-  variable : filter (not . (vNameEqual variable)) dictionary
+insertVariableHelper variable (ID dictionary) =
+  ID (variable : filter (not . (vNameEqual variable)) dictionary)
 
 runInsertVariable :: IntegerDictionary -> Variable -> IntegerDictionary
 runInsertVariable init_dictionary variable = snd $
@@ -58,8 +60,8 @@ removeVariable variable = do
 	return variable
 
 removeVariableHelper :: Variable -> IntegerDictionary -> IntegerDictionary
-removeVariableHelper variable dictionary =
-    filter (not . (vNameEqual variable)) dictionary
+removeVariableHelper variable (ID dictionary) =
+    ID $ filter (not . (vNameEqual variable)) dictionary
 
 runRemoveVariable :: IntegerDictionary -> Variable -> IntegerDictionary
 runRemoveVariable init_dictionary variable = snd $ runState (removeVariable
