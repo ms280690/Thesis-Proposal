@@ -15,12 +15,23 @@ import qualified Control.Monad.Trans.Cont   as CMC
 -- The result of fully running a program is a finite list of Ints, one
 -- for each Yield.  The language has side effects, both through variable
 -- assignment and (IO) through prompting the user for values.
-data Language = Progr [Statement]
-data Statement = Assign Variable Expr
-               | Yield Expr
+
 -- | 'Expr'essions are either literals, variables,
 -- binary expressions (+,-,*), or prompt expressions, which are evaluated
 -- by using a prompt string and reading from the terminal.
+
+-- unassigned variables have value 0
+
+-- | 'Result's are the pure partial result of executing a Program
+-- produced by `runProg'.  A result is essentially a list of Int's (with
+-- constructors Empty and Cons).  However, it may also be a suspended
+-- computation 'Read io k' where 'io' is an IO computation that
+-- yields an integer, and k is an Int -> Result continuation.
+
+data Language = Progr [Statement]
+data Statement = Assign Variable Expr
+               | Yield Expr
+
 data Expr = Lit Int
           | Var Variable
           | Op Op Expr Expr
@@ -33,32 +44,20 @@ opFun Plus      = (+)
 opFun Minus     = (-)
 opFun Times     = (*)
 
-
 type Variable = String
 type Dict = Map.Map Variable Int
 
 getVarDict :: Variable -> Dict -> Int
 getVarDict v = maybe 0 id . Map.lookup v
--- unassigned variables have value 0
 
 setVarDict :: Variable -> Int -> Dict -> Dict
 setVarDict v i = Map.insert v i
 
-
--- | 'Result's are the pure partial result of executing a Program
--- produced by `runProg'.  A result is essentially a list of Int's (with
--- constructors Empty and Cons).  However, it may also be a suspended
--- computation 'Read io k' where 'io' is an IO computation that
--- yields an integer, and k is an Int -> Result continuation.
 data Result = Empty
             | Cons Int Result
             | Read (IO Int) (Int -> Result)
 
 -- | Run in the IO monad, runIO converts a Result to a list of Int's.
-runIO :: Result -> IO [Int]
-runIO Empty           = return []
-runIO (Cons i r)      = (i:) <$> runIO r
-runIO (Read p k)      = p >>= runIO . k
 
 -- | XM is the monad in which we evaluate language to get results.
 -- It's a continuation monad around a state monad around an exception
@@ -67,11 +66,20 @@ runIO (Read p k)      = p >>= runIO . k
 -- The continuation monad is there so that the current continuation can be
 -- captured, when dealing with Prompt expressions.
 -- The State monad is standard variable handling.
+
+-- necessary instance declarations.
+
+-- functions for plumbing.  The first four unwind monads to results
+
+runIO :: Result -> IO [Int]
+runIO Empty           = return []
+runIO (Cons i r)      = (i:) <$> runIO r
+runIO (Read p k)      = p >>= runIO . k
+
 newtype XM a = XM {
   unXM :: CMC.ContT Result
           (CMS.StateT Dict (CME.Except Result)) a }
 
--- necessary instance declarations.
 instance Monad XM where
   return        = XM . return
   (>>=) m f     = XM $ unXM m >>= (unXM . f)
@@ -83,7 +91,6 @@ instance Applicative XM where
 instance Functor XM where
   fmap f m = m >>= (return . f)
 
--- functions for plumbing.  The first four unwind monads to results
 
 runEE :: CME.Except Result Result -> Result
 runEE m = either id id . CME.runExcept $ m
@@ -100,7 +107,6 @@ runKK
      -> Result
 runKK m s = (m `CMC.runContT` (return . id)) `runSS` s
 
-
 runXM :: XM Result -> Dict -> Result
 runXM = runKK . unXM
 
@@ -108,10 +114,21 @@ runXM = runKK . unXM
 
 -- | getVar.  return a Variable's current value in the store.
 -- Unassigned variables return 0 (see getVarDict).
+
+-- | setVar.  set a Variable's current value in the store.
+
+-- | escape.  Generate a result which is apparently an XM Int
+-- but really throws an exception out so that runXM generate a
+-- Read result.
+
+-- The trick is converting the captured expression to the right
+-- form for throwing.  The captured continuation k has type
+-- (Int -> XM Result).  Note that the continuation passed out
+-- captures the current state.
+
 getVar :: Variable -> XM Int
 getVar v = XM . lift . CMS.gets $ (getVarDict v)
 
--- | setVar.  set a Variable's current value in the store.
 setVar :: Variable -> Int -> XM ()
 setVar v i = XM . lift . CMS.modify' $ (setVarDict v i)
 
@@ -127,14 +144,8 @@ callCC f = XM $ CMC.callCC (unXM . f . (XM .))
 pureCont :: (a -> XM Result) -> Dict -> (a -> Result)
 pureCont kk ss v = (kk v) `runXM` ss
 
--- | escape.  Generate a result which is apparently an XM Int
--- but really throws an exception out so that runXM generate a
--- Read result.
+
 immedRead :: String -> XM Int
--- The trick is converting the captured expression to the right
--- form for throwing.  The captured continuation k has type
--- (Int -> XM Result).  Note that the continuation passed out
--- captures the current state.
 immedRead str = callCC $ \ k -> do
   state <- getState
   throw $ Read (ioPrompt str) (pureCont k state)

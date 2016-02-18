@@ -35,12 +35,41 @@ import Control.Applicative
 -- The result of fully running a program is a finite list of Ints, one
 -- for each Yield.  The language has side effects, both through variable
 -- assignment and (IO) through prompting the user for values.
-data Language = Progr [Statement]
-data Statement = Assign Variable Expr
-               | Yield Expr
+
 -- | 'Expr'essions are either literals, variables,
 -- binary expressions (+,-,*), or prompt expressions, which are evaluated
 -- by using a prompt string and reading from the terminal.
+
+-- | 'Result's are the pure partial result of executing a Program
+-- produced by `runProg'.  A result is essentially a list of Int's (with
+-- constructors Empty and Cons).  However, it may also be a suspended
+-- computation 'Read io k' where 'io' is an IO computation that
+-- yields an integer, and k is an Int -> Result continuation.
+
+-- XResult is essentially a backwards list of Ints.
+
+
+-- | XExpr is a concrete representation of the continuation of evaluating
+-- an integer expression.  Given an XExpr, a State (current state of memory),
+-- and a partial list of results, 'go' produces an honest (Int -> Result)
+-- continuation.
+
+--XExpr
+--Assign2           -- ^ Continue by assigning to Variable, then evaluating the
+           -- remainining statements
+
+--Yield2            -- ^ Continue by yielding an Int value, then evaluating the
+           -- remainining statements
+
+--Op2A           -- ^ Continue by evaluting the second operand of a binary
+           -- expression
+
+--Op2B           -- ^ After evaluting the second operand of a binary
+           -- expression, continue by evaluating the operation
+data Language = Progr [Statement]
+data Statement = Assign Variable Expr
+               | Yield Expr
+
 data Expr = Lit Int
           | Var Variable
           | Op Op Expr Expr
@@ -51,35 +80,18 @@ data Op = Plus | Minus | Times
 type Variable = String
 type State = Map.Map Variable Int
 
--- | 'Result's are the pure partial result of executing a Program
--- produced by `runProg'.  A result is essentially a list of Int's (with
--- constructors Empty and Cons).  However, it may also be a suspended
--- computation 'Read io k' where 'io' is an IO computation that
--- yields an integer, and k is an Int -> Result continuation.
 data Result = Empty
             | Cons Int Result
             | Read (IO Int) (Int -> Result)
 
--- XResult is essentially a backwards list of Ints.
 data XResult = XEmpty
              | XCons Int XResult
 
--- | XExpr is a concrete representation of the continuation of evaluating
--- an integer expression.  Given an XExpr, a State (current state of memory),
--- and a partial list of results, 'go' produces an honest (Int -> Result)
--- continuation.
 data XExpr = Assign2 Variable [Statement]
-           -- ^ Continue by assigning to Variable, then evaluating the
-           -- remainining statements
            | Yield2 [Statement]
-           -- ^ Continue by yielding an Int value, then evaluating the
-           -- remainining statements
            | Op2A Op Expr XExpr
-           -- ^ Continue by evaluting the second operand of a binary
-           -- expression
            | Op2B Op Int  XExpr
-           -- ^ After evaluting the second operand of a binary
-           -- expression, continue by evaluating the operation
+
 
 
 -- | Run in the IO monad, runIO converts a Result to a list of Int's.
