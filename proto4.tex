@@ -252,7 +252,6 @@ we use \haskellConstruct{NoResult}.
 \label{tab:iosketchmxmmonadfunctionality}
 \end{code-list}
 
-
 \begin{code-list}[H]
 \begin{singlespace}
 \inputminted[linenos, firstline=161, lastline=184]{haskell}{IOSketchM.hs}
@@ -264,10 +263,25 @@ we use \haskellConstruct{NoResult}.
 
 \begin{code-list}[H]
 \begin{singlespace}
-\inputminted[linenos, firstline=196, lastline=228]{haskell}{IOSketchM.hs}
+\inputminted[linenos, firstline=201, lastline=228]{haskell}{IOSketchM.hs}
 \end{singlespace}
 \caption{Sample program}
 \label{tab:iosketchmsampleprogram}
+\end{code-list}
+
+\begin{code-list}[H]
+\begin{singlespace}
+\begin{minted}[linenos]{haskell}
+runIO $ runProg testProg 
+a?  1
+b?  2
+c?  3
+b?  4
+[1,2,3,-4,-14]
+\end{minted}
+\end{singlespace}
+\caption{Sample program output}
+\label{tab:iosketchmsampleprogramoutput}
 \end{code-list}
 
 
