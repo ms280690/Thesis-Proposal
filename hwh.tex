@@ -122,11 +122,10 @@ Listing~\ref{tab:hskllmndworkngexamplesoutput} shows the output of \haskellConst
 %    \inputminted[linenos, firstline=86, lastline=89]{haskell}{haskell-monad-working-2.hs} % does not colour as it is in comments in .hs 
 %file
 \begin{minted}[linenos]{haskell}
-runExampleOperation init_dictionary ("x" <-- 10)) ("y" <-- 20)
+runExampleOperation init_dictionary ("x" <-- 10) ("y" <-- 20)
 -- output
-{(x0 <-- 0),  (x1 <-- 1),  (x2 <-- 2),  (x3 <-- 3), 
- (x4 <-- 4),  (x5 <-- 5),  (x <-- 10),  (y <-- 20), 
- (product <-- 200)}
+{[product <-- 200,y <-- 20,x <-- 10,x0 <-- 0,x1 <-- 1,x2 <-- 2,
+    x3 <-- 3,x4 <-- 4,x5 <-- 5]}
 \end{minted}
   \end{singlespace}
   \caption{Haskell Monad Working: Example output}

@@ -4,14 +4,14 @@
 
 -- A example using the State Monad for implementing a Memory with Locations, Variable Names and their Values.
 
-module StateMonad(
-  objectInsertUpdate
-, objectRemove
-, objectRetrieve
-, runInsertUpdate
-, runRemove
-, runRetrieve
-)where
+module StateMonad --(
+
+
+
+
+
+-- )
+where
 
 import Control.Monad.State
 import Data.Maybe
@@ -22,7 +22,7 @@ import Data.List
 type VariableName      = String
 type Value             = Int
 data Variable          = Variable (VariableName, Value)
-                       deriving (Show, Eq)
+                       deriving (Eq)
 data IntegerDictionary = ID [Variable]
 
 (<--) = curry Variable
@@ -43,8 +43,8 @@ vNameEqual = (==) `on` variableName where
 
 insertVariable :: Variable -> State IntegerDictionary Variable
 insertVariable variable = do
-	Control.Monad.State.modify (insertVariableHelper variable)
-	return variable
+   Control.Monad.State.modify (insertVariableHelper variable)
+   return variable
 
 insertVariableHelper :: Variable -> IntegerDictionary -> IntegerDictionary
 insertVariableHelper variable (ID dictionary) =
@@ -56,8 +56,8 @@ runInsertVariable init_dictionary variable = snd $
 
 removeVariable :: Variable -> State IntegerDictionary Variable
 removeVariable variable = do
-	Control.Monad.State.modify (removeVariableHelper variable)
-	return variable
+  Control.Monad.State.modify (removeVariableHelper variable)
+  return variable
 
 removeVariableHelper :: Variable -> IntegerDictionary -> IntegerDictionary
 removeVariableHelper variable (ID dictionary) =
@@ -65,31 +65,37 @@ removeVariableHelper variable (ID dictionary) =
 
 runRemoveVariable :: IntegerDictionary -> Variable -> IntegerDictionary
 runRemoveVariable init_dictionary variable = snd $ runState (removeVariable
-	variable) init_dictionary
+  variable) init_dictionary
 
 extractVariableValue :: Variable -> Value
 extractVariableValue (Variable (_, value)) = value
 
 exampleOperation :: Variable -> Variable -> State IntegerDictionary Variable
 exampleOperation variableX variableY = do
-	insertVariable variableX
-        let vx = extractVariableValue variableX
-	insertVariable variableY
-        let vy = extractVariableValue variableY
-            product = Variable ("product", vx * vy)
-        insertVariable product
-	return product
+   insertVariable variableX
+   let vx = extractVariableValue variableX
+   insertVariable variableY
+   let vy = extractVariableValue variableY
+       product = Variable ("product", vx * vy)
+   insertVariable product
+   return product
 
 runExampleOperation :: IntegerDictionary -> Variable -> Variable ->
-	IntegerDictionary
+   IntegerDictionary
 runExampleOperation init_dictionary variableX variableY = snd $ runState (
-	exampleOperation variableX variableY) init_dictionary
+   exampleOperation variableX variableY) init_dictionary
 {--
 runExampleOperation init_dictionary (Variable ("x", 10)) (Variable ("y", 20))
 [Variable ("x0",0),Variable ("x1",1),Variable ("x2",2),Variable ("x3",3),
 Variable ("x4",4),Variable ("x5",5),Variable ("x",10),Variable ("y",20),
 Variable ("product",200)]
 --}
+
+instance Show Variable where
+  show (Variable (x, y)) = x ++ " <-- " ++ show y
+
+instance Show IntegerDictionary where
+  show (ID vars) = "{" ++ show vars ++ "}"
 
 
 -- Creating Initial State of Integer Dictionary
