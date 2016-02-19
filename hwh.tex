@@ -139,6 +139,14 @@ it is necessary.
 This results in the ability to define infinite data structures because at execution only a fragment is used
 \cite{website:haskelllazinesswiki}.
 
+Consider the infinite list example:
+\mint{haskell}|let x = 1:x in x|
+
+results in:
+\mint{haskell}|1 : 1 : 1 . . . |
+
+Lazy evaluation is part of operational semantics, i.e. how a \progLang{Haskell} program is evaluated. This semantics allows one to bypass 
+undefined values (e.g. results of infinite loops) and in this way it also allows one to process formally infinite data. 
 
 \section{Quasiquotation and \progLang{Haskell}}\label{hwh:quasiquotationandhaskell}
 \subsection{Quasiquotation}
@@ -148,7 +156,7 @@ Thus ``not p'' refers to the expression consisting of the word not followed by t
 Quasi-quotation, or Quine quotation, is a metalinguistic device for referring to the form of an expression containing
 variables without referring to the symbols for those variables.
 Thus $\left\ulcorner \mathop\text{not} p \right\urcorner$ refers to the form of any expression consisting of the word not followed by any
-value of the variable $p$ \cite{website:quasiquotationfreedictionary}. The varaible $p$ is sometimes called a meta-syntactic variable.
+value of the variable $p$ \cite{website:quasiquotationfreedictionary}. The variable $p$ is sometimes called a meta-syntactic variable.
 Quasi-quotation facilitates rigorous but terse formulation of general rules about expressions
 \cite{wikiquasi}.
 

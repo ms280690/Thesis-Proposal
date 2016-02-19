@@ -67,12 +67,6 @@ Andrew Butterfield (ed.), \emph{Unifying theories of programming, second
 \bibitem{website:blogc2}
 C2, \emph{Multi paradigm programming language}, September 2012.
 
-\bibitem{webste:metasyntacticvariablesc2wiki}
-c2~wiki, \emph{Metasyntactic variables}, September 2011.
-
-\bibitem{webiste:metasyntacticvariablescatb}
-Catb, \emph{Metasynatactic variables}.
-
 \bibitem{website:visual-prolog}
 Prolog~Development Center, \emph{Visual prolog}, June 2013.
 
@@ -247,9 +241,6 @@ Paul Hudak, \emph{Building domain-specific embedded languages}, ACM Comput.
 \bibitem{hughes1989functional}
 John Hughes, \emph{Why functional programming matters}, The computer journal
   \textbf{32} (1989), no.~2, 98--107.
-
-\bibitem{webiste:metasyntacticvariableswhatistectarget}
-What is~Tech~Target, \emph{Metasynatactic variables}, September 2005.
 
 \bibitem{jlog}
 JLogic, \emph{Jlog - prolog in java}, September 2012,
@@ -672,9 +663,6 @@ Wikipedia, \emph{Prolog wikipedia}, March 2004.
 
 \bibitem{website:declarativeprogrammingwiki}
 \bysame, \emph{Declarative programming}, September 2015.
-
-\bibitem{website:metasyntacticvariableswiki}
-\bysame, \emph{Metasyntactic variable}, October 2015.
 
 \bibitem{website:timelineproglangwiki}
 \bysame, \emph{Timeline of programming languages}, November 2015.
