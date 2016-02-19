@@ -1,1 +1,1 @@
-[prolog|a(X) :- b(y)|]
+Clause [pr| $(X) is $(Y)|] [[pr| $(X) = $(eval(varY))|]]
