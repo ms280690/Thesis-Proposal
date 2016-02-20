@@ -27,12 +27,7 @@ language to extend its capabilities.
   \progLang{Haskell} i.e. the declarative paradigm. One of the reasons is that both \progLang{Haskell}, the base language and \progLang{Prolog}, the target language are from the same paradigm.
   This provides a platform to play around with the conflicting characteristics of the two languages.
   \progLang{Prolog} seems to be a very popular choice as a target language. Also for the specific topic of embedding \progLang{Prolog} in 
-  \progLang{Haskell}, implementations and publications exist which provide a starting point.\endnote{%
-    The surrounding \macroName{begin}\macroArg{enumerate} should be a
-    \texttt{description} environment, or a list of
-    \macroName{sub}\textsuperscript{\textasteriskcentered}\texttt{section}'s.
-  	\mehul{changed}
-  }
+  \progLang{Haskell}, implementations and publications exist which provide a starting point.
   
 \section{Simple Syntax}
 
@@ -236,40 +231,29 @@ whose operation is illustrated in Figure~\ref{fig:Trace for append}.
 \end{figure}
 
 
-\section[{The execution models of \progLang{Prolog}}]{The execution models of \progLang{Prolog} \cite{Sterling:1994:APA:175753}\endnote{
-\david{Move the citation from the section title, and explicitly state that
-  the material here has been exerpted from
-  \cite{Sterling:1994:APA:175753}, with page or chapter references.
-}
-\mehul{changed}
-}
-}\label{sec:exec-models-prolog}
+\section[{The execution models of \progLang{Prolog}}]{The execution models of \progLang{Prolog}}\label{sec:exec-models-prolog}
+
+The description of how \progLang{Prolog} relates to logic programming is paraphrased from Chapter 6 of \cite{Sterling:1994:APA:175753}.
 Logic programming languages are adapted from abstract interpreters for logic programs. 
-To implement a logic programming language such as \progLang{Prolog} two major decisions must be taken to resolve a query\endnote{
-\david{Rewrite this to be clear about the differences between an
-  \textit{abstract} \progLang{Prolog} and the choices made by concrete
-  implementations, such as Edinburgh \progLang{Prolog}.
-}
-\mehul{changed}
-}:
+To implement a logic programming language such as \progLang{Prolog} two major decisions about the resolver must be taken:
 \begin{enumerate}
 \item Scheduling policy:
+\endnote{\david{say what a scheduling policy is}}
 Select leftmost goal and replace the non deterministic choice of a clause by sequential search for a unifiable clause and backtracking. 
 Stack scheduling policy, pop the topmost goal for reduction and push derived goals back.
 
 \item Search strategy:
+\endnote{\david{say what a search strategy is}}
 \progLang{Prolog} simulates the non-deterministic choice of reducing clause by sequential search and backtracking. The first goal whose 
 head unifies with the goal is chosen. If no match is found then the computation is unwound to the last choice point and the next unifiable 
 clause is chosen.
 \end{enumerate}
 
-\progLang{Prolog} generates all possible solutions of the goal with respect to the \progLang{Prolog} program. It performs a complete
+For terminating queries \progLang{Prolog} generates all possible solutions of the goal with respect to the \progLang{Prolog} program. It performs a complete
 depth first traversal of a particular search tree for the goal by always choosing the leftmost goal. Listing~\ref{tab:prlgprgrmtrce} shows
 a sample trace for a query.
 
-The underpinnings of the languages throw some more light on the how different languages work to solve a problem.
-Different programming paradigms incorporate different operational mechanisms.
-For example, \progLang{Prolog} programs execute on the Warren Abstract Machine \cite{ait1999warren} which has three
+A popular implementation of \progLang{Prolog} is the Warren Abstract Machine \cite{ait1999warren} which has three
 different storage usages; a global stack for compound terms, for environment frames and choice points and lastly
 the trail to record which variables bindings ought to be undone on backtracking.
 
@@ -279,9 +263,12 @@ the trail to record which variables bindings ought to be undone on backtracking.
   \end{singlespace}
   \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753}}
 \label{tab:prlgprgrmtrce}
-\end{code-list}
+\end{code-list}\endnote{\david{ma1e?}}
 
-As seen in Listing~\ref{tab:prlgprgrmtrce} how \progLang{Prolog} resolves a query. Consider the example in 
+As seen in Listing~\ref{tab:prlgprgrmtrce} how \progLang{Prolog} resolves a query. 
+
+\section{\prologConstruct{cuts} in \progLang{Prolog}}
+Consider the example in 
 Listing~\ref{tab:prlgcutfreeexmpl}. A sample query \prologConstruct{p(X)} will result in \ref{tab:prlgcutfreeexmploutput}. 
 
 \begin{code-list}[H]
@@ -317,14 +304,6 @@ trace for the query with the \prologConstruct{cut} operator.
 \caption{Trace with cut (taken from \cite{website:cutprologunionedu})}
 \label{fig:Trace with cut}
 \end{figure}
-
-
-\endnote{
-  \david{say something about cut here}
-\mehul{changed}
-}
-
-
 
 \section{Chapter recapitulation}
 Recapitulating, this chapter provided information on \progLang{Prolog} as a logic programming language.
