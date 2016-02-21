@@ -1,0 +1,43 @@
+%%  This file is really -*-LaTeX-*-
+%%             File:  thesis-macros.sty
+%%          Created:  Sat Feb 20 23:33:41 2016
+%%
+%%      Description:  Commands particular to this thesis
+
+\newsavebox\xXx
+\newcommand{\xxx}[1]{\savebox\xXx{#1}#1\kern-1.0\wd\xXx\textcolor{red}{\rule[0.7ex]{\wd\xXx}{1pt}}%
+  \kern-1.0\wd\xXx\textcolor{red}{\rule[0.25ex]{\wd\xXx}{1pt}}%
+}
+\newcommand{\replace}[2]{\xxx{#1}\,{\color{blue}#2}}
+\let\yyy\replace
+
+\newcommand{\progLang}[1]{\textsc{#1}}
+\newcommand{\unknownLabel}[1]{\texttt{\large\color{dark-red}\slshape #1}}
+\newcommand{\markWord}[1]{\unknownLabel{#1}\eref{text-kind}}
+\newcommand{\chapterReference}[2]{\textcolor{blue}{\underline{\hyperref[#1]{#2}}}}
+
+\definecolor{dark-purple}{rgb}{0.40,0.05,0.40}\relax
+\definecolor{dark-red}{rgb}{0.50,0.00,0.00}\relax
+\definecolor{dark-green}{rgb}{0.00,0.50,0.00}\relax
+\definecolor{fuchsia}{rgb}{0.99,0.50,0.99}\relax
+\newcommand*{\mehul}[1]{\textcolor{dark-red}{#1}}
+\newcommand*{\david}[1]{\textcolor{dark-green}{#1}}
+\newcommand\firstOfTwo[2]{#1}
+\newcommand\secondOfTwo[2]{#2}
+\newcommand{\enparen}[1]{\textup{\firstOfTwo()}#1\textup{\secondOfTwo()}}
+\newcommand{\macroName}[1]{\texttt{\char`\\#1}}
+\newcommand{\macroArg}[1]{\texttt{\char`\{#1\char`\}}}
+\newcommand{\prologConstruct}[1]{\textcolor{brown}{\texttt{#1}}}
+\newcommand{\haskellConstruct}[1]{\textcolor{magenta}{\texttt{#1}}}
+\newcommand{\haskellClass}[1]{\haskellConstruct{#1}}
+\newcommand{\haskellVar}[1]{\haskellConstruct{\textit{#1}}}
+\newcommand{\languageConstruct}[1]{\textcolor{orange}{\texttt{#1}}}
+\newcounter{butCounter}
+\newcommand\butbut{\addtocounter{butCounter}{1}\edef\next{%
+    \noexpand\endnote{This is sentence \# \arabic{butCounter} starting %
+      with ``But''.}}\next}
+
+\providecommand\codeLibrary[1]{\texttt{\bfseries #1}}
+\providecommand\metaSyntacticVariable[1]{\textsl{\ttfamily #1}}
+\providecommand\mSV{\metaSyntacticVariable}
+
