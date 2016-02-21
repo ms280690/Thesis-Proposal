@@ -12,7 +12,7 @@ The base implementation for this prototype is \codeLibrary{Mini \progLang{Prolog
 
 
 \section{\codeLibrary{Mini \progLang{Prolog}} \cite{website:mini-prolog-hugs98} architecture}
-The \codeLibrary{Mini \progLang{Prolog}} is based on an older specification of \progLang{Haskell} called \codeLibrary{Hugs 98}. The architecture of
+\codeLibrary{Mini \progLang{Prolog}} is based on an older implementation of \progLang{Haskell} called \codeLibrary{Hugs 98}. The architecture of
 the library is described in the Figure~\ref{fig:miniprlgarchitecture}. The main components are as follows:
 
 \begin{enumerate}
@@ -58,18 +58,19 @@ The architecture for this prototype is beautifully illustrated by Figure~\ref{fi
   \label{fig:architecture-proto-3}
 \end{figure}
 
-Since we are aiming for modularity most components in the figure above are untouched. The abstract syntax grammar is modified for the benefits and for it
-to conform to the \codeLibrary{unification-fd} \cite{unification-fd-lib}.
+Since we are aiming for modularity, most components in the Figure~\ref{fig:miniprlgarchitecture} are untouched. The abstract syntax is modified to conform to
+the \codeLibrary{unification-fd} library \cite{unification-fd-lib}.
 Looking at the center of the figure you will find \textit{query}. This component takes as input the terms to be unified in modified language form, a 
-search strategy, the knowledge base and the monadic unifier to return a list of substitutions are required by the library. Each of these components will be
+search strategy, the knowledge base and the monadic unifier, and returns a list of substitutions as required by \codeLibrary{Mini \progLang{Prolog}} library
+\cite{website:mini-prolog-hugs98}. Each of the components in Figure~\ref{fig:architecture-proto-3} will be
 discussed in the sections to come.   
 
 
-\section{Search strategies}
-The base implementation used for this prototype is \cite{website:mini-prolog-hugs98} and the sections below describe the search
-strategies.
+\section{Engines (search strategies)}
+This section corresponds to the top left component of Figure~\ref{fig:architecture-proto-3}. Below are the description of the various engines (these are
+called search strategies in \ref{sec:exec-models-prolog}).
 
-\subsection{Stack engine}
+\subsection{The Stack engine}
 The stack based engine works on a stack of triples \haskellConstruct{(s,goal,alts)}
 corresponding to backtrack choice points, where: 
 \begin{enumerate}
@@ -98,8 +99,8 @@ Listing~\ref{tab:stackengineminiprlg} represents the Stack engine.
 \label{tab:stackengineminiprlg}
 \end{code-list}
 
-\subsection{Pure engine}
- Each node in a \haskellConstruct{Prooftree} corresponds to:
+\subsection{The Pure engine}
+The pure engine works on \haskellConstruct{Prooftree}s. Each node in a \haskellConstruct{Prooftree} corresponds to:
 \begin{enumerate}
 \item Either, a solution to the current goal, represented by \haskellConstruct{Done s}, where \haskellConstruct{s} is the required 
  substitution ,or,
@@ -119,7 +120,7 @@ Listing~\ref{tab:pureengineminiprlg} represents the Pure engine.
 \label{tab:pureengineminiprlg}
 \end{code-list}
 
-\subsection{Andorra engine}
+\subsection{The Andorra engine}
 This inference engine implements a variation of the Andorra Principle for logic programming adapted from \cite{haridi1990kernel}. 
 The main difference here is to select a relatively deterministic goal and not the first one. Upon selecting a goal:
 \begin{enumerate}
@@ -153,9 +154,9 @@ Listing~\ref{tab:andorraengineminiprlg} represents the Andorra engine.
 
 \section{Language}
 \subsection{Current language}
-Listing~\ref{tab:miniprlglang} shows the original abstract syntax for a \progLang{Prolog}-like language.
-A \progLang{Prolog} term can consists of two constructs a variable and a complex term with an atom as a head. A \haskellConstruct{Clause} consists 
-of a head of type \haskellConstruct{Term }and a body of type \haskellConstruct{[Term]}. 
+Listing~\ref{tab:miniprlglang} shows the abstract syntax of \codeLibrary{Mini \progLang{Prolog}}} \cite{website:mini-prolog-hugs98}.
+A term can either be a variable or a complex term with an atom as a head. A \haskellConstruct{Clause} consists 
+of a head of type \haskellConstruct{Term} and a body of type \haskellConstruct{[Term]}. 
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -164,8 +165,6 @@ of a head of type \haskellConstruct{Term }and a body of type \haskellConstruct{[
 \caption{Current abstract syntax grammar in \protect{\codeLibrary{Mini \progLang{Prolog}}} \cite{website:mini-prolog-hugs98}}
 \label{tab:miniprlglang}
 \end{code-list}
-
-This language suffers from most of the drawbacks mentioned in the previous prototypes and hence limiting its flexibility.
 
 \subsection{Language modification}
 Listing~\ref{tab:miniprlglangmod} describes the necessary modifications required to adapt the language for monadic unification.
@@ -184,8 +183,8 @@ compatibility.
 
 \subsection{Current unification}
 
-Listing~\ref{tab:miniprlgunif} describes the current unification mechanism which works on \haskellConstruct{st} substitutions. The 
-\haskellConstruct{unify} function compares the two terms and returns a list of substitutions. As with the base implementations from
+Listing~\ref{tab:miniprlgunif} describes the current unification mechanism which works on substitutions. The 
+\haskellConstruct{unify} function compares the two terms and returns a list of substitutions as with the base implementations from
 the previous prototypes.
 
 \begin{code-list}[H]
@@ -196,7 +195,7 @@ the previous prototypes.
 \label{tab:miniprlgunif}
 \end{code-list}
 
-THe shortcomings are translated from the language to the unification as it is based on basic pattern matching.
+The shortcomings are translated from the language to the unification as it is based on basic pattern matching.
 
 \subsection{Monadic unification}
 Listing~\ref{tab:miniprlgmonadicunif} shows the procedure for monadic unification. Most components of the procedure remain similar to the ones
@@ -209,8 +208,8 @@ in previous prototypes.
 \label{tab:miniprlgmonadicunif}
 \end{code-list}
 
-The major changes occur in \haskellConstruct{stConvertor} used to convert the result of monadic unification into the original \haskellConstruct{st} form 
-and \haskellConstruct{unify}.
+The major changes occur in \haskellConstruct{substConvertor} used to convert the result of monadic unification into the original \haskellConstruct{Subst}
+ form and \haskellConstruct{unify}.
 
 
 \section{Chapter recapitulation}

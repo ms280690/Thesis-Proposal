@@ -35,11 +35,11 @@ f1 dict = do
       ld4 = [ (k,v) | (k,v2) <- ld3, let v = translateFromUTerm dict v2 ]
   return ld4
 
-stConvertor :: [(Id, Prolog)] -> [st]
-stConvertor xs = Prelude.map (\(varId, p) -> (->-) varId 
+substConvertor :: [(Id, Prolog)] -> [Subst]
+substConvertor xs = Prelude.map (\(varId, p) -> (->-) varId 
                               (unFlatten $ unP $ p)) xs 
 
-unify t1 t2 = stConvertor (goUnify (monadicUnification t1 t2))
+unify t1 t2 = substConvertor (goUnify (monadicUnification t1 t2))
 
 varX :: Term
 varX = Var (0,"x")

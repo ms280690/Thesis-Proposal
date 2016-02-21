@@ -62,22 +62,22 @@ import Control.Monad.Trans.State as Trans
 infixr 3 @@
 infix  4 ->-
 
-type st = Id -> Term
+type Subst = Id -> Term
 
-newtype stP = stP { unstP :: st }
+newtype SubstP = SubstP { unSubstP :: Subst }
 
-app                     :: st -> Term -> Term
+app                     :: Subst -> Term -> Term
 app s (Var i)            = s i
 app s (Struct a ts)      = Struct a (Prelude.map (app s) ts)
 
-nullst               :: st
-nullst i              = Var i
+nullSubst               :: Subst
+nullSubst i              = Var i
 
-(->-)                   :: Id -> Term -> st
+(->-)                   :: Id -> Term -> Subst
 (i ->- t) j | j==i       = t
             | otherwise  = Var j
 
-(@@)                    :: st -> st -> st
+(@@)                    :: Subst -> Subst -> Subst
 s1 @@ s2                 = app s1 . s2
 
 unify :: Term -> Term -> [Subst]
