@@ -189,66 +189,6 @@ we use \haskellConstruct{NoResult}.
 \label{tab:prologresultdatatype}
 \end{code-list}
 
-\section{IOSketchM}
-
-\begin{code-list}[H]
-\begin{singlespace}
-\inputminted[linenos, firstline=31, lastline=58]{haskell}{IOSketchM.hs}
-\end{singlespace}
-\caption{Language data type}
-\label{tab:iosketchmlanguagedatatype}
-\end{code-list}
-
-\begin{code-list}[H]
-\begin{singlespace}
-\inputminted[linenos, firstline=74, lastline=111]{haskell}{IOSketchM.hs}
-\end{singlespace}
-\caption{\haskellConstruct{run} functions}
-\label{tab:iosketchmrunfunctions}
-\end{code-list}
-
-
-\begin{code-list}[H]
-\begin{singlespace}
-\inputminted[linenos, firstline=130, lastline=152]{haskell}{IOSketchM.hs}
-\end{singlespace}
-\caption{Functionality for \haskellConstruct{XM Monad}}
-\label{tab:iosketchmxmmonadfunctionality}
-\end{code-list}
-
-\begin{code-list}[H]
-\begin{singlespace}
-\inputminted[linenos, firstline=161, lastline=184]{haskell}{IOSketchM.hs}
-\end{singlespace}
-\caption{Language interpretation}
-\label{tab:iosketchmlanguageinterpretation}
-\end{code-list}
-
-
-\begin{code-list}[H]
-\begin{singlespace}
-\inputminted[linenos, firstline=201, lastline=228]{haskell}{IOSketchM.hs}
-\end{singlespace}
-\caption{Sample program}
-\label{tab:iosketchmsampleprogram}
-\end{code-list}
-
-\begin{code-list}[H]
-\begin{singlespace}
-\begin{minted}[linenos]{haskell}
-runIO $ runProg testProg 
-a?  1
-b?  2
-c?  3
-b?  4
-[1,2,3,-4,-14]
-\end{minted}
-\end{singlespace}
-\caption{Sample program output}
-\label{tab:iosketchmsampleprogramoutput}
-\end{code-list}
-
-
 \section{Chapter recapitulation}
 
 \ifMain
