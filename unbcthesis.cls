@@ -74,9 +74,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% --  Class Options                                               -- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifDraft
+\Draftfalse
+\DeclareOption{final}{\Draftfalse}
+\DeclareOption{nofinal}{\Drafttrue}
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{report}}
 \ProcessOptions\relax
-\LoadClassWithOptions{report}
+\LoadClass{report}
 %% packages dependent on class and options
 \RequirePackage[doublespacing]{setspace}
 \RequirePackage[plainpages=false,
