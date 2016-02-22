@@ -122,23 +122,23 @@
 %   ==========================================================================
 %   Begin front matter (pages are numbered with roman numerals)
 %   ==========================================================================
-    \begin{frontmatter}
-      \unbcthesistitle{\theTitle
-      }{\theAuthor}{\theDegree}{\theMajor}{\theMonth}{\theYear}{%
-      %% Supply your credentials 
-      {B.Eng, Mumbai University, 2012}}
-      
-      \input{abstract}%
-      \unbctableofcontents
-      \newpage
-      \unbclistoftables
-      \newpage
-      \unbclistoffigures
-      \newpage
-      \unbclistofcode
-      \newpage
-      % Generate the abstract
-    \end{frontmatter}
+    
+\begin{frontmatter}
+  \unbcthesistitle{\theTitle
+  }{\theAuthor}{\theDegree}{\theMajor}{\theMonth}{\theYear}{%
+    %% Supply your credentials 
+    {B.Eng, Mumbai University, 2012}}
+  
+  \input{abstract}%
+  \unbctableofcontents
+  \newpage
+  \unbclistoftables
+  \newpage
+  \unbclistoffigures
+  \newpage
+  \unbclistofcode
+  \newpage
+\end{frontmatter}
 
 \ifDraft
 \linenumbers
@@ -257,24 +257,23 @@
    website:visual-prolog,
 %   website:tablog,               %% FIXME !
    website:haskellwiki}
-    
-	\subfile{introduction}
-	\clearpage	
-	
-	\subfile{background}
-	\clearpage	
-	
-	\subfile{proposedWork}
-	\clearpage
-	
-	\subfile{accomplishedWork}
-	\clearpage
-					
-	\subfile{embedding}
-	\clearpage
-			
-	\subfile{multiparadigm}
-	\clearpage	
+   \subfile{introduction}
+   \clearpage	
+   
+   \subfile{background}
+   \clearpage	
+   
+   \subfile{proposedWork}
+   \clearpage
+   
+   \subfile{accomplishedWork}
+   \clearpage
+   
+   \subfile{embedding}
+   \clearpage
+   
+   \subfile{multiparadigm}
+   \clearpage	
 
 %	\subfile{prologin}
 %	\clearpage
@@ -294,15 +293,15 @@
 %	\subfile{relatedtermskeywords}
 %	\clearpage
 		
-	\subfile{hwh}
-	\clearpage
+   \subfile{hwh}
+   \clearpage
+   
+   \subfile{pwp}
+   \clearpage
+   
+   \subfile{relatedWork}
+   \clearpage
 		
-	\subfile{pwp}
-	\clearpage
-			  	
-	\subfile{relatedWork}
-	\clearpage
-				
 %	\subfile{miscrelcon}
 %	\clearpage
   	

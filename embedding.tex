@@ -48,11 +48,14 @@ Other informal discussions of \progLang{Prolog} have already been mentioned in C
 
 \section{Books related to implementing logic programming}
 
-Some books related to implementing logic programming are \cite{friedman05reasoned,website:logicprogexamplehaskell,krishnamurthi2007programming}. \cite{friedman05reasoned} aims at adding a few
-constructs to \progLang{Scheme} to bring together the functional and logic styles of programming and capture the essence of
-\progLang{Prolog} in \progLang{Scheme}. Moreover, \cite{website:logicprogexamplehaskell} claims that \progLang{Haskell} is suitable for basic logic
+Some books related to implementing logic programming are
+\cite{friedman05reasoned,website:logicprogexamplehaskell,krishnamurthi2007programming}.
+\cite{friedman05reasoned} aims at adding a few constructs to \progLang{Scheme} to bring together the functional and
+logic styles of programming and capture the essence of \progLang{Prolog} in \progLang{Scheme}.
+Moreover, \cite{website:logicprogexamplehaskell} claims that \progLang{Haskell} is suitable for basic logic
 programming using the \haskellConstruct{List Monad}.
-\cite{krishnamurthi2007programming} provides a general outlook towards embedding \progLang{Prolog} in other languages.
+\cite{krishnamurthi2007programming} provides a general outlook towards embedding \progLang{Prolog} in other
+languages.
 
 \section{Papers related to embedding programming languges}
 
@@ -69,18 +72,19 @@ The next subsection covers this literature with improvements and further additio
 The work presented in the series
 \cite{spivey1999embedding,seres1999algebra,seres2001higher,spivey1999algebra,seres2001algebra} attempts to
 encapsulate various aspects of an embedding of \progLang{Prolog} in \progLang{Haskell}.
-Being one of the very first attempts, the work is influenced by embeddings of \progLang{Prolog}
-in other languages like \progLang{Scheme} and \progLang{Lisp}.
-Although the host language \progLang{Haskell} has distinct characteristics such as lazy evaluation and a strong type system, the proposed
-scheme tends to be general as the aim here is to achieve a \progLang{Prolog}-like eDSL and not a multiparadigm
-declarative language.
+Being one of the very first attempts, the work is influenced by embeddings of \progLang{Prolog} in other languages
+like \progLang{Scheme} and \progLang{Lisp}.
+Although the host language \progLang{Haskell} has distinct characteristics such as lazy evaluation and a strong
+type system, the proposed scheme tends to be general as the aim here is to achieve a \progLang{Prolog}-like eDSL
+and not a multiparadigm declarative language.
 \progLang{Prolog} \prologConstruct{predicates} are translated to \progLang{Haskell} functions which produce a
 stream of results lazily depicting depth first search with support for different strategies and practical operators
 such as \prologConstruct{cut} and \prologConstruct{fail} with higher order functions.
 The papers provide a minimalistic extension to \progLang{Haskell} with only four new constructs.
 Though no implementation exists, the synthesis and transformation techniques for functional programs have been
-\textit{logicalised} and applied to \progLang{Prolog} programs. \progLang{Prolog} is based on relations and \progLang{Haskell} is based on
-functions; \cite{spivey2000functional} takes this into consideration and attempts to model relations using functions.
+\textit{logicalised} and applied to \progLang{Prolog} programs.
+\progLang{Prolog} is based on relations and \progLang{Haskell} is based on functions; \cite{spivey2000functional}
+takes this into consideration and attempts to model relations using functions.
 
 
 \subsection{Other works related or based on the above}
@@ -114,20 +118,17 @@ backtracking abilities and a \haskellConstruct{monadic encapsulation} to turn a 
 %% }
 \subsection{\progLang{Prolog} libraries}
 
-To replicate \progLang{Prolog}-like
-capabilities \progLang{Haskell} seems to be a popular choice
-with a host of related libraries.
+To replicate \progLang{Prolog}-like capabilities \progLang{Haskell} seems to be a popular choice with a host of
+related libraries.
 First we begin with the libraries about \progLang{Prolog} itself.
-A few exist. \cite{nanoprolog-lib} is a preliminary or
-``mini \progLang{Prolog}'' with not much in it to be able to be useful. \cite{hswip-lib}
-is all powerful, but is a foreign function interface so it is ``\progLang{Prolog} in \progLang{Haskell}'' but we
-need \progLang{Prolog} for it;
-\cite{prolog-lib}
-is the implementation that comes the closest
-to something like an actual practical \progLang{Prolog}.
-All these libraries provide is a small interpreter, none or a few practical features, incomplete support for lists, minor or
-no \haskellConstruct{monadic} support and a REPL without the ability to ``write a \progLang{Prolog} program
-file''.
+A few exist.
+\cite{nanoprolog-lib} is a preliminary or ``mini \progLang{Prolog}'' with not much in it to be able to be useful.
+\cite{hswip-lib} is all powerful, but is a foreign function interface so it is ``\progLang{Prolog} in
+\progLang{Haskell}'' but we need \progLang{Prolog} for it; \cite{prolog-lib} is the implementation that comes the
+closest to something like an actual practical \progLang{Prolog}.
+All these libraries provide is a small interpreter, none or a few practical features, incomplete support for lists,
+minor or no \haskellConstruct{monadic} support and a REPL without the ability to ``write a \progLang{Prolog}
+program file''.
 
 %\item[$\bullet$]Logic Libraries
 \subsection{Logic libraries}
@@ -153,7 +154,8 @@ the resulting substitution.
 \subsection{Backtracking libraries}
 
 Another important aspect of \progLang{Prolog} is backtracking.
-To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use \haskellConstruct{monads}.
+To simulate it in \progLang{Haskell}, the libraries \cite{stream-monad-lib, logicst-lib} use
+\haskellConstruct{monads}.
 Moreover, there is a package for the \progLang{Egison} programming language \cite{egison-lib} which supports
 non-linear pattern-matching with backtracking.
 
@@ -162,8 +164,9 @@ non-linear pattern-matching with backtracking.
 
 
 \section{Chapter recapitulation}
-Recapitulating, this chapter surveys the approach to embedding programming languages, especially \progLang{Prolog} in \progLang{Haskell}.
-Moreover, it describes tools, some of which are utilized in the prototype implementations.   
+Recapitulating, this chapter surveys the approach to embedding programming languages, especially \progLang{Prolog}
+in \progLang{Haskell}.
+Moreover, it describes tools, some of which are utilized in the prototype implementations.
 
 \ifMain\ifDraft
 \begin{scope}

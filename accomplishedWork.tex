@@ -12,24 +12,25 @@
 
 \section{About this chapter}\label{sec:what-this-chapter:accomplishedWork}
 
-Having looked at the existing work for embedding \progLang{Prolog} in \progLang{Haskell} along with the suggestions for improvement in the previous chapter, 
-this chapter describes further contributions.
+Having looked at the existing work for embedding \progLang{Prolog} in \progLang{Haskell} along with the suggestions
+for improvement in the previous chapter, this chapter describes further contributions.
 The thesis reviews literature on combining two languages as described in Section~\ref{sec:work-in-points}.
 Section~\ref{sec:prototypes} describes the minimalistic implementations for the ideas presented in this thesis.
 
 \section{Possible directions for \progLang{Prolog} in \progLang{Haskell}}\label{sec:work-in-points}
 
-This thesis provides a literature review on embedded domain specific languages in Chapter~\ref{chap:embedding} and a survey on
-multi paradigm declarative languages in Chapter~\ref{chap:multiparadigm}. The current chapter and Chapter~\ref{chap:proposedWork} evaluate 
-and assess the current work for embedding \progLang{Prolog} in \progLang{Haskell}. 
+This thesis provides a literature review on embedded domain specific languages in Chapter~\ref{chap:embedding} and
+a survey on multi paradigm declarative languages in Chapter~\ref{chap:multiparadigm}.
+The current chapter and Chapter~\ref{chap:proposedWork} evaluate and assess the current work for embedding
+\progLang{Prolog} in \progLang{Haskell}.
 
-This thesis also provides an environment for 
-multiple \progLang{Haskell} libraries which provide parts of \progLang{Prolog}-like functionality. 
+This thesis also provides an environment for multiple \progLang{Haskell} libraries which provide parts of
+\progLang{Prolog}-like functionality.
 
 
 \section{The prototypes}\label{sec:prototypes}
-A large part of this thesis consists of prototypes of a \progLang{Prolog}-like language in \progLang{Haskell}. The conceptual advances of 
-these prototypes are:
+A large part of this thesis consists of prototypes of a \progLang{Prolog}-like language in \progLang{Haskell}.
+The conceptual advances of these prototypes are:
 \begin{enumerate}
 \item provide a modular methodology to functorize a recursive abstract grammar used to define a language,
 
@@ -48,40 +49,39 @@ The details of these prototypes follows.
 \subsection{Prototype 1}
 
 Most languages have a recursive abstract syntax which restricts the embedded, domain-specific language
-  \enparen{eDSL, see p.~\pageref{sec:DSL-def}}
-  in terms of its capability to \textit{open up} the language, i.e, to include meta syntactic
-  variables, custom quantifiers and logic.
-  (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
-  syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to
-  the original type.
-  One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}.
+\enparen{eDSL, see p.~\pageref{sec:DSL-def}} in terms of its capability to \textit{open up} the language, i.e, to
+include meta syntactic variables, custom quantifiers and logic.
+(\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
+syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to the
+original type.
+One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}.
 
-  To test it out we adopt the closed \progLang{Prolog}-like language defined in \cite{prolog-lib} and open it up.
-  As for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
-  implementation encapsulated into a monad.
+To test it out we adopt the closed \progLang{Prolog}-like language defined in \cite{prolog-lib} and open it up.
+As for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
+implementation encapsulated into a monad.
 
 
 \subsection{Prototype 2}
 
-  (\chapterReference{proto2}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a
-  query and a knowledge base.
-  The mechanism for the same is adopted from \cite{prolog-lib}.
-  The embedded language is modified as per the procedure in (\chapterReference{proto1}{Prototype 1}) and the
-  monadic unification part is plugged into the existing architecture to demonstrate that it is independent of the
-  other components.
-  Lastly the result is converted into the original language via a translate function.
+(\chapterReference{proto2}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a query
+and a knowledge base.
+The mechanism for the same is adopted from \cite{prolog-lib}.
+The embedded language is modified as per the procedure in (\chapterReference{proto1}{Prototype 1}) and the monadic
+unification part is plugged into the existing architecture to demonstrate that it is independent of the other
+components.
+Lastly the result is converted into the original language via a translate function.
 
 \subsection{Prototype 3}
 
-  (\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query
-  resolver with multiple search strategies.
+(\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query
+resolver with multiple search strategies.
 
 \subsection{Prototype 4}
 
-  (\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract
-  syntax of a DSL which when interpreted would produce output consisting of a pure set of instructions irrespective
-  of the nature of the construct.
-  The effects are produced only when the actions are executed.
+(\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract syntax
+of a DSL which when interpreted would produce output consisting of a pure set of instructions irrespective of the
+nature of the construct.
+The effects are produced only when the actions are executed.
 
 \begin{comment}
 \section{Thesis Improved Contributions}\label{sec:thes-impr-contr}

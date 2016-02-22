@@ -10,17 +10,20 @@
 
 
 \section{About this chapter}
-The aim of this prototype is to embed \languageConstruct{IO} operations within the definition of an eDSL so as to allow the chaining and 
-control of operations of the language irrespective of them being pure or impure.
+The aim of this prototype is to embed \languageConstruct{IO} operations within the definition of an eDSL so as to
+allow the chaining and control of operations of the language irrespective of them being pure or impure.
 
 \section{\progLang{Haskell} \languageConstruct{IO} is pure}
 
 The discussion in this section is mainly paraphrased from \cite{website:ioispurechristaylor}.
 
-\progLang{Haskell} calls itself a pure functional programming language. Every function in \progLang{Haskell} is a function in the mathematical sense (i.e., ``pure'').
- Even side-effecting \languageConstruct{IO} operations are but a description of what to do, produced by pure code. There are no statements or instructions, 
- only expressions which cannot mutate variables (local or global) nor access state like time or random numbers \cite{website:haskellorg}. Consider the
- example in Listing~\ref{tab:haskellgetline} describing the \haskellConstruct{getLine} function in \progLang{Haskell}. 
+\progLang{Haskell} calls itself a pure functional programming language.
+Every function in \progLang{Haskell} is a function in the mathematical sense (i.e., ``pure'').
+Even side-effecting \languageConstruct{IO} operations are but a description of what to do, produced by pure code.
+There are no statements or instructions, only expressions which cannot mutate variables (local or global) nor
+access state like time or random numbers \cite{website:haskellorg}.
+Consider the example in Listing~\ref{tab:haskellgetline} describing the \haskellConstruct{getLine} function in
+\progLang{Haskell}.
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -30,8 +33,9 @@ The discussion in this section is mainly paraphrased from \cite{website:ioispure
 \label{tab:haskellgetline}
 \end{code-list}
 
-\languageConstruct{IO} actions can be embedded by building up data structures which can then be executed to cause side-effects, but until that point they 
-are pure. Consider the Listing~\ref{tab:ioactiondatatype} describing an example for the same.
+\languageConstruct{IO} actions can be embedded by building up data structures which can then be executed to cause
+side-effects, but until that point they are pure.
+Consider the Listing~\ref{tab:ioactiondatatype} describing an example for the same.
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -43,16 +47,18 @@ are pure. Consider the Listing~\ref{tab:ioactiondatatype} describing an example 
 
 \haskellConstruct{IOAction} is one of the following three types:
 \begin{enumerate}
-\item A container for a value of type \haskellConstruct{a},
-
-\item A container holding a \haskellConstruct{String} to be printed to \haskellConstruct{stdout},
+\item
+  A container for a value of type \haskellConstruct{a},
+\item
+  A container holding a \haskellConstruct{String} to be printed to \haskellConstruct{stdout},
   followed by another \haskellConstruct{IOAction a}, or
-
-\item A container holding a function from \haskellConstruct{String} \Verb!->! \haskellConstruct{IOAction a}, which can be applied
-  to whatever \haskellConstruct{String} is read from \haskellConstruct{stdin}. 
+\item
+  A container holding a function from \haskellConstruct{String} \Verb!->! \haskellConstruct{IOAction a}, which can
+  be applied to whatever \haskellConstruct{String} is read from \haskellConstruct{stdin}.
 \end{enumerate}
 
-The \haskellConstruct{Return} constructor is the terminal operation for any program written in \haskellConstruct{IOAction}. 
+The \haskellConstruct{Return} constructor is the terminal operation for any program written in
+\haskellConstruct{IOAction}.
 
 Some simple actions include the one that prints to \haskellConstruct{stdout} before returning \Verb!()!:
 
@@ -75,10 +81,11 @@ operator described in Listing~\ref{tab:seqioop}.
 \end{code-list}
 
 
-We want to take the \haskellConstruct{IOAction} \haskellConstruct{a} supplied in the first argument, get its return value (which is of type 
-\haskellConstruct{a}) and feed that to the function in 
-the second argument, getting an \haskellConstruct{IOAction} \haskellConstruct{b} out, which can be sequenced with the first \haskellConstruct{IOAction} 
-\haskellConstruct{a}. Listing ~\ref{tab:ioactionexample} describes an example of chaining \haskellConstruct{IOActions} and 
+We want to take the \haskellConstruct{IOAction} \haskellConstruct{a} supplied in the first argument, get its return
+value (which is of type \haskellConstruct{a}) and feed that to the function in the second argument, getting an
+\haskellConstruct{IOAction} \haskellConstruct{b} out, which can be sequenced with the first
+\haskellConstruct{IOAction} \haskellConstruct{a}.
+Listing ~\ref{tab:ioactionexample} describes an example of chaining \haskellConstruct{IOActions} and
 Listing~\ref{tab:ioactionexampleoutput} shows the output.
 
 
@@ -90,8 +97,8 @@ Listing~\ref{tab:ioactionexampleoutput} shows the output.
 \label{tab:ioactionexample}
 \end{code-list}
 
-Although this looks like imperative code, it's really a value of type \haskellConstruct{IOAction} \Verb!()!. In \progLang{Haskell},
-code can be data and data can be code.
+Although this looks like imperative code, it's really a value of type \haskellConstruct{IOAction} \Verb!()!.
+In \progLang{Haskell}, code can be data and data can be code.
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -113,8 +120,9 @@ code can be data and data can be code.
 
 
 
-The main benefit of doing this is that we can now sequence actions using \progLang{Haskell}'s
-\haskellConstruct{do} notation. Listing~\ref{tab:ioactionexampledo} describes the example from Listing~\ref{tab:ioactionexample}:
+The main benefit of doing this is that we can now sequence actions using \progLang{Haskell}'s \haskellConstruct{do}
+notation.
+Listing~\ref{tab:ioactionexampledo} describes the example from Listing~\ref{tab:ioactionexample}:
 
 \begin{code-list}[H]
 \begin{singlespace}
@@ -126,8 +134,9 @@ The main benefit of doing this is that we can now sequence actions using \progLa
 
 Since no code is executed, till this the above example is pure and side-effect free.
 
-To see the effects, we need to define a function that takes an \haskellConstruct{IOAction} \haskellConstruct{a} and converts it into a 
-value of type \haskellConstruct{IO} \haskellConstruct{a}, which can then be executed by the interpreter or the runtime system. 
+To see the effects, we need to define a function that takes an \haskellConstruct{IOAction} \haskellConstruct{a} and
+converts it into a value of type \haskellConstruct{IO} \haskellConstruct{a}, which can then be executed by the
+interpreter or the runtime system.
 Listing~\ref{tab:ioactionrun} shows the \haskellConstruct{run} function for \haskellConstruct{IOAction}.
 
 
@@ -149,8 +158,9 @@ Listing~\ref{tab:ioactionrunoutput} shows the output for the \haskellConstruct{r
 \label{tab:ioactionrunoutput}
 \end{code-list}
 
-\haskellConstruct{IOAction} is a mini-language for doing impure, side-effecting code. It restricts the language constructs to only reading 
-from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} in effect creating a safe embedded domain specific language.  
+\haskellConstruct{IOAction} is a mini-language for doing impure, side-effecting code.
+It restricts the language constructs to only reading from \haskellConstruct{stdin} and writing to
+\haskellConstruct{stdout} in effect creating a safe embedded domain specific language.
 
 \begin{comment}
 \begin{code-list}[H]
@@ -166,8 +176,8 @@ from \haskellConstruct{stdin} and writing to \haskellConstruct{stdout} in effect
 \section{Approach 2}
 
 \begin{comment}
-So when the program is getting interpreted the interpreter encounters an IO operation which then gets "interpreted" to the above and it 
-continues normally.
+  So when the program is getting interpreted the interpreter encounters an IO operation which then gets
+  "interpreted" to the above and it continues normally.
 
 The interpreted program is still pure since the IO actions have not been executed 
 
@@ -175,9 +185,10 @@ if the running is done inside a monad then the IO still is pure.
 \end{comment}
 
 
-Listing ~\ref{tab:prologresultdatatype} shows a \progLang{Prolog}-like language encapsulating impure actions for input and output 
-operations. The \haskellConstruct{OneBinding} constructor represents a \prologConstruct{unifier} as a pairs of variables. For termination 
-we use \haskellConstruct{NoResult}. 
+Listing ~\ref{tab:prologresultdatatype} shows a \progLang{Prolog}-like language encapsulating impure actions for
+input and output operations.
+The \haskellClass{OneBinding} constructor represents a \prologConstruct{unifier} as a pairs of variables.
+For termination we use \haskellClass{NoResult}.
 
 
 \begin{code-list}[H]

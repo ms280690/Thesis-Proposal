@@ -13,15 +13,13 @@
 
 This chapter demonstrates a fairly generic procedure of creating an open embedded domain specific language in
 \progLang{Haskell} along with \textit{monadic unification}.
-As a proof of concept, the implementation consists of creating a
-\progLang{Prolog}-like open language whose unification procedure is
-carried out in a monad.
+As a proof of concept, the implementation consists of creating a \progLang{Prolog}-like open language whose
+unification procedure is carried out in a monad.
 
 
 \section{Ideas}
-There are four main ideas in this chapter
-that we work with to develop a working implementation of embedded \progLang{Prolog}
-using the concepts mentioned above.
+There are four main ideas in this chapter that we work with to develop a working implementation of embedded
+\progLang{Prolog} using the concepts mentioned above.
 
 \begin{enumerate}
 \item \progLang{Prolog}
@@ -48,11 +46,10 @@ The ones relevant to this thesis are:
 
 \item \codeLibrary{prolog-0.2.0.1} \cite{prolog-lib}
 
-  One of the existing implementation of \progLang{Prolog} in \progLang{Haskell}, though partial, provides a starting
-  point for the implementation as it provides
-  certain components to test
-  our approach.
-  The main components of this library are adopted from \progLang{Prolog} and modified. These are:
+  One of the existing implementation of \progLang{Prolog} in \progLang{Haskell}, though partial, provides a
+  starting point for the implementation as it provides certain components to test our approach.
+  The main components of this library are adopted from \progLang{Prolog} and modified.
+  These are:
 
 \begin{enumerate}
 \item the language, adopted from \progLang{Prolog} but trimmed down;
@@ -68,10 +65,10 @@ The ones relevant to this thesis are:
 
 \item \codeLibrary{unification-fd} \cite{unification-fd-lib}
 
-This library provides tools for first-order structural unification over general structure types along with mechanisms for a modifiable
-generic unification algorithm implementation.
+  This library provides tools for first-order structural unification over general structure types along with
+  mechanisms for a modifiable generic unification algorithm implementation.
 
-The relevant components are:
+  The relevant components are:
 \begin{enumerate}
 \item the \haskellClass{Unifiable} class;
 
@@ -80,7 +77,7 @@ The relevant components are:
 \item variable implementations:
   \haskellConstruct{STVar} and \haskellConstruct{IntVar};
 
-\item the \haskellClass{Binding} monad; and 
+\item the \haskellClass{Binding} monad; and
 
 \item Unification (\haskellConstruct{unify} and \haskellConstruct{unifyOccurs}).
 \end{enumerate}
@@ -118,10 +115,10 @@ Each of the components are discussed in the following sections.
   \label{fig:proto1-arch}
 \end{figure}
 Chapter~\ref{chap:pwp} provides a general description of the working of \progLang{Prolog}.
-In this prototype we explore the unification aspect only.  
+In this prototype we explore the unification aspect only.
 
-This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type system while
-conforming to the host language.
+This prototype demonstrates the process of creating an isomorphic data type to replicate the target language type
+system while conforming to the host language.
 
 We create a \progLang{Prolog}-like language using a recursive abstract grammar in \progLang{Haskell} using
 \progLang{Haskell}'s  \haskellConstruct{data} statement.
@@ -158,11 +155,10 @@ Hence, a binary function would have type
 
 Listing~\ref{tab:closed-terms} is a classic example of using a recursive data type to define the
 abstract syntax of a language.
-One of the issues with the datatype in Listing~\ref{tab:closed-terms} is that it is not possible to distinguish the structure of the data from
-the data type itself \cite{sheard2004two}.
-Moreover, the primitives of the language (see \cite{website:understandingalgebrasfpcomplete})
-are not accessible, as the language can have expressions of only one
-type, ``\haskellConstruct{Term}''.
+One of the issues with the datatype in Listing~\ref{tab:closed-terms} is that it is not possible to distinguish the
+structure of the data from the data type itself \cite{sheard2004two}.
+Moreover, the primitives of the language (see \cite{website:understandingalgebrasfpcomplete}) are not accessible,
+as the language can have expressions of only one type, ``\haskellConstruct{Term}''.
 
 \begin{comment}
 The solution  would be to add a type constructor split the data type into two levels, a single recursive
@@ -179,19 +175,16 @@ Consider the code in Listing~\ref{tab:non-recurse}.
 
 One result of coding as in Listing~\ref{tab:non-recurse} rather than as in Listing~\ref{tab:closed-terms} (lines
 6--9) is that the non-recursive type \texttt{FlatTerm} is modular and generic as the structure
-\haskellConstruct{FlatTerm} is separate from the type of its subterms
-which is \haskellVar{a}.
+\haskellConstruct{FlatTerm} is separate from the type of its subterms which is \haskellVar{a}.
 The above language can be of any type \haskellConstruct{FlatTerm} \haskellVar{a} where \haskellVar{a} can be of any
 type at all.
-A more accurate way of saying it would be that \haskellVar{a} can be any \textit{kind} in
-\progLang{Haskell}.
+A more accurate way of saying it would be that \haskellVar{a} can be any \textit{kind} in \progLang{Haskell}.
 
 In type theory, a kind is the type of a type constructor or, less commonly, the type of a higher-order type
 operator.
 A kind system is essentially a simply-typed \(\lambda\)-calculus `one level up', endowed with a primitive type,
 denoted \Verb!*!
-and called `type', which is the kind of any (monomorphic) data type
-(see \cite{website:kindhaskellwiki}).
+and called `type', which is the kind of any (monomorphic) data type (see \cite{website:kindhaskellwiki}).
 Listing~\ref{tab:kindsinhaskell} describes kinds in \progLang{Haskell}.
 
 \begin{code-list}[H]
@@ -208,7 +201,7 @@ and a generic function like,
 \mint{haskell}|function :: (a -> b) -> FlatTerm a -> FlatTerm b|
 
 One problem remains: how does one represent deep expressions
-of the above language, 
+of the above language,
 for example something of the form,
 \mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
 and how to represent it generically to perform operations on it, since
@@ -233,7 +226,8 @@ which we apply to our abstract syntax.
 }
 \mint{haskell}|data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)|
 %
-simply speaking all the expressions resulting from \haskellConstruct{FlatTerm} can be represented  by the type signature \haskellConstruct{Fix FlatTerm}.
+simply speaking all the expressions resulting from \haskellConstruct{FlatTerm} can be represented  by the type
+signature \haskellConstruct{Fix FlatTerm}.
 
 A sample function working with such expressions would be of the form,
 \mint{haskell}|func :: Fix FlatTerm -> Fix FlatTerm|
@@ -262,8 +256,9 @@ Consider the scenario where the language needs to accommodate additional type of
   Since we needed the fixed point of the language we used \haskellConstruct{Fix} but generically one could add
   custom functionality.
   For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have that
-  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in Listing~\ref{tab:man-enhan-gram}.
-\begin{comment}  
+  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in
+  Listing~\ref{tab:man-enhan-gram}.
+\begin{comment}
   Consider the following example,
 
 \begin{minted}[linenos]{haskell}
@@ -287,9 +282,8 @@ T (Struct 'atom' [Abox, T (Cut 0)])
   \label{tab:garfunkle}
 \end{code-list}
 
-Figure~\ref{fig:manual-extension} and Figure~\ref{fig:automatic-extension} show the extension of the example in Listing~\ref{tab:closed-terms} using the
-manual
-and functorized approach respectively.
+Figure~\ref{fig:manual-extension} and Figure~\ref{fig:automatic-extension} show the extension of the example in
+Listing~\ref{tab:closed-terms} using the manual and functorized approach respectively.
 
 \begin{figure}[H]
   \centering
@@ -329,8 +323,9 @@ In this section we discuss
 \item Replicating \progLang{Prolog} unification in \progLang{Haskell}
 \end{enumerate}
 
-Classes in \progLang{Haskell} are like containers with certain properties which can be thought of as functions. When a data type creates an
-instance of a class the function(s) can be applied to each element / primitive in the data type.
+Classes in \progLang{Haskell} are like containers with certain properties which can be thought of as functions.
+When a data type creates an instance of a class the function(s) can be applied to each element / primitive in the
+data type.
 
 
 The data here is the \progLang{Prolog} abstract syntax and the containers are
@@ -369,15 +364,15 @@ as shown in Listing~\ref{tab:flat-term-class-inst}.
 The above lay the foundation to work with the library.
 Coming back to the library, the language must have the \haskellClass{Unifiable} instance.
 This works in tandem with the \haskellConstruct{UTerm} data type.
-The \haskellConstruct{UTerm} data type captures the recursive structure of logic terms, i.e., given
-some functor \(t\) which describes the 
-constructors of our logic terms, and some type \(v\) which describes our logic variables, the type
-\haskellConstruct{UTerm} \(t\) \(v\) is the
-type of logic terms: trees with multiple layers of \(t\) structure and leaves of type \(v\).
+The \haskellConstruct{UTerm} data type captures the recursive structure of logic terms, i.e., given some functor
+\(t\) which describes the constructors of our logic terms, and some type \(v\) which describes our logic variables,
+the type \haskellConstruct{UTerm} \(t\) \(v\) is the type of logic terms: trees with multiple layers of \(t\)
+structure and leaves of type \(v\).
 The \haskellClass{Unifiable} class gives one step of the unification process.
-Just as we only need to specify one level of the ADT (i.e., \Verb!T!) and then we can use the library's \haskellConstruct{UTerm} to generate
-the recursive ADT, so too we only need to specify one level of the unification (i.e., \haskellConstruct{zipMatch}) and then we can use
-the library's operators to perform the recursive unification.
+Just as we only need to specify one level of the ADT (i.e., \Verb!T!)
+and then we can use the library's \haskellConstruct{UTerm} to generate the recursive ADT, so too we only need to
+specify one level of the unification (i.e., \haskellConstruct{zipMatch}) and then we can use the library's
+operators to perform the recursive unification.
 This is shown in Figure~\ref{tab:zipMatch}.
 \begin{code-list}[H]
   \begin{singlespace}
@@ -388,25 +383,27 @@ This is shown in Figure~\ref{tab:zipMatch}.
   \label{tab:zipMatch}
 \end{code-list}
 
-Unification involves side effects of binding logic variables to terms. To allow and keep track of these effects we use the binding monad
-which provides facilities to generate fresh logic variables and perform look ups on dictionaries. By default two logic variable
-implementations exist:
+Unification involves side effects of binding logic variables to terms.
+To allow and keep track of these effects we use the binding monad which provides facilities to generate fresh logic
+variables and perform look ups on dictionaries.
+By default two logic variable implementations exist:
 \begin{enumerate}
-\item The \haskellConstruct{IntVar} implementation uses \haskellConstruct{Int} as the names of variables, and uses an
-  \haskellConstruct{IntMap} to keep track of the environment. 
+\item
+  The \haskellConstruct{IntVar} implementation uses \haskellConstruct{Int} as the names of variables, and uses an
+  \haskellConstruct{IntMap} to keep track of the environment.
 
-\item The \haskellConstruct{STVar} implementation uses \haskellConstruct{STRef}s, so we can use actual mutation for binding logic
-  variables, rather than keeping an explicit environment around.
-
+\item
+  The \haskellConstruct{STVar} implementation uses \haskellConstruct{STRef}s, so we can use actual mutation for
+  binding logic variables, rather than keeping an explicit environment around.
 \end{enumerate}
 
 \begin{comment}
   The library ships with two implementations of logic variables.
   The \markWord{IntVar} implementation uses \markWord{Int} as the names of variables, and uses an \markWord{IntMap}
-  to keep track of the 
+  to keep track of the
   environment.
-  The \markWord{STVar} implementation uses \markWord{STRefs}, so we can use actual mutation for binding logic variables, rather than
-  keeping an explicit environment around.
+  The \markWord{STVar} implementation uses \markWord{STRefs}, so we can use actual mutation for binding logic
+  variables, rather than keeping an explicit environment around.
   This implementation uses \markWord{STVars}.
 
   Performing unification has the side effect of binding logic variables to terms.
@@ -422,27 +419,33 @@ implementations exist:
 %\textbf{Some stuff about Meta syntactic variables can be put in here}
 
 \begin{comment}
-The issue with the \haskellConstruct{State monad} is that it can only hold substitutions of a single type \haskellConstruct{State}. For
-using several different term datatypes at the same time we need to use the \haskellConstruct{ST monad}. \haskellConstruct{ST monad} 
-provides the capability to  create, read and update reference cells of arbitrary type \cite{claessen2000typed} .
+  The issue with the \haskellConstruct{State monad} is that it can only hold substitutions of a single type
+  \haskellConstruct{State}.
+  For using several different term datatypes at the same time we need to use the \haskellConstruct{ST monad}.
+  \haskellConstruct{ST monad} provides the capability to  create, read and update reference cells of arbitrary type
+  \cite{claessen2000typed} .
 \end{comment}
 
-The \haskellConstruct{ST monad} is similar to the \haskellConstruct{IO monad} but is escapable. An \haskellConstruct{ST} action  is of the 
-form:
+The \haskellConstruct{ST monad} is similar to the \haskellConstruct{IO monad} but is escapable.
+An \haskellConstruct{ST} action  is of the form:
 
 \mint{haskell}|ST s a|
 
-\haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}. The s keeps references to objects inside the 
-\haskellConstruct{ST monad} from leaking to the outside of the \haskellConstruct{ST monad} meaning the actions can only affect their own 
-thread. To escape we require:
-\mint{haskell}|runST :: forall a. (forall s. ST s a) -> a|
+\haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}.
+The s keeps references to objects inside the \haskellConstruct{ST monad} from leaking to the outside of the
+\haskellConstruct{ST monad} meaning the actions can only affect their own thread.
+To escape we require:
+\mint{haskell}|runST :: forall a.
 
-The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known prohibiting to other threads and thus 
-\haskellConstruct{runST} is pure \cite{website:stmonadwiki, website:stmonadstackoverflow}. This is the idea behind \haskellConstruct{STVars} which are 
-implemented using \haskellConstruct{STRefs}. Hence to use "true mutability" we carry out the computation in the \haskellConstruct{ST monad}.
+The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known
+prohibiting to other threads and thus \haskellConstruct{runST} is pure \cite{website:stmonadwiki,
+  website:stmonadstackoverflow}.
+This is the idea behind \haskellConstruct{STVars} which are implemented using \haskellConstruct{STRefs}.
+Hence to use "true mutability" we carry out the computation in the \haskellConstruct{ST monad}.
 
-This implementation uses \haskellConstruct{STVars} and \haskellConstruct{STBindings} to implement the \haskellConstruct{BindingMonad}
-but a custom implementation could also be used inside the \haskellConstruct{BindingMonad}.
+This implementation uses \haskellConstruct{STVars} and \haskellConstruct{STBindings} to implement the
+\haskellConstruct{BindingMonad} but a custom implementation could also be used inside the
+\haskellConstruct{BindingMonad}.
 For our language expressions to be unifiable we must deal with the variables in the expressions being compared.
 For that we extract the variables and then convert them into a dictionary consisting of a free variable for each
 language variable as shown in Figure~\ref{tab:varsToDictM}.
@@ -456,8 +459,9 @@ language variable as shown in Figure~\ref{tab:varsToDictM}.
   \label{tab:varsToDictM}
 \end{code-list}
 
-A language to \haskellConstruct{STVar} dictionary is only one part of the unification procedure, the terms themselves should be made
-compatible for the in built unify procedure to perform look ups for the variables in them.
+A language to \haskellConstruct{STVar} dictionary is only one part of the unification procedure, the terms
+themselves should be made compatible for the in built unify procedure to perform look ups for the variables in
+them.
 The dictionary along with the fixed point version flattened of the term, as shown in Figure~\ref{tab:to-UTerm}.
 %
 \begin{code-list}[H]
@@ -479,9 +483,8 @@ and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 \end{code-list}
 
 
-The variable dictionaries and \haskellConstruct{UTerm}ified language expressions are unified in the binding monad as shown
-in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
-
+The variable dictionaries and \haskellConstruct{UTerm}ified language expressions are unified in the binding monad
+as shown in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
 %
 \begin{code-list}
   \begin{singlespace}
@@ -500,9 +503,8 @@ in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
 \end{code-list}
 
 
-The final reconversion to return a list of substitutions,
-  called \haskellConstruct{f1} in Figure~\ref{tab:unif-driver}, is shown in
-  Figure~\ref{tab:vars-extract}.
+The final reconversion to return a list of substitutions, called \haskellConstruct{f1} in
+Figure~\ref{tab:unif-driver}, is shown in Figure~\ref{tab:vars-extract}.
 \begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto1-unify-out.hs}
@@ -512,8 +514,8 @@ The final reconversion to return a list of substitutions,
 \end{code-list}
 
 \section{Chapter recapitulation}
-Recapitulating, this chapter provides the ideas of language modification and monadic unification along with their respective 
-implementations. 
+Recapitulating, this chapter provides the ideas of language modification and monadic unification along with their
+respective implementations.
 
 
 \ifMain\ifDraft

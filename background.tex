@@ -1,4 +1,3 @@
-
 \documentclass[thesis-solanki.tex]{subfiles}
 
 \ifMain
@@ -12,10 +11,12 @@
 
 \section{About this chapter}
 
-This chapter consists of information on the subject of programming languages and their classification into paradigms such as functional and 
-logic styles. Further on, we talk about the languages used for the implementations in this thesis, namely \progLang{Prolog} and 
-\progLang{Haskell}. Moreover, this chapter provides a starting point for various approaches for bringing features of a different languages 
-into the same environment.
+This chapter consists of information on the subject of programming languages and their classification into
+paradigms such as functional and logic styles.
+Further on, we talk about the languages used for the implementations in this thesis, namely \progLang{Prolog} and
+\progLang{Haskell}.
+Moreover, this chapter provides a starting point for various approaches for bringing features of a different
+languages into the same environment.
 
 
 \section{Languages and their classification}
@@ -61,11 +62,11 @@ ones.
 This is done until the one which gives the solution is not derived.
 
 \section{\progLang{Haskell} and \progLang{Prolog}}
-In this thesis we aim to merge two languages \progLang{Haskell} and \progLang{Prolog}
-together and produce a result which exhibits hybrid
-properties.
+In this thesis we aim to merge two languages \progLang{Haskell} and \progLang{Prolog} together and produce a result
+which exhibits hybrid properties.
 The languages in question are \progLang{Haskell} and \progLang{Prolog}.
-These two languages come from respective the functional programming and logical programming branches of the declarative language group.
+These two languages come from respective the functional programming and logical programming branches of the
+declarative language group.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
 \item \progLang{Haskell}
@@ -80,8 +81,8 @@ number of distributions and is present from academia to industry.
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the first
 language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
 Monads can be described as composable computation descriptions \cite{website:monadshaskellorg}.
-Each monad consists of a description of what has action has to be executed, how the action has to be run and how to combine
-such computations.
+Each monad consists of a description of what has action has to be executed, how the action has to be run and how to
+combine such computations.
 An action can describe an impure or side-effecting computation, for example, input and output can be performed
 outside the language but can be brought together with pure functions inside in a program resulting in a separation
 and maintaining safety with practicality.
@@ -141,7 +142,8 @@ Sometimes the meta language and the object language are the same.
 
 \progLang{Haskell} programs can be modified using Template \progLang{Haskell} \cite{website:templatehaskell}, an
 extension to the language which provides services to jump between the two types of programs.
-The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type. This allows us to play with the code and go back and forth betwwen the meta program and the object program.
+The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type.
+This allows us to play with the code and go back and forth betwwen the meta program and the object program.
 
 A specific tool used in meta programming is quasi-quotation \cite{mainland2007s,haskellquasi,wikiquasi}, which
 permits \progLang{Haskell} expressions and patterns to be constructed using domain specific,
@@ -162,9 +164,9 @@ in \progLang{Prolog} to append two lists,
 \label{fig:append-prolog}
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
-The second predicate matches the head of the first and the resulting lists and then recurses on the tails. Listing~\ref{tab:prlgappndhskl} shows how a direct 
-translation of Listing~\ref{fig:append-prolog} into \progLang{Haskell} while 
-Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation.
+The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
+Listing~\ref{tab:prlgappndhskl} shows how a direct translation of Listing~\ref{fig:append-prolog} into
+\progLang{Haskell} while Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation.
 
 \begin{code-list}[th]
   \begin{singlespace}
@@ -186,10 +188,9 @@ Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation.
 Consider the object functional programming language, \progLang{Scala}
 \cite{website:scala}.
 It is purely functional but with objects and classes.
-With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell} and the possible 
-methodologies to do so,
-there have been quite a few attempts to ``merge'' these two programming languages that are from different programming
-paradigms.
+With the above in mind, coming back to the problem of implementing \progLang{Prolog} in \progLang{Haskell} and the
+possible methodologies to do so, there have been quite a few attempts to ``merge'' these two programming languages
+that are from different programming paradigms.
 The attempts fall into two categories as follows:
 
 \begin{enumerate}
@@ -201,11 +202,11 @@ The attempts fall into two categories as follows:
   Paradigm integration, developing a hybrid programming language that is a functional logic programming language
   with a set of characteristics derived from both the participating languages.
 \end{enumerate}
-The approaches of embedding and paradigm integration are discussed in Chapter~\ref{chap:embedding} and Chapter~\ref{chap:multiparadigm} 
-respectively.  
+The approaches of embedding and paradigm integration are discussed in Chapter~\ref{chap:embedding} and
+Chapter~\ref{chap:multiparadigm} respectively.
 
 
-\ifMain
+\ifMain\ifDraft
 \begin{scope}
   \nolinenumbers
   \enotesize

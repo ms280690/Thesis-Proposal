@@ -11,27 +11,29 @@
 
 
 \section{About this chapter}
-This chapter discusses concepts which are related to the work presented in this thesis which may no bear a direct point of contact but 
-contribute to understanding. 
+This chapter discusses concepts which are related to the work presented in this thesis which may no bear a direct
+point of contact but contribute to understanding.
 
 \section{Map-reduce}
 
-\textit{MapReduce} is a programming model and an associated implementation for processing and generating large data sets. Users specify a 
-map function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all 
-intermediate values associated with the same intermediate key \cite{dean2008mapreduce}.
+\textit{MapReduce} is a programming model and an associated implementation for processing and generating large data
+sets.
+Users specify a map function that processes a key/value pair to generate a set of intermediate key/value pairs, and
+a reduce function that merges all intermediate values associated with the same intermediate key
+\cite{dean2008mapreduce}.
 
-In \progLang{Haskell} it is implemented using the \haskellConstruct{map} and \haskellConstruct{fold} functions. 
-\haskellConstruct{map} takes as arguments: an operation and a list of values, and applies the operation to each element in the list. 
-The \haskellConstruct{map}
-operation is as follows:
+In \progLang{Haskell} it is implemented using the \haskellConstruct{map} and \haskellConstruct{fold} functions.
+\haskellConstruct{map} takes as arguments: an operation and a list of values, and applies the operation to each
+element in the list.
+The \haskellConstruct{map} operation is as follows:
 
 \mint{haskell}|map (+3) [1,5,3,1,6]|
 
 and results in
 \mint{haskell}|[4,8,6,4,9]|
 
-\haskellClass{fold} takes as arguments: an operation, an accumulator and a list, and applies the operation on the accumulator and each 
-element one at a time till the end of the list and returns the final accumulator.
+\haskellClass{fold} takes as arguments: an operation, an accumulator and a list, and applies the operation on the
+accumulator and each element one at a time till the end of the list and returns the final accumulator.
 
 The \haskellClass{fold} operation is as follows:
 
@@ -85,7 +87,7 @@ The languages based on this approach are \progLang{ALF} \cite{website:alf}, \pro
 %% up in the table of contents.  
 
 \section{Chapter recapitulation}
-Recapitulating, this chapter described the concepts loosely related to the thesis but do not bare a direct point of contact for better 
-understanding.
+Recapitulating, this chapter described the concepts loosely related to the thesis but do not bare a direct point of
+contact for better understanding.
 
 \end{document}
