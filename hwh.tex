@@ -12,19 +12,20 @@
 
 \section{About this chapter}
 This chapter discusses \progLang{Haskell} as a functional language and its features which assist in embedding domain specific languages.
-\progLang{Haskell} as a functional programming language \progLang{Haskell} is an advanced purely-functional programming
-  language.
-  In particular, it is a polymorphically statically typed, lazy, purely functional language
-  \cite{website:haskellwiki}.
-  It is one of the popular functional programming languages \cite{website:langpop}.
-  \progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
+\progLang{Haskell} as a functional programming language \progLang{Haskell} is an advanced purely-functional
+programminglanguage.
+In particular, it is a polymorphically statically typed, lazy, purely functional language
+\cite{website:haskellwiki}.
+It is one of the popular functional programming languages \cite{website:langpop}.
+\progLang{Haskell} is widely used in the industry \cite{website:haskellinindustry}.
   
 \section{Functional programming languages}
-Functional programming revolves around the concept of functions being applied to arguments to get results. In functional programming
-functions are first class citizens and a main program itself is defined in terms of
-other functions, which in turn are defined in terms of still more functions, until
-at the bottom level the functions are language primitives. Programs contain no
-assignment statements, so variables, once given a value, never change and hence contain no side-effects \cite{hughes1989functional}.
+Functional programming revolves around the concept of functions being applied to arguments to get results.
+In functional programming functions are first class citizens and a main program itself is defined in terms of other
+functions, which in turn are defined in terms of still more functions, until at the bottom level the functions are
+language primitives.
+Programs contain no assignment statements, so variables, once given a value, never change and hence contain no
+side-effects \cite{hughes1989functional}.
 
 
 \section{Embedded domain specific languages}
@@ -78,10 +79,12 @@ host language.
 
 \section{Monads by example: state monad}
 
-In this section we try and replicate a dictionary of variables. The operations such as adding and removing entries to and from the
-dictionary are implemented so as to replicate modification. Listing~\ref{tab:hskllmndworkngdatatype} shows the structure of the 
-\haskellConstruct{IntegerDictionary} for storing and modifying the \haskellConstruct{Variables}. Each \haskellConstruct{Variable} is a \haskellConstruct{VariableName}, \haskellConstruct{Value} pair.
- 
+In this section we try and replicate a dictionary of variables. The operations such as adding and removing entries
+to and from the dictionary are implemented so as to replicate modification.
+Listing~\ref{tab:hskllmndworkngdatatype} shows the structure of the \haskellConstruct{IntegerDictionary} for
+storing and modifying the \haskellConstruct{Variables}.
+Each \haskellConstruct{Variable} is a \haskellConstruct{VariableName}, \haskellConstruct{Value} pair.
+
 \begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos, firstline=22, lastline=35]{haskell}{haskell-monad-working-2.hs}
@@ -90,8 +93,8 @@ dictionary are implemented so as to replicate modification. Listing~\ref{tab:hsk
 \label{tab:hskllmndworkngdatatype}
 \end{code-list}
 
-Listing~\ref{tab:hskllmndworkngfunctions} shows the insertion and removal in a variable dictionary and the \haskellConstruct{run} function 
-for applying the operation on the dictionary.
+Listing~\ref{tab:hskllmndworkngfunctions} shows the insertion and removal in a variable dictionary and the
+\haskellConstruct{run} function for applying the operation on the dictionary. 
 
 \begin{code-list}[H]
   \begin{singlespace}
@@ -103,8 +106,8 @@ for applying the operation on the dictionary.
 \label{tab:hskllmndworkngfunctions}
 \end{code-list}
 
-Listing~\ref{tab:hskllmndworkngexamples} shows a combination of the operation of finding a product of the two variables and 
-storing back the result in the dictionary.
+Listing~\ref{tab:hskllmndworkngexamples} shows a combination of the operation of finding a product of the two
+variables and storing back the result in the dictionary.
 
 
 \begin{code-list}[H]
@@ -145,36 +148,43 @@ Consider the infinite list example:
 results in:
 \mint{haskell}|1 : 1 : 1 . . . |
 
-Lazy evaluation is part of operational semantics, i.e. how a \progLang{Haskell} program is evaluated. This semantics allows one to bypass 
-undefined values (e.g. results of infinite loops) and in this way it also allows one to process formally infinite data. 
+Lazy evaluation is part of operational semantics, i.e.
+how a \progLang{Haskell} program is evaluated.
+This semantics allows one to bypass undefined values (e.g.
+results of infinite loops) and in this way it also allows one to process formally infinite data.
 
 \section{Quasiquotation and \progLang{Haskell}}\label{hwh:quasiquotationandhaskell}
 \subsection{Quasiquotation}
 
 Quotation is a device for exactly specifying some text \cite{website:quotationstanford}.
 Thus ``not p'' refers to the expression consisting of the word not followed by the letter p.
-Quasi-quotation, or Quine quotation, is a metalinguistic device for referring to the form of an expression containing
-variables without referring to the symbols for those variables.
-Thus $\left\ulcorner \mathop\text{not} p \right\urcorner$ refers to the form of any expression consisting of the word not followed by any
-value of the variable $p$ \cite{website:quasiquotationfreedictionary}. The variable $p$ is sometimes called a meta-syntactic variable.
-Quasi-quotation facilitates rigorous but terse formulation of general rules about expressions
-\cite{wikiquasi}.
+Quasi-quotation, or Quine quotation, is a metalinguistic device for referring to the form of an expression
+containing variables without referring to the symbols for those variables.
+Thus $\left\ulcorner \mathop\text{not} p \right\urcorner$ refers to the form of any expression consisting of the
+word not followed by any value of the variable $p$ \cite{website:quasiquotationfreedictionary}.
+The variable $p$ is sometimes called a meta-syntactic variable.
+Quasi-quotation facilitates rigorous but terse formulation of general rules about expressions \cite{wikiquasi}.
 
 \subsection{Quasiquotaion in \progLang{Haskell}}
 
-Quasiquoting allows programmers to use custom, domain-specific syntax to construct fragments of their program. Along with 
-\progLang{Haskell}'s existing support for domain specific languages, you are now free to use new syntactic forms for your eDSLs. Working 
-with complex data types can impose a significant syntactic burden; extensive applications of nested data constructors are often required to 
-build values of a given data type, or, worse yet, to pattern match against values. Allow \progLang{Haskell} expressions and patterns to be 
-constructed using domain specific, programmer-defined concrete syntax \cite{haskellquasi, mainland2007s}.
-Listing~\ref{tab:prlgappndhsklqq} shows us the advantages of quasi quotation (in this example there are no metasynctactic variables).
+Quasiquoting allows programmers to use custom, domain-specific syntax to construct fragments of their program.
+Along with \progLang{Haskell}'s existing support for domain specific languages, you are now free to use new
+syntactic forms for your eDSLs.
+Working with complex data types can impose a significant syntactic burden; extensive applications of nested data
+constructors are often required to build values of a given data type, or, worse yet, to pattern match against
+values.
+Allow \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined
+concrete syntax \cite{haskellquasi, mainland2007s}.
+Listing~\ref{tab:prlgappndhsklqq} shows us the advantages of quasi quotation (in this example there are no
+metasynctactic variables).
 
 
 \section{Chapter recapitulation}
-Recapitulating, this chapter provided information on \progLang{Haskell} as a tool for embedding domain specific languages.
+Recapitulating, this chapter provided information on \progLang{Haskell} as a tool for embedding domain specific
+languages. 
 
 
-\ifMain
+\ifMain\ifDraft
 \begin{scope}
   \nolinenumbers
   \enotesize
@@ -186,7 +196,7 @@ Recapitulating, this chapter provided information on \progLang{Haskell} as a too
   \end{singlespace}
 \end{scope}
 \unbcbibliography{bibliography}
-\fi
+\fi\fi
 
 
 \end{document}

@@ -140,7 +140,9 @@
       % Generate the abstract
     \end{frontmatter}
 
+\ifDraft
 \linenumbers
+\fi
 
 %   ==========================================================================
 %   Begin main matter (pages are numbered with arabic numerals)
@@ -331,8 +333,10 @@
 	\subfile{conclusion}
 	\clearpage
 
+  \ifDraft
   \input{toDo}
   \clearpage
+  \fi
 
 \begin{scope}
   \ifDraft
