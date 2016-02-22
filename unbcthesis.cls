@@ -207,6 +207,7 @@
 \renewcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
 \renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.8em}}
+\AtBeginDocument{\addtocontents{lis}{\protect\@namedef{l@code-list}{\protect\@dottedtocline{1}{1.5em}{2.8em}}}}
 \let\l@table\l@figure
 
 \newcommand{\unbctableofcontents}{
@@ -342,6 +343,7 @@
     \copyright\ #2, #6 
   \end{center}
 \vspace{\fill}
+\newpage
 }
 
 %   ------------------------------------------------------------   %
