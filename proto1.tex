@@ -435,7 +435,7 @@ An \haskellConstruct{ST} action  is of the form:
 The s keeps references to objects inside the \haskellConstruct{ST monad} from leaking to the outside of the
 \haskellConstruct{ST monad} meaning the actions can only affect their own thread.
 To escape we require:
-\mint{haskell}|runST :: forall a.
+\mint{haskell}|runST :: forall a.|
 
 The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known
 prohibiting to other threads and thus \haskellConstruct{runST} is pure \cite{website:stmonadwiki,
