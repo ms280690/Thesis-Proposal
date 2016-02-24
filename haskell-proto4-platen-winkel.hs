@@ -6,14 +6,9 @@ import System.IO
 
 data PrologResult
    = NoResult
-   | Cons OneBinding PrologResult 
+   | Cons Unifier PrologResult 
    | IOIn (IO String) (String -> PrologResult)
    | IOOut (IO ()) PrologResult
-
-data OneBinding = Pair VariableName VariableName
-
-data VariableName = VariableName Int String
-      deriving (Eq, Data, Typeable, Ord)
 
 
 -----------------------------------------------------------------------------------------------
