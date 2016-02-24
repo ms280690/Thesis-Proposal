@@ -134,7 +134,24 @@ since it has to deal with impure predicates.
 Moreover, a particular order of execution can lead to infinite recursion.
 
 \section{Universal Horn clauses}
+A Horn clause is a logical formula of a particular rule-like form which gives it useful properties for use in logic programming, formal 
+specification, and model theory \cite{bjorner2013solving}. 
 
+A literal is an atomic formula or its negation. A clause is a disjunction of literals. A Horn clause is a clause with exactly
+one positive literal. A Horn formula is a conjunctive normal form formula whose clauses are all Horn \cite{website:hornclauseprolog}.
+
+Consider the clauses in Listing~\ref{tab:prologclausesuhc}:
+\begin{code-list}[H]
+\begin{singlespace}
+\inputminted{prolog}{prolog-pwp-universal-horn-clause.pl}
+\end{singlespace}
+\caption{\progLang{Prolog} clause}
+\label{tab:prologclausesuhc}
+\end{code-list}
+
+and the Horn clause equivalent: 
+
+$[c \vee \neg a \vee \neg b] \wedge a \wedge b$
 
 \section{Unification}
 

@@ -58,6 +58,11 @@ Didier Bert, Pascal Drabik, and Rachid Echahed, \emph{Lpg: A generic, logic and
 James Bielman and Lu\'\i{}s Oliveira, \emph{Common lisp foreign function
   interface}, March 2014.
 
+\bibitem{bjorner2013solving}
+Nikolaj Bjorner, Ken McMillan, and Andrey Rybalchenko, \emph{On solving
+  universally quantified horn clauses}, Static Analysis, Springer, 2013,
+  pp.~105--125.
+
 \bibitem{DBLP:conf/utp/2008}
 Andrew Butterfield (ed.), \emph{Unifying theories of programming, second
   international symposium, utp 2008, dublin, ireland, september 8-10, 2008,
@@ -295,6 +300,9 @@ Duncan~Temple Lang, \emph{Embedding s in other languages and environments},
 
 \bibitem{website:langpop}
 LangPop.com, \emph{Programming language popularity}, October 2013.
+
+\bibitem{website:hornclauseprolog}
+learn Prolog~Now, \emph{Horn clauses}.
 
 \bibitem{website:nue-prolog}
 University of~Melbourne Lee~Naish, \emph{Neu prolog}, February 1991.
