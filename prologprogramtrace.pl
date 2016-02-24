@@ -1,17 +1,17 @@
-father(abraham,isaac). ma1e(isaac). 
-father(haran,1ot). ma1e(1ot). 
-father(haran,milcah). fema1e(yiscah). 
-father(haran,yiscah). fema1e(milcah). 
-son(X,Y) :- father(Y,X), ma1e(X). 
-daughter(X,Y) :- father(Y,X), fema1e(X).
+father(abraham,isaac). male(isaac). 
+father(haran,1ot). male(1ot). 
+father(haran,milcah). female(yiscah). 
+father(haran,yiscah). female(milcah). 
+son(X,Y) :- father(Y,X), male(X). 
+daughter(X,Y) :- father(Y,X), female(X).
 son(X,haran)? 
-	father(haran,X) 				X=1ot 
-	ma1e(1ot) 
+	father(haran,X) 				X=lot 
+	male(lot) 
 			true 
-		Output: X=1ot 
+		Output: X=lot 
 			;
 father(haran,x) 					X=milcah 
-ma1e(milcah) 	f 
+male(milcah) 	f 
 father(haran,X) 					X=yiscah 
-ma1e(yiscah) 	f 
+male(yiscah) 	f 
 			no (more) solutions 

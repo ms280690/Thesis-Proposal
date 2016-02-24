@@ -294,13 +294,21 @@ the trail to record which variables bindings ought to be undone on backtracking.
 
 \begin{code-list}[H]
   \begin{singlespace}
-    \inputminted[linenos]{prolog}{prologprogramtrace.pl}
+    \inputminted[linenos, lastline=6]{prolog}{prologprogramtrace.pl}
   \end{singlespace}
-  \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753}}
-\label{tab:prlgprgrmtrce}
+  \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753} : \prologConstruct{Clauses}}
+\label{tab:prlgprgrmtrceclauses}
 \end{code-list}\endnote{\david{ma1e?}}
 
-As seen in Listing~\ref{tab:prlgprgrmtrce} how \progLang{Prolog} resolves a query. 
+\begin{code-list}[H]
+  \begin{singlespace}
+    \inputminted[linenos, firstline=7]{prolog}{prologprogramtrace.pl}
+  \end{singlespace}
+  \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753} : Output}
+\label{tab:prlgprgrmtrceop}
+\end{code-list}
+
+As seen in Listing~\ref{tab:prlgprgrmtrceclauses} and Listing~\ref{tab:prlgprgrmtrceop} how \progLang{Prolog} resolves a query. 
 
 \section{\prologConstruct{cuts} in \progLang{Prolog}}
 Consider the example in Listing~\ref{tab:prlgcutfreeexmpl}.
