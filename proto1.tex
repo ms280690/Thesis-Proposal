@@ -480,7 +480,7 @@ and for later use to convert them back, as shown in Figure~\ref{tab:from-UTerm}.
 The variable dictionaries and \haskellConstruct{UTerm}ified language expressions are unified in the binding monad
 as shown in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
 %
-\begin{code-list}
+\begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos]{haskell}{haskell-proto1-unify-monad.hs}
   \end{singlespace}
@@ -497,7 +497,7 @@ as shown in Figure~\ref{tab:unification} and Figure~\ref{tab:unif-driver}.
 \end{code-list}
 
 
-The final reconversion to return a list of substitutions, called \haskellConstruct{f1} in
+The final reconversion to return a list of substitutions, called \haskellConstruct{extractUnifier} in
 Figure~\ref{tab:unif-driver}, is shown in Figure~\ref{tab:vars-extract}.
 \begin{code-list}[H]
   \begin{singlespace}
@@ -506,6 +506,30 @@ Figure~\ref{tab:unif-driver}, is shown in Figure~\ref{tab:vars-extract}.
   \caption{Variable substitution list extraction}
   \label{tab:vars-extract}
 \end{code-list}
+
+Listing~\ref{tab:sampleterms} shows fixed point versions of sample terms.
+
+\begin{code-list}[H]
+\begin{singlespace}
+\inputminted[linenos]{haskell}{haskell-proto1-sample-terms.hs}
+\end{singlespace}
+\caption{Sample terms}
+\label{tab:sampleterms}
+\end{code-list}
+
+Listing~\ref{tab:rununifyoutput} shows the result of the execution for \haskellConstruct{runUnify}.
+
+\begin{code-list}[H]
+\begin{singlespace}
+\begin{minted}[linenos]{haskell}
+runUnify $ monadicUnification fix1 fix2
+[(VariableName 1 "x",P (Struct "a" [Var (VariableName 0 "x"),Cut 0,Wildcard]))]
+\end{minted}
+\end{singlespace}
+\caption{Output for \haskellConstruct{runUnify}}
+\label{tab:rununifyoutput}
+\end{code-list}
+
 
 \section{Chapter recapitulation}
 Recapitulating, this chapter provides the ideas of language modification and monadic unification along with their

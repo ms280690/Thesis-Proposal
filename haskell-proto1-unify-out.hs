@@ -1,9 +1,9 @@
-f1 ::
+extractUnifier ::
   (BindingMonad FlatTerm (STVar s FlatTerm) (ST.STBinding s))
   => (forall s. Map VariableName (STVar s FlatTerm)
       -> (ST.STBinding s [(VariableName, Prolog)])
      )
-f1 dict = do
+extractUnifier dict = do
   let ld1 = Map.toList dict
   ld2 <- Control.Monad.Error.sequence
          [ v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
