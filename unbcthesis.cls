@@ -78,7 +78,7 @@
 \Draftfalse
 \DeclareOption{final}{\Draftfalse}
 \DeclareOption{nofinal}{\Drafttrue}
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{report}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass{report}
 %% packages dependent on class and options
