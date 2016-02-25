@@ -196,7 +196,7 @@ This architecture adopts a two stage interpretation procedure with \haskellConst
 \label{tab:langwithpureandimpureconstructors}
 \end{code-list}
 
-This abstract grammar encapsulates constructors which represent pure and impure actions. The first stage of the interpretation i.e. 
+This abstract grammar encapsulates constructors which represent pure and impure actions. The first stage of the interpretation, i.e., 
 \haskellConstruct{runProg} takes a program and returns a \haskellConstruct{PrologResult} as shown in Listing~\ref{tab:prologresultdatatype}.
 
 \begin{code-list}[H]
@@ -222,7 +222,7 @@ Listing~\ref{tab:runprogtype} describes the type signature of \haskellConstruct{
 Till this point in the interpretation of the program no \languageConstruct{IO} operations have been executed. As described in the previous 
 section we construct functions which upon execution will produce results and hence the partially interpreted program is still pure.
 
-The second stage of interpretation i.e. \haskellConstruct{runIO} involves executing the impure actions within the \haskellConstruct{IO Monad} to produce the desired side
+The second stage of interpretation, i.e., \haskellConstruct{runIO} involves executing the impure actions within the \haskellConstruct{IO Monad} to produce the desired side
 effects. In this prototype, the impure actions as seen in Listing~\ref{tab:prologresultdatatype} are:
 
 \begin{enumerate}
