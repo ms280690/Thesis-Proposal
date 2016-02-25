@@ -13,8 +13,8 @@ Alfred~V. Aho, Ravi Sethi, and Jeffrey~D. Ullman, \emph{Compilers: Principles,
   MA, USA, 1986.
 
 \bibitem{ait1999warren}
-Hassan A{\"\i}t-Kaci and For{\^e}t Des~Flambertins, \emph{Warren's abstract
-  machine a tutorial reconstruction},  (1999).
+Hassan A{\"\i}t-Kaci, \emph{Warren's abstract machine: A tutorial
+  reconstruction}, MIT Press, 1991.
 
 \bibitem{website:imlpementingflpl}
 Sergio Antoy, \emph{Implementing functional logic programming languages}.
@@ -37,10 +37,6 @@ Andrei Barbu, \emph{The csp package}, August 2013,
 
 \bibitem{website:understandingalgebrasfpcomplete}
 FP~Complete Bartosz~Milewski, \emph{Understanding algebras}, October 2013.
-
-\bibitem{prolog-graph-lib}
-Matthias Bartsch, \emph{The prolog-graph package}, September 2011,
-  \url{http://hackage.haskell.org/package/prolog-graph}.
 
 \bibitem{barzilay2004foreign}
 Eli Barzilay and Dmitry Orlovsky, \emph{Foreign interface for plt scheme}, on
@@ -167,10 +163,6 @@ Sebastian Fischer, \emph{The cflp package}, June 2009,
 
 \bibitem{website:molog}
 Adam~C. Foltzer, \emph{Molog}, March 2013.
-
-\bibitem{cspm-To-Prolog-lib}
-Marc Fontaine, \emph{The cspm-toprolog package}, August 2013,
-  \url{http://hackage.haskell.org/package/CSPM-ToProlog}.
 
 \bibitem{proplogic-lib}
 David Fox, \emph{The proplogic package}, April 2012,
