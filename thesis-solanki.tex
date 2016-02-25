@@ -27,7 +27,7 @@
 \usepackage{thesis-macros}
 \usepackage{varioref}   %% added dgc 2016-02-01
 \usepackage{xr}
-\usepackage{hyperref}      
+\usepackage{hyperref}
 
 %% added dgc 2015-12-07
 \floatstyle{ruled}%
@@ -45,7 +45,7 @@
 %- \externaldocument{introduction}
 %- \externaldocument{miscrelcon}
 %- \externaldocument{multiparadigm}
-%- \externaldocument{prologin} 
+%- \externaldocument{prologin}
 %- \externaldocument{prologinhaskell}
 %- \externaldocument{proposedwork}
 %- \externaldocument{pwp}
@@ -122,13 +122,13 @@
 %   ==========================================================================
 %   Begin front matter (pages are numbered with roman numerals)
 %   ==========================================================================
-    
+
 \begin{frontmatter}
   \unbcthesistitle{\theTitle
   }{\theAuthor}{\theDegree}{\theMajor}{\theMonth}{\theYear}{%
-    %% Supply your credentials 
+    %% Supply your credentials
     {B.Eng, Mumbai University, 2012}}
-  
+
   \input{abstract}%
   \unbctableofcontents
   \newpage
@@ -148,12 +148,12 @@
 %   Begin main matter (pages are numbered with arabic numerals)
 %   ==========================================================================
     \doublespacing     % Text should be double spaced
- 
+
     %
     % I use a file for every section.  Each of these corresponds to a file
     % with the specified name ending in '.tex' (e.g., introduction.tex).
     %
-   
+
    \nocite{claessen2000typed,
    chin2003type,
    hinze1998prological,
@@ -221,9 +221,9 @@
    robinson1980loglisp,
    ummlisp,
    racklog}
-   
-   
-   
+
+
+
    \nocite{DBLP:conf/utp/2006,
    DBLP:conf/utp/2008,
    DBLP:conf/utp/2010,
@@ -268,59 +268,60 @@
    
    \subfile{accomplishedWork}
    \clearpage
-   
+
    \subfile{embedding}
    \clearpage
-   
+
    \subfile{multiparadigm}
    \clearpage	
 
 %	\subfile{prologin}
 %	\clearpage
-			
+
 %	\subfile{prologinhaskell}
 %	\clearpage
-		
+
 %	\subfile{ummcpp}
 %	\clearpage
-		
+
 %	\subfile{quasiquotation}
 %	\clearpage
-	
+
 %	\subfile{metasyntacticvariables}
 %	\clearpage
-	
+
 %	\subfile{relatedtermskeywords}
 %	\clearpage
-		
+
    \subfile{hwh}
    \clearpage
-   
+
    \subfile{pwp}
    \clearpage
-   
+
    \subfile{relatedWork}
    \clearpage
-		
+
 %	\subfile{miscrelcon}
 %	\clearpage
-  	
+
   \subfile{proto1}
   \clearpage
-  	
+
   \subfile{proto2}
   \clearpage
-  	
+
 %  \subfile{proto2.2}
 %  \clearpage
-  	
+
   \subfile{proto3}
   \clearpage
-  	
+
   \subfile{proto4}
   \clearpage
-  	
+
   %\subfile{workCompleted}
+<<<<<<< HEAD
 	%\clearpage	
 	
 	%\subfile{results}
@@ -331,6 +332,18 @@
 			
 	\subfile{conclusion}
 	\clearpage
+=======
+  %\clearpage
+
+  %\subfile{results}
+  % \clearpage
+
+  \subfile{futureScope}
+  \clearpage
+
+  \subfile{conclusion}
+  \clearpage
+>>>>>>> mistake fix.
 
   \ifDraft
   \input{toDo}
@@ -363,7 +376,7 @@
 %   ==========================================================================
 %   Wrap up the document with the Bibliography (looks for the specified .bib)
 %   ==========================================================================
-   	
+
 
 \unbcbibliography{bibliography}
 \end{document}
