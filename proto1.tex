@@ -338,12 +338,7 @@ Figure~\ref{fig:Functor Hierarchy} shows the relation between the different clas
 \label{fig:Functor Hierarchy}
 \end{figure}
 
-The \haskellClass{Functor} and \haskellClass{Foldable} instances provide functions for applying map-reduce as described in Chapter~\ref{chap:relatedWork}.
-\endnote{%
-  Also it is not clear that you are talking about the functional interface to \texttt{map-reduce} rather than the
-  large-scale data capabilities.  Perhaps this can be cleared up in Chapter~\ref{chap:relatedWork}.
-}
-to the data structure.
+The \haskellClass{Functor} and \haskellClass{Foldable} instances provide functions for applying map-reduce to the data structure as described in Chapter~\ref{chap:relatedWork}.
 The primary issue is that at the end of the operation the structure if the data type is lost which would not help
 our cause since the result of a query must be a list of substitutions which are essential pairs of language
 variable with language values (language constructs).
@@ -433,10 +428,8 @@ An \haskellConstruct{ST} action  is of the form:
 \haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}.
 The s keeps references to objects inside the \haskellConstruct{ST monad} from leaking to the outside of the
 \haskellConstruct{ST monad} meaning the actions can only affect their own thread.
-To escape we require:\endnote{%
-  There is something missing here!
-}
-\mint{haskell}|runST :: forall a.|
+To escape we require:
+\mint{haskell}|runST :: (forall s. ST s a) -> a|
 
 The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known
 prohibiting to other threads and thus \haskellConstruct{runST} is pure \cite{website:stmonadwiki,
