@@ -172,38 +172,9 @@ It restricts the language constructs to only reading from \haskellConstruct{stdi
 \end{code-list}
 \end{comment}
 
+\newpage
 
-\section{Approach 2}
-
-\begin{comment}
-  So when the program is getting interpreted the interpreter encounters an IO operation which then gets
-  "interpreted" to the above and it continues normally.
-
-The interpreted program is still pure since the IO actions have not been executed 
-
-if the running is done inside a monad then the IO still is pure.
-\end{comment}
-
-
-Listing ~\ref{tab:prologresultdatatype} shows a \progLang{Prolog}-like language encapsulating impure actions for
-input and output operations.
-The \haskellClass{OneBinding} constructor represents a \prologConstruct{unifier} as a pairs of variables.
-For termination we use \haskellClass{NoResult}.
-
-
-\begin{code-list}[H]
-\begin{singlespace}
-  \inputminted[linenos, firstline=7, lastline=11]{haskell}{haskell-proto4-platen-winkel.hs}
-\end{singlespace}
-\caption{\progLang{Prolog}-like language with \languageConstruct{IO} constructors}
-\label{tab:prologresultdatatype}
-\end{code-list}
-
-\section{Justifying that Approach 2 is achievable}
-two interpreter strategy
-1. pure
-2. in IO Monad
-
+\section{Prototype architecture}
 Figure~\ref{fig:proto4architecture} shows architecture for prototype 4.
 
 \begin{figure}[H]
@@ -214,9 +185,70 @@ Figure~\ref{fig:proto4architecture} shows architecture for prototype 4.
   \label{fig:proto4architecture}
 \end{figure}
 
+This architecture adopts a two stage interpretation procedure with \haskellConstruct{runProg} and \haskellConstruct{runIO}. Consider the 
+\progLang{Prolog}-like language described in Listing~\ref{tab:langwithpureandimpureconstructors}.
 
+\begin{code-list}[H]
+\begin{singlespace}
+\inputminted{haskell}{haskell-proto4-prlg-lang.hs}
+\end{singlespace}
+\caption{Language with pure and impure constructors}
+\label{tab:langwithpureandimpureconstructors}
+\end{code-list}
+
+This abstract grammar encapsulates constructors which represent pure and impure actions. The first stage of the interpretation i.e. 
+\haskellConstruct{runProg} takes a program and returns a \haskellConstruct{PrologResult} as shown in Listing~\ref{tab:prologresultdatatype}.
+
+\begin{code-list}[H]
+\begin{singlespace}
+  \inputminted[linenos, firstline=7, lastline=11]{haskell}{haskell-proto4-platen-winkel.hs}
+\end{singlespace}
+\caption{\progLang{Prolog}-like language with \languageConstruct{IO} constructors}
+\label{tab:prologresultdatatype}
+\end{code-list}
+
+The \haskellConstruct{NoResult} is used for termination. If a most general unifier is reached then a \haskellConstruct{Cons} construct is
+returned. The last two constructors are for read and write operations respectively.
+
+Listing~\ref{tab:runprogtype} describes the type signature of \haskellConstruct{runProg}.
+\begin{code-list}[H]
+\begin{singlespace}
+\mint{haskell}|runProg :: Prolog -> PrologResult| 
+\end{singlespace}
+\caption{\haskellConstruct{runProg} type signature}
+\label{tab:runprogtype}
+\end{code-list}
+
+Till this point in the interpretation of the program no \languageConstruct{IO} operations have been executed. As described in the previous 
+section we construct functions which upon execution will produce results and hence the partially interpreted program is still pure.
+
+The second stage of interpretation i.e. \haskellConstruct{runIO} involves executing the impure actions within the \haskellConstruct{IO Monad} to produce the desired side
+effects. In this prototype, the impure actions as seen in Listing~\ref{tab:prologresultdatatype} are:
+
+\begin{enumerate}
+\item \haskellConstruct{IOIn (IO String) (String -> PrologResult)}, and
+
+\item \haskellConstruct{IOIn (IO String) (String -> PrologResult)} 
+\end{enumerate} 
+ 
+
+Listing~\ref{tab:runiotype} describes the type signature of \haskellConstruct{runIO}.
+\begin{code-list}[H]
+\begin{singlespace}
+\mint{haskell}|runIO :: PrologResult -> IO [a]| 
+\end{singlespace}
+\caption{\haskellConstruct{runIO} type signature}
+\label{tab:runiotype}
+\end{code-list}
+
+\haskellConstruct{runIO} accepts as input the result from \haskellConstruct{runProg} i.e. \haskellConstruct{PrologResult} and executes
+each action in the \haskellConstruct{IO Monad}.
 
 \section{Chapter recapitulation}
+Recapitulating, this prototype gives an architecture for a two stage interpretation strategy for an embedded domain specific language. In 
+this process the first stage produces a pure interpreted program while the latter executes each action to produce output. This approach 
+provides modularity and control over the side effecting actions for execution.   
+
 
 \ifMain\ifDraft
 \begin{scope}
