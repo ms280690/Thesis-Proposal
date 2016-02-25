@@ -197,18 +197,18 @@ Listing~\ref{tab:kindsinhaskell} describes kinds in \progLang{Haskell}.
 
 Simply speaking we can have something like
 \mint{haskell}|FlatTerm Bool|
-and a generic function like,
+\noindent and a generic function like,
 \mint{haskell}|function :: (a -> b) -> FlatTerm a -> FlatTerm b|
 
 One problem remains: how does one represent deep expressions
 of the above language,
 for example something of the form,
 \mint{haskell}|FlatTerm(FlatTerm (FlatTerm (FlatTerm (....... (a)))))|
-and how to represent it generically to perform operations on it, since
+\noindent and how to represent it generically to perform operations on it, since
 \mint{haskell}|(FlatTerm a) != (FlatTerm (FlatTerm a))|
 
 %
-because with our original grammar all the expression that could be defined would be represented by a single entity
+\noindent because with our original grammar all the expression that could be defined would be represented by a single entity
 \haskellConstruct{Term}, no matter how deep they were.
 
 The approach to tackling this problem is to find the ``fixed-point'' of \haskellConstruct{FlatTerm}.
@@ -221,12 +221,11 @@ In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
 which we apply to our abstract syntax.
 \newline
-\noindent The resulting language is of the form,\endnote{%
-  There is a weird \TeX{} problem here jamming lines together.
-}
+\noindent The resulting language is of the form,
+
 \mint{haskell}|data Prolog = P (Fix FlatTerm) deriving (Show,Eq,Ord)|
 %
-simply speaking all the expressions resulting from \haskellConstruct{FlatTerm} can be represented  by the type
+\noindent simply speaking all the expressions resulting from \haskellConstruct{FlatTerm} can be represented  by the type
 signature \haskellConstruct{Fix FlatTerm}.
 
 A sample function working with such expressions would be of the form,
