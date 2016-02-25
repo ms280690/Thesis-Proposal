@@ -386,6 +386,10 @@ University of~Maryland Medical~Center, \emph{Lisp, unification and embedded
 \bibitem{website:prologintroumiami}
 University of~Miami, \emph{Prolog introduction}, March 2012.
 
+\bibitem{ohwada1987managing}
+Hayato Ohwada and Fumio Mizoguchi, \emph{Managing search in parallel logic
+  programming}, Logic Programming'87, Springer, 1987, pp.~148--177.
+
 \bibitem{website:ocamllang}
 Ocaml Org, \emph{Ocaml programming language}, March 2014.
 

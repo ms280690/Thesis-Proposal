@@ -268,17 +268,25 @@ To implement a logic programming language such as \progLang{Prolog} two major de
 taken:
 \begin{enumerate}
 \item Scheduling policy:
-  \endnote{\david{say what a scheduling policy is}}
-  Select leftmost goal and replace the non deterministic choice of a clause by sequential search for a unifiable
+  \endnote{\david{say what a scheduling policy is} \mehul{pg 93 art of prolog}}
+  A scheduling policy defines how the additions and deletions of goals from the resolvent is performed by the interpreter.
+  For instance, \progLang{Prolog} selects the leftmost goal and replaces the non deterministic choice of a clause by sequential search for a unifiable
   clause and backtracking.
-  Stack scheduling policy, pop the topmost goal for reduction and push derived goals back.
+  Stack scheduling policy, pops the topmost goal for reduction and pushes derived goals back.
 
 \item Search strategy:
   \endnote{\david{say what a search strategy is}}
-  \progLang{Prolog} simulates the non-deterministic choice of reducing clause by sequential search and
-  backtracking.
+  Most problem solving systems are built by state-space 
+  search to obtain desired solutions and involve problems in 
+  selecting possible alternatives while searching through a
+  solution space. 
+  \cite{ohwada1987managing}.
+  For instance, \progLang{Prolog} simulates the 
+  non-deterministic choice of reducing clause by sequential 
+  search and backtracking.
   The first goal whose head unifies with the goal is chosen.
-  If no match is found then the computation is unwound to the last choice point and the next unifiable clause is
+  If no match is found then the computation is unwound to 
+  the last choice point and the next unifiable clause is
   chosen.
 \end{enumerate}
 
@@ -286,7 +294,7 @@ For terminating queries \progLang{Prolog} generates all possible solutions of th
 \progLang{Prolog} program.
 It performs a complete depth first traversal of a particular search tree for the goal by always choosing the
 leftmost goal.
-Listing~\ref{tab:prlgprgrmtrce} shows a sample trace for a query.
+Listing~\ref{tab:prlgprgrmtrceop} shows a sample trace for a query using the knowledge base from Listing~\ref{tab:prlgprgrmtrceclauses}.
 
 A popular implementation of \progLang{Prolog} is the Warren Abstract Machine \cite{ait1999warren} which has three
 different storage usages; a global stack for compound terms, for environment frames and choice points and lastly
@@ -307,8 +315,6 @@ the trail to record which variables bindings ought to be undone on backtracking.
   \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753} : Output}
 \label{tab:prlgprgrmtrceop}
 \end{code-list}
-
-As seen in Listing~\ref{tab:prlgprgrmtrceclauses} and Listing~\ref{tab:prlgprgrmtrceop} how \progLang{Prolog} resolves a query. 
 
 \section{\prologConstruct{cuts} in \progLang{Prolog}}
 Consider the example in Listing~\ref{tab:prlgcutfreeexmpl}.
