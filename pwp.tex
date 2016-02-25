@@ -266,14 +266,11 @@ To implement a logic programming language such as \progLang{Prolog} two major de
 taken:
 \begin{enumerate}
 \item Scheduling policy:
-  \endnote{\david{say what a scheduling policy is} \mehul{pg 93 art of prolog}}
   A scheduling policy defines how the additions and deletions of goals from the resolvent is performed by the interpreter.
-  For instance, \progLang{Prolog} selects the leftmost goal and replaces the non deterministic choice of a clause by sequential search for a unifiable
-  clause and backtracking.
-  Stack scheduling policy, pops the topmost goal for reduction and pushes derived goals back.
+  For instance, \progLang{Prolog} adopts a 
+  stack scheduling policy. The resolvent is maintained as a stack which involves popping the topmost goal for reduction and pushing derived goals back.
 
 \item Search strategy:
-  \endnote{\david{say what a search strategy is}}
   Most problem solving systems are built by state-space 
   search to obtain desired solutions and involve problems in 
   selecting possible alternatives while searching through a
@@ -304,7 +301,7 @@ the trail to record which variables bindings ought to be undone on backtracking.
   \end{singlespace}
   \caption{Tracing a simple Prolog computation \cite{Sterling:1994:APA:175753} : \prologConstruct{Clauses}}
 \label{tab:prlgprgrmtrceclauses}
-\end{code-list}\endnote{\david{ma1e?}}
+\end{code-list}
 
 \begin{code-list}[H]
   \begin{singlespace}
