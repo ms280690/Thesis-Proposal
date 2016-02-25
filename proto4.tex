@@ -235,13 +235,13 @@ effects. In this prototype, the impure actions as seen in Listing~\ref{tab:prolo
 Listing~\ref{tab:runiotype} describes the type signature of \haskellConstruct{runIO}.
 \begin{code-list}[H]
 \begin{singlespace}
-\mint{haskell}|runIO :: PrologResult -> IO [a]| 
+\mint{haskell}|runIO :: PrologResult -> IO [Unifier]| 
 \end{singlespace}
 \caption{\haskellConstruct{runIO} type signature}
 \label{tab:runiotype}
 \end{code-list}
 
-\haskellConstruct{runIO} accepts as input the result from \haskellConstruct{runProg} i.e. \haskellConstruct{PrologResult} and executes
+\haskellConstruct{runIO} accepts as input the result from \haskellConstruct{runProg}, i.e., \haskellConstruct{PrologResult} and executes
 each action in the \haskellConstruct{IO Monad}.
 
 \section{Chapter recapitulation}
