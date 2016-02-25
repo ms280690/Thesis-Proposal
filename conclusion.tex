@@ -7,23 +7,18 @@
 \begin{document}
 
 % ---------------------------------------------------------------------------
-\chapter{Conclusion / Expected Outcomes}\label{chap:conclusion}
+\chapter{Conclusion and Outcomes}\label{chap:conclusion}
 % ---------------------------------------------------------------------------
 
-
-\begin{comment}
-As we have seen there have been a number of attempts at solving the problem and so have been the issues. First and foremost, with appropriate  documentation the resulting library should be easy to use. Writing a program must be very much the same as writing a program in the host language. With the introduction of few new constructs defining
-\end{comment}
-
-\begin{comment}
-The aim of this study is to experiment with two different languages working together and/or contributing in providing a solution. Mixing and matching conflicting characteristics may lead to a behaviour similar to that of a multi paradigm language. The points to be looked at are efficiency of the emulation, semantics of the resulting embedding.
-
-Moreover, this will be an attempt to answer the question how practical \progLang{Prolog} fits into \progLang{Haskell}.                  
-\end{comment}
-
-
 This thesis looked into the problem of embedding \progLang{Prolog} in \progLang{Haskell}. More generally it gives insights into the 
-different approaches of embedding programming languages
+different approaches of merging programming languages namely paradigm integration and embedding. We provide a literature reviews for them
+and discuss the topic of functional logic programming languages. We review the state of embedding \progLang{Prolog} in \progLang{Haskell}
+and improve on the current work. More generally speaking we look into adopting features provided by \progLang{Haskell} for eDSLs.
+
+This thesis provides an approach to opening up an eDSL in \progLang{Haskell} and a monadic approach for \progLang{Prolog}-like unification
+in \progLang{Haskell}. We made it modular so that it can be incorporated with any eDSl defined by an recur abstract syntax and generic to 
+support multiple search strategies. We also provide an approach to define an interpretation approach to deal with eDSLs incorporating 
+\languageConstruct{IO} operations.
 
 
 \ifMain
