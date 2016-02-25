@@ -434,7 +434,9 @@ An \haskellConstruct{ST} action  is of the form:
 \haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}.
 The s keeps references to objects inside the \haskellConstruct{ST monad} from leaking to the outside of the
 \haskellConstruct{ST monad} meaning the actions can only affect their own thread.
-To escape we require:
+To escape we require:\endnote{%
+  There is something missing here!
+}
 \mint{haskell}|runST :: forall a.|
 
 The action \haskellVar{a} must be universal in \haskellVar{s}, meaning the threading association is not known
