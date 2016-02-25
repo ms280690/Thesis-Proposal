@@ -29,17 +29,17 @@ The \haskellConstruct{map} operation is as follows:
 
 \mint{haskell}|map (+3) [1,5,3,1,6]|
 
-and results in
+\noindent and results in
 \mint{haskell}|[4,8,6,4,9]|
 
-\haskellClass{fold} takes as arguments: an operation, an accumulator and a list, and applies the operation on the
+\noindent \haskellClass{fold} takes as arguments: an operation, an accumulator and a list, and applies the operation on the
 accumulator and each element one at a time till the end of the list and returns the final accumulator.
 
 The \haskellClass{fold} operation is as follows:
 
 \mint{haskell}|foldr (+) 0 [4,8,6,4,9]|
 
-and results in,
+\noindent and results in,
 
 \mint{haskell}|31|
  
