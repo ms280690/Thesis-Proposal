@@ -160,7 +160,7 @@ in \progLang{Prolog} to append two lists,
 \begin{singlespace}
 \inputminted[linenos]{prolog}{prolog-background-append.pl}
 \end{singlespace}   
-\caption{Code to ``append'' in \protect\progLang{Prolog}.}
+\caption{Code to \protect{\prologConstruct{append}} in \protect\progLang{Prolog}.}
 \label{fig:append-prolog}
 \end{code-list}
 going through the code, the first rule says that and empty list appended with any list results in the list itself.
@@ -172,7 +172,7 @@ Listing~\ref{tab:prlgappndhskl} shows how a direct translation of Listing~\ref{f
   \begin{singlespace}
     \inputminted[linenos]{haskell}{append_no_quasi.hs}
   \end{singlespace}
-  \caption{\progLang{Prolog} append function translated to \progLang{Haskell}.}
+  \caption{\progLang{Prolog} \protect{\prologConstruct{append}} function translated to \progLang{Haskell}.}
 \label{tab:prlgappndhskl}
 \end{code-list}
 
@@ -180,7 +180,7 @@ Listing~\ref{tab:prlgappndhskl} shows how a direct translation of Listing~\ref{f
   \begin{singlespace}
     \inputminted[linenos]{haskell}{append_quasi_quote.hs}
   \end{singlespace}
-  \caption{\progLang{Prolog} append function translated to \progLang{Haskell} using quasi quotation.}
+  \caption{\progLang{Prolog} \protect{\prologConstruct{append}} function translated to \progLang{Haskell} using quasi quotation.}
 \label{tab:prlgappndhsklqq}
 \end{code-list}
 
