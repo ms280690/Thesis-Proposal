@@ -104,7 +104,7 @@ runUnify test = ST.runSTBinding $ do
   answer <- runErrorT $ test 
   case answer of
     (Left _)            -> return []
-    (Right (_, dict))   -> extractunifier dict
+    (Right (_, dict))   -> extractUnifier dict
 
 extractUnifier ::
   (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
