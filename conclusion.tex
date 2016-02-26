@@ -7,18 +7,20 @@
 \begin{document}
 
 % ---------------------------------------------------------------------------
-\chapter{Conclusion and Outcomes}\label{chap:conclusion}
+\chapter{Conclusion}\label{chap:conclusion}
 % ---------------------------------------------------------------------------
+\paragraph{}
+This thesis was set out to explore and study the various approaches used for bringing features of multiple languages into a single 
+programming environment and has identified embedding and paradigm integration as being the major ones. This study has also sought to improve
+the existing work on implementing \progLang{Prolog} in \progLang{Haskell}. One of the main contributions of this thesis was to build a 
+\progLang{Prolog}-like language in \progLang{Haskell} which not only is closer to a \progLang{Prolog} distribution but also provides 
+logic programming functionality as natively as possible in the host language.
 
-This thesis looked into the problem of embedding \progLang{Prolog} in \progLang{Haskell}. More generally it gives insights into the 
-different approaches of merging programming languages namely paradigm integration and embedding. We provide a literature reviews for them
-and discuss the topic of functional logic programming languages. We review the state of embedding \progLang{Prolog} in \progLang{Haskell}
-and improve on the current work. More generally speaking we look into adopting features provided by \progLang{Haskell} for eDSLs.
+During this process we have also thrown light on the subject of eDSLs in \progLang{Haskell} and the support for the same. Moreover, we
+have provided a methodology for replicating results achieved in this thesis.
 
-This thesis provides an approach to opening up an eDSL in \progLang{Haskell} and a monadic approach for \progLang{Prolog}-like unification
-in \progLang{Haskell}. We made it modular so that it can be incorporated with any eDSl defined by an recur abstract syntax and generic to 
-support multiple search strategies. We also provide an approach to define an interpretation approach to deal with eDSLs incorporating 
-\languageConstruct{IO} operations.
+The benefits of \progLang{Haskell} as a tool for embedding domain specific languages have been shown to be effective in proving it to be
+a suitable target language.
 
 
 \ifMain
