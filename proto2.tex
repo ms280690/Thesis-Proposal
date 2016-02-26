@@ -263,35 +263,35 @@ Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3f1}.
 In this implementation unification is a three part procedure as follows:
 
 \begin{enumerate}
-\item{monadicUnification}
+\item\haskellConstruct{{monadicUnification}}
 
   Firstly, we take a couple of flattened terms in fixed point and convert them into \haskellConstruct{UTerm}-format
-  so that we can apply the \haskellConstruct{unify} function provided by \codeLibrary{unification-fd} and results
-  in a \languageConstruct{unifier}.
-  The type signature of \haskellConstruct{unify} is shown in Listing~\ref{tab:unifytypesignature}.
+so that we can apply the \haskellConstruct{unify} function provided by \codeLibrary{unification-fd} and results
+in a \languageConstruct{unifier}. The type signature of \haskellConstruct{unify} is shown in Listing~\ref{tab:unifytypesignature}.
 
 \begin{code-list}[H]
-	\begin{singlespace}
-\inputminted{haskell}{haskell-proto2-unify-type-signature.hs}
-	\end{singlespace}
+\begin{singlespace}
+\inputminted[linenos]{haskell}{haskell-proto2-unify-type-signature.hs}
+\end{singlespace}
 \caption{\codeLibrary{unification-fd} \haskellConstruct{unify} type signature}
 \label{tab:unifytypesignature}
 \end{code-list}
 
-We also return a union of the variable dictionaries for each of the terms required to convert the result into the
-eDSL.
-Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3monadicUnification} the procedure for
-monadicUnification.
+
+We also return a union of the variable dictionaries for each of the terms required to convert the result into the eDSL.
+Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3monadicUnification} the procedure for 
+\haskellConstruct{monadicUnification}.
+
 
 \begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,firstline=84, lastline=93]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
-\caption{monadicUnification function}
+\caption{\haskellConstruct{monadicUnification} function}
 \label{tab:prlg0201monadicunificationtestsandextraction3monadicUnification}
 \end{code-list}
 
-\item{f1}
+\item\haskellConstruct{{extractUnifier}}
 
 Retranslate the terms back to fixed flat terms and return results.
 Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3f1}
@@ -301,25 +301,26 @@ returns list of \haskellConstruct{VariableName}, \haskellConstruct{Prolog} pairs
   \begin{singlespace}
     \inputminted[linenos,firstline=109, lastline=119]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
-\caption{f1 function}
+\caption{\haskellConstruct{extractUnifier} function}
 \label{tab:prlg0201monadicunificationtestsandextraction3f1}
 \end{code-list}
 
 
-\item{goUnify}
+\item\haskellConstruct{{runUnify}}
 
 This function executes the above operations in the \haskellConstruct{BindingMonad} and return the necessary results.
-Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3goUnify} shows the goUnify function.
+Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3goUnify} shows the \haskellConstruct{runUnify} function.
 
 \begin{code-list}[H]
   \begin{singlespace}
     \inputminted[linenos,firstline=95, lastline=107]{haskell}{haskell-proto2-monadic-unification-tests-and-extraction.hs}
   \end{singlespace}
-\caption{goUnify function}
+\caption{\haskellConstruct{runUnify} function}
 \label{tab:prlg0201monadicunificationtestsandextraction3goUnify}
 \end{code-list}
 
-\item{unify}
+\item\haskellConstruct{{unify}}
+
 Putting it all together we perform the unification on the two terms and return the \haskellConstruct{Unifier} as originally intended.
 Listing~\ref{tab:prlg0201monadicunificationtestsandextraction3unify}
 

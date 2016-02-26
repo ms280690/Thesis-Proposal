@@ -92,7 +92,7 @@ monadicUnification t1 t2 = do
   x3 <- U.unify x1 x2
   return $! (x3, d1 `Map.union` d2)
 
-goUnify ::
+runUnify ::
   (forall s. (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
   => (ErrorT
         (UT.UFailure FTS (ST.STVar s FTS))
@@ -100,17 +100,17 @@ goUnify ::
         (UT.UTerm FTS (ST.STVar s FTS),
             Map VariableName (ST.STVar s FTS))))
   -> [(VariableName, Prolog)]
-goUnify test = ST.runSTBinding $ do
+runUnify test = ST.runSTBinding $ do
   answer <- runErrorT $ test 
   case answer of
     (Left _)            -> return []
-    (Right (_, dict))   -> f1 dict
+    (Right (_, dict))   -> extractunifier dict
 
-f1 ::
+extractUnifier ::
   (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
   => (forall s. Map VariableName (STVar s FTS)
       -> (ST.STBinding s [(VariableName, Prolog)]))
-f1 dict = do
+extractUnifier dict = do
   let ld1 = Map.toList dict
   ld2 <- Control.Monad.Error.sequence 
           [v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
