@@ -1,27 +1,29 @@
 termFlattener :: Term -> Fix FTS
-termFlattener (Var v)           =   DFF.Fix $ FV v
-termFlattener (Wildcard)        =   DFF.Fix FW
-termFlattener (Cut i)           =   DFF.Fix $ FC i
-termFlattener (Struct a xs)     =   DFF.Fix $ FS a (Prelude.map termFlattener xs)
+termFlattener = DFF.ana oneLevel where
+  oneLevel :: Term -> FTS Term
+  oneLevel x = case x of
+    { Var v ->   FV v ; Wildcard -> FW ; Cut i -> FC i ;
+      Struct a xs ->  FS a xs }
 
 unFlatten :: Fix FTS -> Term
-unFlatten (DFF.Fix (FV v))      =   Var v
-unFlatten (DFF.Fix FW)          =   Wildcard
-unFlatten (DFF.Fix (FC i))      =   Cut i
-unFlatten (DFF.Fix (FS a xs))   =   Struct a (Prelude.map unFlatten xs)
+unFlatten = DFF.cata levelOne where
+  levelOne :: FTS Term -> Term
+  levelOne x = case x of
+    { FV v -> Var v ; FW -> Wildcard ; FC i -> Cut i ;
+      FS a xs -> Struct a xs }
 
 
 variableExtractor :: Fix FTS -> [Fix FTS]
 variableExtractor (Fix x) = case x of
   (FS _ xs)   ->  Prelude.concat $ Prelude.map variableExtractor xs
   (FV v)     ->  [Fix $ FV v]
-  _       ->  [] 
+  _       ->  []
 
 variableNameExtractor :: Fix FTS -> [VariableName]
 variableNameExtractor (Fix x) = case x of
   (FS _ xs) -> Prelude.concat $ Prelude.map variableNameExtractor xs
   (FV v)     -> [v]
-  _         -> [] 
+  _         -> []
 
 variableSet :: [Fix FTS] -> S.Set (Fix FTS)
 variableSet a = S.fromList a

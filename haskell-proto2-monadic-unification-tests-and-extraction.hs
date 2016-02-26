@@ -70,7 +70,7 @@ test5 = do
     x3 <- U.unify x1 x2
     return (x3, d1 `Map.union` d2)
 
-goTest :: (Show b) => (forall s . 
+goTest :: (Show b) => (forall s .
   (ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
            (ST.STBinding s)
             (UT.UTerm (FTS) (ST.STVar s (FTS)),
@@ -78,11 +78,11 @@ goTest :: (Show b) => (forall s .
 goTest test = ST.runSTBinding $ do
   answer <- runErrorT $ test
   return $! case answer of
-    (Left x)  -> "error: " ++ show x 
-    (Right y) -> "ok:    " ++ show y 
+    (Left x)  -> "error: " ++ show x
+    (Right y) -> "ok:    " ++ show y
 
-monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s)) => 
-    (forall s. ((Fix FTS) -> (Fix FTS) -> 
+monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s)) =>
+    (forall s. ((Fix FTS) -> (Fix FTS) ->
       ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
            (ST.STBinding s) (UT.UTerm (FTS) (ST.STVar s (FTS)),
             Map VariableName (ST.STVar s (FTS)))))
@@ -101,7 +101,7 @@ runUnify ::
             Map VariableName (ST.STVar s FTS))))
   -> [(VariableName, Prolog)]
 runUnify test = ST.runSTBinding $ do
-  answer <- runErrorT $ test 
+  answer <- runErrorT $ test
   case answer of
     (Left _)            -> return []
     (Right (_, dict))   -> extractUnifier dict
@@ -112,47 +112,48 @@ extractUnifier ::
       -> (ST.STBinding s [(VariableName, Prolog)]))
 extractUnifier dict = do
   let ld1 = Map.toList dict
-  ld2 <- Control.Monad.Error.sequence 
+  ld2 <- Control.Monad.Error.sequence
           [v1 | (k,v) <- ld1, let v1 = UT.lookupVar v]
   let ld3 = [ (k,v) | ((k,_),Just v) <- ld1 `zip` ld2]
       ld4 = [ (k,v) | (k,v2) <- ld3, let v = translateFromUTerm dict v2 ]
   return ld4
 
 unifierConvertor :: [(VariableName, Prolog)] -> Unifier
-unifierConvertor xs = Prelude.map (\(v, p) -> (v, (unFlatten $ unP $ p))) xs 
+unifierConvertor xs =
+  Prelude.map (\(v, p) -> (v, (unFlatten $ unP $ p))) xs
 
 unify :: MonadPlus m => Term -> Term -> m Unifier
-unify t1 t2 = unifierConvertor 
-                (goUnify 
-                  (monadicUnification 
+unify t1 t2 = unifierConvertor
+                (goUnify
+                  (monadicUnification
                     (termFlattener t1) (termFlattener t2)
                   )
                 )
 
---unify_with_occurs_check 
+--unify_with_occurs_check
 
 {--
 goTest test3
-"ok:    STVar -9223372036854775807 
+"ok:    STVar -9223372036854775807
 [(VariableName 0 \"x\",STVar -9223372036854775808)]"
 --}
 
 
 {--
 goTest test4
-"ok:    STVar -9223372036854775807 
+"ok:    STVar -9223372036854775807
 [(VariableName 0 \"x\",STVar -9223372036854775808)]"
 --}
 
 {--
-fix1 = (Fix $ Struct "a" [(Fix $ Var $ VariableName 0 "x"), 
-  (Fix Wildcard), (Fix $ Cut 0), (Fix $ Struct "b" 
-    [(Fix $ Var $ VariableName 1 "y"), (Fix Wildcard), 
-    (Fix $ Cut 1), (Fix $ Struct "c" [(Fix $ Var $ VariableName 2 "z"), 
+fix1 = (Fix $ Struct "a" [(Fix $ Var $ VariableName 0 "x"),
+  (Fix Wildcard), (Fix $ Cut 0), (Fix $ Struct "b"
+    [(Fix $ Var $ VariableName 1 "y"), (Fix Wildcard),
+    (Fix $ Cut 1), (Fix $ Struct "c" [(Fix $ Var $ VariableName 2 "z"),
       (Fix Wildcard), (Fix $ Cut 2), (Fix $ Struct "d" [])])])])
 
 
-fix2 = Fix $ Struct "a" [(Fix $ Var $ VariableName 0 "x"), (Fix $ Cut 0), 
+fix2 = Fix $ Struct "a" [(Fix $ Var $ VariableName 0 "x"), (Fix $ Cut 0),
     (Fix $ Wildcard)]
 
 fix3 = (Fix $ Var $ VariableName 1 "x")

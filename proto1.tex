@@ -523,7 +523,8 @@ Listing~\ref{tab:rununifyoutput} shows the result of the execution for \haskellC
 \begin{singlespace}
 \begin{minted}[linenos]{haskell}
 runUnify $ monadicUnification fix1 fix2
-[(VariableName 1 "x",P (Struct "a" [Var (VariableName 0 "x"),Cut 0,Wildcard]))]
+[(VariableName 1 "x",
+ P (Struct "a" [Var (VariableName 0 "x"),Cut 0,Wildcard]))]
 \end{minted}
 \end{singlespace}
 \caption{Output for \haskellConstruct{runUnify}}
