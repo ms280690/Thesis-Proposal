@@ -13,7 +13,7 @@
 \section{About this chapter}\label{sec:what-this-chapter:accomplishedWork}
 
 Having looked at the existing work for embedding \progLang{Prolog} in \progLang{Haskell} along with the suggestions
-for improvement in the previous chapter, this chapter describes further contributions.
+for improvements in the previous chapter, this chapter describes further contributions.
 The thesis reviews literature on combining two languages as described in Section~\ref{sec:work-in-points}.
 Section~\ref{sec:prototypes} describes the minimalistic implementations for the ideas presented in this thesis.
 
@@ -40,7 +40,7 @@ The conceptual advances of these prototypes are:
 
 \item support for variable search strategies,
 
-\item approach for embedding IO in eDSL.
+\item approach for embedding IO in an eDSL.
 
 \end{enumerate}
 
@@ -48,13 +48,13 @@ The details of these prototypes follows.
 
 \subsection{Prototype 1}
 
-Most languages have a recursive abstract syntax which restricts the embedded, domain-specific language
+Most languages have a recursive abstract syntax which restricts the embedded domain-specific language
 \enparen{eDSL, see p.~\pageref{sec:DSL-def}} in terms of its capability to \textit{open up} the language, i.e, to
 include meta syntactic variables, custom quantifiers and logic.
 (\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
 syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to the
 original type.
-One of the outcomes is a producing a polymorphically typed embedded language within \progLang{Haskell}.
+One of the outcomes is producing a polymorphically typed embedded language within \progLang{Haskell}.
 
 To test it out we adopt the closed \progLang{Prolog}-like language defined in \cite{prolog-lib} and open it up.
 As for the unification part we use \cite{unification-fd-lib}, which provides a generic unification algorithm
@@ -63,7 +63,7 @@ implementation encapsulated into a monad.
 
 \subsection{Prototype 2}
 
-(\chapterReference{proto2}{Prototype 2}) does the what a \progLang{Prolog} query resolver would do given a query
+(\chapterReference{proto2}{Prototype 2}) does what a \progLang{Prolog} query resolver would do given a query
 and a knowledge base.
 The mechanism for the same is adopted from \cite{prolog-lib}.
 The embedded language is modified as per the procedure in (\chapterReference{proto1}{Prototype 1}) and the monadic
