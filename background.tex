@@ -15,7 +15,7 @@ This chapter consists of information on the subject of programming languages and
 paradigms such as functional and logic styles.
 Further on, we talk about the languages used for the implementations in this thesis, namely \progLang{Prolog} and
 \progLang{Haskell}.
-Moreover, this chapter provides a starting point for various approaches for bringing features of a different
+Moreover, this chapter provides a starting point for various approaches for bringing features of different
 languages into the same environment.
 
 
@@ -30,7 +30,7 @@ The broader the scope of a language, the broader is the versatility in solving p
 Programming languages that fall into the same family, in our case declarative programming languages, can be of
 different paradigms and can have very contrasting, conflicting characteristics and behaviours.
 The two most important ones in the family of declarative languages are the functional and
-logical style of programming.
+logic style of programming.
 
 Functional programming, \cite{hughes1989functional} gets its name as the fundamental concept is
 to apply mathematical functions to arguments to get results.
@@ -38,7 +38,7 @@ A program itself consists of functions and functions only which when applied to 
 changing the state that is values on variables and so on.
 Higher order functions allow functions to be passed as arguments to other functions.
 The roots lie in $\lambda$-calculi \cite{website:lambdacalculuswiki}, a formal system in mathematical logic and
-computer science for expressing computation based on function abstraction and application using variable binding
+computer science for expressing computations` based on function abstraction and application using variable binding
 and substitution.
 It can be thought as the smallest programming language \cite{rojas2004tutorial}, a single rule and a single
 function definition scheme.
@@ -65,8 +65,8 @@ This is done until the one which gives the solution is not derived.
 In this thesis we aim to merge two languages \progLang{Haskell} and \progLang{Prolog} together and produce a result
 which exhibits hybrid properties.
 The languages in question are \progLang{Haskell} and \progLang{Prolog}.
-These two languages come from respective the functional programming and logical programming branches of the
-declarative language group.
+These two languages come from the functional programming and logical programming branches of the
+declarative language group respectively.
 Some of the dissimilarities between the languages are:
 \begin{enumerate}
 \item \progLang{Haskell}
@@ -81,7 +81,7 @@ number of distributions and is present from academia to industry.
 \progLang{Haskell} is one the most popular \cite{website:langpop} functional languages around and is the first
 language to incorporate monads \cite{wadler1992comprehending} for safe input and output.
 Monads can be described as composable computation descriptions \cite{website:monadshaskellorg}.
-Each monad consists of a description of what has action has to be executed, how the action has to be run and how to
+Each monad consists of a description of what action has to be executed, how the action has to be run and how to
 combine such computations.
 An action can describe an impure or side-effecting computation, for example, input and output can be performed
 outside the language but can be brought together with pure functions inside in a program resulting in a separation
@@ -123,10 +123,10 @@ written in one programming language can make use of services written in another 
 For example, a function
 written in \progLang{C} can be called within a program written in \progLang{Haskell} and vice versa through the FFI
 mechanism.
-Currently the \progLang{Haskell} foreign function interface works only for one language.
+Currently the \progLang{Haskell} foreign function interface works only for \progLang{C}.
 Another notable example is the common foreign function interface (CFFI) \cite{website:commonlisp} for
 \progLang{Lisp} which provides fairly complete support for \progLang{C} functions and data.
-As yet another example, \progLang{Java} provides the java native interface(JNI) for the working with other
+As yet another example, \progLang{Java} provides the \progLang{Java} native interface(JNI) for the working with other
 languages.
 Moreover there are services that provide a common platform for multiple languages to work with each other.
 They can be termed as multilingual runtimes
@@ -143,7 +143,7 @@ Sometimes the meta language and the object language are the same.
 \progLang{Haskell} programs can be modified using Template \progLang{Haskell} \cite{website:templatehaskell}, an
 extension to the language which provides services to jump between the two types of programs.
 The abstract syntax tree used to define a grammar is in the form of a \progLang{Haskell} data type.
-This allows us to play with the code and go back and forth betwwen the meta program and the object program.
+This allows us to play with the code and go back and forth between the meta program and the object program.
 
 A specific tool used in meta programming is quasi-quotation \cite{mainland2007s,haskellquasi,wikiquasi}, which
 permits \progLang{Haskell} expressions and patterns to be constructed using domain specific,
@@ -163,7 +163,7 @@ in \progLang{Prolog} to append two lists,
 \caption{Code to \protect{\prologConstruct{append}} in \protect\progLang{Prolog}.}
 \label{fig:append-prolog}
 \end{code-list}
-going through the code, the first rule says that and empty list appended with any list results in the list itself.
+going through the code, the first rule says that an empty list appended with any list results in the list itself.
 The second predicate matches the head of the first and the resulting lists and then recurses on the tails.
 Listing~\ref{tab:prlgappndhskl} shows how a direct translation of Listing~\ref{fig:append-prolog} into
 \progLang{Haskell} while Listing~\ref{tab:prlgappndhsklqq} shows the same using quasi quotation.
