@@ -88,7 +88,7 @@ Nonetheless, the library has the following major components as shown in Figure~\
 To prove the modularity of the approach used in Chapter~\ref{proto1} for language modification and monadic
 unification only the abstract syntax and unifier will be customized.
 
-\section{What we do in this prototype?}
+\section{What we do in this prototype}
 
 Figure~\ref{fig:architecture-proto-2} describes the components of this implementation and the relation between
 them.
@@ -107,7 +107,7 @@ Before reaching that state, two terms must be gathered depending upon matching r
 This is where a search strategy comes into play along with a backtracking mechanism.
 
 Putting everything together forms the \progLang{Prolog} query resolver.
-Given a query and a knowledge, the query resolver matches the input query with the rules in the knowledge base to
+Given a query and a knowledge base, the query resolver matches the input query with the rules in the knowledge base to
 create a list of goals to satisfy to generate an unifier along with saving choice points on the way for
 backtracking.
 
@@ -167,8 +167,8 @@ Lastly, the fixed point version is created using the Fix constructor
 \label{tab:fixflatgrp0201}
 \end{code-list}
 
-The above approach allows to us to jump between the environments (grammars) easily provided the back and forth
-conversion capabilities Listing~\ref{tab:prlg0201monadicunificationtranslation} and
+The above approach allows us to jump between the environments (grammars) easily provided the back and forth
+conversion capabilities from Listing~\ref{tab:prlg0201monadicunificationtranslation} and
 Listing~\ref{tab:prlg0201monadicunificationconversion}.
 
 \begin{code-list}[H]
