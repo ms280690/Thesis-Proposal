@@ -215,7 +215,7 @@ The approach to tackling this problem is to find the ``fixed-point'' of \haskell
 After infinitely many iterations we should get to a fixed point where further iterations make no
 difference.
 It means that applying one more \haskellConstruct{FlatTerm} would not change anything---%
-a \progLang{Haskell} provides fixed-points in two forms, one for data and one for types.
+\progLang{Haskell} provides fixed-points in two forms, one for data and one for types.
 
 In type constructor form,
 \mint{haskell}|newtype Fix f = f (Fix f)|
@@ -234,7 +234,7 @@ A sample function working with such expressions would be of the form,
 
 Generically speaking, the language can be expanded for additional functionality without changing or modifying the
 base structure.
-Consider the scenario where the language needs to accommodate additional type of terms. There are two appraoches:
+Consider the scenario where the language needs to accommodate additional type of terms. There are two approaches:
 
 \begin{enumerate}
 \item Manually modify the structure of the language, as shown in Listing~\ref{tab:man-enhan-gram}.
@@ -254,8 +254,8 @@ Consider the scenario where the language needs to accommodate additional type of
   to plug something that provides the functionality into the language.
   Since we needed the fixed point of the language we used \haskellConstruct{Fix} but generically one could add
   custom functionality.
-  For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have that
-  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} is isomorphic to the type defined in
+  For instance, using \haskellConstruct{Extended} from Listing~\ref{tab:garfunkle} we have 
+  \haskellConstruct{Extended} \haskellConstruct{FlatTerm} that is isomorphic to the type defined in
   Listing~\ref{tab:man-enhan-gram}.
 \begin{comment}
   Consider the following example,
@@ -339,12 +339,12 @@ Figure~\ref{fig:Functor Hierarchy} shows the relation between the different clas
 \end{figure}
 
 The \haskellClass{Functor} and \haskellClass{Foldable} instances provide functions for applying map-reduce to the data structure as described in Chapter~\ref{chap:relatedWork}.
-The primary issue is that at the end of the operation the structure if the data type is lost which would not help
-our cause since the result of a query must be a list of substitutions which are essential pairs of language
-variable with language values (language constructs).
+The primary issue is that at the end of the operation the structure of the data type is lost which would not help
+our cause since the result of a query must be a list of substitutions which are essentially pairs of language
+variables with language values (language constructs).
 
 Enter \haskellConstruct{Traversable}.
-It allows reduce whilst preserving the shape of the structure.
+It allows \haskellConstruct{reduce} whilst preserving the shape of the structure.
 We create the necessary instances
 as shown in Listing~\ref{tab:flat-term-class-inst}.
 \begin{code-list}[H]
@@ -364,7 +364,7 @@ the type \haskellConstruct{UTerm} \(t\) \(v\) is the type of logic terms: trees 
 structure and leaves of type \(v\).
 The \haskellClass{Unifiable} class gives one step of the unification process.
 Just as we only need to specify one level of the ADT (i.e., \Verb!T!)
-and then we can use the library's \haskellConstruct{UTerm} to generate the recursive ADT, so too we only need to
+and then we can use the library's \haskellConstruct{UTerm} to generate the recursive ADT, so we only need to
 specify one level of the unification (i.e., \haskellConstruct{zipMatch}) and then we can use the library's
 operators to perform the recursive unification.
 This is shown in Figure~\ref{tab:zipMatch}.
@@ -426,7 +426,7 @@ An \haskellConstruct{ST} action  is of the form:
 \mint{haskell}|ST s a|
 
 \haskellVar{a} is the return type of the result of the computation in thread \haskellVar{s}.
-The s keeps references to objects inside the \haskellConstruct{ST monad} from leaking to the outside of the
+The \haskellVar{s} keeps references to objects inside the \haskellConstruct{ST monad} from leaking to the outside of the
 \haskellConstruct{ST monad} meaning the actions can only affect their own thread.
 To escape we require:
 \mint{haskell}|runST :: (forall s. ST s a) -> a|
