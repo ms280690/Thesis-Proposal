@@ -12,8 +12,8 @@
 
 \section{About this chapter}
 This chapter discusses \progLang{Haskell} as a functional language and its features which assist in embedding domain specific languages.
-\progLang{Haskell} as a functional programming language \progLang{Haskell} is an advanced purely-functional
-programminglanguage.
+\progLang{Haskell} as a functional programming language, is an advanced purely-functional
+programming language.
 In particular, it is a polymorphically statically typed, lazy, purely functional language
 \cite{website:haskellwiki}.
 It is one of the popular functional programming languages \cite{website:langpop}.
@@ -40,7 +40,7 @@ side-effects \cite{hughes1989functional}.
   Examples for the same can be found here \cite{jones2001composing, meyer2008eiffel} which talk about introducing
   combinator libraries for custom functionality.
 
-  The flip side of the coin is that the host language enforces certain aspects and properties of the eDSL and hence
+  The flip side of the coin is that the host language enforces certain aspects and properties on the eDSL and hence
   might not be exact to specification, all required constructs cannot be implemented due to constraints, programs
   could be difficult to debug since it happens at the host level and so on.
 
@@ -62,7 +62,7 @@ A monad gives a bubble within the language to allow modification of control flow
 universe.
 This is especially useful while handling side effects.
 
-A related topic would be of persistence languages, architectures and data structures.
+A related topic would be of persistent languages, architectures and data structures.
 Persistent programming is concerned with creating and manipulating data in a manner that is independent of its
 lifetime \cite{morrison1990persistent}.
 A persistent data structure supports access to multiple versions which may arise after modifications
@@ -172,7 +172,7 @@ syntactic forms for your eDSLs.
 Working with complex data types can impose a significant syntactic burden; extensive applications of nested data
 constructors are often required to build values of a given data type, or, worse yet, to pattern match against
 values.
-Allow \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined
+Quasiquotation allows \progLang{Haskell} expressions and patterns to be constructed using domain specific, programmer-defined
 concrete syntax \cite{haskellquasi, mainland2007s}.
 Listing~\ref{tab:prlgappndhsklqq} shows us the advantages of quasi quotation (in this example there are no
 metasynctactic variables).
