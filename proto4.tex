@@ -160,7 +160,7 @@ Listing~\ref{tab:ioactionrunoutput} shows the output for the \haskellConstruct{r
 
 \haskellConstruct{IOAction} is a mini-language for doing impure, side-effecting code.
 It restricts the language constructs to only reading from \haskellConstruct{stdin} and writing to
-\haskellConstruct{stdout} in effect creating a safe embedded domain specific language.
+\haskellConstruct{stdout} in effect creating a safe eDSL.
 
 \begin{comment}
 \begin{code-list}[H]
@@ -245,7 +245,7 @@ Listing~\ref{tab:runiotype} describes the type signature of \haskellConstruct{ru
 each action in the \haskellConstruct{IO Monad}.
 
 \section{Summary}
-Recapitulating, this prototype gives an architecture for a two stage interpretation strategy for an embedded domain specific language. In 
+Recapitulating, this prototype gives an architecture for a two stage interpretation strategy for an eDSL. In 
 this process the first stage produces a pure interpreted program while the latter executes each action to produce output. This approach 
 provides modularity and control over the side effecting actions for execution.   
 
