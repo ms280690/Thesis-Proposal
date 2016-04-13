@@ -81,8 +81,8 @@ goTest test = ST.runSTBinding $ do
     (Left x)  -> "error: " ++ show x
     (Right y) -> "ok:    " ++ show y
 
-monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s)) =>
-    (forall s. ((Fix FTS) -> (Fix FTS) ->
+monadicUnification :: (BindingMonad FTS (STVar s FTS) (ST.STBinding s))
+ => (forall s. ((Fix FTS) -> (Fix FTS) ->
       ErrorT (UT.UFailure (FTS) (ST.STVar s (FTS)))
            (ST.STBinding s) (UT.UTerm (FTS) (ST.STVar s (FTS)),
             Map VariableName (ST.STVar s (FTS)))))
