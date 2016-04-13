@@ -22,6 +22,30 @@ have provided a methodology for replicating results achieved in this thesis.
 \progLang{Haskell} has been shown to be an effective tool for embedding DSLs.
 
 
+
+
+We gained some insights into merging declarative languages:
+\begin{enumerate}
+\item using \progLang{Haskell}'s lazy nature to calculate results lazily (we get one result and then we hit `;' and then the next and so on).
+
+\item Opening up the language  allows easy domain switching (Term $\leftrightarrow$ FlatTerm) because they are isomorphic.
+
+\item Easy extension (Fix FlatTerm).
+
+\item Easily add quantifiers and logic
+
+\item type system allows for safer programs and earlier detection of errors.
+
+\item Custom control flow with the use of monads
+
+\item encapsulate impure code in a monad
+\end{enumerate}
+
+We gained some insights into multi paradigm languages:
+\begin{itemize}
+	\item
+\end{itemize}
+
 \ifMain
 \begin{scope}
   \nolinenumbers
