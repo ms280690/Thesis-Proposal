@@ -164,6 +164,10 @@ Sebastian Fischer, \emph{The cflp package}, June 2009,
 \bibitem{website:molog}
 Adam~C. Foltzer, \emph{Molog}, March 2013.
 
+\bibitem{cspm-To-Prolog-lib}
+Marc Fontaine, \emph{The cspm-toprolog package}, August 2013,
+  \url{http://hackage.haskell.org/package/CSPM-ToProlog}.
+
 \bibitem{proplogic-lib}
 David Fox, \emph{The proplogic package}, April 2012,
   \url{http://hackage.haskell.org/package/PropLogic}.
