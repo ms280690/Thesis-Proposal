@@ -74,7 +74,7 @@ Prolog~Development Center, \emph{Visual prolog}, June 2013.
 \bibitem{chin2003type}
 Wei-Ngan Chin, Martin Sulzmann, and Meng Wang, \emph{A type-safe embedding of
   constraint handling rules into haskell}, Technical reportSchool of Computing,
-  National University of Singapore, Boston, MA, USA (2003).
+  National University of Singapore, Boston, MA, USA (2003), 30.
 
 \bibitem{website:ciao}
 Ciao, \emph{Ciao programming language}, August 2011.
@@ -164,6 +164,10 @@ Sebastian Fischer, \emph{The cflp package}, June 2009,
 \bibitem{website:molog}
 Adam~C. Foltzer, \emph{Molog}, March 2013.
 
+\bibitem{cspm-To-Prolog-lib}
+Marc Fontaine, \emph{The cspm-toprolog package}, August 2013,
+  \url{http://hackage.haskell.org/package/CSPM-ToProlog}.
+
 \bibitem{proplogic-lib}
 David Fox, \emph{The proplogic package}, April 2012,
   \url{http://hackage.haskell.org/package/PropLogic}.
@@ -199,7 +203,7 @@ Michael Hanus, Herbert Kuchen, and Juan~Jose Moreno-Navarro, \emph{Curry: A
 
 \bibitem{haridi1990kernel}
 Seif Haridi and Sverker Janson, \emph{Kernel andorra prolog and its
-  computational model}, SICS Research Report (1990).
+  computational model}, SICS Research Report (1990), 15.
 
 \bibitem{website:haskellorg}
 Haskell, \emph{Haskell website}, January 2015.
@@ -305,8 +309,11 @@ John~W Lloyd, \emph{Programming in an integrated functional and logic
   no.~1-49, 68--69.
 
 \bibitem{machadomodel}
-Ricardo~J Machado, Rita Suzana~P Maciel, Julia Rubin, and Goetz Botterweck,
-  \emph{Model-based methodologies for pervasive and embedded software}.
+Ricardo~J. Machado, Rita~Suzana Maciel, Julia Rubin, and Goetz Botterweck,
+  \emph{Model-based methodologies for pervasive and embedded software: 8th
+  international workshop, mompes 2012, essen, germany, september 4, 2012,
+  revised ... / programming and software engineering)}, Springer Publishing
+  Company, Incorporated, 2013.
 
 \bibitem{mainland2007s}
 Geoffrey Mainland, \emph{Why it's nice to be quoted: quasiquoting for haskell},
@@ -319,9 +326,8 @@ Yonathan Malachi, Zohar Manna, and Richard Waldinger, \emph{Tablog: The
   Symposium on LISP and functional programming, ACM, 1984, pp.~323--330.
 
 \bibitem{meijer2004static}
-Erik Meijer and Peter Drayton, \emph{Static typing where possible, dynamic
-  typing when needed: The end of the cold war between programming languages},
-  Citeseer, 2004.
+Erik Meijer and Peter Drayton, \emph{{Static Typing Where Possible, Dynamic
+  Typing When Needed}}, 2005.
 
 \bibitem{meyer2008eiffel}
 Bertrand Meyer, \emph{Eiffel as a framework for verification}, Verified
@@ -440,7 +446,7 @@ John~Alan Robinson and EE~Silbert, \emph{Loglisp: an alternative to prolog},
 
 \bibitem{rojas2004tutorial}
 Ra{\'u}l Rojas, \emph{A tutorial introduction to the lambda calculus}, DOI=
-  http://www. utdallas. edu/\~{} gupta/courses/apl/lambda. pdf (2004).
+  http://www. utdallas. edu/\~{} gupta/courses/apl/lambda. pdf (2004), 9.
 
 \bibitem{prolog-graph-lib-lib}
 Daniel Seidel, \emph{The prolog-graph-lib package}, June 2012,
