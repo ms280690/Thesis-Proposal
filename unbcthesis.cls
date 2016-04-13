@@ -165,7 +165,7 @@
 
 
 %% The following modified from Kranz
-\setlength{\oddsidemargin }{0.5in}
+\setlength{\oddsidemargin }{0.26in}
 \setlength{\textwidth     }{6in}
 \setlength{\headheight    }{0in}
 \setlength{\headsep       }{0in}
@@ -181,16 +181,16 @@
 % Footnotes are to be single spaced.
 %
 \newcommand{\unbcfootnote}[1]{%
-	\begin{singlespace}
+	\begin{singlespace}%
 	\footnote{#1}%
-        \end{singlespace}
+        \end{singlespace}%
 }
 
 % Lengthy quotes must also be single spaced.
 % We provide a parameter for the citation label too.
 %
 \newenvironment{unbcquote}{%
-	\begin{singlespace}
+	\begin{singlespace}%
 	\par\vspace{1.5mm}%
 	\begin{quote}\slshape
         }{%
@@ -314,33 +314,21 @@
   \thispagestyle{empty}%
   \begin{center}%
     \begin{singlespace}
-    \vspace{1pc}%
-    \textbf{#1}
-    \end{singlespace}
-    \vspace{2pc}
-    by \\
-    \vspace{2pc}
-    \textbf{#2} \\
-    \vspace{1pc}
-    #7 \\
-    \vspace{11pc}
-
-    \begin{singlespace}
+    \vspace*{0.01\baselineskip}%
+    \textbf{\uppercase{#1}}\\[2\baselineskip]
+    by \\[2\baselineskip]
+    \textbf{#2} \\[1\baselineskip]
+    #7 \\[11\baselineskip]
+    %
     THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
     THE REQUIREMENTS FOR THE DEGREE OF \\
     \MakeUppercase {#3} \\
     IN \\
-    \MakeUppercase {#4} \\
-    \end{singlespace}
-    
-    \vspace{11pc}
-
-    UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\
-    \vspace{1pc}
-    #5 #6 \\
-    \vspace{2pc}
-
+    \MakeUppercase {#4} \\[11\baselineskip]
+    UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\[1\baselineskip]
+    #5 #6 \\[2\baselineskip]
     \copyright\ #2, #6 
+    \end{singlespace}
   \end{center}
 \vspace{\fill}
 \newpage

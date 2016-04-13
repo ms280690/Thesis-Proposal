@@ -124,7 +124,8 @@
 %   ==========================================================================
 
 \begin{frontmatter}
-  \unbcthesistitle{\theTitle
+  {\def\textsc{}\xdef\theExpandedTitle{\uppercase{\theTitle}}}
+  \unbcthesistitle{\theExpandedTitle
   }{\theAuthor}{\theDegree}{\theMajor}{\theMonth}{\theYear}{%
     %% Supply your credentials
     {B.Eng, Mumbai University, 2012}}
