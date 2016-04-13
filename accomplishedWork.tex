@@ -51,7 +51,7 @@ The details of these prototypes follows.
 Most languages have a recursive abstract syntax which restricts the embedded domain-specific language
 \enparen{eDSL, see p.~\pageref{sec:DSL-def}} in terms of its capability to \textit{open up} the language, i.e, to
 include meta syntactic variables, custom quantifiers and logic.
-(\chapterReference{proto1}{Prototype 1}) provides a methodology to convert a language whose recursive abstract
+\chapterReference{proto1}{Prototype 1} provides a methodology to convert a language whose recursive abstract
 syntax is represented by a tree into a non-recursive version whose fixed point is isomorphically equivalent to the
 original type.
 One of the outcomes is producing a polymorphically typed embedded language within \progLang{Haskell}.
@@ -63,22 +63,22 @@ implementation encapsulated into a monad.
 
 \subsection{Prototype 2}
 
-(\chapterReference{proto2}{Prototype 2}) does what a \progLang{Prolog} query resolver would do given a query
+\chapterReference{proto2}{Prototype 2} does what a \progLang{Prolog} query resolver would do given a query
 and a knowledge base.
 The mechanism for the same is adopted from \cite{prolog-lib}.
-The embedded language is modified as per the procedure in (\chapterReference{proto1}{Prototype 1}) and the monadic
+The embedded language is modified as per the procedure in \chapterReference{proto1}{Prototype 1} and the monadic
 unification part is plugged into the existing architecture to demonstrate that it is independent of the other
 components.
 Lastly the result is converted into the original language via a translate function.
 
 \subsection{Prototype 3}
 
-(\chapterReference{proto3}{Prototype 3}) demonstrates the modularity of the unification process of the query
+\chapterReference{proto3}{Prototype 3} demonstrates the modularity of the unification process of the query
 resolver with multiple search strategies.
 
 \subsection{Prototype 4}
 
-(\chapterReference{proto4}{Prototype 4}) throws light on how IO operations can be embedded into the abstract syntax
+\chapterReference{proto4}{Prototype 4} throws light on how IO operations can be embedded into the abstract syntax
 of a DSL which when interpreted would produce output consisting of a pure set of instructions irrespective of the
 nature of the construct.
 The effects are produced only when the actions are executed.
