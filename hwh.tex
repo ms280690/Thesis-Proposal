@@ -11,7 +11,7 @@
 
 
 \section{About this chapter}
-This chapter discusses \progLang{Haskell} as a functional language and its features which assist in embedding domain specific languages.
+This chapter discusses \progLang{Haskell} as a functional language and its features which assist in embedding DSLs.
 \progLang{Haskell} as a functional programming language, is an advanced purely-functional
 programming language.
 In particular, it is a polymorphically statically typed, lazy, purely functional language
@@ -28,8 +28,8 @@ Programs contain no assignment statements, so variables, once given a value, nev
 side-effects \cite{hughes1989functional}.
 
 
-\section{Embedded domain specific languages}
-  Shifting a bit to embedded domain specific languages (eDSLs) such as \progLang{Emacs LISP}.
+\section{Embedded domain specific languages (eDSLs)}
+  Shifting a bit to eDSLs such as \progLang{Emacs LISP}.
   Opting for embedding provides a ``shortcut'' to create a language which may be designed to provide specific
   functionality.
   Designing a language from scratch would require writing a parser, code generator / interpreter and possibly a
@@ -166,8 +166,8 @@ Quasi-quotation facilitates rigorous but terse formulation of general rules abou
 
 \subsection{Quasiquotaion in \progLang{Haskell}}
 
-Quasiquoting allows programmers to use custom, domain-specific syntax to construct fragments of their program.
-Along with \progLang{Haskell}'s existing support for domain specific languages, you are now free to use new
+Quasiquoting allows programmers to use custom, domain specific syntax to construct fragments of their program.
+Along with \progLang{Haskell}'s existing support for DSLs, you are now free to use new
 syntactic forms for your eDSLs.
 Working with complex data types can impose a significant syntactic burden; extensive applications of nested data
 constructors are often required to build values of a given data type, or, worse yet, to pattern match against
@@ -179,8 +179,7 @@ metasynctactic variables).
 
 
 \section{Summary}
-Recapitulating, this chapter provided information on \progLang{Haskell} as a tool for embedding domain specific
-languages. 
+Recapitulating, this chapter provided information on \progLang{Haskell} as a tool for eDSLs. 
 
 
 \ifMain\ifDraft
