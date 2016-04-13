@@ -318,15 +318,15 @@
     \textbf{\uppercase{#1}}\\[2\baselineskip]
     by \\[2\baselineskip]
     \textbf{#2} \\[1\baselineskip]
-    #7 \\[11\baselineskip]
+    #7 \\[10\baselineskip]%%
     %
     THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
     THE REQUIREMENTS FOR THE DEGREE OF \\
     \MakeUppercase {#3} \\
     IN \\
-    \MakeUppercase {#4} \\[11\baselineskip]
-    UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\[1\baselineskip]
-    #5 #6 \\[2\baselineskip]
+    \MakeUppercase {#4} \\[10\baselineskip]%%
+    UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\[1\baselineskip]%
+    #5 #6 \\[2\baselineskip]%
     \copyright\ #2, #6 
     \end{singlespace}
   \end{center}
