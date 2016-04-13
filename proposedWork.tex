@@ -23,12 +23,12 @@ discussed below, along with their shortcomings.
 
 \begin{enumerate}
 \item
-  Very few embedded implementations exist which offer a starting point for the task of embedding.
+  A total of three embedded implementations exist which offer a starting point for the task of embedding.
   One of the earliest implementations \cite{website:mini-prolog-hugs98} is for an older specification of
   \progLang{Haskell} called \progLang{Haskell 98} \texttt{\bfseries{hugs}}.
   It is more of a proof of concept providing a mechanism to include variable search strategies in order to produce
   a result.
-  Another implementation \cite{website:takashi-workplace} based of it simplifies the notation to a list format.
+  Another implementation \cite{website:takashi-workplace}, simplifies the notation of \progLang{Prolog} literals to a list format.
   Nonetheless, both implementations lack simplicity and support for basic \progLang{Prolog} features such as
   \prologConstruct{cuts},
   \prologConstruct{fails},
@@ -52,9 +52,9 @@ discussed below, along with their shortcomings.
   Moreover, none of them are complete and most lack many practical parts of \progLang{Prolog}.
 
 \item
-  In the case of libraries, a few exist.
-  Most are old and are not currently maintained or updated.
-  Many provide only a shell through which one must do all the work, which is synonymous with
+  In the case of libraries, around a dozen exist.
+  Most are not in active development.
+  Almost all only provide a shell through which one must do all the work, which is synonymous with
   the embeddings mentioned above.
   Some are more feature rich than others; that is, some have practical \progLang{Prolog} concepts,
   but are still not complete.
@@ -80,7 +80,7 @@ language that takes advantages of neither paradigms.
 Mostly, the trend is towards the former.
 
 
-Here is a discussion of problems mentioned above that this thesis tackles.
+Here is a list of problems mentioned in the sections above that this thesis tackles:
 \begin{enumerate}
 \item The \languageConstruct{eDSL} supports \prologConstruct{fails} and \prologConstruct{cuts}.
 
