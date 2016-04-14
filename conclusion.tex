@@ -19,12 +19,12 @@ logic programming functionality as natively as possible in the host language.
 During this process we have also thrown light on the subject of eDSLs in \progLang{Haskell} and the support for the same. Moreover, we
 have provided a methodology for replicating results achieved in this thesis.
 
-\progLang{Haskell} has been shown to be an effective tool for embedding DSLs.
-
-
-
-
-We gained some insights into merging declarative languages:
+\progLang{Haskell} has been shown to be an effective tool for embedding DSLs. If used correctly \progLang{Haskell}'s lazy nature can be utilized to calculate results lazily; as in returning only a single result from all
+the possible ones. Opening up the language enables us to take advantage of the existing classes such as \haskellClass{Functor, Applicative, Monad, Foldable, Traversable}. Adding a type variable not only allows us to 
+inject custom functionality into the language but permits jumping between the different grammars since they are isomorphic. It is fairly straight forward to embed a recursive untyped grammar into a typed language 
+such as \progLang{Haskell} by defining a data type with multiple constructors. Monads provide the functionality to define custom control flow mechanisms along with encapsulation of impure side effecting 
+computations. Moreover, due to the nature of monads, a approach similar to \chapterReference{proto4}{Prototype 4} can not only be possible but also generalized, i.e., the separation of interpreting different types
+of code such as pure or impure.
 
 \begin{comment}
 	We gained some insights into merging declarative languages:
