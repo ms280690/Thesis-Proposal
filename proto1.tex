@@ -399,7 +399,7 @@ By default two logic variable implementations exist:
   Performing unification has the side effect of binding logic variables to terms.
   Thus, we'll want to use a monad in order to keep track of these effects.
   The \markWord{BindingMonad} type class provides the definition of what we need from our ambient monad.
-  In particular, we need to be able to generate fresh logic variables, to bind logic variables, and to lookup what
+  In particular, we need to be able to generate fresh logic variables, to bind logic variables, and to look up what
   our logic variables are bound to.
   The library provides the necessary instances for both \markWord{IntVar} and \markWord{STVar}.
 
