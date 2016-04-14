@@ -93,14 +93,6 @@ Mozart Consortium, \emph{Oz / mozart}, March 2013.
 Gregory Crosswhite, \emph{The logicgrowsontrees package}, September 2013,
   \url{http://hackage.haskell.org/package/LogicGrowsOnTrees}.
 
-\bibitem{logict-lib}
-DanDoel, \emph{The logict package}, August 2013,
-  \url{http://hackage.haskell.org/package/logict}.
-
-\bibitem{logict2-lib}
-\bysame, \emph{The logict package example}, August 2013,
-  \url{http://okmij.org/ftp/Computation/monads.html}.
-
 \bibitem{friedman05reasoned}
 Oleg~Kiselyov Daniel P.~Friedman, William E.~Byrd, \emph{The reasoned schemer},
   The MIT Press, Cambridge Massachusetts, London England, 2005.
@@ -134,6 +126,14 @@ Open Directory~Project dmoz, \emph{Multi paradigm}, November 2013.
 \bibitem{swipembedd}
 SWI~Prolog Documentation, \emph{Embedding swi-prolog in other applications},
   June 2013, \url{http://www.swi-prolog.org/pldoc/man?section=embedded}.
+
+\bibitem{logict-lib}
+Dan Doel, \emph{The logict package}, August 2013,
+  \url{http://hackage.haskell.org/package/logict}.
+
+\bibitem{logict2-lib}
+\bysame, \emph{The logict package example}, August 2013,
+  \url{http://okmij.org/ftp/Computation/monads.html}.
 
 \bibitem{driscoll1986making}
 James~R Driscoll, Neil Sarnak, Daniel~Dominic Sleator, and Robert~Endre Tarjan,
@@ -461,11 +461,13 @@ Eric Seidel, \emph{The liquid-fixpoint package}, September 2013,
   \url{http://hackage.haskell.org/package/liquid-fixpoint}.
 
 \bibitem{seres2001algebra}
-Silvija Seres, \emph{The algebra of logic programming}, Ph.D. thesis, 2001.
+Silvija Seres, \emph{The algebra of logic programming}, Ph.D. thesis, Oxford
+  University, 2001.
 
 \bibitem{seres2000optimisation}
 Silvija Seres and Shin-Cheng Mu, \emph{Optimisation problems in logic
-  programming: an algebraic approach},  (2000).
+  programming: an algebraic approach}, Logic Programming and Software
+  Engineering (2000).
 
 \bibitem{seres1999algebra}
 Silvija Seres, J~Michael Spivey, and CAR Hoare, \emph{Algebra of logic
