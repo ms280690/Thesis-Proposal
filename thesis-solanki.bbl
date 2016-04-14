@@ -198,8 +198,9 @@ Michael Hanus, \emph{Multi-paradigm declarative languages}, Logic Programming,
 Michael Hanus, \emph{Functional logic programming}, February 2009.
 
 \bibitem{hanus1995curry}
-Michael Hanus, Herbert Kuchen, and Juan~Jose Moreno-Navarro, \emph{Curry: A
-  truly functional logic language}, Proc. ILPS, vol.~95, 1995, pp.~95--107.
+Michael Hanus, Herbert Kuchen, and Juan~Jos{\'e} Moreno-Navarro, \emph{Curry: A
+  truly functional logic language}, Proc. ILPS (Leon Sterling, ed.), {MIT}
+  Press, 1995, pp.~95--107.
 
 \bibitem{haridi1990kernel}
 Seif Haridi and Sverker Janson, \emph{Kernel andorra prolog and its
@@ -467,7 +468,7 @@ Silvija Seres, \emph{The algebra of logic programming}, Ph.D. thesis, Oxford
 \bibitem{seres2000optimisation}
 Silvija Seres and Shin-Cheng Mu, \emph{Optimisation problems in logic
   programming: an algebraic approach}, Logic Programming and Software
-  Engineering (2000).
+  Engineering (2000), 19.
 
 \bibitem{seres1999algebra}
 Silvija Seres, J~Michael Spivey, and CAR Hoare, \emph{Algebra of logic
@@ -496,17 +497,17 @@ Andy Sonnenburg, \emph{logicst}, April 2013.
 \bibitem{spivey1995introduction}
 JM~Spivey, \emph{An introduction to logic programming through prolog}, 1995.
 
-\bibitem{spivey1999algebra}
-JM~Spivey and Silvija Seres, \emph{The algebra of searching}, Festschritf in
-  hounour of CAR Hoare (1999).
-
 \bibitem{spivey1999embedding}
-\bysame, \emph{Embedding prolog in haskell}, Proceedings of Haskell, vol.~99,
-  Citeseer, 1999, pp.~1999--28.
+JM~Spivey and Silvija Seres, \emph{Embedding prolog in haskell}, Proceedings of
+  Haskell, vol.~99, Citeseer, 1999, pp.~1999--28.
 
 \bibitem{spivey2000functional}
 Michael Spivey, \emph{Functional pearls combinators for breadth-first search},
   Journal of Functional Programming \textbf{10} (2000), no.~4, 397--408.
+
+\bibitem{spivey1999algebra}
+Mike Spivey and Silvija Seres, \emph{The algebra of searching}, PROCEEDINGS OF
+  A SYMPOSIUM IN CELEBRATION OF THE WORK OF, MacMillan, 1999.
 
 \bibitem{website:stackoverflow}
 Stackoverflow, \emph{Haskell vs. prolog comparison}, December 2009,
