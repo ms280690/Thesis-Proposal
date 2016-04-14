@@ -61,8 +61,8 @@ import Control.Monad.Trans.Except
 
 import Prolog
 
-data FTS a = forall a . FV Id | FS Atom [a] deriving (Eq, Show, Ord, Typeable)
-
+data FTS a = forall a . FV Id | FS Atom [a]
+           deriving (Eq, Show, Ord, Typeable)
 newtype Prolog = P (Fix FTS) deriving (Eq, Show, Ord, Typeable)
 
 unP :: Prolog -> Fix FTS
