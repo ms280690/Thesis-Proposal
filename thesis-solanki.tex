@@ -133,8 +133,6 @@
   \input{abstract}%
   \unbctableofcontents
   \newpage
-  \unbclistoftables
-  \newpage
   \unbclistoffigures
   \newpage
   \unbclistofcode
@@ -240,12 +238,11 @@
   \subfile{proto2}
   \clearpage
 
-%  \subfile{proto2.2}
-%  \clearpage
-
+  \addtocontents{toc}{\vspace*{-0.1in}}
   \subfile{proto3}
   \clearpage
 
+  \addtocontents{toc}{\vspace*{-0.1in}}
   \subfile{proto4}
   \clearpage
 
