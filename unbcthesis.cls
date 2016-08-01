@@ -181,21 +181,20 @@
 % Footnotes are to be single spaced.
 %
 \newcommand{\unbcfootnote}[1]{%
-	\begin{singlespace}%
-	\footnote{#1}%
-        \end{singlespace}%
+  \begin{singlespace}%
+	 \footnote{#1}%
+  \end{singlespace}%
 }
 
 % Lengthy quotes must also be single spaced.
 % We provide a parameter for the citation label too.
 %
 \newenvironment{unbcquote}{%
-	\begin{singlespace}%
-	\par\vspace{1.5mm}%
-	\begin{quote}\slshape
-        }{%
-	\end{quote}%
-        \end{singlespace}
+  \begin{singlespace}%
+	 \par\vspace{1.5mm}%
+	 \begin{quote}\slshape}{%
+	 \end{quote}%
+  \end{singlespace}%
 }
 
 % Command for creating the thesis table of contents page
@@ -203,20 +202,22 @@
 % of Graduate Programs.
 %
 
-\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.8em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
-\renewcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
-\renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.8em}}
-\AtBeginDocument{\addtocontents{lis}{\protect\@namedef{l@code-list}{\protect\@dottedtocline{1}{1.5em}{2.8em}}}}
-\let\l@table\l@figure
+\renewcommand*\l@section       {\@dottedtocline{1}{1.5em}{2.8em}}
+\renewcommand*\l@subsection    {\@dottedtocline{2}{3.8em}{3.2em}}
+\renewcommand*\l@subsubsection {\@dottedtocline{3}{7.0em}{4.1em}}
+\renewcommand*\l@figure        {\@dottedtocline{1}{1.5em}{2.8em}}
+\let          \l@table         \l@figure
+\AtBeginDocument{
+  \addtocontents{lis}{%
+    \protect\@namedef{l@code-list}{\protect\@dottedtocline{1}{1.5em}{2.8em}}}}
 
 \newcommand{\unbctableofcontents}{
   \renewcommand{\contentsname}{\center{\small TABLE OF CONTENTS}}%
   \phantomsection
   \addcontentsline{toc}{chapter}{Table of Contents}%
-  \begin{singlespacing}
-  \tableofcontents
-  \end{singlespacing}
+  \begin{singlespacing}%
+    \tableofcontents
+  \end{singlespacing}%
 }
 
 % Command for creating the thesis list of tables page
@@ -228,9 +229,9 @@
   \renewcommand{\listtablename}{\center{\small LIST OF TABLES}}%
   \phantomsection
   \addcontentsline{toc}{chapter}{List of Tables}%
-  \begin{singlespacing}
-  \listoftables
-  \end{singlespacing}
+  \begin{singlespacing}%
+    \listoftables
+  \end{singlespacing}%
 }
 
 
@@ -243,9 +244,9 @@
   \renewcommand{\listfigurename}{\center{\small LIST OF FIGURES}}%
   \phantomsection
   \addcontentsline{toc}{chapter}{List of Figures}%
-  \begin{singlespacing}
-  \listoffigures
-  \end{singlespacing}
+  \begin{singlespacing}%
+    \listoffigures
+  \end{singlespacing}%
 }
 
 \newcommand{\unbclistofcode}{
@@ -313,50 +314,50 @@
   %  - B.Sc., University of Northern British Columbia, 2013
   \thispagestyle{empty}%
   \begin{center}%
-    \begin{singlespace}
+    \begin{singlespace}%
     \vspace*{0.01\baselineskip}%
-    \textbf{\uppercase{#1}}\\[2\baselineskip]
-    by \\[2\baselineskip]
-    \textbf{#2} \\[1\baselineskip]
+    \textbf{\uppercase{#1}}\\[2\baselineskip]%
+    by \\[2\baselineskip]%
+    \textbf{#2} \\[1\baselineskip]%
     #7 \\[10\baselineskip]%%
     %
-    THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\
-    THE REQUIREMENTS FOR THE DEGREE OF \\
-    \MakeUppercase {#3} \\
-    IN \\
+    THESIS SUBMITTED IN PARTIAL FULFILLMENT OF \\%
+    THE REQUIREMENTS FOR THE DEGREE OF \\%
+    \MakeUppercase {#3} \\%
+    IN \\%
     \MakeUppercase {#4} \\[10\baselineskip]%%
     UNIVERSITY OF NORTHERN BRITISH COLUMBIA \\[1\baselineskip]%
     #5 #6 \\[2\baselineskip]%
-    \copyright\ #2, #6 
-    \end{singlespace}
-  \end{center}
-\vspace{\fill}
+    \copyright\ #2, #6%
+    \end{singlespace}%
+  \end{center}%
+\vspace{\fill}%
 \newpage
 }
 
 %   ------------------------------------------------------------   %
 
-\newenvironment{unbcabstract}{
-    \begin{center}
-        \Large{\textbf{Abstract}}
-        \vspace{.1in}
-    \end{center}
+\newenvironment{unbcabstract}{%
+    \begin{center}%
+        \Large{\textbf{Abstract}}%
+        \vspace{.1in}%
+    \end{center}%
     \phantomsection
-    \addcontentsline{toc}{chapter}{Abstract}
-}{\par\newpage}
+    \addcontentsline{toc}{chapter}{Abstract}%
+}{\par\newpage}%
 
 
 %   ------------------------------------------------------------   %
 
 % Command for producing a bibliography in UNBC approved style
 
-\newcommand\unbcbibliography[1]{
-    \begin{singlespacing}
+\newcommand\unbcbibliography[1]{%
+    \begin{singlespacing}%
     \phantomsection
-    \addcontentsline{toc}{chapter}{Bibliography}
-    \bibliography{#1}
-    \end{singlespacing}
-}
+    \addcontentsline{toc}{chapter}{Bibliography}%
+    \bibliography{#1}%
+    \end{singlespacing}%
+}%
 
 %   ------------------------------------------------------------   %
 
@@ -372,7 +373,7 @@
 %       {Allan Edward Kranz}
 %       {10 May 2010}
 %
-\newcommand{\unbcthesiscopyright}[3]{
+\newcommand{\unbcthesiscopyright}[3]{%
     \newlength{\txtwdtha}%
     \newlength{\txtwdthb}%
     \newlength{\txtwdthc}%
@@ -388,10 +389,10 @@
 
     \thispagestyle{empty}%
     \newpage
-    \begin{center}
-      \textbf{UNIVERSITY OF NORTHERN BRITISH COLUMBIA PARTIAL \\ 
-        COPYRIGHT LICENCE}
-    \end{center}
+    \begin{center}%
+      \textbf{UNIVERSITY OF NORTHERN BRITISH COLUMBIA PARTIAL \\%
+        COPYRIGHT LICENCE}%
+    \end{center}%
 
     
     I hereby grant the University of Northern British Columbia Library
@@ -409,21 +410,21 @@
     thesis/dissertation for financial gain shall not be allowed without
     my written permission.
 
-    \vspace{3pc}
+    \vspace{3pc}%
 
     \noindent 
     Title of Project/Thesis/Dissertation:
-    \rule[-0.1cm]{\linewidth-\txtwdthd}{0.01cm}\\
+    \rule[-0.1cm]{\linewidth-\txtwdthd}{0.01cm}\\%
 
     \noindent
     \rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm}
     #1
-    \rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm} \\
+    \rule[-0.1cm]{\linewidth*\real{0.5}-\txtwdtha*\real{0.5}}{0.01cm} \\%
 
     \noindent
-    \rule[-0.1cm]{\linewidth}{0.01cm} \\
+    \rule[-0.1cm]{\linewidth}{0.01cm} \\%
 
-    \vspace{1pc}
+    \vspace{1pc}%
 
     \noindent Author 	
     \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthb)*\real{0.5}}{0.01cm}
@@ -433,10 +434,10 @@
     \rule[-0.1cm]{(\linewidth-\txtwdthe)*\real{0.3}}{0.01cm}
     \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm}
     #3
-    \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm}\\
+    \rule[-0.1cm]{((\linewidth-\txtwdthe)*\real{0.3}-\txtwdthc)*\real{0.5}}{0.01cm}\\%
     \hspace*{25mm}Printed Name \hspace*{25mm}Signature \hspace*{25mm}Date 
     \vspace{\fill}
-}
+}%
 
 %   ------------------------------------------------------------   %
 
@@ -474,10 +475,9 @@
 		\centering
 		\vspace{2mm}%
 		\includegraphics[#1]{figures/#2}%
-		\caption{#3}%
-		\label{fig:#2}%
+		\caption{#3}\label{fig:#2}%
 	\end{figure}
-}
+}%
 
 %   ------------------------------------------------------------   %
 
